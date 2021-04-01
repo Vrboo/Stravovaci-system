@@ -1,6 +1,6 @@
 package sk.dominikvrbovsky;
 
-public class Meal {
+public abstract class Meal {
 
     private String name;
     private double price;
