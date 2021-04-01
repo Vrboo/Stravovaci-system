@@ -54,4 +54,17 @@ public class Meal {
         this.setNumberOfOrder(this.getNumberOfOrder() + 1);
         return true;
     }
+
+    public String toStringMealMenu() {
+        return String.format("%s - %.2f€ - %dx", this.name, this.price, this.capacity);
+    }
+
+    public String toStringNumOfOrders() {
+        return String.format("%s - pocet objednavok %dx", this.name, this.numberOfOrder);
+    }
+
+    public String toStringBurza() {
+        return String.format("%s - %.2f€", this.name, this.price);
+    }
+
 }
