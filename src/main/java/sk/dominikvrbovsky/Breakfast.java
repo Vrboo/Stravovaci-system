@@ -21,8 +21,20 @@ public class Breakfast extends Meal {
 
     @Override
     public String toStringMealMenu() {
-        return super.toStringMealMenu() + String.format("[%s]" , this.drink.toString());
+        return String.format("%s [%s] - %.2f€ - %dx", getName(), getDrink(), getPrice(), getCapacity());
     }
+
+    @Override
+    public String toStringNumOfOrders() {
+        return String.format("%s [%s] - pocet objednavok %dx", getName(), getDrink(), getCapacity());
+    }
+
+    @Override
+    public String toStringBurza() {
+        return String.format("%s [%s] - %.2f€", getName(),getDrink(), getPrice());
+    }
+
+
 
 
 }

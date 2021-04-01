@@ -55,16 +55,10 @@ public abstract class Meal {
         return true;
     }
 
-    public String toStringMealMenu() {
-        return String.format("%s - %.2f€ - %dx", this.name, this.price, this.capacity);
-    }
+    public abstract String toStringMealMenu();
 
-    public String toStringNumOfOrders() {
-        return String.format("%s - pocet objednavok %dx", this.name, this.numberOfOrder);
-    }
+    public abstract String toStringNumOfOrders();
 
-    public String toStringBurza() {
-        return String.format("%s - %.2f€", this.name, this.price);
-    }
+    public abstract String toStringBurza();
 
 }
