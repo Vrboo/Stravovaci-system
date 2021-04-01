@@ -1,10 +1,10 @@
 package sk.dominikvrbovsky.enums;
 
 public enum Drink {
-    TEA("caj"),
-    MINERAL_WATER("mineralna voda"),
-    JUICE("dzus"),
-    COLA("cola");
+    TEA("Caj"),
+    MINERAL_WATER("Mineralna voda"),
+    JUICE("Dzus"),
+    COLA("Cola");
 
     private final String drink;
 
