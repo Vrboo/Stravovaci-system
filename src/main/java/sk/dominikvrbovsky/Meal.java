@@ -45,4 +45,13 @@ public class Meal {
     public void setNumberOfOrder(int numberOfOrder) {
         this.numberOfOrder = numberOfOrder;
     }
+
+    public boolean orderMeal() {
+
+        if (this.getCapacity() == 0) return false;
+
+        this.setCapacity(this.getCapacity() - 1);
+        this.setNumberOfOrder(this.getNumberOfOrder() + 1);
+        return true;
+    }
 }
