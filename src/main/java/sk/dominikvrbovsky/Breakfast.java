@@ -21,17 +21,17 @@ public class Breakfast extends Meal {
 
     @Override
     public String toStringMealMenu() {
-        return String.format("%s [%s] - %.2f€ - %dx", getName(), getDrink(), getPrice(), getCapacity());
+        return String.format("%s [%s] - %.2f€ - %dx", getName(), getDrink().toString(), getPrice(), getCapacity());
     }
 
     @Override
     public String toStringNumOfOrders() {
-        return String.format("%s [%s] - pocet objednavok %dx", getName(), getDrink(), getCapacity());
+        return String.format("%s [%s] - pocet objednavok %dx", getName(), getDrink().toString(), getCapacity());
     }
 
     @Override
     public String toStringBurza() {
-        return String.format("%s [%s] - %.2f€", getName(),getDrink(), getPrice());
+        return String.format("%s [%s] - %.2f€", getName(),getDrink().toString(), getPrice());
     }
 
 
