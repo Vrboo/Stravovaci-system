@@ -9,6 +9,7 @@ public class User {
     private String password;
     private double account;
     private ArrayList<Transaction> transactions;
+    private ArrayList<Order> orders;
 
     public User(String username, String fullName, String password, double account) {
         this.username = username;
@@ -16,6 +17,7 @@ public class User {
         this.password = password;
         this.account = account;
         this.transactions = new ArrayList<>();
+        this.orders = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -56,5 +58,13 @@ public class User {
 
     public void setTransactions(ArrayList<Transaction> transactions) {
         this.transactions = transactions;
+    }
+
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = orders;
     }
 }
