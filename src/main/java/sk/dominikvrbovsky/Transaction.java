@@ -57,4 +57,10 @@ public class Transaction {
         return String.format("%s %tT - %s: %.2f€", date, this.dateTime.toLocalTime(),
                 this.transactionType.toString().toUpperCase(), this.amount );
     }
+
+    public String toStringAdmin() {
+        return this.user.getFullName() + ":\t" + this.toStringUser();
+    }
+
+
 }
