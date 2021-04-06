@@ -1,17 +1,21 @@
 package sk.dominikvrbovsky;
 
+import java.util.ArrayList;
+
 public class User {
 
     private String username;
     private String fullName;
     private String password;
     private double account;
+    private ArrayList<Transaction> transactions;
 
     public User(String username, String fullName, String password, double account) {
         this.username = username;
         this.fullName = fullName;
         this.password = password;
         this.account = account;
+        this.transactions = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -44,5 +48,13 @@ public class User {
 
     public void setAccount(double account) {
         this.account = account;
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(ArrayList<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }
