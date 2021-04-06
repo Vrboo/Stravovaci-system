@@ -1,6 +1,7 @@
 package sk.dominikvrbovsky;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Order {
 
@@ -28,5 +29,9 @@ public class Order {
         this.dateTime = dateTime;
     }
 
-
+    @Override
+    public String toString() {
+        String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return String.format("%s %tT \t", date, this.dateTime.toLocalTime()) + this.getMeal().toStringBurza();
+    }
 }
