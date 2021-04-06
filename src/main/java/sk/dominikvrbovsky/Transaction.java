@@ -2,7 +2,9 @@ package sk.dominikvrbovsky;
 
 import sk.dominikvrbovsky.enums.TransactionType;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Transaction {
 
@@ -48,5 +50,11 @@ public class Transaction {
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public String toStringUser() {
+        String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return String.format("%s %tT - %s: %.2f€", date, this.dateTime.toLocalTime(),
+                this.transactionType.toString().toUpperCase(), this.amount );
     }
 }
