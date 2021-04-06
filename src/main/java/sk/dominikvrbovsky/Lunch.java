@@ -29,6 +29,11 @@ public class Lunch extends Meal{
 
     @Override
     public String toStringBurza() {
-        return String.format("%s %s - %.2f€ ", getName(), this.takeaway ? "[Takeaway]":"", getPrice());
+        return String.format("%s %s - %.2f€ - %dx", getName(), this.takeaway ? "[Takeaway]":"", getPrice(), getNumberInBurza());
+    }
+
+    @Override
+    public String toStringOrder() {
+        return String.format("%s %s - %.2f€", getName(), this.takeaway ? "[Takeaway]":"", getPrice());
     }
 }

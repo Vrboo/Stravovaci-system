@@ -31,10 +31,11 @@ public class Breakfast extends Meal {
 
     @Override
     public String toStringBurza() {
-        return String.format("%s [%s] - %.2f€", getName(),getDrink().toString(), getPrice());
+        return String.format("%s [%s] - %.2f€ - %dx", getName(),getDrink().toString(), getPrice(), getNumberInBurza());
     }
 
-
-
-
+    @Override
+    public String toStringOrder() {
+        return String.format("%s [%s] - %.2f€", getName(),getDrink().toString(), getPrice());
+    }
 }

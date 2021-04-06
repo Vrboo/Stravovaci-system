@@ -32,6 +32,6 @@ public class Order {
     @Override
     public String toString() {
         String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        return String.format("%s %tT \t", date, this.dateTime.toLocalTime()) + this.getMeal().toStringBurza();
+        return String.format("%s %tT \t %s", date, this.dateTime.toLocalTime(), this.getMeal().toStringOrder());
     }
 }

@@ -6,12 +6,14 @@ public abstract class Meal {
     private double price;
     private int capacity;
     private int numberOfOrder;
+    private int numberInBurza;
 
     public Meal(String name, double price, int capacity) {
         this.name = name;
         this.price = price;
         this.capacity = capacity;
         this.numberOfOrder = 0;
+        this.numberInBurza = 0;
     }
 
     public String getName() {
@@ -46,6 +48,14 @@ public abstract class Meal {
         this.numberOfOrder = numberOfOrder;
     }
 
+    public int getNumberInBurza() {
+        return numberInBurza;
+    }
+
+    public void setNumberInBurza(int numberInBurza) {
+        this.numberInBurza = numberInBurza;
+    }
+
     public boolean orderMeal() {
 
         if (this.getCapacity() == 0) return false;
@@ -60,5 +70,7 @@ public abstract class Meal {
     public abstract String toStringNumOfOrders();
 
     public abstract String toStringBurza();
+
+    public abstract String toStringOrder();
 
 }
