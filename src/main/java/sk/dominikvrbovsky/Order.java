@@ -15,7 +15,10 @@ public class Order {
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_order_user_id"))
     private User user;
 
+    @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_order_meal_id"))
     private Meal meal;
+
     private LocalDateTime dateTime;
 
     public Order(User user, Meal meal) {
