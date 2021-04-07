@@ -16,6 +16,7 @@ public class Transaction {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_transaction_user_id"))
     private User user;
 
     @Convert(converter = TransactionTypeConverter.class)
