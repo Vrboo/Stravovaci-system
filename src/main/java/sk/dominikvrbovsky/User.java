@@ -99,5 +99,14 @@ public class User {
         order.setUser(null);
     }
 
+    public void addTransaciton(Transaction transaction) {
+        this.transactions.add(transaction);
+        transaction.setUser(this);
+    }
+
+    public void removeTransaction(Transaction transaction) {
+        this.transactions.remove(transaction);
+        transaction.setUser(null);
+    }
 
 }
