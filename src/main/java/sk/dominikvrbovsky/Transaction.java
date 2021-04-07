@@ -1,11 +1,9 @@
 package sk.dominikvrbovsky;
 
+import sk.dominikvrbovsky.converters.TransactionTypeConverter;
 import sk.dominikvrbovsky.enums.TransactionType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,6 +16,8 @@ public class Transaction {
     private Long id;
 
     private User user;
+
+    @Convert(converter = TransactionTypeConverter.class)
     private TransactionType transactionType;
     private double amount;
     private LocalDateTime dateTime;
