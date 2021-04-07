@@ -5,12 +5,22 @@ import java.time.format.DateTimeFormatter;
 
 public class Order {
 
+    private User user;
     private Meal meal;
     private LocalDateTime dateTime;
 
-    public Order(Meal meal) {
+    public Order(User user, Meal meal) {
+        this.user = user;
         this.meal = meal;
         this.dateTime = LocalDateTime.now();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Meal getMeal() {
