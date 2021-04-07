@@ -1,9 +1,6 @@
 package sk.dominikvrbovsky;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -14,7 +11,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_order_user_id"))
     private User user;
+
     private Meal meal;
     private LocalDateTime dateTime;
 

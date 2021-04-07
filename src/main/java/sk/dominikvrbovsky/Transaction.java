@@ -21,7 +21,9 @@ public class Transaction {
 
     @Convert(converter = TransactionTypeConverter.class)
     private TransactionType transactionType;
+
     private double amount;
+
     private LocalDateTime dateTime;
 
     public Transaction(User user, TransactionType transactionType, double amount) {
