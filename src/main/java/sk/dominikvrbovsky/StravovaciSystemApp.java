@@ -21,7 +21,7 @@ public class StravovaciSystemApp {
 //
 //        Meal lunch1 = new Lunch("Rezen", 12.30, 150, true);
 //        Meal lunch2 = new Lunch("Spagety", 5.21, 65, false);
-//        Meal lunch3 = new Lunch("Cestoviny", 4.21, 54, false);
+        Meal lunch3 = new Lunch("Cestoviny", 4.21, 54, false);
         Meal lunch4 = new Lunch("Pizza", 8.45, 87, true);
 
         entityManager.getTransaction().begin();
@@ -35,12 +35,15 @@ public class StravovaciSystemApp {
 //        entityManager.persist(breakfast4);
 //        entityManager.persist(lunch3);
 
-        Meal lunchch = entityManager.find(Lunch.class, 5L);
-        System.out.println(lunchch.toStringMealMenu());
+        Meal lunchch = entityManager.find(Meal.class, 9L);
+        entityManager.remove(lunchch);
+
+
 
         entityManager.getTransaction().commit();
 
         entityManager.close();
+
     }
 
 }

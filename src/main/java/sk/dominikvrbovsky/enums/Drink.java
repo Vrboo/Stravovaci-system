@@ -16,8 +16,13 @@ public enum Drink {
         return this.drink;
     }
 
-    @Override
-    public String toString() {
-        return this.getDrink();
+    public static Drink getEnumFromString(String string) {
+        for (Drink drink : Drink.values()) {
+            if (string.equals(drink.getDrink())) {
+                return drink;
+            }
+        }
+
+        throw new UnsupportedOperationException("Pre dany string neexistuje ziadne enum Drink");
     }
 }
