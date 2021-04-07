@@ -2,6 +2,7 @@ package sk.dominikvrbovsky;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -16,10 +17,10 @@ public class User {
     private double account;
 
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<Transaction> transactions;
+    private List<Transaction> transactions;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<Order> orders;
+    private List<Order> orders;
 
     public User(String username, String fullName, String password, double account) {
         this.username = username;
@@ -73,7 +74,7 @@ public class User {
         this.account = account;
     }
 
-    public ArrayList<Transaction> getTransactions() {
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 
@@ -81,7 +82,7 @@ public class User {
         this.transactions = transactions;
     }
 
-    public ArrayList<Order> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
@@ -101,7 +102,6 @@ public class User {
 
     public void addTransaciton(Transaction transaction) {
         this.transactions.add(transaction);
-        transaction.setUser(this);
     }
 
     public void removeTransaction(Transaction transaction) {

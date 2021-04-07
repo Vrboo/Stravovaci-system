@@ -2,6 +2,7 @@ package sk.dominikvrbovsky;
 
 
 import sk.dominikvrbovsky.enums.Drink;
+import sk.dominikvrbovsky.enums.TransactionType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,10 +23,16 @@ public class StravovaciSystemApp {
         Meal lunch2 = new Lunch("Rezen",4.20,120,false);
         Meal lunch3 = new Lunch("Cestoviny",6.2,80, true);
 
+        User user1 = new User("vrboo", "Dominik Vrbovsky", "0000", 20.30);
 
+        Transaction transaction1 = new Transaction(user1, TransactionType.INPUT, 12.30);
+
+        //user1.addTransaciton(transaction1);
 
 
         entityManager.getTransaction().begin();
+
+        entityManager.persist(user1);
 
         entityManager.getTransaction().commit();
 
