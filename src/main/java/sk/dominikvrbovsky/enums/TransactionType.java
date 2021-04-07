@@ -2,8 +2,8 @@ package sk.dominikvrbovsky.enums;
 
 public enum TransactionType {
 
-    INPUT("vklad"),
-    OUTPUT("vyber");
+    INPUT("Vklad"),
+    OUTPUT("Vyber");
 
     private final String transactionType;
 
@@ -13,5 +13,15 @@ public enum TransactionType {
 
     public String getTransactionType() {
         return transactionType;
+    }
+
+    public static TransactionType getEnumFromString(String string) {
+        for (TransactionType transactionType : TransactionType.values()) {
+            if (transactionType.getTransactionType().equals(string)) {
+                return transactionType;
+            }
+        }
+
+        throw new UnsupportedOperationException("Pre dany string neexistje ziadny enum TransactionType");
     }
 }
