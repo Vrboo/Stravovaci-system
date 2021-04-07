@@ -7,17 +7,16 @@ import javax.persistence.*;
 public abstract class Meal {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private double price;
     private int capacity;
 
-    @Column(name = "NUMBER-OF-ORDER")
+
     private int numberOfOrder;
 
-    @Column(name = "NUMBER-IN-BURZA")
     private int numberInBurza;
 
     public Meal(String name, double price, int capacity) {
