@@ -14,6 +14,8 @@ public class StravovaciSystemApp {
                 Persistence.createEntityManagerFactory("sk.dominikvrbovsky.stravovaci-system");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
+
+
         entityManager.getTransaction().begin();
 
         entityManager.getTransaction().commit();
