@@ -2,8 +2,14 @@ package sk.dominikvrbovsky;
 
 import sk.dominikvrbovsky.enums.Drink;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+@Entity
 public class Breakfast extends Meal {
 
+    @Enumerated(EnumType.STRING)
     private Drink drink;
 
     public Breakfast(String name, double price, int capacity, Drink drink) {
