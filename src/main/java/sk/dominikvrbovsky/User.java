@@ -18,6 +18,7 @@ public class User {
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Transaction> transactions;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Order> orders;
 
     public User(String username, String fullName, String password, double account) {
