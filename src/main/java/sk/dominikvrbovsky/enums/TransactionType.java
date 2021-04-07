@@ -11,8 +11,7 @@ public enum TransactionType {
         this.transactionType = transactionType;
     }
 
-    @Override
-    public String toString() {
+    public String getTransactionType() {
         return transactionType;
     }
 }
