@@ -17,6 +17,9 @@ public class Breakfast extends Meal {
         this.drink = drink;
     }
 
+    public Breakfast() {
+    }
+
     public Drink getDrink() {
         return drink;
     }

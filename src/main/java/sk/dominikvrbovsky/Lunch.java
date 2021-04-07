@@ -12,6 +12,9 @@ public class Lunch extends Meal{
         this.takeaway = takeaway;
     }
 
+    public Lunch() {
+    }
+
     public boolean isTakeaway() {
         return takeaway;
     }

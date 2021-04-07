@@ -13,10 +13,7 @@ public abstract class Meal {
     private String name;
     private double price;
     private int capacity;
-
-
     private int numberOfOrder;
-
     private int numberInBurza;
 
     public Meal(String name, double price, int capacity) {
