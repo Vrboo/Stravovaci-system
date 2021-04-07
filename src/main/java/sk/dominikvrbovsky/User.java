@@ -88,4 +88,16 @@ public class User {
     public void setOrders(ArrayList<Order> orders) {
         this.orders = orders;
     }
+
+    public void addOrder(Order order) {
+        this.orders.add(order);
+        order.setUser(this);
+    }
+
+    public void removeOrder(Order order) {
+        this.orders.remove(order);
+        order.setUser(null);
+    }
+
+
 }
