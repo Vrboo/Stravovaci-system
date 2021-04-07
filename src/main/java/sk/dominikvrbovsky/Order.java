@@ -1,9 +1,18 @@
 package sk.dominikvrbovsky;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Entity
 public class Order {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private User user;
     private Meal meal;
@@ -13,6 +22,17 @@ public class Order {
         this.user = user;
         this.meal = meal;
         this.dateTime = LocalDateTime.now();
+    }
+
+    public Order() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public User getUser() {

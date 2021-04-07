@@ -8,6 +8,7 @@
         <class>sk.dominikvrbovsky.Breakfast</class>
         <class>sk.dominikvrbovsky.Lunch</class>
         <class>sk.dominikvrbovsky.Transaction</class>
+        <class>sk.dominikvrbovsky.Order</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
