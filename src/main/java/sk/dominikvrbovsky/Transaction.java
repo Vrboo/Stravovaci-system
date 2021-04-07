@@ -15,6 +15,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
     private User user;
 
     @Convert(converter = TransactionTypeConverter.class)

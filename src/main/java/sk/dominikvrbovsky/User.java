@@ -1,9 +1,6 @@
 package sk.dominikvrbovsky;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
@@ -17,7 +14,10 @@ public class User {
     private String fullName;
     private String password;
     private double account;
+
+    @OneToMany
     private ArrayList<Transaction> transactions;
+
     private ArrayList<Order> orders;
 
     public User(String username, String fullName, String password, double account) {
