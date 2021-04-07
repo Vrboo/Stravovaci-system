@@ -27,12 +27,16 @@ public class StravovaciSystemApp {
 
         Transaction transaction1 = new Transaction(user1, TransactionType.INPUT, 12.30);
 
-        //user1.addTransaciton(transaction1);
+        Order order1 = new Order(user1, lunch1);
+
+        user1.addTransaciton(transaction1);
 
 
         entityManager.getTransaction().begin();
 
+        entityManager.persist(lunch1);
         entityManager.persist(user1);
+        entityManager.persist(order1);
 
         entityManager.getTransaction().commit();
 

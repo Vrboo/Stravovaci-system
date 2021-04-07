@@ -92,7 +92,6 @@ public class User {
 
     public void addOrder(Order order) {
         this.orders.add(order);
-        order.setUser(this);
     }
 
     public void removeOrder(Order order) {

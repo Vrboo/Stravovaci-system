@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -14,6 +15,8 @@ public class Order {
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_order_user_id"))
     private User user;
+
+
 
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_order_meal_id"))
@@ -25,6 +28,7 @@ public class Order {
         this.user = user;
         this.meal = meal;
         this.dateTime = LocalDateTime.now();
+        this.user.addOrder(this);
     }
 
     public Order() {
