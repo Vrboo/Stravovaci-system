@@ -1,5 +1,8 @@
 package sk.dominikvrbovsky;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Lunch extends Meal{
 
     private boolean takeaway;
