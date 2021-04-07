@@ -2,11 +2,20 @@ package sk.dominikvrbovsky;
 
 import sk.dominikvrbovsky.enums.TransactionType;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Entity
 public class Transaction {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private User user;
     private TransactionType transactionType;
@@ -18,6 +27,17 @@ public class Transaction {
         this.transactionType = transactionType;
         this.amount = amount;
         this.dateTime = LocalDateTime.now();
+    }
+
+    public Transaction() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public User getUser() {
