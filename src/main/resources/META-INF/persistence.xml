@@ -4,6 +4,8 @@
 
     <persistence-unit name="sk.dominikvrbovsky.stravovaci-system" transaction-type="RESOURCE_LOCAL">
 
+        <class>sk.dominikvrbovsky.Meal</class>
+
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>

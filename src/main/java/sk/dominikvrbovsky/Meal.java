@@ -1,6 +1,14 @@
 package sk.dominikvrbovsky;
 
+import javax.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Meal {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String name;
     private double price;
@@ -14,6 +22,17 @@ public abstract class Meal {
         this.capacity = capacity;
         this.numberOfOrder = 0;
         this.numberInBurza = 0;
+    }
+
+    public Meal() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
