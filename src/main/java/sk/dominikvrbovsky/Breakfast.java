@@ -1,7 +1,9 @@
 package sk.dominikvrbovsky;
 
+import sk.dominikvrbovsky.converters.DrinkConverter;
 import sk.dominikvrbovsky.enums.Drink;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -9,7 +11,7 @@ import javax.persistence.Enumerated;
 @Entity
 public class Breakfast extends Meal {
 
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = DrinkConverter.class)
     private Drink drink;
 
     public Breakfast(String name, double price, int capacity, Drink drink) {
