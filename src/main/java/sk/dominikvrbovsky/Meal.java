@@ -75,13 +75,9 @@ public abstract class Meal {
         this.numberInBurza = numberInBurza;
     }
 
-    public boolean orderMeal() {
-
-        if (this.getCapacity() == 0) return false;
-
+    public void orderMeal() {
         this.setCapacity(this.getCapacity() - 1);
         this.setNumberOfOrder(this.getNumberOfOrder() + 1);
-        return true;
     }
 
     public abstract String toStringMealMenu();

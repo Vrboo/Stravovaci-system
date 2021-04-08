@@ -29,6 +29,7 @@ public class Order {
         this.meal = meal;
         this.dateTime = LocalDateTime.now();
         this.burza = false;
+        this.meal.orderMeal();
     }
 
     public Order() {
