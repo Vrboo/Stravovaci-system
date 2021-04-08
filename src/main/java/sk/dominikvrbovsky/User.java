@@ -102,17 +102,41 @@ public class User {
         this.lunchOrder = lunchOrder;
     }
 
-    public void makeOrder(Order order) {
-
+    public boolean makeOrder(Meal meal) {
+        if (meal instanceof Breakfast) this.breakfastOrder = new Order(this, meal);
+        return true;
     }
 
     public void cancelOrder(Order order) {
 
     }
 
-    public void addToBurza() {
+    public void addMealToBurza() {
 
     }
+
+    public void takeMealFromBurza() {
+
+    }
+
+//    public void makeOrder(Meal meal) {
+//        this.orders.add(new Order(this,meal));
+//    }
+//
+//    public void cancelOrder(Order order) {
+//        this.orders.remove(order);
+//    }
+//
+//    public void addMealToBurza(Order order) {
+//        order.addToBurza();
+//    }
+//
+//    public boolean takeMealFromBurza(Order order) {
+//        if (!order.isBurza()) return false;
+//
+//        order.removeFromBurza(this);
+//        return true;
+//    }
 
     public void addTransaciton(Transaction transaction) {
         this.transactions.add(transaction);

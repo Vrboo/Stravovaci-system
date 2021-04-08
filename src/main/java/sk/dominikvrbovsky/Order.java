@@ -26,7 +26,6 @@ public class Order {
         this.user = user;
         this.meal = meal;
         this.dateTime = LocalDateTime.now();
-        this.user.addOrder(this);
     }
 
     public Order() {
