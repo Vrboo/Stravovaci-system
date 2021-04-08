@@ -12,11 +12,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_order_user_id"))
     private User user;
-
-
 
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_order_meal_id"))

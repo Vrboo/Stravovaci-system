@@ -28,15 +28,25 @@ public class StravovaciSystemApp {
         Transaction transaction1 = new Transaction(user1, TransactionType.INPUT, 12.30);
 
         Order order1 = new Order(user1, lunch1);
+        Order order2 = new Order(user1, breakfast1);
 
-        user1.addTransaciton(transaction1);
-
+        //user1.addTransaciton(transaction1);
+        user1.setBreakfastOrder(order1);
+        user1.setLunchOrder(order2);
 
         entityManager.getTransaction().begin();
 
         entityManager.persist(lunch1);
+        entityManager.persist(lunch2);
+        entityManager.persist(lunch3);
+        entityManager.persist(breakfast1);
+        entityManager.persist(breakfast2);
+        entityManager.persist(breakfast3);
+
         entityManager.persist(user1);
+
         entityManager.persist(order1);
+        entityManager.persist(order2);
 
         entityManager.getTransaction().commit();
 

@@ -19,8 +19,11 @@ public class User {
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Transaction> transactions;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Order breakfastOrder;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Order lunchOrder;
 
     public User(String username, String fullName, String password, double account) {
         this.username = username;
@@ -28,7 +31,8 @@ public class User {
         this.password = password;
         this.account = account;
         this.transactions = new ArrayList<>();
-        this.orders = new ArrayList<>();
+        this.breakfastOrder = null;
+        this.lunchOrder = null;
     }
 
     public User() {
@@ -78,25 +82,32 @@ public class User {
         return transactions;
     }
 
-    public void setTransactions(ArrayList<Transaction> transactions) {
+    public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public Order getBreakfastOrder() {
+        return breakfastOrder;
     }
 
-    public void setOrders(ArrayList<Order> orders) {
-        this.orders = orders;
+    public void setBreakfastOrder(Order breakfastOrder) {
+        this.breakfastOrder = breakfastOrder;
+    }
+
+    public Order getLunchOrder() {
+        return lunchOrder;
+    }
+
+    public void setLunchOrder(Order lunchOrder) {
+        this.lunchOrder = lunchOrder;
     }
 
     public void addOrder(Order order) {
-        this.orders.add(order);
+
     }
 
     public void removeOrder(Order order) {
-        this.orders.remove(order);
-        order.setUser(null);
+
     }
 
     public void addTransaciton(Transaction transaction) {
