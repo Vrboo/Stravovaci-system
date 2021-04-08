@@ -78,20 +78,17 @@ public class Order {
     public void addToBurza() {
         this.setBurza(true);
         this.meal.setNumberInBurza(this.meal.getNumberInBurza() + 1);
+        this.meal.setNumberOfOrder(this.meal.getNumberOfOrder() - 1);
     }
 
-//    public void addToBurza() {
-//        this.setBurza(true);
-//        this.meal.setNumberInBurza(this.meal.getNumberInBurza() + 1);
-//    }
-//
-//    public void removeFromBurza(User newUser) {
-//        this.setBurza(false);
-//        this.meal.setNumberInBurza(this.meal.getNumberInBurza() - 1);
-//        this.user.setAccount(this.user.getAccount() + this.meal.getPrice());
-//        this.setUser(newUser);
-//        this.setDateTime(LocalDateTime.now());
-//    }
+    public void orderFromBurza(User newUser) {
+        this.user.setAccount(this.user.getAccount() + this.meal.getPrice());
+        this.setUser(newUser);
+        this.setDateTime(LocalDateTime.now());
+        this.setBurza(false);
+        this.meal.setNumberInBurza(this.meal.getNumberInBurza() - 1);
+        this.meal.setNumberOfOrder(this.meal.getNumberOfOrder() + 1);
+    }
 
     @Override
     public String toString() {

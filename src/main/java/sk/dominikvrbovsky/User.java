@@ -107,16 +107,14 @@ public class User {
         if (meal instanceof Lunch) this.lunchOrder = new Order(this, meal);
     }
 
-    public void cancelOrder(Order order) {
-
-    }
-
     public void addMealToBurza(Order order) {
         order.addToBurza();
     }
 
-    public void takeMealFromBurza() {
-
+    public void takeMealFromBurza(Order order) {
+        order.orderFromBurza(this);
+        if (order.getMeal() instanceof Breakfast) this.breakfastOrder = order;
+        if (order.getMeal() instanceof Lunch) this.lunchOrder = order;
     }
 
 //    public void makeOrder(Meal meal) {
