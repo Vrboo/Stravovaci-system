@@ -75,6 +75,10 @@ public class Order {
         this.burza = burza;
     }
 
+    public void toBurza() {
+
+    }
+
     @Override
     public String toString() {
         String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));

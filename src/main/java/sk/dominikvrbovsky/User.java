@@ -111,7 +111,7 @@ public class User {
 
     }
 
-    public void addMealToBurza() {
+    public void addMealToBurza(Order order) {
 
     }
 
