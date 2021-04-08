@@ -112,7 +112,7 @@ public class User {
     }
 
     public void addMealToBurza(Order order) {
-
+        order.addToBurza();
     }
 
     public void takeMealFromBurza() {

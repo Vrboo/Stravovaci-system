@@ -75,9 +75,23 @@ public class Order {
         this.burza = burza;
     }
 
-    public void toBurza() {
-
+    public void addToBurza() {
+        this.setBurza(true);
+        this.meal.setNumberInBurza(this.meal.getNumberInBurza() + 1);
     }
+
+//    public void addToBurza() {
+//        this.setBurza(true);
+//        this.meal.setNumberInBurza(this.meal.getNumberInBurza() + 1);
+//    }
+//
+//    public void removeFromBurza(User newUser) {
+//        this.setBurza(false);
+//        this.meal.setNumberInBurza(this.meal.getNumberInBurza() - 1);
+//        this.user.setAccount(this.user.getAccount() + this.meal.getPrice());
+//        this.setUser(newUser);
+//        this.setDateTime(LocalDateTime.now());
+//    }
 
     @Override
     public String toString() {
