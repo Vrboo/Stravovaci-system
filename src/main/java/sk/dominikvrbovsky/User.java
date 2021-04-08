@@ -102,11 +102,15 @@ public class User {
         this.lunchOrder = lunchOrder;
     }
 
-    public void addOrder(Order order) {
+    public void makeOrder(Order order) {
 
     }
 
-    public void removeOrder(Order order) {
+    public void cancelOrder(Order order) {
+
+    }
+
+    public void addToBurza() {
 
     }
 
