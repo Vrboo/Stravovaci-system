@@ -1,5 +1,7 @@
 package sk.dominikvrbovsky;
 
+import sk.dominikvrbovsky.enums.TransactionType;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -117,32 +119,16 @@ public class User {
         if (order.getMeal() instanceof Lunch) this.lunchOrder = order;
     }
 
-//    public void makeOrder(Meal meal) {
-//        this.orders.add(new Order(this,meal));
-//    }
-//
-//    public void cancelOrder(Order order) {
-//        this.orders.remove(order);
-//    }
-//
-//    public void addMealToBurza(Order order) {
-//        order.addToBurza();
-//    }
-//
-//    public boolean takeMealFromBurza(Order order) {
-//        if (!order.isBurza()) return false;
-//
-//        order.removeFromBurza(this);
-//        return true;
-//    }
-
-    public void addTransaciton(Transaction transaction) {
-        this.transactions.add(transaction);
+    public void putMoneyOnAccount(double amount) {
+        this.setAccount(this.account + amount);
+        this.transactions.add(new Transaction(this, TransactionType.INPUT, amount));
     }
 
-    public void removeTransaction(Transaction transaction) {
-        this.transactions.remove(transaction);
-        transaction.setUser(null);
+    public void withdrawMoneyFromAccount(double amount) {
+        this.setAccount(this.account - amount);
+        this.transactions.add(new Transaction(this, TransactionType.OUTPUT, amount));
     }
+
+
 
 }
