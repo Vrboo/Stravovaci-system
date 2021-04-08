@@ -102,9 +102,9 @@ public class User {
         this.lunchOrder = lunchOrder;
     }
 
-    public boolean makeOrder(Meal meal) {
+    public void makeOrder(Meal meal) {
         if (meal instanceof Breakfast) this.breakfastOrder = new Order(this, meal);
-        return true;
+        if (meal instanceof Lunch) this.lunchOrder = new Order(this, meal);
     }
 
     public void cancelOrder(Order order) {

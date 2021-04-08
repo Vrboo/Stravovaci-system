@@ -22,10 +22,13 @@ public class Order {
 
     private LocalDateTime dateTime;
 
+    private boolean burza;
+
     public Order(User user, Meal meal) {
         this.user = user;
         this.meal = meal;
         this.dateTime = LocalDateTime.now();
+        this.burza = false;
     }
 
     public Order() {
@@ -61,6 +64,14 @@ public class Order {
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public boolean isBurza() {
+        return burza;
+    }
+
+    public void setBurza(boolean burza) {
+        this.burza = burza;
     }
 
     @Override
