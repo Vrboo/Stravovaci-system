@@ -120,12 +120,12 @@ public class User {
     }
 
     public void putMoneyOnAccount(double amount) {
-        this.setAccount(this.account + amount);
+        this.account += amount;
         this.transactions.add(new Transaction(this, TransactionType.INPUT, amount));
     }
 
     public void withdrawMoneyFromAccount(double amount) {
-        this.setAccount(this.account - amount);
+        this.account -= amount;
         this.transactions.add(new Transaction(this, TransactionType.OUTPUT, amount));
     }
 
