@@ -106,11 +106,12 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBorder(null);
             myJPanelBackLogin.setBackground(new Color(0, 164, 210));
             myJPanelBackLogin.setkBorderRadius(0);
-            myJPanelBackLogin.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
-            EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
-            . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,
-            java . awt. Color .red ) ,myJPanelBackLogin. getBorder () ) ); myJPanelBackLogin. addPropertyChangeListener(e -> { if( "bord\u0065r" .equals ( e. getPropertyName () ) )
-            throw new RuntimeException( ) ;});
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax
+            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+            .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (e -> {if ("borde\u0072" .
+            equals (e .getPropertyName () )) throw new RuntimeException( ); });
 
             //======== panelPrihlasenie ========
             {
@@ -121,7 +122,7 @@ public class Login extends JFrame {
                 panelPrihlasenie.setkStartColor(Color.white);
 
                 //---- labeluserIcon ----
-                labeluserIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_male_user_110px.png"));
+                labeluserIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_male_user_100px_1.png"));
 
                 //---- textFieldUsername ----
                 textFieldUsername.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
@@ -243,11 +244,11 @@ public class Login extends JFrame {
                                     .addGap(31, 31, 31)
                                     .addGroup(panelPrihlasenieLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                         .addComponent(textFieldUsername, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                        .addComponent(textPassword)
-                                        .addComponent(buttonRegistrovat, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                        .addComponent(buttonPrihlasit, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))
+                                        .addComponent(buttonRegistrovat, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                        .addComponent(buttonPrihlasit, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                        .addComponent(textPassword)))
                                 .addGroup(panelPrihlasenieLayout.createSequentialGroup()
-                                    .addGap(90, 90, 90)
+                                    .addGap(95, 95, 95)
                                     .addComponent(labeluserIcon)))
                             .addContainerGap(30, Short.MAX_VALUE))
                 );
@@ -256,11 +257,11 @@ public class Login extends JFrame {
                         .addGroup(panelPrihlasenieLayout.createSequentialGroup()
                             .addGap(18, 18, 18)
                             .addComponent(labeluserIcon)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(textFieldUsername, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(textPassword, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
+                            .addGap(24, 24, 24)
                             .addComponent(buttonPrihlasit, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(buttonRegistrovat, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
@@ -280,9 +281,9 @@ public class Login extends JFrame {
             myJPanelBackLoginLayout.setVerticalGroup(
                 myJPanelBackLoginLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
-                        .addContainerGap(50, Short.MAX_VALUE)
+                        .addContainerGap(55, Short.MAX_VALUE)
                         .addComponent(panelPrihlasenie, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(49, Short.MAX_VALUE))
+                        .addContainerGap(54, Short.MAX_VALUE))
             );
         }
 

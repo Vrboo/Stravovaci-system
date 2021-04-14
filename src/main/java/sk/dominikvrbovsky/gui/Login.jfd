@@ -12,7 +12,7 @@ new FormModel {
 			"$locationPolicy": 1
 			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {seq l {space ::229:x, comp panelPrihlasenie:::::p, space ::229:x}}"
-				"$verticalGroup": "par l {seq t {space ::50:x, comp panelPrihlasenie:::p::p, space ::49:x}}"
+				"$verticalGroup": "par l {seq t {space ::55:x, comp panelPrihlasenie:::p::p, space ::54:x}}"
 			} ) {
 				name: "myJPanelBackLogin"
 				"kStartColor": new java.awt.Color( 121, 241, 164, 255 )
@@ -21,8 +21,8 @@ new FormModel {
 				"background": new java.awt.Color( 0, 164, 210, 255 )
 				"kBorderRadius": 0
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {par l {seq {space :p:31:p, par l:::p {comp textFieldUsername::l::229:x, comp textPassword::l:::x, comp buttonRegistrovat::t::229:x, comp buttonPrihlasit::l::229:x}}, seq l {space :p:90:p, comp labeluserIcon:::p::p}}, space ::30:x}}"
-					"$verticalGroup": "par l {seq l {space :p:18:p, comp labeluserIcon:::p::p, space u:::p, comp textFieldUsername:::p:41:p, space u:::p, comp textPassword:::p:40:p, space :p:18:p, comp buttonPrihlasit:::p:36:p, space :::p, comp buttonRegistrovat:::p:36:p, space ::35:x}}"
+					"$horizontalGroup": "par l {seq {par l {seq {space :p:31:p, par l:::p {comp textFieldUsername::l::229:x, comp buttonRegistrovat::l::229:x, comp buttonPrihlasit::l::229:x, comp textPassword::l:::x}}, seq l {space :p:95:p, comp labeluserIcon:::p::p}}, space ::30:x}}"
+					"$verticalGroup": "par l {seq l {space :p:18:p, comp labeluserIcon:::p::p, space :::p, comp textFieldUsername:::p:41:p, space u:::p, comp textPassword:::p:40:p, space :p:24:p, comp buttonPrihlasit:::p:36:p, space :::p, comp buttonRegistrovat:::p:36:p, space ::35:x}}"
 				} ) {
 					name: "panelPrihlasenie"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -32,7 +32,7 @@ new FormModel {
 					"kStartColor": sfield java.awt.Color white
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "labeluserIcon"
-						"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_male_user_110px.png" )
+						"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_male_user_100px_1.png" )
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "textFieldUsername"
