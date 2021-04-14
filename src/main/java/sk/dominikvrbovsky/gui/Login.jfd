@@ -39,7 +39,7 @@ new FormModel {
 						"border": new javax.swing.border.MatteBorder( 0, 0, 2, 0, sfield java.awt.Color black )
 						"cursor": new java.awt.Cursor( 2 )
 						"horizontalAlignment": 0
-						"font": new java.awt.Font( "Yu Gothic UI Semibold", 0, 19 )
+						"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 						"text": "Používateľské meno"
 						"foreground": sfield java.awt.Color lightGray
 						"focusable": false
@@ -57,7 +57,7 @@ new FormModel {
 						name: "textPassword"
 						"border": new javax.swing.border.MatteBorder( 0, 0, 2, 0, sfield java.awt.Color black )
 						"horizontalAlignment": 0
-						"font": new java.awt.Font( "Yu Gothic UI Semibold", 0, 19 )
+						"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 						"text": "password"
 						"foreground": sfield java.awt.Color lightGray
 						"caretPosition": 8
@@ -70,7 +70,7 @@ new FormModel {
 						name: "buttonPrihlasit"
 						"text": "Prihlásiť"
 						"background": sfield java.awt.Color white
-						"font": new java.awt.Font( "Yu Gothic UI Semibold", 1, 17 )
+						"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
 						"kBorderRadius": 30
 						"kAllowTab": true
 						"kStartColor": new java.awt.Color( 0, 164, 210, 255 )
@@ -82,12 +82,13 @@ new FormModel {
 						"kHoverEndColor": new java.awt.Color( 0, 164, 210, 255 )
 						"kHoverForeGround": sfield java.awt.Color white
 						"cursor": &Cursor0 new java.awt.Cursor( 12 )
+						"kSelectedColor": new java.awt.Color( 0, 164, 210, 255 )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
 						name: "buttonRegistrovat"
 						"text": "Registrovať"
 						"background": sfield java.awt.Color white
-						"font": new java.awt.Font( "Yu Gothic UI Semibold", 1, 17 )
+						"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
 						"kBorderRadius": 30
 						"kStartColor": sfield java.awt.Color gray
 						"kEndColor": sfield java.awt.Color lightGray
@@ -99,7 +100,9 @@ new FormModel {
 						"kBackGroundColor": sfield java.awt.Color lightGray
 						"kHoverEndColor": sfield java.awt.Color gray
 						"kHoverStartColor": sfield java.awt.Color lightGray
-						"kHoverForeGround": sfield java.awt.Color white
+						"kHoverForeGround": sfield java.awt.Color black
+						"kForeGround": sfield java.awt.Color black
+						"kSelectedColor": sfield java.awt.Color darkGray
 					} )
 				} )
 			} )

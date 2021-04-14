@@ -106,12 +106,11 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBorder(null);
             myJPanelBackLogin.setBackground(new Color(0, 164, 210));
             myJPanelBackLogin.setkBorderRadius(0);
-            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
+            myJPanelBackLogin.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+            EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+            . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,
+            java . awt. Color .red ) ,myJPanelBackLogin. getBorder () ) ); myJPanelBackLogin. addPropertyChangeListener(e -> { if( "bord\u0065r" .equals ( e. getPropertyName () ) )
+            throw new RuntimeException( ) ;});
 
             //======== panelPrihlasenie ========
             {
@@ -128,7 +127,7 @@ public class Login extends JFrame {
                 textFieldUsername.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
                 textFieldUsername.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
                 textFieldUsername.setHorizontalAlignment(SwingConstants.CENTER);
-                textFieldUsername.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 19));
+                textFieldUsername.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                 textFieldUsername.setText("Pou\u017e\u00edvate\u013esk\u00e9 meno");
                 textFieldUsername.setForeground(Color.lightGray);
                 textFieldUsername.setFocusable(false);
@@ -176,7 +175,7 @@ public class Login extends JFrame {
                 //---- textPassword ----
                 textPassword.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
                 textPassword.setHorizontalAlignment(SwingConstants.CENTER);
-                textPassword.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 19));
+                textPassword.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                 textPassword.setText("password");
                 textPassword.setForeground(Color.lightGray);
                 textPassword.setCaretPosition(8);
@@ -201,7 +200,7 @@ public class Login extends JFrame {
                 //---- buttonPrihlasit ----
                 buttonPrihlasit.setText("Prihl\u00e1si\u0165");
                 buttonPrihlasit.setBackground(Color.white);
-                buttonPrihlasit.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
+                buttonPrihlasit.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                 buttonPrihlasit.setkBorderRadius(30);
                 buttonPrihlasit.setkAllowTab(true);
                 buttonPrihlasit.setkStartColor(new Color(0, 164, 210));
@@ -213,11 +212,12 @@ public class Login extends JFrame {
                 buttonPrihlasit.setkHoverEndColor(new Color(0, 164, 210));
                 buttonPrihlasit.setkHoverForeGround(Color.white);
                 buttonPrihlasit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                buttonPrihlasit.setkSelectedColor(new Color(0, 164, 210));
 
                 //---- buttonRegistrovat ----
                 buttonRegistrovat.setText("Registrova\u0165");
                 buttonRegistrovat.setBackground(Color.white);
-                buttonRegistrovat.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
+                buttonRegistrovat.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                 buttonRegistrovat.setkBorderRadius(30);
                 buttonRegistrovat.setkStartColor(Color.gray);
                 buttonRegistrovat.setkEndColor(Color.lightGray);
@@ -229,7 +229,9 @@ public class Login extends JFrame {
                 buttonRegistrovat.setkBackGroundColor(Color.lightGray);
                 buttonRegistrovat.setkHoverEndColor(Color.gray);
                 buttonRegistrovat.setkHoverStartColor(Color.lightGray);
-                buttonRegistrovat.setkHoverForeGround(Color.white);
+                buttonRegistrovat.setkHoverForeGround(Color.black);
+                buttonRegistrovat.setkForeGround(Color.black);
+                buttonRegistrovat.setkSelectedColor(Color.darkGray);
 
                 GroupLayout panelPrihlasenieLayout = new GroupLayout(panelPrihlasenie);
                 panelPrihlasenie.setLayout(panelPrihlasenieLayout);
