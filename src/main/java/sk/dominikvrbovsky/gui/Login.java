@@ -22,7 +22,6 @@ public class Login extends JFrame {
     public Login() {
         setPreferredSize(new Dimension(1000, 600));
         initComponents();
-        //myJPanelBackLogin.setLayout(new GridBagLayout());
     }
 
     private void textFieldUsernameFocusGained(FocusEvent e) {
@@ -106,12 +105,13 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBorder(null);
             myJPanelBackLogin.setBackground(new Color(0, 164, 210));
             myJPanelBackLogin.setkBorderRadius(0);
-            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax
-            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-            .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (e -> {if ("borde\u0072" .
-            equals (e .getPropertyName () )) throw new RuntimeException( ); });
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
+            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+            Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+            ) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
+            ) )) throw new RuntimeException( ); }} );
 
             //======== panelPrihlasenie ========
             {
@@ -201,7 +201,7 @@ public class Login extends JFrame {
                 //---- buttonPrihlasit ----
                 buttonPrihlasit.setText("Prihl\u00e1si\u0165");
                 buttonPrihlasit.setBackground(Color.white);
-                buttonPrihlasit.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                buttonPrihlasit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                 buttonPrihlasit.setkBorderRadius(30);
                 buttonPrihlasit.setkAllowTab(true);
                 buttonPrihlasit.setkStartColor(new Color(0, 164, 210));
@@ -243,10 +243,10 @@ public class Login extends JFrame {
                                 .addGroup(panelPrihlasenieLayout.createSequentialGroup()
                                     .addGap(31, 31, 31)
                                     .addGroup(panelPrihlasenieLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(textPassword)
                                         .addComponent(textFieldUsername, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                                         .addComponent(buttonRegistrovat, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                        .addComponent(buttonPrihlasit, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                        .addComponent(textPassword)))
+                                        .addComponent(buttonPrihlasit, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))
                                 .addGroup(panelPrihlasenieLayout.createSequentialGroup()
                                     .addGap(95, 95, 95)
                                     .addComponent(labeluserIcon)))
@@ -257,7 +257,7 @@ public class Login extends JFrame {
                         .addGroup(panelPrihlasenieLayout.createSequentialGroup()
                             .addGap(18, 18, 18)
                             .addComponent(labeluserIcon)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addGap(12, 12, 12)
                             .addComponent(textFieldUsername, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(textPassword, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
@@ -265,7 +265,7 @@ public class Login extends JFrame {
                             .addComponent(buttonPrihlasit, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(buttonRegistrovat, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(35, Short.MAX_VALUE))
+                            .addContainerGap(29, Short.MAX_VALUE))
                 );
             }
 

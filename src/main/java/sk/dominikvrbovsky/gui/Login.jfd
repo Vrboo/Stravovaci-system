@@ -21,8 +21,8 @@ new FormModel {
 				"background": new java.awt.Color( 0, 164, 210, 255 )
 				"kBorderRadius": 0
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {par l {seq {space :p:31:p, par l:::p {comp textFieldUsername::l::229:x, comp buttonRegistrovat::l::229:x, comp buttonPrihlasit::l::229:x, comp textPassword::l:::x}}, seq l {space :p:95:p, comp labeluserIcon:::p::p}}, space ::30:x}}"
-					"$verticalGroup": "par l {seq l {space :p:18:p, comp labeluserIcon:::p::p, space :::p, comp textFieldUsername:::p:41:p, space u:::p, comp textPassword:::p:40:p, space :p:24:p, comp buttonPrihlasit:::p:36:p, space :::p, comp buttonRegistrovat:::p:36:p, space ::35:x}}"
+					"$horizontalGroup": "par l {seq {par l {seq {space :p:31:p, par l:::p {comp textPassword::l:::x, comp textFieldUsername::l::229:x, comp buttonRegistrovat::l::229:x, comp buttonPrihlasit::l::229:x}}, seq l {space :p:95:p, comp labeluserIcon:::p::p}}, space ::30:x}}"
+					"$verticalGroup": "par l {seq l {space :p:18:p, comp labeluserIcon:::p::p, space :p:12:p, comp textFieldUsername:::p:41:p, space u:::p, comp textPassword:::p:40:p, space :p:24:p, comp buttonPrihlasit:::p:36:p, space :::p, comp buttonRegistrovat:::p:36:p, space ::29:x}}"
 				} ) {
 					name: "panelPrihlasenie"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -70,7 +70,7 @@ new FormModel {
 						name: "buttonPrihlasit"
 						"text": "Prihlásiť"
 						"background": sfield java.awt.Color white
-						"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
+						"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
 						"kBorderRadius": 30
 						"kAllowTab": true
 						"kStartColor": new java.awt.Color( 0, 164, 210, 255 )
