@@ -4,10 +4,14 @@
 
 package sk.dominikvrbovsky.gui;
 
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import java.awt.*;
 import javax.swing.border.*;
+import javax.swing.text.DefaultCaret;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter;
 
 import keeptoo.*;
 
@@ -16,21 +20,80 @@ import keeptoo.*;
  */
 public class Login extends JFrame {
     public Login() {
-        setPreferredSize(new Dimension(1000,600));
+        setPreferredSize(new Dimension(1000, 600));
         initComponents();
         //myJPanelBackLogin.setLayout(new GridBagLayout());
+    }
+
+    private void textFieldUsernameFocusGained(FocusEvent e) {
+        if (textFieldUsername.getText().equals("Používateľské meno")) {
+            textFieldUsername.setText("");
+            textFieldUsername.setForeground(Color.BLACK);
+        }
+    }
+
+    private void textFieldUsernameMouseClicked(MouseEvent e) {
+        // TODO add your code here
+    }
+
+    private void textFieldUsernameMousePressed(MouseEvent e) {
+        // TODO add your code here
+    }
+
+    private void textFieldUsernameCaretPositionChanged(InputMethodEvent e) {
+        // TODO add your code here
+    }
+
+    private void textFieldUsernameMouseEntered(MouseEvent e) {
+        // TODO add your code here
+    }
+
+    private void textFieldUsernameMouseEntered() {
+        // TODO add your code here
+    }
+
+    private void textFieldUsernameMouseMoved() {
+        textFieldUsername.setFocusable(true);
+    }
+
+    private void textPasswordMouseMoved() {
+        textPassword.setFocusable(true);
+    }
+
+    private void textPasswordFocusGained() {
+        String password = String.valueOf(textPassword.getPassword());
+        if (password.equals("password")) {
+            textPassword.setText("");
+            textPassword.setForeground(Color.BLACK);
+        }
+    }
+
+    private void textFieldUsernameFocusLost() {
+        if (textFieldUsername.getText().equals("")) {
+            textFieldUsername.setForeground(new Color(192,192,192));
+            textFieldUsername.setText("Používateľské meno");
+        }
+    }
+
+    private void textPasswordFocusLost() {
+        String password = String.valueOf(textPassword.getPassword());
+        
+        if (password.equals("")) {
+            textPassword.setForeground(new Color(192,192,192));
+            textPassword.setText("password");
+        }
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
         myJPanelBackLogin = new KGradientPanel();
-        kGradientPanel1 = new KGradientPanel();
-        label1 = new JLabel();
-        textField1 = new JTextField();
-        passwordField1 = new JPasswordField();
-        kButton1 = new KButton();
-        kButton2 = new KButton();
+        panelPrihlasenie = new KGradientPanel();
+        labeluserIcon = new JLabel();
+        textFieldUsername = new JTextField();
+        textPassword = new JPasswordField();
+        buttonPrihlasit = new KButton();
+        buttonRegistrovat = new KButton();
 
         //======== this ========
         setUndecorated(true);
@@ -43,103 +106,160 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBorder(null);
             myJPanelBackLogin.setBackground(new Color(0, 164, 210));
             myJPanelBackLogin.setkBorderRadius(0);
-            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
-            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-            ) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
-            ) )) throw new RuntimeException( ); }} );
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
 
-            //======== kGradientPanel1 ========
+            //======== panelPrihlasenie ========
             {
-                kGradientPanel1.setBackground(Color.white);
-                kGradientPanel1.setBorder(null);
-                kGradientPanel1.setkFillBackground(false);
-                kGradientPanel1.setkEndColor(Color.white);
-                kGradientPanel1.setkStartColor(Color.white);
+                panelPrihlasenie.setBackground(Color.white);
+                panelPrihlasenie.setBorder(null);
+                panelPrihlasenie.setkFillBackground(false);
+                panelPrihlasenie.setkEndColor(Color.white);
+                panelPrihlasenie.setkStartColor(Color.white);
 
-                //---- label1 ----
-                label1.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_male_user_127px_7.png"));
+                //---- labeluserIcon ----
+                labeluserIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_male_user_127px_7.png"));
 
-                //---- textField1 ----
-                textField1.setBorder(new MatteBorder(0, 0, 3, 0, Color.black));
-                textField1.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
-                textField1.setHorizontalAlignment(SwingConstants.CENTER);
-                textField1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 18));
-                textField1.setText("Pou\u017e\u00edvate\u013esk\u00e9 meno");
-                textField1.setForeground(Color.lightGray);
+                //---- textFieldUsername ----
+                textFieldUsername.setBorder(new MatteBorder(0, 0, 3, 0, Color.black));
+                textFieldUsername.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+                textFieldUsername.setHorizontalAlignment(SwingConstants.CENTER);
+                textFieldUsername.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 18));
+                textFieldUsername.setText("Pou\u017e\u00edvate\u013esk\u00e9 meno");
+                textFieldUsername.setForeground(Color.lightGray);
+                textFieldUsername.setFocusable(false);
+                textFieldUsername.addFocusListener(new FocusAdapter() {
+                    @Override
+                    public void focusGained(FocusEvent e) {
+                        textFieldUsernameFocusGained(e);
+                    }
+                    @Override
+                    public void focusLost(FocusEvent e) {
+                        textFieldUsernameFocusLost();
+                    }
+                });
+                textFieldUsername.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        textFieldUsernameMouseClicked(e);
+                        textFieldUsernameMouseClicked(e);
+                    }
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        textFieldUsernameMouseEntered(e);
+                        textFieldUsernameMouseEntered();
+                    }
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        textFieldUsernameMousePressed(e);
+                    }
+                });
+                textFieldUsername.addInputMethodListener(new InputMethodListener() {
+                    @Override
+                    public void caretPositionChanged(InputMethodEvent e) {
+                        textFieldUsernameCaretPositionChanged(e);
+                    }
+                    @Override
+                    public void inputMethodTextChanged(InputMethodEvent e) {}
+                });
+                textFieldUsername.addMouseMotionListener(new MouseMotionAdapter() {
+                    @Override
+                    public void mouseMoved(MouseEvent e) {
+                        textFieldUsernameMouseMoved();
+                    }
+                });
 
-                //---- passwordField1 ----
-                passwordField1.setBorder(new MatteBorder(0, 0, 3, 0, Color.black));
-                passwordField1.setHorizontalAlignment(SwingConstants.CENTER);
-                passwordField1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 18));
-                passwordField1.setText("password");
-                passwordField1.setForeground(Color.lightGray);
-                passwordField1.setCaretPosition(8);
+                //---- textPassword ----
+                textPassword.setBorder(new MatteBorder(0, 0, 3, 0, Color.black));
+                textPassword.setHorizontalAlignment(SwingConstants.CENTER);
+                textPassword.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 18));
+                textPassword.setText("password");
+                textPassword.setForeground(Color.lightGray);
+                textPassword.setCaretPosition(8);
+                textPassword.setFocusable(false);
+                textPassword.addMouseMotionListener(new MouseMotionAdapter() {
+                    @Override
+                    public void mouseMoved(MouseEvent e) {
+                        textPasswordMouseMoved();
+                    }
+                });
+                textPassword.addFocusListener(new FocusAdapter() {
+                    @Override
+                    public void focusGained(FocusEvent e) {
+                        textPasswordFocusGained();
+                    }
+                    @Override
+                    public void focusLost(FocusEvent e) {
+                        textPasswordFocusLost();
+                    }
+                });
 
-                //---- kButton1 ----
-                kButton1.setText("Prihl\u00e1si\u0165");
-                kButton1.setBackground(Color.white);
-                kButton1.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
-                kButton1.setkBorderRadius(30);
-                kButton1.setkForeGround(Color.black);
-                kButton1.setkAllowTab(true);
-                kButton1.setkStartColor(new Color(0, 164, 210));
-                kButton1.setkEndColor(Color.white);
-                kButton1.setkPressedColor(Color.orange);
-                kButton1.setBorder(null);
-                kButton1.setkIndicatorThickness(0);
-                kButton1.setkHoverStartColor(new Color(121, 241, 164));
-                kButton1.setkHoverEndColor(new Color(0, 164, 210));
-                kButton1.setkHoverForeGround(Color.white);
-                kButton1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                //---- buttonPrihlasit ----
+                buttonPrihlasit.setText("Prihl\u00e1si\u0165");
+                buttonPrihlasit.setBackground(Color.white);
+                buttonPrihlasit.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
+                buttonPrihlasit.setkBorderRadius(30);
+                buttonPrihlasit.setkForeGround(Color.black);
+                buttonPrihlasit.setkAllowTab(true);
+                buttonPrihlasit.setkStartColor(new Color(0, 164, 210));
+                buttonPrihlasit.setkEndColor(Color.white);
+                buttonPrihlasit.setkPressedColor(Color.orange);
+                buttonPrihlasit.setBorder(null);
+                buttonPrihlasit.setkIndicatorThickness(0);
+                buttonPrihlasit.setkHoverStartColor(new Color(121, 241, 164));
+                buttonPrihlasit.setkHoverEndColor(new Color(0, 164, 210));
+                buttonPrihlasit.setkHoverForeGround(Color.white);
+                buttonPrihlasit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-                //---- kButton2 ----
-                kButton2.setText("Registrova\u0165");
-                kButton2.setBackground(Color.white);
-                kButton2.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
-                kButton2.setkBorderRadius(30);
-                kButton2.setkForeGround(Color.black);
-                kButton2.setkAllowTab(true);
-                kButton2.setkStartColor(Color.white);
-                kButton2.setkEndColor(Color.white);
-                kButton2.setkPressedColor(Color.white);
-                kButton2.setBorder(null);
-                kButton2.setkIndicatorThickness(0);
-                kButton2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                //---- buttonRegistrovat ----
+                buttonRegistrovat.setText("Registrova\u0165");
+                buttonRegistrovat.setBackground(Color.white);
+                buttonRegistrovat.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
+                buttonRegistrovat.setkBorderRadius(30);
+                buttonRegistrovat.setkForeGround(Color.black);
+                buttonRegistrovat.setkAllowTab(true);
+                buttonRegistrovat.setkStartColor(Color.white);
+                buttonRegistrovat.setkEndColor(Color.white);
+                buttonRegistrovat.setkPressedColor(Color.white);
+                buttonRegistrovat.setBorder(null);
+                buttonRegistrovat.setkIndicatorThickness(0);
+                buttonRegistrovat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-                GroupLayout kGradientPanel1Layout = new GroupLayout(kGradientPanel1);
-                kGradientPanel1.setLayout(kGradientPanel1Layout);
-                kGradientPanel1Layout.setHorizontalGroup(
-                    kGradientPanel1Layout.createParallelGroup()
-                        .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                            .addGroup(kGradientPanel1Layout.createParallelGroup()
-                                .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                GroupLayout panelPrihlasenieLayout = new GroupLayout(panelPrihlasenie);
+                panelPrihlasenie.setLayout(panelPrihlasenieLayout);
+                panelPrihlasenieLayout.setHorizontalGroup(
+                    panelPrihlasenieLayout.createParallelGroup()
+                        .addGroup(panelPrihlasenieLayout.createSequentialGroup()
+                            .addGroup(panelPrihlasenieLayout.createParallelGroup()
+                                .addGroup(panelPrihlasenieLayout.createSequentialGroup()
                                     .addGap(80, 80, 80)
-                                    .addComponent(label1))
-                                .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                                    .addComponent(labeluserIcon))
+                                .addGroup(panelPrihlasenieLayout.createSequentialGroup()
                                     .addGap(31, 31, 31)
-                                    .addGroup(kGradientPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(textField1, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                        .addComponent(passwordField1)
-                                        .addComponent(kButton1, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                        .addComponent(kButton2, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))))
+                                    .addGroup(panelPrihlasenieLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(textFieldUsername, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                        .addComponent(textPassword)
+                                        .addComponent(buttonPrihlasit, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                        .addComponent(buttonRegistrovat, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))))
                             .addContainerGap(30, Short.MAX_VALUE))
                 );
-                kGradientPanel1Layout.setVerticalGroup(
-                    kGradientPanel1Layout.createParallelGroup()
-                        .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                panelPrihlasenieLayout.setVerticalGroup(
+                    panelPrihlasenieLayout.createParallelGroup()
+                        .addGroup(panelPrihlasenieLayout.createSequentialGroup()
                             .addGap(18, 18, 18)
-                            .addComponent(label1)
+                            .addComponent(labeluserIcon)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldUsername, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(passwordField1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textPassword, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(kButton1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonPrihlasit, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(kButton2, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonRegistrovat, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
                             .addContainerGap(41, Short.MAX_VALUE))
                 );
             }
@@ -148,17 +268,17 @@ public class Login extends JFrame {
             myJPanelBackLogin.setLayout(myJPanelBackLoginLayout);
             myJPanelBackLoginLayout.setHorizontalGroup(
                 myJPanelBackLoginLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
-                        .addContainerGap(237, Short.MAX_VALUE)
-                        .addComponent(kGradientPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(221, Short.MAX_VALUE))
+                    .addGroup(myJPanelBackLoginLayout.createSequentialGroup()
+                        .addContainerGap(229, Short.MAX_VALUE)
+                        .addComponent(panelPrihlasenie, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(229, Short.MAX_VALUE))
             );
             myJPanelBackLoginLayout.setVerticalGroup(
                 myJPanelBackLoginLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
-                        .addContainerGap(47, Short.MAX_VALUE)
-                        .addComponent(kGradientPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(35, Short.MAX_VALUE))
+                        .addContainerGap(42, Short.MAX_VALUE)
+                        .addComponent(panelPrihlasenie, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(40, Short.MAX_VALUE))
             );
         }
 
@@ -180,11 +300,12 @@ public class Login extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
     private KGradientPanel myJPanelBackLogin;
-    private KGradientPanel kGradientPanel1;
-    private JLabel label1;
-    private JTextField textField1;
-    private JPasswordField passwordField1;
-    private KButton kButton1;
-    private KButton kButton2;
+    private KGradientPanel panelPrihlasenie;
+    private JLabel labeluserIcon;
+    private JTextField textFieldUsername;
+    private JPasswordField textPassword;
+    private KButton buttonPrihlasit;
+    private KButton buttonRegistrovat;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
 }
