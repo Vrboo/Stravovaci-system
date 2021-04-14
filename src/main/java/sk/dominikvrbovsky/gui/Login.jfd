@@ -4,13 +4,41 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {space :0:400:x}"
-			"$verticalGroup": "par l {space :0:300:x}"
+			"$horizontalGroup": "par l {comp myJPanelBackLogin::l:::x}"
+			"$verticalGroup": "par l {comp myJPanelBackLogin::l:::x}"
 		} ) {
 			name: "this"
+			"undecorated": true
+			"$locationPolicy": 1
+			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {space ::217:x, comp kGradientPanel1:::p::p, space :p:192:p}}"
+				"$verticalGroup": "par l {seq l {space :p:61:p, comp kGradientPanel1:::p::p, space :::x}}"
+			} ) {
+				name: "myJPanelBackLogin"
+				"kStartColor": new java.awt.Color( 121, 241, 164, 255 )
+				"kEndColor": new java.awt.Color( 0, 164, 210, 255 )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"background": new java.awt.Color( 0, 164, 210, 255 )
+				"kBorderRadius": 0
+				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {space :p:158:p, comp label1:::p::p, space ::165:x}}"
+					"$verticalGroup": "par l {seq l {space :p:47:p, comp label1:::p::p, space ::266:x}}"
+				} ) {
+					name: "kGradientPanel1"
+					"background": sfield java.awt.Color white
+					"kStartColor": new java.awt.Color( 60, 202, 187, 255 )
+					"kEndColor": new java.awt.Color( 14, 173, 204, 255 )
+					"kBorderRadius": 0
+					"kFillBackground": false
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/sk/dominikvrbovsky/icons/icons101.png" )
+					} )
+				} )
+			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 750, 495 )
 		} )
 	}
 }
