@@ -2,6 +2,7 @@ package sk.dominikvrbovsky;
 
 
 import sk.dominikvrbovsky.gui.Login;
+import sk.dominikvrbovsky.gui.Registration;
 
 import javax.swing.*;
 
@@ -11,7 +12,7 @@ public class StravovaciSystemApp {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JFrame jFrame = new Login();
+                JFrame jFrame = new Registration();
                 jFrame.setVisible(true);
             }
         });
