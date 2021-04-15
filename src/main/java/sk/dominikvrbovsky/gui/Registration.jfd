@@ -4,12 +4,23 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {space :0:723:x}"
-			"$verticalGroup": "par l {space :0:428:x}"
+			"$horizontalGroup": "par l {comp panelRegistration::l:::x}"
+			"$verticalGroup": "par l {comp panelRegistration::l:::x}"
 		} ) {
 			name: "this"
 			"$locationPolicy": 1
 			"undecorated": true
+			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {space :0:723:x}"
+				"$verticalGroup": "par l {space :0:428:x}"
+			} ) {
+				name: "panelRegistration"
+				"kStartColor": new java.awt.Color( 121, 241, 164, 255 )
+				"kEndColor": new java.awt.Color( 0, 164, 210, 255 )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"background": new java.awt.Color( 0, 164, 210, 255 )
+				"kBorderRadius": 0
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 10 )
 			"size": new java.awt.Dimension( 725, 460 )
