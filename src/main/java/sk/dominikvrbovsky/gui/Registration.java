@@ -145,13 +145,12 @@ public class Registration extends JFrame {
             panelBackRegistration.setBorder(null);
             panelBackRegistration.setBackground(new Color(0, 164, 210));
             panelBackRegistration.setkBorderRadius(0);
-            panelBackRegistration.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-            swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border
-            .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog"
-            ,java.awt.Font.BOLD,12),java.awt.Color.red),panelBackRegistration. getBorder
-            ()));panelBackRegistration. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-            .beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException
-            ();}});
+            panelBackRegistration.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,panelBackRegistration. getBorder( )) ); panelBackRegistration. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
 
             //---- labelX ----
             labelX.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_x_18px.png")));
@@ -313,27 +312,26 @@ public class Registration extends JFrame {
                 panelRegistrationLayout.setHorizontalGroup(
                     panelRegistrationLayout.createParallelGroup()
                         .addGroup(panelRegistrationLayout.createSequentialGroup()
-                            .addContainerGap(23, Short.MAX_VALUE)
                             .addGroup(panelRegistrationLayout.createParallelGroup()
                                 .addGroup(panelRegistrationLayout.createSequentialGroup()
+                                    .addGap(23, 23, 23)
                                     .addGroup(panelRegistrationLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                        .addComponent(buttonPrihlasit, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(password2, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(password1, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(fieldPouzMeno, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(fielCeleMeno, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE))
-                                    .addGap(0, 20, Short.MAX_VALUE))
-                                .addGroup(GroupLayout.Alignment.TRAILING, panelRegistrationLayout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addComponent(labelIcon)
-                                    .addGap(96, 96, 96))))
+                                        .addComponent(fielCeleMeno, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(buttonPrihlasit, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(panelRegistrationLayout.createSequentialGroup()
+                                    .addGap(95, 95, 95)
+                                    .addComponent(labelIcon)))
+                            .addContainerGap(20, Short.MAX_VALUE))
                 );
                 panelRegistrationLayout.setVerticalGroup(
                     panelRegistrationLayout.createParallelGroup()
                         .addGroup(panelRegistrationLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
+                            .addGap(20, 20, 20)
                             .addComponent(labelIcon)
-                            .addGap(18, 18, 18)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(fieldPouzMeno, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(fielCeleMeno, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
@@ -343,7 +341,7 @@ public class Registration extends JFrame {
                             .addComponent(password2, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(buttonPrihlasit, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18))
+                            .addGap(22, 22, 22))
                 );
             }
 
@@ -364,7 +362,7 @@ public class Registration extends JFrame {
                     .addGroup(panelBackRegistrationLayout.createSequentialGroup()
                         .addComponent(labelX)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelRegistration, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelRegistration, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(41, Short.MAX_VALUE))
             );
         }
