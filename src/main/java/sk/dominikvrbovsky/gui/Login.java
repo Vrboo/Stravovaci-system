@@ -83,6 +83,21 @@ public class Login extends JFrame {
         }
     }
 
+    private void label1MouseClicked() {
+        System.exit(0);
+    }
+
+    private void label1MouseEntered() {
+        label1.setIcon(new ImageIcon(
+                "src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px_6.png"));
+
+    }
+
+    private void label1MouseExited() {
+        label1.setIcon(new ImageIcon(
+                "src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px.png"));
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
@@ -93,6 +108,7 @@ public class Login extends JFrame {
         textPassword = new JPasswordField();
         buttonPrihlasit = new KButton();
         buttonRegistrovat = new KButton();
+        label1 = new JLabel();
 
         //======== this ========
         setUndecorated(true);
@@ -105,13 +121,14 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBorder(null);
             myJPanelBackLogin.setBackground(new Color(0, 164, 210));
             myJPanelBackLogin.setkBorderRadius(0);
-            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
-            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-            ) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
-            ) )) throw new RuntimeException( ); }} );
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
+            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion"
+            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 )
+            , java. awt. Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
 
             //======== panelPrihlasenie ========
             {
@@ -122,7 +139,7 @@ public class Login extends JFrame {
                 panelPrihlasenie.setkStartColor(Color.white);
 
                 //---- labeluserIcon ----
-                labeluserIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_male_user_100px_1.png"));
+                labeluserIcon.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_male_user_100px_1.png")));
 
                 //---- textFieldUsername ----
                 textFieldUsername.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
@@ -269,6 +286,24 @@ public class Login extends JFrame {
                 );
             }
 
+            //---- label1 ----
+            label1.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_x_18px.png")));
+            label1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            label1.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    label1MouseClicked();
+                }
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    label1MouseEntered();
+                }
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    label1MouseExited();
+                }
+            });
+
             GroupLayout myJPanelBackLoginLayout = new GroupLayout(myJPanelBackLogin);
             myJPanelBackLogin.setLayout(myJPanelBackLoginLayout);
             myJPanelBackLoginLayout.setHorizontalGroup(
@@ -277,13 +312,17 @@ public class Login extends JFrame {
                         .addContainerGap(229, Short.MAX_VALUE)
                         .addComponent(panelPrihlasenie, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(229, Short.MAX_VALUE))
+                    .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
+                        .addGap(0, 728, Short.MAX_VALUE)
+                        .addComponent(label1))
             );
             myJPanelBackLoginLayout.setVerticalGroup(
                 myJPanelBackLoginLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
-                        .addContainerGap(55, Short.MAX_VALUE)
+                        .addComponent(label1)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                         .addComponent(panelPrihlasenie, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(54, Short.MAX_VALUE))
+                        .addContainerGap(56, Short.MAX_VALUE))
             );
         }
 
@@ -311,6 +350,7 @@ public class Login extends JFrame {
     private JPasswordField textPassword;
     private KButton buttonPrihlasit;
     private KButton buttonRegistrovat;
+    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 }
