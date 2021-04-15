@@ -75,7 +75,7 @@ public class Registration extends JFrame {
     private void password1FocusGained() {
         String pass = String.valueOf(password1.getPassword());
 
-        if (pass.equals("Heslo")) {
+        if (pass.equals("Heslo*")) {
             password1.setEchoChar((char)0x2022);
             password1.setForeground(Color.BLACK);
             password1.setText("");
@@ -88,7 +88,7 @@ public class Registration extends JFrame {
         if (pass.equals("")) {
             password1.setEchoChar((char)0);
             password1.setForeground(new Color(192,192,192));
-            password1.setText("Heslo");
+            password1.setText("Heslo*");
         }
     }
 
@@ -133,6 +133,7 @@ public class Registration extends JFrame {
         password1 = new JPasswordField();
         password2 = new JPasswordField();
         buttonPrihlasit = new KButton();
+        label1 = new JLabel();
 
         //======== this ========
         setUndecorated(true);
@@ -145,13 +146,12 @@ public class Registration extends JFrame {
             panelBackRegistration.setBorder(null);
             panelBackRegistration.setBackground(new Color(0, 164, 210));
             panelBackRegistration.setkBorderRadius(0);
-            panelBackRegistration.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing
-            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-            ) ,panelBackRegistration. getBorder( )) ); panelBackRegistration. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName (
-            ) )) throw new RuntimeException( ); }} );
+            panelBackRegistration.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) ,panelBackRegistration. getBorder( )) ); panelBackRegistration. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //---- labelX ----
             labelX.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_x_18px.png")));
@@ -239,7 +239,7 @@ public class Registration extends JFrame {
 
                 //---- password1 ----
                 password1.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
-                password1.setText("Heslo");
+                password1.setText("Heslo*");
                 password1.setFocusable(false);
                 password1.setHorizontalAlignment(SwingConstants.CENTER);
                 password1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
@@ -347,6 +347,11 @@ public class Registration extends JFrame {
                 );
             }
 
+            //---- label1 ----
+            label1.setText("*min. 6 znakov, 1 \u010d\u00edslica, 1 ve\u013ek\u00e9 p\u00edsmeno");
+            label1.setHorizontalAlignment(SwingConstants.CENTER);
+            label1.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
+
             GroupLayout panelBackRegistrationLayout = new GroupLayout(panelBackRegistration);
             panelBackRegistration.setLayout(panelBackRegistrationLayout);
             panelBackRegistrationLayout.setHorizontalGroup(
@@ -356,7 +361,9 @@ public class Registration extends JFrame {
                         .addComponent(labelX))
                     .addGroup(panelBackRegistrationLayout.createSequentialGroup()
                         .addContainerGap(243, Short.MAX_VALUE)
-                        .addComponent(panelRegistration, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelBackRegistrationLayout.createParallelGroup()
+                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 292, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelRegistration, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(243, Short.MAX_VALUE))
             );
             panelBackRegistrationLayout.setVerticalGroup(
@@ -365,7 +372,9 @@ public class Registration extends JFrame {
                         .addComponent(labelX)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelRegistration, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(41, Short.MAX_VALUE))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label1)
+                        .addContainerGap(14, Short.MAX_VALUE))
             );
         }
 
@@ -395,5 +404,6 @@ public class Registration extends JFrame {
     private JPasswordField password1;
     private JPasswordField password2;
     private KButton buttonPrihlasit;
+    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
