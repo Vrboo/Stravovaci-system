@@ -99,6 +99,13 @@ public class Login extends JFrame {
     }
 
     private void buttonPrihlasitActionPerformed() {
+
+    }
+
+    private void buttonRegistrovatActionPerformed() {
+        Registration registration = new Registration();
+        registration.setVisible(true);
+        this.dispose();
     }
 
     private void initComponents() {
@@ -124,13 +131,12 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBorder(null);
             myJPanelBackLogin.setBackground(new Color(0, 164, 210));
             myJPanelBackLogin.setkBorderRadius(0);
-            myJPanelBackLogin.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing
-            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-            Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-            ) ,myJPanelBackLogin. getBorder () ) ); myJPanelBackLogin. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName (
-            ) ) )throw new RuntimeException( ) ;} } );
+            myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
+            (0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border
+            .TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
+            .Color.red),myJPanelBackLogin. getBorder()));myJPanelBackLogin. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
+            propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
+            ;}});
 
             //======== panelPrihlasenie ========
             {
@@ -145,7 +151,7 @@ public class Login extends JFrame {
                 labeluserIcon.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_male_user_100px_1.png")));
 
                 //---- textFieldUsername ----
-                textFieldUsername.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+                textFieldUsername.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
                 textFieldUsername.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
                 textFieldUsername.setHorizontalAlignment(SwingConstants.CENTER);
                 textFieldUsername.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
@@ -194,7 +200,7 @@ public class Login extends JFrame {
                 });
 
                 //---- textPassword ----
-                textPassword.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+                textPassword.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
                 textPassword.setHorizontalAlignment(SwingConstants.CENTER);
                 textPassword.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                 textPassword.setText("password");
@@ -237,6 +243,7 @@ public class Login extends JFrame {
                 buttonPrihlasit.addActionListener(e -> {
 			buttonPrihlasitActionPerformed();
 			buttonPrihlasitActionPerformed();
+			buttonPrihlasitActionPerformed();
 		});
 
                 //---- buttonRegistrovat ----
@@ -257,6 +264,10 @@ public class Login extends JFrame {
                 buttonRegistrovat.setkHoverForeGround(Color.black);
                 buttonRegistrovat.setkForeGround(Color.black);
                 buttonRegistrovat.setkSelectedColor(Color.darkGray);
+                buttonRegistrovat.addActionListener(e -> {
+			buttonRegistrovatActionPerformed();
+			buttonRegistrovatActionPerformed();
+		});
 
                 GroupLayout panelPrihlasenieLayout = new GroupLayout(panelPrihlasenie);
                 panelPrihlasenie.setLayout(panelPrihlasenieLayout);

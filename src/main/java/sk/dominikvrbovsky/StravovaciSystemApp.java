@@ -12,7 +12,7 @@ public class StravovaciSystemApp {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JFrame jFrame = new Registration();
+                JFrame jFrame = new Login();
                 jFrame.setVisible(true);
             }
         });
