@@ -117,9 +117,10 @@ new FormModel {
 						"kIndicatorThickness": 0
 						"kHoverStartColor": new java.awt.Color( 121, 241, 164, 255 )
 						"kHoverEndColor": new java.awt.Color( 0, 164, 210, 255 )
-						"kHoverForeGround": sfield java.awt.Color white
+						"kHoverForeGround": sfield java.awt.Color black
 						"cursor": new java.awt.Cursor( 12 )
 						"kSelectedColor": new java.awt.Color( 0, 164, 210, 255 )
+						"kForeGround": sfield java.awt.Color black
 					} )
 				} )
 			} )
