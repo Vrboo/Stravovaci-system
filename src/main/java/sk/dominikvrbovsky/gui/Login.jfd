@@ -11,8 +11,8 @@ new FormModel {
 			"undecorated": true
 			"$locationPolicy": 1
 			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space ::229:x, comp panelPrihlasenie:::::p, space ::229:x}, seq t {space :0:728:x, comp label1:::p::p}}"
-				"$verticalGroup": "par l {seq t {comp label1:::p::p, space ::37:x, comp panelPrihlasenie:::p::p, space ::56:x}}"
+				"$horizontalGroup": "par l {seq l {space ::229:x, comp panelPrihlasenie:::::p, space ::229:x}, seq t {space :0:730:x, comp label1:::p::p}}"
+				"$verticalGroup": "par l {seq t {comp label1:::p::p, space ::36:x, comp panelPrihlasenie:::p::p, space ::55:x}}"
 			} ) {
 				name: "myJPanelBackLogin"
 				"kStartColor": new java.awt.Color( 121, 241, 164, 255 )
@@ -30,6 +30,7 @@ new FormModel {
 					"kFillBackground": false
 					"kEndColor": sfield java.awt.Color white
 					"kStartColor": sfield java.awt.Color white
+					"kBorderRadius": 0
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "labeluserIcon"
 						"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/icons8_male_user_100px_1.png" )

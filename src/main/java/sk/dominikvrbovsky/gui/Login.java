@@ -121,13 +121,13 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBorder(null);
             myJPanelBackLogin.setBackground(new Color(0, 164, 210));
             myJPanelBackLogin.setkBorderRadius(0);
-            myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),myJPanelBackLogin. getBorder()));myJPanelBackLogin. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax
+            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+            .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans.
+            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .
+            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //======== panelPrihlasenie ========
             {
@@ -136,6 +136,7 @@ public class Login extends JFrame {
                 panelPrihlasenie.setkFillBackground(false);
                 panelPrihlasenie.setkEndColor(Color.white);
                 panelPrihlasenie.setkStartColor(Color.white);
+                panelPrihlasenie.setkBorderRadius(0);
 
                 //---- labeluserIcon ----
                 labeluserIcon.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_male_user_100px_1.png")));
@@ -312,16 +313,16 @@ public class Login extends JFrame {
                         .addComponent(panelPrihlasenie, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(229, Short.MAX_VALUE))
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
-                        .addGap(0, 728, Short.MAX_VALUE)
+                        .addGap(0, 730, Short.MAX_VALUE)
                         .addComponent(label1))
             );
             myJPanelBackLoginLayout.setVerticalGroup(
                 myJPanelBackLoginLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
                         .addComponent(label1)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(panelPrihlasenie, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(56, Short.MAX_VALUE))
+                        .addContainerGap(55, Short.MAX_VALUE))
             );
         }
 
