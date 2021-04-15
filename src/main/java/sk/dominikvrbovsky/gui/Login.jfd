@@ -21,8 +21,8 @@ new FormModel {
 				"background": new java.awt.Color( 0, 164, 210, 255 )
 				"kBorderRadius": 0
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {par l {seq {space :p:31:p, par l:::p {comp textPassword::l:::x, comp textFieldUsername::l::229:x, comp buttonRegistrovat::l::229:x, comp buttonPrihlasit::l::229:x}}, seq l {space :p:95:p, comp labeluserIcon:::p::p}}, space ::30:x}}"
-					"$verticalGroup": "par l {seq l {space :p:18:p, comp labeluserIcon:::p::p, space :p:12:p, comp textFieldUsername:::p:41:p, space u:::p, comp textPassword:::p:40:p, space :p:24:p, comp buttonPrihlasit:::p:36:p, space :::p, comp buttonRegistrovat:::p:36:p, space ::29:x}}"
+					"$horizontalGroup": "par l {seq {par l {seq {space :p:31:p, par l:::p {comp buttonRegistrovat::l::229:x, comp buttonPrihlasit::l::229:x, comp textPassword::l:::x, comp textFieldUsername::l::229:x}}, seq l {space :p:95:p, comp labeluserIcon:::p::p}}, space ::30:x}}"
+					"$verticalGroup": "par l {seq l {space :p:18:p, comp labeluserIcon:::p::p, space u:::p, comp textFieldUsername:::p:41:p, space :p:12:p, comp textPassword:::p:40:p, space :p:24:p, comp buttonPrihlasit:::p:36:p, space :::p, comp buttonRegistrovat:::p:36:p, space ::29:x}}"
 				} ) {
 					name: "panelPrihlasenie"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -37,10 +37,10 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "textFieldUsername"
-						"border": new javax.swing.border.MatteBorder( 0, 0, 2, 0, sfield java.awt.Color black )
+						"border": new javax.swing.border.MatteBorder( 0, 0, 1, 0, sfield java.awt.Color black )
 						"cursor": new java.awt.Cursor( 2 )
 						"horizontalAlignment": 0
-						"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
+						"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
 						"text": "Používateľské meno"
 						"foreground": sfield java.awt.Color lightGray
 						"focusable": false
@@ -56,9 +56,9 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
 						name: "textPassword"
-						"border": new javax.swing.border.MatteBorder( 0, 0, 2, 0, sfield java.awt.Color black )
+						"border": new javax.swing.border.MatteBorder( 0, 0, 1, 0, sfield java.awt.Color black )
 						"horizontalAlignment": 0
-						"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
+						"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
 						"text": "password"
 						"foreground": sfield java.awt.Color lightGray
 						"caretPosition": 8
@@ -84,6 +84,8 @@ new FormModel {
 						"kHoverForeGround": sfield java.awt.Color white
 						"cursor": &Cursor0 new java.awt.Cursor( 12 )
 						"kSelectedColor": new java.awt.Color( 0, 164, 210, 255 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonPrihlasitActionPerformed", false ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonPrihlasitActionPerformed", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
 						name: "buttonRegistrovat"
