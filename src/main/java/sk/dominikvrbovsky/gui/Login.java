@@ -19,6 +19,9 @@ import keeptoo.*;
  * @author Dominik Vrbovsky
  */
 public class Login extends JFrame {
+
+
+
     public Login() {
         setPreferredSize(new Dimension(1000, 600));
         initComponents();
