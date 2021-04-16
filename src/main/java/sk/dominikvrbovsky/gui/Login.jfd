@@ -87,6 +87,7 @@ new FormModel {
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonPrihlasitActionPerformed", false ) )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonPrihlasitActionPerformed", false ) )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonPrihlasitActionPerformed", false ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonPrihlasitActionPerformed", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
 						name: "buttonRegistrovat"

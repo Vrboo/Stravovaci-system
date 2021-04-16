@@ -15,6 +15,7 @@ import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 
 import keeptoo.*;
+import sk.dominikvrbovsky.dao.impl.UserDao;
 
 /**
  * @author Dominik Vrbovsky
@@ -104,6 +105,7 @@ public class Login extends JFrame {
     }
 
     private void buttonPrihlasitActionPerformed() {
+        UserDao userDao = new UserDao(this.entityManager);
 
     }
 
@@ -136,12 +138,13 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBorder(null);
             myJPanelBackLogin.setBackground(new Color(0, 164, 210));
             myJPanelBackLogin.setkBorderRadius(0);
-            myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
-            (0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border
-            .TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),myJPanelBackLogin. getBorder()));myJPanelBackLogin. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
-            propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
-            ;}});
+            myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
+            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax
+            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
+            .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
+            .Color.red),myJPanelBackLogin. getBorder()));myJPanelBackLogin. addPropertyChangeListener(new java.beans.
+            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".
+            equals(e.getPropertyName()))throw new RuntimeException();}});
 
             //======== panelPrihlasenie ========
             {
@@ -246,6 +249,7 @@ public class Login extends JFrame {
                 buttonPrihlasit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 buttonPrihlasit.setkSelectedColor(new Color(0, 164, 210));
                 buttonPrihlasit.addActionListener(e -> {
+			buttonPrihlasitActionPerformed();
 			buttonPrihlasitActionPerformed();
 			buttonPrihlasitActionPerformed();
 			buttonPrihlasitActionPerformed();
