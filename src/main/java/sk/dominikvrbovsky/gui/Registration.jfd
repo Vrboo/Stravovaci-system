@@ -128,6 +128,7 @@ new FormModel {
 					"text": "*min. 6 znakov, 1 číslica, 1 veľké písmeno"
 					"horizontalAlignment": 0
 					"font": new java.awt.Font( "Yu Gothic UI", 1, 14 )
+					"foreground": sfield java.awt.Color white
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
