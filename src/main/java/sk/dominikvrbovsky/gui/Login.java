@@ -98,6 +98,16 @@ public class Login extends JFrame {
                 "src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px.png"));
     }
 
+    private void buttonPrihlasitActionPerformed() {
+
+    }
+
+    private void buttonRegistrovatActionPerformed() {
+        Registration registration = new Registration();
+        registration.setVisible(true);
+        this.dispose();
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
@@ -122,10 +132,10 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBackground(new Color(0, 164, 210));
             myJPanelBackLogin.setkBorderRadius(0);
             myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
-            (0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing.border
-            .TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),java.awt
+            (0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border
+            .TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
             .Color.red),myJPanelBackLogin. getBorder()));myJPanelBackLogin. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
-            propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException()
+            propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
             ;}});
 
             //======== panelPrihlasenie ========
@@ -135,6 +145,7 @@ public class Login extends JFrame {
                 panelPrihlasenie.setkFillBackground(false);
                 panelPrihlasenie.setkEndColor(Color.white);
                 panelPrihlasenie.setkStartColor(Color.white);
+                panelPrihlasenie.setkBorderRadius(0);
 
                 //---- labeluserIcon ----
                 labeluserIcon.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_male_user_100px_1.png")));
@@ -143,7 +154,7 @@ public class Login extends JFrame {
                 textFieldUsername.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
                 textFieldUsername.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
                 textFieldUsername.setHorizontalAlignment(SwingConstants.CENTER);
-                textFieldUsername.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
+                textFieldUsername.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                 textFieldUsername.setText("Pou\u017e\u00edvate\u013esk\u00e9 meno");
                 textFieldUsername.setForeground(Color.lightGray);
                 textFieldUsername.setFocusable(false);
@@ -191,7 +202,7 @@ public class Login extends JFrame {
                 //---- textPassword ----
                 textPassword.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
                 textPassword.setHorizontalAlignment(SwingConstants.CENTER);
-                textPassword.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
+                textPassword.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                 textPassword.setText("password");
                 textPassword.setForeground(Color.lightGray);
                 textPassword.setCaretPosition(8);
@@ -229,6 +240,11 @@ public class Login extends JFrame {
                 buttonPrihlasit.setkHoverForeGround(Color.white);
                 buttonPrihlasit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 buttonPrihlasit.setkSelectedColor(new Color(0, 164, 210));
+                buttonPrihlasit.addActionListener(e -> {
+			buttonPrihlasitActionPerformed();
+			buttonPrihlasitActionPerformed();
+			buttonPrihlasitActionPerformed();
+		});
 
                 //---- buttonRegistrovat ----
                 buttonRegistrovat.setText("Registrova\u0165");
@@ -248,6 +264,10 @@ public class Login extends JFrame {
                 buttonRegistrovat.setkHoverForeGround(Color.black);
                 buttonRegistrovat.setkForeGround(Color.black);
                 buttonRegistrovat.setkSelectedColor(Color.darkGray);
+                buttonRegistrovat.addActionListener(e -> {
+			buttonRegistrovatActionPerformed();
+			buttonRegistrovatActionPerformed();
+		});
 
                 GroupLayout panelPrihlasenieLayout = new GroupLayout(panelPrihlasenie);
                 panelPrihlasenie.setLayout(panelPrihlasenieLayout);
@@ -258,10 +278,10 @@ public class Login extends JFrame {
                                 .addGroup(panelPrihlasenieLayout.createSequentialGroup()
                                     .addGap(31, 31, 31)
                                     .addGroup(panelPrihlasenieLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(textPassword)
-                                        .addComponent(textFieldUsername, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                                         .addComponent(buttonRegistrovat, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                        .addComponent(buttonPrihlasit, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))
+                                        .addComponent(buttonPrihlasit, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                        .addComponent(textPassword)
+                                        .addComponent(textFieldUsername, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))
                                 .addGroup(panelPrihlasenieLayout.createSequentialGroup()
                                     .addGap(95, 95, 95)
                                     .addComponent(labeluserIcon)))
@@ -272,9 +292,9 @@ public class Login extends JFrame {
                         .addGroup(panelPrihlasenieLayout.createSequentialGroup()
                             .addGap(18, 18, 18)
                             .addComponent(labeluserIcon)
-                            .addGap(12, 12, 12)
-                            .addComponent(textFieldUsername, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(textFieldUsername, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+                            .addGap(12, 12, 12)
                             .addComponent(textPassword, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                             .addGap(24, 24, 24)
                             .addComponent(buttonPrihlasit, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
@@ -311,16 +331,16 @@ public class Login extends JFrame {
                         .addComponent(panelPrihlasenie, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(229, Short.MAX_VALUE))
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
-                        .addGap(0, 728, Short.MAX_VALUE)
+                        .addGap(0, 730, Short.MAX_VALUE)
                         .addComponent(label1))
             );
             myJPanelBackLoginLayout.setVerticalGroup(
                 myJPanelBackLoginLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
                         .addComponent(label1)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(panelPrihlasenie, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(56, Short.MAX_VALUE))
+                        .addContainerGap(55, Short.MAX_VALUE))
             );
         }
 

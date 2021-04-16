@@ -2,6 +2,7 @@ package sk.dominikvrbovsky;
 
 
 import sk.dominikvrbovsky.gui.Login;
+import sk.dominikvrbovsky.gui.Registration;
 
 import javax.swing.*;
 
