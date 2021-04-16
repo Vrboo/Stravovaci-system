@@ -20,7 +20,7 @@ public class StravovaciSystemApp {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JFrame jFrame = new Login();
+                JFrame jFrame = new Login(entityManager);
                 jFrame.setVisible(true);
             }
         });

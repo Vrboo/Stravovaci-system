@@ -5,6 +5,7 @@
 package sk.dominikvrbovsky.gui;
 
 import java.awt.event.*;
+import javax.persistence.EntityManager;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import java.awt.*;
@@ -20,9 +21,10 @@ import keeptoo.*;
  */
 public class Login extends JFrame {
 
+    private final EntityManager entityManager;
 
-
-    public Login() {
+    public Login(EntityManager entityManager) {
+        this.entityManager = entityManager;
         setPreferredSize(new Dimension(1000, 600));
         initComponents();
     }
