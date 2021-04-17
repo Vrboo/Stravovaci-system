@@ -5,17 +5,25 @@
 package sk.dominikvrbovsky.gui;
 
 import java.awt.event.*;
+import javax.persistence.EntityManager;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import java.awt.*;
+import java.util.Optional;
 import javax.swing.border.*;
 import keeptoo.*;
+import sk.dominikvrbovsky.User;
+import sk.dominikvrbovsky.dao.impl.UserDao;
 
 /**
  * @author Dominik Vrbovsky
  */
 public class Registration extends JFrame {
-    public Registration() {
+
+    private final EntityManager entityManager;
+
+    public Registration(EntityManager entityManager) {
+        this.entityManager = entityManager;
         setPreferredSize(new Dimension(1000,600));
         initComponents();
         password1.setEchoChar((char)0);
@@ -32,6 +40,7 @@ public class Registration extends JFrame {
     }
 
     private void labelXMouseClicked() {
+        entityManager.close();
         System.exit(0);
     }
 
@@ -119,6 +128,42 @@ public class Registration extends JFrame {
         }
     }
 
+    private void buttonPrihlasitActionPerformed() {
+        UserDao userDao = new UserDao(entityManager);
+        String password1string = String.valueOf(password1.getPassword());
+        String password2string = String.valueOf(password2.getPassword());
+
+        if (fieldPouzMeno.getText().equals("Používateľské meno") ||
+                fielCeleMeno.getText().equals("Celé meno") ||
+                password1string.equals("Heslo*") ||
+                password2string.equals("Potvrdenie hesla")) {
+
+            label1.setForeground(Color.RED);
+            label1.setText("Vyplňte všetky položky, prosím.");
+            return;
+        }
+
+        Optional<User> loginUser = userDao.getFromUsername(fieldPouzMeno.getText());
+        if (loginUser.isPresent()) {
+            label1.setForeground(Color.RED);
+            label1.setText("Toto používateľské meno už je obsadené.");
+            return;
+        }
+
+        if (!password1string.equals(password2string)) {
+            label1.setForeground(Color.RED);
+            label1.setText("Heslá sa nezhodujú.");
+            return;
+        }
+
+        User user = new User(fieldPouzMeno.getText(),fielCeleMeno.getText(),password1string, 0.0);
+        userDao.save(user);
+
+        UserInterface userInterface = new UserInterface(user);
+        userInterface.setVisible(true);
+        this.dispose();
+    }
+
 
 
     private void initComponents() {
@@ -146,13 +191,13 @@ public class Registration extends JFrame {
             panelBackRegistration.setBorder(null);
             panelBackRegistration.setBackground(new Color(0, 164, 210));
             panelBackRegistration.setkBorderRadius(0);
-            panelBackRegistration.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
-            . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder
-            . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .
-            awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panelBackRegistration. getBorder () ) )
-            ; panelBackRegistration. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-            ) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
-            ;
+            panelBackRegistration.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border
+            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg"
+            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelBackRegistration. getBorder
+            ( )) ); panelBackRegistration. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+            .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException
+            ( ); }} );
 
             //---- labelX ----
             labelX.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_x_18px.png")));
@@ -309,6 +354,7 @@ public class Registration extends JFrame {
                 buttonPrihlasit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 buttonPrihlasit.setkSelectedColor(new Color(0, 164, 210));
                 buttonPrihlasit.setkForeGround(Color.black);
+                buttonPrihlasit.addActionListener(e -> buttonPrihlasitActionPerformed());
 
                 GroupLayout panelRegistrationLayout = new GroupLayout(panelRegistration);
                 panelRegistration.setLayout(panelRegistrationLayout);

@@ -121,6 +121,7 @@ new FormModel {
 						"cursor": new java.awt.Cursor( 12 )
 						"kSelectedColor": new java.awt.Color( 0, 164, 210, 255 )
 						"kForeGround": sfield java.awt.Color black
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonPrihlasitActionPerformed", false ) )
 					} )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
