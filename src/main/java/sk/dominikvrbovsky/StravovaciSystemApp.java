@@ -3,10 +3,12 @@ package sk.dominikvrbovsky;
 
 import sk.dominikvrbovsky.gui.Login;
 import sk.dominikvrbovsky.gui.Registration;
+import sk.dominikvrbovsky.gui.UserInterface;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.swing.*;
 
 public class StravovaciSystemApp {
@@ -17,6 +19,15 @@ public class StravovaciSystemApp {
                 Persistence.createEntityManagerFactory("sk.dominikvrbovsky.stravovaci-system");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
+//        entityManager.getTransaction().begin();
+//
+//        entityManager.find(User.class, 24L);
+//
+//
+//        entityManager.getTransaction().commit();
+//        entityManager.close();
+
+
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -24,6 +35,8 @@ public class StravovaciSystemApp {
                 jFrame.setVisible(true);
             }
         });
+
+
     }
 
 

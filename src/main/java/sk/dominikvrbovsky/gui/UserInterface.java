@@ -4,6 +4,9 @@
 
 package sk.dominikvrbovsky.gui;
 
+import keeptoo.*;
+import sk.dominikvrbovsky.User;
+
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
@@ -11,8 +14,12 @@ import javax.swing.GroupLayout;
  * @author Dominik Vrbovsky
  */
 public class UserInterface extends JFrame {
-    public UserInterface() {
+    private final User user;
+
+    public UserInterface(User user) {
         initComponents();
+        this.user = user;
+        label1.setText(user.getFullName());
     }
 
     private void initComponents() {
@@ -24,23 +31,24 @@ public class UserInterface extends JFrame {
         var contentPane = getContentPane();
 
         //---- label1 ----
-        label1.setText("Si prihl\u00e1seny");
+        label1.setText("Nic");
+        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 10f));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(304, 304, 304)
+                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                    .addContainerGap(360, Short.MAX_VALUE)
                     .addComponent(label1)
-                    .addContainerGap(364, Short.MAX_VALUE))
+                    .addGap(297, 297, 297))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(168, 168, 168)
+                    .addGap(150, 150, 150)
                     .addComponent(label1)
-                    .addContainerGap(209, Short.MAX_VALUE))
+                    .addContainerGap(213, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());

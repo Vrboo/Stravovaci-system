@@ -9,12 +9,14 @@ import javax.persistence.EntityManager;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import java.awt.*;
+import java.util.Optional;
 import javax.swing.border.*;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 
 import keeptoo.*;
+import sk.dominikvrbovsky.User;
 import sk.dominikvrbovsky.dao.impl.UserDao;
 
 /**
@@ -35,26 +37,6 @@ public class Login extends JFrame {
             textFieldUsername.setText("");
             textFieldUsername.setForeground(Color.BLACK);
         }
-    }
-
-    private void textFieldUsernameMouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void textFieldUsernameMousePressed(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void textFieldUsernameCaretPositionChanged(InputMethodEvent e) {
-        // TODO add your code here
-    }
-
-    private void textFieldUsernameMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void textFieldUsernameMouseEntered() {
-        // TODO add your code here
     }
 
     private void textFieldUsernameMouseMoved() {
@@ -90,23 +72,34 @@ public class Login extends JFrame {
     }
 
     private void label1MouseClicked() {
+        entityManager.close();
         System.exit(0);
     }
 
     private void label1MouseEntered() {
-        label1.setIcon(new ImageIcon(
+        labelX.setIcon(new ImageIcon(
                 "src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px_6.png"));
 
     }
 
     private void label1MouseExited() {
-        label1.setIcon(new ImageIcon(
+        labelX.setIcon(new ImageIcon(
                 "src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px.png"));
     }
 
     private void buttonPrihlasitActionPerformed() {
         UserDao userDao = new UserDao(this.entityManager);
+        Optional<User> user = userDao.getFromUsername(textFieldUsername.getText());
+        String password = String.valueOf(textPassword.getPassword());
 
+        if (user.isPresent() && user.get().getPassword().equals(password)) {
+            UserInterface userInterface = new UserInterface(user.get());
+            userInterface.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Nespravne meno alebo heslo");
+        }
+        //buttonPrihlasit.setSelected(false);
     }
 
     private void buttonRegistrovatActionPerformed() {
@@ -125,7 +118,7 @@ public class Login extends JFrame {
         textPassword = new JPasswordField();
         buttonPrihlasit = new KButton();
         buttonRegistrovat = new KButton();
-        label1 = new JLabel();
+        labelX = new JLabel();
 
         //======== this ========
         setUndecorated(true);
@@ -138,13 +131,13 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBorder(null);
             myJPanelBackLogin.setBackground(new Color(0, 164, 210));
             myJPanelBackLogin.setkBorderRadius(0);
-            myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),myJPanelBackLogin. getBorder()));myJPanelBackLogin. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            myJPanelBackLogin.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
+            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax
+            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
+            . awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+            . Color .red ) ,myJPanelBackLogin. getBorder () ) ); myJPanelBackLogin. addPropertyChangeListener( new java. beans .
+            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .
+            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
             //======== panelPrihlasenie ========
             {
@@ -175,30 +168,6 @@ public class Login extends JFrame {
                     public void focusLost(FocusEvent e) {
                         textFieldUsernameFocusLost();
                     }
-                });
-                textFieldUsername.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        textFieldUsernameMouseClicked(e);
-                        textFieldUsernameMouseClicked(e);
-                    }
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        textFieldUsernameMouseEntered(e);
-                        textFieldUsernameMouseEntered();
-                    }
-                    @Override
-                    public void mousePressed(MouseEvent e) {
-                        textFieldUsernameMousePressed(e);
-                    }
-                });
-                textFieldUsername.addInputMethodListener(new InputMethodListener() {
-                    @Override
-                    public void caretPositionChanged(InputMethodEvent e) {
-                        textFieldUsernameCaretPositionChanged(e);
-                    }
-                    @Override
-                    public void inputMethodTextChanged(InputMethodEvent e) {}
                 });
                 textFieldUsername.addMouseMotionListener(new MouseMotionAdapter() {
                     @Override
@@ -248,12 +217,7 @@ public class Login extends JFrame {
                 buttonPrihlasit.setkHoverForeGround(Color.white);
                 buttonPrihlasit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 buttonPrihlasit.setkSelectedColor(new Color(0, 164, 210));
-                buttonPrihlasit.addActionListener(e -> {
-			buttonPrihlasitActionPerformed();
-			buttonPrihlasitActionPerformed();
-			buttonPrihlasitActionPerformed();
-			buttonPrihlasitActionPerformed();
-		});
+                buttonPrihlasit.addActionListener(e -> buttonPrihlasitActionPerformed());
 
                 //---- buttonRegistrovat ----
                 buttonRegistrovat.setText("Registrova\u0165");
@@ -273,10 +237,7 @@ public class Login extends JFrame {
                 buttonRegistrovat.setkHoverForeGround(Color.black);
                 buttonRegistrovat.setkForeGround(Color.black);
                 buttonRegistrovat.setkSelectedColor(Color.darkGray);
-                buttonRegistrovat.addActionListener(e -> {
-			buttonRegistrovatActionPerformed();
-			buttonRegistrovatActionPerformed();
-		});
+                buttonRegistrovat.addActionListener(e -> buttonRegistrovatActionPerformed());
 
                 GroupLayout panelPrihlasenieLayout = new GroupLayout(panelPrihlasenie);
                 panelPrihlasenie.setLayout(panelPrihlasenieLayout);
@@ -313,10 +274,10 @@ public class Login extends JFrame {
                 );
             }
 
-            //---- label1 ----
-            label1.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_x_18px.png")));
-            label1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            label1.addMouseListener(new MouseAdapter() {
+            //---- labelX ----
+            labelX.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_x_18px.png")));
+            labelX.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            labelX.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     label1MouseClicked();
@@ -341,12 +302,12 @@ public class Login extends JFrame {
                         .addContainerGap(229, Short.MAX_VALUE))
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
                         .addGap(0, 730, Short.MAX_VALUE)
-                        .addComponent(label1))
+                        .addComponent(labelX))
             );
             myJPanelBackLoginLayout.setVerticalGroup(
                 myJPanelBackLoginLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
-                        .addComponent(label1)
+                        .addComponent(labelX)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(panelPrihlasenie, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(55, Short.MAX_VALUE))
@@ -377,7 +338,7 @@ public class Login extends JFrame {
     private JPasswordField textPassword;
     private KButton buttonPrihlasit;
     private KButton buttonRegistrovat;
-    private JLabel label1;
+    private JLabel labelX;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 }
