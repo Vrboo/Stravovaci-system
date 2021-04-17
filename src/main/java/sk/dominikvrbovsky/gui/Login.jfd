@@ -11,8 +11,8 @@ new FormModel {
 			"undecorated": true
 			"$locationPolicy": 1
 			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space ::229:x, comp panelPrihlasenie:::::p, space ::229:x}, seq t {space :0:730:x, comp labelX:::p::p}}"
-				"$verticalGroup": "par l {seq t {comp labelX:::p::p, space ::36:x, comp panelPrihlasenie:::p::p, space ::55:x}}"
+				"$horizontalGroup": "par l {seq t {space :0:730:x, comp labelX:::p::p}, seq {space ::229:x, comp panelPrihlasenie:::p::p, space ::229:x}}"
+				"$verticalGroup": "par l {seq t {comp labelX:::p::p, space ::38:x, comp panelPrihlasenie:::p::p, space ::52:x}}"
 			} ) {
 				name: "myJPanelBackLogin"
 				"kStartColor": new java.awt.Color( 121, 241, 164, 255 )
@@ -21,8 +21,8 @@ new FormModel {
 				"background": new java.awt.Color( 0, 164, 210, 255 )
 				"kBorderRadius": 0
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {par l {seq {space :p:31:p, par l:::p {comp buttonRegistrovat::l::229:x, comp buttonPrihlasit::l::229:x, comp textPassword::l:::x, comp textFieldUsername::l::229:x}}, seq l {space :p:95:p, comp labeluserIcon:::p::p}}, space ::30:x}}"
-					"$verticalGroup": "par l {seq l {space :p:18:p, comp labeluserIcon:::p::p, space u:::p, comp textFieldUsername:::p:41:p, space :p:12:p, comp textPassword:::p:40:p, space :p:24:p, comp buttonPrihlasit:::p:36:p, space :::p, comp buttonRegistrovat:::p:36:p, space ::29:x}}"
+					"$horizontalGroup": "par l {seq {par l {seq {space :p:31:p, par l:::p {comp buttonRegistrovat::l::229:x, comp buttonPrihlasit::l::229:x, comp textPassword::l:::x, comp textFieldUsername::l::229:x}}, seq l {space :p:95:p, comp labeluserIcon:::p::p}}, space ::30:x}, comp labelWarning::t:::x}"
+					"$verticalGroup": "par l {seq l {space :p:18:p, comp labeluserIcon:::p::p, space u:::p, comp textFieldUsername:::p:41:p, space :p:12:p, comp textPassword:::p:40:p, space :p:24:p, comp buttonPrihlasit:::p:36:p, space :::p, comp buttonRegistrovat:::p:36:p, space :::x, comp labelWarning:::p:24:p}}"
 				} ) {
 					name: "panelPrihlasenie"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -100,6 +100,13 @@ new FormModel {
 						"kForeGround": sfield java.awt.Color black
 						"kSelectedColor": sfield java.awt.Color darkGray
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonRegistrovatActionPerformed", false ) )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelWarning"
+						"font": new java.awt.Font( "Yu Gothic UI", 0, 14 )
+						"foreground": sfield java.awt.Color red
+						"horizontalAlignment": 0
+						"verticalAlignment": 1
 					} )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {

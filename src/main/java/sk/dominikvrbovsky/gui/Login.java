@@ -88,18 +88,30 @@ public class Login extends JFrame {
     }
 
     private void buttonPrihlasitActionPerformed() {
-        UserDao userDao = new UserDao(this.entityManager);
-        Optional<User> user = userDao.getFromUsername(textFieldUsername.getText());
         String password = String.valueOf(textPassword.getPassword());
 
-        if (user.isPresent() && user.get().getPassword().equals(password)) {
-            UserInterface userInterface = new UserInterface(user.get());
-            userInterface.setVisible(true);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Nespravne meno alebo heslo");
+        if (textFieldUsername.getText().equals("Používateľské meno") && password.equals("password")) {
+            labelWarning.setText("Zadajte meno a heslo.");
+        } else if (textFieldUsername.getText().equals("Používateľské meno") && !password.equals("password")) {
+            labelWarning.setText("Zadajte používateľské meno.");
+        } else if (!textFieldUsername.getText().equals("Používateľské meno") && password.equals("password")) {
+            labelWarning.setText("Zadajte heslo.");
+        } else if (!textFieldUsername.getText().equals("Používateľské meno") && !password.equals("password")) {
+
+            UserDao userDao = new UserDao(this.entityManager);
+            Optional<User> user = userDao.getFromUsername(textFieldUsername.getText());
+
+            if (user.isPresent() && user.get().getPassword().equals(password)) {
+                UserInterface userInterface = new UserInterface(user.get());
+                userInterface.setVisible(true);
+                this.dispose();
+            } else {
+                labelWarning.setText("Zadali ste nesprávne meno alebo heslo.");
+            }
+
         }
-        //buttonPrihlasit.setSelected(false);
+
+        buttonPrihlasit.setSelected(false);
     }
 
     private void buttonRegistrovatActionPerformed() {
@@ -118,6 +130,7 @@ public class Login extends JFrame {
         textPassword = new JPasswordField();
         buttonPrihlasit = new KButton();
         buttonRegistrovat = new KButton();
+        labelWarning = new JLabel();
         labelX = new JLabel();
 
         //======== this ========
@@ -131,13 +144,13 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBorder(null);
             myJPanelBackLogin.setBackground(new Color(0, 164, 210));
             myJPanelBackLogin.setkBorderRadius(0);
-            myJPanelBackLogin.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
-            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax
-            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
-            . awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) ,myJPanelBackLogin. getBorder () ) ); myJPanelBackLogin. addPropertyChangeListener( new java. beans .
-            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .
-            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border
+            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
+            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,myJPanelBackLogin. getBorder
+            ( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+            .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
+            ( ); }} );
 
             //======== panelPrihlasenie ========
             {
@@ -239,6 +252,12 @@ public class Login extends JFrame {
                 buttonRegistrovat.setkSelectedColor(Color.darkGray);
                 buttonRegistrovat.addActionListener(e -> buttonRegistrovatActionPerformed());
 
+                //---- labelWarning ----
+                labelWarning.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
+                labelWarning.setForeground(Color.red);
+                labelWarning.setHorizontalAlignment(SwingConstants.CENTER);
+                labelWarning.setVerticalAlignment(SwingConstants.TOP);
+
                 GroupLayout panelPrihlasenieLayout = new GroupLayout(panelPrihlasenie);
                 panelPrihlasenie.setLayout(panelPrihlasenieLayout);
                 panelPrihlasenieLayout.setHorizontalGroup(
@@ -256,6 +275,7 @@ public class Login extends JFrame {
                                     .addGap(95, 95, 95)
                                     .addComponent(labeluserIcon)))
                             .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(labelWarning, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 );
                 panelPrihlasenieLayout.setVerticalGroup(
                     panelPrihlasenieLayout.createParallelGroup()
@@ -270,7 +290,8 @@ public class Login extends JFrame {
                             .addComponent(buttonPrihlasit, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(buttonRegistrovat, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(29, Short.MAX_VALUE))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelWarning, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
                 );
             }
 
@@ -296,21 +317,21 @@ public class Login extends JFrame {
             myJPanelBackLogin.setLayout(myJPanelBackLoginLayout);
             myJPanelBackLoginLayout.setHorizontalGroup(
                 myJPanelBackLoginLayout.createParallelGroup()
-                    .addGroup(myJPanelBackLoginLayout.createSequentialGroup()
-                        .addContainerGap(229, Short.MAX_VALUE)
-                        .addComponent(panelPrihlasenie, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(229, Short.MAX_VALUE))
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
                         .addGap(0, 730, Short.MAX_VALUE)
                         .addComponent(labelX))
+                    .addGroup(myJPanelBackLoginLayout.createSequentialGroup()
+                        .addContainerGap(229, Short.MAX_VALUE)
+                        .addComponent(panelPrihlasenie, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(229, Short.MAX_VALUE))
             );
             myJPanelBackLoginLayout.setVerticalGroup(
                 myJPanelBackLoginLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
                         .addComponent(labelX)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addComponent(panelPrihlasenie, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(55, Short.MAX_VALUE))
+                        .addContainerGap(52, Short.MAX_VALUE))
             );
         }
 
@@ -338,6 +359,7 @@ public class Login extends JFrame {
     private JPasswordField textPassword;
     private KButton buttonPrihlasit;
     private KButton buttonRegistrovat;
+    private JLabel labelWarning;
     private JLabel labelX;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
