@@ -66,13 +66,12 @@ public class UserInterface extends JFrame {
                 kGradientPanel1.setkBorderRadius(0);
                 kGradientPanel1.setkStartColor(new Color(37, 43, 43));
                 kGradientPanel1.setkEndColor(new Color(37, 43, 43));
-                kGradientPanel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-                swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border
-                .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog"
-                ,java.awt.Font.BOLD,12),java.awt.Color.red),kGradientPanel1. getBorder
-                ()));kGradientPanel1. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-                .beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException
-                ();}});
+                kGradientPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+                . EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax
+                . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
+                12 ), java. awt. Color. red) ,kGradientPanel1. getBorder( )) ); kGradientPanel1. addPropertyChangeListener (new java. beans
+                . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .
+                getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- label1 ----
                 label1.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_70px.png"));
@@ -92,7 +91,7 @@ public class UserInterface extends JFrame {
                 kButton1.setkStartColor(new Color(37, 43, 43));
                 kButton1.setBorder(null);
                 kButton1.setkHoverEndColor(Color.gray);
-                kButton1.setkHoverStartColor(Color.darkGray);
+                kButton1.setkHoverStartColor(new Color(37, 43, 43));
 
                 //---- kButton2 ----
                 kButton2.setText("Moje objedn\u00e1vky");
@@ -102,7 +101,7 @@ public class UserInterface extends JFrame {
                 kButton2.setkStartColor(new Color(37, 43, 43));
                 kButton2.setBorder(null);
                 kButton2.setkHoverEndColor(Color.gray);
-                kButton2.setkHoverStartColor(Color.darkGray);
+                kButton2.setkHoverStartColor(new Color(37, 43, 43));
 
                 //---- kButton3 ----
                 kButton3.setText("Burza");
@@ -112,7 +111,7 @@ public class UserInterface extends JFrame {
                 kButton3.setkStartColor(new Color(37, 43, 43));
                 kButton3.setBorder(null);
                 kButton3.setkHoverEndColor(Color.gray);
-                kButton3.setkHoverStartColor(Color.darkGray);
+                kButton3.setkHoverStartColor(new Color(37, 43, 43));
 
                 //---- kButton4 ----
                 kButton4.setText("\u00da\u010det");
@@ -122,7 +121,7 @@ public class UserInterface extends JFrame {
                 kButton4.setkStartColor(new Color(37, 43, 43));
                 kButton4.setBorder(null);
                 kButton4.setkHoverEndColor(Color.gray);
-                kButton4.setkHoverStartColor(Color.darkGray);
+                kButton4.setkHoverStartColor(new Color(37, 43, 43));
 
                 //---- kButton5 ----
                 kButton5.setText("Zmeni\u0165 heslo");
@@ -132,7 +131,7 @@ public class UserInterface extends JFrame {
                 kButton5.setkStartColor(new Color(37, 43, 43));
                 kButton5.setBorder(null);
                 kButton5.setkHoverEndColor(Color.gray);
-                kButton5.setkHoverStartColor(Color.darkGray);
+                kButton5.setkHoverStartColor(new Color(37, 43, 43));
 
                 //---- kButton6 ----
                 kButton6.setText("Odhl\u00e1si\u0165 sa");
@@ -142,7 +141,7 @@ public class UserInterface extends JFrame {
                 kButton6.setkStartColor(new Color(37, 43, 43));
                 kButton6.setBorder(null);
                 kButton6.setkHoverEndColor(Color.gray);
-                kButton6.setkHoverStartColor(Color.darkGray);
+                kButton6.setkHoverStartColor(new Color(37, 43, 43));
 
                 //---- label3 ----
                 label3.setText("Stav \u00fa\u010dtu: 5.45\u20ac");
@@ -159,7 +158,7 @@ public class UserInterface extends JFrame {
                 kButton7.setkStartColor(new Color(37, 43, 43));
                 kButton7.setBorder(null);
                 kButton7.setkHoverEndColor(Color.gray);
-                kButton7.setkHoverStartColor(Color.darkGray);
+                kButton7.setkHoverStartColor(new Color(37, 43, 43));
                 kButton7.setkForeGround(new Color(137, 238, 202));
 
                 GroupLayout kGradientPanel1Layout = new GroupLayout(kGradientPanel1);

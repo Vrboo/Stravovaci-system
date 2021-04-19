@@ -46,7 +46,7 @@ new FormModel {
 						"kStartColor": &Color1 new java.awt.Color( 37, 43, 43, 255 )
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": sfield java.awt.Color darkGray
+						"kHoverStartColor": &Color2 new java.awt.Color( 37, 43, 43, 255 )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
 						name: "kButton2"
@@ -57,7 +57,7 @@ new FormModel {
 						"kStartColor": #Color1
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": sfield java.awt.Color darkGray
+						"kHoverStartColor": #Color2
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
 						name: "kButton3"
@@ -68,7 +68,7 @@ new FormModel {
 						"kStartColor": #Color1
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": sfield java.awt.Color darkGray
+						"kHoverStartColor": #Color2
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
 						name: "kButton4"
@@ -79,7 +79,7 @@ new FormModel {
 						"kStartColor": #Color1
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": sfield java.awt.Color darkGray
+						"kHoverStartColor": #Color2
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
 						name: "kButton5"
@@ -90,7 +90,7 @@ new FormModel {
 						"kStartColor": #Color1
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": sfield java.awt.Color darkGray
+						"kHoverStartColor": #Color2
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
 						name: "kButton6"
@@ -101,7 +101,7 @@ new FormModel {
 						"kStartColor": #Color1
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": sfield java.awt.Color darkGray
+						"kHoverStartColor": #Color2
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label3"
@@ -120,7 +120,7 @@ new FormModel {
 						"kStartColor": #Color1
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": sfield java.awt.Color darkGray
+						"kHoverStartColor": #Color2
 						"kForeGround": new java.awt.Color( 137, 238, 202, 255 )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
