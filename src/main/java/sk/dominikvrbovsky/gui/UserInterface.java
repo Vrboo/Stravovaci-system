@@ -73,11 +73,11 @@ public class UserInterface extends JFrame {
                 PanelMenu.setkEndColor(new Color(37, 43, 43));
                 PanelMenu.setkGradientFocus(200);
                 PanelMenu.setBackground(new Color(37, 43, 43));
-                PanelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-                , 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-                , new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-                PanelMenu. getBorder( )) ); PanelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-                ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+                PanelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+                0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+                . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+                red) ,PanelMenu. getBorder( )) ); PanelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+                beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- labelUserName ----
                 labelUserName.setForeground(Color.white);
@@ -86,7 +86,7 @@ public class UserInterface extends JFrame {
                 labelUserName.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
 
                 //---- labelUserAccount ----
-                labelUserAccount.setText("Stav \u00fa\u010dtu: 5.26 \u20ac");
+                labelUserAccount.setText("5.26 \u20ac");
                 labelUserAccount.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                 labelUserAccount.setHorizontalAlignment(SwingConstants.CENTER);
                 labelUserAccount.setForeground(Color.white);

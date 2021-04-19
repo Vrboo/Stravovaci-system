@@ -37,7 +37,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "labelUserAccount"
-						"text": "Stav účtu: 5.26 €"
+						"text": "5.26 €"
 						"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
 						"horizontalAlignment": 0
 						"foreground": sfield java.awt.Color white

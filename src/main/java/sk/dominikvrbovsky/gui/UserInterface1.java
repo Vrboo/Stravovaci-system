@@ -39,13 +39,13 @@ public class UserInterface1 extends JFrame {
         kGradientPanel1 = new KGradientPanel();
         label1 = new JLabel();
         label2 = new JLabel();
-        label3 = new JLabel();
         kButton1 = new KButton();
         kButton2 = new KButton();
         kButton3 = new KButton();
         kButton4 = new KButton();
         kButton5 = new KButton();
         kButton6 = new KButton();
+        label3 = new JLabel();
         kGradientPanel2 = new KGradientPanel();
 
         //======== this ========
@@ -65,13 +65,13 @@ public class UserInterface1 extends JFrame {
                 kGradientPanel1.setkBorderRadius(0);
                 kGradientPanel1.setkStartColor(new Color(37, 43, 43));
                 kGradientPanel1.setkEndColor(new Color(37, 43, 43));
-                kGradientPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-                javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax
-                . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-                .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-                . Color. red) ,kGradientPanel1. getBorder( )) ); kGradientPanel1. addPropertyChangeListener (new java. beans.
-                PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
-                equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+                kGradientPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+                . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder
+                . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .
+                awt .Font .BOLD ,12 ), java. awt. Color. red) ,kGradientPanel1. getBorder( )) )
+                ; kGradientPanel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+                ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+                ;
 
                 //---- label1 ----
                 label1.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_70px.png"));
@@ -82,12 +82,6 @@ public class UserInterface1 extends JFrame {
                 label2.setHorizontalAlignment(SwingConstants.CENTER);
                 label2.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                 label2.setForeground(Color.white);
-
-                //---- label3 ----
-                label3.setText("Stav \u00fa\u010dtu: 5.30\u20ac");
-                label3.setForeground(Color.white);
-                label3.setFont(new Font("Yu Gothic", Font.BOLD, 16));
-                label3.setHorizontalAlignment(SwingConstants.CENTER);
 
                 //---- kButton1 ----
                 kButton1.setText("Objedna\u0165");
@@ -149,10 +143,23 @@ public class UserInterface1 extends JFrame {
                 kButton6.setkHoverEndColor(Color.gray);
                 kButton6.setkHoverStartColor(Color.darkGray);
 
+                //---- label3 ----
+                label3.setText("Stav \u00fa\u010dtu: 5.45\u20ac");
+                label3.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                label3.setHorizontalAlignment(SwingConstants.CENTER);
+                label3.setForeground(Color.white);
+                label3.setVerticalAlignment(SwingConstants.TOP);
+
                 GroupLayout kGradientPanel1Layout = new GroupLayout(kGradientPanel1);
                 kGradientPanel1.setLayout(kGradientPanel1Layout);
                 kGradientPanel1Layout.setHorizontalGroup(
                     kGradientPanel1Layout.createParallelGroup()
+                        .addComponent(kButton1, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(kButton2, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(kButton3, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(kButton4, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(kButton5, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(kButton6, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                         .addGroup(kGradientPanel1Layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(kGradientPanel1Layout.createParallelGroup()
@@ -160,23 +167,17 @@ public class UserInterface1 extends JFrame {
                                 .addComponent(label2, GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
                                 .addComponent(label3, GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
                             .addContainerGap())
-                        .addComponent(kButton1, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                        .addComponent(kButton2, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                        .addComponent(kButton3, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                        .addComponent(kButton4, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                        .addComponent(kButton5, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                        .addComponent(kButton6, GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                 );
                 kGradientPanel1Layout.setVerticalGroup(
                     kGradientPanel1Layout.createParallelGroup()
                         .addGroup(kGradientPanel1Layout.createSequentialGroup()
                             .addGap(29, 29, 29)
                             .addComponent(label1)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addGap(0, 0, 0)
                             .addComponent(label2)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(label3)
-                            .addGap(28, 28, 28)
+                            .addGap(29, 29, 29)
                             .addComponent(kButton1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(kButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -188,7 +189,7 @@ public class UserInterface1 extends JFrame {
                             .addComponent(kButton5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(kButton6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addContainerGap(86, Short.MAX_VALUE))
                 );
             }
             splitPane1.setLeftComponent(kGradientPanel1);
@@ -233,13 +234,13 @@ public class UserInterface1 extends JFrame {
     private KGradientPanel kGradientPanel1;
     private JLabel label1;
     private JLabel label2;
-    private JLabel label3;
     private KButton kButton1;
     private KButton kButton2;
     private KButton kButton3;
     private KButton kButton4;
     private KButton kButton5;
     private KButton kButton6;
+    private JLabel label3;
     private KGradientPanel kGradientPanel2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
