@@ -4,18 +4,13 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space ::360:x, comp label1:::p::p, space :p:297:p}}"
-			"$verticalGroup": "par l {seq l {space :p:150:p, comp label1:::p::p, space ::213:x}}"
+			"$horizontalGroup": "par l {space :0:718:x}"
+			"$verticalGroup": "par l {space :0:418:x}"
 		} ) {
 			name: "this"
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
-				"text": "Nic"
-				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 10, false )
-			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 690, 425 )
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 720, 450 )
 		} )
 	}
 }

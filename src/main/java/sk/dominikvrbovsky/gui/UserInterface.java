@@ -17,38 +17,26 @@ public class UserInterface extends JFrame {
     private final User user;
 
     public UserInterface(User user) {
-        initComponents();
         this.user = user;
-        label1.setText(user.getFullName());
+        initComponents();
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
-        label1 = new JLabel();
 
         //======== this ========
         var contentPane = getContentPane();
-
-        //---- label1 ----
-        label1.setText("Nic");
-        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 10f));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(360, Short.MAX_VALUE)
-                    .addComponent(label1)
-                    .addGap(297, 297, 297))
+                .addGap(0, 718, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(150, 150, 150)
-                    .addComponent(label1)
-                    .addContainerGap(213, Short.MAX_VALUE))
+                .addGap(0, 418, Short.MAX_VALUE)
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -57,6 +45,5 @@ public class UserInterface extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
-    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
