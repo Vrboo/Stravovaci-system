@@ -17,8 +17,8 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"dividerLocation": 225
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp kButton1::l::225:x, comp kButton2::l::225:x, comp kButton3::l::225:x, comp kButton4::l::225:x, comp kButton5::l::225:x, comp kButton6::l::225:x, seq {space :::p, par l {comp label1::::213:x, comp label2::::213:x, comp label3::l::213:x}, space :::p}}"
-					"$verticalGroup": "par l {seq l {space :p:29:p, comp label1:::p::p, space :0:0:p, comp label2:::p::p, space :::p, comp label3:::p::p, space :p:29:p, comp kButton1:::p::p, space :0:0:p, comp kButton2:::p::p, space :0:0:p, comp kButton3:::p::p, space :0:0:p, comp kButton4:::p::p, space :0:0:p, comp kButton5:::p::p, space :0:0:p, comp kButton6:::p::p, space ::86:x}}"
+					"$horizontalGroup": "par l {seq {space :::p, par l {comp label1:::::x, comp label2:::::x, comp label3::l:::x}, space :::p}, comp kButton1::l:::x, comp kButton2::l:::x, comp kButton3::l:::x, comp kButton4::l:::x, comp kButton5::l:::x, comp kButton6::l:::x, seq t {space :0:0:x, comp kButton7:::p:225:p}}"
+					"$verticalGroup": "par l {seq l {space :p:29:p, comp label1:::p::p, space :0:0:p, comp label2:::p::p, space :::p, comp label3:::p::p, space :p:41:p, comp kButton1:::p::p, space :0:0:p, comp kButton2:::p::p, space :0:0:p, comp kButton3:::p::p, space :0:0:p, comp kButton4:::p::p, space :0:0:p, comp kButton5:::p::p, space :0:0:p, comp kButton6:::p::p, space ::23:x, comp kButton7:::p::p, space :::p}}"
 				} ) {
 					name: "kGradientPanel1"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -110,6 +110,18 @@ new FormModel {
 						"horizontalAlignment": 0
 						"foreground": sfield java.awt.Color white
 						"verticalAlignment": 1
+					} )
+					add( new FormComponent( "keeptoo.KButton" ) {
+						name: "kButton7"
+						"text": "Administrátor"
+						"kBorderRadius": 0
+						"font": #Font0
+						"kEndColor": #Color0
+						"kStartColor": #Color1
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"kHoverEndColor": sfield java.awt.Color gray
+						"kHoverStartColor": sfield java.awt.Color darkGray
+						"kForeGround": new java.awt.Color( 137, 238, 202, 255 )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "left"
