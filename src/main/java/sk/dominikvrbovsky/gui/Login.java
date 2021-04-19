@@ -11,9 +11,6 @@ import javax.swing.GroupLayout;
 import java.awt.*;
 import java.util.Optional;
 import javax.swing.border.*;
-import javax.swing.text.DefaultCaret;
-import javax.swing.text.DefaultHighlighter;
-import javax.swing.text.Highlighter;
 
 import keeptoo.*;
 import sk.dominikvrbovsky.User;
