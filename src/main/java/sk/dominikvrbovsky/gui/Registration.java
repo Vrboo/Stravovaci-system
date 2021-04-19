@@ -141,6 +141,7 @@ public class Registration extends JFrame {
 
             label1.setForeground(Color.RED);
             label1.setText("Vyplňte všetky položky, prosím.");
+            buttonRegistrovat.setSelected(false);
             return;
         }
 
@@ -148,18 +149,21 @@ public class Registration extends JFrame {
         if (loginUser.isPresent()) {
             label1.setForeground(Color.RED);
             label1.setText("Toto používateľské meno už je obsadené.");
+            buttonRegistrovat.setSelected(false);
             return;
         }
 
         if (!password1string.equals(password2string)) {
             label1.setForeground(Color.RED);
             label1.setText("Heslá sa nezhodujú.");
+            buttonRegistrovat.setSelected(false);
             return;
         }
 
         if (!Utilities.checkPassword(password1string)) {
             label1.setForeground(Color.RED);
             label1.setText("Heslo - min. 6 znakov, 1 číslicu, 1 veľké písmeno");
+            buttonRegistrovat.setSelected(false);
             return;
         }
 
@@ -169,6 +173,8 @@ public class Registration extends JFrame {
         UserInterface userInterface = new UserInterface(user);
         userInterface.setVisible(true);
         this.dispose();
+        buttonRegistrovat.setSelected(false);
+
     }
 
 
@@ -184,7 +190,7 @@ public class Registration extends JFrame {
         fielCeleMeno = new JTextField();
         password1 = new JPasswordField();
         password2 = new JPasswordField();
-        buttonPrihlasit = new KButton();
+        buttonRegistrovat = new KButton();
         label1 = new JLabel();
 
         //======== this ========
@@ -198,13 +204,12 @@ public class Registration extends JFrame {
             panelBackRegistration.setBorder(null);
             panelBackRegistration.setBackground(new Color(0, 164, 210));
             panelBackRegistration.setkBorderRadius(0);
-            panelBackRegistration.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelBackRegistration. getBorder
-            ( )) ); panelBackRegistration. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+            panelBackRegistration.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+            ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+            .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+            . Color .red ) ,panelBackRegistration. getBorder () ) ); panelBackRegistration. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+            propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+            ;} } );
 
             //---- labelX ----
             labelX.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_x_18px.png")));
@@ -344,24 +349,24 @@ public class Registration extends JFrame {
                     }
                 });
 
-                //---- buttonPrihlasit ----
-                buttonPrihlasit.setText("Registrova\u0165");
-                buttonPrihlasit.setBackground(Color.white);
-                buttonPrihlasit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                buttonPrihlasit.setkBorderRadius(30);
-                buttonPrihlasit.setkAllowTab(true);
-                buttonPrihlasit.setkStartColor(new Color(0, 164, 210));
-                buttonPrihlasit.setkEndColor(new Color(121, 241, 164));
-                buttonPrihlasit.setkPressedColor(Color.orange);
-                buttonPrihlasit.setBorder(null);
-                buttonPrihlasit.setkIndicatorThickness(0);
-                buttonPrihlasit.setkHoverStartColor(new Color(121, 241, 164));
-                buttonPrihlasit.setkHoverEndColor(new Color(0, 164, 210));
-                buttonPrihlasit.setkHoverForeGround(Color.black);
-                buttonPrihlasit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                buttonPrihlasit.setkSelectedColor(new Color(0, 164, 210));
-                buttonPrihlasit.setkForeGround(Color.black);
-                buttonPrihlasit.addActionListener(e -> buttonPrihlasitActionPerformed());
+                //---- buttonRegistrovat ----
+                buttonRegistrovat.setText("Registrova\u0165");
+                buttonRegistrovat.setBackground(Color.white);
+                buttonRegistrovat.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                buttonRegistrovat.setkBorderRadius(30);
+                buttonRegistrovat.setkAllowTab(true);
+                buttonRegistrovat.setkStartColor(new Color(0, 164, 210));
+                buttonRegistrovat.setkEndColor(new Color(121, 241, 164));
+                buttonRegistrovat.setkPressedColor(Color.orange);
+                buttonRegistrovat.setBorder(null);
+                buttonRegistrovat.setkIndicatorThickness(0);
+                buttonRegistrovat.setkHoverStartColor(new Color(121, 241, 164));
+                buttonRegistrovat.setkHoverEndColor(new Color(0, 164, 210));
+                buttonRegistrovat.setkHoverForeGround(Color.black);
+                buttonRegistrovat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                buttonRegistrovat.setkSelectedColor(new Color(0, 164, 210));
+                buttonRegistrovat.setkForeGround(Color.black);
+                buttonRegistrovat.addActionListener(e -> buttonPrihlasitActionPerformed());
 
                 GroupLayout panelRegistrationLayout = new GroupLayout(panelRegistration);
                 panelRegistration.setLayout(panelRegistrationLayout);
@@ -376,7 +381,7 @@ public class Registration extends JFrame {
                                         .addComponent(password1, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(fieldPouzMeno, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(fielCeleMeno, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(buttonPrihlasit, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(buttonRegistrovat, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(panelRegistrationLayout.createSequentialGroup()
                                     .addGap(95, 95, 95)
                                     .addComponent(labelIcon)))
@@ -396,7 +401,7 @@ public class Registration extends JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(password2, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(buttonPrihlasit, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonRegistrovat, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
                             .addGap(22, 22, 22))
                 );
             }
@@ -458,7 +463,7 @@ public class Registration extends JFrame {
     private JTextField fielCeleMeno;
     private JPasswordField password1;
     private JPasswordField password2;
-    private KButton buttonPrihlasit;
+    private KButton buttonRegistrovat;
     private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

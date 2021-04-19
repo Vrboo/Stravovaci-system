@@ -29,8 +29,8 @@ new FormModel {
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "labelXMouseClicked", false ) )
 				} )
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {par l {seq {space :p:23:p, par t {comp password2::t:p:249:p, comp password1::t:p:249:p, comp fieldPouzMeno::t:p:249:p, comp fielCeleMeno::t:p:249:p, comp buttonPrihlasit::t:p:249:p}}, seq l {space :p:95:p, comp labelIcon:::p::p}}, space ::20:x}}"
-					"$verticalGroup": "par l {seq {space :p:20:p, comp labelIcon:::p::p, space u:::p, comp fieldPouzMeno:::p:41:p, space s:::p, comp fielCeleMeno:::p:41:p, space ::20:x, comp password1:::p:41:p, space s:::p, comp password2:::p:41:p, space s:::p, comp buttonPrihlasit:::p:36:p, space :p:22:p}}"
+					"$horizontalGroup": "par l {seq {par l {seq {space :p:23:p, par t {comp password2::t:p:249:p, comp password1::t:p:249:p, comp fieldPouzMeno::t:p:249:p, comp fielCeleMeno::t:p:249:p, comp buttonRegistrovat::t:p:249:p}}, seq l {space :p:95:p, comp labelIcon:::p::p}}, space ::20:x}}"
+					"$verticalGroup": "par l {seq {space :p:20:p, comp labelIcon:::p::p, space u:::p, comp fieldPouzMeno:::p:41:p, space s:::p, comp fielCeleMeno:::p:41:p, space ::20:x, comp password1:::p:41:p, space s:::p, comp password2:::p:41:p, space s:::p, comp buttonRegistrovat:::p:36:p, space :p:22:p}}"
 				} ) {
 					name: "panelRegistration"
 					"kEndColor": sfield java.awt.Color white
@@ -104,7 +104,7 @@ new FormModel {
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "password2FocusLost", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
-						name: "buttonPrihlasit"
+						name: "buttonRegistrovat"
 						"text": "Registrovať"
 						"background": sfield java.awt.Color white
 						"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
