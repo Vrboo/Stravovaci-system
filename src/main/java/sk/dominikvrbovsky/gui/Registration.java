@@ -159,7 +159,7 @@ public class Registration extends JFrame {
 
         if (!Utilities.checkPassword(password1string)) {
             label1.setForeground(Color.RED);
-            label1.setText("Heslo musí mať min. 6 znakov, 1 číslicu, 1 veľké písmeno");
+            label1.setText("Heslo - min. 6 znakov, 1 číslicu, 1 veľké písmeno");
             return;
         }
 
