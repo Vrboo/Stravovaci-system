@@ -14,6 +14,7 @@ import javax.swing.border.*;
 import keeptoo.*;
 import sk.dominikvrbovsky.User;
 import sk.dominikvrbovsky.dao.impl.UserDao;
+import sk.dominikvrbovsky.utilities.Utilities;
 
 /**
  * @author Dominik Vrbovsky
@@ -153,6 +154,12 @@ public class Registration extends JFrame {
         if (!password1string.equals(password2string)) {
             label1.setForeground(Color.RED);
             label1.setText("Heslá sa nezhodujú.");
+            return;
+        }
+
+        if (!Utilities.checkPassword(password1string)) {
+            label1.setForeground(Color.RED);
+            label1.setText("Heslo musí mať min. 6 znakov, 1 číslicu, 1 veľké písmeno");
             return;
         }
 
