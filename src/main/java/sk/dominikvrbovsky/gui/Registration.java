@@ -170,7 +170,7 @@ public class Registration extends JFrame {
         User user = new User(fieldPouzMeno.getText(),fielCeleMeno.getText(),password1string, 0.0);
         userDao.save(user);
 
-        UserInterface userInterface = new UserInterface(user);
+        UserInterface userInterface = new UserInterface(entityManager, user);
         userInterface.setVisible(true);
         this.dispose();
         buttonRegistrovat.setSelected(false);

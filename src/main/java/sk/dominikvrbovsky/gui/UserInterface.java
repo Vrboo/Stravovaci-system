@@ -7,6 +7,7 @@ package sk.dominikvrbovsky.gui;
 import keeptoo.*;
 import sk.dominikvrbovsky.User;
 
+import javax.persistence.EntityManager;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
@@ -15,8 +16,10 @@ import javax.swing.GroupLayout;
  */
 public class UserInterface extends JFrame {
     private final User user;
+    private final EntityManager entityManager;
 
-    public UserInterface(User user) {
+    public UserInterface(EntityManager entityManager, User user) {
+        this.entityManager = entityManager;
         this.user = user;
         initComponents();
     }

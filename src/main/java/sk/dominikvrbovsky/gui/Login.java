@@ -102,7 +102,7 @@ public class Login extends JFrame {
             Optional<User> user = userDao.getFromUsername(textFieldUsername.getText());
 
             if (user.isPresent() && user.get().getPassword().equals(password)) {
-                UserInterface userInterface = new UserInterface(user.get());
+                UserInterface userInterface = new UserInterface(entityManager, user.get());
                 userInterface.setVisible(true);
                 this.dispose();
             } else {
