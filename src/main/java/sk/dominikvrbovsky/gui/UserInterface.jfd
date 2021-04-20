@@ -23,11 +23,11 @@ new FormModel {
 					name: "panelMenu"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					"kBorderRadius": 0
-					"kStartColor": new java.awt.Color( 37, 43, 43, 255 )
-					"kEndColor": new java.awt.Color( 37, 43, 43, 255 )
+					"kStartColor": new java.awt.Color( 43, 43, 43, 255 )
+					"kEndColor": new java.awt.Color( 43, 43, 43, 255 )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "labelIcon"
-						"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_70px.png" )
+						"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_70px_3.png" )
 						"horizontalAlignment": 0
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -35,18 +35,18 @@ new FormModel {
 						"text": "Dominik Vrbovský"
 						"horizontalAlignment": 0
 						"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
-						"foreground": sfield java.awt.Color white
+						"foreground": &Color0 new java.awt.Color( 50, 187, 186, 255 )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
 						name: "btnObjednat"
 						"text": "Objednať"
 						"kBorderRadius": 0
 						"font": &Font0 new java.awt.Font( "Yu Gothic UI", 1, 16 )
-						"kEndColor": &Color0 new java.awt.Color( 37, 43, 43, 255 )
-						"kStartColor": &Color1 new java.awt.Color( 37, 43, 43, 255 )
+						"kEndColor": &Color1 new java.awt.Color( 37, 43, 43, 255 )
+						"kStartColor": &Color2 new java.awt.Color( 37, 43, 43, 255 )
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": &Color2 new java.awt.Color( 37, 43, 43, 255 )
+						"kHoverStartColor": &Color3 new java.awt.Color( 37, 43, 43, 255 )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObjednatActionPerformed", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
@@ -54,11 +54,11 @@ new FormModel {
 						"text": "Moje objednávky"
 						"kBorderRadius": 0
 						"font": #Font0
-						"kEndColor": #Color0
-						"kStartColor": #Color1
+						"kEndColor": #Color1
+						"kStartColor": #Color2
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": #Color2
+						"kHoverStartColor": #Color3
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnMojeObjedActionPerformed", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
@@ -66,11 +66,11 @@ new FormModel {
 						"text": "Burza"
 						"kBorderRadius": 0
 						"font": #Font0
-						"kEndColor": #Color0
-						"kStartColor": #Color1
+						"kEndColor": #Color1
+						"kStartColor": #Color2
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": #Color2
+						"kHoverStartColor": #Color3
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnBurzaActionPerformed", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
@@ -78,11 +78,11 @@ new FormModel {
 						"text": "Účet"
 						"kBorderRadius": 0
 						"font": #Font0
-						"kEndColor": #Color0
-						"kStartColor": #Color1
+						"kEndColor": #Color1
+						"kStartColor": #Color2
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": #Color2
+						"kHoverStartColor": #Color3
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnUcetActionPerformed", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
@@ -90,11 +90,11 @@ new FormModel {
 						"text": "Zmeniť heslo"
 						"kBorderRadius": 0
 						"font": #Font0
-						"kEndColor": #Color0
-						"kStartColor": #Color1
+						"kEndColor": #Color1
+						"kStartColor": #Color2
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": #Color2
+						"kHoverStartColor": #Color3
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnZmenitCisloActionPerformed", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
@@ -102,11 +102,11 @@ new FormModel {
 						"text": "Odhlásiť sa"
 						"kBorderRadius": 0
 						"font": #Font0
-						"kEndColor": #Color0
-						"kStartColor": #Color1
+						"kEndColor": #Color1
+						"kStartColor": #Color2
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": #Color2
+						"kHoverStartColor": #Color3
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnOdhlasitSaActionPerformed", false ) )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -114,7 +114,7 @@ new FormModel {
 						"text": "Stav účtu: 5.45€"
 						"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
 						"horizontalAlignment": 0
-						"foreground": sfield java.awt.Color white
+						"foreground": #Color0
 						"verticalAlignment": 1
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
@@ -122,11 +122,11 @@ new FormModel {
 						"text": "Administrátor"
 						"kBorderRadius": 0
 						"font": #Font0
-						"kEndColor": #Color0
-						"kStartColor": #Color1
+						"kEndColor": #Color1
+						"kStartColor": #Color2
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": #Color2
+						"kHoverStartColor": #Color3
 						"kForeGround": new java.awt.Color( 137, 238, 202, 255 )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnAdminActionPerformed", false ) )
 					} )
@@ -140,28 +140,56 @@ new FormModel {
 					"kBorderRadius": 0
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 						"$horizontalGroup": "par l {comp splitPane2::l:::x}"
-						"$verticalGroup": "par l {comp splitPane2::l::538:x}"
+						"$verticalGroup": "par l {comp splitPane2::l:::x}"
 					} ) {
 						name: "panelObjednat"
 						add( new FormContainer( "javax.swing.JSplitPane", new FormLayoutManager( class javax.swing.JSplitPane ) ) {
 							name: "splitPane2"
 							"orientation": 0
 							"dividerSize": 0
-							"dividerLocation": 45
+							"dividerLocation": 198
+							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-								"$horizontalGroup": "par l {seq l {comp btnObed:::p::p, space :::p, comp btnRanajky:::p::p, space :0:150:x}}"
-								"$verticalGroup": "par l {seq {par l {comp btnObed:::::x, seq {comp btnRanajky:::p::p, space :0:0:x}}, space :::p}}"
+								"$horizontalGroup": "par l {seq l {space :p:35:p, par l {seq {comp kButton1:::p:100:p, space :p:32:p, comp kButton2:::p:100:p}, comp label8::l:p:536:p, comp label1::l:p:526:p}, space ::37:x}}"
+								"$verticalGroup": "par l {seq t {space :p:12:p, comp label1:::p:76:p, space :::p, comp label8:::p:25:p, space ::30:x, par b {comp kButton1::b:p:28:p, comp kButton2::b:p:28:p}, space :p:21:p}}"
 							} ) {
 								name: "panelObjednatMenu"
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"kBorderRadius": 0
+								"kStartColor": new java.awt.Color( 38, 184, 190, 255 )
+								"kEndColor": new java.awt.Color( 150, 223, 141, 255 )
 								add( new FormComponent( "keeptoo.KButton" ) {
-									name: "btnObed"
+									name: "kButton1"
 									"text": "Obed"
-									addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObedActionPerformed", false ) )
+									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+									"kBorderRadius": 30
+									"font": &Font1 new java.awt.Font( "Yu Gothic UI", 1, 16 )
+									"kEndColor": sfield java.awt.Color white
+									"kStartColor": sfield java.awt.Color white
+									"kForeGround": &Color4 new java.awt.Color( 50, 187, 186, 255 )
+									"verticalAlignment": 1
 								} )
 								add( new FormComponent( "keeptoo.KButton" ) {
-									name: "btnRanajky"
-									"text": "Ranajky"
-									addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnRanajkyActionPerformed", false ) )
+									name: "kButton2"
+									"text": "Raňajky"
+									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+									"kBorderRadius": 30
+									"font": #Font1
+									"kEndColor": sfield java.awt.Color white
+									"kStartColor": sfield java.awt.Color white
+									"kForeGround": #Color4
+									"verticalAlignment": 1
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label1"
+									"text": "Stravovací systém"
+									"font": new java.awt.Font( "Yu Gothic UI", 1, 45 )
+									"horizontalAlignment": 2
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label8"
+									"text": "20. január 2021, utorok"
+									"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
 								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "left"
@@ -169,26 +197,24 @@ new FormModel {
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
 								name: "panelObjednatContent"
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-									"$horizontalGroup": "par l {seq l {space :p:242:p, comp label8:::p:62:p, space ::222:x}}"
-									"$verticalGroup": "par l {seq l {space :p:220:p, comp label8:::p:44:p, space ::228:x}}"
+									"$horizontalGroup": "par l {space :0:608:x}"
+									"$verticalGroup": "par l {space :0:340:x}"
 								} ) {
 									name: "panelObjednatObed"
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label8"
-										"text": "Obed"
-									} )
+									"kEndColor": sfield java.awt.Color white
+									"kStartColor": sfield java.awt.Color white
 								}, new FormLayoutConstraints( class java.lang.String ) {
 									"value": "obed"
 								} )
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-									"$horizontalGroup": "par l {seq l {space :p:180:p, comp label9:::p:61:p, space ::285:x}}"
-									"$verticalGroup": "par l {seq l {space :p:212:p, comp label9:::p:38:p, space ::242:x}}"
+									"$horizontalGroup": "par l {space :0:608:x}"
+									"$verticalGroup": "par l {space :0:340:x}"
 								} ) {
 									name: "panelObjednatRanajky"
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label9"
-										"text": "Ranajky"
-									} )
+									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+									"kBorderRadius": 0
+									"kEndColor": sfield java.awt.Color white
+									"kStartColor": sfield java.awt.Color white
 								}, new FormLayoutConstraints( class java.lang.String ) {
 									"value": "ranajky"
 								} )
@@ -200,10 +226,12 @@ new FormModel {
 						"value": "objednat"
 					} )
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:225:p, comp label2:::p::p, space ::212:x}}"
+						"$horizontalGroup": "par l {seq l {space :p:225:p, comp label2:::p::p, space ::292:x}}"
 						"$verticalGroup": "par l {seq l {space :p:220:p, comp label2:::p::p, space ::302:x}}"
 					} ) {
 						name: "panelMojeObejdnavky"
+						"kEndColor": sfield java.awt.Color white
+						"kStartColor": sfield java.awt.Color white
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label2"
 							"text": "Moje objednavky"
@@ -212,7 +240,7 @@ new FormModel {
 						"value": "mojeObjednavky"
 					} )
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq t {space ::216:x, comp label3:::p:114:p, space :p:198:p}}"
+						"$horizontalGroup": "par l {seq t {space ::296:x, comp label3:::p:114:p, space :p:198:p}}"
 						"$verticalGroup": "par l {seq l {space :p:243:p, comp label3:::p:42:p, space ::253:x}}"
 					} ) {
 						name: "panelBurza"
@@ -224,7 +252,7 @@ new FormModel {
 						"value": "burza"
 					} )
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:235:p, comp label4:::p::p, space ::269:x}}"
+						"$horizontalGroup": "par l {seq l {space :p:235:p, comp label4:::p::p, space ::349:x}}"
 						"$verticalGroup": "par l {seq t {space ::263:x, comp label4:::p::p, space :p:259:p}}"
 					} ) {
 						name: "panelUcet"
@@ -236,7 +264,7 @@ new FormModel {
 						"value": "ucet"
 					} )
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:216:p, comp label5:::p::p, space ::243:x}}"
+						"$horizontalGroup": "par l {seq l {space :p:216:p, comp label5:::p::p, space ::323:x}}"
 						"$verticalGroup": "par l {seq l {space :p:261:p, comp label5:::p::p, space ::261:x}}"
 					} ) {
 						name: "panelZmenitHeslo"
@@ -248,7 +276,7 @@ new FormModel {
 						"value": "zmenitHeslo"
 					} )
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:231:p, comp label6:::p::p, space ::237:x}}"
+						"$horizontalGroup": "par l {seq l {space :p:231:p, comp label6:::p::p, space ::317:x}}"
 						"$verticalGroup": "par l {seq t {space ::270:x, comp label6:::p::p, space :p:252:p}}"
 					} ) {
 						name: "panelOdhlasitSa"
@@ -260,7 +288,7 @@ new FormModel {
 						"value": "odhlasitSa"
 					} )
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:204:p, comp label7:::p::p, space ::251:x}}"
+						"$horizontalGroup": "par l {seq l {space :p:204:p, comp label7:::p::p, space ::331:x}}"
 						"$verticalGroup": "par l {seq t {space ::270:x, comp label7:::p::p, space :p:252:p}}"
 					} ) {
 						name: "panelAdmin"
@@ -277,7 +305,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 755, 570 )
+			"size": new java.awt.Dimension( 835, 570 )
 		} )
 	}
 }
