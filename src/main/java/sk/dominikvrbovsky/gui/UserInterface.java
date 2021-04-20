@@ -19,6 +19,7 @@ public class UserInterface extends JFrame {
     private final User user;
     private final EntityManager entityManager;
     private final CardLayout cardLayout;
+    private final CardLayout cardLayoutObjednat;
 
     public UserInterface(EntityManager entityManager, User user) {
         this.entityManager = entityManager;
@@ -30,7 +31,7 @@ public class UserInterface extends JFrame {
         initComponents();
         
         this.cardLayout = (CardLayout)(panelContent.getLayout());
-        
+        this.cardLayoutObjednat = (CardLayout)(panelObjednatContent.getLayout()); 
         
         labelUsername.setText(user.getFullName());
         labelAccount.setText("Stav účtu: " + userAccount + "€");
@@ -64,7 +65,14 @@ public class UserInterface extends JFrame {
     private void btnAdminActionPerformed() {
         cardLayout.show(panelContent,"admin");
     }
-    
+
+    private void btnObedActionPerformed() {
+        cardLayoutObjednat.show(panelObjednatContent, "obed");
+    }
+
+    private void btnRanajkyActionPerformed() {
+        cardLayoutObjednat.show(panelObjednatContent, "ranajky");
+    }
     
 
 //    private void btnObedActionPerformed() {
@@ -92,7 +100,15 @@ public class UserInterface extends JFrame {
         btnAdmin = new KButton();
         panelContent = new KGradientPanel();
         panelObjednat = new KGradientPanel();
+        splitPane2 = new JSplitPane();
+        panelObjednatMenu = new KGradientPanel();
+        btnObed = new KButton();
+        btnRanajky = new KButton();
+        panelObjednatContent = new KGradientPanel();
+        panelObjednatObed = new KGradientPanel();
         label8 = new JLabel();
+        panelObjednatRanajky = new KGradientPanel();
+        label9 = new JLabel();
         panelMojeObejdnavky = new KGradientPanel();
         label2 = new JLabel();
         panelBurza = new KGradientPanel();
@@ -123,12 +139,12 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(37, 43, 43));
                 panelMenu.setkEndColor(new Color(37, 43, 43));
-                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
-                EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing
-                .border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),
-                java.awt.Color.red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener()
-                {@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))
-                throw new RuntimeException();}});
+                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
+                border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER
+                ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font
+                . BOLD ,12 ) ,java . awt. Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener(
+                new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r"
+                .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
                 //---- labelIcon ----
                 labelIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_70px.png"));
@@ -284,24 +300,112 @@ public class UserInterface extends JFrame {
                 //======== panelObjednat ========
                 {
 
-                    //---- label8 ----
-                    label8.setText("Objednat");
+                    //======== splitPane2 ========
+                    {
+                        splitPane2.setOrientation(JSplitPane.VERTICAL_SPLIT);
+                        splitPane2.setDividerSize(0);
+                        splitPane2.setDividerLocation(45);
+
+                        //======== panelObjednatMenu ========
+                        {
+
+                            //---- btnObed ----
+                            btnObed.setText("Obed");
+                            btnObed.addActionListener(e -> btnObedActionPerformed());
+
+                            //---- btnRanajky ----
+                            btnRanajky.setText("Ranajky");
+                            btnRanajky.addActionListener(e -> btnRanajkyActionPerformed());
+
+                            GroupLayout panelObjednatMenuLayout = new GroupLayout(panelObjednatMenu);
+                            panelObjednatMenu.setLayout(panelObjednatMenuLayout);
+                            panelObjednatMenuLayout.setHorizontalGroup(
+                                panelObjednatMenuLayout.createParallelGroup()
+                                    .addGroup(panelObjednatMenuLayout.createSequentialGroup()
+                                        .addComponent(btnObed, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnRanajky, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 150, Short.MAX_VALUE))
+                            );
+                            panelObjednatMenuLayout.setVerticalGroup(
+                                panelObjednatMenuLayout.createParallelGroup()
+                                    .addGroup(panelObjednatMenuLayout.createSequentialGroup()
+                                        .addGroup(panelObjednatMenuLayout.createParallelGroup()
+                                            .addComponent(btnObed, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(panelObjednatMenuLayout.createSequentialGroup()
+                                                .addComponent(btnRanajky, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addContainerGap())
+                            );
+                        }
+                        splitPane2.setTopComponent(panelObjednatMenu);
+
+                        //======== panelObjednatContent ========
+                        {
+                            panelObjednatContent.setLayout(new CardLayout());
+
+                            //======== panelObjednatObed ========
+                            {
+
+                                //---- label8 ----
+                                label8.setText("Obed");
+
+                                GroupLayout panelObjednatObedLayout = new GroupLayout(panelObjednatObed);
+                                panelObjednatObed.setLayout(panelObjednatObedLayout);
+                                panelObjednatObedLayout.setHorizontalGroup(
+                                    panelObjednatObedLayout.createParallelGroup()
+                                        .addGroup(panelObjednatObedLayout.createSequentialGroup()
+                                            .addGap(242, 242, 242)
+                                            .addComponent(label8, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+                                            .addContainerGap(222, Short.MAX_VALUE))
+                                );
+                                panelObjednatObedLayout.setVerticalGroup(
+                                    panelObjednatObedLayout.createParallelGroup()
+                                        .addGroup(panelObjednatObedLayout.createSequentialGroup()
+                                            .addGap(220, 220, 220)
+                                            .addComponent(label8, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+                                            .addContainerGap(228, Short.MAX_VALUE))
+                                );
+                            }
+                            panelObjednatContent.add(panelObjednatObed, "obed");
+
+                            //======== panelObjednatRanajky ========
+                            {
+
+                                //---- label9 ----
+                                label9.setText("Ranajky");
+
+                                GroupLayout panelObjednatRanajkyLayout = new GroupLayout(panelObjednatRanajky);
+                                panelObjednatRanajky.setLayout(panelObjednatRanajkyLayout);
+                                panelObjednatRanajkyLayout.setHorizontalGroup(
+                                    panelObjednatRanajkyLayout.createParallelGroup()
+                                        .addGroup(panelObjednatRanajkyLayout.createSequentialGroup()
+                                            .addGap(180, 180, 180)
+                                            .addComponent(label9, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+                                            .addContainerGap(285, Short.MAX_VALUE))
+                                );
+                                panelObjednatRanajkyLayout.setVerticalGroup(
+                                    panelObjednatRanajkyLayout.createParallelGroup()
+                                        .addGroup(panelObjednatRanajkyLayout.createSequentialGroup()
+                                            .addGap(212, 212, 212)
+                                            .addComponent(label9, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+                                            .addContainerGap(242, Short.MAX_VALUE))
+                                );
+                            }
+                            panelObjednatContent.add(panelObjednatRanajky, "ranajky");
+                        }
+                        splitPane2.setBottomComponent(panelObjednatContent);
+                    }
 
                     GroupLayout panelObjednatLayout = new GroupLayout(panelObjednat);
                     panelObjednat.setLayout(panelObjednatLayout);
                     panelObjednatLayout.setHorizontalGroup(
                         panelObjednatLayout.createParallelGroup()
-                            .addGroup(panelObjednatLayout.createSequentialGroup()
-                                .addGap(234, 234, 234)
-                                .addComponent(label8)
-                                .addContainerGap(244, Short.MAX_VALUE))
+                            .addComponent(splitPane2)
                     );
                     panelObjednatLayout.setVerticalGroup(
                         panelObjednatLayout.createParallelGroup()
-                            .addGroup(panelObjednatLayout.createSequentialGroup()
-                                .addGap(210, 210, 210)
-                                .addComponent(label8)
-                                .addContainerGap(312, Short.MAX_VALUE))
+                            .addComponent(splitPane2, GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
                     );
                 }
                 panelContent.add(panelObjednat, "objednat");
@@ -490,7 +594,15 @@ public class UserInterface extends JFrame {
     private KButton btnAdmin;
     private KGradientPanel panelContent;
     private KGradientPanel panelObjednat;
+    private JSplitPane splitPane2;
+    private KGradientPanel panelObjednatMenu;
+    private KButton btnObed;
+    private KButton btnRanajky;
+    private KGradientPanel panelObjednatContent;
+    private KGradientPanel panelObjednatObed;
     private JLabel label8;
+    private KGradientPanel panelObjednatRanajky;
+    private JLabel label9;
     private KGradientPanel panelMojeObejdnavky;
     private JLabel label2;
     private KGradientPanel panelBurza;

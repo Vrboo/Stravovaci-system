@@ -139,13 +139,62 @@ new FormModel {
 					"kStartColor": new java.awt.Color( 115, 224, 255, 255 )
 					"kBorderRadius": 0
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:234:p, comp label8:::p::p, space ::244:x}}"
-						"$verticalGroup": "par l {seq l {space :p:210:p, comp label8:::p::p, space ::312:x}}"
+						"$horizontalGroup": "par l {comp splitPane2::l:::x}"
+						"$verticalGroup": "par l {comp splitPane2::l::538:x}"
 					} ) {
 						name: "panelObjednat"
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label8"
-							"text": "Objednat"
+						add( new FormContainer( "javax.swing.JSplitPane", new FormLayoutManager( class javax.swing.JSplitPane ) ) {
+							name: "splitPane2"
+							"orientation": 0
+							"dividerSize": 0
+							"dividerLocation": 45
+							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+								"$horizontalGroup": "par l {seq l {comp btnObed:::p::p, space :::p, comp btnRanajky:::p::p, space :0:150:x}}"
+								"$verticalGroup": "par l {seq {par l {comp btnObed:::::x, seq {comp btnRanajky:::p::p, space :0:0:x}}, space :::p}}"
+							} ) {
+								name: "panelObjednatMenu"
+								add( new FormComponent( "keeptoo.KButton" ) {
+									name: "btnObed"
+									"text": "Obed"
+									addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObedActionPerformed", false ) )
+								} )
+								add( new FormComponent( "keeptoo.KButton" ) {
+									name: "btnRanajky"
+									"text": "Ranajky"
+									addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnRanajkyActionPerformed", false ) )
+								} )
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "left"
+							} )
+							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
+								name: "panelObjednatContent"
+								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+									"$horizontalGroup": "par l {seq l {space :p:242:p, comp label8:::p:62:p, space ::222:x}}"
+									"$verticalGroup": "par l {seq l {space :p:220:p, comp label8:::p:44:p, space ::228:x}}"
+								} ) {
+									name: "panelObjednatObed"
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label8"
+										"text": "Obed"
+									} )
+								}, new FormLayoutConstraints( class java.lang.String ) {
+									"value": "obed"
+								} )
+								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+									"$horizontalGroup": "par l {seq l {space :p:180:p, comp label9:::p:61:p, space ::285:x}}"
+									"$verticalGroup": "par l {seq l {space :p:212:p, comp label9:::p:38:p, space ::242:x}}"
+								} ) {
+									name: "panelObjednatRanajky"
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label9"
+										"text": "Ranajky"
+									} )
+								}, new FormLayoutConstraints( class java.lang.String ) {
+									"value": "ranajky"
+								} )
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "right"
+							} )
 						} )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "objednat"
