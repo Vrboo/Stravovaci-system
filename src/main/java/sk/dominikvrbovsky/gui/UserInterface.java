@@ -27,8 +27,8 @@ public class UserInterface extends JFrame {
         this.setPreferredSize(new Dimension(1000, 600));
         initComponents();
         
-//        this.labelUserName.setText(user.getFullName());
-//        this.labelUserAccount.setText("Stav účtu: " + userAccount + " €");
+        labelUsername.setText(user.getFullName());
+        labelAccount.setText("Stav účtu: " + userAccount + "€");
 
     }
 
@@ -36,18 +36,18 @@ public class UserInterface extends JFrame {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
         splitPane1 = new JSplitPane();
-        kGradientPanel1 = new KGradientPanel();
-        label1 = new JLabel();
-        label2 = new JLabel();
-        kButton1 = new KButton();
-        kButton2 = new KButton();
-        kButton3 = new KButton();
-        kButton4 = new KButton();
-        kButton5 = new KButton();
-        kButton6 = new KButton();
-        label3 = new JLabel();
-        kButton7 = new KButton();
-        kGradientPanel2 = new KGradientPanel();
+        panelMenu = new KGradientPanel();
+        labelIcon = new JLabel();
+        labelUsername = new JLabel();
+        btnObjednat = new KButton();
+        btnMojeObjed = new KButton();
+        btnBurza = new KButton();
+        btnUcet = new KButton();
+        btnZmenitCislo = new KButton();
+        btnOdhlasitSa = new KButton();
+        labelAccount = new JLabel();
+        btnAdmin = new KButton();
+        panelContent = new KGradientPanel();
 
         //======== this ========
         setUndecorated(true);
@@ -60,174 +60,174 @@ public class UserInterface extends JFrame {
             splitPane1.setBorder(null);
             splitPane1.setDividerLocation(225);
 
-            //======== kGradientPanel1 ========
+            //======== panelMenu ========
             {
-                kGradientPanel1.setBorder(null);
-                kGradientPanel1.setkBorderRadius(0);
-                kGradientPanel1.setkStartColor(new Color(37, 43, 43));
-                kGradientPanel1.setkEndColor(new Color(37, 43, 43));
-                kGradientPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-                . EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax
-                . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
-                12 ), java. awt. Color. red) ,kGradientPanel1. getBorder( )) ); kGradientPanel1. addPropertyChangeListener (new java. beans
-                . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .
-                getPropertyName () )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder(null);
+                panelMenu.setkBorderRadius(0);
+                panelMenu.setkStartColor(new Color(37, 43, 43));
+                panelMenu.setkEndColor(new Color(37, 43, 43));
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+                ( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+                . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+                . Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+                propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+                ; }} );
 
-                //---- label1 ----
-                label1.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_70px.png"));
-                label1.setHorizontalAlignment(SwingConstants.CENTER);
+                //---- labelIcon ----
+                labelIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_70px.png"));
+                labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
 
-                //---- label2 ----
-                label2.setText("Dominik Vrbovsk\u00fd");
-                label2.setHorizontalAlignment(SwingConstants.CENTER);
-                label2.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
-                label2.setForeground(Color.white);
+                //---- labelUsername ----
+                labelUsername.setText("Dominik Vrbovsk\u00fd");
+                labelUsername.setHorizontalAlignment(SwingConstants.CENTER);
+                labelUsername.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
+                labelUsername.setForeground(Color.white);
 
-                //---- kButton1 ----
-                kButton1.setText("Objedna\u0165");
-                kButton1.setkBorderRadius(0);
-                kButton1.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                kButton1.setkEndColor(new Color(37, 43, 43));
-                kButton1.setkStartColor(new Color(37, 43, 43));
-                kButton1.setBorder(null);
-                kButton1.setkHoverEndColor(Color.gray);
-                kButton1.setkHoverStartColor(new Color(37, 43, 43));
+                //---- btnObjednat ----
+                btnObjednat.setText("Objedna\u0165");
+                btnObjednat.setkBorderRadius(0);
+                btnObjednat.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnObjednat.setkEndColor(new Color(37, 43, 43));
+                btnObjednat.setkStartColor(new Color(37, 43, 43));
+                btnObjednat.setBorder(null);
+                btnObjednat.setkHoverEndColor(Color.gray);
+                btnObjednat.setkHoverStartColor(new Color(37, 43, 43));
 
-                //---- kButton2 ----
-                kButton2.setText("Moje objedn\u00e1vky");
-                kButton2.setkBorderRadius(0);
-                kButton2.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                kButton2.setkEndColor(new Color(37, 43, 43));
-                kButton2.setkStartColor(new Color(37, 43, 43));
-                kButton2.setBorder(null);
-                kButton2.setkHoverEndColor(Color.gray);
-                kButton2.setkHoverStartColor(new Color(37, 43, 43));
+                //---- btnMojeObjed ----
+                btnMojeObjed.setText("Moje objedn\u00e1vky");
+                btnMojeObjed.setkBorderRadius(0);
+                btnMojeObjed.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnMojeObjed.setkEndColor(new Color(37, 43, 43));
+                btnMojeObjed.setkStartColor(new Color(37, 43, 43));
+                btnMojeObjed.setBorder(null);
+                btnMojeObjed.setkHoverEndColor(Color.gray);
+                btnMojeObjed.setkHoverStartColor(new Color(37, 43, 43));
 
-                //---- kButton3 ----
-                kButton3.setText("Burza");
-                kButton3.setkBorderRadius(0);
-                kButton3.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                kButton3.setkEndColor(new Color(37, 43, 43));
-                kButton3.setkStartColor(new Color(37, 43, 43));
-                kButton3.setBorder(null);
-                kButton3.setkHoverEndColor(Color.gray);
-                kButton3.setkHoverStartColor(new Color(37, 43, 43));
+                //---- btnBurza ----
+                btnBurza.setText("Burza");
+                btnBurza.setkBorderRadius(0);
+                btnBurza.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnBurza.setkEndColor(new Color(37, 43, 43));
+                btnBurza.setkStartColor(new Color(37, 43, 43));
+                btnBurza.setBorder(null);
+                btnBurza.setkHoverEndColor(Color.gray);
+                btnBurza.setkHoverStartColor(new Color(37, 43, 43));
 
-                //---- kButton4 ----
-                kButton4.setText("\u00da\u010det");
-                kButton4.setkBorderRadius(0);
-                kButton4.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                kButton4.setkEndColor(new Color(37, 43, 43));
-                kButton4.setkStartColor(new Color(37, 43, 43));
-                kButton4.setBorder(null);
-                kButton4.setkHoverEndColor(Color.gray);
-                kButton4.setkHoverStartColor(new Color(37, 43, 43));
+                //---- btnUcet ----
+                btnUcet.setText("\u00da\u010det");
+                btnUcet.setkBorderRadius(0);
+                btnUcet.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnUcet.setkEndColor(new Color(37, 43, 43));
+                btnUcet.setkStartColor(new Color(37, 43, 43));
+                btnUcet.setBorder(null);
+                btnUcet.setkHoverEndColor(Color.gray);
+                btnUcet.setkHoverStartColor(new Color(37, 43, 43));
 
-                //---- kButton5 ----
-                kButton5.setText("Zmeni\u0165 heslo");
-                kButton5.setkBorderRadius(0);
-                kButton5.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                kButton5.setkEndColor(new Color(37, 43, 43));
-                kButton5.setkStartColor(new Color(37, 43, 43));
-                kButton5.setBorder(null);
-                kButton5.setkHoverEndColor(Color.gray);
-                kButton5.setkHoverStartColor(new Color(37, 43, 43));
+                //---- btnZmenitCislo ----
+                btnZmenitCislo.setText("Zmeni\u0165 heslo");
+                btnZmenitCislo.setkBorderRadius(0);
+                btnZmenitCislo.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnZmenitCislo.setkEndColor(new Color(37, 43, 43));
+                btnZmenitCislo.setkStartColor(new Color(37, 43, 43));
+                btnZmenitCislo.setBorder(null);
+                btnZmenitCislo.setkHoverEndColor(Color.gray);
+                btnZmenitCislo.setkHoverStartColor(new Color(37, 43, 43));
 
-                //---- kButton6 ----
-                kButton6.setText("Odhl\u00e1si\u0165 sa");
-                kButton6.setkBorderRadius(0);
-                kButton6.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                kButton6.setkEndColor(new Color(37, 43, 43));
-                kButton6.setkStartColor(new Color(37, 43, 43));
-                kButton6.setBorder(null);
-                kButton6.setkHoverEndColor(Color.gray);
-                kButton6.setkHoverStartColor(new Color(37, 43, 43));
+                //---- btnOdhlasitSa ----
+                btnOdhlasitSa.setText("Odhl\u00e1si\u0165 sa");
+                btnOdhlasitSa.setkBorderRadius(0);
+                btnOdhlasitSa.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnOdhlasitSa.setkEndColor(new Color(37, 43, 43));
+                btnOdhlasitSa.setkStartColor(new Color(37, 43, 43));
+                btnOdhlasitSa.setBorder(null);
+                btnOdhlasitSa.setkHoverEndColor(Color.gray);
+                btnOdhlasitSa.setkHoverStartColor(new Color(37, 43, 43));
 
-                //---- label3 ----
-                label3.setText("Stav \u00fa\u010dtu: 5.45\u20ac");
-                label3.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                label3.setHorizontalAlignment(SwingConstants.CENTER);
-                label3.setForeground(Color.white);
-                label3.setVerticalAlignment(SwingConstants.TOP);
+                //---- labelAccount ----
+                labelAccount.setText("Stav \u00fa\u010dtu: 5.45\u20ac");
+                labelAccount.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                labelAccount.setHorizontalAlignment(SwingConstants.CENTER);
+                labelAccount.setForeground(Color.white);
+                labelAccount.setVerticalAlignment(SwingConstants.TOP);
 
-                //---- kButton7 ----
-                kButton7.setText("Administr\u00e1tor");
-                kButton7.setkBorderRadius(0);
-                kButton7.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                kButton7.setkEndColor(new Color(37, 43, 43));
-                kButton7.setkStartColor(new Color(37, 43, 43));
-                kButton7.setBorder(null);
-                kButton7.setkHoverEndColor(Color.gray);
-                kButton7.setkHoverStartColor(new Color(37, 43, 43));
-                kButton7.setkForeGround(new Color(137, 238, 202));
+                //---- btnAdmin ----
+                btnAdmin.setText("Administr\u00e1tor");
+                btnAdmin.setkBorderRadius(0);
+                btnAdmin.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnAdmin.setkEndColor(new Color(37, 43, 43));
+                btnAdmin.setkStartColor(new Color(37, 43, 43));
+                btnAdmin.setBorder(null);
+                btnAdmin.setkHoverEndColor(Color.gray);
+                btnAdmin.setkHoverStartColor(new Color(37, 43, 43));
+                btnAdmin.setkForeGround(new Color(137, 238, 202));
 
-                GroupLayout kGradientPanel1Layout = new GroupLayout(kGradientPanel1);
-                kGradientPanel1.setLayout(kGradientPanel1Layout);
-                kGradientPanel1Layout.setHorizontalGroup(
-                    kGradientPanel1Layout.createParallelGroup()
-                        .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                GroupLayout panelMenuLayout = new GroupLayout(panelMenu);
+                panelMenu.setLayout(panelMenuLayout);
+                panelMenuLayout.setHorizontalGroup(
+                    panelMenuLayout.createParallelGroup()
+                        .addGroup(panelMenuLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addGroup(kGradientPanel1Layout.createParallelGroup()
-                                .addComponent(label1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(label2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(label3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(panelMenuLayout.createParallelGroup()
+                                .addComponent(labelIcon, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelUsername, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelAccount, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addContainerGap())
-                        .addComponent(kButton1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(kButton2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(kButton3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(kButton4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(kButton5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(kButton6, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                        .addComponent(btnObjednat, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMojeObjed, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBurza, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUcet, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnZmenitCislo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnOdhlasitSa, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
                             .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(kButton7, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAdmin, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE))
                 );
-                kGradientPanel1Layout.setVerticalGroup(
-                    kGradientPanel1Layout.createParallelGroup()
-                        .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                panelMenuLayout.setVerticalGroup(
+                    panelMenuLayout.createParallelGroup()
+                        .addGroup(panelMenuLayout.createSequentialGroup()
                             .addGap(29, 29, 29)
-                            .addComponent(label1)
+                            .addComponent(labelIcon)
                             .addGap(0, 0, 0)
-                            .addComponent(label2)
+                            .addComponent(labelUsername)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(label3)
+                            .addComponent(labelAccount)
                             .addGap(41, 41, 41)
-                            .addComponent(kButton1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnObjednat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(kButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMojeObjed, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(kButton3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBurza, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(kButton4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUcet, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(kButton5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnZmenitCislo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(kButton6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnOdhlasitSa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                            .addComponent(kButton7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAdmin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
                 );
             }
-            splitPane1.setLeftComponent(kGradientPanel1);
+            splitPane1.setLeftComponent(panelMenu);
 
-            //======== kGradientPanel2 ========
+            //======== panelContent ========
             {
-                kGradientPanel2.setkEndColor(new Color(192, 248, 213));
-                kGradientPanel2.setkStartColor(new Color(115, 224, 255));
-                kGradientPanel2.setkBorderRadius(0);
+                panelContent.setkEndColor(new Color(192, 248, 213));
+                panelContent.setkStartColor(new Color(115, 224, 255));
+                panelContent.setkBorderRadius(0);
 
-                GroupLayout kGradientPanel2Layout = new GroupLayout(kGradientPanel2);
-                kGradientPanel2.setLayout(kGradientPanel2Layout);
-                kGradientPanel2Layout.setHorizontalGroup(
-                    kGradientPanel2Layout.createParallelGroup()
+                GroupLayout panelContentLayout = new GroupLayout(panelContent);
+                panelContent.setLayout(panelContentLayout);
+                panelContentLayout.setHorizontalGroup(
+                    panelContentLayout.createParallelGroup()
                         .addGap(0, 528, Short.MAX_VALUE)
                 );
-                kGradientPanel2Layout.setVerticalGroup(
-                    kGradientPanel2Layout.createParallelGroup()
+                panelContentLayout.setVerticalGroup(
+                    panelContentLayout.createParallelGroup()
                         .addGap(0, 538, Short.MAX_VALUE)
                 );
             }
-            splitPane1.setRightComponent(kGradientPanel2);
+            splitPane1.setRightComponent(panelContent);
         }
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
@@ -248,17 +248,17 @@ public class UserInterface extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
     private JSplitPane splitPane1;
-    private KGradientPanel kGradientPanel1;
-    private JLabel label1;
-    private JLabel label2;
-    private KButton kButton1;
-    private KButton kButton2;
-    private KButton kButton3;
-    private KButton kButton4;
-    private KButton kButton5;
-    private KButton kButton6;
-    private JLabel label3;
-    private KButton kButton7;
-    private KGradientPanel kGradientPanel2;
+    private KGradientPanel panelMenu;
+    private JLabel labelIcon;
+    private JLabel labelUsername;
+    private KButton btnObjednat;
+    private KButton btnMojeObjed;
+    private KButton btnBurza;
+    private KButton btnUcet;
+    private KButton btnZmenitCislo;
+    private KButton btnOdhlasitSa;
+    private JLabel labelAccount;
+    private KButton btnAdmin;
+    private KGradientPanel panelContent;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
