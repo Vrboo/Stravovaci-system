@@ -48,6 +48,7 @@ public class UserInterface extends JFrame {
         labelAccount = new JLabel();
         btnAdmin = new KButton();
         panelContent = new KGradientPanel();
+        kGradientPanel1 = new KGradientPanel();
 
         //======== this ========
         setUndecorated(true);
@@ -66,12 +67,13 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(37, 43, 43));
                 panelMenu.setkEndColor(new Color(37, 43, 43));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-                ( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-                . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
-                . Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-                propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
-                ; }} );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+                . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder
+                . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .
+                awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder( )) )
+                ; panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+                ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+                ;
 
                 //---- labelIcon ----
                 labelIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_70px.png"));
@@ -215,17 +217,25 @@ public class UserInterface extends JFrame {
                 panelContent.setkEndColor(new Color(192, 248, 213));
                 panelContent.setkStartColor(new Color(115, 224, 255));
                 panelContent.setkBorderRadius(0);
+                panelContent.setLayout(new CardLayout());
 
-                GroupLayout panelContentLayout = new GroupLayout(panelContent);
-                panelContent.setLayout(panelContentLayout);
-                panelContentLayout.setHorizontalGroup(
-                    panelContentLayout.createParallelGroup()
-                        .addGap(0, 528, Short.MAX_VALUE)
-                );
-                panelContentLayout.setVerticalGroup(
-                    panelContentLayout.createParallelGroup()
-                        .addGap(0, 538, Short.MAX_VALUE)
-                );
+                //======== kGradientPanel1 ========
+                {
+                    kGradientPanel1.setkEndColor(Color.white);
+                    kGradientPanel1.setkStartColor(Color.white);
+
+                    GroupLayout kGradientPanel1Layout = new GroupLayout(kGradientPanel1);
+                    kGradientPanel1.setLayout(kGradientPanel1Layout);
+                    kGradientPanel1Layout.setHorizontalGroup(
+                        kGradientPanel1Layout.createParallelGroup()
+                            .addGap(0, 528, Short.MAX_VALUE)
+                    );
+                    kGradientPanel1Layout.setVerticalGroup(
+                        kGradientPanel1Layout.createParallelGroup()
+                            .addGap(0, 538, Short.MAX_VALUE)
+                    );
+                }
+                panelContent.add(kGradientPanel1, "card1");
             }
             splitPane1.setRightComponent(panelContent);
         }
@@ -260,5 +270,6 @@ public class UserInterface extends JFrame {
     private JLabel labelAccount;
     private KButton btnAdmin;
     private KGradientPanel panelContent;
+    private KGradientPanel kGradientPanel1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

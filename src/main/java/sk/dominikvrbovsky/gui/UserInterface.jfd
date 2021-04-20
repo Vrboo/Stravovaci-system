@@ -126,14 +126,21 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "left"
 				} )
-				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {space :0:528:x}"
-					"$verticalGroup": "par l {space :0:538:x}"
-				} ) {
+				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
 					name: "panelContent"
 					"kEndColor": new java.awt.Color( 192, 248, 213, 255 )
 					"kStartColor": new java.awt.Color( 115, 224, 255, 255 )
 					"kBorderRadius": 0
+					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {space :0:528:x}"
+						"$verticalGroup": "par l {space :0:538:x}"
+					} ) {
+						name: "kGradientPanel1"
+						"kEndColor": sfield java.awt.Color white
+						"kStartColor": sfield java.awt.Color white
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "card1"
+					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "right"
 				} )
