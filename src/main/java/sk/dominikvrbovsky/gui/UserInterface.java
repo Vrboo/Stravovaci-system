@@ -33,9 +33,10 @@ public class UserInterface extends JFrame {
         this.cardLayout = (CardLayout)(panelContent.getLayout());
         this.cardLayoutObjednat = (CardLayout)(panelObjednatContent.getLayout()); 
         
-        //labelUsername.setText(user.getFullName());
+        labelUsername.setText(user.getFullName());
         labelAccount.setText("Stav účtu: " + userAccount + "€");
 
+        btnObjednat.setSelected(true);
 
     }
 
@@ -138,12 +139,13 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
-                .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER ,javax
-                . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,
-                12 ) ,java . awt. Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans
-                .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e.
-                getPropertyName () ) )throw new RuntimeException( ) ;} } );
+                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
+                .swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing
+                .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
+                Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
+                ),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
+                public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName(
+                )))throw new RuntimeException();}});
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -162,7 +164,7 @@ public class UserInterface extends JFrame {
                 btnObjednat.setkEndColor(new Color(55, 55, 55));
                 btnObjednat.setkStartColor(new Color(55, 55, 55));
                 btnObjednat.setBorder(null);
-                btnObjednat.setkHoverEndColor(new Color(50, 187, 186));
+                btnObjednat.setkHoverEndColor(Color.gray);
                 btnObjednat.setkHoverStartColor(new Color(55, 55, 55));
                 btnObjednat.setkHoverForeGround(Color.white);
                 btnObjednat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -179,7 +181,7 @@ public class UserInterface extends JFrame {
                 btnMojeObjed.setkEndColor(new Color(55, 55, 55));
                 btnMojeObjed.setkStartColor(new Color(55, 55, 55));
                 btnMojeObjed.setBorder(null);
-                btnMojeObjed.setkHoverEndColor(new Color(50, 187, 186));
+                btnMojeObjed.setkHoverEndColor(Color.gray);
                 btnMojeObjed.setkHoverStartColor(new Color(55, 55, 55));
                 btnMojeObjed.setkHoverForeGround(Color.white);
                 btnMojeObjed.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -196,7 +198,7 @@ public class UserInterface extends JFrame {
                 btnBurza.setkEndColor(new Color(55, 55, 55));
                 btnBurza.setkStartColor(new Color(55, 55, 55));
                 btnBurza.setBorder(null);
-                btnBurza.setkHoverEndColor(new Color(50, 187, 186));
+                btnBurza.setkHoverEndColor(Color.gray);
                 btnBurza.setkHoverStartColor(new Color(55, 55, 55));
                 btnBurza.setkHoverForeGround(Color.white);
                 btnBurza.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -213,7 +215,7 @@ public class UserInterface extends JFrame {
                 btnUcet.setkEndColor(new Color(55, 55, 55));
                 btnUcet.setkStartColor(new Color(55, 55, 55));
                 btnUcet.setBorder(null);
-                btnUcet.setkHoverEndColor(new Color(50, 187, 186));
+                btnUcet.setkHoverEndColor(Color.gray);
                 btnUcet.setkHoverStartColor(new Color(55, 55, 55));
                 btnUcet.setkHoverForeGround(Color.white);
                 btnUcet.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -230,7 +232,7 @@ public class UserInterface extends JFrame {
                 btnZmenitHeslo.setkEndColor(new Color(55, 55, 55));
                 btnZmenitHeslo.setkStartColor(new Color(55, 55, 55));
                 btnZmenitHeslo.setBorder(null);
-                btnZmenitHeslo.setkHoverEndColor(new Color(50, 187, 186));
+                btnZmenitHeslo.setkHoverEndColor(Color.gray);
                 btnZmenitHeslo.setkHoverStartColor(new Color(55, 55, 55));
                 btnZmenitHeslo.setkHoverForeGround(Color.white);
                 btnZmenitHeslo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -247,7 +249,7 @@ public class UserInterface extends JFrame {
                 btnOdhlasitSa.setkEndColor(new Color(55, 55, 55));
                 btnOdhlasitSa.setkStartColor(new Color(55, 55, 55));
                 btnOdhlasitSa.setBorder(null);
-                btnOdhlasitSa.setkHoverEndColor(new Color(50, 187, 186));
+                btnOdhlasitSa.setkHoverEndColor(Color.gray);
                 btnOdhlasitSa.setkHoverStartColor(new Color(55, 55, 55));
                 btnOdhlasitSa.setkHoverForeGround(Color.white);
                 btnOdhlasitSa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -272,8 +274,12 @@ public class UserInterface extends JFrame {
                 btnAdmin.setkStartColor(new Color(55, 55, 55));
                 btnAdmin.setBorder(null);
                 btnAdmin.setkHoverEndColor(Color.gray);
-                btnAdmin.setkHoverStartColor(new Color(37, 43, 43));
-                btnAdmin.setkForeGround(new Color(137, 238, 202));
+                btnAdmin.setkHoverStartColor(new Color(55, 55, 55));
+                btnAdmin.setkForeGround(Color.lightGray);
+                btnAdmin.setkIndicatorThickness(5);
+                btnAdmin.setkHoverForeGround(Color.red);
+                btnAdmin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                btnAdmin.setkSelectedColor(new Color(67, 67, 67));
                 btnAdmin.addActionListener(e -> btnAdminActionPerformed());
 
                 GroupLayout panelMenuLayout = new GroupLayout(panelMenu);
@@ -357,8 +363,8 @@ public class UserInterface extends JFrame {
                             //---- label8 ----
                             label8.setText("20. janu\u00e1r 2021, utorok");
                             label8.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
-                            label8.setForeground(new Color(70, 70, 70));
                             label8.setHorizontalAlignment(SwingConstants.LEFT);
+                            label8.setForeground(new Color(70, 70, 70));
 
                             GroupLayout panelObjednatMenuLayout = new GroupLayout(panelObjednatMenu);
                             panelObjednatMenu.setLayout(panelObjednatMenuLayout);
