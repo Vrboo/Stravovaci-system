@@ -17,8 +17,8 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"dividerLocation": 225
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp btnObjednat::l:::x, comp btnMojeObjed::l:::x, comp btnBurza::l:::x, comp btnUcet::l:::x, comp btnZmenitHeslo::l:::x, comp btnOdhlasitSa::l:::x, comp btnAdmin::t:p:225:p, seq l {space :::p, par l {comp labelIcon::t:::x, comp labelUsername::l:::x, comp labelAccount::l:::x}, space :::p}}"
-					"$verticalGroup": "par l {seq l {space :p:19:p, comp labelIcon:::p::p, space :0:0:p, comp labelUsername:::p::p, space :::p, comp labelAccount:::p::p, space :p:34:p, comp btnObjednat:::p::p, space :0:0:p, comp btnMojeObjed:::p::p, space :0:0:p, comp btnBurza:::p::p, space :0:0:p, comp btnUcet:::p::p, space :0:0:p, comp btnZmenitHeslo:::p::p, space :0:0:p, comp btnOdhlasitSa:::p::p, space ::12:x, comp btnAdmin:::p::p, space :p:17:p}}"
+					"$horizontalGroup": "par l {comp btnObjednat::l:::x, comp btnMojeObjed::l:::x, comp btnBurza::l:::x, comp btnUcet::l:::x, comp btnZmenitHeslo::l:::x, comp btnOdhlasitSa::l:::x, comp btnAdmin::t:p:225:p, seq {space :::p, par l {comp labelUsername::l:::x, comp labelAccount::l:::x, comp labelIcon::l:::x}, space :::p}}"
+					"$verticalGroup": "par l {seq l {space :p:17:p, comp labelIcon:::p::p, space :0:0:p, comp labelUsername:::p::p, space :::p, comp labelAccount:::p::p, space :p:34:p, comp btnObjednat:::p::p, space :0:0:p, comp btnMojeObjed:::p::p, space :0:0:p, comp btnBurza:::p::p, space :0:0:p, comp btnUcet:::p::p, space :0:0:p, comp btnZmenitHeslo:::p::p, space :0:0:p, comp btnOdhlasitSa:::p::p, space ::14:x, comp btnAdmin:::p::p, space :p:17:p}}"
 				} ) {
 					name: "panelMenu"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -27,8 +27,8 @@ new FormModel {
 					"kEndColor": new java.awt.Color( 55, 55, 55, 255 )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "labelIcon"
-						"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_add_user_male_85px_1.png" )
 						"horizontalAlignment": 0
+						"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_85px_1.png" )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "labelUsername"
@@ -45,8 +45,14 @@ new FormModel {
 						"kEndColor": &Color1 new java.awt.Color( 55, 55, 55, 255 )
 						"kStartColor": &Color2 new java.awt.Color( 55, 55, 55, 255 )
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": &Color3 new java.awt.Color( 37, 43, 43, 255 )
+						"kHoverEndColor": &Color3 new java.awt.Color( 50, 187, 186, 255 )
+						"kHoverStartColor": &Color4 new java.awt.Color( 55, 55, 55, 255 )
+						"kHoverForeGround": sfield java.awt.Color white
+						"cursor": &Cursor0 new java.awt.Cursor( 12 )
+						"kAllowTab": true
+						"kSelectedColor": &Color5 new java.awt.Color( 67, 67, 67, 255 )
+						"kIndicatorColor": &Color6 new java.awt.Color( 50, 187, 186, 255 )
+						"kIndicatorThickness": 5
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObjednatActionPerformed", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
@@ -57,8 +63,14 @@ new FormModel {
 						"kEndColor": #Color1
 						"kStartColor": #Color2
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": #Color3
+						"kHoverEndColor": #Color3
+						"kHoverStartColor": #Color4
+						"kHoverForeGround": sfield java.awt.Color white
+						"cursor": #Cursor0
+						"kAllowTab": true
+						"kSelectedColor": #Color5
+						"kIndicatorColor": #Color6
+						"kIndicatorThickness": 5
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnMojeObjedActionPerformed", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
@@ -69,8 +81,14 @@ new FormModel {
 						"kEndColor": #Color1
 						"kStartColor": #Color2
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": #Color3
+						"kHoverEndColor": #Color3
+						"kHoverStartColor": #Color4
+						"kHoverForeGround": sfield java.awt.Color white
+						"cursor": #Cursor0
+						"kAllowTab": true
+						"kSelectedColor": #Color5
+						"kIndicatorColor": #Color6
+						"kIndicatorThickness": 5
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnBurzaActionPerformed", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
@@ -81,8 +99,14 @@ new FormModel {
 						"kEndColor": #Color1
 						"kStartColor": #Color2
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": #Color3
+						"kHoverEndColor": #Color3
+						"kHoverStartColor": #Color4
+						"kHoverForeGround": sfield java.awt.Color white
+						"cursor": #Cursor0
+						"kAllowTab": true
+						"kSelectedColor": #Color5
+						"kIndicatorColor": #Color6
+						"kIndicatorThickness": 5
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnUcetActionPerformed", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
@@ -93,8 +117,14 @@ new FormModel {
 						"kEndColor": #Color1
 						"kStartColor": #Color2
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": #Color3
+						"kHoverEndColor": #Color3
+						"kHoverStartColor": #Color4
+						"kHoverForeGround": sfield java.awt.Color white
+						"cursor": #Cursor0
+						"kAllowTab": true
+						"kSelectedColor": #Color5
+						"kIndicatorColor": #Color6
+						"kIndicatorThickness": 5
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnZmenitCisloActionPerformed", false ) )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
@@ -105,8 +135,14 @@ new FormModel {
 						"kEndColor": #Color1
 						"kStartColor": #Color2
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": #Color3
+						"kHoverEndColor": #Color3
+						"kHoverStartColor": #Color4
+						"kHoverForeGround": sfield java.awt.Color white
+						"cursor": #Cursor0
+						"kAllowTab": true
+						"kSelectedColor": #Color5
+						"kIndicatorColor": #Color6
+						"kIndicatorThickness": 5
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnOdhlasitSaActionPerformed", false ) )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -126,7 +162,7 @@ new FormModel {
 						"kStartColor": #Color2
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kHoverEndColor": sfield java.awt.Color gray
-						"kHoverStartColor": #Color3
+						"kHoverStartColor": new java.awt.Color( 37, 43, 43, 255 )
 						"kForeGround": new java.awt.Color( 137, 238, 202, 255 )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnAdminActionPerformed", false ) )
 					} )
@@ -147,7 +183,7 @@ new FormModel {
 							name: "splitPane2"
 							"orientation": 0
 							"dividerSize": 0
-							"dividerLocation": 170
+							"dividerLocation": 175
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq l {space :p:36:p, par l:::p {comp label1:::::x, comp label8:::p:378:p}, space ::194:x}}"
@@ -158,18 +194,19 @@ new FormModel {
 								"kBorderRadius": 0
 								"kStartColor": new java.awt.Color( 38, 184, 190, 255 )
 								"kEndColor": new java.awt.Color( 150, 223, 141, 255 )
+								"kGradientFocus": 600
 								add( new FormComponent( "javax.swing.JLabel" ) {
 									name: "label1"
 									"text": "Stravovací systém"
 									"font": new java.awt.Font( "Yu Gothic UI", 1, 45 )
 									"horizontalAlignment": 2
-									"foreground": &Color4 new java.awt.Color( 70, 70, 70, 255 )
+									"foreground": &Color7 new java.awt.Color( 70, 70, 70, 255 )
 								} )
 								add( new FormComponent( "javax.swing.JLabel" ) {
 									name: "label8"
 									"text": "20. január 2021, utorok"
 									"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
-									"foreground": #Color4
+									"foreground": #Color7
 									"horizontalAlignment": 2
 								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {

@@ -138,17 +138,16 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
-                .swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing
-                .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
-                Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
-                ),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
-                public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName(
-                )))throw new RuntimeException();}});
+                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
+                .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER ,javax
+                . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,
+                12 ) ,java . awt. Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans
+                .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e.
+                getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
                 //---- labelIcon ----
-                labelIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_add_user_male_85px_1.png"));
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
+                labelIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_85px_1.png"));
 
                 //---- labelUsername ----
                 labelUsername.setHorizontalAlignment(SwingConstants.CENTER);
@@ -163,8 +162,14 @@ public class UserInterface extends JFrame {
                 btnObjednat.setkEndColor(new Color(55, 55, 55));
                 btnObjednat.setkStartColor(new Color(55, 55, 55));
                 btnObjednat.setBorder(null);
-                btnObjednat.setkHoverEndColor(Color.gray);
-                btnObjednat.setkHoverStartColor(new Color(37, 43, 43));
+                btnObjednat.setkHoverEndColor(new Color(50, 187, 186));
+                btnObjednat.setkHoverStartColor(new Color(55, 55, 55));
+                btnObjednat.setkHoverForeGround(Color.white);
+                btnObjednat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                btnObjednat.setkAllowTab(true);
+                btnObjednat.setkSelectedColor(new Color(67, 67, 67));
+                btnObjednat.setkIndicatorColor(new Color(50, 187, 186));
+                btnObjednat.setkIndicatorThickness(5);
                 btnObjednat.addActionListener(e -> btnObjednatActionPerformed());
 
                 //---- btnMojeObjed ----
@@ -174,8 +179,14 @@ public class UserInterface extends JFrame {
                 btnMojeObjed.setkEndColor(new Color(55, 55, 55));
                 btnMojeObjed.setkStartColor(new Color(55, 55, 55));
                 btnMojeObjed.setBorder(null);
-                btnMojeObjed.setkHoverEndColor(Color.gray);
-                btnMojeObjed.setkHoverStartColor(new Color(37, 43, 43));
+                btnMojeObjed.setkHoverEndColor(new Color(50, 187, 186));
+                btnMojeObjed.setkHoverStartColor(new Color(55, 55, 55));
+                btnMojeObjed.setkHoverForeGround(Color.white);
+                btnMojeObjed.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                btnMojeObjed.setkAllowTab(true);
+                btnMojeObjed.setkSelectedColor(new Color(67, 67, 67));
+                btnMojeObjed.setkIndicatorColor(new Color(50, 187, 186));
+                btnMojeObjed.setkIndicatorThickness(5);
                 btnMojeObjed.addActionListener(e -> btnMojeObjedActionPerformed());
 
                 //---- btnBurza ----
@@ -185,8 +196,14 @@ public class UserInterface extends JFrame {
                 btnBurza.setkEndColor(new Color(55, 55, 55));
                 btnBurza.setkStartColor(new Color(55, 55, 55));
                 btnBurza.setBorder(null);
-                btnBurza.setkHoverEndColor(Color.gray);
-                btnBurza.setkHoverStartColor(new Color(37, 43, 43));
+                btnBurza.setkHoverEndColor(new Color(50, 187, 186));
+                btnBurza.setkHoverStartColor(new Color(55, 55, 55));
+                btnBurza.setkHoverForeGround(Color.white);
+                btnBurza.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                btnBurza.setkAllowTab(true);
+                btnBurza.setkSelectedColor(new Color(67, 67, 67));
+                btnBurza.setkIndicatorColor(new Color(50, 187, 186));
+                btnBurza.setkIndicatorThickness(5);
                 btnBurza.addActionListener(e -> btnBurzaActionPerformed());
 
                 //---- btnUcet ----
@@ -196,8 +213,14 @@ public class UserInterface extends JFrame {
                 btnUcet.setkEndColor(new Color(55, 55, 55));
                 btnUcet.setkStartColor(new Color(55, 55, 55));
                 btnUcet.setBorder(null);
-                btnUcet.setkHoverEndColor(Color.gray);
-                btnUcet.setkHoverStartColor(new Color(37, 43, 43));
+                btnUcet.setkHoverEndColor(new Color(50, 187, 186));
+                btnUcet.setkHoverStartColor(new Color(55, 55, 55));
+                btnUcet.setkHoverForeGround(Color.white);
+                btnUcet.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                btnUcet.setkAllowTab(true);
+                btnUcet.setkSelectedColor(new Color(67, 67, 67));
+                btnUcet.setkIndicatorColor(new Color(50, 187, 186));
+                btnUcet.setkIndicatorThickness(5);
                 btnUcet.addActionListener(e -> btnUcetActionPerformed());
 
                 //---- btnZmenitHeslo ----
@@ -207,8 +230,14 @@ public class UserInterface extends JFrame {
                 btnZmenitHeslo.setkEndColor(new Color(55, 55, 55));
                 btnZmenitHeslo.setkStartColor(new Color(55, 55, 55));
                 btnZmenitHeslo.setBorder(null);
-                btnZmenitHeslo.setkHoverEndColor(Color.gray);
-                btnZmenitHeslo.setkHoverStartColor(new Color(37, 43, 43));
+                btnZmenitHeslo.setkHoverEndColor(new Color(50, 187, 186));
+                btnZmenitHeslo.setkHoverStartColor(new Color(55, 55, 55));
+                btnZmenitHeslo.setkHoverForeGround(Color.white);
+                btnZmenitHeslo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                btnZmenitHeslo.setkAllowTab(true);
+                btnZmenitHeslo.setkSelectedColor(new Color(67, 67, 67));
+                btnZmenitHeslo.setkIndicatorColor(new Color(50, 187, 186));
+                btnZmenitHeslo.setkIndicatorThickness(5);
                 btnZmenitHeslo.addActionListener(e -> btnZmenitCisloActionPerformed());
 
                 //---- btnOdhlasitSa ----
@@ -218,8 +247,14 @@ public class UserInterface extends JFrame {
                 btnOdhlasitSa.setkEndColor(new Color(55, 55, 55));
                 btnOdhlasitSa.setkStartColor(new Color(55, 55, 55));
                 btnOdhlasitSa.setBorder(null);
-                btnOdhlasitSa.setkHoverEndColor(Color.gray);
-                btnOdhlasitSa.setkHoverStartColor(new Color(37, 43, 43));
+                btnOdhlasitSa.setkHoverEndColor(new Color(50, 187, 186));
+                btnOdhlasitSa.setkHoverStartColor(new Color(55, 55, 55));
+                btnOdhlasitSa.setkHoverForeGround(Color.white);
+                btnOdhlasitSa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                btnOdhlasitSa.setkAllowTab(true);
+                btnOdhlasitSa.setkSelectedColor(new Color(67, 67, 67));
+                btnOdhlasitSa.setkIndicatorColor(new Color(50, 187, 186));
+                btnOdhlasitSa.setkIndicatorThickness(5);
                 btnOdhlasitSa.addActionListener(e -> btnOdhlasitSaActionPerformed());
 
                 //---- labelAccount ----
@@ -255,15 +290,15 @@ public class UserInterface extends JFrame {
                         .addGroup(panelMenuLayout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(panelMenuLayout.createParallelGroup()
-                                .addComponent(labelIcon, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(labelUsername, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelAccount, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(labelAccount, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelIcon, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addContainerGap())
                 );
                 panelMenuLayout.setVerticalGroup(
                     panelMenuLayout.createParallelGroup()
                         .addGroup(panelMenuLayout.createSequentialGroup()
-                            .addGap(19, 19, 19)
+                            .addGap(17, 17, 17)
                             .addComponent(labelIcon)
                             .addGap(0, 0, 0)
                             .addComponent(labelUsername)
@@ -281,7 +316,7 @@ public class UserInterface extends JFrame {
                             .addComponent(btnZmenitHeslo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(btnOdhlasitSa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                             .addComponent(btnAdmin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(17, 17, 17))
                 );
@@ -302,7 +337,7 @@ public class UserInterface extends JFrame {
                     {
                         splitPane2.setOrientation(JSplitPane.VERTICAL_SPLIT);
                         splitPane2.setDividerSize(0);
-                        splitPane2.setDividerLocation(170);
+                        splitPane2.setDividerLocation(175);
                         splitPane2.setBorder(null);
 
                         //======== panelObjednatMenu ========
@@ -311,6 +346,7 @@ public class UserInterface extends JFrame {
                             panelObjednatMenu.setkBorderRadius(0);
                             panelObjednatMenu.setkStartColor(new Color(38, 184, 190));
                             panelObjednatMenu.setkEndColor(new Color(150, 223, 141));
+                            panelObjednatMenu.setkGradientFocus(600);
 
                             //---- label1 ----
                             label1.setText("Stravovac\u00ed syst\u00e9m");
