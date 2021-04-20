@@ -187,11 +187,11 @@ new FormModel {
 							name: "splitPane2"
 							"orientation": 0
 							"dividerSize": 0
-							"dividerLocation": 175
+							"dividerLocation": 160
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-								"$horizontalGroup": "par l {seq l {space :p:35:p, par l {comp labelStravovaciSystem:::p:378:p, comp labelDatum:::p:378:p}, space ::168:x, comp labelXObjednat:::p:27:p}}"
-								"$verticalGroup": "par l {seq {par l {comp labelXObjednat:::p:28:p, seq l {space :p:14:p, comp labelStravovaciSystem:::p:76:p}}, space :0:0:p, comp labelDatum:::p:25:p, space ::60:x}}"
+								"$horizontalGroup": "par t {seq {space :p:33:p, par l {comp labelStravovaciSystem:::p:378:p, comp labelDatum:::p:378:p}, space ::170:x, comp labelXObjednat:::p:27:p}}"
+								"$verticalGroup": "par l {seq {par l {comp labelXObjednat:::p:28:p, seq l {space :p:18:p, comp labelStravovaciSystem:::p:76:p, space :0:0:p, comp labelDatum:::p:25:p}}, space :::x}}"
 							} ) {
 								name: "panelObjednatMenu"
 								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -228,18 +228,160 @@ new FormModel {
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
 								name: "panelObjednatContent"
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-									"$horizontalGroup": "par l {space :0:608:x}"
-									"$verticalGroup": "par l {space :0:363:x}"
+									"$horizontalGroup": "par l {seq l {space :p:41:p, par l:::p {comp label1::::217:x, comp label11::l::217:x, comp label15::l::217:x, comp label34::l::217:x, comp label38::t::217:x}, space :0:0:p, par t {par t:t::p {comp label12::t:::x, comp label16::t:::x, comp label33::t:p:95:p, comp label8::t:::x}, comp label37::t:p:95:p}, space :0:0:p, par l {comp label9::t:p:61:p, par l:l {comp label13::t:p:61:p, par l:l {comp label17::t:p:61:p, par t:l::p {comp label32:::::x, comp label36:::p:61:p}}}}, space :0:0:p, par t:::p {comp label31::l:::x, comp label18::l:::x, comp label14::l:::x, comp label10::l:::x, comp label35:::p:42:p}, space ::152:x}}"
+									"$verticalGroup": "par l {seq {space :p:43:p, par l {seq l {par b {comp label9::b:p:29:p, comp label10::b:p:29:p}, space :::p, par b {comp label13::b:p:29:p, comp label14::b:p:29:p}, space :0:0:p, par b {comp label17::b:p:29:p, comp label18::b:p:29:p}, space :0:0:p, par b {comp label32::b:p:29:p, comp label31::b:p:29:p}, space :0:0:p, par b {comp label36::b:p:29:p, comp label37::b:p:29:p, comp label35::b:p:29:p, comp label38::b:p:29:p}}, seq l {space :p:35:p, comp label12:::p:29:p, space :0:0:p, comp label16:::p:29:p, space :0:0:p, comp label33:::p:29:p}, seq {par b {comp label1::b:p:29:p, comp label8::b:p:29:p}, space :::p, comp label11:::p:29:p, space :0:0:p, comp label15:::p:29:p, space :0:0:p, comp label34:::p:29:p}}, space ::184:x}}"
 								} ) {
 									name: "panelObjednatObed"
 									"kEndColor": sfield java.awt.Color white
 									"kStartColor": sfield java.awt.Color white
+									"font": new java.awt.Font( "Yu Gothic UI", 1, 14 )
+									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label1"
+										"text": "Obed"
+										"horizontalAlignment": 0
+										"font": &Font1 new java.awt.Font( "Yu Gothic UI", 1, 17 )
+										"border": &MatteBorder0 new javax.swing.border.MatteBorder( 0, 0, 0, 0, sfield java.awt.Color black )
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label8"
+										"text": "Takeaway"
+										"horizontalAlignment": 0
+										"font": #Font1
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label9"
+										"text": "Kapacita"
+										"horizontalAlignment": 0
+										"font": #Font1
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label10"
+										"text": "Cena"
+										"horizontalAlignment": 0
+										"font": #Font1
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label11"
+										"text": "Kurací rezeň + zemiaková kaša  "
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label12"
+										"text": "Nie"
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label13"
+										"text": "78"
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label14"
+										"text": "7.45"
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label15"
+										"text": "Kurací rezeň + zemiaková kaša  "
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label16"
+										"text": "Áno"
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label17"
+										"text": "78"
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label18"
+										"text": "7.45"
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label31"
+										"text": "7.45"
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label32"
+										"text": "78"
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label33"
+										"text": "Nie"
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label34"
+										"text": "Kurací rezeň + zemiaková kaša  "
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label35"
+										"text": "7.45"
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label36"
+										"text": "78"
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label37"
+										"text": "Áno"
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label38"
+										"text": "Kurací rezeň + zemiaková kaša  "
+										"font": #Font1
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									} )
 								}, new FormLayoutConstraints( class java.lang.String ) {
 									"value": "obed"
 								} )
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 									"$horizontalGroup": "par l {space :0:608:x}"
-									"$verticalGroup": "par l {space :0:363:x}"
+									"$verticalGroup": "par l {space :0:378:x}"
 								} ) {
 									name: "panelObjednatRanajky"
 									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE

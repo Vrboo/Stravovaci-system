@@ -5,6 +5,8 @@
 package sk.dominikvrbovsky.gui;
 
 import java.awt.event.*;
+import javax.swing.border.*;
+import javax.swing.table.*;
 import keeptoo.*;
 import sk.dominikvrbovsky.User;
 import sk.dominikvrbovsky.utilities.Utilities;
@@ -93,17 +95,10 @@ public class UserInterface extends JFrame {
     }
 
     private void labelXObjednatMouseClicked() {
+        entityManager.close();
         System.exit(0);
     }
     
-
-//    private void btnObedActionPerformed() {
-//        cardLayoutObjednat.show(panelObjedContent, "panelObed");
-//    }
-
-//    private void btnRanajkyActionPerformed() {
-//        cardLayoutObjednat.show(panelObjedContent, "panelRanajky");
-//    } 
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -129,6 +124,26 @@ public class UserInterface extends JFrame {
         labelXObjednat = new JLabel();
         panelObjednatContent = new KGradientPanel();
         panelObjednatObed = new KGradientPanel();
+        label1 = new JLabel();
+        label8 = new JLabel();
+        label9 = new JLabel();
+        label10 = new JLabel();
+        label11 = new JLabel();
+        label12 = new JLabel();
+        label13 = new JLabel();
+        label14 = new JLabel();
+        label15 = new JLabel();
+        label16 = new JLabel();
+        label17 = new JLabel();
+        label18 = new JLabel();
+        label31 = new JLabel();
+        label32 = new JLabel();
+        label33 = new JLabel();
+        label34 = new JLabel();
+        label35 = new JLabel();
+        label36 = new JLabel();
+        label37 = new JLabel();
+        label38 = new JLabel();
         panelObjednatRanajky = new KGradientPanel();
         panelMojeObejdnavky = new KGradientPanel();
         label2 = new JLabel();
@@ -160,11 +175,12 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-                0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-                . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-                red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-                beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+                ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+                . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+                . Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+                propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+                ; }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -362,7 +378,7 @@ public class UserInterface extends JFrame {
                     {
                         splitPane2.setOrientation(JSplitPane.VERTICAL_SPLIT);
                         splitPane2.setDividerSize(0);
-                        splitPane2.setDividerLocation(175);
+                        splitPane2.setDividerLocation(160);
                         splitPane2.setBorder(null);
 
                         //======== panelObjednatMenu ========
@@ -407,13 +423,13 @@ public class UserInterface extends JFrame {
                             GroupLayout panelObjednatMenuLayout = new GroupLayout(panelObjednatMenu);
                             panelObjednatMenu.setLayout(panelObjednatMenuLayout);
                             panelObjednatMenuLayout.setHorizontalGroup(
-                                panelObjednatMenuLayout.createParallelGroup()
+                                panelObjednatMenuLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                     .addGroup(panelObjednatMenuLayout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
+                                        .addGap(33, 33, 33)
                                         .addGroup(panelObjednatMenuLayout.createParallelGroup()
                                             .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 378, GroupLayout.PREFERRED_SIZE)
                                             .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 378, GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                                         .addComponent(labelXObjednat, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
                             );
                             panelObjednatMenuLayout.setVerticalGroup(
@@ -422,11 +438,11 @@ public class UserInterface extends JFrame {
                                         .addGroup(panelObjednatMenuLayout.createParallelGroup()
                                             .addComponent(labelXObjednat, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
                                             .addGroup(panelObjednatMenuLayout.createSequentialGroup()
-                                                .addGap(14, 14, 14)
-                                                .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, 0)
-                                        .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(60, Short.MAX_VALUE))
+                                                .addGap(18, 18, 18)
+                                                .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, 0)
+                                                .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+                                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             );
                         }
                         splitPane2.setTopComponent(panelObjednatMenu);
@@ -439,16 +455,213 @@ public class UserInterface extends JFrame {
                             {
                                 panelObjednatObed.setkEndColor(Color.white);
                                 panelObjednatObed.setkStartColor(Color.white);
+                                panelObjednatObed.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
+                                panelObjednatObed.setBorder(null);
+
+                                //---- label1 ----
+                                label1.setText("Obed");
+                                label1.setHorizontalAlignment(SwingConstants.CENTER);
+                                label1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label1.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label8 ----
+                                label8.setText("Takeaway");
+                                label8.setHorizontalAlignment(SwingConstants.CENTER);
+                                label8.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label8.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label9 ----
+                                label9.setText("Kapacita");
+                                label9.setHorizontalAlignment(SwingConstants.CENTER);
+                                label9.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label9.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label10 ----
+                                label10.setText("Cena");
+                                label10.setHorizontalAlignment(SwingConstants.CENTER);
+                                label10.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label10.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label11 ----
+                                label11.setText("Kurac\u00ed reze\u0148 + zemiakov\u00e1 ka\u0161a  ");
+                                label11.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label11.setHorizontalAlignment(SwingConstants.CENTER);
+                                label11.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label12 ----
+                                label12.setText("Nie");
+                                label12.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label12.setHorizontalAlignment(SwingConstants.CENTER);
+                                label12.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label13 ----
+                                label13.setText("78");
+                                label13.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label13.setHorizontalAlignment(SwingConstants.CENTER);
+                                label13.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label14 ----
+                                label14.setText("7.45");
+                                label14.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label14.setHorizontalAlignment(SwingConstants.CENTER);
+                                label14.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label15 ----
+                                label15.setText("Kurac\u00ed reze\u0148 + zemiakov\u00e1 ka\u0161a  ");
+                                label15.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label15.setHorizontalAlignment(SwingConstants.CENTER);
+                                label15.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label16 ----
+                                label16.setText("\u00c1no");
+                                label16.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label16.setHorizontalAlignment(SwingConstants.CENTER);
+                                label16.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label17 ----
+                                label17.setText("78");
+                                label17.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label17.setHorizontalAlignment(SwingConstants.CENTER);
+                                label17.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label18 ----
+                                label18.setText("7.45");
+                                label18.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label18.setHorizontalAlignment(SwingConstants.CENTER);
+                                label18.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label31 ----
+                                label31.setText("7.45");
+                                label31.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label31.setHorizontalAlignment(SwingConstants.CENTER);
+                                label31.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label32 ----
+                                label32.setText("78");
+                                label32.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label32.setHorizontalAlignment(SwingConstants.CENTER);
+                                label32.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label33 ----
+                                label33.setText("Nie");
+                                label33.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label33.setHorizontalAlignment(SwingConstants.CENTER);
+                                label33.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label34 ----
+                                label34.setText("Kurac\u00ed reze\u0148 + zemiakov\u00e1 ka\u0161a  ");
+                                label34.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label34.setHorizontalAlignment(SwingConstants.CENTER);
+                                label34.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label35 ----
+                                label35.setText("7.45");
+                                label35.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label35.setHorizontalAlignment(SwingConstants.CENTER);
+                                label35.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label36 ----
+                                label36.setText("78");
+                                label36.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label36.setHorizontalAlignment(SwingConstants.CENTER);
+                                label36.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label37 ----
+                                label37.setText("\u00c1no");
+                                label37.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label37.setHorizontalAlignment(SwingConstants.CENTER);
+                                label37.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+
+                                //---- label38 ----
+                                label38.setText("Kurac\u00ed reze\u0148 + zemiakov\u00e1 ka\u0161a  ");
+                                label38.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label38.setHorizontalAlignment(SwingConstants.CENTER);
+                                label38.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
 
                                 GroupLayout panelObjednatObedLayout = new GroupLayout(panelObjednatObed);
                                 panelObjednatObed.setLayout(panelObjednatObedLayout);
                                 panelObjednatObedLayout.setHorizontalGroup(
                                     panelObjednatObedLayout.createParallelGroup()
-                                        .addGap(0, 608, Short.MAX_VALUE)
+                                        .addGroup(panelObjednatObedLayout.createSequentialGroup()
+                                            .addGap(41, 41, 41)
+                                            .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(label1, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                                .addComponent(label11, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                                .addComponent(label15, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                                .addComponent(label34, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                                .addComponent(label38, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
+                                            .addGap(0, 0, 0)
+                                            .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(label12, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(label16, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(label33, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(label8, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addComponent(label37, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
+                                            .addGap(0, 0, 0)
+                                            .addGroup(panelObjednatObedLayout.createParallelGroup()
+                                                .addComponent(label9, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(panelObjednatObedLayout.createParallelGroup()
+                                                    .addComponent(label13, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(panelObjednatObedLayout.createParallelGroup()
+                                                        .addComponent(label17, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                                            .addComponent(label32, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(label36, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)))))
+                                            .addGap(0, 0, 0)
+                                            .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(label31, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(label18, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(label14, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(label10, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(label35, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
+                                            .addContainerGap(152, Short.MAX_VALUE))
                                 );
                                 panelObjednatObedLayout.setVerticalGroup(
                                     panelObjednatObedLayout.createParallelGroup()
-                                        .addGap(0, 363, Short.MAX_VALUE)
+                                        .addGroup(panelObjednatObedLayout.createSequentialGroup()
+                                            .addGap(43, 43, 43)
+                                            .addGroup(panelObjednatObedLayout.createParallelGroup()
+                                                .addGroup(panelObjednatObedLayout.createSequentialGroup()
+                                                    .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(label9, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(label10, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(label13, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(label14, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+                                                    .addGap(0, 0, 0)
+                                                    .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(label17, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(label18, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+                                                    .addGap(0, 0, 0)
+                                                    .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(label32, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(label31, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+                                                    .addGap(0, 0, 0)
+                                                    .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(label36, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(label37, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(label35, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(label38, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(panelObjednatObedLayout.createSequentialGroup()
+                                                    .addGap(35, 35, 35)
+                                                    .addComponent(label12, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(0, 0, 0)
+                                                    .addComponent(label16, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(0, 0, 0)
+                                                    .addComponent(label33, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(panelObjednatObedLayout.createSequentialGroup()
+                                                    .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(label1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(label8, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(label11, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(0, 0, 0)
+                                                    .addComponent(label15, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(0, 0, 0)
+                                                    .addComponent(label34, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)))
+                                            .addContainerGap(184, Short.MAX_VALUE))
                                 );
                             }
                             panelObjednatContent.add(panelObjednatObed, "obed");
@@ -468,7 +681,7 @@ public class UserInterface extends JFrame {
                                 );
                                 panelObjednatRanajkyLayout.setVerticalGroup(
                                     panelObjednatRanajkyLayout.createParallelGroup()
-                                        .addGap(0, 363, Short.MAX_VALUE)
+                                        .addGap(0, 378, Short.MAX_VALUE)
                                 );
                             }
                             panelObjednatContent.add(panelObjednatRanajky, "ranajky");
@@ -682,6 +895,26 @@ public class UserInterface extends JFrame {
     private JLabel labelXObjednat;
     private KGradientPanel panelObjednatContent;
     private KGradientPanel panelObjednatObed;
+    private JLabel label1;
+    private JLabel label8;
+    private JLabel label9;
+    private JLabel label10;
+    private JLabel label11;
+    private JLabel label12;
+    private JLabel label13;
+    private JLabel label14;
+    private JLabel label15;
+    private JLabel label16;
+    private JLabel label17;
+    private JLabel label18;
+    private JLabel label31;
+    private JLabel label32;
+    private JLabel label33;
+    private JLabel label34;
+    private JLabel label35;
+    private JLabel label36;
+    private JLabel label37;
+    private JLabel label38;
     private KGradientPanel panelObjednatRanajky;
     private KGradientPanel panelMojeObejdnavky;
     private JLabel label2;
