@@ -190,8 +190,8 @@ new FormModel {
 							"dividerLocation": 175
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-								"$horizontalGroup": "par l {seq l {space :p:36:p, par l:::p {comp label1:::::x, comp label8:::p:378:p}, space ::194:x}}"
-								"$verticalGroup": "par l {seq l {space :p:16:p, comp label1:::p:76:p, space :0:0:p, comp label8:::p:25:p, space ::53:x}}"
+								"$horizontalGroup": "par l {seq l {space :p:35:p, par l {comp labelStravovaciSystem:::p:378:p, comp labelDatum:::p:378:p}, space ::168:x, comp labelXObjednat:::p:27:p}}"
+								"$verticalGroup": "par l {seq {par l {comp labelXObjednat:::p:28:p, seq l {space :p:14:p, comp labelStravovaciSystem:::p:76:p}}, space :0:0:p, comp labelDatum:::p:25:p, space ::60:x}}"
 							} ) {
 								name: "panelObjednatMenu"
 								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -200,18 +200,27 @@ new FormModel {
 								"kEndColor": new java.awt.Color( 150, 223, 141, 255 )
 								"kGradientFocus": 600
 								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "label1"
+									name: "labelStravovaciSystem"
 									"text": "Stravovací systém"
 									"font": new java.awt.Font( "Yu Gothic UI", 1, 45 )
 									"horizontalAlignment": 2
 									"foreground": new java.awt.Color( 70, 70, 70, 255 )
 								} )
 								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "label8"
-									"text": "20. január 2021, utorok"
-									"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
-									"horizontalAlignment": 2
+									name: "labelDatum"
+									"text": "Utorok, 20. apríl 2021"
+									"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
 									"foreground": new java.awt.Color( 70, 70, 70, 255 )
+									"horizontalAlignment": 2
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "labelXObjednat"
+									"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png" )
+									"horizontalAlignment": 0
+									"cursor": #Cursor0
+									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "labelXObjednatMouseEntered", false ) )
+									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "labelXObjednatMouseExited", false ) )
+									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "labelXObjednatMouseClicked", false ) )
 								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "left"
@@ -220,7 +229,7 @@ new FormModel {
 								name: "panelObjednatContent"
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 									"$horizontalGroup": "par l {space :0:608:x}"
-									"$verticalGroup": "par l {space :0:368:x}"
+									"$verticalGroup": "par l {space :0:363:x}"
 								} ) {
 									name: "panelObjednatObed"
 									"kEndColor": sfield java.awt.Color white
@@ -230,7 +239,7 @@ new FormModel {
 								} )
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 									"$horizontalGroup": "par l {space :0:608:x}"
-									"$verticalGroup": "par l {space :0:368:x}"
+									"$verticalGroup": "par l {space :0:363:x}"
 								} ) {
 									name: "panelObjednatRanajky"
 									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
