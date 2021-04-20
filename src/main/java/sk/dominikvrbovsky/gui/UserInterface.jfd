@@ -17,8 +17,8 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"dividerLocation": 225
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp btnObjednat::l:::x, comp btnMojeObjed::l:::x, comp btnBurza::l:::x, comp btnUcet::l:::x, comp btnZmenitHeslo::l:::x, comp btnOdhlasitSa::l:::x, seq t {space :0:0:x, comp btnAdmin:::p:225:p}, seq {space :::p, par l {comp labelIcon::t:::x, comp labelUsername::l:::x, comp labelAccount::l:::x}, space :::p}}"
-					"$verticalGroup": "par l {seq l {space :p:17:p, comp labelIcon:::p::p, space :::p, comp labelUsername:::p::p, space :::p, comp labelAccount:::p::p, space :p:47:p, comp btnObjednat:::p::p, space :0:0:p, comp btnMojeObjed:::p::p, space :0:0:p, comp btnBurza:::p::p, space :0:0:p, comp btnUcet:::p::p, space :0:0:p, comp btnZmenitHeslo:::p::p, space :0:0:p, comp btnOdhlasitSa:::p::p, space :::x, comp btnAdmin:::p::p, space :::p}}"
+					"$horizontalGroup": "par l {comp btnObjednat::l:::x, comp btnMojeObjed::l:::x, comp btnBurza::l:::x, comp btnUcet::l:::x, comp btnZmenitHeslo::l:::x, comp btnOdhlasitSa::l:::x, comp btnAdmin::t:p:225:p, seq l {space :::p, par l {comp labelIcon::t:::x, comp labelUsername::l:::x, comp labelAccount::l:::x}, space :::p}}"
+					"$verticalGroup": "par l {seq l {space :p:19:p, comp labelIcon:::p::p, space :0:0:p, comp labelUsername:::p::p, space :::p, comp labelAccount:::p::p, space :p:34:p, comp btnObjednat:::p::p, space :0:0:p, comp btnMojeObjed:::p::p, space :0:0:p, comp btnBurza:::p::p, space :0:0:p, comp btnUcet:::p::p, space :0:0:p, comp btnZmenitHeslo:::p::p, space :0:0:p, comp btnOdhlasitSa:::p::p, space ::12:x, comp btnAdmin:::p::p, space :p:17:p}}"
 				} ) {
 					name: "panelMenu"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -27,21 +27,21 @@ new FormModel {
 					"kEndColor": new java.awt.Color( 55, 55, 55, 255 )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "labelIcon"
-						"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_90px.png" )
+						"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_add_user_male_85px_1.png" )
 						"horizontalAlignment": 0
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "labelUsername"
-						"text": "Dominik Vrbovský"
 						"horizontalAlignment": 0
-						"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
+						"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 						"foreground": &Color0 new java.awt.Color( 50, 187, 186, 255 )
+						"text": "Dominik Vrbovský"
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
 						name: "btnObjednat"
 						"text": "Objednať"
 						"kBorderRadius": 0
-						"font": &Font0 new java.awt.Font( "Yu Gothic UI", 1, 16 )
+						"font": &Font0 new java.awt.Font( "Yu Gothic UI", 1, 17 )
 						"kEndColor": &Color1 new java.awt.Color( 55, 55, 55, 255 )
 						"kStartColor": &Color2 new java.awt.Color( 55, 55, 55, 255 )
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -147,11 +147,11 @@ new FormModel {
 							name: "splitPane2"
 							"orientation": 0
 							"dividerSize": 0
-							"dividerLocation": 160
+							"dividerLocation": 170
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq l {space :p:36:p, par l:::p {comp label1:::::x, comp label8:::p:378:p}, space ::194:x}}"
-								"$verticalGroup": "par l {seq l {space :p:16:p, comp label1:::p:76:p, space :0:0:p, comp label8:::p:25:p, space ::43:x}}"
+								"$verticalGroup": "par l {seq l {space :p:16:p, comp label1:::p:76:p, space :0:0:p, comp label8:::p:25:p, space ::53:x}}"
 							} ) {
 								name: "panelObjednatMenu"
 								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -179,7 +179,7 @@ new FormModel {
 								name: "panelObjednatContent"
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 									"$horizontalGroup": "par l {space :0:608:x}"
-									"$verticalGroup": "par l {space :0:384:x}"
+									"$verticalGroup": "par l {space :0:368:x}"
 								} ) {
 									name: "panelObjednatObed"
 									"kEndColor": sfield java.awt.Color white
@@ -189,7 +189,7 @@ new FormModel {
 								} )
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 									"$horizontalGroup": "par l {space :0:608:x}"
-									"$verticalGroup": "par l {space :0:384:x}"
+									"$verticalGroup": "par l {space :0:368:x}"
 								} ) {
 									name: "panelObjednatRanajky"
 									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -208,7 +208,7 @@ new FormModel {
 					} )
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 						"$horizontalGroup": "par l {seq l {space :p:225:p, comp label2:::p::p, space ::292:x}}"
-						"$verticalGroup": "par l {seq l {space :p:220:p, comp label2:::p::p, space ::308:x}}"
+						"$verticalGroup": "par l {seq l {space :p:220:p, comp label2:::p::p, space ::302:x}}"
 					} ) {
 						name: "panelMojeObejdnavky"
 						"kEndColor": sfield java.awt.Color white
@@ -222,7 +222,7 @@ new FormModel {
 					} )
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 						"$horizontalGroup": "par l {seq t {space ::296:x, comp label3:::p:114:p, space :p:198:p}}"
-						"$verticalGroup": "par l {seq l {space :p:243:p, comp label3:::p:42:p, space ::259:x}}"
+						"$verticalGroup": "par l {seq l {space :p:243:p, comp label3:::p:42:p, space ::253:x}}"
 					} ) {
 						name: "panelBurza"
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -234,7 +234,7 @@ new FormModel {
 					} )
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 						"$horizontalGroup": "par l {seq l {space :p:235:p, comp label4:::p::p, space ::349:x}}"
-						"$verticalGroup": "par l {seq t {space ::269:x, comp label4:::p::p, space :p:259:p}}"
+						"$verticalGroup": "par l {seq t {space ::263:x, comp label4:::p::p, space :p:259:p}}"
 					} ) {
 						name: "panelUcet"
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -246,7 +246,7 @@ new FormModel {
 					} )
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 						"$horizontalGroup": "par l {seq l {space :p:216:p, comp label5:::p::p, space ::323:x}}"
-						"$verticalGroup": "par l {seq l {space :p:261:p, comp label5:::p::p, space ::267:x}}"
+						"$verticalGroup": "par l {seq l {space :p:261:p, comp label5:::p::p, space ::261:x}}"
 					} ) {
 						name: "panelZmenitHeslo"
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -258,7 +258,7 @@ new FormModel {
 					} )
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 						"$horizontalGroup": "par l {seq l {space :p:231:p, comp label6:::p::p, space ::317:x}}"
-						"$verticalGroup": "par l {seq t {space ::276:x, comp label6:::p::p, space :p:252:p}}"
+						"$verticalGroup": "par l {seq t {space ::270:x, comp label6:::p::p, space :p:252:p}}"
 					} ) {
 						name: "panelOdhlasitSa"
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -270,7 +270,7 @@ new FormModel {
 					} )
 					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 						"$horizontalGroup": "par l {seq l {space :p:204:p, comp label7:::p::p, space ::331:x}}"
-						"$verticalGroup": "par l {seq t {space ::276:x, comp label7:::p::p, space :p:252:p}}"
+						"$verticalGroup": "par l {seq t {space ::270:x, comp label7:::p::p, space :p:252:p}}"
 					} ) {
 						name: "panelAdmin"
 						add( new FormComponent( "javax.swing.JLabel" ) {

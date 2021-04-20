@@ -33,7 +33,7 @@ public class UserInterface extends JFrame {
         this.cardLayout = (CardLayout)(panelContent.getLayout());
         this.cardLayoutObjednat = (CardLayout)(panelObjednatContent.getLayout()); 
         
-        labelUsername.setText(user.getFullName());
+        //labelUsername.setText(user.getFullName());
         labelAccount.setText("Stav účtu: " + userAccount + "€");
 
 
@@ -138,27 +138,28 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-                ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-                . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-                . Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-                propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-                ; }} );
+                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
+                .swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing
+                .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
+                Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
+                ),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
+                public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName(
+                )))throw new RuntimeException();}});
 
                 //---- labelIcon ----
-                labelIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_90px.png"));
+                labelIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_add_user_male_85px_1.png"));
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
 
                 //---- labelUsername ----
-                labelUsername.setText("Dominik Vrbovsk\u00fd");
                 labelUsername.setHorizontalAlignment(SwingConstants.CENTER);
-                labelUsername.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                labelUsername.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                 labelUsername.setForeground(new Color(50, 187, 186));
+                labelUsername.setText("Dominik Vrbovsk\u00fd");
 
                 //---- btnObjednat ----
                 btnObjednat.setText("Objedna\u0165");
                 btnObjednat.setkBorderRadius(0);
-                btnObjednat.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnObjednat.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                 btnObjednat.setkEndColor(new Color(55, 55, 55));
                 btnObjednat.setkStartColor(new Color(55, 55, 55));
                 btnObjednat.setBorder(null);
@@ -169,7 +170,7 @@ public class UserInterface extends JFrame {
                 //---- btnMojeObjed ----
                 btnMojeObjed.setText("Moje objedn\u00e1vky");
                 btnMojeObjed.setkBorderRadius(0);
-                btnMojeObjed.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnMojeObjed.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                 btnMojeObjed.setkEndColor(new Color(55, 55, 55));
                 btnMojeObjed.setkStartColor(new Color(55, 55, 55));
                 btnMojeObjed.setBorder(null);
@@ -180,7 +181,7 @@ public class UserInterface extends JFrame {
                 //---- btnBurza ----
                 btnBurza.setText("Burza");
                 btnBurza.setkBorderRadius(0);
-                btnBurza.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnBurza.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                 btnBurza.setkEndColor(new Color(55, 55, 55));
                 btnBurza.setkStartColor(new Color(55, 55, 55));
                 btnBurza.setBorder(null);
@@ -191,7 +192,7 @@ public class UserInterface extends JFrame {
                 //---- btnUcet ----
                 btnUcet.setText("\u00da\u010det");
                 btnUcet.setkBorderRadius(0);
-                btnUcet.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnUcet.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                 btnUcet.setkEndColor(new Color(55, 55, 55));
                 btnUcet.setkStartColor(new Color(55, 55, 55));
                 btnUcet.setBorder(null);
@@ -202,7 +203,7 @@ public class UserInterface extends JFrame {
                 //---- btnZmenitHeslo ----
                 btnZmenitHeslo.setText("Zmeni\u0165 heslo");
                 btnZmenitHeslo.setkBorderRadius(0);
-                btnZmenitHeslo.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnZmenitHeslo.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                 btnZmenitHeslo.setkEndColor(new Color(55, 55, 55));
                 btnZmenitHeslo.setkStartColor(new Color(55, 55, 55));
                 btnZmenitHeslo.setBorder(null);
@@ -213,7 +214,7 @@ public class UserInterface extends JFrame {
                 //---- btnOdhlasitSa ----
                 btnOdhlasitSa.setText("Odhl\u00e1si\u0165 sa");
                 btnOdhlasitSa.setkBorderRadius(0);
-                btnOdhlasitSa.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnOdhlasitSa.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                 btnOdhlasitSa.setkEndColor(new Color(55, 55, 55));
                 btnOdhlasitSa.setkStartColor(new Color(55, 55, 55));
                 btnOdhlasitSa.setBorder(null);
@@ -231,7 +232,7 @@ public class UserInterface extends JFrame {
                 //---- btnAdmin ----
                 btnAdmin.setText("Administr\u00e1tor");
                 btnAdmin.setkBorderRadius(0);
-                btnAdmin.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                btnAdmin.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                 btnAdmin.setkEndColor(new Color(55, 55, 55));
                 btnAdmin.setkStartColor(new Color(55, 55, 55));
                 btnAdmin.setBorder(null);
@@ -250,9 +251,7 @@ public class UserInterface extends JFrame {
                         .addComponent(btnUcet, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnZmenitHeslo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnOdhlasitSa, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(btnAdmin, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAdmin, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
                         .addGroup(panelMenuLayout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(panelMenuLayout.createParallelGroup()
@@ -264,13 +263,13 @@ public class UserInterface extends JFrame {
                 panelMenuLayout.setVerticalGroup(
                     panelMenuLayout.createParallelGroup()
                         .addGroup(panelMenuLayout.createSequentialGroup()
-                            .addGap(17, 17, 17)
+                            .addGap(19, 19, 19)
                             .addComponent(labelIcon)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addGap(0, 0, 0)
                             .addComponent(labelUsername)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(labelAccount)
-                            .addGap(47, 47, 47)
+                            .addGap(34, 34, 34)
                             .addComponent(btnObjednat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(btnMojeObjed, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -282,9 +281,9 @@ public class UserInterface extends JFrame {
                             .addComponent(btnZmenitHeslo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(btnOdhlasitSa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                             .addComponent(btnAdmin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap())
+                            .addGap(17, 17, 17))
                 );
             }
             splitPane1.setLeftComponent(panelMenu);
@@ -303,7 +302,7 @@ public class UserInterface extends JFrame {
                     {
                         splitPane2.setOrientation(JSplitPane.VERTICAL_SPLIT);
                         splitPane2.setDividerSize(0);
-                        splitPane2.setDividerLocation(160);
+                        splitPane2.setDividerLocation(170);
                         splitPane2.setBorder(null);
 
                         //======== panelObjednatMenu ========
@@ -343,7 +342,7 @@ public class UserInterface extends JFrame {
                                         .addComponent(label1, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, 0)
                                         .addComponent(label8, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(43, Short.MAX_VALUE))
+                                        .addContainerGap(53, Short.MAX_VALUE))
                             );
                         }
                         splitPane2.setTopComponent(panelObjednatMenu);
@@ -365,7 +364,7 @@ public class UserInterface extends JFrame {
                                 );
                                 panelObjednatObedLayout.setVerticalGroup(
                                     panelObjednatObedLayout.createParallelGroup()
-                                        .addGap(0, 384, Short.MAX_VALUE)
+                                        .addGap(0, 368, Short.MAX_VALUE)
                                 );
                             }
                             panelObjednatContent.add(panelObjednatObed, "obed");
@@ -385,7 +384,7 @@ public class UserInterface extends JFrame {
                                 );
                                 panelObjednatRanajkyLayout.setVerticalGroup(
                                     panelObjednatRanajkyLayout.createParallelGroup()
-                                        .addGap(0, 384, Short.MAX_VALUE)
+                                        .addGap(0, 368, Short.MAX_VALUE)
                                 );
                             }
                             panelObjednatContent.add(panelObjednatRanajky, "ranajky");
@@ -428,7 +427,7 @@ public class UserInterface extends JFrame {
                             .addGroup(panelMojeObejdnavkyLayout.createSequentialGroup()
                                 .addGap(220, 220, 220)
                                 .addComponent(label2)
-                                .addContainerGap(308, Short.MAX_VALUE))
+                                .addContainerGap(302, Short.MAX_VALUE))
                     );
                 }
                 panelContent.add(panelMojeObejdnavky, "mojeObjednavky");
@@ -453,7 +452,7 @@ public class UserInterface extends JFrame {
                             .addGroup(panelBurzaLayout.createSequentialGroup()
                                 .addGap(243, 243, 243)
                                 .addComponent(label3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(259, Short.MAX_VALUE))
+                                .addContainerGap(253, Short.MAX_VALUE))
                     );
                 }
                 panelContent.add(panelBurza, "burza");
@@ -476,7 +475,7 @@ public class UserInterface extends JFrame {
                     panelUcetLayout.setVerticalGroup(
                         panelUcetLayout.createParallelGroup()
                             .addGroup(GroupLayout.Alignment.TRAILING, panelUcetLayout.createSequentialGroup()
-                                .addContainerGap(269, Short.MAX_VALUE)
+                                .addContainerGap(263, Short.MAX_VALUE)
                                 .addComponent(label4)
                                 .addGap(259, 259, 259))
                     );
@@ -503,7 +502,7 @@ public class UserInterface extends JFrame {
                             .addGroup(panelZmenitHesloLayout.createSequentialGroup()
                                 .addGap(261, 261, 261)
                                 .addComponent(label5)
-                                .addContainerGap(267, Short.MAX_VALUE))
+                                .addContainerGap(261, Short.MAX_VALUE))
                     );
                 }
                 panelContent.add(panelZmenitHeslo, "zmenitHeslo");
@@ -526,7 +525,7 @@ public class UserInterface extends JFrame {
                     panelOdhlasitSaLayout.setVerticalGroup(
                         panelOdhlasitSaLayout.createParallelGroup()
                             .addGroup(GroupLayout.Alignment.TRAILING, panelOdhlasitSaLayout.createSequentialGroup()
-                                .addContainerGap(276, Short.MAX_VALUE)
+                                .addContainerGap(270, Short.MAX_VALUE)
                                 .addComponent(label6)
                                 .addGap(252, 252, 252))
                     );
@@ -551,7 +550,7 @@ public class UserInterface extends JFrame {
                     panelAdminLayout.setVerticalGroup(
                         panelAdminLayout.createParallelGroup()
                             .addGroup(GroupLayout.Alignment.TRAILING, panelAdminLayout.createSequentialGroup()
-                                .addContainerGap(276, Short.MAX_VALUE)
+                                .addContainerGap(270, Short.MAX_VALUE)
                                 .addComponent(label7)
                                 .addGap(252, 252, 252))
                     );
