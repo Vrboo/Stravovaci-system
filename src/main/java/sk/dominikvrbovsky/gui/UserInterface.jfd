@@ -292,7 +292,7 @@ new FormModel {
 											"kGradientFocus": 600
 											"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 											add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
-												"$columnSpecs": "30px, 280px, 126px, 92px, 72px, 101px"
+												"$columnSpecs": "28px, 280px, 126px, 92px, 72px, 101px"
 												"$rowSpecs": "fill:50px, fill:48px, fill:48px, fill:48px, fill:48px, fill:48px"
 											} ) {
 												name: "panelTableRanajky"
@@ -310,7 +310,7 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label1"
-													"text": "Názov"
+													"text": "Raňajky"
 													"font": &Font2 new java.awt.Font( "Yu Gothic UI", 1, 20 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder0
