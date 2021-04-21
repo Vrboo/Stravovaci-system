@@ -188,8 +188,8 @@ new FormModel {
 						"dividerSize": 0
 						"dividerLocation": 160
 						add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-							"$horizontalGroup": "par l {seq l {space :p:35:p, par l {comp labelStravovaciSystem:::p:378:p, comp labelDatum:::p:378:p}, space :::x, comp labelX:::p:27:p}}"
-							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space :p:14:p, comp labelStravovaciSystem:::p:76:p, space :0:0:p, comp labelDatum:::p:25:p, space ::60:x}}"
+							"$horizontalGroup": "par l {seq l {space :p:35:p, par l {comp labelStravovaciSystem:::p:378:p, comp labelDatum:::p:378:p}, space ::168:x, comp labelX:::p:27:p}}"
+							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space :p:14:p, comp labelStravovaciSystem:::p:76:p, space u:::p, comp labelDatum:::p:25:p, space ::33:x}}"
 						} ) {
 							name: "panelStravovaciSystem"
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -197,6 +197,7 @@ new FormModel {
 							"kStartColor": new java.awt.Color( 38, 184, 190, 255 )
 							"kEndColor": new java.awt.Color( 150, 223, 141, 255 )
 							"kGradientFocus": 600
+							"background": new java.awt.Color( 107, 209, 158, 255 )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "labelStravovaciSystem"
 								"text": "Stravovací systém"
@@ -226,18 +227,85 @@ new FormModel {
 						add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
 							name: "panelContent"
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-								"$horizontalGroup": "par l {space :0:608:x}"
-								"$verticalGroup": "par l {space :0:363:x}"
+								"$horizontalGroup": "par l {comp splitPane3::l:::x}"
+								"$verticalGroup": "par l {comp splitPane3::l::378:x}"
 							} ) {
 								name: "panelObjednat"
 								"kEndColor": sfield java.awt.Color white
 								"kStartColor": sfield java.awt.Color white
+								add( new FormContainer( "javax.swing.JSplitPane", new FormLayoutManager( class javax.swing.JSplitPane ) ) {
+									name: "splitPane3"
+									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+									"orientation": 0
+									"dividerSize": 0
+									"dividerLocation": 36
+									"background": new java.awt.Color( 55, 55, 55, 255 )
+									add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+										"$layoutConstraints": "insets 0,hidemode 3,gap 5 5"
+										"$columnConstraints": "[fill][fill]"
+										"$rowConstraints": "[fill]"
+									} ) {
+										name: "panelMenuObjednat"
+										"kStartColor": new java.awt.Color( 55, 55, 55, 255 )
+										"kEndColor": new java.awt.Color( 55, 55, 55, 255 )
+										"kBorderRadius": 0
+										"background": new java.awt.Color( 55, 55, 55, 255 )
+										"kGradientFocus": 770
+										add( new FormComponent( "keeptoo.KButton" ) {
+											name: "kButton2"
+											"text": "Obed"
+											"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+											"font": &Font1 new java.awt.Font( "Yu Gothic UI", 1, 17 )
+											"kStartColor": &Color6 new java.awt.Color( 70, 70, 70, 255 )
+											"kEndColor": &Color7 new java.awt.Color( 70, 70, 70, 255 )
+											"kForeGround": &Color8 new java.awt.Color( 38, 184, 190, 255 )
+											"kBorderRadius": 0
+											"kAllowTab": true
+										}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+											"value": "cell 0 0"
+										} )
+										add( new FormComponent( "keeptoo.KButton" ) {
+											name: "kButton1"
+											"text": "Ranajky"
+											"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+											"font": #Font1
+											"kStartColor": #Color6
+											"kEndColor": #Color7
+											"kForeGround": #Color8
+											"kBorderRadius": 0
+											"kAllowTab": true
+										}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+											"value": "cell 1 0"
+										} )
+									}, new FormLayoutConstraints( class java.lang.String ) {
+										"value": "left"
+									} )
+									add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
+										name: "panelContentObjednat"
+										"background": new java.awt.Color( 55, 55, 55, 255 )
+										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+											"$horizontalGroup": "par l {space :0:608:x}"
+											"$verticalGroup": "par l {space :0:342:x}"
+										} ) {
+											name: "panelRanajky"
+											"kEndColor": sfield java.awt.Color white
+											"kStartColor": sfield java.awt.Color white
+											"kBorderRadius": 0
+											"kGradientFocus": 600
+											"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+										}, new FormLayoutConstraints( class java.lang.String ) {
+											"value": "card1"
+										} )
+									}, new FormLayoutConstraints( class java.lang.String ) {
+										"value": "right"
+									} )
+								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "objednat"
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq t {space ::281:x, comp label2:::p::p, space :p:236:p}}"
-								"$verticalGroup": "par l {seq t {space ::176:x, comp label2:::p::p, space :p:171:p}}"
+								"$verticalGroup": "par l {seq t {space ::191:x, comp label2:::p::p, space :p:171:p}}"
 							} ) {
 								name: "panelMojeObjednavky"
 								"kEndColor": sfield java.awt.Color white
@@ -251,7 +319,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq l {space :p:253:p, comp label3:::p::p, space ::325:x}}"
-								"$verticalGroup": "par l {seq l {space :p:63:p, comp label3:::p::p, space ::284:x}}"
+								"$verticalGroup": "par l {seq l {space :p:63:p, comp label3:::p::p, space ::299:x}}"
 							} ) {
 								name: "panelBurza"
 								"kEndColor": sfield java.awt.Color white
@@ -265,7 +333,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq l {space :p:280:p, comp label4:::p::p, space ::306:x}}"
-								"$verticalGroup": "par l {seq t {space ::179:x, comp label4:::p::p, space :p:168:p}}"
+								"$verticalGroup": "par l {seq t {space ::194:x, comp label4:::p::p, space :p:168:p}}"
 							} ) {
 								name: "panelUcet"
 								"kEndColor": sfield java.awt.Color white
@@ -279,7 +347,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq l {space :p:220:p, comp label5:::p::p, space ::321:x}}"
-								"$verticalGroup": "par l {seq l {space :p:120:p, comp label5:::p::p, space ::227:x}}"
+								"$verticalGroup": "par l {seq l {space :p:120:p, comp label5:::p::p, space ::242:x}}"
 							} ) {
 								name: "panelZmenitHeslo"
 								"kEndColor": sfield java.awt.Color white
@@ -293,7 +361,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq t {space ::275:x, comp label6:::p::p, space :p:276:p}}"
-								"$verticalGroup": "par l {seq l {space :p:133:p, comp label6:::p::p, space ::214:x}}"
+								"$verticalGroup": "par l {seq l {space :p:133:p, comp label6:::p::p, space ::229:x}}"
 							} ) {
 								name: "panelOdhlasitSa"
 								"kEndColor": sfield java.awt.Color white
@@ -307,7 +375,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq l {space :p:269:p, comp label7:::p::p, space ::304:x}}"
-								"$verticalGroup": "par l {seq l {space :p:122:p, comp label7:::p::p, space ::225:x}}"
+								"$verticalGroup": "par l {seq l {space :p:122:p, comp label7:::p::p, space ::240:x}}"
 							} ) {
 								name: "panelAdmin"
 								"kEndColor": sfield java.awt.Color white
