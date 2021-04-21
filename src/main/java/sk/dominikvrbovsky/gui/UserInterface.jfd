@@ -293,7 +293,7 @@ new FormModel {
 											"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 											add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
 												"$columnSpecs": "28px, 280px, 126px, 92px, 72px, 101px"
-												"$rowSpecs": "fill:50px, fill:48px, fill:48px, fill:48px, fill:48px, fill:48px"
+												"$rowSpecs": "fill:50px, fill:52px, fill:52px, fill:52px, fill:52px, fill:52px"
 											} ) {
 												name: "panelTableRanajky"
 												"kEndColor": sfield java.awt.Color white
@@ -419,7 +419,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 2
-													"insets": new java.awt.Insets( 5, 8, 7, 0 )
+													"insets": new java.awt.Insets( 7, 8, 10, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label32"
@@ -485,7 +485,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 3
-													"insets": new java.awt.Insets( 5, 8, 7, 0 )
+													"insets": new java.awt.Insets( 7, 8, 10, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label33"
@@ -551,7 +551,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 4
-													"insets": new java.awt.Insets( 5, 8, 7, 0 )
+													"insets": new java.awt.Insets( 7, 8, 10, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label34"
@@ -617,7 +617,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 5
-													"insets": new java.awt.Insets( 5, 8, 7, 0 )
+													"insets": new java.awt.Insets( 7, 8, 10, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label35"
@@ -683,7 +683,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 6
-													"insets": new java.awt.Insets( 5, 8, 7, 0 )
+													"insets": new java.awt.Insets( 7, 8, 10, 0 )
 												} )
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 										}, new FormLayoutConstraints( class java.lang.String ) {

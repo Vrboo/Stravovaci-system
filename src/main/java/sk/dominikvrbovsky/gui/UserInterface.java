@@ -190,12 +190,13 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-                . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
-                . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
-                12 ), java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans
-                . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
-                getPropertyName () )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
+                swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border
+                . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067"
+                , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panelMenu. getBorder
+                () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
+                . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException
+                ( ) ;} } );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -545,7 +546,7 @@ public class UserInterface extends JFrame {
                                             panelTableRanajky.setBackground(Color.white);
                                             panelTableRanajky.setLayout(new FormLayout(
                                                 "28px, 280px, 126px, 92px, 72px, 101px",
-                                                "fill:50px, 5*(fill:48px)"));
+                                                "fill:50px, 5*(fill:52px)"));
 
                                             //---- label36 ----
                                             label36.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
@@ -628,7 +629,7 @@ public class UserInterface extends JFrame {
                                             kButton3.setkHoverEndColor(new Color(253, 152, 119));
                                             kButton3.setkHoverStartColor(new Color(250, 94, 98));
                                             kButton3.setkHoverForeGround(Color.white);
-                                            panelTableRanajky.add(kButton3, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 8, 7, 0)));
+                                            panelTableRanajky.add(kButton3, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 8, 10, 0)));
 
                                             //---- label32 ----
                                             label32.setText("2.");
@@ -675,7 +676,7 @@ public class UserInterface extends JFrame {
                                             kButton4.setkHoverEndColor(new Color(253, 152, 119));
                                             kButton4.setkHoverStartColor(new Color(250, 94, 98));
                                             kButton4.setkHoverForeGround(Color.white);
-                                            panelTableRanajky.add(kButton4, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 8, 7, 0)));
+                                            panelTableRanajky.add(kButton4, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 8, 10, 0)));
 
                                             //---- label33 ----
                                             label33.setText("3.");
@@ -722,7 +723,7 @@ public class UserInterface extends JFrame {
                                             kButton5.setkHoverEndColor(new Color(253, 152, 119));
                                             kButton5.setkHoverStartColor(new Color(250, 94, 98));
                                             kButton5.setkHoverForeGround(Color.white);
-                                            panelTableRanajky.add(kButton5, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 8, 7, 0)));
+                                            panelTableRanajky.add(kButton5, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 8, 10, 0)));
 
                                             //---- label34 ----
                                             label34.setText("4.");
@@ -769,7 +770,7 @@ public class UserInterface extends JFrame {
                                             kButton6.setkHoverEndColor(new Color(253, 152, 119));
                                             kButton6.setkHoverStartColor(new Color(250, 94, 98));
                                             kButton6.setkHoverForeGround(Color.white);
-                                            panelTableRanajky.add(kButton6, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 8, 7, 0)));
+                                            panelTableRanajky.add(kButton6, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 8, 10, 0)));
 
                                             //---- label35 ----
                                             label35.setText("5.");
@@ -816,7 +817,7 @@ public class UserInterface extends JFrame {
                                             kButton7.setkHoverEndColor(new Color(253, 152, 119));
                                             kButton7.setkHoverStartColor(new Color(250, 94, 98));
                                             kButton7.setkHoverForeGround(Color.white);
-                                            panelTableRanajky.add(kButton7, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 8, 7, 0)));
+                                            panelTableRanajky.add(kButton7, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 8, 10, 0)));
                                         }
                                         panelRanajky.add(panelTableRanajky, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
