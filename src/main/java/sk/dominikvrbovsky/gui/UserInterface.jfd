@@ -296,15 +296,19 @@ new FormModel {
 												name: "panelTableRanajky"
 												"kEndColor": sfield java.awt.Color white
 												"kStartColor": new java.awt.Color( 255, 255, 255, 255 )
-												"border": &MatteBorder0 new javax.swing.border.MatteBorder( 0, 0, 1, 0, sfield java.awt.Color black )
+												"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 												"kBorderRadius": 0
 												"background": new java.awt.Color( 255, 255, 255, 255 )
+												add( new FormComponent( "javax.swing.JLabel" ) {
+													name: "label36"
+													"border": &MatteBorder0 new javax.swing.border.MatteBorder( 0, 0, 1, 0, sfield java.awt.Color black )
+												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label1"
 													"text": "Názov"
 													"font": &Font2 new java.awt.Font( "Yu Gothic UI", 1, 20 )
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": &MatteBorder1 new javax.swing.border.MatteBorder( 0, 0, 1, 0, sfield java.awt.Color black )
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 1
 												} )
@@ -313,7 +317,7 @@ new FormModel {
 													"text": "Nápoj"
 													"font": #Font2
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 2
 												} )
@@ -322,7 +326,7 @@ new FormModel {
 													"text": "Kapacita"
 													"font": #Font2
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 3
 												} )
@@ -331,16 +335,22 @@ new FormModel {
 													"text": "Cena"
 													"font": #Font2
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 4
+												} )
+												add( new FormComponent( "javax.swing.JLabel" ) {
+													name: "label37"
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
+													"gridX": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label31"
 													"text": "1."
 													"horizontalAlignment": 0
 													"font": &Font3 new java.awt.Font( "Yu Gothic UI", 0, 16 )
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridY": 1
 												} )
@@ -349,7 +359,7 @@ new FormModel {
 													"text": "Parky s horčicou a chlebom"
 													"font": &Font4 new java.awt.Font( "Yu Gothic UI", 0, 16 )
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridY": 1
 													"gridX": 1
@@ -359,7 +369,7 @@ new FormModel {
 													"text": "Minerálna voda"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 2
 													"gridY": 1
@@ -369,7 +379,7 @@ new FormModel {
 													"text": "78x"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 3
 													"gridY": 1
@@ -379,7 +389,7 @@ new FormModel {
 													"text": "4.87€"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 4
 													"gridY": 1
@@ -400,7 +410,7 @@ new FormModel {
 													"text": "2."
 													"horizontalAlignment": 0
 													"font": #Font3
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridY": 2
 												} )
@@ -409,7 +419,7 @@ new FormModel {
 													"text": "Praženica s rožkom"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridY": 2
 													"gridX": 1
@@ -419,7 +429,7 @@ new FormModel {
 													"text": "Cola"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 2
 													"gridY": 2
@@ -429,7 +439,7 @@ new FormModel {
 													"text": "12x"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 3
 													"gridY": 2
@@ -439,7 +449,7 @@ new FormModel {
 													"text": "2.45€"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 4
 													"gridY": 2
@@ -460,7 +470,7 @@ new FormModel {
 													"text": "3."
 													"horizontalAlignment": 0
 													"font": #Font3
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridY": 3
 												} )
@@ -469,7 +479,7 @@ new FormModel {
 													"text": "Lievance s lekvárom"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridY": 3
 													"gridX": 1
@@ -479,7 +489,7 @@ new FormModel {
 													"text": "Čaj"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 2
 													"gridY": 3
@@ -489,7 +499,7 @@ new FormModel {
 													"text": "78x"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 3
 													"gridY": 3
@@ -499,7 +509,7 @@ new FormModel {
 													"text": "3.72€"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 4
 													"gridY": 3
@@ -520,7 +530,7 @@ new FormModel {
 													"text": "4."
 													"horizontalAlignment": 0
 													"font": #Font3
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridY": 4
 												} )
@@ -529,7 +539,7 @@ new FormModel {
 													"text": "Volské oko s kečup a chlebom"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridY": 4
 													"gridX": 1
@@ -539,7 +549,7 @@ new FormModel {
 													"text": "Minerálna voda"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 2
 													"gridY": 4
@@ -549,7 +559,7 @@ new FormModel {
 													"text": "123x"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 3
 													"gridY": 4
@@ -559,7 +569,7 @@ new FormModel {
 													"text": "7.00€"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 4
 													"gridY": 4
@@ -580,7 +590,7 @@ new FormModel {
 													"text": "5."
 													"horizontalAlignment": 0
 													"font": #Font3
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridY": 5
 												} )
@@ -589,7 +599,7 @@ new FormModel {
 													"text": "Šunková bageta"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridY": 5
 													"gridX": 1
@@ -599,7 +609,7 @@ new FormModel {
 													"text": "Ďžús"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 2
 													"gridY": 5
@@ -609,7 +619,7 @@ new FormModel {
 													"text": "63x"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 3
 													"gridY": 5
@@ -619,7 +629,7 @@ new FormModel {
 													"text": "3.49€"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder0
+													"border": #MatteBorder1
 												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
 													"gridX": 4
 													"gridY": 5
