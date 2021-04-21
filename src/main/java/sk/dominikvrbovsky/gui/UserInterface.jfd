@@ -173,304 +173,155 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "left"
 				} )
-				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
-					name: "panelContent"
+				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {comp splitPane2::l:::x}"
+					"$verticalGroup": "par l {comp splitPane2::l:::x}"
+				} ) {
+					name: "panelRightSide"
 					"kEndColor": new java.awt.Color( 192, 248, 213, 255 )
 					"kStartColor": new java.awt.Color( 115, 224, 255, 255 )
 					"kBorderRadius": 0
-					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {comp splitPane2::l:::x}"
-						"$verticalGroup": "par l {comp splitPane2::t:::x}"
-					} ) {
-						name: "panelObjednat"
-						add( new FormContainer( "javax.swing.JSplitPane", new FormLayoutManager( class javax.swing.JSplitPane ) ) {
-							name: "splitPane2"
-							"orientation": 0
-							"dividerSize": 0
-							"dividerLocation": 160
+					add( new FormContainer( "javax.swing.JSplitPane", new FormLayoutManager( class javax.swing.JSplitPane ) ) {
+						name: "splitPane2"
+						"orientation": 0
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"dividerSize": 0
+						"dividerLocation": 160
+						add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+							"$horizontalGroup": "par l {seq l {space :p:35:p, par l {comp labelStravovaciSystem:::p:378:p, comp labelDatum:::p:378:p}, space :::x, comp labelX:::p:27:p}}"
+							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space :p:14:p, comp labelStravovaciSystem:::p:76:p, space :0:0:p, comp labelDatum:::p:25:p, space ::60:x}}"
+						} ) {
+							name: "panelStravovaciSystem"
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+							"kBorderRadius": 0
+							"kStartColor": new java.awt.Color( 38, 184, 190, 255 )
+							"kEndColor": new java.awt.Color( 150, 223, 141, 255 )
+							"kGradientFocus": 600
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "labelStravovaciSystem"
+								"text": "Stravovací systém"
+								"font": new java.awt.Font( "Yu Gothic UI", 1, 45 )
+								"horizontalAlignment": 2
+								"foreground": new java.awt.Color( 70, 70, 70, 255 )
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "labelDatum"
+								"text": "Utorok, 20. apríl 2021"
+								"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
+								"foreground": new java.awt.Color( 70, 70, 70, 255 )
+								"horizontalAlignment": 2
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "labelX"
+								"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png" )
+								"horizontalAlignment": 0
+								"cursor": #Cursor0
+								addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "labelXObjednatMouseEntered", false ) )
+								addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "labelXObjednatMouseExited", false ) )
+								addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "labelXObjednatMouseClicked", false ) )
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "left"
+						} )
+						add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
+							name: "panelContent"
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-								"$horizontalGroup": "par t {seq {space :p:33:p, par l {comp labelStravovaciSystem:::p:378:p, comp labelDatum:::p:378:p}, space ::170:x, comp labelXObjednat:::p:27:p}}"
-								"$verticalGroup": "par l {seq {par l {comp labelXObjednat:::p:28:p, seq l {space :p:18:p, comp labelStravovaciSystem:::p:76:p, space :0:0:p, comp labelDatum:::p:25:p}}, space :::x}}"
+								"$horizontalGroup": "par l {space :0:608:x}"
+								"$verticalGroup": "par l {space :0:363:x}"
 							} ) {
-								name: "panelObjednatMenu"
-								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-								"kBorderRadius": 0
-								"kStartColor": new java.awt.Color( 38, 184, 190, 255 )
-								"kEndColor": new java.awt.Color( 150, 223, 141, 255 )
-								"kGradientFocus": 600
+								name: "panelObjednat"
+								"kEndColor": sfield java.awt.Color white
+								"kStartColor": sfield java.awt.Color white
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "objednat"
+							} )
+							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+								"$horizontalGroup": "par l {seq t {space ::281:x, comp label2:::p::p, space :p:236:p}}"
+								"$verticalGroup": "par l {seq t {space ::176:x, comp label2:::p::p, space :p:171:p}}"
+							} ) {
+								name: "panelMojeObjednavky"
+								"kEndColor": sfield java.awt.Color white
+								"kStartColor": sfield java.awt.Color white
 								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "labelStravovaciSystem"
-									"text": "Stravovací systém"
-									"font": new java.awt.Font( "Yu Gothic UI", 1, 45 )
-									"horizontalAlignment": 2
-									"foreground": new java.awt.Color( 70, 70, 70, 255 )
-								} )
-								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "labelDatum"
-									"text": "Utorok, 20. apríl 2021"
-									"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
-									"foreground": new java.awt.Color( 70, 70, 70, 255 )
-									"horizontalAlignment": 2
-								} )
-								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "labelXObjednat"
-									"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png" )
-									"horizontalAlignment": 0
-									"cursor": #Cursor0
-									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "labelXObjednatMouseEntered", false ) )
-									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "labelXObjednatMouseExited", false ) )
-									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "labelXObjednatMouseClicked", false ) )
+									name: "label2"
+									"text": "Moje objednavkz"
 								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {
-								"value": "left"
+								"value": "mojeObjednavky"
 							} )
-							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
-								name: "panelObjednatContent"
-								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-									"$horizontalGroup": "par l {seq l {space :p:41:p, par l:::p {comp label1::::217:x, comp label11::l::217:x, comp label15::l::217:x, comp label34::l::217:x, comp label38::t::217:x}, space :0:0:p, par t {par t:t::p {comp label12::t:::x, comp label16::t:::x, comp label33::t:p:95:p, comp label8::t:::x}, comp label37::t:p:95:p}, space :0:0:p, par l {comp label9::t:p:61:p, par l:l {comp label13::t:p:61:p, par l:l {comp label17::t:p:61:p, par t:l::p {comp label32:::::x, comp label36:::p:61:p}}}}, space :0:0:p, par t:::p {comp label31::l:::x, comp label18::l:::x, comp label14::l:::x, comp label10::l:::x, comp label35:::p:42:p}, space ::152:x}}"
-									"$verticalGroup": "par l {seq {space :p:43:p, par l {seq l {par b {comp label9::b:p:29:p, comp label10::b:p:29:p}, space :::p, par b {comp label13::b:p:29:p, comp label14::b:p:29:p}, space :0:0:p, par b {comp label17::b:p:29:p, comp label18::b:p:29:p}, space :0:0:p, par b {comp label32::b:p:29:p, comp label31::b:p:29:p}, space :0:0:p, par b {comp label36::b:p:29:p, comp label37::b:p:29:p, comp label35::b:p:29:p, comp label38::b:p:29:p}}, seq l {space :p:35:p, comp label12:::p:29:p, space :0:0:p, comp label16:::p:29:p, space :0:0:p, comp label33:::p:29:p}, seq {par b {comp label1::b:p:29:p, comp label8::b:p:29:p}, space :::p, comp label11:::p:29:p, space :0:0:p, comp label15:::p:29:p, space :0:0:p, comp label34:::p:29:p}}, space ::184:x}}"
-								} ) {
-									name: "panelObjednatObed"
-									"kEndColor": sfield java.awt.Color white
-									"kStartColor": sfield java.awt.Color white
-									"font": new java.awt.Font( "Yu Gothic UI", 1, 14 )
-									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label1"
-										"text": "Obed"
-										"horizontalAlignment": 0
-										"font": &Font1 new java.awt.Font( "Yu Gothic UI", 1, 17 )
-										"border": &MatteBorder0 new javax.swing.border.MatteBorder( 0, 0, 0, 0, sfield java.awt.Color black )
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label8"
-										"text": "Takeaway"
-										"horizontalAlignment": 0
-										"font": #Font1
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label9"
-										"text": "Kapacita"
-										"horizontalAlignment": 0
-										"font": #Font1
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label10"
-										"text": "Cena"
-										"horizontalAlignment": 0
-										"font": #Font1
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label11"
-										"text": "Kurací rezeň + zemiaková kaša  "
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label12"
-										"text": "Nie"
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label13"
-										"text": "78"
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label14"
-										"text": "7.45"
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label15"
-										"text": "Kurací rezeň + zemiaková kaša  "
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label16"
-										"text": "Áno"
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label17"
-										"text": "78"
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label18"
-										"text": "7.45"
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label31"
-										"text": "7.45"
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label32"
-										"text": "78"
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label33"
-										"text": "Nie"
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label34"
-										"text": "Kurací rezeň + zemiaková kaša  "
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label35"
-										"text": "7.45"
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label36"
-										"text": "78"
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label37"
-										"text": "Áno"
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label38"
-										"text": "Kurací rezeň + zemiaková kaša  "
-										"font": #Font1
-										"horizontalAlignment": 0
-										"border": #MatteBorder0
-									} )
-								}, new FormLayoutConstraints( class java.lang.String ) {
-									"value": "obed"
-								} )
-								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-									"$horizontalGroup": "par l {space :0:608:x}"
-									"$verticalGroup": "par l {space :0:378:x}"
-								} ) {
-									name: "panelObjednatRanajky"
-									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-									"kBorderRadius": 0
-									"kEndColor": sfield java.awt.Color white
-									"kStartColor": sfield java.awt.Color white
-								}, new FormLayoutConstraints( class java.lang.String ) {
-									"value": "ranajky"
+							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+								"$horizontalGroup": "par l {seq l {space :p:253:p, comp label3:::p::p, space ::325:x}}"
+								"$verticalGroup": "par l {seq l {space :p:63:p, comp label3:::p::p, space ::284:x}}"
+							} ) {
+								name: "panelBurza"
+								"kEndColor": sfield java.awt.Color white
+								"kStartColor": sfield java.awt.Color white
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label3"
+									"text": "burza"
 								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {
-								"value": "right"
+								"value": "burza"
 							} )
+							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+								"$horizontalGroup": "par l {seq l {space :p:280:p, comp label4:::p::p, space ::306:x}}"
+								"$verticalGroup": "par l {seq t {space ::179:x, comp label4:::p::p, space :p:168:p}}"
+							} ) {
+								name: "panelUcet"
+								"kEndColor": sfield java.awt.Color white
+								"kStartColor": sfield java.awt.Color white
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label4"
+									"text": "ucet"
+								} )
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "ucet"
+							} )
+							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+								"$horizontalGroup": "par l {seq l {space :p:220:p, comp label5:::p::p, space ::321:x}}"
+								"$verticalGroup": "par l {seq l {space :p:120:p, comp label5:::p::p, space ::227:x}}"
+							} ) {
+								name: "panelZmenitHeslo"
+								"kEndColor": sfield java.awt.Color white
+								"kStartColor": sfield java.awt.Color white
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label5"
+									"text": "zmenit heslo"
+								} )
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "zmenitHeslo"
+							} )
+							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+								"$horizontalGroup": "par l {seq t {space ::275:x, comp label6:::p::p, space :p:276:p}}"
+								"$verticalGroup": "par l {seq l {space :p:133:p, comp label6:::p::p, space ::214:x}}"
+							} ) {
+								name: "panelOdhlasitSa"
+								"kEndColor": sfield java.awt.Color white
+								"kStartColor": sfield java.awt.Color white
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label6"
+									"text": "odhlasit sa"
+								} )
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "odhlasitSa"
+							} )
+							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+								"$horizontalGroup": "par l {seq l {space :p:269:p, comp label7:::p::p, space ::304:x}}"
+								"$verticalGroup": "par l {seq l {space :p:122:p, comp label7:::p::p, space ::225:x}}"
+							} ) {
+								name: "panelAdmin"
+								"kEndColor": sfield java.awt.Color white
+								"kStartColor": sfield java.awt.Color white
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label7"
+									"text": "Admin"
+								} )
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "admin"
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "right"
 						} )
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "objednat"
-					} )
-					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:225:p, comp label2:::p::p, space ::292:x}}"
-						"$verticalGroup": "par l {seq l {space :p:220:p, comp label2:::p::p, space ::302:x}}"
-					} ) {
-						name: "panelMojeObejdnavky"
-						"kEndColor": sfield java.awt.Color white
-						"kStartColor": sfield java.awt.Color white
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label2"
-							"text": "Moje objednavky"
-						} )
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "mojeObjednavky"
-					} )
-					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq t {space ::296:x, comp label3:::p:114:p, space :p:198:p}}"
-						"$verticalGroup": "par l {seq l {space :p:243:p, comp label3:::p:42:p, space ::253:x}}"
-					} ) {
-						name: "panelBurza"
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label3"
-							"text": "Burza"
-						} )
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "burza"
-					} )
-					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:235:p, comp label4:::p::p, space ::349:x}}"
-						"$verticalGroup": "par l {seq t {space ::263:x, comp label4:::p::p, space :p:259:p}}"
-					} ) {
-						name: "panelUcet"
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label4"
-							"text": "Ucet"
-						} )
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "ucet"
-					} )
-					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:216:p, comp label5:::p::p, space ::323:x}}"
-						"$verticalGroup": "par l {seq l {space :p:261:p, comp label5:::p::p, space ::261:x}}"
-					} ) {
-						name: "panelZmenitHeslo"
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label5"
-							"text": "Zmenit heslo"
-						} )
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "zmenitHeslo"
-					} )
-					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:231:p, comp label6:::p::p, space ::317:x}}"
-						"$verticalGroup": "par l {seq t {space ::270:x, comp label6:::p::p, space :p:252:p}}"
-					} ) {
-						name: "panelOdhlasitSa"
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label6"
-							"text": "Odhlásiť sa"
-						} )
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "odhlasitSa"
-					} )
-					add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:204:p, comp label7:::p::p, space ::331:x}}"
-						"$verticalGroup": "par l {seq t {space ::270:x, comp label7:::p::p, space :p:252:p}}"
-					} ) {
-						name: "panelAdmin"
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label7"
-							"text": "Administrator"
-						} )
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "admin"
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "right"

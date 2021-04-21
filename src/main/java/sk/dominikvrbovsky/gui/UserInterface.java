@@ -25,7 +25,7 @@ public class UserInterface extends JFrame {
     private final User user;
     private final EntityManager entityManager;
     private final CardLayout cardLayout;
-    private final CardLayout cardLayoutObjednat;
+    
 
     public UserInterface(EntityManager entityManager, User user) {
         this.entityManager = entityManager;
@@ -38,7 +38,6 @@ public class UserInterface extends JFrame {
         initComponents();
         
         this.cardLayout = (CardLayout)(panelContent.getLayout());
-        this.cardLayoutObjednat = (CardLayout)(panelObjednatContent.getLayout()); 
         
         labelUsername.setText(user.getFullName());
         labelAccount.setText("Stav účtu: " + userAccount + "€");
@@ -75,22 +74,15 @@ public class UserInterface extends JFrame {
     private void btnAdminActionPerformed() {
         cardLayout.show(panelContent,"admin");
     }
-
-    private void btnObedActionPerformed() {
-        cardLayoutObjednat.show(panelObjednatContent, "obed");
-    }
-
-    private void btnRanajkyActionPerformed() {
-        cardLayoutObjednat.show(panelObjednatContent, "ranajky");
-    }
+    
 
     private void labelXObjednatMouseEntered() {
-        labelXObjednat.setIcon(
+        labelX.setIcon(
                 new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px_6.png"));
     }
 
     private void labelXObjednatMouseExited() {
-        labelXObjednat.setIcon(new 
+        labelX.setIcon(new 
                 ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png"));
     }
 
@@ -115,37 +107,15 @@ public class UserInterface extends JFrame {
         btnOdhlasitSa = new KButton();
         labelAccount = new JLabel();
         btnAdmin = new KButton();
-        panelContent = new KGradientPanel();
-        panelObjednat = new KGradientPanel();
+        panelRightSide = new KGradientPanel();
         splitPane2 = new JSplitPane();
-        panelObjednatMenu = new KGradientPanel();
+        panelStravovaciSystem = new KGradientPanel();
         labelStravovaciSystem = new JLabel();
         labelDatum = new JLabel();
-        labelXObjednat = new JLabel();
-        panelObjednatContent = new KGradientPanel();
-        panelObjednatObed = new KGradientPanel();
-        label1 = new JLabel();
-        label8 = new JLabel();
-        label9 = new JLabel();
-        label10 = new JLabel();
-        label11 = new JLabel();
-        label12 = new JLabel();
-        label13 = new JLabel();
-        label14 = new JLabel();
-        label15 = new JLabel();
-        label16 = new JLabel();
-        label17 = new JLabel();
-        label18 = new JLabel();
-        label31 = new JLabel();
-        label32 = new JLabel();
-        label33 = new JLabel();
-        label34 = new JLabel();
-        label35 = new JLabel();
-        label36 = new JLabel();
-        label37 = new JLabel();
-        label38 = new JLabel();
-        panelObjednatRanajky = new KGradientPanel();
-        panelMojeObejdnavky = new KGradientPanel();
+        labelX = new JLabel();
+        panelContent = new KGradientPanel();
+        panelObjednat = new KGradientPanel();
+        panelMojeObjednavky = new KGradientPanel();
         label2 = new JLabel();
         panelBurza = new KGradientPanel();
         label3 = new JLabel();
@@ -364,497 +334,284 @@ public class UserInterface extends JFrame {
             }
             splitPane1.setLeftComponent(panelMenu);
 
-            //======== panelContent ========
+            //======== panelRightSide ========
             {
-                panelContent.setkEndColor(new Color(192, 248, 213));
-                panelContent.setkStartColor(new Color(115, 224, 255));
-                panelContent.setkBorderRadius(0);
-                panelContent.setLayout(new CardLayout());
+                panelRightSide.setkEndColor(new Color(192, 248, 213));
+                panelRightSide.setkStartColor(new Color(115, 224, 255));
+                panelRightSide.setkBorderRadius(0);
 
-                //======== panelObjednat ========
+                //======== splitPane2 ========
                 {
+                    splitPane2.setOrientation(JSplitPane.VERTICAL_SPLIT);
+                    splitPane2.setBorder(null);
+                    splitPane2.setDividerSize(0);
+                    splitPane2.setDividerLocation(160);
 
-                    //======== splitPane2 ========
+                    //======== panelStravovaciSystem ========
                     {
-                        splitPane2.setOrientation(JSplitPane.VERTICAL_SPLIT);
-                        splitPane2.setDividerSize(0);
-                        splitPane2.setDividerLocation(160);
-                        splitPane2.setBorder(null);
+                        panelStravovaciSystem.setBorder(null);
+                        panelStravovaciSystem.setkBorderRadius(0);
+                        panelStravovaciSystem.setkStartColor(new Color(38, 184, 190));
+                        panelStravovaciSystem.setkEndColor(new Color(150, 223, 141));
+                        panelStravovaciSystem.setkGradientFocus(600);
 
-                        //======== panelObjednatMenu ========
-                        {
-                            panelObjednatMenu.setBorder(null);
-                            panelObjednatMenu.setkBorderRadius(0);
-                            panelObjednatMenu.setkStartColor(new Color(38, 184, 190));
-                            panelObjednatMenu.setkEndColor(new Color(150, 223, 141));
-                            panelObjednatMenu.setkGradientFocus(600);
+                        //---- labelStravovaciSystem ----
+                        labelStravovaciSystem.setText("Stravovac\u00ed syst\u00e9m");
+                        labelStravovaciSystem.setFont(new Font("Yu Gothic UI", Font.BOLD, 45));
+                        labelStravovaciSystem.setHorizontalAlignment(SwingConstants.LEFT);
+                        labelStravovaciSystem.setForeground(new Color(70, 70, 70));
 
-                            //---- labelStravovaciSystem ----
-                            labelStravovaciSystem.setText("Stravovac\u00ed syst\u00e9m");
-                            labelStravovaciSystem.setFont(new Font("Yu Gothic UI", Font.BOLD, 45));
-                            labelStravovaciSystem.setHorizontalAlignment(SwingConstants.LEFT);
-                            labelStravovaciSystem.setForeground(new Color(70, 70, 70));
+                        //---- labelDatum ----
+                        labelDatum.setText("Utorok, 20. apr\u00edl 2021");
+                        labelDatum.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                        labelDatum.setForeground(new Color(70, 70, 70));
+                        labelDatum.setHorizontalAlignment(SwingConstants.LEFT);
 
-                            //---- labelDatum ----
-                            labelDatum.setText("Utorok, 20. apr\u00edl 2021");
-                            labelDatum.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                            labelDatum.setForeground(new Color(70, 70, 70));
-                            labelDatum.setHorizontalAlignment(SwingConstants.LEFT);
-
-                            //---- labelXObjednat ----
-                            labelXObjednat.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png"));
-                            labelXObjednat.setHorizontalAlignment(SwingConstants.CENTER);
-                            labelXObjednat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                            labelXObjednat.addMouseListener(new MouseAdapter() {
-                                @Override
-                                public void mouseClicked(MouseEvent e) {
-                                    labelXObjednatMouseClicked();
-                                }
-                                @Override
-                                public void mouseEntered(MouseEvent e) {
-                                    labelXObjednatMouseEntered();
-                                }
-                                @Override
-                                public void mouseExited(MouseEvent e) {
-                                    labelXObjednatMouseExited();
-                                }
-                            });
-
-                            GroupLayout panelObjednatMenuLayout = new GroupLayout(panelObjednatMenu);
-                            panelObjednatMenu.setLayout(panelObjednatMenuLayout);
-                            panelObjednatMenuLayout.setHorizontalGroup(
-                                panelObjednatMenuLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                    .addGroup(panelObjednatMenuLayout.createSequentialGroup()
-                                        .addGap(33, 33, 33)
-                                        .addGroup(panelObjednatMenuLayout.createParallelGroup()
-                                            .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 378, GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 378, GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
-                                        .addComponent(labelXObjednat, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
-                            );
-                            panelObjednatMenuLayout.setVerticalGroup(
-                                panelObjednatMenuLayout.createParallelGroup()
-                                    .addGroup(panelObjednatMenuLayout.createSequentialGroup()
-                                        .addGroup(panelObjednatMenuLayout.createParallelGroup()
-                                            .addComponent(labelXObjednat, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(panelObjednatMenuLayout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, 0)
-                                                .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
-                                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            );
-                        }
-                        splitPane2.setTopComponent(panelObjednatMenu);
-
-                        //======== panelObjednatContent ========
-                        {
-                            panelObjednatContent.setLayout(new CardLayout());
-
-                            //======== panelObjednatObed ========
-                            {
-                                panelObjednatObed.setkEndColor(Color.white);
-                                panelObjednatObed.setkStartColor(Color.white);
-                                panelObjednatObed.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
-                                panelObjednatObed.setBorder(null);
-
-                                //---- label1 ----
-                                label1.setText("Obed");
-                                label1.setHorizontalAlignment(SwingConstants.CENTER);
-                                label1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label1.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label8 ----
-                                label8.setText("Takeaway");
-                                label8.setHorizontalAlignment(SwingConstants.CENTER);
-                                label8.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label8.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label9 ----
-                                label9.setText("Kapacita");
-                                label9.setHorizontalAlignment(SwingConstants.CENTER);
-                                label9.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label9.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label10 ----
-                                label10.setText("Cena");
-                                label10.setHorizontalAlignment(SwingConstants.CENTER);
-                                label10.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label10.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label11 ----
-                                label11.setText("Kurac\u00ed reze\u0148 + zemiakov\u00e1 ka\u0161a  ");
-                                label11.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label11.setHorizontalAlignment(SwingConstants.CENTER);
-                                label11.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label12 ----
-                                label12.setText("Nie");
-                                label12.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label12.setHorizontalAlignment(SwingConstants.CENTER);
-                                label12.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label13 ----
-                                label13.setText("78");
-                                label13.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label13.setHorizontalAlignment(SwingConstants.CENTER);
-                                label13.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label14 ----
-                                label14.setText("7.45");
-                                label14.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label14.setHorizontalAlignment(SwingConstants.CENTER);
-                                label14.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label15 ----
-                                label15.setText("Kurac\u00ed reze\u0148 + zemiakov\u00e1 ka\u0161a  ");
-                                label15.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label15.setHorizontalAlignment(SwingConstants.CENTER);
-                                label15.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label16 ----
-                                label16.setText("\u00c1no");
-                                label16.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label16.setHorizontalAlignment(SwingConstants.CENTER);
-                                label16.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label17 ----
-                                label17.setText("78");
-                                label17.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label17.setHorizontalAlignment(SwingConstants.CENTER);
-                                label17.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label18 ----
-                                label18.setText("7.45");
-                                label18.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label18.setHorizontalAlignment(SwingConstants.CENTER);
-                                label18.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label31 ----
-                                label31.setText("7.45");
-                                label31.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label31.setHorizontalAlignment(SwingConstants.CENTER);
-                                label31.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label32 ----
-                                label32.setText("78");
-                                label32.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label32.setHorizontalAlignment(SwingConstants.CENTER);
-                                label32.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label33 ----
-                                label33.setText("Nie");
-                                label33.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label33.setHorizontalAlignment(SwingConstants.CENTER);
-                                label33.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label34 ----
-                                label34.setText("Kurac\u00ed reze\u0148 + zemiakov\u00e1 ka\u0161a  ");
-                                label34.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label34.setHorizontalAlignment(SwingConstants.CENTER);
-                                label34.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label35 ----
-                                label35.setText("7.45");
-                                label35.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label35.setHorizontalAlignment(SwingConstants.CENTER);
-                                label35.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label36 ----
-                                label36.setText("78");
-                                label36.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label36.setHorizontalAlignment(SwingConstants.CENTER);
-                                label36.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label37 ----
-                                label37.setText("\u00c1no");
-                                label37.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label37.setHorizontalAlignment(SwingConstants.CENTER);
-                                label37.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                //---- label38 ----
-                                label38.setText("Kurac\u00ed reze\u0148 + zemiakov\u00e1 ka\u0161a  ");
-                                label38.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                label38.setHorizontalAlignment(SwingConstants.CENTER);
-                                label38.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-
-                                GroupLayout panelObjednatObedLayout = new GroupLayout(panelObjednatObed);
-                                panelObjednatObed.setLayout(panelObjednatObedLayout);
-                                panelObjednatObedLayout.setHorizontalGroup(
-                                    panelObjednatObedLayout.createParallelGroup()
-                                        .addGroup(panelObjednatObedLayout.createSequentialGroup()
-                                            .addGap(41, 41, 41)
-                                            .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(label1, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                                .addComponent(label11, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                                .addComponent(label15, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                                .addComponent(label34, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                                .addComponent(label38, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
-                                            .addGap(0, 0, 0)
-                                            .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                                .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(label12, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(label16, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(label33, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(label8, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addComponent(label37, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
-                                            .addGap(0, 0, 0)
-                                            .addGroup(panelObjednatObedLayout.createParallelGroup()
-                                                .addComponent(label9, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(panelObjednatObedLayout.createParallelGroup()
-                                                    .addComponent(label13, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(panelObjednatObedLayout.createParallelGroup()
-                                                        .addComponent(label17, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                                            .addComponent(label32, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(label36, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)))))
-                                            .addGap(0, 0, 0)
-                                            .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(label31, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(label18, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(label14, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(label10, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(label35, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
-                                            .addContainerGap(152, Short.MAX_VALUE))
-                                );
-                                panelObjednatObedLayout.setVerticalGroup(
-                                    panelObjednatObedLayout.createParallelGroup()
-                                        .addGroup(panelObjednatObedLayout.createSequentialGroup()
-                                            .addGap(43, 43, 43)
-                                            .addGroup(panelObjednatObedLayout.createParallelGroup()
-                                                .addGroup(panelObjednatObedLayout.createSequentialGroup()
-                                                    .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(label9, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(label10, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(label13, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(label14, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
-                                                    .addGap(0, 0, 0)
-                                                    .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(label17, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(label18, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
-                                                    .addGap(0, 0, 0)
-                                                    .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(label32, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(label31, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
-                                                    .addGap(0, 0, 0)
-                                                    .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(label36, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(label37, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(label35, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(label38, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)))
-                                                .addGroup(panelObjednatObedLayout.createSequentialGroup()
-                                                    .addGap(35, 35, 35)
-                                                    .addComponent(label12, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(0, 0, 0)
-                                                    .addComponent(label16, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(0, 0, 0)
-                                                    .addComponent(label33, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(panelObjednatObedLayout.createSequentialGroup()
-                                                    .addGroup(panelObjednatObedLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(label1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(label8, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(label11, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(0, 0, 0)
-                                                    .addComponent(label15, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(0, 0, 0)
-                                                    .addComponent(label34, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)))
-                                            .addContainerGap(184, Short.MAX_VALUE))
-                                );
+                        //---- labelX ----
+                        labelX.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png"));
+                        labelX.setHorizontalAlignment(SwingConstants.CENTER);
+                        labelX.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                        labelX.addMouseListener(new MouseAdapter() {
+                            @Override
+                            public void mouseClicked(MouseEvent e) {
+                                labelXObjednatMouseClicked();
                             }
-                            panelObjednatContent.add(panelObjednatObed, "obed");
-
-                            //======== panelObjednatRanajky ========
-                            {
-                                panelObjednatRanajky.setBorder(null);
-                                panelObjednatRanajky.setkBorderRadius(0);
-                                panelObjednatRanajky.setkEndColor(Color.white);
-                                panelObjednatRanajky.setkStartColor(Color.white);
-
-                                GroupLayout panelObjednatRanajkyLayout = new GroupLayout(panelObjednatRanajky);
-                                panelObjednatRanajky.setLayout(panelObjednatRanajkyLayout);
-                                panelObjednatRanajkyLayout.setHorizontalGroup(
-                                    panelObjednatRanajkyLayout.createParallelGroup()
-                                        .addGap(0, 608, Short.MAX_VALUE)
-                                );
-                                panelObjednatRanajkyLayout.setVerticalGroup(
-                                    panelObjednatRanajkyLayout.createParallelGroup()
-                                        .addGap(0, 378, Short.MAX_VALUE)
-                                );
+                            @Override
+                            public void mouseEntered(MouseEvent e) {
+                                labelXObjednatMouseEntered();
                             }
-                            panelObjednatContent.add(panelObjednatRanajky, "ranajky");
-                        }
-                        splitPane2.setBottomComponent(panelObjednatContent);
+                            @Override
+                            public void mouseExited(MouseEvent e) {
+                                labelXObjednatMouseExited();
+                            }
+                        });
+
+                        GroupLayout panelStravovaciSystemLayout = new GroupLayout(panelStravovaciSystem);
+                        panelStravovaciSystem.setLayout(panelStravovaciSystemLayout);
+                        panelStravovaciSystemLayout.setHorizontalGroup(
+                            panelStravovaciSystemLayout.createParallelGroup()
+                                .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
+                                    .addGap(35, 35, 35)
+                                    .addGroup(panelStravovaciSystemLayout.createParallelGroup()
+                                        .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 378, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 378, GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+                        );
+                        panelStravovaciSystemLayout.setVerticalGroup(
+                            panelStravovaciSystemLayout.createParallelGroup()
+                                .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
+                                    .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
+                                    .addGap(14, 14, 14)
+                                    .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, 0)
+                                    .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(60, Short.MAX_VALUE))
+                        );
                     }
+                    splitPane2.setTopComponent(panelStravovaciSystem);
 
-                    GroupLayout panelObjednatLayout = new GroupLayout(panelObjednat);
-                    panelObjednat.setLayout(panelObjednatLayout);
-                    panelObjednatLayout.setHorizontalGroup(
-                        panelObjednatLayout.createParallelGroup()
-                            .addComponent(splitPane2)
-                    );
-                    panelObjednatLayout.setVerticalGroup(
-                        panelObjednatLayout.createParallelGroup()
-                            .addComponent(splitPane2, GroupLayout.Alignment.TRAILING)
-                    );
+                    //======== panelContent ========
+                    {
+                        panelContent.setLayout(new CardLayout());
+
+                        //======== panelObjednat ========
+                        {
+                            panelObjednat.setkEndColor(Color.white);
+                            panelObjednat.setkStartColor(Color.white);
+
+                            GroupLayout panelObjednatLayout = new GroupLayout(panelObjednat);
+                            panelObjednat.setLayout(panelObjednatLayout);
+                            panelObjednatLayout.setHorizontalGroup(
+                                panelObjednatLayout.createParallelGroup()
+                                    .addGap(0, 608, Short.MAX_VALUE)
+                            );
+                            panelObjednatLayout.setVerticalGroup(
+                                panelObjednatLayout.createParallelGroup()
+                                    .addGap(0, 363, Short.MAX_VALUE)
+                            );
+                        }
+                        panelContent.add(panelObjednat, "objednat");
+
+                        //======== panelMojeObjednavky ========
+                        {
+                            panelMojeObjednavky.setkEndColor(Color.white);
+                            panelMojeObjednavky.setkStartColor(Color.white);
+
+                            //---- label2 ----
+                            label2.setText("Moje objednavkz");
+
+                            GroupLayout panelMojeObjednavkyLayout = new GroupLayout(panelMojeObjednavky);
+                            panelMojeObjednavky.setLayout(panelMojeObjednavkyLayout);
+                            panelMojeObjednavkyLayout.setHorizontalGroup(
+                                panelMojeObjednavkyLayout.createParallelGroup()
+                                    .addGroup(GroupLayout.Alignment.TRAILING, panelMojeObjednavkyLayout.createSequentialGroup()
+                                        .addContainerGap(281, Short.MAX_VALUE)
+                                        .addComponent(label2)
+                                        .addGap(236, 236, 236))
+                            );
+                            panelMojeObjednavkyLayout.setVerticalGroup(
+                                panelMojeObjednavkyLayout.createParallelGroup()
+                                    .addGroup(GroupLayout.Alignment.TRAILING, panelMojeObjednavkyLayout.createSequentialGroup()
+                                        .addContainerGap(176, Short.MAX_VALUE)
+                                        .addComponent(label2)
+                                        .addGap(171, 171, 171))
+                            );
+                        }
+                        panelContent.add(panelMojeObjednavky, "mojeObjednavky");
+
+                        //======== panelBurza ========
+                        {
+                            panelBurza.setkEndColor(Color.white);
+                            panelBurza.setkStartColor(Color.white);
+
+                            //---- label3 ----
+                            label3.setText("burza");
+
+                            GroupLayout panelBurzaLayout = new GroupLayout(panelBurza);
+                            panelBurza.setLayout(panelBurzaLayout);
+                            panelBurzaLayout.setHorizontalGroup(
+                                panelBurzaLayout.createParallelGroup()
+                                    .addGroup(panelBurzaLayout.createSequentialGroup()
+                                        .addGap(253, 253, 253)
+                                        .addComponent(label3)
+                                        .addContainerGap(325, Short.MAX_VALUE))
+                            );
+                            panelBurzaLayout.setVerticalGroup(
+                                panelBurzaLayout.createParallelGroup()
+                                    .addGroup(panelBurzaLayout.createSequentialGroup()
+                                        .addGap(63, 63, 63)
+                                        .addComponent(label3)
+                                        .addContainerGap(284, Short.MAX_VALUE))
+                            );
+                        }
+                        panelContent.add(panelBurza, "burza");
+
+                        //======== panelUcet ========
+                        {
+                            panelUcet.setkEndColor(Color.white);
+                            panelUcet.setkStartColor(Color.white);
+
+                            //---- label4 ----
+                            label4.setText("ucet");
+
+                            GroupLayout panelUcetLayout = new GroupLayout(panelUcet);
+                            panelUcet.setLayout(panelUcetLayout);
+                            panelUcetLayout.setHorizontalGroup(
+                                panelUcetLayout.createParallelGroup()
+                                    .addGroup(panelUcetLayout.createSequentialGroup()
+                                        .addGap(280, 280, 280)
+                                        .addComponent(label4)
+                                        .addContainerGap(306, Short.MAX_VALUE))
+                            );
+                            panelUcetLayout.setVerticalGroup(
+                                panelUcetLayout.createParallelGroup()
+                                    .addGroup(GroupLayout.Alignment.TRAILING, panelUcetLayout.createSequentialGroup()
+                                        .addContainerGap(179, Short.MAX_VALUE)
+                                        .addComponent(label4)
+                                        .addGap(168, 168, 168))
+                            );
+                        }
+                        panelContent.add(panelUcet, "ucet");
+
+                        //======== panelZmenitHeslo ========
+                        {
+                            panelZmenitHeslo.setkEndColor(Color.white);
+                            panelZmenitHeslo.setkStartColor(Color.white);
+
+                            //---- label5 ----
+                            label5.setText("zmenit heslo");
+
+                            GroupLayout panelZmenitHesloLayout = new GroupLayout(panelZmenitHeslo);
+                            panelZmenitHeslo.setLayout(panelZmenitHesloLayout);
+                            panelZmenitHesloLayout.setHorizontalGroup(
+                                panelZmenitHesloLayout.createParallelGroup()
+                                    .addGroup(panelZmenitHesloLayout.createSequentialGroup()
+                                        .addGap(220, 220, 220)
+                                        .addComponent(label5)
+                                        .addContainerGap(321, Short.MAX_VALUE))
+                            );
+                            panelZmenitHesloLayout.setVerticalGroup(
+                                panelZmenitHesloLayout.createParallelGroup()
+                                    .addGroup(panelZmenitHesloLayout.createSequentialGroup()
+                                        .addGap(120, 120, 120)
+                                        .addComponent(label5)
+                                        .addContainerGap(227, Short.MAX_VALUE))
+                            );
+                        }
+                        panelContent.add(panelZmenitHeslo, "zmenitHeslo");
+
+                        //======== panelOdhlasitSa ========
+                        {
+                            panelOdhlasitSa.setkEndColor(Color.white);
+                            panelOdhlasitSa.setkStartColor(Color.white);
+
+                            //---- label6 ----
+                            label6.setText("odhlasit sa");
+
+                            GroupLayout panelOdhlasitSaLayout = new GroupLayout(panelOdhlasitSa);
+                            panelOdhlasitSa.setLayout(panelOdhlasitSaLayout);
+                            panelOdhlasitSaLayout.setHorizontalGroup(
+                                panelOdhlasitSaLayout.createParallelGroup()
+                                    .addGroup(GroupLayout.Alignment.TRAILING, panelOdhlasitSaLayout.createSequentialGroup()
+                                        .addContainerGap(275, Short.MAX_VALUE)
+                                        .addComponent(label6)
+                                        .addGap(276, 276, 276))
+                            );
+                            panelOdhlasitSaLayout.setVerticalGroup(
+                                panelOdhlasitSaLayout.createParallelGroup()
+                                    .addGroup(panelOdhlasitSaLayout.createSequentialGroup()
+                                        .addGap(133, 133, 133)
+                                        .addComponent(label6)
+                                        .addContainerGap(214, Short.MAX_VALUE))
+                            );
+                        }
+                        panelContent.add(panelOdhlasitSa, "odhlasitSa");
+
+                        //======== panelAdmin ========
+                        {
+                            panelAdmin.setkEndColor(Color.white);
+                            panelAdmin.setkStartColor(Color.white);
+
+                            //---- label7 ----
+                            label7.setText("Admin");
+
+                            GroupLayout panelAdminLayout = new GroupLayout(panelAdmin);
+                            panelAdmin.setLayout(panelAdminLayout);
+                            panelAdminLayout.setHorizontalGroup(
+                                panelAdminLayout.createParallelGroup()
+                                    .addGroup(panelAdminLayout.createSequentialGroup()
+                                        .addGap(269, 269, 269)
+                                        .addComponent(label7)
+                                        .addContainerGap(304, Short.MAX_VALUE))
+                            );
+                            panelAdminLayout.setVerticalGroup(
+                                panelAdminLayout.createParallelGroup()
+                                    .addGroup(panelAdminLayout.createSequentialGroup()
+                                        .addGap(122, 122, 122)
+                                        .addComponent(label7)
+                                        .addContainerGap(225, Short.MAX_VALUE))
+                            );
+                        }
+                        panelContent.add(panelAdmin, "admin");
+                    }
+                    splitPane2.setBottomComponent(panelContent);
                 }
-                panelContent.add(panelObjednat, "objednat");
 
-                //======== panelMojeObejdnavky ========
-                {
-                    panelMojeObejdnavky.setkEndColor(Color.white);
-                    panelMojeObejdnavky.setkStartColor(Color.white);
-
-                    //---- label2 ----
-                    label2.setText("Moje objednavky");
-
-                    GroupLayout panelMojeObejdnavkyLayout = new GroupLayout(panelMojeObejdnavky);
-                    panelMojeObejdnavky.setLayout(panelMojeObejdnavkyLayout);
-                    panelMojeObejdnavkyLayout.setHorizontalGroup(
-                        panelMojeObejdnavkyLayout.createParallelGroup()
-                            .addGroup(panelMojeObejdnavkyLayout.createSequentialGroup()
-                                .addGap(225, 225, 225)
-                                .addComponent(label2)
-                                .addContainerGap(292, Short.MAX_VALUE))
-                    );
-                    panelMojeObejdnavkyLayout.setVerticalGroup(
-                        panelMojeObejdnavkyLayout.createParallelGroup()
-                            .addGroup(panelMojeObejdnavkyLayout.createSequentialGroup()
-                                .addGap(220, 220, 220)
-                                .addComponent(label2)
-                                .addContainerGap(302, Short.MAX_VALUE))
-                    );
-                }
-                panelContent.add(panelMojeObejdnavky, "mojeObjednavky");
-
-                //======== panelBurza ========
-                {
-
-                    //---- label3 ----
-                    label3.setText("Burza");
-
-                    GroupLayout panelBurzaLayout = new GroupLayout(panelBurza);
-                    panelBurza.setLayout(panelBurzaLayout);
-                    panelBurzaLayout.setHorizontalGroup(
-                        panelBurzaLayout.createParallelGroup()
-                            .addGroup(GroupLayout.Alignment.TRAILING, panelBurzaLayout.createSequentialGroup()
-                                .addContainerGap(296, Short.MAX_VALUE)
-                                .addComponent(label3, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-                                .addGap(198, 198, 198))
-                    );
-                    panelBurzaLayout.setVerticalGroup(
-                        panelBurzaLayout.createParallelGroup()
-                            .addGroup(panelBurzaLayout.createSequentialGroup()
-                                .addGap(243, 243, 243)
-                                .addComponent(label3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(253, Short.MAX_VALUE))
-                    );
-                }
-                panelContent.add(panelBurza, "burza");
-
-                //======== panelUcet ========
-                {
-
-                    //---- label4 ----
-                    label4.setText("Ucet");
-
-                    GroupLayout panelUcetLayout = new GroupLayout(panelUcet);
-                    panelUcet.setLayout(panelUcetLayout);
-                    panelUcetLayout.setHorizontalGroup(
-                        panelUcetLayout.createParallelGroup()
-                            .addGroup(panelUcetLayout.createSequentialGroup()
-                                .addGap(235, 235, 235)
-                                .addComponent(label4)
-                                .addContainerGap(349, Short.MAX_VALUE))
-                    );
-                    panelUcetLayout.setVerticalGroup(
-                        panelUcetLayout.createParallelGroup()
-                            .addGroup(GroupLayout.Alignment.TRAILING, panelUcetLayout.createSequentialGroup()
-                                .addContainerGap(263, Short.MAX_VALUE)
-                                .addComponent(label4)
-                                .addGap(259, 259, 259))
-                    );
-                }
-                panelContent.add(panelUcet, "ucet");
-
-                //======== panelZmenitHeslo ========
-                {
-
-                    //---- label5 ----
-                    label5.setText("Zmenit heslo");
-
-                    GroupLayout panelZmenitHesloLayout = new GroupLayout(panelZmenitHeslo);
-                    panelZmenitHeslo.setLayout(panelZmenitHesloLayout);
-                    panelZmenitHesloLayout.setHorizontalGroup(
-                        panelZmenitHesloLayout.createParallelGroup()
-                            .addGroup(panelZmenitHesloLayout.createSequentialGroup()
-                                .addGap(216, 216, 216)
-                                .addComponent(label5)
-                                .addContainerGap(323, Short.MAX_VALUE))
-                    );
-                    panelZmenitHesloLayout.setVerticalGroup(
-                        panelZmenitHesloLayout.createParallelGroup()
-                            .addGroup(panelZmenitHesloLayout.createSequentialGroup()
-                                .addGap(261, 261, 261)
-                                .addComponent(label5)
-                                .addContainerGap(261, Short.MAX_VALUE))
-                    );
-                }
-                panelContent.add(panelZmenitHeslo, "zmenitHeslo");
-
-                //======== panelOdhlasitSa ========
-                {
-
-                    //---- label6 ----
-                    label6.setText("Odhl\u00e1si\u0165 sa");
-
-                    GroupLayout panelOdhlasitSaLayout = new GroupLayout(panelOdhlasitSa);
-                    panelOdhlasitSa.setLayout(panelOdhlasitSaLayout);
-                    panelOdhlasitSaLayout.setHorizontalGroup(
-                        panelOdhlasitSaLayout.createParallelGroup()
-                            .addGroup(panelOdhlasitSaLayout.createSequentialGroup()
-                                .addGap(231, 231, 231)
-                                .addComponent(label6)
-                                .addContainerGap(317, Short.MAX_VALUE))
-                    );
-                    panelOdhlasitSaLayout.setVerticalGroup(
-                        panelOdhlasitSaLayout.createParallelGroup()
-                            .addGroup(GroupLayout.Alignment.TRAILING, panelOdhlasitSaLayout.createSequentialGroup()
-                                .addContainerGap(270, Short.MAX_VALUE)
-                                .addComponent(label6)
-                                .addGap(252, 252, 252))
-                    );
-                }
-                panelContent.add(panelOdhlasitSa, "odhlasitSa");
-
-                //======== panelAdmin ========
-                {
-
-                    //---- label7 ----
-                    label7.setText("Administrator");
-
-                    GroupLayout panelAdminLayout = new GroupLayout(panelAdmin);
-                    panelAdmin.setLayout(panelAdminLayout);
-                    panelAdminLayout.setHorizontalGroup(
-                        panelAdminLayout.createParallelGroup()
-                            .addGroup(panelAdminLayout.createSequentialGroup()
-                                .addGap(204, 204, 204)
-                                .addComponent(label7)
-                                .addContainerGap(331, Short.MAX_VALUE))
-                    );
-                    panelAdminLayout.setVerticalGroup(
-                        panelAdminLayout.createParallelGroup()
-                            .addGroup(GroupLayout.Alignment.TRAILING, panelAdminLayout.createSequentialGroup()
-                                .addContainerGap(270, Short.MAX_VALUE)
-                                .addComponent(label7)
-                                .addGap(252, 252, 252))
-                    );
-                }
-                panelContent.add(panelAdmin, "admin");
+                GroupLayout panelRightSideLayout = new GroupLayout(panelRightSide);
+                panelRightSide.setLayout(panelRightSideLayout);
+                panelRightSideLayout.setHorizontalGroup(
+                    panelRightSideLayout.createParallelGroup()
+                        .addComponent(splitPane2)
+                );
+                panelRightSideLayout.setVerticalGroup(
+                    panelRightSideLayout.createParallelGroup()
+                        .addComponent(splitPane2)
+                );
             }
-            splitPane1.setRightComponent(panelContent);
+            splitPane1.setRightComponent(panelRightSide);
         }
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
@@ -886,37 +643,15 @@ public class UserInterface extends JFrame {
     private KButton btnOdhlasitSa;
     private JLabel labelAccount;
     private KButton btnAdmin;
-    private KGradientPanel panelContent;
-    private KGradientPanel panelObjednat;
+    private KGradientPanel panelRightSide;
     private JSplitPane splitPane2;
-    private KGradientPanel panelObjednatMenu;
+    private KGradientPanel panelStravovaciSystem;
     private JLabel labelStravovaciSystem;
     private JLabel labelDatum;
-    private JLabel labelXObjednat;
-    private KGradientPanel panelObjednatContent;
-    private KGradientPanel panelObjednatObed;
-    private JLabel label1;
-    private JLabel label8;
-    private JLabel label9;
-    private JLabel label10;
-    private JLabel label11;
-    private JLabel label12;
-    private JLabel label13;
-    private JLabel label14;
-    private JLabel label15;
-    private JLabel label16;
-    private JLabel label17;
-    private JLabel label18;
-    private JLabel label31;
-    private JLabel label32;
-    private JLabel label33;
-    private JLabel label34;
-    private JLabel label35;
-    private JLabel label36;
-    private JLabel label37;
-    private JLabel label38;
-    private KGradientPanel panelObjednatRanajky;
-    private KGradientPanel panelMojeObejdnavky;
+    private JLabel labelX;
+    private KGradientPanel panelContent;
+    private KGradientPanel panelObjednat;
+    private KGradientPanel panelMojeObjednavky;
     private JLabel label2;
     private KGradientPanel panelBurza;
     private JLabel label3;
