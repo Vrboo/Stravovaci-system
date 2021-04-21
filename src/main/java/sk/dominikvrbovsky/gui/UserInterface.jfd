@@ -293,7 +293,7 @@ new FormModel {
 											"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 											add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
 												"$columnSpecs": "38px, 280px, 126px, 92px, 72px, 101px"
-												"$rowSpecs": "fill:50px, fill:44px, fill:44px, fill:44px, fill:44px, fill:44px"
+												"$rowSpecs": "fill:50px, fill:48px, fill:48px, fill:48px, fill:48px, fill:48px"
 											} ) {
 												name: "panelTableRanajky"
 												"kEndColor": sfield java.awt.Color white
