@@ -279,9 +279,11 @@ new FormModel {
 									add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
 										name: "panelContentObjednat"
 										"background": new java.awt.Color( 55, 55, 55, 255 )
-										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-											"$horizontalGroup": "par l {seq l {space :p:18:p, comp panelTableRanajky:::p:689:p, space ::16:x}}"
-											"$verticalGroup": "par l {seq l {space :p:26:p, comp panelTableRanajky:::p:306:p, space ::30:x}}"
+										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+											"$columnSpecs": "0"
+											"$rowSpecs": "0"
+											"$hGap": 5
+											"$vGap": 5
 										} ) {
 											name: "panelRanajky"
 											"kEndColor": sfield java.awt.Color white
@@ -289,9 +291,9 @@ new FormModel {
 											"kBorderRadius": 0
 											"kGradientFocus": 600
 											"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-											add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class info.clearthought.layout.TableLayout ) {
-												"$columnSpecs": "38.0, 239.0, 126.0, 92.0, 72.0, 101.0"
-												"$rowSpecs": "44.0, 40.0, 40.0, 40.0, 40.0, 40.0"
+											add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+												"$columnSpecs": "38px, 280px, 126px, 92px, 72px, 101px"
+												"$rowSpecs": "fill:50px, fill:44px, fill:44px, fill:44px, fill:44px, fill:44px"
 											} ) {
 												name: "panelTableRanajky"
 												"kEndColor": sfield java.awt.Color white
@@ -301,351 +303,369 @@ new FormModel {
 												"background": new java.awt.Color( 255, 255, 255, 255 )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label36"
-													"border": &MatteBorder0 new javax.swing.border.MatteBorder( 0, 0, 1, 0, sfield java.awt.Color black )
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) )
+													"border": &MatteBorder0 new javax.swing.border.MatteBorder( 0, 0, 2, 0, new java.awt.Color( 241, 137, 117, 255 ) )
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 1
+													"gridY": 1
+												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label1"
 													"text": "Názov"
 													"font": &Font2 new java.awt.Font( "Yu Gothic UI", 1, 20 )
 													"horizontalAlignment": 0
-													"border": &MatteBorder1 new javax.swing.border.MatteBorder( 0, 0, 1, 0, sfield java.awt.Color black )
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 1
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 2
+													"gridY": 1
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label8"
 													"text": "Nápoj"
 													"font": #Font2
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 2
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 3
+													"gridY": 1
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label9"
 													"text": "Kapacita"
 													"font": #Font2
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 3
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 4
+													"gridY": 1
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label10"
 													"text": "Cena"
 													"font": #Font2
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 4
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 5
+													"gridY": 1
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label37"
-													"border": #MatteBorder0
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 5
+													"border": new javax.swing.border.MatteBorder( 0, 0, 0, 0, sfield java.awt.Color black )
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 6
+													"gridY": 1
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label31"
 													"text": "1."
 													"horizontalAlignment": 0
 													"font": &Font3 new java.awt.Font( "Yu Gothic UI", 0, 16 )
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridY": 1
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 1
+													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label11"
 													"text": "Parky s horčicou a chlebom"
-													"font": &Font4 new java.awt.Font( "Yu Gothic UI", 0, 16 )
+													"font": &Font4 new java.awt.Font( "Yu Gothic UI", 1, 16 )
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridY": 1
-													"gridX": 1
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 2
+													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label16"
 													"text": "Minerálna voda"
-													"font": #Font4
+													"font": &Font5 new java.awt.Font( "Yu Gothic UI", 0, 16 )
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 2
-													"gridY": 1
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 3
+													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label25"
 													"text": "78x"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 3
-													"gridY": 1
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 4
+													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label26"
 													"text": "4.87€"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 4
-													"gridY": 1
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 5
+													"gridY": 2
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton3"
 													"text": "Objednať"
-													"font": &Font5 new java.awt.Font( "Yu Gothic UI", 1, 15 )
+													"font": &Font6 new java.awt.Font( "Yu Gothic UI", 1, 15 )
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": new java.awt.Color( 253, 152, 119, 255 )
 													"kEndColor": &Color9 new java.awt.Color( 251, 127, 123, 255 )
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 5
-													"gridY": 1
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 6
+													"gridY": 2
+													"insets": new java.awt.Insets( 6, 8, 6, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label32"
 													"text": "2."
 													"horizontalAlignment": 0
 													"font": #Font3
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridY": 2
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 1
+													"gridY": 3
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label12"
 													"text": "Praženica s rožkom"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridY": 2
-													"gridX": 1
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 2
+													"gridY": 3
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label17"
 													"text": "Cola"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 2
-													"gridY": 2
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 3
+													"gridY": 3
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label24"
 													"text": "12x"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 3
-													"gridY": 2
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 4
+													"gridY": 3
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label27"
 													"text": "2.45€"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 4
-													"gridY": 2
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 5
+													"gridY": 3
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton4"
 													"text": "Objednať"
-													"font": #Font5
+													"font": #Font6
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": &Color10 new java.awt.Color( 252, 146, 126, 255 )
 													"kEndColor": #Color9
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 5
-													"gridY": 2
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 6
+													"gridY": 3
+													"insets": new java.awt.Insets( 6, 8, 6, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label33"
 													"text": "3."
 													"horizontalAlignment": 0
 													"font": #Font3
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridY": 3
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 1
+													"gridY": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label13"
 													"text": "Lievance s lekvárom"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridY": 3
-													"gridX": 1
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 2
+													"gridY": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label18"
 													"text": "Čaj"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 2
-													"gridY": 3
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 3
+													"gridY": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label23"
 													"text": "78x"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 3
-													"gridY": 3
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 4
+													"gridY": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label28"
 													"text": "3.72€"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 4
-													"gridY": 3
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 5
+													"gridY": 4
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton5"
 													"text": "Objednať"
-													"font": #Font5
+													"font": #Font6
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color10
 													"kEndColor": #Color9
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 5
-													"gridY": 3
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 6
+													"gridY": 4
+													"insets": new java.awt.Insets( 6, 8, 6, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label34"
 													"text": "4."
 													"horizontalAlignment": 0
 													"font": #Font3
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridY": 4
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 1
+													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label15"
 													"text": "Volské oko s kečup a chlebom"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridY": 4
-													"gridX": 1
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 2
+													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label19"
 													"text": "Minerálna voda"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 2
-													"gridY": 4
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 3
+													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label22"
 													"text": "123x"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 3
-													"gridY": 4
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 4
+													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label29"
 													"text": "7.00€"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 4
-													"gridY": 4
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 5
+													"gridY": 5
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton6"
 													"text": "Objednať"
-													"font": #Font5
+													"font": #Font6
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color10
 													"kEndColor": #Color9
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 5
-													"gridY": 4
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 6
+													"gridY": 5
+													"insets": new java.awt.Insets( 6, 8, 6, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label35"
 													"text": "5."
 													"horizontalAlignment": 0
 													"font": #Font3
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridY": 5
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 1
+													"gridY": 6
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label14"
 													"text": "Šunková bageta"
 													"font": #Font4
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridY": 5
-													"gridX": 1
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 2
+													"gridY": 6
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label20"
 													"text": "Ďžús"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 2
-													"gridY": 5
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 3
+													"gridY": 6
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label21"
 													"text": "63x"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 3
-													"gridY": 5
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 4
+													"gridY": 6
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label30"
 													"text": "3.49€"
-													"font": #Font4
+													"font": #Font5
 													"horizontalAlignment": 0
-													"border": #MatteBorder1
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 4
-													"gridY": 5
+													"border": #MatteBorder0
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 5
+													"gridY": 6
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton7"
 													"text": "Objednať"
-													"font": #Font5
+													"font": #Font6
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color10
 													"kEndColor": #Color9
-												}, new FormLayoutConstraints( class com.jformdesigner.runtime.TableConstraints ) {
-													"gridX": 5
-													"gridY": 5
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 6
+													"gridY": 6
+													"insets": new java.awt.Insets( 6, 8, 6, 0 )
 												} )
-											} )
+											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 										}, new FormLayoutConstraints( class java.lang.String ) {
 											"value": "ranajky"
 										} )
