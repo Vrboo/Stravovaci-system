@@ -287,12 +287,12 @@ new FormModel {
 										} ) {
 											name: "panelRanajky"
 											"kEndColor": sfield java.awt.Color white
-											"kStartColor": sfield java.awt.Color white
+											"kStartColor": new java.awt.Color( 255, 255, 255, 255 )
 											"kBorderRadius": 0
 											"kGradientFocus": 600
 											"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 											add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
-												"$columnSpecs": "38px, 280px, 126px, 92px, 72px, 101px"
+												"$columnSpecs": "30px, 280px, 126px, 92px, 72px, 101px"
 												"$rowSpecs": "fill:50px, fill:48px, fill:48px, fill:48px, fill:48px, fill:48px"
 											} ) {
 												name: "panelTableRanajky"
@@ -408,14 +408,18 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton3"
 													"text": "Objednať"
-													"font": &Font5 new java.awt.Font( "Yu Gothic UI", 1, 15 )
+													"font": &Font5 new java.awt.Font( "Yu Gothic UI", 1, 16 )
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": new java.awt.Color( 253, 152, 119, 255 )
-													"kEndColor": &Color9 new java.awt.Color( 251, 127, 123, 255 )
+													"kEndColor": &Color9 new java.awt.Color( 250, 94, 98, 255 )
+													"cursor": &Cursor1 new java.awt.Cursor( 12 )
+													"kHoverEndColor": &Color10 new java.awt.Color( 253, 152, 119, 255 )
+													"kHoverStartColor": &Color11 new java.awt.Color( 250, 94, 98, 255 )
+													"kHoverForeGround": sfield java.awt.Color white
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 2
-													"insets": new java.awt.Insets( 6, 8, 6, 0 )
+													"insets": new java.awt.Insets( 5, 8, 7, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label32"
@@ -472,12 +476,16 @@ new FormModel {
 													"text": "Objednať"
 													"font": #Font5
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-													"kStartColor": &Color10 new java.awt.Color( 252, 146, 126, 255 )
+													"kStartColor": &Color12 new java.awt.Color( 253, 152, 119, 255 )
 													"kEndColor": #Color9
+													"cursor": #Cursor1
+													"kHoverEndColor": #Color10
+													"kHoverStartColor": #Color11
+													"kHoverForeGround": sfield java.awt.Color white
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 3
-													"insets": new java.awt.Insets( 6, 8, 6, 0 )
+													"insets": new java.awt.Insets( 5, 8, 7, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label33"
@@ -534,12 +542,16 @@ new FormModel {
 													"text": "Objednať"
 													"font": #Font5
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-													"kStartColor": #Color10
+													"kStartColor": #Color12
 													"kEndColor": #Color9
+													"cursor": #Cursor1
+													"kHoverEndColor": #Color10
+													"kHoverStartColor": #Color11
+													"kHoverForeGround": sfield java.awt.Color white
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 4
-													"insets": new java.awt.Insets( 6, 8, 6, 0 )
+													"insets": new java.awt.Insets( 5, 8, 7, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label34"
@@ -596,12 +608,16 @@ new FormModel {
 													"text": "Objednať"
 													"font": #Font5
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-													"kStartColor": #Color10
+													"kStartColor": #Color12
 													"kEndColor": #Color9
+													"cursor": #Cursor1
+													"kHoverEndColor": #Color10
+													"kHoverStartColor": #Color11
+													"kHoverForeGround": sfield java.awt.Color white
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 5
-													"insets": new java.awt.Insets( 6, 8, 6, 0 )
+													"insets": new java.awt.Insets( 5, 8, 7, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label35"
@@ -658,12 +674,16 @@ new FormModel {
 													"text": "Objednať"
 													"font": #Font5
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-													"kStartColor": #Color10
+													"kStartColor": #Color12
 													"kEndColor": #Color9
+													"cursor": #Cursor1
+													"kHoverEndColor": #Color10
+													"kHoverStartColor": #Color11
+													"kHoverForeGround": sfield java.awt.Color white
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 6
-													"insets": new java.awt.Insets( 6, 8, 6, 0 )
+													"insets": new java.awt.Insets( 5, 8, 7, 0 )
 												} )
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 										}, new FormLayoutConstraints( class java.lang.String ) {

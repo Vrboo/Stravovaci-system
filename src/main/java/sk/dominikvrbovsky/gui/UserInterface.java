@@ -190,13 +190,11 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
-                . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder
-                . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .
-                awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panelMenu. getBorder () ) )
-                ; panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-                ) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
-                ;
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+                0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+                . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+                red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+                beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -545,7 +543,7 @@ public class UserInterface extends JFrame {
                                             panelTableRanajky.setkBorderRadius(0);
                                             panelTableRanajky.setBackground(Color.white);
                                             panelTableRanajky.setLayout(new FormLayout(
-                                                "38px, 280px, 126px, 92px, 72px, 101px",
+                                                "30px, 280px, 126px, 92px, 72px, 101px",
                                                 "fill:50px, 5*(fill:48px)"));
 
                                             //---- label36 ----
@@ -621,11 +619,15 @@ public class UserInterface extends JFrame {
 
                                             //---- kButton3 ----
                                             kButton3.setText("Objedna\u0165");
-                                            kButton3.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                            kButton3.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                             kButton3.setBorder(null);
                                             kButton3.setkStartColor(new Color(253, 152, 119));
-                                            kButton3.setkEndColor(new Color(251, 127, 123));
-                                            panelTableRanajky.add(kButton3, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(6, 8, 6, 0)));
+                                            kButton3.setkEndColor(new Color(250, 94, 98));
+                                            kButton3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            kButton3.setkHoverEndColor(new Color(253, 152, 119));
+                                            kButton3.setkHoverStartColor(new Color(250, 94, 98));
+                                            kButton3.setkHoverForeGround(Color.white);
+                                            panelTableRanajky.add(kButton3, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 8, 7, 0)));
 
                                             //---- label32 ----
                                             label32.setText("2.");
@@ -664,11 +666,15 @@ public class UserInterface extends JFrame {
 
                                             //---- kButton4 ----
                                             kButton4.setText("Objedna\u0165");
-                                            kButton4.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                            kButton4.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                             kButton4.setBorder(null);
-                                            kButton4.setkStartColor(new Color(252, 146, 126));
-                                            kButton4.setkEndColor(new Color(251, 127, 123));
-                                            panelTableRanajky.add(kButton4, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(6, 8, 6, 0)));
+                                            kButton4.setkStartColor(new Color(253, 152, 119));
+                                            kButton4.setkEndColor(new Color(250, 94, 98));
+                                            kButton4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            kButton4.setkHoverEndColor(new Color(253, 152, 119));
+                                            kButton4.setkHoverStartColor(new Color(250, 94, 98));
+                                            kButton4.setkHoverForeGround(Color.white);
+                                            panelTableRanajky.add(kButton4, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 8, 7, 0)));
 
                                             //---- label33 ----
                                             label33.setText("3.");
@@ -707,11 +713,15 @@ public class UserInterface extends JFrame {
 
                                             //---- kButton5 ----
                                             kButton5.setText("Objedna\u0165");
-                                            kButton5.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                            kButton5.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                             kButton5.setBorder(null);
-                                            kButton5.setkStartColor(new Color(252, 146, 126));
-                                            kButton5.setkEndColor(new Color(251, 127, 123));
-                                            panelTableRanajky.add(kButton5, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(6, 8, 6, 0)));
+                                            kButton5.setkStartColor(new Color(253, 152, 119));
+                                            kButton5.setkEndColor(new Color(250, 94, 98));
+                                            kButton5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            kButton5.setkHoverEndColor(new Color(253, 152, 119));
+                                            kButton5.setkHoverStartColor(new Color(250, 94, 98));
+                                            kButton5.setkHoverForeGround(Color.white);
+                                            panelTableRanajky.add(kButton5, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 8, 7, 0)));
 
                                             //---- label34 ----
                                             label34.setText("4.");
@@ -750,11 +760,15 @@ public class UserInterface extends JFrame {
 
                                             //---- kButton6 ----
                                             kButton6.setText("Objedna\u0165");
-                                            kButton6.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                            kButton6.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                             kButton6.setBorder(null);
-                                            kButton6.setkStartColor(new Color(252, 146, 126));
-                                            kButton6.setkEndColor(new Color(251, 127, 123));
-                                            panelTableRanajky.add(kButton6, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(6, 8, 6, 0)));
+                                            kButton6.setkStartColor(new Color(253, 152, 119));
+                                            kButton6.setkEndColor(new Color(250, 94, 98));
+                                            kButton6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            kButton6.setkHoverEndColor(new Color(253, 152, 119));
+                                            kButton6.setkHoverStartColor(new Color(250, 94, 98));
+                                            kButton6.setkHoverForeGround(Color.white);
+                                            panelTableRanajky.add(kButton6, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 8, 7, 0)));
 
                                             //---- label35 ----
                                             label35.setText("5.");
@@ -793,11 +807,15 @@ public class UserInterface extends JFrame {
 
                                             //---- kButton7 ----
                                             kButton7.setText("Objedna\u0165");
-                                            kButton7.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                            kButton7.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                             kButton7.setBorder(null);
-                                            kButton7.setkStartColor(new Color(252, 146, 126));
-                                            kButton7.setkEndColor(new Color(251, 127, 123));
-                                            panelTableRanajky.add(kButton7, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(6, 8, 6, 0)));
+                                            kButton7.setkStartColor(new Color(253, 152, 119));
+                                            kButton7.setkEndColor(new Color(250, 94, 98));
+                                            kButton7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            kButton7.setkHoverEndColor(new Color(253, 152, 119));
+                                            kButton7.setkHoverStartColor(new Color(250, 94, 98));
+                                            kButton7.setkHoverForeGround(Color.white);
+                                            panelTableRanajky.add(kButton7, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 8, 7, 0)));
                                         }
                                         panelRanajky.add(panelTableRanajky, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
