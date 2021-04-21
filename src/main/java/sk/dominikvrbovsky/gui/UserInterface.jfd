@@ -303,7 +303,7 @@ new FormModel {
 												"background": new java.awt.Color( 255, 255, 255, 255 )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label36"
-													"border": &MatteBorder0 new javax.swing.border.MatteBorder( 0, 0, 2, 0, new java.awt.Color( 241, 137, 117, 255 ) )
+													"border": &MatteBorder0 new javax.swing.border.MatteBorder( 0, 0, 3, 0, new java.awt.Color( 38, 184, 190, 255 ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 1

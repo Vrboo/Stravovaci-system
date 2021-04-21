@@ -190,13 +190,13 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
-                swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border
-                . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067"
-                , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panelMenu. getBorder
-                () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
-                . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException
-                ( ) ;} } );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+                swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border
+                . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067"
+                ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder
+                ( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+                .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException
+                ( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -549,35 +549,35 @@ public class UserInterface extends JFrame {
                                                 "fill:50px, 5*(fill:52px)"));
 
                                             //---- label36 ----
-                                            label36.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label36.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label36, CC.xy(1, 1));
 
                                             //---- label1 ----
                                             label1.setText("Ra\u0148ajky");
                                             label1.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
                                             label1.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label1.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label1.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label1, CC.xy(2, 1));
 
                                             //---- label8 ----
                                             label8.setText("N\u00e1poj");
                                             label8.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
                                             label8.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label8.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label8.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label8, CC.xy(3, 1));
 
                                             //---- label9 ----
                                             label9.setText("Kapacita");
                                             label9.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
                                             label9.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label9.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label9.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label9, CC.xy(4, 1));
 
                                             //---- label10 ----
                                             label10.setText("Cena");
                                             label10.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
                                             label10.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label10.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label10.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label10, CC.xy(5, 1));
 
                                             //---- label37 ----
@@ -588,35 +588,35 @@ public class UserInterface extends JFrame {
                                             label31.setText("1.");
                                             label31.setHorizontalAlignment(SwingConstants.CENTER);
                                             label31.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                            label31.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label31.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label31, CC.xy(1, 2));
 
                                             //---- label11 ----
                                             label11.setText("Parky s hor\u010dicou a chlebom");
                                             label11.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             label11.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label11.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label11.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label11, CC.xy(2, 2));
 
                                             //---- label16 ----
                                             label16.setText("Miner\u00e1lna voda");
                                             label16.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label16.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label16.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label16.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label16, CC.xy(3, 2));
 
                                             //---- label25 ----
                                             label25.setText("78x");
                                             label25.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label25.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label25.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label25.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label25, CC.xy(4, 2));
 
                                             //---- label26 ----
                                             label26.setText("4.87\u20ac");
                                             label26.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label26.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label26.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label26.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label26, CC.xy(5, 2));
 
                                             //---- kButton3 ----
@@ -635,35 +635,35 @@ public class UserInterface extends JFrame {
                                             label32.setText("2.");
                                             label32.setHorizontalAlignment(SwingConstants.CENTER);
                                             label32.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                            label32.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label32.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label32, CC.xy(1, 3));
 
                                             //---- label12 ----
                                             label12.setText("Pra\u017eenica s ro\u017ekom");
                                             label12.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             label12.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label12.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label12.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label12, CC.xy(2, 3));
 
                                             //---- label17 ----
                                             label17.setText("Cola");
                                             label17.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label17.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label17.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label17.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label17, CC.xy(3, 3));
 
                                             //---- label24 ----
                                             label24.setText("12x");
                                             label24.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label24.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label24.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label24.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label24, CC.xy(4, 3));
 
                                             //---- label27 ----
                                             label27.setText("2.45\u20ac");
                                             label27.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label27.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label27.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label27.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label27, CC.xy(5, 3));
 
                                             //---- kButton4 ----
@@ -682,35 +682,35 @@ public class UserInterface extends JFrame {
                                             label33.setText("3.");
                                             label33.setHorizontalAlignment(SwingConstants.CENTER);
                                             label33.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                            label33.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label33.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label33, CC.xy(1, 4));
 
                                             //---- label13 ----
                                             label13.setText("Lievance s lekv\u00e1rom");
                                             label13.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             label13.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label13.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label13.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label13, CC.xy(2, 4));
 
                                             //---- label18 ----
                                             label18.setText("\u010caj");
                                             label18.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label18.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label18.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label18.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label18, CC.xy(3, 4));
 
                                             //---- label23 ----
                                             label23.setText("78x");
                                             label23.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label23.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label23.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label23.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label23, CC.xy(4, 4));
 
                                             //---- label28 ----
                                             label28.setText("3.72\u20ac");
                                             label28.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label28.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label28.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label28.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label28, CC.xy(5, 4));
 
                                             //---- kButton5 ----
@@ -729,35 +729,35 @@ public class UserInterface extends JFrame {
                                             label34.setText("4.");
                                             label34.setHorizontalAlignment(SwingConstants.CENTER);
                                             label34.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                            label34.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label34.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label34, CC.xy(1, 5));
 
                                             //---- label15 ----
                                             label15.setText("Volsk\u00e9 oko s ke\u010dup a chlebom");
                                             label15.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             label15.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label15.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label15.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label15, CC.xy(2, 5));
 
                                             //---- label19 ----
                                             label19.setText("Miner\u00e1lna voda");
                                             label19.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label19.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label19.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label19.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label19, CC.xy(3, 5));
 
                                             //---- label22 ----
                                             label22.setText("123x");
                                             label22.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label22.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label22.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label22.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label22, CC.xy(4, 5));
 
                                             //---- label29 ----
                                             label29.setText("7.00\u20ac");
                                             label29.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label29.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label29.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label29.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label29, CC.xy(5, 5));
 
                                             //---- kButton6 ----
@@ -776,35 +776,35 @@ public class UserInterface extends JFrame {
                                             label35.setText("5.");
                                             label35.setHorizontalAlignment(SwingConstants.CENTER);
                                             label35.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                            label35.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label35.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label35, CC.xy(1, 6));
 
                                             //---- label14 ----
                                             label14.setText("\u0160unkov\u00e1 bageta");
                                             label14.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             label14.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label14.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label14.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label14, CC.xy(2, 6));
 
                                             //---- label20 ----
                                             label20.setText("\u010e\u017e\u00fas");
                                             label20.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label20.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label20.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label20.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label20, CC.xy(3, 6));
 
                                             //---- label21 ----
                                             label21.setText("63x");
                                             label21.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label21.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label21.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label21.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label21, CC.xy(4, 6));
 
                                             //---- label30 ----
                                             label30.setText("3.49\u20ac");
                                             label30.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label30.setHorizontalAlignment(SwingConstants.CENTER);
-                                            label30.setBorder(new MatteBorder(0, 0, 2, 0, new Color(241, 137, 117)));
+                                            label30.setBorder(new MatteBorder(0, 0, 3, 0, new Color(38, 184, 190)));
                                             panelTableRanajky.add(label30, CC.xy(5, 6));
 
                                             //---- kButton7 ----
