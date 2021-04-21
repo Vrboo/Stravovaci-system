@@ -276,12 +276,11 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
-                EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing
-                .border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),
-                java.awt.Color.red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener()
-                {@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))
-                throw new RuntimeException();}});
+                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
+                0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
+                . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
+                red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
+                beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -476,7 +475,7 @@ public class UserInterface extends JFrame {
                     splitPane2.setOrientation(JSplitPane.VERTICAL_SPLIT);
                     splitPane2.setBorder(null);
                     splitPane2.setDividerSize(0);
-                    splitPane2.setDividerLocation(160);
+                    splitPane2.setDividerLocation(155);
 
                     //======== panelStravovaciSystem ========
                     {
@@ -559,7 +558,7 @@ public class UserInterface extends JFrame {
                                 splitPane3.setBorder(null);
                                 splitPane3.setOrientation(JSplitPane.VERTICAL_SPLIT);
                                 splitPane3.setDividerSize(0);
-                                splitPane3.setDividerLocation(36);
+                                splitPane3.setDividerLocation(40);
                                 splitPane3.setBackground(new Color(55, 55, 55));
 
                                 //======== panelMenuObjednat ========
@@ -578,18 +577,19 @@ public class UserInterface extends JFrame {
                                     btnRanajky.setText("Ranajky");
                                     btnRanajky.setBorder(null);
                                     btnRanajky.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                    btnRanajky.setkStartColor(new Color(70, 70, 70));
-                                    btnRanajky.setkEndColor(new Color(70, 70, 70));
+                                    btnRanajky.setkStartColor(Color.darkGray);
+                                    btnRanajky.setkEndColor(Color.darkGray);
                                     btnRanajky.setkBorderRadius(0);
                                     btnRanajky.setkAllowTab(true);
-                                    btnRanajky.setkHoverEndColor(Color.darkGray);
-                                    btnRanajky.setkHoverStartColor(Color.darkGray);
+                                    btnRanajky.setkHoverEndColor(new Color(70, 70, 70));
+                                    btnRanajky.setkHoverStartColor(new Color(70, 70, 70));
                                     btnRanajky.setkIndicatorColor(new Color(38, 184, 190));
                                     btnRanajky.setkIndicatorThickness(0);
                                     btnRanajky.setkBackGroundColor(Color.white);
-                                    btnRanajky.setkSelectedColor(new Color(70, 70, 70));
+                                    btnRanajky.setkSelectedColor(new Color(67, 67, 67));
                                     btnRanajky.setkHoverForeGround(Color.white);
                                     btnRanajky.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                    btnRanajky.setVerticalAlignment(SwingConstants.TOP);
                                     btnRanajky.addActionListener(e -> btnRanajkyActionPerformed());
                                     panelMenuObjednat.add(btnRanajky, CC.xy(1, 1));
 
@@ -597,18 +597,19 @@ public class UserInterface extends JFrame {
                                     btnObed.setText("Obed");
                                     btnObed.setBorder(null);
                                     btnObed.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                    btnObed.setkStartColor(new Color(70, 70, 70));
-                                    btnObed.setkEndColor(new Color(70, 70, 70));
+                                    btnObed.setkStartColor(Color.darkGray);
+                                    btnObed.setkEndColor(Color.darkGray);
                                     btnObed.setkBorderRadius(0);
                                     btnObed.setkAllowTab(true);
-                                    btnObed.setkHoverEndColor(Color.darkGray);
-                                    btnObed.setkHoverStartColor(Color.darkGray);
+                                    btnObed.setkHoverEndColor(new Color(70, 70, 70));
+                                    btnObed.setkHoverStartColor(new Color(70, 70, 70));
                                     btnObed.setkIndicatorColor(new Color(38, 184, 190));
                                     btnObed.setkIndicatorThickness(0);
                                     btnObed.setkBackGroundColor(Color.white);
-                                    btnObed.setkSelectedColor(new Color(70, 70, 70));
+                                    btnObed.setkSelectedColor(new Color(67, 67, 67));
                                     btnObed.setkHoverForeGround(Color.white);
                                     btnObed.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                    btnObed.setVerticalAlignment(SwingConstants.TOP);
                                     btnObed.addActionListener(e -> btnObedActionPerformed());
                                     panelMenuObjednat.add(btnObed, CC.xy(3, 1));
                                 }

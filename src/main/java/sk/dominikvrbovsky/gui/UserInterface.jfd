@@ -186,7 +186,7 @@ new FormModel {
 						"orientation": 0
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"dividerSize": 0
-						"dividerLocation": 160
+						"dividerLocation": 155
 						add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 							"$horizontalGroup": "par l {seq l {space :p:35:p, par l {comp labelStravovaciSystem:::p:378:p, comp labelDatum:::p:378:p}, space ::283:x, comp labelX:::p:27:p}}"
 							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space :p:14:p, comp labelStravovaciSystem:::p:76:p, space u:::p, comp labelDatum:::p:25:p, space ::33:x}}"
@@ -238,7 +238,7 @@ new FormModel {
 									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 									"orientation": 0
 									"dividerSize": 0
-									"dividerLocation": 36
+									"dividerLocation": 40
 									"background": new java.awt.Color( 55, 55, 55, 255 )
 									add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
 										"$columnSpecs": "default, labelcompgap, default"
@@ -256,18 +256,19 @@ new FormModel {
 											"text": "Ranajky"
 											"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 											"font": &Font1 new java.awt.Font( "Yu Gothic UI", 1, 17 )
-											"kStartColor": &Color6 new java.awt.Color( 70, 70, 70, 255 )
-											"kEndColor": &Color7 new java.awt.Color( 70, 70, 70, 255 )
+											"kStartColor": sfield java.awt.Color darkGray
+											"kEndColor": sfield java.awt.Color darkGray
 											"kBorderRadius": 0
 											"kAllowTab": true
-											"kHoverEndColor": sfield java.awt.Color darkGray
-											"kHoverStartColor": sfield java.awt.Color darkGray
+											"kHoverEndColor": &Color6 new java.awt.Color( 70, 70, 70, 255 )
+											"kHoverStartColor": &Color7 new java.awt.Color( 70, 70, 70, 255 )
 											"kIndicatorColor": &Color8 new java.awt.Color( 38, 184, 190, 255 )
 											"kIndicatorThickness": 0
 											"kBackGroundColor": sfield java.awt.Color white
-											"kSelectedColor": &Color9 new java.awt.Color( 70, 70, 70, 255 )
+											"kSelectedColor": &Color9 new java.awt.Color( 67, 67, 67, 255 )
 											"kHoverForeGround": new java.awt.Color( 255, 255, 255, 255 )
 											"cursor": &Cursor1 new java.awt.Cursor( 12 )
+											"verticalAlignment": 1
 											addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnRanajkyActionPerformed", false ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 1
@@ -278,18 +279,19 @@ new FormModel {
 											"text": "Obed"
 											"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 											"font": #Font1
-											"kStartColor": #Color6
-											"kEndColor": #Color7
+											"kStartColor": sfield java.awt.Color darkGray
+											"kEndColor": sfield java.awt.Color darkGray
 											"kBorderRadius": 0
 											"kAllowTab": true
-											"kHoverEndColor": sfield java.awt.Color darkGray
-											"kHoverStartColor": sfield java.awt.Color darkGray
+											"kHoverEndColor": #Color6
+											"kHoverStartColor": #Color7
 											"kIndicatorColor": #Color8
 											"kIndicatorThickness": 0
 											"kBackGroundColor": sfield java.awt.Color white
 											"kSelectedColor": #Color9
 											"kHoverForeGround": sfield java.awt.Color white
 											"cursor": #Cursor1
+											"verticalAlignment": 1
 											addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObedActionPerformed", false ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 3
