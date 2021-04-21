@@ -151,12 +151,12 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
-                ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
-                .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
-                . Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
-                propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-                ;} } );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+                EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
+                . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+                java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+                { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
+                throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -443,14 +443,8 @@ public class UserInterface extends JFrame {
                                     panelMenuObjednat.setkEndColor(new Color(55, 55, 55));
                                     panelMenuObjednat.setkBorderRadius(0);
                                     panelMenuObjednat.setBackground(new Color(55, 55, 55));
-                                    panelMenuObjednat.setkGradientFocus(770);
-                                    panelMenuObjednat.setLayout(new MigLayout(
-                                        "insets 0,hidemode 3,gap 5 5",
-                                        // columns
-                                        "[fill]" +
-                                        "[fill]",
-                                        // rows
-                                        "[fill]"));
+                                    panelMenuObjednat.setkGradientFocus(700);
+                                    panelMenuObjednat.setForeground(new Color(55, 55, 55));
 
                                     //---- kButton2 ----
                                     kButton2.setText("Obed");
@@ -461,7 +455,6 @@ public class UserInterface extends JFrame {
                                     kButton2.setkForeGround(new Color(38, 184, 190));
                                     kButton2.setkBorderRadius(0);
                                     kButton2.setkAllowTab(true);
-                                    panelMenuObjednat.add(kButton2, "cell 0 0");
 
                                     //---- kButton1 ----
                                     kButton1.setText("Ranajky");
@@ -472,7 +465,21 @@ public class UserInterface extends JFrame {
                                     kButton1.setkForeGround(new Color(38, 184, 190));
                                     kButton1.setkBorderRadius(0);
                                     kButton1.setkAllowTab(true);
-                                    panelMenuObjednat.add(kButton1, "cell 1 0");
+
+                                    GroupLayout panelMenuObjednatLayout = new GroupLayout(panelMenuObjednat);
+                                    panelMenuObjednat.setLayout(panelMenuObjednatLayout);
+                                    panelMenuObjednatLayout.setHorizontalGroup(
+                                        panelMenuObjednatLayout.createParallelGroup()
+                                            .addGroup(panelMenuObjednatLayout.createSequentialGroup()
+                                                .addComponent(kButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, 0)
+                                                .addComponent(kButton1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                    );
+                                    panelMenuObjednatLayout.setVerticalGroup(
+                                        panelMenuObjednatLayout.createParallelGroup()
+                                            .addComponent(kButton2, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(kButton1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+                                    );
                                 }
                                 splitPane3.setTopComponent(panelMenuObjednat);
 
@@ -513,7 +520,7 @@ public class UserInterface extends JFrame {
                             );
                             panelObjednatLayout.setVerticalGroup(
                                 panelObjednatLayout.createParallelGroup()
-                                    .addComponent(splitPane3, GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                                    .addComponent(splitPane3)
                             );
                         }
                         panelContent.add(panelObjednat, "objednat");

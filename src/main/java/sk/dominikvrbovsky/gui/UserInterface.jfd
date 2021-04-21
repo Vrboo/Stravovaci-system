@@ -228,7 +228,7 @@ new FormModel {
 							name: "panelContent"
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {comp splitPane3::l:::x}"
-								"$verticalGroup": "par l {comp splitPane3::l::378:x}"
+								"$verticalGroup": "par l {comp splitPane3::l:::x}"
 							} ) {
 								name: "panelObjednat"
 								"kEndColor": sfield java.awt.Color white
@@ -240,17 +240,17 @@ new FormModel {
 									"dividerSize": 0
 									"dividerLocation": 36
 									"background": new java.awt.Color( 55, 55, 55, 255 )
-									add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-										"$layoutConstraints": "insets 0,hidemode 3,gap 5 5"
-										"$columnConstraints": "[fill][fill]"
-										"$rowConstraints": "[fill]"
+									add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+										"$horizontalGroup": "par l {seq {comp kButton2:::p::p, space :0:0:p, comp kButton1:::p::p}}"
+										"$verticalGroup": "par l {comp kButton2:::p:36:p, comp kButton1:::p:36:p}"
 									} ) {
 										name: "panelMenuObjednat"
 										"kStartColor": new java.awt.Color( 55, 55, 55, 255 )
 										"kEndColor": new java.awt.Color( 55, 55, 55, 255 )
 										"kBorderRadius": 0
 										"background": new java.awt.Color( 55, 55, 55, 255 )
-										"kGradientFocus": 770
+										"kGradientFocus": 700
+										"foreground": new java.awt.Color( 55, 55, 55, 255 )
 										add( new FormComponent( "keeptoo.KButton" ) {
 											name: "kButton2"
 											"text": "Obed"
@@ -261,8 +261,6 @@ new FormModel {
 											"kForeGround": &Color8 new java.awt.Color( 38, 184, 190, 255 )
 											"kBorderRadius": 0
 											"kAllowTab": true
-										}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-											"value": "cell 0 0"
 										} )
 										add( new FormComponent( "keeptoo.KButton" ) {
 											name: "kButton1"
@@ -274,8 +272,6 @@ new FormModel {
 											"kForeGround": #Color8
 											"kBorderRadius": 0
 											"kAllowTab": true
-										}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-											"value": "cell 1 0"
 										} )
 									}, new FormLayoutConstraints( class java.lang.String ) {
 										"value": "left"
