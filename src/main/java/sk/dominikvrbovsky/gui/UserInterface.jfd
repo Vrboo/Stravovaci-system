@@ -189,7 +189,7 @@ new FormModel {
 						"dividerLocation": 155
 						add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 							"$horizontalGroup": "par l {seq l {space :p:35:p, par l {comp labelStravovaciSystem:::p:378:p, comp labelDatum:::p:378:p}, space ::283:x, comp labelX:::p:27:p}}"
-							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space :p:14:p, comp labelStravovaciSystem:::p:76:p, space u:::p, comp labelDatum:::p:25:p, space ::33:x}}"
+							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space :p:14:p, comp labelStravovaciSystem:::p:76:p, space u:::p, comp labelDatum:::p:25:p, space ::28:x}}"
 						} ) {
 							name: "panelStravovaciSystem"
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -228,7 +228,7 @@ new FormModel {
 							name: "panelContent"
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {comp splitPane3::l:::x}"
-								"$verticalGroup": "par l {comp splitPane3::l::398:x}"
+								"$verticalGroup": "par l {comp splitPane3::l::403:x}"
 							} ) {
 								name: "panelObjednat"
 								"kEndColor": sfield java.awt.Color white
@@ -270,10 +270,7 @@ new FormModel {
 											"cursor": &Cursor1 new java.awt.Cursor( 12 )
 											"verticalAlignment": 1
 											addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnRanajkyActionPerformed", false ) )
-										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
-											"gridX": 1
-											"gridY": 1
-										} )
+										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
 										add( new FormComponent( "keeptoo.KButton" ) {
 											name: "btnObed"
 											"text": "Obed"
@@ -295,7 +292,6 @@ new FormModel {
 											addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObedActionPerformed", false ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 3
-											"gridY": 1
 										} )
 									}, new FormLayoutConstraints( class java.lang.String ) {
 										"value": "left"
@@ -1162,23 +1158,134 @@ new FormModel {
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "objednat"
 							} )
-							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-								"$horizontalGroup": "par l {seq t {space ::396:x, comp label2:::p::p, space :p:236:p}}"
-								"$verticalGroup": "par l {seq t {space ::211:x, comp label2:::p::p, space :p:171:p}}"
+							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+								"$columnSpecs": "0"
+								"$rowSpecs": "0"
+								"$hGap": 5
+								"$vGap": 5
 							} ) {
 								name: "panelMojeObjednavky"
 								"kEndColor": sfield java.awt.Color white
 								"kStartColor": sfield java.awt.Color white
-								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "label2"
-									"text": "Moje objednavkz"
-								} )
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"kBorderRadius": 0
+								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+									"$columnSpecs": "46dlu, 36dlu, 348px, 75px, 101px"
+									"$rowSpecs": "fill:49px, fill:52px"
+								} ) {
+									name: "panelTableRanajky2"
+									"kEndColor": sfield java.awt.Color white
+									"kStartColor": #Color10
+									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+									"kBorderRadius": 0
+									"background": #Color11
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label71"
+										"text": "Dátum"
+										"horizontalAlignment": 0
+										"font": &Font9 new java.awt.Font( "Yu Gothic UI", 1, 20 )
+										"border": &MatteBorder3 new javax.swing.border.MatteBorder( 0, 0, 1, 0, sfield java.awt.Color black )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label73"
+										"text": "Čas"
+										"horizontalAlignment": 0
+										"font": #Font9
+										"border": #MatteBorder3
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 2
+										"gridY": 1
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label2"
+										"text": "Obed"
+										"font": #Font2
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 1
+										"gridX": 3
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label74"
+										"text": "Cena"
+										"font": #Font2
+										"horizontalAlignment": 0
+										"border": #MatteBorder0
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 4
+										"gridY": 1
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label75"
+										"border": new javax.swing.border.MatteBorder( 0, 0, 1, 0, sfield java.awt.Color black )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 5
+										"gridY": 1
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label76"
+										"text": "14.12.2021"
+										"font": &Font10 new java.awt.Font( "Yu Gothic UI", 0, 17 )
+										"horizontalAlignment": 0
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 1
+										"gridY": 2
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label79"
+										"text": "14:59"
+										"font": #Font10
+										"horizontalAlignment": 0
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 2
+										"gridY": 2
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label77"
+										"text": "Parky s horčicou a chlebom (Takeaway)"
+										"font": new java.awt.Font( "Yu Gothic UI", 0, 17 )
+										"horizontalAlignment": 0
+										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 2
+										"gridX": 3
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label80"
+										"text": "4.87€"
+										"font": new java.awt.Font( "Yu Gothic UI", 0, 17 )
+										"horizontalAlignment": 0
+										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 4
+										"gridY": 2
+									} )
+									add( new FormComponent( "keeptoo.KButton" ) {
+										name: "kButton13"
+										"text": "Do burzy"
+										"font": #Font8
+										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+										"kStartColor": #Color13
+										"kEndColor": #Color14
+										"cursor": #Cursor2
+										"kHoverEndColor": #Color15
+										"kHoverStartColor": #Color16
+										"kHoverForeGround": sfield java.awt.Color white
+										"background": #Color12
+										"borderPainted": false
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 5
+										"gridY": 2
+										"insets": new java.awt.Insets( 7, 10, 10, 1 )
+									} )
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "mojeObjednavky"
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq l {space :p:253:p, comp label3:::p::p, space ::440:x}}"
-								"$verticalGroup": "par l {seq l {space :p:63:p, comp label3:::p::p, space ::319:x}}"
+								"$verticalGroup": "par l {seq l {space :p:63:p, comp label3:::p::p, space ::324:x}}"
 							} ) {
 								name: "panelBurza"
 								"kEndColor": sfield java.awt.Color white
@@ -1192,7 +1299,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq l {space :p:280:p, comp label4:::p::p, space ::421:x}}"
-								"$verticalGroup": "par l {seq t {space ::214:x, comp label4:::p::p, space :p:168:p}}"
+								"$verticalGroup": "par l {seq t {space ::219:x, comp label4:::p::p, space :p:168:p}}"
 							} ) {
 								name: "panelUcet"
 								"kEndColor": sfield java.awt.Color white
@@ -1206,7 +1313,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq l {space :p:220:p, comp label5:::p::p, space ::436:x}}"
-								"$verticalGroup": "par l {seq l {space :p:120:p, comp label5:::p::p, space ::262:x}}"
+								"$verticalGroup": "par l {seq l {space :p:120:p, comp label5:::p::p, space ::267:x}}"
 							} ) {
 								name: "panelZmenitHeslo"
 								"kEndColor": sfield java.awt.Color white
@@ -1220,7 +1327,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq t {space ::390:x, comp label6:::p::p, space :p:276:p}}"
-								"$verticalGroup": "par l {seq l {space :p:133:p, comp label6:::p::p, space ::249:x}}"
+								"$verticalGroup": "par l {seq l {space :p:133:p, comp label6:::p::p, space ::254:x}}"
 							} ) {
 								name: "panelOdhlasitSa"
 								"kEndColor": sfield java.awt.Color white
@@ -1234,7 +1341,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq l {space :p:269:p, comp label7:::p::p, space ::419:x}}"
-								"$verticalGroup": "par l {seq l {space :p:122:p, comp label7:::p::p, space ::260:x}}"
+								"$verticalGroup": "par l {seq l {space :p:122:p, comp label7:::p::p, space ::265:x}}"
 							} ) {
 								name: "panelAdmin"
 								"kEndColor": sfield java.awt.Color white
