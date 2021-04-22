@@ -471,12 +471,17 @@ public class UserInterface extends JFrame {
         txtFieldDobitSuma = new JTextField();
         btnDobitUcet = new KButton();
         panelVybratZUctu = new KGradientPanel();
-        panelDobitUcetInside2 = new KGradientPanel();
+        panelVyberZUctuInside = new KGradientPanel();
         labelVyberZUctu = new JLabel();
         txtFieldVyberSuma = new JTextField();
         btnVybratZUctu = new KButton();
         panelHistoriaTrans = new KGradientPanel();
         panelZmenitHeslo = new KGradientPanel();
+        panelVyberZUctuInside2 = new KGradientPanel();
+        passwordField6 = new JPasswordField();
+        passwordField7 = new JPasswordField();
+        passwordField8 = new JPasswordField();
+        btnVybratZUctu2 = new KButton();
         panelOdhlasitSa = new KGradientPanel();
         label6 = new JLabel();
         panelAdmin = new KGradientPanel();
@@ -499,12 +504,12 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-                . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
-                . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
-                12 ), java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans
-                . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
-                getPropertyName () )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
+                .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax
+                . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,
+                12 ) ,java . awt. Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans
+                .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e.
+                getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2561,14 +2566,15 @@ public class UserInterface extends JFrame {
                                         panelVybratZUctu.setkBorderRadius(0);
                                         panelVybratZUctu.setkEndColor(Color.white);
                                         panelVybratZUctu.setkStartColor(Color.white);
+                                        panelVybratZUctu.setLayout(new GridBagLayout());
 
-                                        //======== panelDobitUcetInside2 ========
+                                        //======== panelVyberZUctuInside ========
                                         {
-                                            panelDobitUcetInside2.setkStartColor(Color.white);
-                                            panelDobitUcetInside2.setkEndColor(Color.white);
-                                            panelDobitUcetInside2.setBorder(new MatteBorder(1, 1, 1, 1, Color.lightGray));
-                                            panelDobitUcetInside2.setkBorderRadius(0);
-                                            panelDobitUcetInside2.setLayout(new FormLayout(
+                                            panelVyberZUctuInside.setkStartColor(Color.white);
+                                            panelVyberZUctuInside.setkEndColor(Color.white);
+                                            panelVyberZUctuInside.setBorder(new MatteBorder(1, 1, 1, 1, Color.lightGray));
+                                            panelVyberZUctuInside.setkBorderRadius(0);
+                                            panelVyberZUctuInside.setLayout(new FormLayout(
                                                 "[319px,pref]",
                                                 "fill:[58px,pref], fill:[56px,pref], fill:[55px,pref]"));
 
@@ -2576,7 +2582,7 @@ public class UserInterface extends JFrame {
                                             labelVyberZUctu.setText("V\u00fdber z \u00fa\u010dtu");
                                             labelVyberZUctu.setHorizontalAlignment(SwingConstants.CENTER);
                                             labelVyberZUctu.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
-                                            panelDobitUcetInside2.add(labelVyberZUctu, new CellConstraints(1, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(10, 0, 0, 0)));
+                                            panelVyberZUctuInside.add(labelVyberZUctu, new CellConstraints(1, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(10, 0, 0, 0)));
 
                                             //---- txtFieldVyberSuma ----
                                             txtFieldVyberSuma.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
@@ -2602,7 +2608,7 @@ public class UserInterface extends JFrame {
                                                     textFieldUsernameMouseMoved();
                                                 }
                                             });
-                                            panelDobitUcetInside2.add(txtFieldVyberSuma, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 45, 15, 45)));
+                                            panelVyberZUctuInside.add(txtFieldVyberSuma, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 45, 15, 45)));
 
                                             //---- btnVybratZUctu ----
                                             btnVybratZUctu.setText("Vybra\u0165 z \u00fa\u010dtu");
@@ -2619,29 +2625,11 @@ public class UserInterface extends JFrame {
                                             btnVybratZUctu.setMaximumSize(new Dimension(97, 24));
                                             btnVybratZUctu.setMinimumSize(new Dimension(97, 24));
                                             btnVybratZUctu.setHorizontalAlignment(SwingConstants.RIGHT);
-                                            panelDobitUcetInside2.add(btnVybratZUctu, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 95, 15, 95)));
+                                            panelVyberZUctuInside.add(btnVybratZUctu, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 95, 15, 95)));
                                         }
-
-                                        GroupLayout panelVybratZUctuLayout = new GroupLayout(panelVybratZUctu);
-                                        panelVybratZUctu.setLayout(panelVybratZUctuLayout);
-                                        panelVybratZUctuLayout.setHorizontalGroup(
-                                            panelVybratZUctuLayout.createParallelGroup()
-                                                .addGroup(panelVybratZUctuLayout.createParallelGroup()
-                                                    .addGroup(panelVybratZUctuLayout.createSequentialGroup()
-                                                        .addGap(0, 0, Short.MAX_VALUE)
-                                                        .addComponent(panelDobitUcetInside2, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                                .addGap(0, 723, Short.MAX_VALUE)
-                                        );
-                                        panelVybratZUctuLayout.setVerticalGroup(
-                                            panelVybratZUctuLayout.createParallelGroup()
-                                                .addGroup(panelVybratZUctuLayout.createParallelGroup()
-                                                    .addGroup(panelVybratZUctuLayout.createSequentialGroup()
-                                                        .addGap(0, 0, Short.MAX_VALUE)
-                                                        .addComponent(panelDobitUcetInside2, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                                .addGap(0, 363, Short.MAX_VALUE)
-                                        );
+                                        panelVybratZUctu.add(panelVyberZUctuInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 0, 0), 0, 0));
                                     }
                                     panelContentUcet.add(panelVybratZUctu, "vybratZUctu");
 
@@ -2654,7 +2642,17 @@ public class UserInterface extends JFrame {
                                         panelHistoriaTrans.setBorder(null);
                                         panelHistoriaTrans.setBackground(Color.white);
                                         panelHistoriaTrans.setkFillBackground(false);
-                                        panelHistoriaTrans.setLayout(new GridBagLayout());
+
+                                        GroupLayout panelHistoriaTransLayout = new GroupLayout(panelHistoriaTrans);
+                                        panelHistoriaTrans.setLayout(panelHistoriaTransLayout);
+                                        panelHistoriaTransLayout.setHorizontalGroup(
+                                            panelHistoriaTransLayout.createParallelGroup()
+                                                .addGap(0, 723, Short.MAX_VALUE)
+                                        );
+                                        panelHistoriaTransLayout.setVerticalGroup(
+                                            panelHistoriaTransLayout.createParallelGroup()
+                                                .addGap(0, 363, Short.MAX_VALUE)
+                                        );
                                     }
                                     panelContentUcet.add(panelHistoriaTrans, "historiaTrans");
                                 }
@@ -2678,17 +2676,53 @@ public class UserInterface extends JFrame {
                         {
                             panelZmenitHeslo.setkEndColor(Color.white);
                             panelZmenitHeslo.setkStartColor(Color.white);
+                            panelZmenitHeslo.setLayout(new GridBagLayout());
 
-                            GroupLayout panelZmenitHesloLayout = new GroupLayout(panelZmenitHeslo);
-                            panelZmenitHeslo.setLayout(panelZmenitHesloLayout);
-                            panelZmenitHesloLayout.setHorizontalGroup(
-                                panelZmenitHesloLayout.createParallelGroup()
-                                    .addGap(0, 723, Short.MAX_VALUE)
-                            );
-                            panelZmenitHesloLayout.setVerticalGroup(
-                                panelZmenitHesloLayout.createParallelGroup()
-                                    .addGap(0, 403, Short.MAX_VALUE)
-                            );
+                            //======== panelVyberZUctuInside2 ========
+                            {
+                                panelVyberZUctuInside2.setkStartColor(Color.white);
+                                panelVyberZUctuInside2.setkEndColor(Color.white);
+                                panelVyberZUctuInside2.setBorder(new MatteBorder(1, 1, 1, 1, Color.lightGray));
+                                panelVyberZUctuInside2.setkBorderRadius(0);
+                                panelVyberZUctuInside2.setLayout(new FormLayout(
+                                    "[319px,pref]",
+                                    "4*(fill:57px)"));
+
+                                //---- passwordField6 ----
+                                passwordField6.setHorizontalAlignment(SwingConstants.CENTER);
+                                passwordField6.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
+                                panelVyberZUctuInside2.add(passwordField6, new CellConstraints(1, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(10, 50, 10, 50)));
+
+                                //---- passwordField7 ----
+                                passwordField7.setHorizontalAlignment(SwingConstants.CENTER);
+                                passwordField7.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
+                                panelVyberZUctuInside2.add(passwordField7, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(10, 50, 10, 50)));
+
+                                //---- passwordField8 ----
+                                passwordField8.setHorizontalAlignment(SwingConstants.CENTER);
+                                passwordField8.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
+                                panelVyberZUctuInside2.add(passwordField8, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(10, 50, 10, 50)));
+
+                                //---- btnVybratZUctu2 ----
+                                btnVybratZUctu2.setText("Vybra\u0165 z \u00fa\u010dtu");
+                                btnVybratZUctu2.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                btnVybratZUctu2.setBorder(null);
+                                btnVybratZUctu2.setkStartColor(new Color(73, 196, 174));
+                                btnVybratZUctu2.setkEndColor(new Color(140, 219, 145));
+                                btnVybratZUctu2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                btnVybratZUctu2.setkHoverEndColor(new Color(73, 196, 174));
+                                btnVybratZUctu2.setkHoverStartColor(new Color(52, 188, 183));
+                                btnVybratZUctu2.setkHoverForeGround(Color.white);
+                                btnVybratZUctu2.setBackground(Color.white);
+                                btnVybratZUctu2.setBorderPainted(false);
+                                btnVybratZUctu2.setMaximumSize(new Dimension(97, 24));
+                                btnVybratZUctu2.setMinimumSize(new Dimension(97, 24));
+                                btnVybratZUctu2.setHorizontalAlignment(SwingConstants.RIGHT);
+                                panelVyberZUctuInside2.add(btnVybratZUctu2, new CellConstraints(1, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 95, 15, 95)));
+                            }
+                            panelZmenitHeslo.add(panelVyberZUctuInside2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
                         }
                         panelContent.add(panelZmenitHeslo, "zmenitHeslo");
 
@@ -3004,12 +3038,17 @@ public class UserInterface extends JFrame {
     private JTextField txtFieldDobitSuma;
     private KButton btnDobitUcet;
     private KGradientPanel panelVybratZUctu;
-    private KGradientPanel panelDobitUcetInside2;
+    private KGradientPanel panelVyberZUctuInside;
     private JLabel labelVyberZUctu;
     private JTextField txtFieldVyberSuma;
     private KButton btnVybratZUctu;
     private KGradientPanel panelHistoriaTrans;
     private KGradientPanel panelZmenitHeslo;
+    private KGradientPanel panelVyberZUctuInside2;
+    private JPasswordField passwordField6;
+    private JPasswordField passwordField7;
+    private JPasswordField passwordField8;
+    private KButton btnVybratZUctu2;
     private KGradientPanel panelOdhlasitSa;
     private JLabel label6;
     private KGradientPanel panelAdmin;

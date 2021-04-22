@@ -2517,9 +2517,11 @@ new FormModel {
 										}, new FormLayoutConstraints( class java.lang.String ) {
 											"value": "dobitUcet"
 										} )
-										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-											"$horizontalGroup": "par l {space :0:723:x};par l {seq {space :0:0:x, comp panelDobitUcetInside2:::p:321:p, space :0:0:x}}"
-											"$verticalGroup": "par l {space :0:363:x};par l {seq {space :0:0:x, comp panelDobitUcetInside2:::p:171:p, space :0:0:x}}"
+										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+											"$columnSpecs": "0"
+											"$rowSpecs": "0"
+											"$hGap": 5
+											"$vGap": 5
 										} ) {
 											name: "panelVybratZUctu"
 											"kBorderRadius": 0
@@ -2529,7 +2531,7 @@ new FormModel {
 												"$columnSpecs": "max(pref;319px)"
 												"$rowSpecs": "fill:max(pref;58px), fill:max(pref;56px), fill:max(pref;55px)"
 											} ) {
-												name: "panelDobitUcetInside2"
+												name: "panelVyberZUctuInside"
 												"kStartColor": sfield java.awt.Color white
 												"kEndColor": sfield java.awt.Color white
 												"border": #MatteBorder4
@@ -2580,17 +2582,15 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 3
-													"insets": new java.awt.Insets( 7, 95, 15, 95 )
+													"insets": &Insets8 new java.awt.Insets( 7, 95, 15, 95 )
 												} )
-											} )
+											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 										}, new FormLayoutConstraints( class java.lang.String ) {
 											"value": "vybratZUctu"
 										} )
-										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-											"$columnSpecs": "0"
-											"$rowSpecs": "0"
-											"$hGap": 5
-											"$vGap": 5
+										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+											"$horizontalGroup": "par l {space :0:723:x}"
+											"$verticalGroup": "par l {space :0:363:x}"
 										} ) {
 											name: "panelHistoriaTrans"
 											"kEndColor": #Color15
@@ -2610,13 +2610,73 @@ new FormModel {
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "ucet"
 							} )
-							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-								"$horizontalGroup": "par l {space :0:723:x}"
-								"$verticalGroup": "par l {space :0:403:x}"
+							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+								"$columnSpecs": "0"
+								"$rowSpecs": "0"
+								"$hGap": 5
+								"$vGap": 5
 							} ) {
 								name: "panelZmenitHeslo"
 								"kEndColor": sfield java.awt.Color white
 								"kStartColor": sfield java.awt.Color white
+								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+									"$columnSpecs": "max(pref;319px)"
+									"$rowSpecs": "fill:57px, fill:57px, fill:57px, fill:57px"
+								} ) {
+									name: "panelVyberZUctuInside2"
+									"kStartColor": sfield java.awt.Color white
+									"kEndColor": sfield java.awt.Color white
+									"border": #MatteBorder4
+									"kBorderRadius": 0
+									add( new FormComponent( "javax.swing.JPasswordField" ) {
+										name: "passwordField6"
+										"horizontalAlignment": 0
+										"border": &MatteBorder6 new javax.swing.border.MatteBorder( 0, 0, 2, 0, sfield java.awt.Color black )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 1
+										"gridY": 1
+										"insets": new java.awt.Insets( 10, 50, 10, 50 )
+									} )
+									add( new FormComponent( "javax.swing.JPasswordField" ) {
+										name: "passwordField7"
+										"horizontalAlignment": 0
+										"border": #MatteBorder6
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 1
+										"gridY": 2
+										"insets": new java.awt.Insets( 10, 50, 10, 50 )
+									} )
+									add( new FormComponent( "javax.swing.JPasswordField" ) {
+										name: "passwordField8"
+										"horizontalAlignment": 0
+										"border": #MatteBorder6
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 1
+										"gridY": 3
+										"insets": new java.awt.Insets( 10, 50, 10, 50 )
+									} )
+									add( new FormComponent( "keeptoo.KButton" ) {
+										name: "btnVybratZUctu2"
+										"text": "Vybrať z účtu"
+										"font": #Font17
+										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+										"kStartColor": #Color21
+										"kEndColor": #Color22
+										"cursor": #Cursor2
+										"kHoverEndColor": #Color23
+										"kHoverStartColor": #Color24
+										"kHoverForeGround": sfield java.awt.Color white
+										"background": #Color20
+										"borderPainted": false
+										"maximumSize": #Dimension0
+										"minimumSize": #Dimension1
+										"horizontalAlignment": 4
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 1
+										"gridY": 4
+										"insets": #Insets8
+									} )
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "zmenitHeslo"
 							} )
@@ -2657,7 +2717,7 @@ new FormModel {
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 120, 0 )
+			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 950, 590 )
 		} )
 	}
