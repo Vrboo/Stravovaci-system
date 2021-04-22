@@ -28,7 +28,8 @@ public class UserInterface extends JFrame {
     private final EntityManager entityManager;
     private final CardLayout cardLayout;
     private final CardLayout cardLayoutObjednat;
-    
+    private final CardLayout cardLayoutBurza;
+    private final CardLayout cardLayoutUcet;
 
     public UserInterface(EntityManager entityManager, User user) {
         this.entityManager = entityManager;
@@ -42,6 +43,8 @@ public class UserInterface extends JFrame {
         
         this.cardLayout = (CardLayout)(panelContent.getLayout());
         this.cardLayoutObjednat = (CardLayout)(panelContentObjednat.getLayout());
+        this.cardLayoutBurza = (CardLayout)(panelContentBurza.getLayout());
+        this.cardLayoutUcet = (CardLayout)(panelContentUcet.getLayout());
         
         labelUsername.setText(user.getFullName());
         labelAccount.setText("Stav účtu: " + userAccount + "€");
@@ -53,7 +56,6 @@ public class UserInterface extends JFrame {
         btnObjednat.setBorder(new MatteBorder(0,5,0,0, new Color(50, 187, 186)));
 
 
-        btnRanajky.setSelected(true);
         btnRanajky.setBorder(new MatteBorder(0, 0, 4, 0, new Color(52, 188, 183)));
         btnRanajky.addActionListener(new ActionListener() {
             @Override
@@ -76,7 +78,65 @@ public class UserInterface extends JFrame {
                 }
             }
         });
-        btnRanajky.setSelected(true);
+
+        btnBurzaRanajky.setBorder(new MatteBorder(0, 0, 4, 0, new Color(52, 188, 183)));
+        btnBurzaRanajky.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (btnBurzaRanajky.isSelected()) {
+                    btnBurzaRanajky.setBorder(new MatteBorder(0, 0, 4, 0, new Color(52, 188, 183)));
+                } else {
+                    btnBurzaRanajky.setBorder(null);
+                }
+            }
+        });
+
+        btnBurzaObed.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (btnBurzaObed.isSelected()) {
+                    btnBurzaObed.setBorder(new MatteBorder(0, 0, 4, 0, new Color(52, 188, 183)));
+                } else {
+                    btnBurzaObed.setBorder(null);
+                }
+            }
+        });
+
+        btnMenuDobitUcet.setBorder(new MatteBorder(0, 0, 4, 0, new Color(52, 188, 183)));
+        btnMenuDobitUcet.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (btnMenuDobitUcet.isSelected()) {
+                    btnMenuDobitUcet.setBorder(new MatteBorder(0, 0, 4, 0, new Color(52, 188, 183)));
+                } else {
+                    btnMenuDobitUcet.setBorder(null);
+                }
+            }
+        });
+
+        btnMenuVybratZUctu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (btnMenuVybratZUctu.isSelected()) {
+                    btnMenuVybratZUctu.setBorder(new MatteBorder(0, 0, 4, 0, new Color(52, 188, 183)));
+                } else {
+                    btnMenuVybratZUctu.setBorder(null);
+                }
+            }
+        });
+
+        btnMenuHistoriaTranskacii.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (btnMenuHistoriaTranskacii.isSelected()) {
+                    btnMenuHistoriaTranskacii.setBorder(new MatteBorder(0, 0, 4, 0, new Color(52, 188, 183)));
+                } else {
+                    btnMenuHistoriaTranskacii.setBorder(null);
+                }
+            }
+        });
+        
+        
     }
 
     private void btnObjednatActionPerformed() {
@@ -138,7 +198,51 @@ public class UserInterface extends JFrame {
     private void btnRanajkyFocusLost() {
         btnRanajky.setBorder(null);
     }
-    
+
+    private void btnBurzaRanajkyActionPerformed() {
+        cardLayoutBurza.show(panelContentBurza, "burzaRanajky");
+    }
+
+    private void btnBurzaObedActionPerformed() {
+        cardLayoutBurza.show(panelContentBurza, "burzaObed");
+    }
+
+    private void textFieldUsernameFocusGained(FocusEvent e) {
+        // TODO add your code here
+    }
+
+    private void textFieldUsernameMouseMoved() {
+        // TODO add your code here
+    }
+
+    private void textFieldUsernameFocusLost() {
+        // TODO add your code here
+    }
+
+    private void textPasswordMouseMoved() {
+        // TODO add your code here
+    }
+
+    private void textPasswordFocusGained() {
+        // TODO add your code here
+    }
+
+    private void textPasswordFocusLost() {
+        // TODO add your code here
+    }
+
+    private void btnMenuDobitUcetActionPerformed() {
+        cardLayoutUcet.show(panelContentUcet, "dobitUcet");
+    }
+
+    private void btnMenuVybratZUctuActionPerformed() {
+        cardLayoutUcet.show(panelContentUcet, "vybratZUctu");
+    }
+
+    private void btnHistoriaTranskaciiActionPerformed() {
+        cardLayoutUcet.show(panelContentUcet, "historiaTrans");
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -271,11 +375,108 @@ public class UserInterface extends JFrame {
         btnDoBurzyRanajky = new KButton();
         label88 = new JLabel();
         panelBurza = new KGradientPanel();
+        splitPane4 = new JSplitPane();
+        panelMenuBurza = new KGradientPanel();
+        btnBurzaRanajky = new KButton();
+        btnBurzaObed = new KButton();
+        panelContentBurza = new KGradientPanel();
+        panelBurzaRanajky = new KGradientPanel();
+        panelTableBurzaRanajky = new KGradientPanel();
+        label89 = new JLabel();
         label3 = new JLabel();
+        label90 = new JLabel();
+        label91 = new JLabel();
+        label92 = new JLabel();
+        label93 = new JLabel();
+        label94 = new JLabel();
+        label95 = new JLabel();
+        label96 = new JLabel();
+        label97 = new JLabel();
+        label98 = new JLabel();
+        btnBurzaRanajky1 = new KButton();
+        label99 = new JLabel();
+        label100 = new JLabel();
+        label101 = new JLabel();
+        label102 = new JLabel();
+        label103 = new JLabel();
+        btnBurzaRanajky2 = new KButton();
+        label104 = new JLabel();
+        label105 = new JLabel();
+        label106 = new JLabel();
+        label107 = new JLabel();
+        label108 = new JLabel();
+        btnBurzaRanajky3 = new KButton();
+        label109 = new JLabel();
+        label110 = new JLabel();
+        label111 = new JLabel();
+        label112 = new JLabel();
+        label113 = new JLabel();
+        btnBurzaRanajky4 = new KButton();
+        label114 = new JLabel();
+        label115 = new JLabel();
+        label116 = new JLabel();
+        label117 = new JLabel();
+        label118 = new JLabel();
+        btnBurzaRanajky5 = new KButton();
+        label119 = new JLabel();
+        panelBurzaObed = new KGradientPanel();
+        panelTableBurzaObed = new KGradientPanel();
+        label120 = new JLabel();
+        label121 = new JLabel();
+        label122 = new JLabel();
+        label123 = new JLabel();
+        label124 = new JLabel();
+        label125 = new JLabel();
+        label126 = new JLabel();
+        label127 = new JLabel();
+        label128 = new JLabel();
+        label129 = new JLabel();
+        label130 = new JLabel();
+        btnBurzaObjednatObed1 = new KButton();
+        label131 = new JLabel();
+        label132 = new JLabel();
+        label133 = new JLabel();
+        label134 = new JLabel();
+        label135 = new JLabel();
+        btnBurzaObjednatObed2 = new KButton();
+        label136 = new JLabel();
+        label137 = new JLabel();
+        label138 = new JLabel();
+        label139 = new JLabel();
+        label140 = new JLabel();
+        btnBurzaObjednatObed3 = new KButton();
+        label141 = new JLabel();
+        label142 = new JLabel();
+        label143 = new JLabel();
+        label144 = new JLabel();
+        label145 = new JLabel();
+        btnBurzaObjednatObed4 = new KButton();
+        label146 = new JLabel();
+        label147 = new JLabel();
+        label148 = new JLabel();
+        label149 = new JLabel();
+        label150 = new JLabel();
+        btnBurzaObjednatObed5 = new KButton();
+        label151 = new JLabel();
         panelUcet = new KGradientPanel();
-        label4 = new JLabel();
+        splitPane5 = new JSplitPane();
+        panelUcetMenu = new KGradientPanel();
+        btnMenuDobitUcet = new KButton();
+        btnMenuVybratZUctu = new KButton();
+        btnMenuHistoriaTranskacii = new KButton();
+        panelContentUcet = new KGradientPanel();
+        panelDobitUcet = new KGradientPanel();
+        panelDobitUcetInside = new KGradientPanel();
+        labelDobitieUctu = new JLabel();
+        txtFieldDobitSuma = new JTextField();
+        btnDobitUcet = new KButton();
+        panelVybratZUctu = new KGradientPanel();
+        panelDobitUcetInside2 = new KGradientPanel();
+        labelVyberZUctu = new JLabel();
+        txtFieldVyberSuma = new JTextField();
+        btnVybratZUctu = new KButton();
+        panelHistoriaTrans = new KGradientPanel();
         panelZmenitHeslo = new KGradientPanel();
-        label5 = new JLabel();
         panelOdhlasitSa = new KGradientPanel();
         label6 = new JLabel();
         panelAdmin = new KGradientPanel();
@@ -298,11 +499,12 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-                0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-                . BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-                red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-                beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+                . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
+                . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
+                12 ), java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans
+                . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
+                getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -591,6 +793,7 @@ public class UserInterface extends JFrame {
                                     panelMenuObjednat.setBackground(new Color(55, 55, 55));
                                     panelMenuObjednat.setkGradientFocus(700);
                                     panelMenuObjednat.setForeground(new Color(55, 55, 55));
+                                    panelMenuObjednat.setBorder(null);
                                     panelMenuObjednat.setLayout(new FormLayout(
                                         "default, $lcgap, default",
                                         "fill:default"));
@@ -1466,24 +1669,709 @@ public class UserInterface extends JFrame {
                             panelBurza.setkEndColor(Color.white);
                             panelBurza.setkStartColor(Color.white);
 
-                            //---- label3 ----
-                            label3.setText("burza");
+                            //======== splitPane4 ========
+                            {
+                                splitPane4.setBorder(null);
+                                splitPane4.setDividerSize(0);
+                                splitPane4.setOrientation(JSplitPane.VERTICAL_SPLIT);
+                                splitPane4.setDividerLocation(40);
+
+                                //======== panelMenuBurza ========
+                                {
+                                    panelMenuBurza.setkStartColor(new Color(55, 55, 55));
+                                    panelMenuBurza.setkEndColor(new Color(55, 55, 55));
+                                    panelMenuBurza.setkBorderRadius(0);
+                                    panelMenuBurza.setBackground(new Color(55, 55, 55));
+                                    panelMenuBurza.setkGradientFocus(700);
+                                    panelMenuBurza.setForeground(new Color(55, 55, 55));
+                                    panelMenuBurza.setLayout(new FormLayout(
+                                        "default, $lcgap, default",
+                                        "fill:default"));
+
+                                    //---- btnBurzaRanajky ----
+                                    btnBurzaRanajky.setText("Burza - ranajky");
+                                    btnBurzaRanajky.setBorder(null);
+                                    btnBurzaRanajky.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                    btnBurzaRanajky.setkStartColor(Color.darkGray);
+                                    btnBurzaRanajky.setkEndColor(Color.darkGray);
+                                    btnBurzaRanajky.setkBorderRadius(0);
+                                    btnBurzaRanajky.setkAllowTab(true);
+                                    btnBurzaRanajky.setkHoverEndColor(new Color(70, 70, 70));
+                                    btnBurzaRanajky.setkHoverStartColor(new Color(70, 70, 70));
+                                    btnBurzaRanajky.setkIndicatorColor(new Color(38, 184, 190));
+                                    btnBurzaRanajky.setkIndicatorThickness(0);
+                                    btnBurzaRanajky.setkBackGroundColor(Color.white);
+                                    btnBurzaRanajky.setkSelectedColor(new Color(67, 67, 67));
+                                    btnBurzaRanajky.setkHoverForeGround(Color.white);
+                                    btnBurzaRanajky.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                    btnBurzaRanajky.setVerticalAlignment(SwingConstants.TOP);
+                                    btnBurzaRanajky.addActionListener(e -> {
+			btnRanajkyActionPerformed();
+			btnBurzaRanajkyActionPerformed();
+		});
+                                    panelMenuBurza.add(btnBurzaRanajky, CC.xy(1, 1));
+
+                                    //---- btnBurzaObed ----
+                                    btnBurzaObed.setText("Burza - obed");
+                                    btnBurzaObed.setBorder(null);
+                                    btnBurzaObed.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                    btnBurzaObed.setkStartColor(Color.darkGray);
+                                    btnBurzaObed.setkEndColor(Color.darkGray);
+                                    btnBurzaObed.setkBorderRadius(0);
+                                    btnBurzaObed.setkAllowTab(true);
+                                    btnBurzaObed.setkHoverEndColor(new Color(70, 70, 70));
+                                    btnBurzaObed.setkHoverStartColor(new Color(70, 70, 70));
+                                    btnBurzaObed.setkIndicatorColor(new Color(38, 184, 190));
+                                    btnBurzaObed.setkIndicatorThickness(0);
+                                    btnBurzaObed.setkBackGroundColor(Color.white);
+                                    btnBurzaObed.setkSelectedColor(new Color(67, 67, 67));
+                                    btnBurzaObed.setkHoverForeGround(Color.white);
+                                    btnBurzaObed.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                    btnBurzaObed.setVerticalAlignment(SwingConstants.TOP);
+                                    btnBurzaObed.addActionListener(e -> {
+			btnObedActionPerformed();
+			btnBurzaObedActionPerformed();
+		});
+                                    panelMenuBurza.add(btnBurzaObed, CC.xy(3, 1));
+                                }
+                                splitPane4.setTopComponent(panelMenuBurza);
+
+                                //======== panelContentBurza ========
+                                {
+                                    panelContentBurza.setkStartColor(Color.white);
+                                    panelContentBurza.setkEndColor(Color.white);
+                                    panelContentBurza.setLayout(new CardLayout());
+
+                                    //======== panelBurzaRanajky ========
+                                    {
+                                        panelBurzaRanajky.setkEndColor(new Color(38, 184, 190, 24));
+                                        panelBurzaRanajky.setkStartColor(new Color(38, 184, 190, 24));
+                                        panelBurzaRanajky.setkBorderRadius(0);
+                                        panelBurzaRanajky.setkGradientFocus(600);
+                                        panelBurzaRanajky.setBorder(null);
+                                        panelBurzaRanajky.setBackground(Color.white);
+                                        panelBurzaRanajky.setkFillBackground(false);
+                                        panelBurzaRanajky.setLayout(new GridBagLayout());
+
+                                        //======== panelTableBurzaRanajky ========
+                                        {
+                                            panelTableBurzaRanajky.setkEndColor(Color.white);
+                                            panelTableBurzaRanajky.setkStartColor(Color.white);
+                                            panelTableBurzaRanajky.setBorder(null);
+                                            panelTableBurzaRanajky.setkBorderRadius(0);
+                                            panelTableBurzaRanajky.setBackground(new Color(255, 255, 255, 145));
+                                            panelTableBurzaRanajky.setLayout(new FormLayout(
+                                                "27px, 280px, 126px, 92px, 72px, 107px",
+                                                "fill:49px, 5*(fill:52px), $lgap, 11dlu"));
+
+                                            //---- label89 ----
+                                            label89.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label89, CC.xy(1, 1));
+
+                                            //---- label3 ----
+                                            label3.setText("Ra\u0148ajky");
+                                            label3.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                            label3.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label3, CC.xy(2, 1));
+
+                                            //---- label90 ----
+                                            label90.setText("N\u00e1poj");
+                                            label90.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                            label90.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label90.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label90, CC.xy(3, 1));
+
+                                            //---- label91 ----
+                                            label91.setText("Po\u010det");
+                                            label91.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                            label91.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label91.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            label91.setBackground(Color.white);
+                                            panelTableBurzaRanajky.add(label91, CC.xy(4, 1));
+
+                                            //---- label92 ----
+                                            label92.setText("Cena");
+                                            label92.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                            label92.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label92.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label92, CC.xy(5, 1));
+
+                                            //---- label93 ----
+                                            label93.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+                                            panelTableBurzaRanajky.add(label93, CC.xy(6, 1));
+
+                                            //---- label94 ----
+                                            label94.setText("1.");
+                                            label94.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label94.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label94.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label94, CC.xy(1, 2));
+
+                                            //---- label95 ----
+                                            label95.setText("Parky s hor\u010dicou a chlebom");
+                                            label95.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label95.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label95.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label95, CC.xy(2, 2));
+
+                                            //---- label96 ----
+                                            label96.setText("Miner\u00e1lna voda");
+                                            label96.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label96.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label96.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label96, CC.xy(3, 2));
+
+                                            //---- label97 ----
+                                            label97.setText("0x");
+                                            label97.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label97.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label97.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label97, CC.xy(4, 2));
+
+                                            //---- label98 ----
+                                            label98.setText("4.87\u20ac");
+                                            label98.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label98.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label98.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label98, CC.xy(5, 2));
+
+                                            //---- btnBurzaRanajky1 ----
+                                            btnBurzaRanajky1.setText("Objedna\u0165");
+                                            btnBurzaRanajky1.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                            btnBurzaRanajky1.setBorder(null);
+                                            btnBurzaRanajky1.setkStartColor(new Color(73, 196, 174));
+                                            btnBurzaRanajky1.setkEndColor(new Color(140, 219, 145));
+                                            btnBurzaRanajky1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnBurzaRanajky1.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnBurzaRanajky1.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnBurzaRanajky1.setkHoverForeGround(Color.white);
+                                            btnBurzaRanajky1.setBackground(Color.white);
+                                            btnBurzaRanajky1.setBorderPainted(false);
+                                            panelTableBurzaRanajky.add(btnBurzaRanajky1, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+
+                                            //---- label99 ----
+                                            label99.setText("2.");
+                                            label99.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label99.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label99.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label99, CC.xy(1, 3));
+
+                                            //---- label100 ----
+                                            label100.setText("Pra\u017eenica s ro\u017ekom");
+                                            label100.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label100.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label100.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label100, CC.xy(2, 3));
+
+                                            //---- label101 ----
+                                            label101.setText("Cola");
+                                            label101.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label101.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label101.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label101, CC.xy(3, 3));
+
+                                            //---- label102 ----
+                                            label102.setText("5x");
+                                            label102.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label102.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label102.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label102, CC.xy(4, 3));
+
+                                            //---- label103 ----
+                                            label103.setText("2.45\u20ac");
+                                            label103.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label103.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label103.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label103, CC.xy(5, 3));
+
+                                            //---- btnBurzaRanajky2 ----
+                                            btnBurzaRanajky2.setText("Objedna\u0165");
+                                            btnBurzaRanajky2.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                            btnBurzaRanajky2.setBorder(null);
+                                            btnBurzaRanajky2.setkStartColor(new Color(73, 196, 174));
+                                            btnBurzaRanajky2.setkEndColor(new Color(140, 219, 145));
+                                            btnBurzaRanajky2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnBurzaRanajky2.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnBurzaRanajky2.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnBurzaRanajky2.setkHoverForeGround(Color.white);
+                                            btnBurzaRanajky2.setBackground(Color.white);
+                                            btnBurzaRanajky2.setBorderPainted(false);
+                                            panelTableBurzaRanajky.add(btnBurzaRanajky2, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+
+                                            //---- label104 ----
+                                            label104.setText("3.");
+                                            label104.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label104.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label104.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label104, CC.xy(1, 4));
+
+                                            //---- label105 ----
+                                            label105.setText("Lievance s lekv\u00e1rom");
+                                            label105.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label105.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label105.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label105, CC.xy(2, 4));
+
+                                            //---- label106 ----
+                                            label106.setText("\u010caj");
+                                            label106.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label106.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label106.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label106, CC.xy(3, 4));
+
+                                            //---- label107 ----
+                                            label107.setText("12x");
+                                            label107.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label107.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label107.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label107, CC.xy(4, 4));
+
+                                            //---- label108 ----
+                                            label108.setText("3.72\u20ac");
+                                            label108.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label108.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label108.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label108, CC.xy(5, 4));
+
+                                            //---- btnBurzaRanajky3 ----
+                                            btnBurzaRanajky3.setText("Objedna\u0165");
+                                            btnBurzaRanajky3.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                            btnBurzaRanajky3.setBorder(null);
+                                            btnBurzaRanajky3.setkStartColor(new Color(73, 196, 174));
+                                            btnBurzaRanajky3.setkEndColor(new Color(140, 219, 145));
+                                            btnBurzaRanajky3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnBurzaRanajky3.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnBurzaRanajky3.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnBurzaRanajky3.setkHoverForeGround(Color.white);
+                                            btnBurzaRanajky3.setBackground(Color.white);
+                                            btnBurzaRanajky3.setBorderPainted(false);
+                                            panelTableBurzaRanajky.add(btnBurzaRanajky3, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+
+                                            //---- label109 ----
+                                            label109.setText("4.");
+                                            label109.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label109.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label109.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label109, CC.xy(1, 5));
+
+                                            //---- label110 ----
+                                            label110.setText("Volsk\u00e9 oko s ke\u010dup a chlebom");
+                                            label110.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label110.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label110.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label110, CC.xy(2, 5));
+
+                                            //---- label111 ----
+                                            label111.setText("Miner\u00e1lna voda");
+                                            label111.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label111.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label111.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label111, CC.xy(3, 5));
+
+                                            //---- label112 ----
+                                            label112.setText("0x");
+                                            label112.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label112.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label112.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label112, CC.xy(4, 5));
+
+                                            //---- label113 ----
+                                            label113.setText("7.00\u20ac");
+                                            label113.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label113.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label113.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label113, CC.xy(5, 5));
+
+                                            //---- btnBurzaRanajky4 ----
+                                            btnBurzaRanajky4.setText("Objedna\u0165");
+                                            btnBurzaRanajky4.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                            btnBurzaRanajky4.setBorder(null);
+                                            btnBurzaRanajky4.setkStartColor(new Color(73, 196, 174));
+                                            btnBurzaRanajky4.setkEndColor(new Color(140, 219, 145));
+                                            btnBurzaRanajky4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnBurzaRanajky4.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnBurzaRanajky4.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnBurzaRanajky4.setkHoverForeGround(Color.white);
+                                            btnBurzaRanajky4.setBackground(Color.white);
+                                            btnBurzaRanajky4.setBorderPainted(false);
+                                            panelTableBurzaRanajky.add(btnBurzaRanajky4, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+
+                                            //---- label114 ----
+                                            label114.setText("5.");
+                                            label114.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label114.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label114.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label114, CC.xy(1, 6));
+
+                                            //---- label115 ----
+                                            label115.setText("\u0160unkov\u00e1 bageta");
+                                            label115.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label115.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label115.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label115, CC.xy(2, 6));
+
+                                            //---- label116 ----
+                                            label116.setText("\u010e\u017e\u00fas");
+                                            label116.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label116.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label116.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label116, CC.xy(3, 6));
+
+                                            //---- label117 ----
+                                            label117.setText("28x");
+                                            label117.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label117.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label117.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label117, CC.xy(4, 6));
+
+                                            //---- label118 ----
+                                            label118.setText("3.49\u20ac");
+                                            label118.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label118.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label118.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaRanajky.add(label118, CC.xy(5, 6));
+
+                                            //---- btnBurzaRanajky5 ----
+                                            btnBurzaRanajky5.setText("Objedna\u0165");
+                                            btnBurzaRanajky5.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                            btnBurzaRanajky5.setBorder(null);
+                                            btnBurzaRanajky5.setkStartColor(new Color(73, 196, 174));
+                                            btnBurzaRanajky5.setkEndColor(new Color(140, 219, 145));
+                                            btnBurzaRanajky5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnBurzaRanajky5.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnBurzaRanajky5.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnBurzaRanajky5.setkHoverForeGround(Color.white);
+                                            btnBurzaRanajky5.setBackground(Color.white);
+                                            btnBurzaRanajky5.setBorderPainted(false);
+                                            panelTableBurzaRanajky.add(btnBurzaRanajky5, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableBurzaRanajky.add(label119, CC.xy(1, 8));
+                                        }
+                                        panelBurzaRanajky.add(panelTableBurzaRanajky, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 0, 0), 0, 0));
+                                    }
+                                    panelContentBurza.add(panelBurzaRanajky, "burzaRanajky");
+
+                                    //======== panelBurzaObed ========
+                                    {
+                                        panelBurzaObed.setkBorderRadius(0);
+                                        panelBurzaObed.setkEndColor(Color.white);
+                                        panelBurzaObed.setkStartColor(Color.white);
+                                        panelBurzaObed.setLayout(new GridBagLayout());
+
+                                        //======== panelTableBurzaObed ========
+                                        {
+                                            panelTableBurzaObed.setkEndColor(Color.white);
+                                            panelTableBurzaObed.setkStartColor(Color.white);
+                                            panelTableBurzaObed.setBorder(null);
+                                            panelTableBurzaObed.setkBorderRadius(0);
+                                            panelTableBurzaObed.setBackground(new Color(255, 255, 255, 145));
+                                            panelTableBurzaObed.setLayout(new FormLayout(
+                                                "27px, 280px, 126px, 92px, 72px, 107px",
+                                                "fill:49px, 5*(fill:52px), $lgap, 11dlu"));
+
+                                            //---- label120 ----
+                                            label120.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label120, CC.xy(1, 1));
+
+                                            //---- label121 ----
+                                            label121.setText("Obed");
+                                            label121.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                            label121.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label121.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label121, CC.xy(2, 1));
+
+                                            //---- label122 ----
+                                            label122.setText("Takeaway");
+                                            label122.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                            label122.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label122.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label122, CC.xy(3, 1));
+
+                                            //---- label123 ----
+                                            label123.setText("Po\u010det");
+                                            label123.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                            label123.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label123.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            label123.setBackground(Color.white);
+                                            panelTableBurzaObed.add(label123, CC.xy(4, 1));
+
+                                            //---- label124 ----
+                                            label124.setText("Cena");
+                                            label124.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                            label124.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label124.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label124, CC.xy(5, 1));
+
+                                            //---- label125 ----
+                                            label125.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+                                            panelTableBurzaObed.add(label125, CC.xy(6, 1));
+
+                                            //---- label126 ----
+                                            label126.setText("1.");
+                                            label126.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label126.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label126.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label126, CC.xy(1, 2));
+
+                                            //---- label127 ----
+                                            label127.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label127.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label127.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            label127.setText("Kurac\u00ed reze\u0148 + zemiakov\u00e1 ka\u0161a");
+                                            panelTableBurzaObed.add(label127, CC.xy(2, 2));
+
+                                            //---- label128 ----
+                                            label128.setText("\u00c1no");
+                                            label128.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label128.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label128.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label128, CC.xy(3, 2));
+
+                                            //---- label129 ----
+                                            label129.setText("78x");
+                                            label129.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label129.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label129.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label129, CC.xy(4, 2));
+
+                                            //---- label130 ----
+                                            label130.setText("3.87\u20ac");
+                                            label130.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label130.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label130.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label130, CC.xy(5, 2));
+
+                                            //---- btnBurzaObjednatObed1 ----
+                                            btnBurzaObjednatObed1.setText("Objedna\u0165");
+                                            btnBurzaObjednatObed1.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                            btnBurzaObjednatObed1.setBorder(null);
+                                            btnBurzaObjednatObed1.setkStartColor(new Color(73, 196, 174));
+                                            btnBurzaObjednatObed1.setkEndColor(new Color(140, 219, 145));
+                                            btnBurzaObjednatObed1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnBurzaObjednatObed1.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnBurzaObjednatObed1.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnBurzaObjednatObed1.setkHoverForeGround(Color.white);
+                                            btnBurzaObjednatObed1.setBackground(Color.white);
+                                            btnBurzaObjednatObed1.setBorderPainted(false);
+                                            panelTableBurzaObed.add(btnBurzaObjednatObed1, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+
+                                            //---- label131 ----
+                                            label131.setText("2.");
+                                            label131.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label131.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label131.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label131, CC.xy(1, 3));
+
+                                            //---- label132 ----
+                                            label132.setText("Bryndzov\u00e9 halu\u0161ky");
+                                            label132.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label132.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label132.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label132, CC.xy(2, 3));
+
+                                            //---- label133 ----
+                                            label133.setText("Nie");
+                                            label133.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label133.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label133.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label133, CC.xy(3, 3));
+
+                                            //---- label134 ----
+                                            label134.setText("417x");
+                                            label134.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label134.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label134.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label134, CC.xy(4, 3));
+
+                                            //---- label135 ----
+                                            label135.setText("7.45\u20ac");
+                                            label135.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label135.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label135.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label135, CC.xy(5, 3));
+
+                                            //---- btnBurzaObjednatObed2 ----
+                                            btnBurzaObjednatObed2.setText("Objedna\u0165");
+                                            btnBurzaObjednatObed2.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                            btnBurzaObjednatObed2.setBorder(null);
+                                            btnBurzaObjednatObed2.setkStartColor(new Color(73, 196, 174));
+                                            btnBurzaObjednatObed2.setkEndColor(new Color(140, 219, 145));
+                                            btnBurzaObjednatObed2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnBurzaObjednatObed2.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnBurzaObjednatObed2.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnBurzaObjednatObed2.setkHoverForeGround(Color.white);
+                                            btnBurzaObjednatObed2.setBackground(Color.white);
+                                            btnBurzaObjednatObed2.setBorderPainted(false);
+                                            panelTableBurzaObed.add(btnBurzaObjednatObed2, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+
+                                            //---- label136 ----
+                                            label136.setText("3.");
+                                            label136.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label136.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label136.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label136, CC.xy(1, 4));
+
+                                            //---- label137 ----
+                                            label137.setText("Palacinky s lekv\u00e1rom");
+                                            label137.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label137.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label137.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label137, CC.xy(2, 4));
+
+                                            //---- label138 ----
+                                            label138.setText("\u00c1no");
+                                            label138.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label138.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label138.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label138, CC.xy(3, 4));
+
+                                            //---- label139 ----
+                                            label139.setText("29x");
+                                            label139.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label139.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label139.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label139, CC.xy(4, 4));
+
+                                            //---- label140 ----
+                                            label140.setText("2.21\u20ac");
+                                            label140.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label140.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label140.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label140, CC.xy(5, 4));
+
+                                            //---- btnBurzaObjednatObed3 ----
+                                            btnBurzaObjednatObed3.setText("Objedna\u0165");
+                                            btnBurzaObjednatObed3.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                            btnBurzaObjednatObed3.setBorder(null);
+                                            btnBurzaObjednatObed3.setkStartColor(new Color(73, 196, 174));
+                                            btnBurzaObjednatObed3.setkEndColor(new Color(140, 219, 145));
+                                            btnBurzaObjednatObed3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnBurzaObjednatObed3.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnBurzaObjednatObed3.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnBurzaObjednatObed3.setkHoverForeGround(Color.white);
+                                            btnBurzaObjednatObed3.setBackground(Color.white);
+                                            btnBurzaObjednatObed3.setBorderPainted(false);
+                                            panelTableBurzaObed.add(btnBurzaObjednatObed3, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+
+                                            //---- label141 ----
+                                            label141.setText("4.");
+                                            label141.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label141.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label141.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label141, CC.xy(1, 5));
+
+                                            //---- label142 ----
+                                            label142.setText("Pizza Hawai");
+                                            label142.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label142.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label142.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label142, CC.xy(2, 5));
+
+                                            //---- label143 ----
+                                            label143.setText("\u00c1no");
+                                            label143.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label143.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label143.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label143, CC.xy(3, 5));
+
+                                            //---- label144 ----
+                                            label144.setText("75x");
+                                            label144.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label144.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label144.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label144, CC.xy(4, 5));
+
+                                            //---- label145 ----
+                                            label145.setText("4.25\u20ac");
+                                            label145.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label145.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label145.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label145, CC.xy(5, 5));
+
+                                            //---- btnBurzaObjednatObed4 ----
+                                            btnBurzaObjednatObed4.setText("Objedna\u0165");
+                                            btnBurzaObjednatObed4.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                            btnBurzaObjednatObed4.setBorder(null);
+                                            btnBurzaObjednatObed4.setkStartColor(new Color(73, 196, 174));
+                                            btnBurzaObjednatObed4.setkEndColor(new Color(140, 219, 145));
+                                            btnBurzaObjednatObed4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnBurzaObjednatObed4.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnBurzaObjednatObed4.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnBurzaObjednatObed4.setkHoverForeGround(Color.white);
+                                            btnBurzaObjednatObed4.setBackground(Color.white);
+                                            btnBurzaObjednatObed4.setBorderPainted(false);
+                                            panelTableBurzaObed.add(btnBurzaObjednatObed4, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+
+                                            //---- label146 ----
+                                            label146.setText("5.");
+                                            label146.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label146.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label146.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label146, CC.xy(1, 6));
+
+                                            //---- label147 ----
+                                            label147.setText("\u0160unkov\u00e1 bageta");
+                                            label147.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label147.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label147.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label147, CC.xy(2, 6));
+
+                                            //---- label148 ----
+                                            label148.setText("Nie");
+                                            label148.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label148.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label148.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label148, CC.xy(3, 6));
+
+                                            //---- label149 ----
+                                            label149.setText("0x");
+                                            label149.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label149.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label149.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label149, CC.xy(4, 6));
+
+                                            //---- label150 ----
+                                            label150.setText("1.50\u20ac");
+                                            label150.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label150.setHorizontalAlignment(SwingConstants.CENTER);
+                                            label150.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableBurzaObed.add(label150, CC.xy(5, 6));
+
+                                            //---- btnBurzaObjednatObed5 ----
+                                            btnBurzaObjednatObed5.setText("Objedna\u0165");
+                                            btnBurzaObjednatObed5.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                            btnBurzaObjednatObed5.setBorder(null);
+                                            btnBurzaObjednatObed5.setkStartColor(new Color(73, 196, 174));
+                                            btnBurzaObjednatObed5.setkEndColor(new Color(140, 219, 145));
+                                            btnBurzaObjednatObed5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnBurzaObjednatObed5.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnBurzaObjednatObed5.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnBurzaObjednatObed5.setkHoverForeGround(Color.white);
+                                            btnBurzaObjednatObed5.setBackground(Color.white);
+                                            btnBurzaObjednatObed5.setBorderPainted(false);
+                                            panelTableBurzaObed.add(btnBurzaObjednatObed5, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableBurzaObed.add(label151, CC.xy(1, 8));
+                                        }
+                                        panelBurzaObed.add(panelTableBurzaObed, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 0, 0), 0, 0));
+                                    }
+                                    panelContentBurza.add(panelBurzaObed, "burzaObed");
+                                }
+                                splitPane4.setBottomComponent(panelContentBurza);
+                            }
 
                             GroupLayout panelBurzaLayout = new GroupLayout(panelBurza);
                             panelBurza.setLayout(panelBurzaLayout);
                             panelBurzaLayout.setHorizontalGroup(
                                 panelBurzaLayout.createParallelGroup()
-                                    .addGroup(panelBurzaLayout.createSequentialGroup()
-                                        .addGap(253, 253, 253)
-                                        .addComponent(label3)
-                                        .addContainerGap(440, Short.MAX_VALUE))
+                                    .addComponent(splitPane4)
                             );
                             panelBurzaLayout.setVerticalGroup(
                                 panelBurzaLayout.createParallelGroup()
-                                    .addGroup(panelBurzaLayout.createSequentialGroup()
-                                        .addGap(63, 63, 63)
-                                        .addComponent(label3)
-                                        .addContainerGap(324, Short.MAX_VALUE))
+                                    .addComponent(splitPane4, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
                             );
                         }
                         panelContent.add(panelBurza, "burza");
@@ -1493,24 +2381,295 @@ public class UserInterface extends JFrame {
                             panelUcet.setkEndColor(Color.white);
                             panelUcet.setkStartColor(Color.white);
 
-                            //---- label4 ----
-                            label4.setText("ucet");
+                            //======== splitPane5 ========
+                            {
+                                splitPane5.setBorder(null);
+                                splitPane5.setDividerSize(0);
+                                splitPane5.setOrientation(JSplitPane.VERTICAL_SPLIT);
+                                splitPane5.setDividerLocation(40);
+
+                                //======== panelUcetMenu ========
+                                {
+                                    panelUcetMenu.setkStartColor(new Color(55, 55, 55));
+                                    panelUcetMenu.setkEndColor(new Color(55, 55, 55));
+                                    panelUcetMenu.setkBorderRadius(0);
+                                    panelUcetMenu.setBackground(new Color(55, 55, 55));
+                                    panelUcetMenu.setkGradientFocus(700);
+                                    panelUcetMenu.setForeground(new Color(55, 55, 55));
+                                    panelUcetMenu.setLayout(new FormLayout(
+                                        "2*(default, $lcgap), default",
+                                        "fill:default"));
+
+                                    //---- btnMenuDobitUcet ----
+                                    btnMenuDobitUcet.setText("Dobi\u0165 \u00fa\u010det");
+                                    btnMenuDobitUcet.setBorder(null);
+                                    btnMenuDobitUcet.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                    btnMenuDobitUcet.setkStartColor(Color.darkGray);
+                                    btnMenuDobitUcet.setkEndColor(Color.darkGray);
+                                    btnMenuDobitUcet.setkBorderRadius(0);
+                                    btnMenuDobitUcet.setkAllowTab(true);
+                                    btnMenuDobitUcet.setkHoverEndColor(new Color(70, 70, 70));
+                                    btnMenuDobitUcet.setkHoverStartColor(new Color(70, 70, 70));
+                                    btnMenuDobitUcet.setkIndicatorColor(new Color(38, 184, 190));
+                                    btnMenuDobitUcet.setkIndicatorThickness(0);
+                                    btnMenuDobitUcet.setkBackGroundColor(Color.white);
+                                    btnMenuDobitUcet.setkSelectedColor(new Color(67, 67, 67));
+                                    btnMenuDobitUcet.setkHoverForeGround(Color.white);
+                                    btnMenuDobitUcet.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                    btnMenuDobitUcet.setVerticalAlignment(SwingConstants.TOP);
+                                    btnMenuDobitUcet.addActionListener(e -> {
+			btnRanajkyActionPerformed();
+			btnBurzaRanajkyActionPerformed();
+			btnMenuDobitUcetActionPerformed();
+		});
+                                    panelUcetMenu.add(btnMenuDobitUcet, CC.xy(1, 1));
+
+                                    //---- btnMenuVybratZUctu ----
+                                    btnMenuVybratZUctu.setText("Vybra\u0165 z \u00fa\u010dtu");
+                                    btnMenuVybratZUctu.setBorder(null);
+                                    btnMenuVybratZUctu.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                    btnMenuVybratZUctu.setkStartColor(Color.darkGray);
+                                    btnMenuVybratZUctu.setkEndColor(Color.darkGray);
+                                    btnMenuVybratZUctu.setkBorderRadius(0);
+                                    btnMenuVybratZUctu.setkAllowTab(true);
+                                    btnMenuVybratZUctu.setkHoverEndColor(new Color(70, 70, 70));
+                                    btnMenuVybratZUctu.setkHoverStartColor(new Color(70, 70, 70));
+                                    btnMenuVybratZUctu.setkIndicatorColor(new Color(38, 184, 190));
+                                    btnMenuVybratZUctu.setkIndicatorThickness(0);
+                                    btnMenuVybratZUctu.setkBackGroundColor(Color.white);
+                                    btnMenuVybratZUctu.setkSelectedColor(new Color(67, 67, 67));
+                                    btnMenuVybratZUctu.setkHoverForeGround(Color.white);
+                                    btnMenuVybratZUctu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                    btnMenuVybratZUctu.setVerticalAlignment(SwingConstants.TOP);
+                                    btnMenuVybratZUctu.addActionListener(e -> {
+			btnObedActionPerformed();
+			btnBurzaObedActionPerformed();
+			btnMenuVybratZUctuActionPerformed();
+		});
+                                    panelUcetMenu.add(btnMenuVybratZUctu, CC.xy(3, 1));
+
+                                    //---- btnMenuHistoriaTranskacii ----
+                                    btnMenuHistoriaTranskacii.setText("Historia transakci\u00ed");
+                                    btnMenuHistoriaTranskacii.setBorder(null);
+                                    btnMenuHistoriaTranskacii.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                    btnMenuHistoriaTranskacii.setkStartColor(Color.darkGray);
+                                    btnMenuHistoriaTranskacii.setkEndColor(Color.darkGray);
+                                    btnMenuHistoriaTranskacii.setkBorderRadius(0);
+                                    btnMenuHistoriaTranskacii.setkAllowTab(true);
+                                    btnMenuHistoriaTranskacii.setkHoverEndColor(new Color(70, 70, 70));
+                                    btnMenuHistoriaTranskacii.setkHoverStartColor(new Color(70, 70, 70));
+                                    btnMenuHistoriaTranskacii.setkIndicatorColor(new Color(38, 184, 190));
+                                    btnMenuHistoriaTranskacii.setkIndicatorThickness(0);
+                                    btnMenuHistoriaTranskacii.setkBackGroundColor(Color.white);
+                                    btnMenuHistoriaTranskacii.setkSelectedColor(new Color(67, 67, 67));
+                                    btnMenuHistoriaTranskacii.setkHoverForeGround(Color.white);
+                                    btnMenuHistoriaTranskacii.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                    btnMenuHistoriaTranskacii.setVerticalAlignment(SwingConstants.TOP);
+                                    btnMenuHistoriaTranskacii.addActionListener(e -> {
+			btnObedActionPerformed();
+			btnBurzaObedActionPerformed();
+			btnHistoriaTranskaciiActionPerformed();
+		});
+                                    panelUcetMenu.add(btnMenuHistoriaTranskacii, CC.xy(5, 1));
+                                }
+                                splitPane5.setTopComponent(panelUcetMenu);
+
+                                //======== panelContentUcet ========
+                                {
+                                    panelContentUcet.setkStartColor(Color.white);
+                                    panelContentUcet.setkEndColor(Color.white);
+                                    panelContentUcet.setLayout(new CardLayout());
+
+                                    //======== panelDobitUcet ========
+                                    {
+                                        panelDobitUcet.setkEndColor(new Color(38, 184, 190, 24));
+                                        panelDobitUcet.setkStartColor(new Color(38, 184, 190, 24));
+                                        panelDobitUcet.setkBorderRadius(0);
+                                        panelDobitUcet.setkGradientFocus(600);
+                                        panelDobitUcet.setBorder(null);
+                                        panelDobitUcet.setBackground(Color.white);
+                                        panelDobitUcet.setkFillBackground(false);
+                                        panelDobitUcet.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panelDobitUcet.getLayout()).columnWidths = new int[] {315};
+
+                                        //======== panelDobitUcetInside ========
+                                        {
+                                            panelDobitUcetInside.setkStartColor(Color.white);
+                                            panelDobitUcetInside.setkEndColor(Color.white);
+                                            panelDobitUcetInside.setBorder(new MatteBorder(1, 1, 1, 1, Color.lightGray));
+                                            panelDobitUcetInside.setkBorderRadius(0);
+                                            panelDobitUcetInside.setLayout(new FormLayout(
+                                                "[319px,pref]",
+                                                "fill:[58px,pref], fill:[56px,pref], fill:[55px,pref]"));
+
+                                            //---- labelDobitieUctu ----
+                                            labelDobitieUctu.setText("Dobitie \u00fa\u010dtu");
+                                            labelDobitieUctu.setHorizontalAlignment(SwingConstants.CENTER);
+                                            labelDobitieUctu.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
+                                            panelDobitUcetInside.add(labelDobitieUctu, new CellConstraints(1, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(10, 0, 0, 0)));
+
+                                            //---- txtFieldDobitSuma ----
+                                            txtFieldDobitSuma.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
+                                            txtFieldDobitSuma.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+                                            txtFieldDobitSuma.setHorizontalAlignment(SwingConstants.CENTER);
+                                            txtFieldDobitSuma.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                            txtFieldDobitSuma.setText("Suma ");
+                                            txtFieldDobitSuma.setForeground(Color.lightGray);
+                                            txtFieldDobitSuma.setFocusable(false);
+                                            txtFieldDobitSuma.addFocusListener(new FocusAdapter() {
+                                                @Override
+                                                public void focusGained(FocusEvent e) {
+                                                    textFieldUsernameFocusGained(e);
+                                                }
+                                                @Override
+                                                public void focusLost(FocusEvent e) {
+                                                    textFieldUsernameFocusLost();
+                                                }
+                                            });
+                                            txtFieldDobitSuma.addMouseMotionListener(new MouseMotionAdapter() {
+                                                @Override
+                                                public void mouseMoved(MouseEvent e) {
+                                                    textFieldUsernameMouseMoved();
+                                                }
+                                            });
+                                            panelDobitUcetInside.add(txtFieldDobitSuma, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 45, 15, 45)));
+
+                                            //---- btnDobitUcet ----
+                                            btnDobitUcet.setText("Dobi\u0165 \u00fa\u010det");
+                                            btnDobitUcet.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            btnDobitUcet.setBorder(null);
+                                            btnDobitUcet.setkStartColor(new Color(73, 196, 174));
+                                            btnDobitUcet.setkEndColor(new Color(140, 219, 145));
+                                            btnDobitUcet.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnDobitUcet.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnDobitUcet.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnDobitUcet.setkHoverForeGround(Color.white);
+                                            btnDobitUcet.setBackground(Color.white);
+                                            btnDobitUcet.setBorderPainted(false);
+                                            btnDobitUcet.setMaximumSize(new Dimension(97, 24));
+                                            btnDobitUcet.setMinimumSize(new Dimension(97, 24));
+                                            panelDobitUcetInside.add(btnDobitUcet, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 100, 15, 100)));
+                                        }
+                                        panelDobitUcet.add(panelDobitUcetInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 0, 0), 0, 0));
+                                    }
+                                    panelContentUcet.add(panelDobitUcet, "dobitUcet");
+
+                                    //======== panelVybratZUctu ========
+                                    {
+                                        panelVybratZUctu.setkBorderRadius(0);
+                                        panelVybratZUctu.setkEndColor(Color.white);
+                                        panelVybratZUctu.setkStartColor(Color.white);
+
+                                        //======== panelDobitUcetInside2 ========
+                                        {
+                                            panelDobitUcetInside2.setkStartColor(Color.white);
+                                            panelDobitUcetInside2.setkEndColor(Color.white);
+                                            panelDobitUcetInside2.setBorder(new MatteBorder(1, 1, 1, 1, Color.lightGray));
+                                            panelDobitUcetInside2.setkBorderRadius(0);
+                                            panelDobitUcetInside2.setLayout(new FormLayout(
+                                                "[319px,pref]",
+                                                "fill:[58px,pref], fill:[56px,pref], fill:[55px,pref]"));
+
+                                            //---- labelVyberZUctu ----
+                                            labelVyberZUctu.setText("V\u00fdber z \u00fa\u010dtu");
+                                            labelVyberZUctu.setHorizontalAlignment(SwingConstants.CENTER);
+                                            labelVyberZUctu.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
+                                            panelDobitUcetInside2.add(labelVyberZUctu, new CellConstraints(1, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(10, 0, 0, 0)));
+
+                                            //---- txtFieldVyberSuma ----
+                                            txtFieldVyberSuma.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
+                                            txtFieldVyberSuma.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+                                            txtFieldVyberSuma.setHorizontalAlignment(SwingConstants.CENTER);
+                                            txtFieldVyberSuma.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                            txtFieldVyberSuma.setText("Suma ");
+                                            txtFieldVyberSuma.setForeground(Color.lightGray);
+                                            txtFieldVyberSuma.setFocusable(false);
+                                            txtFieldVyberSuma.addFocusListener(new FocusAdapter() {
+                                                @Override
+                                                public void focusGained(FocusEvent e) {
+                                                    textFieldUsernameFocusGained(e);
+                                                }
+                                                @Override
+                                                public void focusLost(FocusEvent e) {
+                                                    textFieldUsernameFocusLost();
+                                                }
+                                            });
+                                            txtFieldVyberSuma.addMouseMotionListener(new MouseMotionAdapter() {
+                                                @Override
+                                                public void mouseMoved(MouseEvent e) {
+                                                    textFieldUsernameMouseMoved();
+                                                }
+                                            });
+                                            panelDobitUcetInside2.add(txtFieldVyberSuma, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 45, 15, 45)));
+
+                                            //---- btnVybratZUctu ----
+                                            btnVybratZUctu.setText("Vybra\u0165 z \u00fa\u010dtu");
+                                            btnVybratZUctu.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            btnVybratZUctu.setBorder(null);
+                                            btnVybratZUctu.setkStartColor(new Color(73, 196, 174));
+                                            btnVybratZUctu.setkEndColor(new Color(140, 219, 145));
+                                            btnVybratZUctu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnVybratZUctu.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnVybratZUctu.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnVybratZUctu.setkHoverForeGround(Color.white);
+                                            btnVybratZUctu.setBackground(Color.white);
+                                            btnVybratZUctu.setBorderPainted(false);
+                                            btnVybratZUctu.setMaximumSize(new Dimension(97, 24));
+                                            btnVybratZUctu.setMinimumSize(new Dimension(97, 24));
+                                            btnVybratZUctu.setHorizontalAlignment(SwingConstants.RIGHT);
+                                            panelDobitUcetInside2.add(btnVybratZUctu, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 95, 15, 95)));
+                                        }
+
+                                        GroupLayout panelVybratZUctuLayout = new GroupLayout(panelVybratZUctu);
+                                        panelVybratZUctu.setLayout(panelVybratZUctuLayout);
+                                        panelVybratZUctuLayout.setHorizontalGroup(
+                                            panelVybratZUctuLayout.createParallelGroup()
+                                                .addGroup(panelVybratZUctuLayout.createParallelGroup()
+                                                    .addGroup(panelVybratZUctuLayout.createSequentialGroup()
+                                                        .addGap(0, 0, Short.MAX_VALUE)
+                                                        .addComponent(panelDobitUcetInside2, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                                .addGap(0, 723, Short.MAX_VALUE)
+                                        );
+                                        panelVybratZUctuLayout.setVerticalGroup(
+                                            panelVybratZUctuLayout.createParallelGroup()
+                                                .addGroup(panelVybratZUctuLayout.createParallelGroup()
+                                                    .addGroup(panelVybratZUctuLayout.createSequentialGroup()
+                                                        .addGap(0, 0, Short.MAX_VALUE)
+                                                        .addComponent(panelDobitUcetInside2, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                                .addGap(0, 363, Short.MAX_VALUE)
+                                        );
+                                    }
+                                    panelContentUcet.add(panelVybratZUctu, "vybratZUctu");
+
+                                    //======== panelHistoriaTrans ========
+                                    {
+                                        panelHistoriaTrans.setkEndColor(new Color(38, 184, 190, 24));
+                                        panelHistoriaTrans.setkStartColor(new Color(38, 184, 190, 24));
+                                        panelHistoriaTrans.setkBorderRadius(0);
+                                        panelHistoriaTrans.setkGradientFocus(600);
+                                        panelHistoriaTrans.setBorder(null);
+                                        panelHistoriaTrans.setBackground(Color.white);
+                                        panelHistoriaTrans.setkFillBackground(false);
+                                        panelHistoriaTrans.setLayout(new GridBagLayout());
+                                    }
+                                    panelContentUcet.add(panelHistoriaTrans, "historiaTrans");
+                                }
+                                splitPane5.setBottomComponent(panelContentUcet);
+                            }
 
                             GroupLayout panelUcetLayout = new GroupLayout(panelUcet);
                             panelUcet.setLayout(panelUcetLayout);
                             panelUcetLayout.setHorizontalGroup(
                                 panelUcetLayout.createParallelGroup()
-                                    .addGroup(panelUcetLayout.createSequentialGroup()
-                                        .addGap(280, 280, 280)
-                                        .addComponent(label4)
-                                        .addContainerGap(421, Short.MAX_VALUE))
+                                    .addComponent(splitPane5)
                             );
                             panelUcetLayout.setVerticalGroup(
                                 panelUcetLayout.createParallelGroup()
-                                    .addGroup(GroupLayout.Alignment.TRAILING, panelUcetLayout.createSequentialGroup()
-                                        .addContainerGap(219, Short.MAX_VALUE)
-                                        .addComponent(label4)
-                                        .addGap(168, 168, 168))
+                                    .addComponent(splitPane5, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
                             );
                         }
                         panelContent.add(panelUcet, "ucet");
@@ -1520,24 +2679,15 @@ public class UserInterface extends JFrame {
                             panelZmenitHeslo.setkEndColor(Color.white);
                             panelZmenitHeslo.setkStartColor(Color.white);
 
-                            //---- label5 ----
-                            label5.setText("zmenit heslo");
-
                             GroupLayout panelZmenitHesloLayout = new GroupLayout(panelZmenitHeslo);
                             panelZmenitHeslo.setLayout(panelZmenitHesloLayout);
                             panelZmenitHesloLayout.setHorizontalGroup(
                                 panelZmenitHesloLayout.createParallelGroup()
-                                    .addGroup(panelZmenitHesloLayout.createSequentialGroup()
-                                        .addGap(220, 220, 220)
-                                        .addComponent(label5)
-                                        .addContainerGap(436, Short.MAX_VALUE))
+                                    .addGap(0, 723, Short.MAX_VALUE)
                             );
                             panelZmenitHesloLayout.setVerticalGroup(
                                 panelZmenitHesloLayout.createParallelGroup()
-                                    .addGroup(panelZmenitHesloLayout.createSequentialGroup()
-                                        .addGap(120, 120, 120)
-                                        .addComponent(label5)
-                                        .addContainerGap(267, Short.MAX_VALUE))
+                                    .addGap(0, 403, Short.MAX_VALUE)
                             );
                         }
                         panelContent.add(panelZmenitHeslo, "zmenitHeslo");
@@ -1758,11 +2908,108 @@ public class UserInterface extends JFrame {
     private KButton btnDoBurzyRanajky;
     private JLabel label88;
     private KGradientPanel panelBurza;
+    private JSplitPane splitPane4;
+    private KGradientPanel panelMenuBurza;
+    private KButton btnBurzaRanajky;
+    private KButton btnBurzaObed;
+    private KGradientPanel panelContentBurza;
+    private KGradientPanel panelBurzaRanajky;
+    private KGradientPanel panelTableBurzaRanajky;
+    private JLabel label89;
     private JLabel label3;
+    private JLabel label90;
+    private JLabel label91;
+    private JLabel label92;
+    private JLabel label93;
+    private JLabel label94;
+    private JLabel label95;
+    private JLabel label96;
+    private JLabel label97;
+    private JLabel label98;
+    private KButton btnBurzaRanajky1;
+    private JLabel label99;
+    private JLabel label100;
+    private JLabel label101;
+    private JLabel label102;
+    private JLabel label103;
+    private KButton btnBurzaRanajky2;
+    private JLabel label104;
+    private JLabel label105;
+    private JLabel label106;
+    private JLabel label107;
+    private JLabel label108;
+    private KButton btnBurzaRanajky3;
+    private JLabel label109;
+    private JLabel label110;
+    private JLabel label111;
+    private JLabel label112;
+    private JLabel label113;
+    private KButton btnBurzaRanajky4;
+    private JLabel label114;
+    private JLabel label115;
+    private JLabel label116;
+    private JLabel label117;
+    private JLabel label118;
+    private KButton btnBurzaRanajky5;
+    private JLabel label119;
+    private KGradientPanel panelBurzaObed;
+    private KGradientPanel panelTableBurzaObed;
+    private JLabel label120;
+    private JLabel label121;
+    private JLabel label122;
+    private JLabel label123;
+    private JLabel label124;
+    private JLabel label125;
+    private JLabel label126;
+    private JLabel label127;
+    private JLabel label128;
+    private JLabel label129;
+    private JLabel label130;
+    private KButton btnBurzaObjednatObed1;
+    private JLabel label131;
+    private JLabel label132;
+    private JLabel label133;
+    private JLabel label134;
+    private JLabel label135;
+    private KButton btnBurzaObjednatObed2;
+    private JLabel label136;
+    private JLabel label137;
+    private JLabel label138;
+    private JLabel label139;
+    private JLabel label140;
+    private KButton btnBurzaObjednatObed3;
+    private JLabel label141;
+    private JLabel label142;
+    private JLabel label143;
+    private JLabel label144;
+    private JLabel label145;
+    private KButton btnBurzaObjednatObed4;
+    private JLabel label146;
+    private JLabel label147;
+    private JLabel label148;
+    private JLabel label149;
+    private JLabel label150;
+    private KButton btnBurzaObjednatObed5;
+    private JLabel label151;
     private KGradientPanel panelUcet;
-    private JLabel label4;
+    private JSplitPane splitPane5;
+    private KGradientPanel panelUcetMenu;
+    private KButton btnMenuDobitUcet;
+    private KButton btnMenuVybratZUctu;
+    private KButton btnMenuHistoriaTranskacii;
+    private KGradientPanel panelContentUcet;
+    private KGradientPanel panelDobitUcet;
+    private KGradientPanel panelDobitUcetInside;
+    private JLabel labelDobitieUctu;
+    private JTextField txtFieldDobitSuma;
+    private KButton btnDobitUcet;
+    private KGradientPanel panelVybratZUctu;
+    private KGradientPanel panelDobitUcetInside2;
+    private JLabel labelVyberZUctu;
+    private JTextField txtFieldVyberSuma;
+    private KButton btnVybratZUctu;
+    private KGradientPanel panelHistoriaTrans;
     private KGradientPanel panelZmenitHeslo;
-    private JLabel label5;
     private KGradientPanel panelOdhlasitSa;
     private JLabel label6;
     private KGradientPanel panelAdmin;
