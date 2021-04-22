@@ -247,7 +247,7 @@ public class UserInterface extends JFrame {
         kButton12 = new KButton();
         label70 = new JLabel();
         panelMojeObjednavky = new KGradientPanel();
-        panelTableRanajky2 = new KGradientPanel();
+        panelTableMojeObjRanajky = new KGradientPanel();
         label71 = new JLabel();
         label73 = new JLabel();
         label2 = new JLabel();
@@ -257,7 +257,19 @@ public class UserInterface extends JFrame {
         label79 = new JLabel();
         label77 = new JLabel();
         label80 = new JLabel();
-        kButton13 = new KButton();
+        btnDoBurzyObed = new KButton();
+        panelTableMojeObjednavkyObed = new KGradientPanel();
+        label72 = new JLabel();
+        label78 = new JLabel();
+        label81 = new JLabel();
+        label82 = new JLabel();
+        label83 = new JLabel();
+        label84 = new JLabel();
+        label85 = new JLabel();
+        label86 = new JLabel();
+        label87 = new JLabel();
+        btnDoBurzyRanajky = new KButton();
+        label88 = new JLabel();
         panelBurza = new KGradientPanel();
         label3 = new JLabel();
         panelUcet = new KGradientPanel();
@@ -286,13 +298,11 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-                swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border
-                .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog"
-                ,java.awt.Font.BOLD,12),java.awt.Color.red),panelMenu. getBorder
-                ()));panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-                .beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException
-                ();}});
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+                0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+                . BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+                red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+                beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1274,14 +1284,14 @@ public class UserInterface extends JFrame {
                             panelMojeObjednavky.setkBorderRadius(0);
                             panelMojeObjednavky.setLayout(new GridBagLayout());
 
-                            //======== panelTableRanajky2 ========
+                            //======== panelTableMojeObjRanajky ========
                             {
-                                panelTableRanajky2.setkEndColor(Color.white);
-                                panelTableRanajky2.setkStartColor(Color.white);
-                                panelTableRanajky2.setBorder(null);
-                                panelTableRanajky2.setkBorderRadius(0);
-                                panelTableRanajky2.setBackground(new Color(255, 255, 255, 145));
-                                panelTableRanajky2.setLayout(new FormLayout(
+                                panelTableMojeObjRanajky.setkEndColor(Color.white);
+                                panelTableMojeObjRanajky.setkStartColor(Color.white);
+                                panelTableMojeObjRanajky.setBorder(null);
+                                panelTableMojeObjRanajky.setkBorderRadius(0);
+                                panelTableMojeObjRanajky.setBackground(new Color(255, 255, 255, 145));
+                                panelTableMojeObjRanajky.setLayout(new FormLayout(
                                     "46dlu, 36dlu, 348px, 75px, 101px",
                                     "fill:49px, fill:52px"));
 
@@ -1289,75 +1299,163 @@ public class UserInterface extends JFrame {
                                 label71.setText("D\u00e1tum");
                                 label71.setHorizontalAlignment(SwingConstants.CENTER);
                                 label71.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                label71.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
-                                panelTableRanajky2.add(label71, CC.xy(1, 1));
+                                label71.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                panelTableMojeObjRanajky.add(label71, CC.xy(1, 1));
 
                                 //---- label73 ----
                                 label73.setText("\u010cas");
                                 label73.setHorizontalAlignment(SwingConstants.CENTER);
                                 label73.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                label73.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
-                                panelTableRanajky2.add(label73, CC.xy(2, 1));
+                                label73.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                panelTableMojeObjRanajky.add(label73, CC.xy(2, 1));
 
                                 //---- label2 ----
-                                label2.setText("Obed");
+                                label2.setText("Ranajky");
                                 label2.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
                                 label2.setHorizontalAlignment(SwingConstants.CENTER);
                                 label2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                panelTableRanajky2.add(label2, CC.xy(3, 1));
+                                panelTableMojeObjRanajky.add(label2, CC.xy(3, 1));
 
                                 //---- label74 ----
                                 label74.setText("Cena");
                                 label74.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
                                 label74.setHorizontalAlignment(SwingConstants.CENTER);
                                 label74.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                panelTableRanajky2.add(label74, CC.xy(4, 1));
+                                panelTableMojeObjRanajky.add(label74, CC.xy(4, 1));
 
                                 //---- label75 ----
-                                label75.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
-                                panelTableRanajky2.add(label75, CC.xy(5, 1));
+                                label75.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                panelTableMojeObjRanajky.add(label75, CC.xy(5, 1));
 
                                 //---- label76 ----
                                 label76.setText("14.12.2021");
                                 label76.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 label76.setHorizontalAlignment(SwingConstants.CENTER);
-                                panelTableRanajky2.add(label76, CC.xy(1, 2));
+                                panelTableMojeObjRanajky.add(label76, CC.xy(1, 2));
 
                                 //---- label79 ----
                                 label79.setText("14:59");
                                 label79.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 label79.setHorizontalAlignment(SwingConstants.CENTER);
-                                panelTableRanajky2.add(label79, CC.xy(2, 2));
+                                panelTableMojeObjRanajky.add(label79, CC.xy(2, 2));
 
                                 //---- label77 ----
                                 label77.setText("Parky s hor\u010dicou a chlebom (Takeaway)");
                                 label77.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 label77.setHorizontalAlignment(SwingConstants.CENTER);
                                 label77.setBorder(null);
-                                panelTableRanajky2.add(label77, CC.xy(3, 2));
+                                panelTableMojeObjRanajky.add(label77, CC.xy(3, 2));
 
                                 //---- label80 ----
                                 label80.setText("4.87\u20ac");
                                 label80.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 label80.setHorizontalAlignment(SwingConstants.CENTER);
                                 label80.setBorder(null);
-                                panelTableRanajky2.add(label80, CC.xy(4, 2));
+                                panelTableMojeObjRanajky.add(label80, CC.xy(4, 2));
 
-                                //---- kButton13 ----
-                                kButton13.setText("Do burzy");
-                                kButton13.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                kButton13.setBorder(null);
-                                kButton13.setkStartColor(new Color(73, 196, 174));
-                                kButton13.setkEndColor(new Color(140, 219, 145));
-                                kButton13.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                                kButton13.setkHoverEndColor(new Color(73, 196, 174));
-                                kButton13.setkHoverStartColor(new Color(52, 188, 183));
-                                kButton13.setkHoverForeGround(Color.white);
-                                kButton13.setBackground(Color.white);
-                                kButton13.setBorderPainted(false);
-                                panelTableRanajky2.add(kButton13, new CellConstraints(5, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
+                                //---- btnDoBurzyObed ----
+                                btnDoBurzyObed.setText("Do burzy");
+                                btnDoBurzyObed.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                btnDoBurzyObed.setBorder(null);
+                                btnDoBurzyObed.setkStartColor(new Color(73, 196, 174));
+                                btnDoBurzyObed.setkEndColor(new Color(140, 219, 145));
+                                btnDoBurzyObed.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                btnDoBurzyObed.setkHoverEndColor(new Color(73, 196, 174));
+                                btnDoBurzyObed.setkHoverStartColor(new Color(52, 188, 183));
+                                btnDoBurzyObed.setkHoverForeGround(Color.white);
+                                btnDoBurzyObed.setBackground(Color.white);
+                                btnDoBurzyObed.setBorderPainted(false);
+                                panelTableMojeObjRanajky.add(btnDoBurzyObed, new CellConstraints(5, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
                             }
-                            panelMojeObjednavky.add(panelTableRanajky2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                            panelMojeObjednavky.add(panelTableMojeObjRanajky, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 70, 0), 0, 0));
+
+                            //======== panelTableMojeObjednavkyObed ========
+                            {
+                                panelTableMojeObjednavkyObed.setkEndColor(Color.white);
+                                panelTableMojeObjednavkyObed.setkStartColor(Color.white);
+                                panelTableMojeObjednavkyObed.setBorder(null);
+                                panelTableMojeObjednavkyObed.setkBorderRadius(0);
+                                panelTableMojeObjednavkyObed.setBackground(new Color(255, 255, 255, 145));
+                                panelTableMojeObjednavkyObed.setLayout(new FormLayout(
+                                    "46dlu, 36dlu, 348px, 75px, 101px",
+                                    "fill:49px, fill:52px, $lgap, 19dlu"));
+
+                                //---- label72 ----
+                                label72.setText("D\u00e1tum");
+                                label72.setHorizontalAlignment(SwingConstants.CENTER);
+                                label72.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                label72.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                panelTableMojeObjednavkyObed.add(label72, CC.xy(1, 1));
+
+                                //---- label78 ----
+                                label78.setText("\u010cas");
+                                label78.setHorizontalAlignment(SwingConstants.CENTER);
+                                label78.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                label78.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                panelTableMojeObjednavkyObed.add(label78, CC.xy(2, 1));
+
+                                //---- label81 ----
+                                label81.setText("Obed");
+                                label81.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                label81.setHorizontalAlignment(SwingConstants.CENTER);
+                                label81.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                panelTableMojeObjednavkyObed.add(label81, CC.xy(3, 1));
+
+                                //---- label82 ----
+                                label82.setText("Cena");
+                                label82.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                label82.setHorizontalAlignment(SwingConstants.CENTER);
+                                label82.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                panelTableMojeObjednavkyObed.add(label82, CC.xy(4, 1));
+
+                                //---- label83 ----
+                                label83.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                panelTableMojeObjednavkyObed.add(label83, CC.xy(5, 1));
+
+                                //---- label84 ----
+                                label84.setText("7.8.2021");
+                                label84.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                label84.setHorizontalAlignment(SwingConstants.CENTER);
+                                panelTableMojeObjednavkyObed.add(label84, CC.xy(1, 2));
+
+                                //---- label85 ----
+                                label85.setText("7:02");
+                                label85.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                label85.setHorizontalAlignment(SwingConstants.CENTER);
+                                panelTableMojeObjednavkyObed.add(label85, CC.xy(2, 2));
+
+                                //---- label86 ----
+                                label86.setText("Parky s hor\u010dicou a chlebom (Miner\u00e1lna voda)");
+                                label86.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                label86.setHorizontalAlignment(SwingConstants.CENTER);
+                                label86.setBorder(null);
+                                panelTableMojeObjednavkyObed.add(label86, CC.xy(3, 2));
+
+                                //---- label87 ----
+                                label87.setText("2.05\u20ac");
+                                label87.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                label87.setHorizontalAlignment(SwingConstants.CENTER);
+                                label87.setBorder(null);
+                                panelTableMojeObjednavkyObed.add(label87, CC.xy(4, 2));
+
+                                //---- btnDoBurzyRanajky ----
+                                btnDoBurzyRanajky.setText("Do burzy");
+                                btnDoBurzyRanajky.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                btnDoBurzyRanajky.setBorder(null);
+                                btnDoBurzyRanajky.setkStartColor(new Color(73, 196, 174));
+                                btnDoBurzyRanajky.setkEndColor(new Color(140, 219, 145));
+                                btnDoBurzyRanajky.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                btnDoBurzyRanajky.setkHoverEndColor(new Color(73, 196, 174));
+                                btnDoBurzyRanajky.setkHoverStartColor(new Color(52, 188, 183));
+                                btnDoBurzyRanajky.setkHoverForeGround(Color.white);
+                                btnDoBurzyRanajky.setBackground(Color.white);
+                                btnDoBurzyRanajky.setBorderPainted(false);
+                                panelTableMojeObjednavkyObed.add(btnDoBurzyRanajky, new CellConstraints(5, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
+                                panelTableMojeObjednavkyObed.add(label88, CC.xy(1, 4));
+                            }
+                            panelMojeObjednavky.add(panelTableMojeObjednavkyObed, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                                 new Insets(0, 0, 0, 0), 0, 0));
                         }
@@ -1636,7 +1734,7 @@ public class UserInterface extends JFrame {
     private KButton kButton12;
     private JLabel label70;
     private KGradientPanel panelMojeObjednavky;
-    private KGradientPanel panelTableRanajky2;
+    private KGradientPanel panelTableMojeObjRanajky;
     private JLabel label71;
     private JLabel label73;
     private JLabel label2;
@@ -1646,7 +1744,19 @@ public class UserInterface extends JFrame {
     private JLabel label79;
     private JLabel label77;
     private JLabel label80;
-    private KButton kButton13;
+    private KButton btnDoBurzyObed;
+    private KGradientPanel panelTableMojeObjednavkyObed;
+    private JLabel label72;
+    private JLabel label78;
+    private JLabel label81;
+    private JLabel label82;
+    private JLabel label83;
+    private JLabel label84;
+    private JLabel label85;
+    private JLabel label86;
+    private JLabel label87;
+    private KButton btnDoBurzyRanajky;
+    private JLabel label88;
     private KGradientPanel panelBurza;
     private JLabel label3;
     private KGradientPanel panelUcet;
