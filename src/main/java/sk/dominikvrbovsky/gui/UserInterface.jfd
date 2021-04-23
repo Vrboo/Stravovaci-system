@@ -2481,7 +2481,7 @@ new FormModel {
 													"border": &MatteBorder5 new javax.swing.border.MatteBorder( 0, 0, 2, 0, sfield java.awt.Color black )
 													"cursor": &Cursor3 new java.awt.Cursor( 2 )
 													"horizontalAlignment": 0
-													"font": &Font16 new java.awt.Font( "Yu Gothic UI", 1, 20 )
+													"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
 													"text": "Suma "
 													"foreground": sfield java.awt.Color lightGray
 													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "textFieldUsernameFocusGained", true ) )
@@ -2490,12 +2490,12 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 2
-													"insets": &Insets7 new java.awt.Insets( 2, 45, 15, 45 )
+													"insets": new java.awt.Insets( 2, 45, 15, 45 )
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnDobitUcet"
 													"text": "Dobiť účet"
-													"font": &Font17 new java.awt.Font( "Yu Gothic UI", 1, 17 )
+													"font": &Font16 new java.awt.Font( "Yu Gothic UI", 1, 17 )
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -2550,7 +2550,7 @@ new FormModel {
 													"border": #MatteBorder5
 													"cursor": #Cursor3
 													"horizontalAlignment": 0
-													"font": #Font16
+													"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
 													"text": "Suma "
 													"foreground": sfield java.awt.Color lightGray
 													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "textFieldUsernameFocusGained", true ) )
@@ -2559,12 +2559,12 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 2
-													"insets": #Insets7
+													"insets": new java.awt.Insets( 2, 35, 15, 35 )
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnVybratZUctu"
 													"text": "Vybrať z účtu"
-													"font": #Font17
+													"font": #Font16
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -2619,7 +2619,7 @@ new FormModel {
 								"kStartColor": sfield java.awt.Color white
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
 									"$columnSpecs": "max(pref;319px)"
-									"$rowSpecs": "fill:31dlu, fill:60px, fill:60px, fill:60px, fill:60px"
+									"$rowSpecs": "fill:38dlu, fill:60px, fill:60px, fill:60px, fill:60px"
 								} ) {
 									name: "PanelZmenitHesloInside"
 									"kStartColor": sfield java.awt.Color white
@@ -2630,9 +2630,9 @@ new FormModel {
 										name: "labelZmenaHesla"
 										"text": "Zmena hesla"
 										"horizontalAlignment": 0
-										"font": #Font15
+										"font": new java.awt.Font( "Yu Gothic UI", 1, 26 )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
-										"insets": new java.awt.Insets( 10, 0, 0, 0 )
+										"insets": new java.awt.Insets( 12, 0, 0, 0 )
 									} )
 									add( new FormComponent( "javax.swing.JPasswordField" ) {
 										name: "passwordStareHeslo"
@@ -2640,13 +2640,13 @@ new FormModel {
 										"border": &MatteBorder6 new javax.swing.border.MatteBorder( 0, 0, 2, 0, sfield java.awt.Color black )
 										"text": "Staré heslo"
 										"foreground": &Color25 new java.awt.Color( 192, 192, 192, 255 )
-										"font": &Font18 new java.awt.Font( "Yu Gothic UI", 1, 18 )
+										"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordStareHesloFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordStareHesloFocusLost", false ) )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
 										"gridY": 2
-										"insets": new java.awt.Insets( 8, 40, 8, 40 )
+										"insets": new java.awt.Insets( 8, 35, 8, 35 )
 									} )
 									add( new FormComponent( "javax.swing.JPasswordField" ) {
 										name: "passwordNoveHeslo"
@@ -2654,13 +2654,13 @@ new FormModel {
 										"border": #MatteBorder6
 										"text": "Nové heslo"
 										"foreground": #Color25
-										"font": #Font18
+										"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordNoveHesloFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordNoveHesloFocusLost", false ) )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
 										"gridY": 3
-										"insets": new java.awt.Insets( 8, 40, 8, 40 )
+										"insets": new java.awt.Insets( 8, 35, 8, 35 )
 									} )
 									add( new FormComponent( "javax.swing.JPasswordField" ) {
 										name: "passwordNovHesloPotvrdenie"
@@ -2668,18 +2668,18 @@ new FormModel {
 										"border": #MatteBorder6
 										"text": "Potvrdenie hesla"
 										"foreground": #Color25
-										"font": #Font18
+										"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordNovHesloPotvrdenieFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordNovHesloPotvrdenieFocusLost", false ) )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
 										"gridY": 4
-										"insets": new java.awt.Insets( 8, 40, 8, 40 )
+										"insets": new java.awt.Insets( 8, 35, 8, 35 )
 									} )
 									add( new FormComponent( "keeptoo.KButton" ) {
 										name: "btnZmenitHesloInside"
 										"text": "Zmeniť heslo"
-										"font": #Font17
+										"font": #Font16
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 										"kStartColor": #Color21
 										"kEndColor": #Color22
@@ -2694,14 +2694,14 @@ new FormModel {
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
 										"gridY": 5
-										"insets": new java.awt.Insets( 9, 99, 16, 98 )
+										"insets": new java.awt.Insets( 10, 99, 17, 98 )
 									} )
 								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "zmenitHeslo"
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-								"$columnSpecs": "376"
+								"$columnSpecs": "0"
 								"$rowSpecs": "0"
 								"$hGap": 5
 								"$vGap": 5
@@ -2713,13 +2713,13 @@ new FormModel {
 									"$columnSpecs": "max(pref;369px)"
 									"$rowSpecs": "fill:max(pref;58px), fill:max(pref;55px)"
 								} ) {
-									name: "panelDobitUcetInside2"
+									name: "panelOdhlasitSaInside"
 									"kStartColor": sfield java.awt.Color white
 									"kEndColor": sfield java.awt.Color white
 									"border": #MatteBorder4
 									"kBorderRadius": 0
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "labelDobitieUctu2"
+										name: "labelNaozajSaChceteOdhlasit"
 										"text": "Naozaj sa chcete odhlásiť?"
 										"horizontalAlignment": 0
 										"font": #Font15
@@ -2728,9 +2728,9 @@ new FormModel {
 										"gridY": 1
 									} )
 									add( new FormComponent( "keeptoo.KButton" ) {
-										name: "btnDobitUcet2"
+										name: "btnOdhlasitSaInside"
 										"text": "Odhlásiť sa"
-										"font": #Font17
+										"font": #Font16
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 										"kStartColor": #Color21
 										"kEndColor": #Color22
@@ -2751,17 +2751,71 @@ new FormModel {
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "odhlasitSa"
 							} )
-							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-								"$horizontalGroup": "par l {seq l {space :p:269:p, comp label7:::p::p, space ::419:x}}"
-								"$verticalGroup": "par l {seq l {space :p:122:p, comp label7:::p::p, space ::265:x}}"
+							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+								"$columnSpecs": "0"
+								"$rowSpecs": "0"
+								"$hGap": 5
+								"$vGap": 5
 							} ) {
 								name: "panelAdmin"
 								"kEndColor": sfield java.awt.Color white
 								"kStartColor": sfield java.awt.Color white
-								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "label7"
-									"text": "Admin"
-								} )
+								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+									"$columnSpecs": "max(pref;319px)"
+									"$rowSpecs": "fill:max(pref;108px), fill:max(pref;56px), fill:max(pref;55px)"
+								} ) {
+									name: "panelAdminInside"
+									"kStartColor": sfield java.awt.Color white
+									"kEndColor": sfield java.awt.Color white
+									"border": #MatteBorder4
+									"kBorderRadius": 0
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "labelLockIcon"
+										"horizontalAlignment": 0
+										"font": #Font15
+										"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_user_shield_85px_1.png" )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 1
+										"gridY": 1
+										"insets": new java.awt.Insets( 10, 0, 0, 0 )
+									} )
+									add( new FormComponent( "javax.swing.JPasswordField" ) {
+										name: "passwordAdmin"
+										"horizontalAlignment": 0
+										"border": new javax.swing.border.MatteBorder( 0, 0, 2, 0, sfield java.awt.Color black )
+										"text": "Prístupové heslo"
+										"foreground": #Color25
+										"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
+										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordStareHesloFocusGained", false ) )
+										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordStareHesloFocusLost", false ) )
+										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordAdminFocusGained", false ) )
+										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordAdminFocusLost", false ) )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 2
+										"insets": new java.awt.Insets( 3, 35, 14, 35 )
+									} )
+									add( new FormComponent( "keeptoo.KButton" ) {
+										name: "btnPotvrditHesloAdmin"
+										"text": "Potvrdiť"
+										"font": #Font16
+										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+										"kStartColor": #Color21
+										"kEndColor": #Color22
+										"cursor": #Cursor2
+										"kHoverEndColor": #Color23
+										"kHoverStartColor": #Color24
+										"kHoverForeGround": sfield java.awt.Color white
+										"background": #Color20
+										"borderPainted": false
+										"maximumSize": #Dimension0
+										"minimumSize": #Dimension1
+										"horizontalAlignment": 4
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 1
+										"gridY": 3
+										"insets": new java.awt.Insets( 4, 110, 20, 110 )
+									} )
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "admin"
 							} )
