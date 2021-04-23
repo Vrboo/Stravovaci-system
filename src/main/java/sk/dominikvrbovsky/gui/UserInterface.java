@@ -140,6 +140,8 @@ public class UserInterface extends JFrame {
         passwordNoveHeslo.setEchoChar((char)0);
         passwordNovHesloPotvrdenie.setEchoChar((char)0);
         passwordAdmin.setEchoChar((char)0);
+        passwordHesloInside.setEchoChar((char)0);
+        
     }
 
     private void btnObjednatActionPerformed() {
@@ -208,30 +210,6 @@ public class UserInterface extends JFrame {
 
     private void btnBurzaObedActionPerformed() {
         cardLayoutBurza.show(panelContentBurza, "burzaObed");
-    }
-
-    private void textFieldUsernameFocusGained(FocusEvent e) {
-        // TODO add your code here
-    }
-
-    private void textFieldUsernameMouseMoved() {
-        // TODO add your code here
-    }
-
-    private void textFieldUsernameFocusLost() {
-        // TODO add your code here
-    }
-
-    private void textPasswordMouseMoved() {
-        // TODO add your code here
-    }
-
-    private void textPasswordFocusGained() {
-        // TODO add your code here
-    }
-
-    private void textPasswordFocusLost() {
-        // TODO add your code here
     }
 
     private void btnMenuDobitUcetActionPerformed() {
@@ -324,6 +302,42 @@ public class UserInterface extends JFrame {
             passwordAdmin.setForeground(new Color(192,192,192));
             passwordAdmin.setText("Prístupové heslo");
         }
+    }
+
+    private void btnVybratZUctuActionPerformed() {
+        cardLayoutUcet.show(panelContentUcet, "heslo");
+    }
+
+    private void passwordHesloInsideFocusGained() {
+        String pass = String.valueOf(passwordHesloInside.getPassword());
+
+        if (pass.equals("Heslo")) {
+            passwordHesloInside.setEchoChar((char)0x2022);
+            passwordHesloInside.setForeground(Color.BLACK);
+            passwordHesloInside.setText("");
+        }
+    }
+
+    private void passwordHesloInsideFocusLost() {
+        String pass = String.valueOf(passwordHesloInside.getPassword());
+
+        if (pass.equals("")) {
+            passwordHesloInside.setEchoChar((char)0);
+            passwordHesloInside.setForeground(new Color(192,192,192));
+            passwordHesloInside.setText("Heslo");
+        }
+    }
+
+    private void textFieldUsernameFocusGained(FocusEvent e) {
+        // TODO add your code here
+    }
+
+    private void textFieldUsernameFocusLost() {
+        // TODO add your code here
+    }
+
+    private void textFieldUsernameMouseMoved() {
+        // TODO add your code here
     }
 
 
@@ -559,6 +573,11 @@ public class UserInterface extends JFrame {
         txtFieldVyberSuma = new JTextField();
         btnVybratZUctu = new KButton();
         panelHistoriaTrans = new KGradientPanel();
+        panelHeslo = new KGradientPanel();
+        panelHesloInside = new KGradientPanel();
+        labelLockIcon = new JLabel();
+        passwordHesloInside = new JPasswordField();
+        btnPotvrditHesloInside = new KButton();
         panelZmenitHeslo = new KGradientPanel();
         PanelZmenitHesloInside = new KGradientPanel();
         labelZmenaHesla = new JLabel();
@@ -572,7 +591,7 @@ public class UserInterface extends JFrame {
         btnOdhlasitSaInside = new KButton();
         panelAdmin = new KGradientPanel();
         panelAdminInside = new KGradientPanel();
-        labelLockIcon = new JLabel();
+        labelAdminIcon = new JLabel();
         passwordAdmin = new JPasswordField();
         btnPotvrditHesloAdmin = new KButton();
 
@@ -593,13 +612,14 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-                . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing
-                . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-                Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-                ) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-                public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName (
-                ) )) throw new RuntimeException( ); }} );
+                panelMenu.setBackground(new Color(55, 55, 55));
+                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
+                .border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder
+                .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
+                awt.Font.BOLD,12),java.awt.Color.red),panelMenu. getBorder()))
+                ;panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+                ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
+                ;
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -734,6 +754,8 @@ public class UserInterface extends JFrame {
                 btnAdmin.setkHoverForeGround(Color.red);
                 btnAdmin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 btnAdmin.setkSelectedColor(new Color(67, 67, 67));
+                btnAdmin.setkAllowTab(true);
+                btnAdmin.setkIndicatorColor(new Color(50, 187, 186));
                 btnAdmin.addActionListener(e -> btnAdminActionPerformed());
 
                 GroupLayout panelMenuLayout = new GroupLayout(panelMenu);
@@ -2610,22 +2632,6 @@ public class UserInterface extends JFrame {
                                             txtFieldDobitSuma.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
                                             txtFieldDobitSuma.setText("Suma ");
                                             txtFieldDobitSuma.setForeground(Color.lightGray);
-                                            txtFieldDobitSuma.addFocusListener(new FocusAdapter() {
-                                                @Override
-                                                public void focusGained(FocusEvent e) {
-                                                    textFieldUsernameFocusGained(e);
-                                                }
-                                                @Override
-                                                public void focusLost(FocusEvent e) {
-                                                    textFieldUsernameFocusLost();
-                                                }
-                                            });
-                                            txtFieldDobitSuma.addMouseMotionListener(new MouseMotionAdapter() {
-                                                @Override
-                                                public void mouseMoved(MouseEvent e) {
-                                                    textFieldUsernameMouseMoved();
-                                                }
-                                            });
                                             panelDobitUcetInside.add(txtFieldDobitSuma, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 45, 15, 45)));
 
                                             //---- btnDobitUcet ----
@@ -2696,7 +2702,7 @@ public class UserInterface extends JFrame {
                                                     textFieldUsernameMouseMoved();
                                                 }
                                             });
-                                            panelVyberZUctuInside.add(txtFieldVyberSuma, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 35, 15, 35)));
+                                            panelVyberZUctuInside.add(txtFieldVyberSuma, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 45, 15, 45)));
 
                                             //---- btnVybratZUctu ----
                                             btnVybratZUctu.setText("Vybra\u0165 z \u00fa\u010dtu");
@@ -2713,6 +2719,7 @@ public class UserInterface extends JFrame {
                                             btnVybratZUctu.setMaximumSize(new Dimension(97, 24));
                                             btnVybratZUctu.setMinimumSize(new Dimension(97, 24));
                                             btnVybratZUctu.setHorizontalAlignment(SwingConstants.RIGHT);
+                                            btnVybratZUctu.addActionListener(e -> btnVybratZUctuActionPerformed());
                                             panelVyberZUctuInside.add(btnVybratZUctu, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 95, 15, 95)));
                                         }
                                         panelVybratZUctu.add(panelVyberZUctuInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -2743,6 +2750,73 @@ public class UserInterface extends JFrame {
                                         );
                                     }
                                     panelContentUcet.add(panelHistoriaTrans, "historiaTrans");
+
+                                    //======== panelHeslo ========
+                                    {
+                                        panelHeslo.setkEndColor(Color.white);
+                                        panelHeslo.setkStartColor(Color.white);
+                                        panelHeslo.setLayout(new GridBagLayout());
+
+                                        //======== panelHesloInside ========
+                                        {
+                                            panelHesloInside.setkStartColor(Color.white);
+                                            panelHesloInside.setkEndColor(Color.white);
+                                            panelHesloInside.setBorder(new MatteBorder(1, 1, 1, 1, Color.lightGray));
+                                            panelHesloInside.setkBorderRadius(0);
+                                            panelHesloInside.setLayout(new FormLayout(
+                                                "[319px,pref]",
+                                                "fill:[108px,pref], fill:[56px,pref], fill:[55px,pref]"));
+
+                                            //---- labelLockIcon ----
+                                            labelLockIcon.setHorizontalAlignment(SwingConstants.CENTER);
+                                            labelLockIcon.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
+                                            labelLockIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_lock_80px_2.png"));
+                                            panelHesloInside.add(labelLockIcon, new CellConstraints(1, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 0, 0, 0)));
+
+                                            //---- passwordHesloInside ----
+                                            passwordHesloInside.setHorizontalAlignment(SwingConstants.CENTER);
+                                            passwordHesloInside.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
+                                            passwordHesloInside.setText("Heslo");
+                                            passwordHesloInside.setForeground(Color.lightGray);
+                                            passwordHesloInside.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                            passwordHesloInside.addFocusListener(new FocusAdapter() {
+                                                @Override
+                                                public void focusGained(FocusEvent e) {
+                                                    passwordStareHesloFocusGained();
+                                                    passwordAdminFocusGained();
+                                                    passwordHesloInsideFocusGained();
+                                                }
+                                                @Override
+                                                public void focusLost(FocusEvent e) {
+                                                    passwordStareHesloFocusLost();
+                                                    passwordAdminFocusLost();
+                                                    passwordHesloInsideFocusLost();
+                                                }
+                                            });
+                                            panelHesloInside.add(passwordHesloInside, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 35, 15, 35)));
+
+                                            //---- btnPotvrditHesloInside ----
+                                            btnPotvrditHesloInside.setText("Potvrdi\u0165");
+                                            btnPotvrditHesloInside.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            btnPotvrditHesloInside.setBorder(null);
+                                            btnPotvrditHesloInside.setkStartColor(new Color(73, 196, 174));
+                                            btnPotvrditHesloInside.setkEndColor(new Color(140, 219, 145));
+                                            btnPotvrditHesloInside.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnPotvrditHesloInside.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnPotvrditHesloInside.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnPotvrditHesloInside.setkHoverForeGround(Color.white);
+                                            btnPotvrditHesloInside.setBackground(Color.white);
+                                            btnPotvrditHesloInside.setBorderPainted(false);
+                                            btnPotvrditHesloInside.setMaximumSize(new Dimension(97, 24));
+                                            btnPotvrditHesloInside.setMinimumSize(new Dimension(97, 24));
+                                            btnPotvrditHesloInside.setHorizontalAlignment(SwingConstants.RIGHT);
+                                            panelHesloInside.add(btnPotvrditHesloInside, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(4, 110, 20, 110)));
+                                        }
+                                        panelHeslo.add(panelHesloInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 0, 0), 0, 0));
+                                    }
+                                    panelContentUcet.add(panelHeslo, "heslo");
                                 }
                                 splitPane5.setBottomComponent(panelContentUcet);
                             }
@@ -2918,11 +2992,11 @@ public class UserInterface extends JFrame {
                                     "[319px,pref]",
                                     "fill:[108px,pref], fill:[56px,pref], fill:[55px,pref]"));
 
-                                //---- labelLockIcon ----
-                                labelLockIcon.setHorizontalAlignment(SwingConstants.CENTER);
-                                labelLockIcon.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
-                                labelLockIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_user_shield_85px_1.png"));
-                                panelAdminInside.add(labelLockIcon, new CellConstraints(1, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(10, 0, 0, 0)));
+                                //---- labelAdminIcon ----
+                                labelAdminIcon.setHorizontalAlignment(SwingConstants.CENTER);
+                                labelAdminIcon.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
+                                labelAdminIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_user_shield_85px_1.png"));
+                                panelAdminInside.add(labelAdminIcon, new CellConstraints(1, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 0, 0, 0)));
 
                                 //---- passwordAdmin ----
                                 passwordAdmin.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2942,7 +3016,7 @@ public class UserInterface extends JFrame {
                                         passwordAdminFocusLost();
                                     }
                                 });
-                                panelAdminInside.add(passwordAdmin, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(3, 35, 14, 35)));
+                                panelAdminInside.add(passwordAdmin, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 35, 15, 35)));
 
                                 //---- btnPotvrditHesloAdmin ----
                                 btnPotvrditHesloAdmin.setText("Potvrdi\u0165");
@@ -3230,6 +3304,11 @@ public class UserInterface extends JFrame {
     private JTextField txtFieldVyberSuma;
     private KButton btnVybratZUctu;
     private KGradientPanel panelHistoriaTrans;
+    private KGradientPanel panelHeslo;
+    private KGradientPanel panelHesloInside;
+    private JLabel labelLockIcon;
+    private JPasswordField passwordHesloInside;
+    private KButton btnPotvrditHesloInside;
     private KGradientPanel panelZmenitHeslo;
     private KGradientPanel PanelZmenitHesloInside;
     private JLabel labelZmenaHesla;
@@ -3243,7 +3322,7 @@ public class UserInterface extends JFrame {
     private KButton btnOdhlasitSaInside;
     private KGradientPanel panelAdmin;
     private KGradientPanel panelAdminInside;
-    private JLabel labelLockIcon;
+    private JLabel labelAdminIcon;
     private JPasswordField passwordAdmin;
     private KButton btnPotvrditHesloAdmin;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
