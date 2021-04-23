@@ -2416,7 +2416,7 @@ new FormModel {
 										} )
 										add( new FormComponent( "keeptoo.KButton" ) {
 											name: "btnMenuHistoriaTranskacii"
-											"text": "Historia transakcií"
+											"text": "História transakcií"
 											"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 											"font": #Font1
 											"kStartColor": sfield java.awt.Color darkGray

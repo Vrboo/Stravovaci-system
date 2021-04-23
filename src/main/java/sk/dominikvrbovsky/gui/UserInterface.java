@@ -613,11 +613,13 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-                , 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-                , new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-                panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-                ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
+                . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder
+                . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .
+                awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panelMenu. getBorder () ) )
+                ; panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+                ) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
+                ;
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2564,7 +2566,7 @@ public class UserInterface extends JFrame {
                                     panelUcetMenu.add(btnMenuVybratZUctu, CC.xy(3, 1));
 
                                     //---- btnMenuHistoriaTranskacii ----
-                                    btnMenuHistoriaTranskacii.setText("Historia transakci\u00ed");
+                                    btnMenuHistoriaTranskacii.setText("Hist\u00f3ria transakci\u00ed");
                                     btnMenuHistoriaTranskacii.setBorder(null);
                                     btnMenuHistoriaTranskacii.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                     btnMenuHistoriaTranskacii.setkStartColor(Color.darkGray);
