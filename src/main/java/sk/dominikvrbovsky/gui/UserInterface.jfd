@@ -2717,7 +2717,7 @@ new FormModel {
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
 										"gridY": 2
-										"insets": new java.awt.Insets( 8, 35, 8, 35 )
+										"insets": new java.awt.Insets( 6, 35, 10, 35 )
 									} )
 									add( new FormComponent( "javax.swing.JPasswordField" ) {
 										name: "passwordNoveHeslo"
@@ -2731,7 +2731,7 @@ new FormModel {
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
 										"gridY": 3
-										"insets": new java.awt.Insets( 8, 35, 8, 35 )
+										"insets": new java.awt.Insets( 6, 35, 10, 35 )
 									} )
 									add( new FormComponent( "javax.swing.JPasswordField" ) {
 										name: "passwordNovHesloPotvrdenie"
@@ -2745,7 +2745,7 @@ new FormModel {
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
 										"gridY": 4
-										"insets": new java.awt.Insets( 8, 35, 8, 35 )
+										"insets": new java.awt.Insets( 6, 35, 10, 35 )
 									} )
 									add( new FormComponent( "keeptoo.KButton" ) {
 										name: "btnZmenitHesloInside"

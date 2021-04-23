@@ -613,13 +613,11 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-                .border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder
-                .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
-                awt.Font.BOLD,12),java.awt.Color.red),panelMenu. getBorder()))
-                ;panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-                ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
-                ;
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+                , 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+                , new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+                panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+                ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2872,7 +2870,7 @@ public class UserInterface extends JFrame {
                                         passwordStareHesloFocusLost();
                                     }
                                 });
-                                PanelZmenitHesloInside.add(passwordStareHeslo, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(8, 35, 8, 35)));
+                                PanelZmenitHesloInside.add(passwordStareHeslo, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(6, 35, 10, 35)));
 
                                 //---- passwordNoveHeslo ----
                                 passwordNoveHeslo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2890,7 +2888,7 @@ public class UserInterface extends JFrame {
                                         passwordNoveHesloFocusLost();
                                     }
                                 });
-                                PanelZmenitHesloInside.add(passwordNoveHeslo, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(8, 35, 8, 35)));
+                                PanelZmenitHesloInside.add(passwordNoveHeslo, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(6, 35, 10, 35)));
 
                                 //---- passwordNovHesloPotvrdenie ----
                                 passwordNovHesloPotvrdenie.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2908,7 +2906,7 @@ public class UserInterface extends JFrame {
                                         passwordNovHesloPotvrdenieFocusLost();
                                     }
                                 });
-                                PanelZmenitHesloInside.add(passwordNovHesloPotvrdenie, new CellConstraints(1, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(8, 35, 8, 35)));
+                                PanelZmenitHesloInside.add(passwordNovHesloPotvrdenie, new CellConstraints(1, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(6, 35, 10, 35)));
 
                                 //---- btnZmenitHesloInside ----
                                 btnZmenitHesloInside.setText("Zmeni\u0165 heslo");
