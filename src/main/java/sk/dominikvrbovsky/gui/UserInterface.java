@@ -362,6 +362,7 @@ public class UserInterface extends JFrame {
         labelStravovaciSystem = new JLabel();
         labelDatum = new JLabel();
         labelX = new JLabel();
+        label4 = new JLabel();
         panelContent = new KGradientPanel();
         panelObjednat = new KGradientPanel();
         splitPane3 = new JSplitPane();
@@ -613,13 +614,12 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
-                . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder
-                . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .
-                awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panelMenu. getBorder () ) )
-                ; panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-                ) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
-                ;
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+                border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER
+                , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font
+                .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (
+                new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order"
+                .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -835,7 +835,7 @@ public class UserInterface extends JFrame {
 
                         //---- labelDatum ----
                         labelDatum.setText("Utorok, 20. apr\u00edl 2021");
-                        labelDatum.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                        labelDatum.setFont(new Font("Yu Gothic UI", Font.BOLD, 23));
                         labelDatum.setForeground(new Color(70, 70, 70));
                         labelDatum.setHorizontalAlignment(SwingConstants.LEFT);
 
@@ -858,17 +858,30 @@ public class UserInterface extends JFrame {
                             }
                         });
 
+                        //---- label4 ----
+                        label4.setText("created by Dominik Vrbovsk\u00fd");
+                        label4.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 16));
+                        label4.setForeground(new Color(70, 70, 70));
+
                         GroupLayout panelStravovaciSystemLayout = new GroupLayout(panelStravovaciSystem);
                         panelStravovaciSystem.setLayout(panelStravovaciSystemLayout);
                         panelStravovaciSystemLayout.setHorizontalGroup(
                             panelStravovaciSystemLayout.createParallelGroup()
                                 .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
-                                    .addGap(35, 35, 35)
+                                    .addGap(46, 46, 46)
+                                    .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
+                                    .addGap(32, 32, 32)
+                                    .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(panelStravovaciSystemLayout.createParallelGroup()
-                                        .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 378, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 378, GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
-                                    .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 292, Short.MAX_VALUE)
+                                            .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
+                                            .addComponent(label4, GroupLayout.PREFERRED_SIZE, 227, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(0, 0, Short.MAX_VALUE))))
                         );
                         panelStravovaciSystemLayout.setVerticalGroup(
                             panelStravovaciSystemLayout.createParallelGroup()
@@ -876,11 +889,13 @@ public class UserInterface extends JFrame {
                                     .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
-                                    .addGap(14, 14, 14)
-                                    .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(19, Short.MAX_VALUE)
+                                    .addGroup(panelStravovaciSystemLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelStravovaciSystem))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(28, Short.MAX_VALUE))
+                                    .addGap(38, 38, 38))
                         );
                     }
                     splitPane2.setTopComponent(panelStravovaciSystem);
@@ -3048,11 +3063,11 @@ public class UserInterface extends JFrame {
                 panelRightSide.setLayout(panelRightSideLayout);
                 panelRightSideLayout.setHorizontalGroup(
                     panelRightSideLayout.createParallelGroup()
-                        .addComponent(splitPane2)
+                        .addComponent(splitPane2, GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
                 );
                 panelRightSideLayout.setVerticalGroup(
                     panelRightSideLayout.createParallelGroup()
-                        .addComponent(splitPane2)
+                        .addComponent(splitPane2, GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
                 );
             }
             splitPane1.setRightComponent(panelRightSide);
@@ -3062,11 +3077,11 @@ public class UserInterface extends JFrame {
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addComponent(splitPane1)
+                .addComponent(splitPane1, GroupLayout.DEFAULT_SIZE, 948, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
-                .addComponent(splitPane1)
+                .addComponent(splitPane1, GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
         );
         pack();
         setLocationRelativeTo(null);
@@ -3093,6 +3108,7 @@ public class UserInterface extends JFrame {
     private JLabel labelStravovaciSystem;
     private JLabel labelDatum;
     private JLabel labelX;
+    private JLabel label4;
     private KGradientPanel panelContent;
     private KGradientPanel panelObjednat;
     private JSplitPane splitPane3;

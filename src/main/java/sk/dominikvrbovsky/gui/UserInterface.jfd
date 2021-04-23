@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {comp splitPane1::l:::x}"
-			"$verticalGroup": "par l {comp splitPane1::l:::x}"
+			"$horizontalGroup": "par l {comp splitPane1::l::948:x}"
+			"$verticalGroup": "par l {comp splitPane1::l::558:x}"
 		} ) {
 			name: "this"
 			"undecorated": true
@@ -177,8 +177,8 @@ new FormModel {
 					"value": "left"
 				} )
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp splitPane2::l:::x}"
-					"$verticalGroup": "par l {comp splitPane2::l:::x}"
+					"$horizontalGroup": "par l {comp splitPane2::l::723:x}"
+					"$verticalGroup": "par l {comp splitPane2::l::558:x}"
 				} ) {
 					name: "panelRightSide"
 					"kEndColor": new java.awt.Color( 192, 248, 213, 255 )
@@ -191,8 +191,8 @@ new FormModel {
 						"dividerSize": 0
 						"dividerLocation": 155
 						add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-							"$horizontalGroup": "par l {seq l {space :p:35:p, par l {comp labelStravovaciSystem:::p:378:p, comp labelDatum:::p:378:p}, space ::283:x, comp labelX:::p:27:p}}"
-							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space :p:14:p, comp labelStravovaciSystem:::p:76:p, space u:::p, comp labelDatum:::p:25:p, space ::28:x}}"
+							"$horizontalGroup": "par l {seq l {space :p:46:p, comp labelDatum:::p:246:p, space :0:0:x}, seq {space :p:32:p, comp labelStravovaciSystem:::p:366:p, space :::p, par l {seq {space ::292:x, comp labelX:::p:27:p}, seq l {comp label4:::p:227:p, space :0:0:x}}}}"
+							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space ::19:x, par b {comp label4::b:p:29:p, comp labelStravovaciSystem::b:p::p}, space u:::p, comp labelDatum:::p:25:p, space :p:38:p}}"
 						} ) {
 							name: "panelStravovaciSystem"
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -211,7 +211,7 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "labelDatum"
 								"text": "Utorok, 20. apríl 2021"
-								"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
+								"font": new java.awt.Font( "Yu Gothic UI", 1, 23 )
 								"foreground": new java.awt.Color( 70, 70, 70, 255 )
 								"horizontalAlignment": 2
 							} )
@@ -223,6 +223,12 @@ new FormModel {
 								addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "labelXObjednatMouseEntered", false ) )
 								addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "labelXObjednatMouseExited", false ) )
 								addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "labelXObjednatMouseClicked", false ) )
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label4"
+								"text": "created by Dominik Vrbovský"
+								"font": new java.awt.Font( "Yu Gothic UI", 3, 16 )
+								"foreground": new java.awt.Color( 70, 70, 70, 255 )
 							} )
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "left"
