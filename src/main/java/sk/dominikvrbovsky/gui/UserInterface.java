@@ -614,12 +614,12 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-                border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER
-                , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font
-                .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (
-                new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order"
-                .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+                EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+                . border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,
+                java . awt. Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+                { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )
+                throw new RuntimeException( ) ;} } );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -860,7 +860,7 @@ public class UserInterface extends JFrame {
 
                         //---- label4 ----
                         label4.setText("created by Dominik Vrbovsk\u00fd");
-                        label4.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 16));
+                        label4.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 17));
                         label4.setForeground(new Color(70, 70, 70));
 
                         GroupLayout panelStravovaciSystemLayout = new GroupLayout(panelStravovaciSystem);
@@ -877,11 +877,11 @@ public class UserInterface extends JFrame {
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(panelStravovaciSystemLayout.createParallelGroup()
                                         .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 292, Short.MAX_VALUE)
+                                            .addGap(0, 292, Short.MAX_VALUE)
                                             .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
-                                            .addComponent(label4, GroupLayout.PREFERRED_SIZE, 227, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, Short.MAX_VALUE))))
+                                            .addComponent(label4, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(0, 85, Short.MAX_VALUE))))
                         );
                         panelStravovaciSystemLayout.setVerticalGroup(
                             panelStravovaciSystemLayout.createParallelGroup()
@@ -891,8 +891,8 @@ public class UserInterface extends JFrame {
                                 .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
                                     .addContainerGap(19, Short.MAX_VALUE)
                                     .addGroup(panelStravovaciSystemLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelStravovaciSystem))
+                                        .addComponent(labelStravovaciSystem)
+                                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
                                     .addGap(38, 38, 38))
@@ -1052,7 +1052,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label51 ----
                                             label51.setText("Miner\u00e1lna voda");
-                                            label51.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label51.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label51.setHorizontalAlignment(SwingConstants.CENTER);
                                             label51.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(label51, CC.xy(3, 2));
@@ -1066,7 +1066,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label26 ----
                                             label26.setText("4.87\u20ac");
-                                            label26.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label26.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label26.setHorizontalAlignment(SwingConstants.CENTER);
                                             label26.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(label26, CC.xy(5, 2));
@@ -1083,7 +1083,7 @@ public class UserInterface extends JFrame {
                                             kButton3.setkHoverForeGround(Color.white);
                                             kButton3.setBackground(Color.white);
                                             kButton3.setBorderPainted(false);
-                                            panelTableRanajky.add(kButton3, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableRanajky.add(kButton3, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label32 ----
                                             label32.setText("2.");
@@ -1101,7 +1101,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label17 ----
                                             label17.setText("Cola");
-                                            label17.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label17.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label17.setHorizontalAlignment(SwingConstants.CENTER);
                                             label17.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(label17, CC.xy(3, 3));
@@ -1115,7 +1115,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label27 ----
                                             label27.setText("2.45\u20ac");
-                                            label27.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label27.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label27.setHorizontalAlignment(SwingConstants.CENTER);
                                             label27.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(label27, CC.xy(5, 3));
@@ -1132,7 +1132,7 @@ public class UserInterface extends JFrame {
                                             kButton4.setkHoverForeGround(Color.white);
                                             kButton4.setBackground(Color.white);
                                             kButton4.setBorderPainted(false);
-                                            panelTableRanajky.add(kButton4, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableRanajky.add(kButton4, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label33 ----
                                             label33.setText("3.");
@@ -1150,7 +1150,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label18 ----
                                             label18.setText("\u010caj");
-                                            label18.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label18.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label18.setHorizontalAlignment(SwingConstants.CENTER);
                                             label18.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(label18, CC.xy(3, 4));
@@ -1164,7 +1164,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label28 ----
                                             label28.setText("3.72\u20ac");
-                                            label28.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label28.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label28.setHorizontalAlignment(SwingConstants.CENTER);
                                             label28.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(label28, CC.xy(5, 4));
@@ -1181,7 +1181,7 @@ public class UserInterface extends JFrame {
                                             kButton5.setkHoverForeGround(Color.white);
                                             kButton5.setBackground(Color.white);
                                             kButton5.setBorderPainted(false);
-                                            panelTableRanajky.add(kButton5, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableRanajky.add(kButton5, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label34 ----
                                             label34.setText("4.");
@@ -1199,7 +1199,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label19 ----
                                             label19.setText("Miner\u00e1lna voda");
-                                            label19.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label19.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label19.setHorizontalAlignment(SwingConstants.CENTER);
                                             label19.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(label19, CC.xy(3, 5));
@@ -1213,7 +1213,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label29 ----
                                             label29.setText("7.00\u20ac");
-                                            label29.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label29.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label29.setHorizontalAlignment(SwingConstants.CENTER);
                                             label29.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(label29, CC.xy(5, 5));
@@ -1230,7 +1230,7 @@ public class UserInterface extends JFrame {
                                             kButton6.setkHoverForeGround(Color.white);
                                             kButton6.setBackground(Color.white);
                                             kButton6.setBorderPainted(false);
-                                            panelTableRanajky.add(kButton6, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableRanajky.add(kButton6, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label35 ----
                                             label35.setText("5.");
@@ -1248,7 +1248,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label20 ----
                                             label20.setText("\u010e\u017e\u00fas");
-                                            label20.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label20.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label20.setHorizontalAlignment(SwingConstants.CENTER);
                                             label20.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(label20, CC.xy(3, 6));
@@ -1262,7 +1262,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label30 ----
                                             label30.setText("3.49\u20ac");
-                                            label30.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label30.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label30.setHorizontalAlignment(SwingConstants.CENTER);
                                             label30.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(label30, CC.xy(5, 6));
@@ -1279,7 +1279,7 @@ public class UserInterface extends JFrame {
                                             kButton7.setkHoverForeGround(Color.white);
                                             kButton7.setBackground(Color.white);
                                             kButton7.setBorderPainted(false);
-                                            panelTableRanajky.add(kButton7, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableRanajky.add(kButton7, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
                                             panelTableRanajky.add(label16, CC.xy(1, 8));
                                         }
                                         panelRanajky.add(panelTableRanajky, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -1359,7 +1359,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label52 ----
                                             label52.setText("\u00c1no");
-                                            label52.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label52.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label52.setHorizontalAlignment(SwingConstants.CENTER);
                                             label52.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableObed.add(label52, CC.xy(3, 2));
@@ -1373,7 +1373,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label44 ----
                                             label44.setText("3.87\u20ac");
-                                            label44.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label44.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label44.setHorizontalAlignment(SwingConstants.CENTER);
                                             label44.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableObed.add(label44, CC.xy(5, 2));
@@ -1390,7 +1390,7 @@ public class UserInterface extends JFrame {
                                             kButton8.setkHoverForeGround(Color.white);
                                             kButton8.setBackground(Color.white);
                                             kButton8.setBorderPainted(false);
-                                            panelTableObed.add(kButton8, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableObed.add(kButton8, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label45 ----
                                             label45.setText("2.");
@@ -1408,7 +1408,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label49 ----
                                             label49.setText("Nie");
-                                            label49.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label49.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label49.setHorizontalAlignment(SwingConstants.CENTER);
                                             label49.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableObed.add(label49, CC.xy(3, 3));
@@ -1422,7 +1422,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label53 ----
                                             label53.setText("7.45\u20ac");
-                                            label53.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label53.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label53.setHorizontalAlignment(SwingConstants.CENTER);
                                             label53.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableObed.add(label53, CC.xy(5, 3));
@@ -1439,7 +1439,7 @@ public class UserInterface extends JFrame {
                                             kButton9.setkHoverForeGround(Color.white);
                                             kButton9.setBackground(Color.white);
                                             kButton9.setBorderPainted(false);
-                                            panelTableObed.add(kButton9, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableObed.add(kButton9, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label54 ----
                                             label54.setText("3.");
@@ -1457,7 +1457,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label57 ----
                                             label57.setText("\u00c1no");
-                                            label57.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label57.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label57.setHorizontalAlignment(SwingConstants.CENTER);
                                             label57.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableObed.add(label57, CC.xy(3, 4));
@@ -1471,7 +1471,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label59 ----
                                             label59.setText("2.21\u20ac");
-                                            label59.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label59.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label59.setHorizontalAlignment(SwingConstants.CENTER);
                                             label59.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableObed.add(label59, CC.xy(5, 4));
@@ -1488,7 +1488,7 @@ public class UserInterface extends JFrame {
                                             kButton10.setkHoverForeGround(Color.white);
                                             kButton10.setBackground(Color.white);
                                             kButton10.setBorderPainted(false);
-                                            panelTableObed.add(kButton10, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableObed.add(kButton10, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label60 ----
                                             label60.setText("4.");
@@ -1506,7 +1506,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label62 ----
                                             label62.setText("\u00c1no");
-                                            label62.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label62.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label62.setHorizontalAlignment(SwingConstants.CENTER);
                                             label62.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableObed.add(label62, CC.xy(3, 5));
@@ -1520,7 +1520,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label64 ----
                                             label64.setText("4.25\u20ac");
-                                            label64.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label64.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label64.setHorizontalAlignment(SwingConstants.CENTER);
                                             label64.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableObed.add(label64, CC.xy(5, 5));
@@ -1537,7 +1537,7 @@ public class UserInterface extends JFrame {
                                             kButton11.setkHoverForeGround(Color.white);
                                             kButton11.setBackground(Color.white);
                                             kButton11.setBorderPainted(false);
-                                            panelTableObed.add(kButton11, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableObed.add(kButton11, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label65 ----
                                             label65.setText("5.");
@@ -1555,7 +1555,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label67 ----
                                             label67.setText("Nie");
-                                            label67.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label67.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label67.setHorizontalAlignment(SwingConstants.CENTER);
                                             label67.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableObed.add(label67, CC.xy(3, 6));
@@ -1569,7 +1569,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label69 ----
                                             label69.setText("1.50\u20ac");
-                                            label69.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label69.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label69.setHorizontalAlignment(SwingConstants.CENTER);
                                             label69.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableObed.add(label69, CC.xy(5, 6));
@@ -1586,7 +1586,7 @@ public class UserInterface extends JFrame {
                                             kButton12.setkHoverForeGround(Color.white);
                                             kButton12.setBackground(Color.white);
                                             kButton12.setBorderPainted(false);
-                                            panelTableObed.add(kButton12, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableObed.add(kButton12, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
                                             panelTableObed.add(label70, CC.xy(1, 8));
                                         }
                                         panelObed.add(panelTableObed, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -1700,7 +1700,7 @@ public class UserInterface extends JFrame {
                                 btnDoBurzyObed.setkHoverForeGround(Color.white);
                                 btnDoBurzyObed.setBackground(Color.white);
                                 btnDoBurzyObed.setBorderPainted(false);
-                                panelTableMojeObjRanajky.add(btnDoBurzyObed, new CellConstraints(5, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
+                                panelTableMojeObjRanajky.add(btnDoBurzyObed, new CellConstraints(5, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 11, 1)));
                             }
                             panelMojeObjednavky.add(panelTableMojeObjRanajky, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -1787,7 +1787,7 @@ public class UserInterface extends JFrame {
                                 btnDoBurzyRanajky.setkHoverForeGround(Color.white);
                                 btnDoBurzyRanajky.setBackground(Color.white);
                                 btnDoBurzyRanajky.setBorderPainted(false);
-                                panelTableMojeObjednavkyObed.add(btnDoBurzyRanajky, new CellConstraints(5, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
+                                panelTableMojeObjednavkyObed.add(btnDoBurzyRanajky, new CellConstraints(5, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 11, 1)));
                                 panelTableMojeObjednavkyObed.add(label88, CC.xy(1, 4));
                             }
                             panelMojeObjednavky.add(panelTableMojeObjednavkyObed, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
@@ -1942,7 +1942,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label95 ----
                                             label95.setText("Parky s hor\u010dicou a chlebom");
-                                            label95.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label95.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             label95.setHorizontalAlignment(SwingConstants.CENTER);
                                             label95.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaRanajky.add(label95, CC.xy(2, 2));
@@ -1956,7 +1956,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label97 ----
                                             label97.setText("0x");
-                                            label97.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label97.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                             label97.setHorizontalAlignment(SwingConstants.CENTER);
                                             label97.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaRanajky.add(label97, CC.xy(4, 2));
@@ -1980,7 +1980,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaRanajky1.setkHoverForeGround(Color.white);
                                             btnBurzaRanajky1.setBackground(Color.white);
                                             btnBurzaRanajky1.setBorderPainted(false);
-                                            panelTableBurzaRanajky.add(btnBurzaRanajky1, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableBurzaRanajky.add(btnBurzaRanajky1, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label99 ----
                                             label99.setText("2.");
@@ -1991,7 +1991,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label100 ----
                                             label100.setText("Pra\u017eenica s ro\u017ekom");
-                                            label100.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label100.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             label100.setHorizontalAlignment(SwingConstants.CENTER);
                                             label100.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaRanajky.add(label100, CC.xy(2, 3));
@@ -2005,7 +2005,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label102 ----
                                             label102.setText("5x");
-                                            label102.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label102.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                             label102.setHorizontalAlignment(SwingConstants.CENTER);
                                             label102.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaRanajky.add(label102, CC.xy(4, 3));
@@ -2029,7 +2029,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaRanajky2.setkHoverForeGround(Color.white);
                                             btnBurzaRanajky2.setBackground(Color.white);
                                             btnBurzaRanajky2.setBorderPainted(false);
-                                            panelTableBurzaRanajky.add(btnBurzaRanajky2, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableBurzaRanajky.add(btnBurzaRanajky2, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label104 ----
                                             label104.setText("3.");
@@ -2040,7 +2040,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label105 ----
                                             label105.setText("Lievance s lekv\u00e1rom");
-                                            label105.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label105.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             label105.setHorizontalAlignment(SwingConstants.CENTER);
                                             label105.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaRanajky.add(label105, CC.xy(2, 4));
@@ -2054,7 +2054,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label107 ----
                                             label107.setText("12x");
-                                            label107.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label107.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                             label107.setHorizontalAlignment(SwingConstants.CENTER);
                                             label107.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaRanajky.add(label107, CC.xy(4, 4));
@@ -2078,7 +2078,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaRanajky3.setkHoverForeGround(Color.white);
                                             btnBurzaRanajky3.setBackground(Color.white);
                                             btnBurzaRanajky3.setBorderPainted(false);
-                                            panelTableBurzaRanajky.add(btnBurzaRanajky3, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableBurzaRanajky.add(btnBurzaRanajky3, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label109 ----
                                             label109.setText("4.");
@@ -2089,7 +2089,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label110 ----
                                             label110.setText("Volsk\u00e9 oko s ke\u010dup a chlebom");
-                                            label110.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label110.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             label110.setHorizontalAlignment(SwingConstants.CENTER);
                                             label110.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaRanajky.add(label110, CC.xy(2, 5));
@@ -2103,7 +2103,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label112 ----
                                             label112.setText("0x");
-                                            label112.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label112.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                             label112.setHorizontalAlignment(SwingConstants.CENTER);
                                             label112.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaRanajky.add(label112, CC.xy(4, 5));
@@ -2127,7 +2127,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaRanajky4.setkHoverForeGround(Color.white);
                                             btnBurzaRanajky4.setBackground(Color.white);
                                             btnBurzaRanajky4.setBorderPainted(false);
-                                            panelTableBurzaRanajky.add(btnBurzaRanajky4, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableBurzaRanajky.add(btnBurzaRanajky4, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label114 ----
                                             label114.setText("5.");
@@ -2138,7 +2138,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label115 ----
                                             label115.setText("\u0160unkov\u00e1 bageta");
-                                            label115.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label115.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             label115.setHorizontalAlignment(SwingConstants.CENTER);
                                             label115.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaRanajky.add(label115, CC.xy(2, 6));
@@ -2152,7 +2152,7 @@ public class UserInterface extends JFrame {
 
                                             //---- label117 ----
                                             label117.setText("28x");
-                                            label117.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label117.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                             label117.setHorizontalAlignment(SwingConstants.CENTER);
                                             label117.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaRanajky.add(label117, CC.xy(4, 6));
@@ -2176,7 +2176,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaRanajky5.setkHoverForeGround(Color.white);
                                             btnBurzaRanajky5.setBackground(Color.white);
                                             btnBurzaRanajky5.setBorderPainted(false);
-                                            panelTableBurzaRanajky.add(btnBurzaRanajky5, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableBurzaRanajky.add(btnBurzaRanajky5, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
                                             panelTableBurzaRanajky.add(label119, CC.xy(1, 8));
                                         }
                                         panelBurzaRanajky.add(panelTableBurzaRanajky, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -2256,21 +2256,21 @@ public class UserInterface extends JFrame {
 
                                             //---- label128 ----
                                             label128.setText("\u00c1no");
-                                            label128.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label128.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label128.setHorizontalAlignment(SwingConstants.CENTER);
                                             label128.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label128, CC.xy(3, 2));
 
                                             //---- label129 ----
                                             label129.setText("78x");
-                                            label129.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label129.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                             label129.setHorizontalAlignment(SwingConstants.CENTER);
                                             label129.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label129, CC.xy(4, 2));
 
                                             //---- label130 ----
                                             label130.setText("3.87\u20ac");
-                                            label130.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label130.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label130.setHorizontalAlignment(SwingConstants.CENTER);
                                             label130.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label130, CC.xy(5, 2));
@@ -2287,7 +2287,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatObed1.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatObed1.setBackground(Color.white);
                                             btnBurzaObjednatObed1.setBorderPainted(false);
-                                            panelTableBurzaObed.add(btnBurzaObjednatObed1, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableBurzaObed.add(btnBurzaObjednatObed1, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label131 ----
                                             label131.setText("2.");
@@ -2305,21 +2305,21 @@ public class UserInterface extends JFrame {
 
                                             //---- label133 ----
                                             label133.setText("Nie");
-                                            label133.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label133.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label133.setHorizontalAlignment(SwingConstants.CENTER);
                                             label133.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label133, CC.xy(3, 3));
 
                                             //---- label134 ----
                                             label134.setText("417x");
-                                            label134.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label134.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                             label134.setHorizontalAlignment(SwingConstants.CENTER);
                                             label134.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label134, CC.xy(4, 3));
 
                                             //---- label135 ----
                                             label135.setText("7.45\u20ac");
-                                            label135.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label135.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label135.setHorizontalAlignment(SwingConstants.CENTER);
                                             label135.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label135, CC.xy(5, 3));
@@ -2336,7 +2336,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatObed2.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatObed2.setBackground(Color.white);
                                             btnBurzaObjednatObed2.setBorderPainted(false);
-                                            panelTableBurzaObed.add(btnBurzaObjednatObed2, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableBurzaObed.add(btnBurzaObjednatObed2, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label136 ----
                                             label136.setText("3.");
@@ -2354,21 +2354,21 @@ public class UserInterface extends JFrame {
 
                                             //---- label138 ----
                                             label138.setText("\u00c1no");
-                                            label138.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label138.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label138.setHorizontalAlignment(SwingConstants.CENTER);
                                             label138.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label138, CC.xy(3, 4));
 
                                             //---- label139 ----
                                             label139.setText("29x");
-                                            label139.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label139.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                             label139.setHorizontalAlignment(SwingConstants.CENTER);
                                             label139.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label139, CC.xy(4, 4));
 
                                             //---- label140 ----
                                             label140.setText("2.21\u20ac");
-                                            label140.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label140.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label140.setHorizontalAlignment(SwingConstants.CENTER);
                                             label140.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label140, CC.xy(5, 4));
@@ -2385,7 +2385,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatObed3.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatObed3.setBackground(Color.white);
                                             btnBurzaObjednatObed3.setBorderPainted(false);
-                                            panelTableBurzaObed.add(btnBurzaObjednatObed3, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableBurzaObed.add(btnBurzaObjednatObed3, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label141 ----
                                             label141.setText("4.");
@@ -2403,21 +2403,21 @@ public class UserInterface extends JFrame {
 
                                             //---- label143 ----
                                             label143.setText("\u00c1no");
-                                            label143.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label143.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label143.setHorizontalAlignment(SwingConstants.CENTER);
                                             label143.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label143, CC.xy(3, 5));
 
                                             //---- label144 ----
                                             label144.setText("75x");
-                                            label144.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label144.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                             label144.setHorizontalAlignment(SwingConstants.CENTER);
                                             label144.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label144, CC.xy(4, 5));
 
                                             //---- label145 ----
                                             label145.setText("4.25\u20ac");
-                                            label145.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label145.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label145.setHorizontalAlignment(SwingConstants.CENTER);
                                             label145.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label145, CC.xy(5, 5));
@@ -2434,7 +2434,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatObed4.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatObed4.setBackground(Color.white);
                                             btnBurzaObjednatObed4.setBorderPainted(false);
-                                            panelTableBurzaObed.add(btnBurzaObjednatObed4, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableBurzaObed.add(btnBurzaObjednatObed4, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label146 ----
                                             label146.setText("5.");
@@ -2452,21 +2452,21 @@ public class UserInterface extends JFrame {
 
                                             //---- label148 ----
                                             label148.setText("Nie");
-                                            label148.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label148.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label148.setHorizontalAlignment(SwingConstants.CENTER);
                                             label148.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label148, CC.xy(3, 6));
 
                                             //---- label149 ----
                                             label149.setText("0x");
-                                            label149.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            label149.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                             label149.setHorizontalAlignment(SwingConstants.CENTER);
                                             label149.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label149, CC.xy(4, 6));
 
                                             //---- label150 ----
                                             label150.setText("1.50\u20ac");
-                                            label150.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            label150.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             label150.setHorizontalAlignment(SwingConstants.CENTER);
                                             label150.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableBurzaObed.add(label150, CC.xy(5, 6));
@@ -2483,7 +2483,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatObed5.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatObed5.setBackground(Color.white);
                                             btnBurzaObjednatObed5.setBorderPainted(false);
-                                            panelTableBurzaObed.add(btnBurzaObjednatObed5, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 0)));
+                                            panelTableBurzaObed.add(btnBurzaObjednatObed5, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
                                             panelTableBurzaObed.add(label151, CC.xy(1, 8));
                                         }
                                         panelBurzaObed.add(panelTableBurzaObed, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -3063,11 +3063,11 @@ public class UserInterface extends JFrame {
                 panelRightSide.setLayout(panelRightSideLayout);
                 panelRightSideLayout.setHorizontalGroup(
                     panelRightSideLayout.createParallelGroup()
-                        .addComponent(splitPane2, GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
+                        .addComponent(splitPane2)
                 );
                 panelRightSideLayout.setVerticalGroup(
                     panelRightSideLayout.createParallelGroup()
-                        .addComponent(splitPane2, GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                        .addComponent(splitPane2)
                 );
             }
             splitPane1.setRightComponent(panelRightSide);
@@ -3077,11 +3077,11 @@ public class UserInterface extends JFrame {
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addComponent(splitPane1, GroupLayout.DEFAULT_SIZE, 948, Short.MAX_VALUE)
+                .addComponent(splitPane1)
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
-                .addComponent(splitPane1, GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addComponent(splitPane1)
         );
         pack();
         setLocationRelativeTo(null);

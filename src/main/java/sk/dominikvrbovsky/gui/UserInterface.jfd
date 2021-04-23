@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {comp splitPane1::l::948:x}"
-			"$verticalGroup": "par l {comp splitPane1::l::558:x}"
+			"$horizontalGroup": "par l {comp splitPane1::l:::x}"
+			"$verticalGroup": "par l {comp splitPane1::l:::x}"
 		} ) {
 			name: "this"
 			"undecorated": true
@@ -177,8 +177,8 @@ new FormModel {
 					"value": "left"
 				} )
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp splitPane2::l::723:x}"
-					"$verticalGroup": "par l {comp splitPane2::l::558:x}"
+					"$horizontalGroup": "par l {comp splitPane2::l:::x}"
+					"$verticalGroup": "par l {comp splitPane2::l:::x}"
 				} ) {
 					name: "panelRightSide"
 					"kEndColor": new java.awt.Color( 192, 248, 213, 255 )
@@ -191,8 +191,8 @@ new FormModel {
 						"dividerSize": 0
 						"dividerLocation": 155
 						add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-							"$horizontalGroup": "par l {seq l {space :p:46:p, comp labelDatum:::p:246:p, space :0:0:x}, seq {space :p:32:p, comp labelStravovaciSystem:::p:366:p, space :::p, par l {seq {space ::292:x, comp labelX:::p:27:p}, seq l {comp label4:::p:227:p, space :0:0:x}}}}"
-							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space ::19:x, par b {comp label4::b:p:29:p, comp labelStravovaciSystem::b:p::p}, space u:::p, comp labelDatum:::p:25:p, space :p:38:p}}"
+							"$horizontalGroup": "par l {seq l {space :p:46:p, comp labelDatum:::p:246:p, space :0:0:x}, seq {space :p:32:p, comp labelStravovaciSystem:::p:366:p, space :::p, par l {seq {space :0:292:x, comp labelX:::p:27:p}, seq l {comp label4:::p:234:p, space :0:85:x}}}}"
+							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space ::19:x, par b {comp labelStravovaciSystem::b:p::p, comp label4::b:p:29:p}, space u:::p, comp labelDatum:::p:25:p, space :p:38:p}}"
 						} ) {
 							name: "panelStravovaciSystem"
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -227,7 +227,7 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label4"
 								"text": "created by Dominik Vrbovský"
-								"font": new java.awt.Font( "Yu Gothic UI", 3, 16 )
+								"font": new java.awt.Font( "Yu Gothic UI", 3, 17 )
 								"foreground": new java.awt.Color( 70, 70, 70, 255 )
 							} )
 						}, new FormLayoutConstraints( class java.lang.String ) {
@@ -410,7 +410,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label51"
 													"text": "Minerálna voda"
-													"font": &Font5 new java.awt.Font( "Yu Gothic UI", 1, 17 )
+													"font": &Font5 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -430,7 +430,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label26"
 													"text": "4.87€"
-													"font": &Font7 new java.awt.Font( "Yu Gothic UI", 1, 17 )
+													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -440,7 +440,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton3"
 													"text": "Objednať"
-													"font": &Font8 new java.awt.Font( "Yu Gothic UI", 1, 16 )
+													"font": &Font7 new java.awt.Font( "Yu Gothic UI", 1, 16 )
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": &Color21 new java.awt.Color( 73, 196, 174, 255 )
 													"kEndColor": &Color22 new java.awt.Color( 140, 219, 145, 255 )
@@ -453,7 +453,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 2
-													"insets": &Insets0 new java.awt.Insets( 7, 10, 10, 0 )
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label32"
@@ -498,7 +498,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label27"
 													"text": "2.45€"
-													"font": #Font7
+													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -508,7 +508,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton4"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -521,7 +521,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 3
-													"insets": &Insets1 new java.awt.Insets( 7, 10, 10, 0 )
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label33"
@@ -566,7 +566,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label28"
 													"text": "3.72€"
-													"font": #Font7
+													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -576,7 +576,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton5"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -589,7 +589,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 4
-													"insets": &Insets2 new java.awt.Insets( 7, 10, 10, 0 )
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label34"
@@ -634,7 +634,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label29"
 													"text": "7.00€"
-													"font": #Font7
+													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -644,7 +644,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton6"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -657,7 +657,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 5
-													"insets": &Insets3 new java.awt.Insets( 7, 10, 10, 0 )
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label35"
@@ -702,7 +702,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label30"
 													"text": "3.49€"
-													"font": #Font7
+													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -712,7 +712,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton7"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -725,7 +725,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 6
-													"insets": &Insets4 new java.awt.Insets( 7, 10, 10, 0 )
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label16"
@@ -834,7 +834,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label52"
 													"text": "Áno"
-													"font": #Font5
+													"font": &Font8 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -854,7 +854,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label44"
 													"text": "3.87€"
-													"font": #Font7
+													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -864,7 +864,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton8"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -877,7 +877,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 2
-													"insets": #Insets0
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label45"
@@ -902,7 +902,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label49"
 													"text": "Nie"
-													"font": #Font5
+													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -922,7 +922,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label53"
 													"text": "7.45€"
-													"font": #Font7
+													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -932,7 +932,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton9"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -945,7 +945,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 3
-													"insets": #Insets1
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label54"
@@ -970,7 +970,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label57"
 													"text": "Áno"
-													"font": #Font5
+													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -990,7 +990,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label59"
 													"text": "2.21€"
-													"font": #Font7
+													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1000,7 +1000,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton10"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -1013,7 +1013,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 4
-													"insets": #Insets2
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label60"
@@ -1038,7 +1038,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label62"
 													"text": "Áno"
-													"font": #Font5
+													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1058,7 +1058,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label64"
 													"text": "4.25€"
-													"font": #Font7
+													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1068,7 +1068,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton11"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -1081,7 +1081,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 5
-													"insets": #Insets3
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label65"
@@ -1106,7 +1106,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label67"
 													"text": "Nie"
-													"font": #Font5
+													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1126,7 +1126,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label69"
 													"text": "1.50€"
-													"font": #Font7
+													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1136,7 +1136,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "kButton12"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -1149,7 +1149,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 6
-													"insets": #Insets4
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label70"
@@ -1274,7 +1274,7 @@ new FormModel {
 									add( new FormComponent( "keeptoo.KButton" ) {
 										name: "btnDoBurzyObed"
 										"text": "Do burzy"
-										"font": #Font8
+										"font": #Font7
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 										"kStartColor": #Color21
 										"kEndColor": #Color22
@@ -1287,7 +1287,7 @@ new FormModel {
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 5
 										"gridY": 2
-										"insets": &Insets5 new java.awt.Insets( 7, 10, 10, 1 )
+										"insets": new java.awt.Insets( 9, 10, 11, 1 )
 									} )
 								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
@@ -1385,7 +1385,7 @@ new FormModel {
 									add( new FormComponent( "keeptoo.KButton" ) {
 										name: "btnDoBurzyRanajky"
 										"text": "Do burzy"
-										"font": #Font8
+										"font": #Font7
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 										"kStartColor": #Color21
 										"kEndColor": #Color22
@@ -1398,7 +1398,7 @@ new FormModel {
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 5
 										"gridY": 2
-										"insets": #Insets5
+										"insets": new java.awt.Insets( 9, 10, 11, 1 )
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
 										name: "label88"
@@ -1578,7 +1578,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label95"
 													"text": "Parky s horčicou a chlebom"
-													"font": &Font13 new java.awt.Font( "Yu Gothic UI", 0, 17 )
+													"font": &Font13 new java.awt.Font( "Yu Gothic UI", 1, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1588,7 +1588,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label96"
 													"text": "Minerálna voda"
-													"font": #Font13
+													"font": &Font14 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1598,7 +1598,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label97"
 													"text": "0x"
-													"font": &Font14 new java.awt.Font( "Yu Gothic UI", 1, 17 )
+													"font": &Font15 new java.awt.Font( "Yu Gothic UI", 1, 19 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1608,7 +1608,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label98"
 													"text": "4.87€"
-													"font": #Font13
+													"font": #Font14
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1618,7 +1618,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnBurzaRanajky1"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -1631,7 +1631,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 2
-													"insets": #Insets0
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label99"
@@ -1656,7 +1656,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label101"
 													"text": "Cola"
-													"font": #Font13
+													"font": #Font14
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1666,7 +1666,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label102"
 													"text": "5x"
-													"font": #Font14
+													"font": #Font15
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1676,7 +1676,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label103"
 													"text": "2.45€"
-													"font": #Font13
+													"font": #Font14
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1686,7 +1686,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnBurzaRanajky2"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -1699,7 +1699,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 3
-													"insets": #Insets1
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label104"
@@ -1724,7 +1724,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label106"
 													"text": "Čaj"
-													"font": #Font13
+													"font": #Font14
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1734,7 +1734,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label107"
 													"text": "12x"
-													"font": #Font14
+													"font": #Font15
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1744,7 +1744,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label108"
 													"text": "3.72€"
-													"font": #Font13
+													"font": #Font14
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1754,7 +1754,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnBurzaRanajky3"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -1767,7 +1767,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 4
-													"insets": #Insets2
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label109"
@@ -1792,7 +1792,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label111"
 													"text": "Minerálna voda"
-													"font": #Font13
+													"font": #Font14
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1802,7 +1802,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label112"
 													"text": "0x"
-													"font": #Font14
+													"font": #Font15
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1812,7 +1812,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label113"
 													"text": "7.00€"
-													"font": #Font13
+													"font": #Font14
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1822,7 +1822,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnBurzaRanajky4"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -1835,7 +1835,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 5
-													"insets": #Insets3
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label114"
@@ -1860,7 +1860,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label116"
 													"text": "Ďžús"
-													"font": #Font13
+													"font": #Font14
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1870,7 +1870,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label117"
 													"text": "28x"
-													"font": #Font14
+													"font": #Font15
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1880,7 +1880,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label118"
 													"text": "3.49€"
-													"font": #Font13
+													"font": #Font14
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1890,7 +1890,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnBurzaRanajky5"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -1903,7 +1903,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 6
-													"insets": #Insets4
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label119"
@@ -2012,7 +2012,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label128"
 													"text": "Áno"
-													"font": #Font5
+													"font": &Font16 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2022,7 +2022,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label129"
 													"text": "78x"
-													"font": #Font6
+													"font": &Font17 new java.awt.Font( "Yu Gothic UI", 1, 19 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2032,7 +2032,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label130"
 													"text": "3.87€"
-													"font": #Font7
+													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2042,7 +2042,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnBurzaObjednatObed1"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -2055,7 +2055,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 2
-													"insets": #Insets0
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label131"
@@ -2080,7 +2080,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label133"
 													"text": "Nie"
-													"font": #Font5
+													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2090,7 +2090,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label134"
 													"text": "417x"
-													"font": #Font6
+													"font": #Font17
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2100,7 +2100,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label135"
 													"text": "7.45€"
-													"font": #Font7
+													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2110,7 +2110,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnBurzaObjednatObed2"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -2123,7 +2123,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 3
-													"insets": #Insets1
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label136"
@@ -2148,7 +2148,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label138"
 													"text": "Áno"
-													"font": #Font5
+													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2158,7 +2158,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label139"
 													"text": "29x"
-													"font": #Font6
+													"font": #Font17
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2168,7 +2168,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label140"
 													"text": "2.21€"
-													"font": #Font7
+													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2178,7 +2178,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnBurzaObjednatObed3"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -2191,7 +2191,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 4
-													"insets": #Insets2
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label141"
@@ -2216,7 +2216,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label143"
 													"text": "Áno"
-													"font": #Font5
+													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2226,7 +2226,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label144"
 													"text": "75x"
-													"font": #Font6
+													"font": #Font17
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2236,7 +2236,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label145"
 													"text": "4.25€"
-													"font": #Font7
+													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2246,7 +2246,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnBurzaObjednatObed4"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -2259,7 +2259,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 5
-													"insets": #Insets3
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label146"
@@ -2284,7 +2284,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label148"
 													"text": "Nie"
-													"font": #Font5
+													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2294,7 +2294,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label149"
 													"text": "0x"
-													"font": #Font6
+													"font": #Font17
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2304,7 +2304,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label150"
 													"text": "1.50€"
-													"font": #Font7
+													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2314,7 +2314,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnBurzaObjednatObed5"
 													"text": "Objednať"
-													"font": #Font8
+													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -2327,7 +2327,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 6
-													"insets": #Insets4
+													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label151"
@@ -2479,11 +2479,11 @@ new FormModel {
 													name: "labelDobitieUctu"
 													"text": "Dobitie účtu"
 													"horizontalAlignment": 0
-													"font": &Font15 new java.awt.Font( "Yu Gothic UI", 1, 25 )
+													"font": &Font18 new java.awt.Font( "Yu Gothic UI", 1, 25 )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 1
-													"insets": &Insets6 new java.awt.Insets( 10, 0, 0, 0 )
+													"insets": &Insets0 new java.awt.Insets( 10, 0, 0, 0 )
 												} )
 												add( new FormComponent( "javax.swing.JTextField" ) {
 													name: "txtFieldDobitSuma"
@@ -2501,7 +2501,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnDobitUcet"
 													"text": "Dobiť účet"
-													"font": &Font16 new java.awt.Font( "Yu Gothic UI", 1, 17 )
+													"font": &Font19 new java.awt.Font( "Yu Gothic UI", 1, 17 )
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -2545,11 +2545,11 @@ new FormModel {
 													name: "labelVyberZUctu"
 													"text": "Výber z účtu"
 													"horizontalAlignment": 0
-													"font": #Font15
+													"font": #Font18
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 1
-													"insets": #Insets6
+													"insets": #Insets0
 												} )
 												add( new FormComponent( "javax.swing.JTextField" ) {
 													name: "txtFieldVyberSuma"
@@ -2570,7 +2570,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnVybratZUctu"
 													"text": "Vybrať z účtu"
-													"font": #Font16
+													"font": #Font19
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -2629,7 +2629,7 @@ new FormModel {
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelLockIcon"
 													"horizontalAlignment": 0
-													"font": #Font15
+													"font": #Font18
 													"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_lock_80px_2.png" )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
@@ -2642,7 +2642,7 @@ new FormModel {
 													"border": &MatteBorder6 new javax.swing.border.MatteBorder( 0, 0, 2, 0, sfield java.awt.Color black )
 													"text": "Heslo"
 													"foreground": &Color25 new java.awt.Color( 192, 192, 192, 255 )
-													"font": &Font17 new java.awt.Font( "Yu Gothic UI", 1, 20 )
+													"font": &Font20 new java.awt.Font( "Yu Gothic UI", 1, 20 )
 													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordStareHesloFocusGained", false ) )
 													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordStareHesloFocusLost", false ) )
 													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordAdminFocusGained", false ) )
@@ -2656,7 +2656,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnPotvrditHesloInside"
 													"text": "Potvrdiť"
-													"font": #Font16
+													"font": #Font19
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22
@@ -2672,7 +2672,7 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 3
-													"insets": &Insets7 new java.awt.Insets( 4, 110, 20, 110 )
+													"insets": &Insets1 new java.awt.Insets( 4, 110, 20, 110 )
 												} )
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 										}, new FormLayoutConstraints( class java.lang.String ) {
@@ -2756,7 +2756,7 @@ new FormModel {
 									add( new FormComponent( "keeptoo.KButton" ) {
 										name: "btnZmenitHesloInside"
 										"text": "Zmeniť heslo"
-										"font": #Font16
+										"font": #Font19
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 										"kStartColor": #Color21
 										"kEndColor": #Color22
@@ -2799,7 +2799,7 @@ new FormModel {
 										name: "labelNaozajSaChceteOdhlasit"
 										"text": "Naozaj sa chcete odhlásiť?"
 										"horizontalAlignment": 0
-										"font": #Font15
+										"font": #Font18
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
 										"gridY": 1
@@ -2807,7 +2807,7 @@ new FormModel {
 									add( new FormComponent( "keeptoo.KButton" ) {
 										name: "btnOdhlasitSaInside"
 										"text": "Odhlásiť sa"
-										"font": #Font16
+										"font": #Font19
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 										"kStartColor": #Color21
 										"kEndColor": #Color22
@@ -2849,7 +2849,7 @@ new FormModel {
 									add( new FormComponent( "javax.swing.JLabel" ) {
 										name: "labelAdminIcon"
 										"horizontalAlignment": 0
-										"font": #Font15
+										"font": #Font18
 										"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_user_shield_85px_1.png" )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
@@ -2862,7 +2862,7 @@ new FormModel {
 										"border": #MatteBorder6
 										"text": "Prístupové heslo"
 										"foreground": #Color25
-										"font": #Font17
+										"font": #Font20
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordStareHesloFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordStareHesloFocusLost", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordAdminFocusGained", false ) )
@@ -2874,7 +2874,7 @@ new FormModel {
 									add( new FormComponent( "keeptoo.KButton" ) {
 										name: "btnPotvrditHesloAdmin"
 										"text": "Potvrdiť"
-										"font": #Font16
+										"font": #Font19
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 										"kStartColor": #Color21
 										"kEndColor": #Color22
@@ -2890,7 +2890,7 @@ new FormModel {
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
 										"gridY": 3
-										"insets": #Insets7
+										"insets": #Insets1
 									} )
 								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 							}, new FormLayoutConstraints( class java.lang.String ) {
