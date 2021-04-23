@@ -546,7 +546,9 @@ public class UserInterface extends JFrame {
         passwordNovHesloPotvrdenie = new JPasswordField();
         btnZmenitHesloInside = new KButton();
         panelOdhlasitSa = new KGradientPanel();
-        label6 = new JLabel();
+        panelDobitUcetInside2 = new KGradientPanel();
+        labelDobitieUctu2 = new JLabel();
+        btnDobitUcet2 = new KButton();
         panelAdmin = new KGradientPanel();
         label7 = new JLabel();
 
@@ -567,14 +569,12 @@ public class UserInterface extends JFrame {
                 panelMenu.setkBorderRadius(0);
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-                new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
-                , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-                , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 )
-                , java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (
-                new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-                ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-                ; }} );
+                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
+                .EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax
+                .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
+                12),java.awt.Color.red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans
+                .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.
+                getPropertyName()))throw new RuntimeException();}});
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2837,26 +2837,44 @@ public class UserInterface extends JFrame {
                         {
                             panelOdhlasitSa.setkEndColor(Color.white);
                             panelOdhlasitSa.setkStartColor(Color.white);
+                            panelOdhlasitSa.setLayout(new GridBagLayout());
+                            ((GridBagLayout)panelOdhlasitSa.getLayout()).columnWidths = new int[] {376};
 
-                            //---- label6 ----
-                            label6.setText("odhlasit sa");
+                            //======== panelDobitUcetInside2 ========
+                            {
+                                panelDobitUcetInside2.setkStartColor(Color.white);
+                                panelDobitUcetInside2.setkEndColor(Color.white);
+                                panelDobitUcetInside2.setBorder(new MatteBorder(1, 1, 1, 1, Color.lightGray));
+                                panelDobitUcetInside2.setkBorderRadius(0);
+                                panelDobitUcetInside2.setLayout(new FormLayout(
+                                    "[369px,pref]",
+                                    "fill:[58px,pref], fill:[55px,pref]"));
 
-                            GroupLayout panelOdhlasitSaLayout = new GroupLayout(panelOdhlasitSa);
-                            panelOdhlasitSa.setLayout(panelOdhlasitSaLayout);
-                            panelOdhlasitSaLayout.setHorizontalGroup(
-                                panelOdhlasitSaLayout.createParallelGroup()
-                                    .addGroup(GroupLayout.Alignment.TRAILING, panelOdhlasitSaLayout.createSequentialGroup()
-                                        .addContainerGap(390, Short.MAX_VALUE)
-                                        .addComponent(label6)
-                                        .addGap(276, 276, 276))
-                            );
-                            panelOdhlasitSaLayout.setVerticalGroup(
-                                panelOdhlasitSaLayout.createParallelGroup()
-                                    .addGroup(panelOdhlasitSaLayout.createSequentialGroup()
-                                        .addGap(133, 133, 133)
-                                        .addComponent(label6)
-                                        .addContainerGap(254, Short.MAX_VALUE))
-                            );
+                                //---- labelDobitieUctu2 ----
+                                labelDobitieUctu2.setText("Naozaj sa chcete odhl\u00e1si\u0165?");
+                                labelDobitieUctu2.setHorizontalAlignment(SwingConstants.CENTER);
+                                labelDobitieUctu2.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
+                                panelDobitUcetInside2.add(labelDobitieUctu2, CC.xy(1, 1));
+
+                                //---- btnDobitUcet2 ----
+                                btnDobitUcet2.setText("Odhl\u00e1si\u0165 sa");
+                                btnDobitUcet2.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                btnDobitUcet2.setBorder(null);
+                                btnDobitUcet2.setkStartColor(new Color(73, 196, 174));
+                                btnDobitUcet2.setkEndColor(new Color(140, 219, 145));
+                                btnDobitUcet2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                btnDobitUcet2.setkHoverEndColor(new Color(73, 196, 174));
+                                btnDobitUcet2.setkHoverStartColor(new Color(52, 188, 183));
+                                btnDobitUcet2.setkHoverForeGround(Color.white);
+                                btnDobitUcet2.setBackground(Color.white);
+                                btnDobitUcet2.setBorderPainted(false);
+                                btnDobitUcet2.setMaximumSize(new Dimension(97, 24));
+                                btnDobitUcet2.setMinimumSize(new Dimension(97, 24));
+                                panelDobitUcetInside2.add(btnDobitUcet2, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 127, 15, 127)));
+                            }
+                            panelOdhlasitSa.add(panelDobitUcetInside2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
                         }
                         panelContent.add(panelOdhlasitSa, "odhlasitSa");
 
@@ -3158,7 +3176,9 @@ public class UserInterface extends JFrame {
     private JPasswordField passwordNovHesloPotvrdenie;
     private KButton btnZmenitHesloInside;
     private KGradientPanel panelOdhlasitSa;
-    private JLabel label6;
+    private KGradientPanel panelDobitUcetInside2;
+    private JLabel labelDobitieUctu2;
+    private KButton btnDobitUcet2;
     private KGradientPanel panelAdmin;
     private JLabel label7;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

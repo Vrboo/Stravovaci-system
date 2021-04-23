@@ -2700,17 +2700,54 @@ new FormModel {
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "zmenitHeslo"
 							} )
-							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-								"$horizontalGroup": "par l {seq t {space ::390:x, comp label6:::p::p, space :p:276:p}}"
-								"$verticalGroup": "par l {seq l {space :p:133:p, comp label6:::p::p, space ::254:x}}"
+							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+								"$columnSpecs": "376"
+								"$rowSpecs": "0"
+								"$hGap": 5
+								"$vGap": 5
 							} ) {
 								name: "panelOdhlasitSa"
 								"kEndColor": sfield java.awt.Color white
 								"kStartColor": sfield java.awt.Color white
-								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "label6"
-									"text": "odhlasit sa"
-								} )
+								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+									"$columnSpecs": "max(pref;369px)"
+									"$rowSpecs": "fill:max(pref;58px), fill:max(pref;55px)"
+								} ) {
+									name: "panelDobitUcetInside2"
+									"kStartColor": sfield java.awt.Color white
+									"kEndColor": sfield java.awt.Color white
+									"border": #MatteBorder4
+									"kBorderRadius": 0
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "labelDobitieUctu2"
+										"text": "Naozaj sa chcete odhlásiť?"
+										"horizontalAlignment": 0
+										"font": #Font15
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 1
+										"gridY": 1
+									} )
+									add( new FormComponent( "keeptoo.KButton" ) {
+										name: "btnDobitUcet2"
+										"text": "Odhlásiť sa"
+										"font": #Font17
+										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+										"kStartColor": #Color21
+										"kEndColor": #Color22
+										"cursor": #Cursor2
+										"kHoverEndColor": #Color23
+										"kHoverStartColor": #Color24
+										"kHoverForeGround": sfield java.awt.Color white
+										"background": #Color20
+										"borderPainted": false
+										"maximumSize": #Dimension0
+										"minimumSize": #Dimension1
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 1
+										"gridY": 2
+										"insets": new java.awt.Insets( 7, 127, 15, 127 )
+									} )
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "odhlasitSa"
 							} )
