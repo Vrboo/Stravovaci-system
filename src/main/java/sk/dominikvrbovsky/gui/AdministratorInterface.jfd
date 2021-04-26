@@ -793,16 +793,16 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 								"$columnSpecs": "0"
-								"$rowSpecs": "0"
+								"$rowSpecs": "0, 26"
 								"$hGap": 5
-								"$vGap": 5
 							} ) {
 								name: "panelJedalnyListok"
 								"kEndColor": sfield java.awt.Color white
 								"kStartColor": sfield java.awt.Color white
+								"foreground": sfield java.awt.Color darkGray
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
 									"$columnSpecs": "max(pref;388px)"
-									"$rowSpecs": "fill:max(pref;58px), fill:max(pref;55px)"
+									"$rowSpecs": "fill:max(pref;58px), default, default, fill:max(pref;55px)"
 								} ) {
 									name: "panelJedalnyListokInside"
 									"kStartColor": sfield java.awt.Color white
@@ -816,7 +816,52 @@ new FormModel {
 										"font": new java.awt.Font( "Yu Gothic UI", 1, 25 )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
-										"gridY": 1
+									} )
+									add( new FormComponent( "keeptoo.KButton" ) {
+										name: "btnRanajkytxt"
+										"text": "Ranajky.txt"
+										"font": &Font9 new java.awt.Font( "Yu Gothic UI", 1, 16 )
+										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+										"kStartColor": &Color12 new java.awt.Color( 255, 255, 255, 255 )
+										"kEndColor": &Color13 new java.awt.Color( 255, 255, 255, 255 )
+										"cursor": &Cursor2 new java.awt.Cursor( 12 )
+										"kHoverEndColor": &Color14 new java.awt.Color( 255, 255, 255, 255 )
+										"kHoverStartColor": &Color15 new java.awt.Color( 255, 255, 255, 255 )
+										"kHoverForeGround": sfield java.awt.Color darkGray
+										"background": #Color11
+										"borderPainted": false
+										"maximumSize": &Dimension0 new java.awt.Dimension( 97, 24 )
+										"minimumSize": &Dimension1 new java.awt.Dimension( 97, 24 )
+										"kForeGround": &Color16 new java.awt.Color( 0, 0, 0, 255 )
+										"foreground": sfield java.awt.Color black
+										"kPressedColor": sfield java.awt.Color white
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnRanajkytxtActionPerformed", false ) )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 2
+										"insets": new java.awt.Insets( 5, 145, 13, 145 )
+									} )
+									add( new FormComponent( "keeptoo.KButton" ) {
+										name: "btnObedtxt"
+										"text": "Obed.txt"
+										"font": #Font9
+										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+										"kStartColor": #Color12
+										"kEndColor": #Color13
+										"cursor": #Cursor2
+										"kHoverEndColor": #Color14
+										"kHoverStartColor": #Color15
+										"kHoverForeGround": sfield java.awt.Color darkGray
+										"background": #Color11
+										"borderPainted": false
+										"maximumSize": #Dimension0
+										"minimumSize": #Dimension1
+										"kForeGround": #Color16
+										"foreground": sfield java.awt.Color black
+										"kPressedColor": sfield java.awt.Color white
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObedtxtActionPerformed", false ) )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 3
+										"insets": new java.awt.Insets( 5, 145, 13, 145 )
 									} )
 									add( new FormComponent( "keeptoo.KButton" ) {
 										name: "btnVytvoritNovyJedListok"
@@ -825,20 +870,28 @@ new FormModel {
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 										"kStartColor": new java.awt.Color( 73, 196, 174, 255 )
 										"kEndColor": new java.awt.Color( 140, 219, 145, 255 )
-										"cursor": new java.awt.Cursor( 12 )
+										"cursor": #Cursor2
 										"kHoverEndColor": new java.awt.Color( 73, 196, 174, 255 )
 										"kHoverStartColor": new java.awt.Color( 52, 188, 183, 255 )
 										"kHoverForeGround": sfield java.awt.Color white
 										"background": #Color11
 										"borderPainted": false
-										"maximumSize": new java.awt.Dimension( 97, 24 )
-										"minimumSize": new java.awt.Dimension( 97, 24 )
+										"maximumSize": #Dimension0
+										"minimumSize": #Dimension1
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
-										"gridY": 2
+										"gridY": 4
 										"insets": new java.awt.Insets( 7, 145, 15, 145 )
 									} )
 								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "labelJedalnyListokWarning"
+									"horizontalAlignment": 0
+									"font": new java.awt.Font( "Yu Gothic UI", 1, 15 )
+									"foreground": sfield java.awt.Color red
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+									"gridy": 1
+								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "jedalnyListok"
 							} )

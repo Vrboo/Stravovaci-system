@@ -8,12 +8,10 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
-import info.clearthought.layout.*;
 
 import keeptoo.*;
-import net.miginfocom.swing.*;
 import sk.dominikvrbovsky.User;
-import sk.dominikvrbovsky.utilities.Utilities;
+import sk.dominikvrbovsky.utilities.DateUtilities;
 
 import javax.persistence.EntityManager;
 import javax.swing.*;
@@ -48,7 +46,7 @@ public class UserInterface extends JFrame {
         
         labelUsername.setText(user.getFullName());
         labelAccount.setText("Stav účtu: " + userAccount + "€");
-        this.labelDatum.setText(Utilities.buildSlovakTimeString());
+        this.labelDatum.setText(DateUtilities.buildSlovakTimeString());
 
 
 

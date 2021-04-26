@@ -1,0 +1,15 @@
+VZOR: 
+
+jedlo;nápoj;kapacita;cena
+jedlo;nápoj;kapacita;cena
+jedlo;nápoj;kapacita;cena
+jedlo;nápoj;kapacita;cena
+jedlo;nápoj;kapacita;cena
+
+PRÍKLAD:  Volské oko;Čaj;80;2.25
+
+Jedálny lístok môže obsahovať maximálne 5 jedál!
+
+Pred uložením súboru prosím vymažte celý jeho obsah tak, aby v ňom zostalo maximálne 5 riadkov,
+kde každý riadok je vo vyššie uvedenom vzore a reprezentuje práve jednu ponuku v jedálnom lístku.
+Uložený súbor zavrite a stlačte tlačidlo Vytvoriť.

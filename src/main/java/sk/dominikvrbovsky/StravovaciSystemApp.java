@@ -31,7 +31,7 @@ public class StravovaciSystemApp {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JFrame jFrame = new UserInterface(entityManager, user);
+                JFrame jFrame = new AdministratorInterface(entityManager, user);
                 jFrame.setVisible(true);
             }
         });

@@ -5,7 +5,10 @@
 package sk.dominikvrbovsky.gui;
 
 import java.awt.*;
+import java.awt.desktop.FilesEvent;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import javax.persistence.EntityManager;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -14,7 +17,8 @@ import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
 import keeptoo.*;
 import sk.dominikvrbovsky.User;
-import sk.dominikvrbovsky.utilities.Utilities;
+import sk.dominikvrbovsky.utilities.DateUtilities;
+import sk.dominikvrbovsky.utilities.FileUtilities;
 
 /**
  * @author Dominik Vrbovsky
@@ -37,7 +41,7 @@ public class AdministratorInterface extends JFrame {
         this.cardLayout = (CardLayout)(panelContent.getLayout());
         this.cardLayoutObjednavky = (CardLayout)(panelContentObjednavky.getLayout());
 
-        this.labelDatum.setText(Utilities.buildSlovakTimeString());
+        this.labelDatum.setText(DateUtilities.buildSlovakTimeString());
 
         btnObjednavky.setSelected(true);
         btnObjednavky.setBorder(new MatteBorder(0,5,0,0, new Color(50, 187, 186)));
@@ -81,6 +85,7 @@ public class AdministratorInterface extends JFrame {
     }
 
     private void btnJedalnyListokActionPerformed() {
+        labelJedalnyListokWarning.setText("");
         cardLayout.show(panelContent, "jedalnyListok");
     }
 
@@ -101,6 +106,35 @@ public class AdministratorInterface extends JFrame {
 
     private void btnTransakcieActionPerformed() {
         cardLayout.show(panelContent,"transakcie");
+    }
+
+    private void btnRanajkytxtActionPerformed() {
+
+        if (!Desktop.isDesktopSupported()) {
+            labelJedalnyListokWarning.setText("Nepodporované na tejto platforme");
+            return;
+        }
+
+        try {
+            Desktop.getDesktop().open(FileUtilities.createDefaultContentForRanajakyFile());
+        } catch (Exception e) {
+            labelJedalnyListokWarning.setText(e.getMessage());
+        }
+
+    }
+
+    private void btnObedtxtActionPerformed() {
+
+        if (!Desktop.isDesktopSupported()) {
+            labelJedalnyListokWarning.setText("Nepodporované na tejto platforme");
+            return;
+        }
+
+        try {
+            Desktop.getDesktop().open(FileUtilities.createDefaultContentForObedFile());
+        } catch (Exception e) {
+            labelJedalnyListokWarning.setText(e.getMessage());
+        }
     }
 
     private void initComponents() {
@@ -185,7 +219,10 @@ public class AdministratorInterface extends JFrame {
         panelJedalnyListok = new KGradientPanel();
         panelJedalnyListokInside = new KGradientPanel();
         labelVytvoritJedListok = new JLabel();
+        btnRanajkytxt = new KButton();
+        btnObedtxt = new KButton();
         btnVytvoritNovyJedListok = new KButton();
+        labelJedalnyListokWarning = new JLabel();
         panelTransakcie = new KGradientPanel();
 
         //======== this ========
@@ -205,12 +242,13 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
-                EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
-                . border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,
-                java . awt. Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
-                { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )
-                throw new RuntimeException( ) ;} } );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+                . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder
+                . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
+                awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder( )) )
+                ; panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+                ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+                ;
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -906,7 +944,9 @@ public class AdministratorInterface extends JFrame {
                         {
                             panelJedalnyListok.setkEndColor(Color.white);
                             panelJedalnyListok.setkStartColor(Color.white);
+                            panelJedalnyListok.setForeground(Color.darkGray);
                             panelJedalnyListok.setLayout(new GridBagLayout());
+                            ((GridBagLayout)panelJedalnyListok.getLayout()).rowHeights = new int[] {0, 26};
 
                             //======== panelJedalnyListokInside ========
                             {
@@ -916,13 +956,53 @@ public class AdministratorInterface extends JFrame {
                                 panelJedalnyListokInside.setkBorderRadius(0);
                                 panelJedalnyListokInside.setLayout(new FormLayout(
                                     "[388px,pref]",
-                                    "fill:[58px,pref], fill:[55px,pref]"));
+                                    "fill:[58px,pref], 2*(default), fill:[55px,pref]"));
 
                                 //---- labelVytvoritJedListok ----
                                 labelVytvoritJedListok.setText("Vytvori\u0165 nov\u00fd jed\u00e1lny l\u00edstok");
                                 labelVytvoritJedListok.setHorizontalAlignment(SwingConstants.CENTER);
                                 labelVytvoritJedListok.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
                                 panelJedalnyListokInside.add(labelVytvoritJedListok, CC.xy(1, 1));
+
+                                //---- btnRanajkytxt ----
+                                btnRanajkytxt.setText("Ranajky.txt");
+                                btnRanajkytxt.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                btnRanajkytxt.setBorder(null);
+                                btnRanajkytxt.setkStartColor(Color.white);
+                                btnRanajkytxt.setkEndColor(Color.white);
+                                btnRanajkytxt.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                btnRanajkytxt.setkHoverEndColor(Color.white);
+                                btnRanajkytxt.setkHoverStartColor(Color.white);
+                                btnRanajkytxt.setkHoverForeGround(Color.darkGray);
+                                btnRanajkytxt.setBackground(Color.white);
+                                btnRanajkytxt.setBorderPainted(false);
+                                btnRanajkytxt.setMaximumSize(new Dimension(97, 24));
+                                btnRanajkytxt.setMinimumSize(new Dimension(97, 24));
+                                btnRanajkytxt.setkForeGround(Color.black);
+                                btnRanajkytxt.setForeground(Color.black);
+                                btnRanajkytxt.setkPressedColor(Color.white);
+                                btnRanajkytxt.addActionListener(e -> btnRanajkytxtActionPerformed());
+                                panelJedalnyListokInside.add(btnRanajkytxt, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 145, 13, 145)));
+
+                                //---- btnObedtxt ----
+                                btnObedtxt.setText("Obed.txt");
+                                btnObedtxt.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                btnObedtxt.setBorder(null);
+                                btnObedtxt.setkStartColor(Color.white);
+                                btnObedtxt.setkEndColor(Color.white);
+                                btnObedtxt.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                btnObedtxt.setkHoverEndColor(Color.white);
+                                btnObedtxt.setkHoverStartColor(Color.white);
+                                btnObedtxt.setkHoverForeGround(Color.darkGray);
+                                btnObedtxt.setBackground(Color.white);
+                                btnObedtxt.setBorderPainted(false);
+                                btnObedtxt.setMaximumSize(new Dimension(97, 24));
+                                btnObedtxt.setMinimumSize(new Dimension(97, 24));
+                                btnObedtxt.setkForeGround(Color.black);
+                                btnObedtxt.setForeground(Color.black);
+                                btnObedtxt.setkPressedColor(Color.white);
+                                btnObedtxt.addActionListener(e -> btnObedtxtActionPerformed());
+                                panelJedalnyListokInside.add(btnObedtxt, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 145, 13, 145)));
 
                                 //---- btnVytvoritNovyJedListok ----
                                 btnVytvoritNovyJedListok.setText("Vytvori\u0165");
@@ -938,9 +1018,17 @@ public class AdministratorInterface extends JFrame {
                                 btnVytvoritNovyJedListok.setBorderPainted(false);
                                 btnVytvoritNovyJedListok.setMaximumSize(new Dimension(97, 24));
                                 btnVytvoritNovyJedListok.setMinimumSize(new Dimension(97, 24));
-                                panelJedalnyListokInside.add(btnVytvoritNovyJedListok, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 145, 15, 145)));
+                                panelJedalnyListokInside.add(btnVytvoritNovyJedListok, new CellConstraints(1, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 145, 15, 145)));
                             }
                             panelJedalnyListok.add(panelJedalnyListokInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
+
+                            //---- labelJedalnyListokWarning ----
+                            labelJedalnyListokWarning.setHorizontalAlignment(SwingConstants.CENTER);
+                            labelJedalnyListokWarning.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                            labelJedalnyListokWarning.setForeground(Color.red);
+                            panelJedalnyListok.add(labelJedalnyListokWarning, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                                 new Insets(0, 0, 0, 0), 0, 0));
                         }
@@ -1071,7 +1159,10 @@ public class AdministratorInterface extends JFrame {
     private KGradientPanel panelJedalnyListok;
     private KGradientPanel panelJedalnyListokInside;
     private JLabel labelVytvoritJedListok;
+    private KButton btnRanajkytxt;
+    private KButton btnObedtxt;
     private KButton btnVytvoritNovyJedListok;
+    private JLabel labelJedalnyListokWarning;
     private KGradientPanel panelTransakcie;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
