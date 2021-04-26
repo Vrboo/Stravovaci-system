@@ -127,7 +127,7 @@ new FormModel {
 						"dividerSize": 0
 						"dividerLocation": 155
 						add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-							"$horizontalGroup": "par l {seq l {space :p:46:p, comp labelDatum:::p:246:p, space :0:0:x}, seq {space :p:32:p, comp labelStravovaciSystem:::p:366:p, space :::p, par l {seq {space :0:302:x, comp labelX:::p:27:p}, seq l {comp label4:::p:234:p, space :0:95:x}}}}"
+							"$horizontalGroup": "par l {seq {space :p:32:p, comp labelStravovaciSystem:::p:366:p, space :::p, par l {seq {space :0:302:x, comp labelX:::p:27:p}, seq l {comp label4:::p:234:p, space :0:95:x}}}, seq l {space :p:46:p, comp labelDatum:::p:294:p, space :0:393:x}}"
 							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space ::19:x, par b {comp labelStravovaciSystem::b:p::p, comp label4::b:p:29:p}, space u:::p, comp labelDatum:::p:25:p, space :p:38:p}}"
 						} ) {
 							name: "panelStravovaciSystem"
