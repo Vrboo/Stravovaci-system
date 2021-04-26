@@ -205,12 +205,12 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
-                (0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing.border
-                .TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.awt.Font.BOLD,12),java.awt
-                .Color.red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
-                propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072".equals(e.getPropertyName()))throw new RuntimeException()
-                ;}});
+                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+                EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+                . border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,
+                java . awt. Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+                { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )
+                throw new RuntimeException( ) ;} } );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -391,7 +391,9 @@ public class AdministratorInterface extends JFrame {
                             panelStravovaciSystemLayout.createParallelGroup()
                                 .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
                                     .addGap(32, 32, 32)
-                                    .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panelStravovaciSystemLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 352, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(panelStravovaciSystemLayout.createParallelGroup()
                                         .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
@@ -400,10 +402,6 @@ public class AdministratorInterface extends JFrame {
                                         .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
                                             .addComponent(label4, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE)
                                             .addGap(0, 95, Short.MAX_VALUE))))
-                                .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
-                                    .addGap(46, 46, 46)
-                                    .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 393, Short.MAX_VALUE))
                         );
                         panelStravovaciSystemLayout.setVerticalGroup(
                             panelStravovaciSystemLayout.createParallelGroup()
