@@ -1,9 +1,9 @@
 package sk.dominikvrbovsky.enums;
 
 public enum Drink {
-    TEA("Caj"),
-    MINERAL_WATER("Mineralna voda"),
-    JUICE("Dzus"),
+    TEA("Čaj"),
+    MINERAL_WATER("Minerálna voda"),
+    JUICE("Džús"),
     COLA("Cola");
 
     private final String drink;
@@ -16,13 +16,13 @@ public enum Drink {
         return this.drink;
     }
 
-    public static Drink getEnumFromString(String string) {
+    public static Drink getEnumFromString(String string) throws UnsupportedOperationException {
         for (Drink drink : Drink.values()) {
             if (string.equals(drink.getDrink())) {
                 return drink;
             }
         }
 
-        throw new UnsupportedOperationException("Pre dany string neexistuje ziadne enum Drink");
+        throw new UnsupportedOperationException("Zadali ste chybný názov nápoja");
     }
 }
