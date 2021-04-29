@@ -6,13 +6,18 @@ package sk.dominikvrbovsky.gui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import javax.persistence.EntityManager;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
+import javax.swing.text.NumberFormatter;
+
 import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
 import keeptoo.*;
+import net.miginfocom.swing.*;
 import sk.dominikvrbovsky.User;
 import sk.dominikvrbovsky.utilities.DateUtilities;
 
@@ -41,8 +46,8 @@ public class AdministratorInterface extends JFrame {
 
         this.labelDatum.setText(DateUtilities.buildSlovakTimeString());
 
-        btnObjednavky.setSelected(true);
-        btnObjednavky.setBorder(new MatteBorder(0,5,0,0, new Color(50, 187, 186)));
+        btnJedalnyListok.setSelected(true);
+        btnJedalnyListok.setBorder(new MatteBorder(0,5,0,0, new Color(50, 187, 186)));
 
         btnRanajky.setBorder(new MatteBorder(0, 0, 4, 0, new Color(52, 188, 183)));
         btnRanajky.addActionListener(new ActionListener() {
@@ -68,7 +73,11 @@ public class AdministratorInterface extends JFrame {
         });
     }
 
-    
+    private void setIntFormatters(JFormattedTextField formatter) {
+        NumberFormat numFormat = new DecimalFormat("#0.00");
+        NumberFormatter  numFormatter  = new NumberFormatter(numFormat);
+        formatter = new JFormattedTextField(numFormatter);
+    }
 
     private void btnRanajkyActionPerformed() {
         cardLayoutObjednavky.show(panelContentObjednavky, "ranajky");
@@ -105,9 +114,47 @@ public class AdministratorInterface extends JFrame {
         cardLayout.show(panelContent,"transakcie");
     }
 
+    private void kButton4ActionPerformed() {
+        cardLayoutJedalnyListok.show(panelJedalnyListok, "obed");
+    }
+
+    private void btnJedalnyListokSpatObedActionPerformed() {
+        cardLayoutJedalnyListok.show(panelJedalnyListok, "ranajky");
+    }
+
+    private void btnJedalnyListokPokracovatObedActionPerformed() {
+        cardLayoutJedalnyListok.show(panelJedalnyListok, "vytvorit");
+    }
+
+    private void btnJedalnyListokVytvoritInsideActionPerformed() {
+        cardLayoutJedalnyListok.show(panelJedalnyListok, "obed");
+    }
+
+    private void frmterJedLisRanakKapacita1KeyTyped(KeyEvent e) {
+        if (!Character.isDigit(e.getKeyChar())) e.consume();
+    }
+
+    private void frmterJedLisRanakCena1KeyTyped(KeyEvent e) {
+        JTextField jtxtFiled = (JTextField)e.getComponent();
+
+        if (jtxtFiled.getText().contains(".") || jtxtFiled.getText().equals("")) {
+            if (!Character.isDigit(e.getKeyChar()) )
+                e.consume();
+        } else {
+            if (!Character.isDigit(e.getKeyChar()) && Character.valueOf(e.getKeyChar()) != Character.valueOf('.'))
+                e.consume();
+        }
+    }
+
+    private void frmterJedLisRanakCena1FocusLost(FocusEvent e) {
+        JTextField jtxtFiled = (JTextField)e.getComponent();
+        
+        if (jtxtFiled.getText().endsWith(".")) jtxtFiled.setText(jtxtFiled.getText() + "00");
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
+        // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
         splitPane1 = new JSplitPane();
         panelMenu = new KGradientPanel();
         labelIcon = new JLabel();
@@ -124,6 +171,83 @@ public class AdministratorInterface extends JFrame {
         labelX = new JLabel();
         label4 = new JLabel();
         panelContent = new KGradientPanel();
+        panelJedalnyListok = new KGradientPanel();
+        panelJedalnyListokRanajky = new KGradientPanel();
+        label2 = new JLabel();
+        panelJedalnyListokRanajkyInside = new KGradientPanel();
+        label40 = new JLabel();
+        label3 = new JLabel();
+        label28 = new JLabel();
+        label29 = new JLabel();
+        label30 = new JLabel();
+        label59 = new JLabel();
+        textField6 = new JTextField();
+        comboBox2 = new JComboBox<>();
+        frmterJedLisRanakKapacita1 = new JTextField();
+        frmterJedLisRanakCena1 = new JTextField();
+        label44 = new JLabel();
+        textField19 = new JTextField();
+        comboBox3 = new JComboBox<>();
+        frmterJedLisRanakKapacita2 = new JTextField();
+        frmterJedLisRanakCena2 = new JTextField();
+        label73 = new JLabel();
+        textField22 = new JTextField();
+        comboBox4 = new JComboBox<>();
+        frmterJedLisRanakKapacita3 = new JTextField();
+        frmterJedLisRanakCena3 = new JTextField();
+        label78 = new JLabel();
+        textField25 = new JTextField();
+        comboBox5 = new JComboBox<>();
+        frmterJedLisRanakKapacita4 = new JTextField();
+        frmterJedLisRanakCena4 = new JTextField();
+        label83 = new JLabel();
+        textField28 = new JTextField();
+        comboBox6 = new JComboBox<>();
+        frmterJedLisRanakKapacita5 = new JTextField();
+        frmterJedLisRanakCena5 = new JTextField();
+        label6 = new JLabel();
+        kButton4 = new KButton();
+        panelJedalnyListokObed = new KGradientPanel();
+        label7 = new JLabel();
+        panelJedalnyListokObedInside = new KGradientPanel();
+        label72 = new JLabel();
+        label10 = new JLabel();
+        label75 = new JLabel();
+        label76 = new JLabel();
+        label77 = new JLabel();
+        label80 = new JLabel();
+        textField8 = new JTextField();
+        comboBox12 = new JComboBox<>();
+        textField45 = new JTextField();
+        textField46 = new JTextField();
+        label81 = new JLabel();
+        textField47 = new JTextField();
+        comboBox13 = new JComboBox<>();
+        textField48 = new JTextField();
+        textField49 = new JTextField();
+        label82 = new JLabel();
+        textField50 = new JTextField();
+        comboBox14 = new JComboBox<>();
+        textField51 = new JTextField();
+        textField52 = new JTextField();
+        label85 = new JLabel();
+        textField53 = new JTextField();
+        comboBox15 = new JComboBox<>();
+        textField54 = new JTextField();
+        textField55 = new JTextField();
+        label86 = new JLabel();
+        textField56 = new JTextField();
+        comboBox16 = new JComboBox<>();
+        textField57 = new JTextField();
+        textField58 = new JTextField();
+        btnJedalnyListokSpatObed = new KButton();
+        label26 = new JLabel();
+        btnJedalnyListokPokracovatObed = new KButton();
+        panelJedalnyListokVytvorit = new KGradientPanel();
+        panelJedalnyListokInside = new KGradientPanel();
+        labelJedalnyListokVytvoritInisde = new JLabel();
+        btnJedalnyListokVytvoritInside = new KButton();
+        btnJedalnyListokVytvoritInside2 = new KButton();
         panelObjednavky = new KGradientPanel();
         splitPane3 = new JSplitPane();
         panelMenuObjednavky = new KGradientPanel();
@@ -185,78 +309,6 @@ public class AdministratorInterface extends JFrame {
         label68 = new JLabel();
         label70 = new JLabel();
         panelTransakcie = new KGradientPanel();
-        panelJedalnyListok = new KGradientPanel();
-        panelJedalnyListokRanajky = new KGradientPanel();
-        label2 = new JLabel();
-        panelJedalnyListokRanajkyInside = new KGradientPanel();
-        label40 = new JLabel();
-        label3 = new JLabel();
-        label28 = new JLabel();
-        label29 = new JLabel();
-        label30 = new JLabel();
-        label59 = new JLabel();
-        textField6 = new JTextField();
-        comboBox2 = new JComboBox<>();
-        textField17 = new JTextField();
-        textField18 = new JTextField();
-        label44 = new JLabel();
-        textField19 = new JTextField();
-        comboBox3 = new JComboBox<>();
-        textField20 = new JTextField();
-        textField21 = new JTextField();
-        label73 = new JLabel();
-        textField22 = new JTextField();
-        comboBox4 = new JComboBox<>();
-        textField23 = new JTextField();
-        textField24 = new JTextField();
-        label78 = new JLabel();
-        textField25 = new JTextField();
-        comboBox5 = new JComboBox<>();
-        textField26 = new JTextField();
-        textField27 = new JTextField();
-        label83 = new JLabel();
-        textField28 = new JTextField();
-        comboBox6 = new JComboBox<>();
-        textField29 = new JTextField();
-        textField30 = new JTextField();
-        kButton3 = new KButton();
-        panelJedalnyListokObed = new KGradientPanel();
-        panelJedalnyListokObedInside = new KGradientPanel();
-        label41 = new JLabel();
-        label5 = new JLabel();
-        label37 = new JLabel();
-        label53 = new JLabel();
-        label64 = new JLabel();
-        label69 = new JLabel();
-        textField7 = new JTextField();
-        comboBox7 = new JComboBox<>();
-        textField31 = new JTextField();
-        textField32 = new JTextField();
-        label71 = new JLabel();
-        textField33 = new JTextField();
-        comboBox8 = new JComboBox<>();
-        textField34 = new JTextField();
-        textField35 = new JTextField();
-        label74 = new JLabel();
-        textField36 = new JTextField();
-        comboBox9 = new JComboBox<>();
-        textField37 = new JTextField();
-        textField38 = new JTextField();
-        label79 = new JLabel();
-        textField39 = new JTextField();
-        comboBox10 = new JComboBox<>();
-        textField40 = new JTextField();
-        textField41 = new JTextField();
-        label84 = new JLabel();
-        textField42 = new JTextField();
-        comboBox11 = new JComboBox<>();
-        textField43 = new JTextField();
-        textField44 = new JTextField();
-        label89 = new JLabel();
-        panelJedalnyListokVytvorit = new KGradientPanel();
-        panelJedalnyListokInside = new KGradientPanel();
-        labelJedalnyListokVytvoritInisde = new JLabel();
-        btnJedalnyListokVytvoritInside = new KButton();
 
         //======== this ========
         setUndecorated(true);
@@ -275,14 +327,13 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-                new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion"
-                , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-                , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 )
-                , java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (
-                new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-                ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-                ; }} );
+                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
+                .border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder
+                .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
+                awt.Font.BOLD,12),java.awt.Color.red),panelMenu. getBorder()))
+                ;panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+                ){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
+                ;
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -482,7 +533,7 @@ public class AdministratorInterface extends JFrame {
                                     .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
-                                    .addContainerGap(19, Short.MAX_VALUE)
+                                    .addContainerGap(21, Short.MAX_VALUE)
                                     .addGroup(panelStravovaciSystemLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(labelStravovaciSystem)
                                         .addComponent(label4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
@@ -496,6 +547,825 @@ public class AdministratorInterface extends JFrame {
                     //======== panelContent ========
                     {
                         panelContent.setLayout(new CardLayout());
+
+                        //======== panelJedalnyListok ========
+                        {
+                            panelJedalnyListok.setBackground(new Color(55, 55, 55));
+                            panelJedalnyListok.setLayout(new CardLayout());
+
+                            //======== panelJedalnyListokRanajky ========
+                            {
+                                panelJedalnyListokRanajky.setkEndColor(Color.white);
+                                panelJedalnyListokRanajky.setkStartColor(Color.white);
+                                panelJedalnyListokRanajky.setkBorderRadius(0);
+                                panelJedalnyListokRanajky.setkGradientFocus(600);
+                                panelJedalnyListokRanajky.setBorder(null);
+                                panelJedalnyListokRanajky.setBackground(Color.white);
+                                panelJedalnyListokRanajky.setkFillBackground(false);
+                                panelJedalnyListokRanajky.setLayout(new MigLayout(
+                                    "insets 0,novisualpadding,hidemode 3,align center center,gapy 15",
+                                    // columns
+                                    "[fill]",
+                                    // rows
+                                    "[33:n,fill]" +
+                                    "[fill]" +
+                                    "[36:n,fill]"));
+
+                                //---- label2 ----
+                                label2.setText("Vytvorte ranajkov\u00e9 menu");
+                                label2.setHorizontalAlignment(SwingConstants.CENTER);
+                                label2.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
+                                label2.setForeground(new Color(55, 55, 55));
+                                label2.setBorder(null);
+                                panelJedalnyListokRanajky.add(label2, "cell 0 0");
+
+                                //======== panelJedalnyListokRanajkyInside ========
+                                {
+                                    panelJedalnyListokRanajkyInside.setkEndColor(Color.white);
+                                    panelJedalnyListokRanajkyInside.setkStartColor(Color.white);
+                                    panelJedalnyListokRanajkyInside.setBorder(null);
+                                    panelJedalnyListokRanajkyInside.setkBorderRadius(0);
+                                    panelJedalnyListokRanajkyInside.setBackground(new Color(255, 255, 255, 145));
+                                    panelJedalnyListokRanajkyInside.setLayout(new FormLayout(
+                                        "27px, 312px, 126px, 90px, 89px",
+                                        "fill:49px, 5*(fill:52px)"));
+
+                                    //---- label40 ----
+                                    label40.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokRanajkyInside.add(label40, CC.xy(1, 1));
+
+                                    //---- label3 ----
+                                    label3.setText("Ra\u0148ajky");
+                                    label3.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                    label3.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokRanajkyInside.add(label3, CC.xy(2, 1));
+
+                                    //---- label28 ----
+                                    label28.setText("N\u00e1poj");
+                                    label28.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                    label28.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label28.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokRanajkyInside.add(label28, CC.xy(3, 1));
+
+                                    //---- label29 ----
+                                    label29.setText("Kapacita");
+                                    label29.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                    label29.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label29.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label29.setBackground(Color.white);
+                                    panelJedalnyListokRanajkyInside.add(label29, CC.xy(4, 1));
+
+                                    //---- label30 ----
+                                    label30.setText("Cena");
+                                    label30.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                    label30.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label30.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokRanajkyInside.add(label30, CC.xy(5, 1));
+
+                                    //---- label59 ----
+                                    label59.setText("1.");
+                                    label59.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label59.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                    label59.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokRanajkyInside.add(label59, CC.xy(1, 2));
+
+                                    //---- textField6 ----
+                                    textField6.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField6.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField6.setHorizontalAlignment(SwingConstants.CENTER);
+                                    panelJedalnyListokRanajkyInside.add(textField6, CC.xy(2, 2));
+
+                                    //---- comboBox2 ----
+                                    comboBox2.setBorder(null);
+                                    comboBox2.setModel(new DefaultComboBoxModel<>(new String[] {
+                                        "Cola",
+                                        "Min. voda",
+                                        "\u010caj",
+                                        "D\u017e\u00fas"
+                                    }));
+                                    comboBox2.setBackground(Color.lightGray);
+                                    comboBox2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                    comboBox2.setSelectedIndex(-1);
+                                    panelJedalnyListokRanajkyInside.add(comboBox2, new CellConstraints(3, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+
+                                    //---- frmterJedLisRanakKapacita1 ----
+                                    frmterJedLisRanakKapacita1.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    frmterJedLisRanakKapacita1.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    frmterJedLisRanakKapacita1.setHorizontalAlignment(SwingConstants.CENTER);
+                                    frmterJedLisRanakKapacita1.setColumns(5);
+                                    frmterJedLisRanakKapacita1.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakKapacita1KeyTyped(e);
+                                        }
+                                    });
+                                    panelJedalnyListokRanajkyInside.add(frmterJedLisRanakKapacita1, CC.xy(4, 2));
+
+                                    //---- frmterJedLisRanakCena1 ----
+                                    frmterJedLisRanakCena1.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
+                                    frmterJedLisRanakCena1.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    frmterJedLisRanakCena1.setHorizontalAlignment(SwingConstants.CENTER);
+                                    frmterJedLisRanakCena1.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakCena1KeyTyped(e);
+                                        }
+                                    });
+                                    frmterJedLisRanakCena1.addFocusListener(new FocusAdapter() {
+                                        @Override
+                                        public void focusLost(FocusEvent e) {
+                                            frmterJedLisRanakCena1FocusLost(e);
+                                        }
+                                    });
+                                    panelJedalnyListokRanajkyInside.add(frmterJedLisRanakCena1, CC.xy(5, 2));
+
+                                    //---- label44 ----
+                                    label44.setText("2.");
+                                    label44.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label44.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                    label44.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokRanajkyInside.add(label44, CC.xy(1, 3));
+
+                                    //---- textField19 ----
+                                    textField19.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField19.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField19.setHorizontalAlignment(SwingConstants.CENTER);
+                                    panelJedalnyListokRanajkyInside.add(textField19, CC.xy(2, 3));
+
+                                    //---- comboBox3 ----
+                                    comboBox3.setBorder(null);
+                                    comboBox3.setModel(new DefaultComboBoxModel<>(new String[] {
+                                        "Cola",
+                                        "Min. voda",
+                                        "\u010caj",
+                                        "D\u017e\u00fas"
+                                    }));
+                                    comboBox3.setBackground(Color.lightGray);
+                                    comboBox3.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                    comboBox3.setSelectedIndex(-1);
+                                    panelJedalnyListokRanajkyInside.add(comboBox3, new CellConstraints(3, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+
+                                    //---- frmterJedLisRanakKapacita2 ----
+                                    frmterJedLisRanakKapacita2.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    frmterJedLisRanakKapacita2.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    frmterJedLisRanakKapacita2.setHorizontalAlignment(SwingConstants.CENTER);
+                                    frmterJedLisRanakKapacita2.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakKapacita1KeyTyped(e);
+                                        }
+                                    });
+                                    panelJedalnyListokRanajkyInside.add(frmterJedLisRanakKapacita2, CC.xy(4, 3));
+
+                                    //---- frmterJedLisRanakCena2 ----
+                                    frmterJedLisRanakCena2.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
+                                    frmterJedLisRanakCena2.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    frmterJedLisRanakCena2.setHorizontalAlignment(SwingConstants.CENTER);
+                                    frmterJedLisRanakCena2.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakCena1KeyTyped(e);
+                                        }
+                                    });
+                                    frmterJedLisRanakCena2.addFocusListener(new FocusAdapter() {
+                                        @Override
+                                        public void focusLost(FocusEvent e) {
+                                            frmterJedLisRanakCena1FocusLost(e);
+                                        }
+                                    });
+                                    panelJedalnyListokRanajkyInside.add(frmterJedLisRanakCena2, CC.xy(5, 3));
+
+                                    //---- label73 ----
+                                    label73.setText("3.");
+                                    label73.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label73.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                    label73.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokRanajkyInside.add(label73, CC.xy(1, 4));
+
+                                    //---- textField22 ----
+                                    textField22.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField22.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField22.setHorizontalAlignment(SwingConstants.CENTER);
+                                    panelJedalnyListokRanajkyInside.add(textField22, CC.xy(2, 4));
+
+                                    //---- comboBox4 ----
+                                    comboBox4.setBorder(null);
+                                    comboBox4.setModel(new DefaultComboBoxModel<>(new String[] {
+                                        "Cola",
+                                        "Min. voda",
+                                        "\u010caj",
+                                        "D\u017e\u00fas"
+                                    }));
+                                    comboBox4.setBackground(Color.lightGray);
+                                    comboBox4.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                    comboBox4.setSelectedIndex(-1);
+                                    panelJedalnyListokRanajkyInside.add(comboBox4, new CellConstraints(3, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+
+                                    //---- frmterJedLisRanakKapacita3 ----
+                                    frmterJedLisRanakKapacita3.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    frmterJedLisRanakKapacita3.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    frmterJedLisRanakKapacita3.setHorizontalAlignment(SwingConstants.CENTER);
+                                    frmterJedLisRanakKapacita3.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakKapacita1KeyTyped(e);
+                                        }
+                                    });
+                                    panelJedalnyListokRanajkyInside.add(frmterJedLisRanakKapacita3, CC.xy(4, 4));
+
+                                    //---- frmterJedLisRanakCena3 ----
+                                    frmterJedLisRanakCena3.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
+                                    frmterJedLisRanakCena3.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    frmterJedLisRanakCena3.setHorizontalAlignment(SwingConstants.CENTER);
+                                    frmterJedLisRanakCena3.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakCena1KeyTyped(e);
+                                        }
+                                    });
+                                    frmterJedLisRanakCena3.addFocusListener(new FocusAdapter() {
+                                        @Override
+                                        public void focusLost(FocusEvent e) {
+                                            frmterJedLisRanakCena1FocusLost(e);
+                                        }
+                                    });
+                                    panelJedalnyListokRanajkyInside.add(frmterJedLisRanakCena3, CC.xy(5, 4));
+
+                                    //---- label78 ----
+                                    label78.setText("4.");
+                                    label78.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label78.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                    label78.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokRanajkyInside.add(label78, CC.xy(1, 5));
+
+                                    //---- textField25 ----
+                                    textField25.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField25.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField25.setHorizontalAlignment(SwingConstants.CENTER);
+                                    panelJedalnyListokRanajkyInside.add(textField25, CC.xy(2, 5));
+
+                                    //---- comboBox5 ----
+                                    comboBox5.setBorder(null);
+                                    comboBox5.setModel(new DefaultComboBoxModel<>(new String[] {
+                                        "Cola",
+                                        "Min. voda",
+                                        "\u010caj",
+                                        "D\u017e\u00fas"
+                                    }));
+                                    comboBox5.setBackground(Color.lightGray);
+                                    comboBox5.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                    comboBox5.setSelectedIndex(-1);
+                                    panelJedalnyListokRanajkyInside.add(comboBox5, new CellConstraints(3, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+
+                                    //---- frmterJedLisRanakKapacita4 ----
+                                    frmterJedLisRanakKapacita4.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    frmterJedLisRanakKapacita4.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    frmterJedLisRanakKapacita4.setHorizontalAlignment(SwingConstants.CENTER);
+                                    frmterJedLisRanakKapacita4.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakKapacita1KeyTyped(e);
+                                        }
+                                    });
+                                    panelJedalnyListokRanajkyInside.add(frmterJedLisRanakKapacita4, CC.xy(4, 5));
+
+                                    //---- frmterJedLisRanakCena4 ----
+                                    frmterJedLisRanakCena4.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
+                                    frmterJedLisRanakCena4.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    frmterJedLisRanakCena4.setHorizontalAlignment(SwingConstants.CENTER);
+                                    frmterJedLisRanakCena4.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakCena1KeyTyped(e);
+                                        }
+                                    });
+                                    frmterJedLisRanakCena4.addFocusListener(new FocusAdapter() {
+                                        @Override
+                                        public void focusLost(FocusEvent e) {
+                                            frmterJedLisRanakCena1FocusLost(e);
+                                        }
+                                    });
+                                    panelJedalnyListokRanajkyInside.add(frmterJedLisRanakCena4, CC.xy(5, 5));
+
+                                    //---- label83 ----
+                                    label83.setText("5.");
+                                    label83.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label83.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                    label83.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokRanajkyInside.add(label83, CC.xy(1, 6));
+
+                                    //---- textField28 ----
+                                    textField28.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField28.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField28.setHorizontalAlignment(SwingConstants.CENTER);
+                                    panelJedalnyListokRanajkyInside.add(textField28, CC.xy(2, 6));
+
+                                    //---- comboBox6 ----
+                                    comboBox6.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+                                    comboBox6.setModel(new DefaultComboBoxModel<>(new String[] {
+                                        "Cola",
+                                        "Min. voda",
+                                        "\u010caj",
+                                        "D\u017e\u00fas"
+                                    }));
+                                    comboBox6.setBackground(Color.lightGray);
+                                    comboBox6.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                    comboBox6.setSelectedIndex(-1);
+                                    panelJedalnyListokRanajkyInside.add(comboBox6, new CellConstraints(3, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+
+                                    //---- frmterJedLisRanakKapacita5 ----
+                                    frmterJedLisRanakKapacita5.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    frmterJedLisRanakKapacita5.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    frmterJedLisRanakKapacita5.setHorizontalAlignment(SwingConstants.CENTER);
+                                    frmterJedLisRanakKapacita5.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakKapacita1KeyTyped(e);
+                                        }
+                                    });
+                                    panelJedalnyListokRanajkyInside.add(frmterJedLisRanakKapacita5, CC.xy(4, 6));
+
+                                    //---- frmterJedLisRanakCena5 ----
+                                    frmterJedLisRanakCena5.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
+                                    frmterJedLisRanakCena5.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    frmterJedLisRanakCena5.setHorizontalAlignment(SwingConstants.CENTER);
+                                    frmterJedLisRanakCena5.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+                                    frmterJedLisRanakCena5.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakCena1KeyTyped(e);
+                                        }
+                                    });
+                                    frmterJedLisRanakCena5.addFocusListener(new FocusAdapter() {
+                                        @Override
+                                        public void focusLost(FocusEvent e) {
+                                            frmterJedLisRanakCena1FocusLost(e);
+                                        }
+                                    });
+                                    panelJedalnyListokRanajkyInside.add(frmterJedLisRanakCena5, CC.xy(5, 6));
+                                }
+                                panelJedalnyListokRanajky.add(panelJedalnyListokRanajkyInside, "cell 0 1");
+                                panelJedalnyListokRanajky.add(label6, "cell 0 2");
+
+                                //---- kButton4 ----
+                                kButton4.setText("Pokra\u010dova\u0165");
+                                kButton4.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                kButton4.setBorder(null);
+                                kButton4.setkStartColor(new Color(73, 196, 174));
+                                kButton4.setkEndColor(new Color(140, 219, 145));
+                                kButton4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                kButton4.setkHoverEndColor(new Color(73, 196, 174));
+                                kButton4.setkHoverStartColor(new Color(52, 188, 183));
+                                kButton4.setkHoverForeGround(Color.white);
+                                kButton4.setBackground(Color.white);
+                                kButton4.setBorderPainted(false);
+                                kButton4.addActionListener(e -> kButton4ActionPerformed());
+                                panelJedalnyListokRanajky.add(kButton4, "cell 0 2,alignx right,growx 0,width 110,hmax 30,gapx null 0");
+                            }
+                            panelJedalnyListok.add(panelJedalnyListokRanajky, "ranajky");
+
+                            //======== panelJedalnyListokObed ========
+                            {
+                                panelJedalnyListokObed.setkEndColor(Color.white);
+                                panelJedalnyListokObed.setkStartColor(Color.white);
+                                panelJedalnyListokObed.setkBorderRadius(0);
+                                panelJedalnyListokObed.setkGradientFocus(600);
+                                panelJedalnyListokObed.setBorder(null);
+                                panelJedalnyListokObed.setBackground(Color.white);
+                                panelJedalnyListokObed.setkFillBackground(false);
+                                panelJedalnyListokObed.setLayout(new MigLayout(
+                                    "insets 0,novisualpadding,hidemode 3,align center center,gapy 15",
+                                    // columns
+                                    "[fill]",
+                                    // rows
+                                    "[33:n,fill]" +
+                                    "[fill]" +
+                                    "[36:n,fill]"));
+
+                                //---- label7 ----
+                                label7.setText("Vytvorte obedov\u00e9 menu");
+                                label7.setHorizontalAlignment(SwingConstants.CENTER);
+                                label7.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
+                                label7.setForeground(new Color(55, 55, 55));
+                                panelJedalnyListokObed.add(label7, "cell 0 0");
+
+                                //======== panelJedalnyListokObedInside ========
+                                {
+                                    panelJedalnyListokObedInside.setkEndColor(Color.white);
+                                    panelJedalnyListokObedInside.setkStartColor(Color.white);
+                                    panelJedalnyListokObedInside.setBorder(null);
+                                    panelJedalnyListokObedInside.setkBorderRadius(0);
+                                    panelJedalnyListokObedInside.setBackground(new Color(255, 255, 255, 145));
+                                    panelJedalnyListokObedInside.setLayout(new FormLayout(
+                                        "27px, 312px, 126px, 90px, 89px",
+                                        "fill:49px, 5*(fill:52px)"));
+
+                                    //---- label72 ----
+                                    label72.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokObedInside.add(label72, CC.xy(1, 1));
+
+                                    //---- label10 ----
+                                    label10.setText("Obed");
+                                    label10.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                    label10.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label10.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokObedInside.add(label10, CC.xy(2, 1));
+
+                                    //---- label75 ----
+                                    label75.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                    label75.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label75.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label75.setText("Takeaway");
+                                    panelJedalnyListokObedInside.add(label75, CC.xy(3, 1));
+
+                                    //---- label76 ----
+                                    label76.setText("Kapacita");
+                                    label76.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                    label76.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label76.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label76.setBackground(Color.white);
+                                    panelJedalnyListokObedInside.add(label76, CC.xy(4, 1));
+
+                                    //---- label77 ----
+                                    label77.setText("Cena");
+                                    label77.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+                                    label77.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label77.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokObedInside.add(label77, CC.xy(5, 1));
+
+                                    //---- label80 ----
+                                    label80.setText("1.");
+                                    label80.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label80.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                    label80.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokObedInside.add(label80, CC.xy(1, 2));
+
+                                    //---- textField8 ----
+                                    textField8.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField8.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField8.setHorizontalAlignment(SwingConstants.CENTER);
+                                    panelJedalnyListokObedInside.add(textField8, CC.xy(2, 2));
+
+                                    //---- comboBox12 ----
+                                    comboBox12.setBorder(null);
+                                    comboBox12.setModel(new DefaultComboBoxModel<>(new String[] {
+                                        "\u00c1no",
+                                        "Nie"
+                                    }));
+                                    comboBox12.setBackground(Color.lightGray);
+                                    comboBox12.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                    comboBox12.setSelectedIndex(-1);
+                                    panelJedalnyListokObedInside.add(comboBox12, new CellConstraints(3, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+
+                                    //---- textField45 ----
+                                    textField45.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField45.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField45.setHorizontalAlignment(SwingConstants.CENTER);
+                                    textField45.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakKapacita1KeyTyped(e);
+                                        }
+                                    });
+                                    panelJedalnyListokObedInside.add(textField45, CC.xy(4, 2));
+
+                                    //---- textField46 ----
+                                    textField46.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
+                                    textField46.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField46.setHorizontalAlignment(SwingConstants.CENTER);
+                                    textField46.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakCena1KeyTyped(e);
+                                        }
+                                    });
+                                    textField46.addFocusListener(new FocusAdapter() {
+                                        @Override
+                                        public void focusLost(FocusEvent e) {
+                                            frmterJedLisRanakCena1FocusLost(e);
+                                        }
+                                    });
+                                    panelJedalnyListokObedInside.add(textField46, CC.xy(5, 2));
+
+                                    //---- label81 ----
+                                    label81.setText("2.");
+                                    label81.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label81.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                    label81.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokObedInside.add(label81, CC.xy(1, 3));
+
+                                    //---- textField47 ----
+                                    textField47.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField47.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField47.setHorizontalAlignment(SwingConstants.CENTER);
+                                    panelJedalnyListokObedInside.add(textField47, CC.xy(2, 3));
+
+                                    //---- comboBox13 ----
+                                    comboBox13.setBorder(null);
+                                    comboBox13.setModel(new DefaultComboBoxModel<>(new String[] {
+                                        "\u00c1no",
+                                        "Nie"
+                                    }));
+                                    comboBox13.setBackground(Color.lightGray);
+                                    comboBox13.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                    comboBox13.setSelectedIndex(-1);
+                                    panelJedalnyListokObedInside.add(comboBox13, new CellConstraints(3, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+
+                                    //---- textField48 ----
+                                    textField48.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField48.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField48.setHorizontalAlignment(SwingConstants.CENTER);
+                                    textField48.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakKapacita1KeyTyped(e);
+                                        }
+                                    });
+                                    panelJedalnyListokObedInside.add(textField48, CC.xy(4, 3));
+
+                                    //---- textField49 ----
+                                    textField49.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
+                                    textField49.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField49.setHorizontalAlignment(SwingConstants.CENTER);
+                                    textField49.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakCena1KeyTyped(e);
+                                        }
+                                    });
+                                    textField49.addFocusListener(new FocusAdapter() {
+                                        @Override
+                                        public void focusLost(FocusEvent e) {
+                                            frmterJedLisRanakCena1FocusLost(e);
+                                        }
+                                    });
+                                    panelJedalnyListokObedInside.add(textField49, CC.xy(5, 3));
+
+                                    //---- label82 ----
+                                    label82.setText("3.");
+                                    label82.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label82.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                    label82.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokObedInside.add(label82, CC.xy(1, 4));
+
+                                    //---- textField50 ----
+                                    textField50.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField50.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField50.setHorizontalAlignment(SwingConstants.CENTER);
+                                    panelJedalnyListokObedInside.add(textField50, CC.xy(2, 4));
+
+                                    //---- comboBox14 ----
+                                    comboBox14.setBorder(null);
+                                    comboBox14.setModel(new DefaultComboBoxModel<>(new String[] {
+                                        "\u00c1no",
+                                        "Nie"
+                                    }));
+                                    comboBox14.setBackground(Color.lightGray);
+                                    comboBox14.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                    comboBox14.setSelectedIndex(-1);
+                                    panelJedalnyListokObedInside.add(comboBox14, new CellConstraints(3, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+
+                                    //---- textField51 ----
+                                    textField51.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField51.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField51.setHorizontalAlignment(SwingConstants.CENTER);
+                                    textField51.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakKapacita1KeyTyped(e);
+                                        }
+                                    });
+                                    panelJedalnyListokObedInside.add(textField51, CC.xy(4, 4));
+
+                                    //---- textField52 ----
+                                    textField52.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
+                                    textField52.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField52.setHorizontalAlignment(SwingConstants.CENTER);
+                                    textField52.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakCena1KeyTyped(e);
+                                        }
+                                    });
+                                    textField52.addFocusListener(new FocusAdapter() {
+                                        @Override
+                                        public void focusLost(FocusEvent e) {
+                                            frmterJedLisRanakCena1FocusLost(e);
+                                        }
+                                    });
+                                    panelJedalnyListokObedInside.add(textField52, CC.xy(5, 4));
+
+                                    //---- label85 ----
+                                    label85.setText("4.");
+                                    label85.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label85.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                    label85.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokObedInside.add(label85, CC.xy(1, 5));
+
+                                    //---- textField53 ----
+                                    textField53.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField53.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField53.setHorizontalAlignment(SwingConstants.CENTER);
+                                    panelJedalnyListokObedInside.add(textField53, CC.xy(2, 5));
+
+                                    //---- comboBox15 ----
+                                    comboBox15.setBorder(null);
+                                    comboBox15.setModel(new DefaultComboBoxModel<>(new String[] {
+                                        "\u00c1no",
+                                        "Nie"
+                                    }));
+                                    comboBox15.setBackground(Color.lightGray);
+                                    comboBox15.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                    comboBox15.setSelectedIndex(-1);
+                                    panelJedalnyListokObedInside.add(comboBox15, new CellConstraints(3, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+
+                                    //---- textField54 ----
+                                    textField54.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField54.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField54.setHorizontalAlignment(SwingConstants.CENTER);
+                                    textField54.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakKapacita1KeyTyped(e);
+                                        }
+                                    });
+                                    panelJedalnyListokObedInside.add(textField54, CC.xy(4, 5));
+
+                                    //---- textField55 ----
+                                    textField55.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
+                                    textField55.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField55.setHorizontalAlignment(SwingConstants.CENTER);
+                                    textField55.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakCena1KeyTyped(e);
+                                        }
+                                    });
+                                    textField55.addFocusListener(new FocusAdapter() {
+                                        @Override
+                                        public void focusLost(FocusEvent e) {
+                                            frmterJedLisRanakCena1FocusLost(e);
+                                        }
+                                    });
+                                    panelJedalnyListokObedInside.add(textField55, CC.xy(5, 5));
+
+                                    //---- label86 ----
+                                    label86.setText("5.");
+                                    label86.setHorizontalAlignment(SwingConstants.CENTER);
+                                    label86.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                    label86.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    panelJedalnyListokObedInside.add(label86, CC.xy(1, 6));
+
+                                    //---- textField56 ----
+                                    textField56.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField56.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField56.setHorizontalAlignment(SwingConstants.CENTER);
+                                    panelJedalnyListokObedInside.add(textField56, CC.xy(2, 6));
+
+                                    //---- comboBox16 ----
+                                    comboBox16.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+                                    comboBox16.setModel(new DefaultComboBoxModel<>(new String[] {
+                                        "\u00c1no",
+                                        "Nie"
+                                    }));
+                                    comboBox16.setBackground(Color.lightGray);
+                                    comboBox16.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                    comboBox16.setSelectedIndex(-1);
+                                    panelJedalnyListokObedInside.add(comboBox16, new CellConstraints(3, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+
+                                    //---- textField57 ----
+                                    textField57.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
+                                    textField57.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField57.setHorizontalAlignment(SwingConstants.CENTER);
+                                    textField57.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakKapacita1KeyTyped(e);
+                                        }
+                                    });
+                                    panelJedalnyListokObedInside.add(textField57, CC.xy(4, 6));
+
+                                    //---- textField58 ----
+                                    textField58.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
+                                    textField58.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                    textField58.setHorizontalAlignment(SwingConstants.CENTER);
+                                    textField58.addKeyListener(new KeyAdapter() {
+                                        @Override
+                                        public void keyTyped(KeyEvent e) {
+                                            frmterJedLisRanakCena1KeyTyped(e);
+                                        }
+                                    });
+                                    textField58.addFocusListener(new FocusAdapter() {
+                                        @Override
+                                        public void focusLost(FocusEvent e) {
+                                            frmterJedLisRanakCena1FocusLost(e);
+                                        }
+                                    });
+                                    panelJedalnyListokObedInside.add(textField58, CC.xy(5, 6));
+                                }
+                                panelJedalnyListokObed.add(panelJedalnyListokObedInside, "cell 0 1");
+
+                                //---- btnJedalnyListokSpatObed ----
+                                btnJedalnyListokSpatObed.setText("Sp\u00e4\u0165");
+                                btnJedalnyListokSpatObed.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                btnJedalnyListokSpatObed.setBorder(null);
+                                btnJedalnyListokSpatObed.setkStartColor(new Color(255, 161, 117));
+                                btnJedalnyListokSpatObed.setkEndColor(new Color(224, 31, 23));
+                                btnJedalnyListokSpatObed.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                btnJedalnyListokSpatObed.setkHoverEndColor(Color.white);
+                                btnJedalnyListokSpatObed.setkHoverStartColor(new Color(52, 188, 183));
+                                btnJedalnyListokSpatObed.setkHoverForeGround(Color.gray);
+                                btnJedalnyListokSpatObed.setBackground(Color.white);
+                                btnJedalnyListokSpatObed.setBorderPainted(false);
+                                btnJedalnyListokSpatObed.addActionListener(e -> btnJedalnyListokSpatObedActionPerformed());
+                                panelJedalnyListokObed.add(btnJedalnyListokSpatObed, "cell 0 2,alignx left,growx 0,width 110,hmax 30,gapx 0");
+                                panelJedalnyListokObed.add(label26, "cell 0 2");
+
+                                //---- btnJedalnyListokPokracovatObed ----
+                                btnJedalnyListokPokracovatObed.setText("Pokra\u010dova\u0165");
+                                btnJedalnyListokPokracovatObed.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                btnJedalnyListokPokracovatObed.setBorder(null);
+                                btnJedalnyListokPokracovatObed.setkStartColor(new Color(73, 196, 174));
+                                btnJedalnyListokPokracovatObed.setkEndColor(new Color(140, 219, 145));
+                                btnJedalnyListokPokracovatObed.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                btnJedalnyListokPokracovatObed.setkHoverEndColor(new Color(73, 196, 174));
+                                btnJedalnyListokPokracovatObed.setkHoverStartColor(new Color(52, 188, 183));
+                                btnJedalnyListokPokracovatObed.setkHoverForeGround(Color.white);
+                                btnJedalnyListokPokracovatObed.setBackground(Color.white);
+                                btnJedalnyListokPokracovatObed.setBorderPainted(false);
+                                btnJedalnyListokPokracovatObed.addActionListener(e -> btnJedalnyListokPokracovatObedActionPerformed());
+                                panelJedalnyListokObed.add(btnJedalnyListokPokracovatObed, "cell 0 2,alignx right,growx 0,width 110,hmax 30,gapx null 0");
+                            }
+                            panelJedalnyListok.add(panelJedalnyListokObed, "obed");
+
+                            //======== panelJedalnyListokVytvorit ========
+                            {
+                                panelJedalnyListokVytvorit.setkEndColor(Color.white);
+                                panelJedalnyListokVytvorit.setkStartColor(Color.white);
+                                panelJedalnyListokVytvorit.setLayout(new GridBagLayout());
+
+                                //======== panelJedalnyListokInside ========
+                                {
+                                    panelJedalnyListokInside.setkStartColor(Color.white);
+                                    panelJedalnyListokInside.setkEndColor(Color.white);
+                                    panelJedalnyListokInside.setBorder(new MatteBorder(1, 1, 1, 1, Color.lightGray));
+                                    panelJedalnyListokInside.setkBorderRadius(0);
+                                    panelJedalnyListokInside.setLayout(new MigLayout(
+                                        "insets 0,hidemode 3,gap 0 0",
+                                        // columns
+                                        "[516:n,fill]",
+                                        // rows
+                                        "[58:n,fill]" +
+                                        "[55:n,fill]" +
+                                        "[8]"));
+
+                                    //---- labelJedalnyListokVytvoritInisde ----
+                                    labelJedalnyListokVytvoritInisde.setText("Naozaj chcete vytvori\u0165 nov\u00fd jed\u00e1lny l\u00edstok?");
+                                    labelJedalnyListokVytvoritInisde.setHorizontalAlignment(SwingConstants.CENTER);
+                                    labelJedalnyListokVytvoritInisde.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
+                                    panelJedalnyListokInside.add(labelJedalnyListokVytvoritInisde, "cell 0 0");
+
+                                    //---- btnJedalnyListokVytvoritInside ----
+                                    btnJedalnyListokVytvoritInside.setText("Sp\u00e4\u0165");
+                                    btnJedalnyListokVytvoritInside.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                    btnJedalnyListokVytvoritInside.setBorder(null);
+                                    btnJedalnyListokVytvoritInside.setkStartColor(new Color(255, 161, 117));
+                                    btnJedalnyListokVytvoritInside.setkEndColor(new Color(224, 31, 23));
+                                    btnJedalnyListokVytvoritInside.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                    btnJedalnyListokVytvoritInside.setkHoverEndColor(new Color(73, 196, 174));
+                                    btnJedalnyListokVytvoritInside.setkHoverStartColor(new Color(52, 188, 183));
+                                    btnJedalnyListokVytvoritInside.setkHoverForeGround(Color.white);
+                                    btnJedalnyListokVytvoritInside.setBackground(Color.white);
+                                    btnJedalnyListokVytvoritInside.setBorderPainted(false);
+                                    btnJedalnyListokVytvoritInside.setMaximumSize(new Dimension(97, 24));
+                                    btnJedalnyListokVytvoritInside.setMinimumSize(new Dimension(97, 24));
+                                    btnJedalnyListokVytvoritInside.addActionListener(e -> btnJedalnyListokVytvoritInsideActionPerformed());
+                                    panelJedalnyListokInside.add(btnJedalnyListokVytvoritInside, "cell 0 1,wmax 100,hmax 30,gapx 125");
+
+                                    //---- btnJedalnyListokVytvoritInside2 ----
+                                    btnJedalnyListokVytvoritInside2.setText("Vytvori\u0165");
+                                    btnJedalnyListokVytvoritInside2.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                    btnJedalnyListokVytvoritInside2.setBorder(null);
+                                    btnJedalnyListokVytvoritInside2.setkStartColor(new Color(73, 196, 174));
+                                    btnJedalnyListokVytvoritInside2.setkEndColor(new Color(140, 219, 145));
+                                    btnJedalnyListokVytvoritInside2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                    btnJedalnyListokVytvoritInside2.setkHoverEndColor(new Color(73, 196, 174));
+                                    btnJedalnyListokVytvoritInside2.setkHoverStartColor(new Color(52, 188, 183));
+                                    btnJedalnyListokVytvoritInside2.setkHoverForeGround(Color.white);
+                                    btnJedalnyListokVytvoritInside2.setBackground(Color.white);
+                                    btnJedalnyListokVytvoritInside2.setBorderPainted(false);
+                                    btnJedalnyListokVytvoritInside2.setMaximumSize(new Dimension(97, 24));
+                                    btnJedalnyListokVytvoritInside2.setMinimumSize(new Dimension(97, 24));
+                                    panelJedalnyListokInside.add(btnJedalnyListokVytvoritInside2, "pad 0,cell 0 1,aligny center,growy 0,wmax 100,hmax 30,gapx null 125");
+                                }
+                                panelJedalnyListokVytvorit.add(panelJedalnyListokInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                    GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+                                    new Insets(0, 0, 0, 0), 0, 0));
+                            }
+                            panelJedalnyListok.add(panelJedalnyListokVytvorit, "vytvorit");
+                        }
+                        panelContent.add(panelJedalnyListok, "jedalnyListok");
 
                         //======== panelObjednavky ========
                         {
@@ -982,571 +1852,6 @@ public class AdministratorInterface extends JFrame {
                             panelTransakcie.setLayout(new GridBagLayout());
                         }
                         panelContent.add(panelTransakcie, "transakcie");
-
-                        //======== panelJedalnyListok ========
-                        {
-                            panelJedalnyListok.setBackground(new Color(55, 55, 55));
-                            panelJedalnyListok.setLayout(new CardLayout());
-
-                            //======== panelJedalnyListokRanajky ========
-                            {
-                                panelJedalnyListokRanajky.setkEndColor(Color.white);
-                                panelJedalnyListokRanajky.setkStartColor(Color.white);
-                                panelJedalnyListokRanajky.setkBorderRadius(0);
-                                panelJedalnyListokRanajky.setkGradientFocus(600);
-                                panelJedalnyListokRanajky.setBorder(null);
-                                panelJedalnyListokRanajky.setBackground(Color.white);
-                                panelJedalnyListokRanajky.setkFillBackground(false);
-                                panelJedalnyListokRanajky.setLayout(new GridBagLayout());
-                                ((GridBagLayout)panelJedalnyListokRanajky.getLayout()).rowHeights = new int[] {33, 6, 0, 6, 36};
-
-                                //---- label2 ----
-                                label2.setText("Vytvorte ranajkov\u00e9 menu");
-                                label2.setHorizontalAlignment(SwingConstants.CENTER);
-                                label2.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                panelJedalnyListokRanajky.add(label2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                    new Insets(0, 0, 0, 0), 0, 0));
-
-                                //======== panelJedalnyListokRanajkyInside ========
-                                {
-                                    panelJedalnyListokRanajkyInside.setkEndColor(Color.white);
-                                    panelJedalnyListokRanajkyInside.setkStartColor(Color.white);
-                                    panelJedalnyListokRanajkyInside.setBorder(null);
-                                    panelJedalnyListokRanajkyInside.setkBorderRadius(0);
-                                    panelJedalnyListokRanajkyInside.setBackground(new Color(255, 255, 255, 145));
-                                    panelJedalnyListokRanajkyInside.setLayout(new FormLayout(
-                                        "27px, 312px, 126px, 90px, 89px",
-                                        "fill:49px, 5*(fill:52px)"));
-
-                                    //---- label40 ----
-                                    label40.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokRanajkyInside.add(label40, CC.xy(1, 1));
-
-                                    //---- label3 ----
-                                    label3.setText("Ra\u0148ajky");
-                                    label3.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                    label3.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokRanajkyInside.add(label3, CC.xy(2, 1));
-
-                                    //---- label28 ----
-                                    label28.setText("N\u00e1poj");
-                                    label28.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                    label28.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label28.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokRanajkyInside.add(label28, CC.xy(3, 1));
-
-                                    //---- label29 ----
-                                    label29.setText("Kapacita");
-                                    label29.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                    label29.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label29.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    label29.setBackground(Color.white);
-                                    panelJedalnyListokRanajkyInside.add(label29, CC.xy(4, 1));
-
-                                    //---- label30 ----
-                                    label30.setText("Cena");
-                                    label30.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                    label30.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label30.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokRanajkyInside.add(label30, CC.xy(5, 1));
-
-                                    //---- label59 ----
-                                    label59.setText("1.");
-                                    label59.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label59.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label59.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokRanajkyInside.add(label59, CC.xy(1, 2));
-
-                                    //---- textField6 ----
-                                    textField6.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField6.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField6.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField6, CC.xy(2, 2));
-
-                                    //---- comboBox2 ----
-                                    comboBox2.setBorder(null);
-                                    comboBox2.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "Cola",
-                                        "Min. voda",
-                                        "\u010caj",
-                                        "D\u017e\u00fas"
-                                    }));
-                                    comboBox2.setBackground(Color.lightGray);
-                                    comboBox2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox2.setSelectedIndex(-1);
-                                    panelJedalnyListokRanajkyInside.add(comboBox2, new CellConstraints(3, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
-
-                                    //---- textField17 ----
-                                    textField17.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField17.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField17.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField17, CC.xy(4, 2));
-
-                                    //---- textField18 ----
-                                    textField18.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
-                                    textField18.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField18.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField18, CC.xy(5, 2));
-
-                                    //---- label44 ----
-                                    label44.setText("2.");
-                                    label44.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label44.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label44.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokRanajkyInside.add(label44, CC.xy(1, 3));
-
-                                    //---- textField19 ----
-                                    textField19.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField19.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField19.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField19, CC.xy(2, 3));
-
-                                    //---- comboBox3 ----
-                                    comboBox3.setBorder(null);
-                                    comboBox3.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "Cola",
-                                        "Min. voda",
-                                        "\u010caj",
-                                        "D\u017e\u00fas"
-                                    }));
-                                    comboBox3.setBackground(Color.lightGray);
-                                    comboBox3.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox3.setSelectedIndex(-1);
-                                    panelJedalnyListokRanajkyInside.add(comboBox3, new CellConstraints(3, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
-
-                                    //---- textField20 ----
-                                    textField20.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField20.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField20.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField20, CC.xy(4, 3));
-
-                                    //---- textField21 ----
-                                    textField21.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
-                                    textField21.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField21.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField21, CC.xy(5, 3));
-
-                                    //---- label73 ----
-                                    label73.setText("3.");
-                                    label73.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label73.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label73.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokRanajkyInside.add(label73, CC.xy(1, 4));
-
-                                    //---- textField22 ----
-                                    textField22.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField22.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField22.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField22, CC.xy(2, 4));
-
-                                    //---- comboBox4 ----
-                                    comboBox4.setBorder(null);
-                                    comboBox4.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "Cola",
-                                        "Min. voda",
-                                        "\u010caj",
-                                        "D\u017e\u00fas"
-                                    }));
-                                    comboBox4.setBackground(Color.lightGray);
-                                    comboBox4.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox4.setSelectedIndex(-1);
-                                    panelJedalnyListokRanajkyInside.add(comboBox4, new CellConstraints(3, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
-
-                                    //---- textField23 ----
-                                    textField23.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField23.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField23.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField23, CC.xy(4, 4));
-
-                                    //---- textField24 ----
-                                    textField24.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
-                                    textField24.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField24.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField24, CC.xy(5, 4));
-
-                                    //---- label78 ----
-                                    label78.setText("4.");
-                                    label78.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label78.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label78.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokRanajkyInside.add(label78, CC.xy(1, 5));
-
-                                    //---- textField25 ----
-                                    textField25.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField25.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField25.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField25, CC.xy(2, 5));
-
-                                    //---- comboBox5 ----
-                                    comboBox5.setBorder(null);
-                                    comboBox5.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "Cola",
-                                        "Min. voda",
-                                        "\u010caj",
-                                        "D\u017e\u00fas"
-                                    }));
-                                    comboBox5.setBackground(Color.lightGray);
-                                    comboBox5.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox5.setSelectedIndex(-1);
-                                    panelJedalnyListokRanajkyInside.add(comboBox5, new CellConstraints(3, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
-
-                                    //---- textField26 ----
-                                    textField26.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField26.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField26.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField26, CC.xy(4, 5));
-
-                                    //---- textField27 ----
-                                    textField27.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
-                                    textField27.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField27.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField27, CC.xy(5, 5));
-
-                                    //---- label83 ----
-                                    label83.setText("5.");
-                                    label83.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label83.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label83.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokRanajkyInside.add(label83, CC.xy(1, 6));
-
-                                    //---- textField28 ----
-                                    textField28.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField28.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField28.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField28, CC.xy(2, 6));
-
-                                    //---- comboBox6 ----
-                                    comboBox6.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-                                    comboBox6.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "Cola",
-                                        "Min. voda",
-                                        "\u010caj",
-                                        "D\u017e\u00fas"
-                                    }));
-                                    comboBox6.setBackground(Color.lightGray);
-                                    comboBox6.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox6.setSelectedIndex(-1);
-                                    panelJedalnyListokRanajkyInside.add(comboBox6, new CellConstraints(3, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
-
-                                    //---- textField29 ----
-                                    textField29.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField29.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField29.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField29, CC.xy(4, 6));
-
-                                    //---- textField30 ----
-                                    textField30.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
-                                    textField30.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField30.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokRanajkyInside.add(textField30, CC.xy(5, 6));
-                                }
-                                panelJedalnyListokRanajky.add(panelJedalnyListokRanajkyInside, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
-                                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                    new Insets(0, 0, 0, 0), 0, 0));
-
-                                //---- kButton3 ----
-                                kButton3.setText("Pokra\u010dova\u0165");
-                                kButton3.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                kButton3.setBorder(null);
-                                kButton3.setkStartColor(new Color(73, 196, 174));
-                                kButton3.setkEndColor(new Color(140, 219, 145));
-                                kButton3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                                kButton3.setkHoverEndColor(new Color(73, 196, 174));
-                                kButton3.setkHoverStartColor(new Color(52, 188, 183));
-                                kButton3.setkHoverForeGround(Color.white);
-                                kButton3.setBackground(Color.white);
-                                kButton3.setBorderPainted(false);
-                                panelJedalnyListokRanajky.add(kButton3, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
-                                    GridBagConstraints.SOUTHEAST, GridBagConstraints.NONE,
-                                    new Insets(0, 0, 0, 0), -50, -15));
-                            }
-                            panelJedalnyListok.add(panelJedalnyListokRanajky, "ranajky");
-
-                            //======== panelJedalnyListokObed ========
-                            {
-                                panelJedalnyListokObed.setkBorderRadius(0);
-                                panelJedalnyListokObed.setkEndColor(Color.white);
-                                panelJedalnyListokObed.setkStartColor(Color.white);
-                                panelJedalnyListokObed.setLayout(new GridBagLayout());
-
-                                //======== panelJedalnyListokObedInside ========
-                                {
-                                    panelJedalnyListokObedInside.setkEndColor(Color.white);
-                                    panelJedalnyListokObedInside.setkStartColor(Color.white);
-                                    panelJedalnyListokObedInside.setBorder(null);
-                                    panelJedalnyListokObedInside.setkBorderRadius(0);
-                                    panelJedalnyListokObedInside.setBackground(new Color(255, 255, 255, 145));
-                                    panelJedalnyListokObedInside.setLayout(new FormLayout(
-                                        "27px, 312px, 126px, 90px, 89px",
-                                        "fill:49px, 5*(fill:52px), $lgap, 11dlu"));
-
-                                    //---- label41 ----
-                                    label41.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokObedInside.add(label41, CC.xy(1, 1));
-
-                                    //---- label5 ----
-                                    label5.setText("Obed");
-                                    label5.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                    label5.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokObedInside.add(label5, CC.xy(2, 1));
-
-                                    //---- label37 ----
-                                    label37.setText("Takeaway");
-                                    label37.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                    label37.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label37.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokObedInside.add(label37, CC.xy(3, 1));
-
-                                    //---- label53 ----
-                                    label53.setText("Kapacita");
-                                    label53.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                    label53.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label53.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    label53.setBackground(Color.white);
-                                    panelJedalnyListokObedInside.add(label53, CC.xy(4, 1));
-
-                                    //---- label64 ----
-                                    label64.setText("Cena");
-                                    label64.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                    label64.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label64.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokObedInside.add(label64, CC.xy(5, 1));
-
-                                    //---- label69 ----
-                                    label69.setText("1.");
-                                    label69.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label69.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label69.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokObedInside.add(label69, CC.xy(1, 2));
-
-                                    //---- textField7 ----
-                                    textField7.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField7.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField7.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField7, CC.xy(2, 2));
-
-                                    //---- comboBox7 ----
-                                    comboBox7.setBorder(null);
-                                    comboBox7.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "\u00c1no",
-                                        "Nie"
-                                    }));
-                                    comboBox7.setBackground(Color.lightGray);
-                                    comboBox7.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox7.setSelectedIndex(-1);
-                                    panelJedalnyListokObedInside.add(comboBox7, new CellConstraints(3, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
-
-                                    //---- textField31 ----
-                                    textField31.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField31.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField31.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField31, CC.xy(4, 2));
-
-                                    //---- textField32 ----
-                                    textField32.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
-                                    textField32.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField32.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField32, CC.xy(5, 2));
-
-                                    //---- label71 ----
-                                    label71.setText("2.");
-                                    label71.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label71.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label71.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokObedInside.add(label71, CC.xy(1, 3));
-
-                                    //---- textField33 ----
-                                    textField33.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField33.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField33.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField33, CC.xy(2, 3));
-
-                                    //---- comboBox8 ----
-                                    comboBox8.setBorder(null);
-                                    comboBox8.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "\u00c1no",
-                                        "Nie"
-                                    }));
-                                    comboBox8.setBackground(Color.lightGray);
-                                    comboBox8.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox8.setSelectedIndex(-1);
-                                    panelJedalnyListokObedInside.add(comboBox8, new CellConstraints(3, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
-
-                                    //---- textField34 ----
-                                    textField34.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField34.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField34.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField34, CC.xy(4, 3));
-
-                                    //---- textField35 ----
-                                    textField35.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
-                                    textField35.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField35.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField35, CC.xy(5, 3));
-
-                                    //---- label74 ----
-                                    label74.setText("3.");
-                                    label74.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label74.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label74.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokObedInside.add(label74, CC.xy(1, 4));
-
-                                    //---- textField36 ----
-                                    textField36.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField36.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField36.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField36, CC.xy(2, 4));
-
-                                    //---- comboBox9 ----
-                                    comboBox9.setBorder(null);
-                                    comboBox9.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "\u00c1no",
-                                        "Nie"
-                                    }));
-                                    comboBox9.setBackground(Color.lightGray);
-                                    comboBox9.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox9.setSelectedIndex(-1);
-                                    panelJedalnyListokObedInside.add(comboBox9, new CellConstraints(3, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
-
-                                    //---- textField37 ----
-                                    textField37.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField37.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField37.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField37, CC.xy(4, 4));
-
-                                    //---- textField38 ----
-                                    textField38.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
-                                    textField38.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField38.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField38, CC.xy(5, 4));
-
-                                    //---- label79 ----
-                                    label79.setText("4.");
-                                    label79.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label79.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label79.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokObedInside.add(label79, CC.xy(1, 5));
-
-                                    //---- textField39 ----
-                                    textField39.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField39.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField39.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField39, CC.xy(2, 5));
-
-                                    //---- comboBox10 ----
-                                    comboBox10.setBorder(null);
-                                    comboBox10.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "\u00c1no",
-                                        "Nie"
-                                    }));
-                                    comboBox10.setBackground(Color.lightGray);
-                                    comboBox10.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox10.setSelectedIndex(-1);
-                                    panelJedalnyListokObedInside.add(comboBox10, new CellConstraints(3, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
-
-                                    //---- textField40 ----
-                                    textField40.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField40.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField40.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField40, CC.xy(4, 5));
-
-                                    //---- textField41 ----
-                                    textField41.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
-                                    textField41.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField41.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField41, CC.xy(5, 5));
-
-                                    //---- label84 ----
-                                    label84.setText("5.");
-                                    label84.setHorizontalAlignment(SwingConstants.CENTER);
-                                    label84.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label84.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                    panelJedalnyListokObedInside.add(label84, CC.xy(1, 6));
-
-                                    //---- textField42 ----
-                                    textField42.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField42.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField42.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField42, CC.xy(2, 6));
-
-                                    //---- comboBox11 ----
-                                    comboBox11.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-                                    comboBox11.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "\u00c1no",
-                                        "Nie"
-                                    }));
-                                    comboBox11.setBackground(Color.lightGray);
-                                    comboBox11.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox11.setSelectedIndex(-1);
-                                    panelJedalnyListokObedInside.add(comboBox11, new CellConstraints(3, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
-
-                                    //---- textField43 ----
-                                    textField43.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
-                                    textField43.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField43.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField43, CC.xy(4, 6));
-
-                                    //---- textField44 ----
-                                    textField44.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
-                                    textField44.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                    textField44.setHorizontalAlignment(SwingConstants.CENTER);
-                                    panelJedalnyListokObedInside.add(textField44, CC.xy(5, 6));
-                                    panelJedalnyListokObedInside.add(label89, CC.xy(1, 8));
-                                }
-                                panelJedalnyListokObed.add(panelJedalnyListokObedInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                    new Insets(0, 0, 0, 0), 0, 0));
-                            }
-                            panelJedalnyListok.add(panelJedalnyListokObed, "obed");
-
-                            //======== panelJedalnyListokVytvorit ========
-                            {
-                                panelJedalnyListokVytvorit.setkEndColor(Color.white);
-                                panelJedalnyListokVytvorit.setkStartColor(Color.white);
-                                panelJedalnyListokVytvorit.setLayout(new GridBagLayout());
-
-                                //======== panelJedalnyListokInside ========
-                                {
-                                    panelJedalnyListokInside.setkStartColor(Color.white);
-                                    panelJedalnyListokInside.setkEndColor(Color.white);
-                                    panelJedalnyListokInside.setBorder(new MatteBorder(1, 1, 1, 1, Color.lightGray));
-                                    panelJedalnyListokInside.setkBorderRadius(0);
-                                    panelJedalnyListokInside.setLayout(new FormLayout(
-                                        "[388px,pref]",
-                                        "fill:[58px,pref], fill:[55px,pref]"));
-
-                                    //---- labelJedalnyListokVytvoritInisde ----
-                                    labelJedalnyListokVytvoritInisde.setText("Vytvori\u0165 nov\u00fd jed\u00e1lny l\u00edstok");
-                                    labelJedalnyListokVytvoritInisde.setHorizontalAlignment(SwingConstants.CENTER);
-                                    labelJedalnyListokVytvoritInisde.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
-                                    panelJedalnyListokInside.add(labelJedalnyListokVytvoritInisde, CC.xy(1, 1));
-
-                                    //---- btnJedalnyListokVytvoritInside ----
-                                    btnJedalnyListokVytvoritInside.setText("Vytvori\u0165");
-                                    btnJedalnyListokVytvoritInside.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                    btnJedalnyListokVytvoritInside.setBorder(null);
-                                    btnJedalnyListokVytvoritInside.setkStartColor(new Color(73, 196, 174));
-                                    btnJedalnyListokVytvoritInside.setkEndColor(new Color(140, 219, 145));
-                                    btnJedalnyListokVytvoritInside.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                                    btnJedalnyListokVytvoritInside.setkHoverEndColor(new Color(73, 196, 174));
-                                    btnJedalnyListokVytvoritInside.setkHoverStartColor(new Color(52, 188, 183));
-                                    btnJedalnyListokVytvoritInside.setkHoverForeGround(Color.white);
-                                    btnJedalnyListokVytvoritInside.setBackground(Color.white);
-                                    btnJedalnyListokVytvoritInside.setBorderPainted(false);
-                                    btnJedalnyListokVytvoritInside.setMaximumSize(new Dimension(97, 24));
-                                    btnJedalnyListokVytvoritInside.setMinimumSize(new Dimension(97, 24));
-                                    panelJedalnyListokInside.add(btnJedalnyListokVytvoritInside, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 145, 15, 145)));
-                                }
-                                panelJedalnyListokVytvorit.add(panelJedalnyListokInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                    new Insets(0, 0, 0, 0), 0, 0));
-                            }
-                            panelJedalnyListok.add(panelJedalnyListokVytvorit, "vytvorit");
-                        }
-                        panelContent.add(panelJedalnyListok, "jedalnyListok");
                     }
                     splitPane2.setBottomComponent(panelContent);
                 }
@@ -1585,7 +1890,7 @@ public class AdministratorInterface extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
+    // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
     private JSplitPane splitPane1;
     private KGradientPanel panelMenu;
     private JLabel labelIcon;
@@ -1602,6 +1907,83 @@ public class AdministratorInterface extends JFrame {
     private JLabel labelX;
     private JLabel label4;
     private KGradientPanel panelContent;
+    private KGradientPanel panelJedalnyListok;
+    private KGradientPanel panelJedalnyListokRanajky;
+    private JLabel label2;
+    private KGradientPanel panelJedalnyListokRanajkyInside;
+    private JLabel label40;
+    private JLabel label3;
+    private JLabel label28;
+    private JLabel label29;
+    private JLabel label30;
+    private JLabel label59;
+    private JTextField textField6;
+    private JComboBox<String> comboBox2;
+    private JTextField frmterJedLisRanakKapacita1;
+    private JTextField frmterJedLisRanakCena1;
+    private JLabel label44;
+    private JTextField textField19;
+    private JComboBox<String> comboBox3;
+    private JTextField frmterJedLisRanakKapacita2;
+    private JTextField frmterJedLisRanakCena2;
+    private JLabel label73;
+    private JTextField textField22;
+    private JComboBox<String> comboBox4;
+    private JTextField frmterJedLisRanakKapacita3;
+    private JTextField frmterJedLisRanakCena3;
+    private JLabel label78;
+    private JTextField textField25;
+    private JComboBox<String> comboBox5;
+    private JTextField frmterJedLisRanakKapacita4;
+    private JTextField frmterJedLisRanakCena4;
+    private JLabel label83;
+    private JTextField textField28;
+    private JComboBox<String> comboBox6;
+    private JTextField frmterJedLisRanakKapacita5;
+    private JTextField frmterJedLisRanakCena5;
+    private JLabel label6;
+    private KButton kButton4;
+    private KGradientPanel panelJedalnyListokObed;
+    private JLabel label7;
+    private KGradientPanel panelJedalnyListokObedInside;
+    private JLabel label72;
+    private JLabel label10;
+    private JLabel label75;
+    private JLabel label76;
+    private JLabel label77;
+    private JLabel label80;
+    private JTextField textField8;
+    private JComboBox<String> comboBox12;
+    private JTextField textField45;
+    private JTextField textField46;
+    private JLabel label81;
+    private JTextField textField47;
+    private JComboBox<String> comboBox13;
+    private JTextField textField48;
+    private JTextField textField49;
+    private JLabel label82;
+    private JTextField textField50;
+    private JComboBox<String> comboBox14;
+    private JTextField textField51;
+    private JTextField textField52;
+    private JLabel label85;
+    private JTextField textField53;
+    private JComboBox<String> comboBox15;
+    private JTextField textField54;
+    private JTextField textField55;
+    private JLabel label86;
+    private JTextField textField56;
+    private JComboBox<String> comboBox16;
+    private JTextField textField57;
+    private JTextField textField58;
+    private KButton btnJedalnyListokSpatObed;
+    private JLabel label26;
+    private KButton btnJedalnyListokPokracovatObed;
+    private KGradientPanel panelJedalnyListokVytvorit;
+    private KGradientPanel panelJedalnyListokInside;
+    private JLabel labelJedalnyListokVytvoritInisde;
+    private KButton btnJedalnyListokVytvoritInside;
+    private KButton btnJedalnyListokVytvoritInside2;
     private KGradientPanel panelObjednavky;
     private JSplitPane splitPane3;
     private KGradientPanel panelMenuObjednavky;
@@ -1663,77 +2045,5 @@ public class AdministratorInterface extends JFrame {
     private JLabel label68;
     private JLabel label70;
     private KGradientPanel panelTransakcie;
-    private KGradientPanel panelJedalnyListok;
-    private KGradientPanel panelJedalnyListokRanajky;
-    private JLabel label2;
-    private KGradientPanel panelJedalnyListokRanajkyInside;
-    private JLabel label40;
-    private JLabel label3;
-    private JLabel label28;
-    private JLabel label29;
-    private JLabel label30;
-    private JLabel label59;
-    private JTextField textField6;
-    private JComboBox<String> comboBox2;
-    private JTextField textField17;
-    private JTextField textField18;
-    private JLabel label44;
-    private JTextField textField19;
-    private JComboBox<String> comboBox3;
-    private JTextField textField20;
-    private JTextField textField21;
-    private JLabel label73;
-    private JTextField textField22;
-    private JComboBox<String> comboBox4;
-    private JTextField textField23;
-    private JTextField textField24;
-    private JLabel label78;
-    private JTextField textField25;
-    private JComboBox<String> comboBox5;
-    private JTextField textField26;
-    private JTextField textField27;
-    private JLabel label83;
-    private JTextField textField28;
-    private JComboBox<String> comboBox6;
-    private JTextField textField29;
-    private JTextField textField30;
-    private KButton kButton3;
-    private KGradientPanel panelJedalnyListokObed;
-    private KGradientPanel panelJedalnyListokObedInside;
-    private JLabel label41;
-    private JLabel label5;
-    private JLabel label37;
-    private JLabel label53;
-    private JLabel label64;
-    private JLabel label69;
-    private JTextField textField7;
-    private JComboBox<String> comboBox7;
-    private JTextField textField31;
-    private JTextField textField32;
-    private JLabel label71;
-    private JTextField textField33;
-    private JComboBox<String> comboBox8;
-    private JTextField textField34;
-    private JTextField textField35;
-    private JLabel label74;
-    private JTextField textField36;
-    private JComboBox<String> comboBox9;
-    private JTextField textField37;
-    private JTextField textField38;
-    private JLabel label79;
-    private JTextField textField39;
-    private JComboBox<String> comboBox10;
-    private JTextField textField40;
-    private JTextField textField41;
-    private JLabel label84;
-    private JTextField textField42;
-    private JComboBox<String> comboBox11;
-    private JTextField textField43;
-    private JTextField textField44;
-    private JLabel label89;
-    private KGradientPanel panelJedalnyListokVytvorit;
-    private KGradientPanel panelJedalnyListokInside;
-    private JLabel labelJedalnyListokVytvoritInisde;
-    private KButton btnJedalnyListokVytvoritInside;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
