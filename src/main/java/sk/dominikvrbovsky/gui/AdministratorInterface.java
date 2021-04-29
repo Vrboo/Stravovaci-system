@@ -327,12 +327,12 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-                .border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder
-                .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
-                awt.Font.BOLD,12),java.awt.Color.red),panelMenu. getBorder()))
-                ;panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-                ){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
+                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
+                . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder
+                . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .
+                awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panelMenu. getBorder () ) )
+                ; panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+                ) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
                 ;
 
                 //---- labelIcon ----
@@ -906,6 +906,12 @@ public class AdministratorInterface extends JFrame {
                                     panelJedalnyListokRanajkyInside.add(frmterJedLisRanakCena5, CC.xy(5, 6));
                                 }
                                 panelJedalnyListokRanajky.add(panelJedalnyListokRanajkyInside, "cell 0 1");
+
+                                //---- label6 ----
+                                label6.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                label6.setForeground(Color.red);
+                                label6.setHorizontalAlignment(SwingConstants.CENTER);
+                                label6.setText("Vypl\u0148te v\u0161etky polo\u017eky, pros\u00edm");
                                 panelJedalnyListokRanajky.add(label6, "cell 0 2");
 
                                 //---- kButton4 ----
@@ -1864,7 +1870,7 @@ public class AdministratorInterface extends JFrame {
                 );
                 panelRightSideLayout.setVerticalGroup(
                     panelRightSideLayout.createParallelGroup()
-                        .addComponent(splitPane2)
+                        .addComponent(splitPane2, GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
                 );
             }
             splitPane1.setRightComponent(panelRightSide);

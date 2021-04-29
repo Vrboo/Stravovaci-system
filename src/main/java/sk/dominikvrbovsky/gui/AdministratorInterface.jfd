@@ -114,7 +114,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {comp splitPane2::l::0:x}"
-					"$verticalGroup": "par l {comp splitPane2::l:::x}"
+					"$verticalGroup": "par l {comp splitPane2::l::600:x}"
 				} ) {
 					name: "panelRightSide"
 					"kEndColor": new java.awt.Color( 192, 248, 213, 255 )
@@ -527,6 +527,10 @@ new FormModel {
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
 										name: "label6"
+										"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
+										"foreground": sfield java.awt.Color red
+										"horizontalAlignment": 0
+										"text": "Vyplňte všetky položky, prosím"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 0 2"
 									} )
