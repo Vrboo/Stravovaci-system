@@ -18,7 +18,10 @@ import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
 import keeptoo.*;
 import net.miginfocom.swing.*;
+import sk.dominikvrbovsky.Breakfast;
 import sk.dominikvrbovsky.User;
+import sk.dominikvrbovsky.dao.impl.MealDao;
+import sk.dominikvrbovsky.enums.Drink;
 import sk.dominikvrbovsky.utilities.DateUtilities;
 
 /**
@@ -115,16 +118,17 @@ public class AdministratorInterface extends JFrame {
     }
 
     private void kButton4ActionPerformed() {
-        Component[][] components = createCompomentArray(panelJedalnyListokRanajkyInside.getComponents());
-        for (int i = 0; i < components.length; i++) {
-            for (int j = 0; j < components[i].length; j++ ) {
-                if (j != 1) {
-                    System.out.println(((JTextField)components[i][j]).getText());
-                } else {
-                    System.out.println(((JComboBox<String>)components[i][j]).getSelectedItem());
-                }
-            }
-        }
+//        Component[][] components = createCompomentArray(panelJedalnyListokRanajkyInside.getComponents());
+//        MealDao mealDao = new MealDao(entityManager);
+//        for (int i = 0; i < components.length; i++) {
+//            String name = ((JTextField)components[i][0]).getText();
+//            String drink = (String)((JComboBox<String>)components[i][1]).getSelectedItem();
+//            String capacity = ((JTextField)components[i][2]).getText();
+//            String price = ((JTextField)components[i][3]).getText();
+//            mealDao.save(new Breakfast(name, Double.parseDouble(price), Integer.parseInt(capacity),Drink.getEnumFromString(drink)));
+//        }
+
+        cardLayoutJedalnyListok.show(panelJedalnyListok, "obed");
     }
 
     private Component[][] createCompomentArray(Component[] c) {
