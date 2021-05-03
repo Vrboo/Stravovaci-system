@@ -15,6 +15,15 @@ public class Lunch extends Meal{
     public Lunch() {
     }
 
+    public Lunch(String name, double price, int capacity, String takeaway) {
+        super(name, price, capacity);
+        if (takeaway.equals("Áno")) {
+            this.takeaway = true;
+        } else if (takeaway.equals("Nie")) {
+            this.takeaway = false;
+        }
+    }
+
     public boolean isTakeaway() {
         return takeaway;
     }

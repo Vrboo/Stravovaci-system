@@ -5,6 +5,8 @@ import sk.dominikvrbovsky.User;
 import sk.dominikvrbovsky.dao.Dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
@@ -45,6 +47,22 @@ public class MealDao implements Dao<Meal> {
     @Override
     public void delete(Meal entity) {
         executeInsideTransaction(entityManager1 -> entityManager1.remove(entity));
+    }
+
+    public void saveAll(List<Meal> entities) {
+        try {
+            entityManager.getTransaction().begin();
+            entities.forEach(entityManager::persist);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+    }
+
+    public List<Meal> getAll() {
+        Query query = entityManager.createQuery("FROM meal", Meal.class);
+        return query.getResultList();
     }
 
     private void executeInsideTransaction(Consumer<EntityManager> consumer) {

@@ -22,6 +22,11 @@ public class Breakfast extends Meal {
     public Breakfast() {
     }
 
+    public Breakfast(String name, double price, int capacity, String drink) {
+        super(name, price, capacity);
+        this.drink = Drink.getEnumFromString(drink);
+    }
+
     public Drink getDrink() {
         return drink;
     }
