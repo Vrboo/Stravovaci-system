@@ -341,7 +341,7 @@ public class UserInterface extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
+        // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
         splitPane1 = new JSplitPane();
         panelMenu = new KGradientPanel();
         labelIcon = new JLabel();
@@ -612,12 +612,13 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
-                .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax
-                . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,
-                12 ) ,java . awt. Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans
-                .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e.
-                getPropertyName () ) )throw new RuntimeException( ) ;} } );
+                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
+                swing.border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border
+                .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg"
+                ,java.awt.Font.BOLD,12),java.awt.Color.red),panelMenu. getBorder
+                ()));panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
+                .beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException
+                ();}});
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -796,7 +797,7 @@ public class UserInterface extends JFrame {
                             .addComponent(btnZmenitHeslo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(btnOdhlasitSa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                             .addComponent(btnAdmin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addGap(17, 17, 17))
                 );
@@ -868,8 +869,8 @@ public class UserInterface extends JFrame {
                                 .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
                                     .addGap(32, 32, 32)
                                     .addGroup(panelStravovaciSystemLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                        .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 352, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 352, GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(panelStravovaciSystemLayout.createParallelGroup()
                                         .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
@@ -890,8 +891,8 @@ public class UserInterface extends JFrame {
                                         .addComponent(labelStravovaciSystem)
                                         .addComponent(label4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(38, 38, 38))
+                                    .addComponent(labelDatum)
+                                    .addGap(32, 32, 32))
                         );
                     }
                     splitPane2.setTopComponent(panelStravovaciSystem);
@@ -1602,7 +1603,7 @@ public class UserInterface extends JFrame {
                             );
                             panelObjednatLayout.setVerticalGroup(
                                 panelObjednatLayout.createParallelGroup()
-                                    .addComponent(splitPane3, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                                    .addComponent(splitPane3, GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                             );
                         }
                         panelContent.add(panelObjednat, "objednat");
@@ -2499,7 +2500,7 @@ public class UserInterface extends JFrame {
                             );
                             panelBurzaLayout.setVerticalGroup(
                                 panelBurzaLayout.createParallelGroup()
-                                    .addComponent(splitPane4, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                                    .addComponent(splitPane4, GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                             );
                         }
                         panelContent.add(panelBurza, "burza");
@@ -2757,7 +2758,7 @@ public class UserInterface extends JFrame {
                                         );
                                         panelHistoriaTransLayout.setVerticalGroup(
                                             panelHistoriaTransLayout.createParallelGroup()
-                                                .addGap(0, 363, Short.MAX_VALUE)
+                                                .addGap(0, 355, Short.MAX_VALUE)
                                         );
                                     }
                                     panelContentUcet.add(panelHistoriaTrans, "historiaTrans");
@@ -2840,7 +2841,7 @@ public class UserInterface extends JFrame {
                             );
                             panelUcetLayout.setVerticalGroup(
                                 panelUcetLayout.createParallelGroup()
-                                    .addComponent(splitPane5, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                                    .addComponent(splitPane5, GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                             );
                         }
                         panelContent.add(panelUcet, "ucet");
@@ -3063,7 +3064,7 @@ public class UserInterface extends JFrame {
                 );
                 panelRightSideLayout.setVerticalGroup(
                     panelRightSideLayout.createParallelGroup()
-                        .addComponent(splitPane2)
+                        .addComponent(splitPane2, GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
                 );
             }
             splitPane1.setRightComponent(panelRightSide);
@@ -3077,7 +3078,7 @@ public class UserInterface extends JFrame {
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
-                .addComponent(splitPane1)
+                .addComponent(splitPane1, GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         );
         pack();
         setLocationRelativeTo(null);
@@ -3085,7 +3086,7 @@ public class UserInterface extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
+    // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
     private JSplitPane splitPane1;
     private KGradientPanel panelMenu;
     private JLabel labelIcon;
