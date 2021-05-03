@@ -1,10 +1,14 @@
 package sk.dominikvrbovsky.dao.impl;
 
+import sk.dominikvrbovsky.Breakfast;
+import sk.dominikvrbovsky.Lunch;
 import sk.dominikvrbovsky.Meal;
 import sk.dominikvrbovsky.User;
 import sk.dominikvrbovsky.dao.Dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
@@ -61,7 +65,25 @@ public class MealDao implements Dao<Meal> {
     }
 
     public List<Meal> getAll() {
-        Query query = entityManager.createQuery("FROM meal", Meal.class);
+        Query query = entityManager.createQuery("FROM Meal", Meal.class);
+        return query.getResultList();
+    }
+
+//    public static void main(String[] args) {
+//        EntityManagerFactory entityManagerFactory =
+//                Persistence.createEntityManagerFactory("sk.dominikvrbovsky.stravovaci-system");
+//        EntityManager entityManager = entityManagerFactory.createEntityManager();
+//        MealDao mealDao = new MealDao(entityManager);
+//        mealDao.getAll();
+//    }
+
+    public List<Breakfast> getAllBreakfast() {
+        Query query = entityManager.createQuery("FROM Breakfast", Breakfast.class);
+        return query.getResultList();
+    }
+
+    public List<Lunch> getAllLunch() {
+        Query query = entityManager.createQuery("FROM Lunch", Lunch.class);
         return query.getResultList();
     }
 

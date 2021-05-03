@@ -99,9 +99,46 @@ public class AdministratorInterface extends JFrame {
     }
 
     private void btnObjednavkyActionPerformed() {
+        MealDao mealDao = new MealDao(entityManager);
+        List<Breakfast> breakfasts = mealDao.getAllBreakfast();
+        List<Lunch> lunches = mealDao.getAllLunch();
+        JLabel[][] labelsRanajky = getObjednavkyArray(panelTableRanajky.getComponents());
+        JLabel[][] labelsObed = getObjednavkyArray(panelTableObed.getComponents());
 
+        int index = 0;
+        for (Breakfast breakfast : breakfasts) {
+            labelsRanajky[index][0].setText(breakfast.getName());
+            labelsRanajky[index][1].setText(breakfast.getDrink().getDrink());
+            labelsRanajky[index][2].setText(breakfast.getNumberOfOrder() + "x");
+
+            index++;
+        }
+
+        index = 0;
+        for (Lunch lunch : lunches) {
+            labelsObed[index][0].setText(lunch.getName());
+            labelsObed[index][1].setText(lunch.isTakeaway() ? "Áno" : "Nie");
+            labelsObed[index][2].setText(lunch.getNumberOfOrder() + "x");
+
+            index++;
+        }
 
         cardLayout.show(panelContent, "objednavky");
+    }
+
+    private JLabel[][] getObjednavkyArray(Component[] labelsParam) {
+        JLabel[][] labels = new JLabel[5][3];
+        int index = 5;
+
+        for (int i = 0; i < labels.length; i++) {
+            for (int j = 0 ; j < labels[i].length; j++) {
+                labels[i][j] = (JLabel) labelsParam[index];
+                index++;
+                if (index % 4 == 0) index++;
+            }
+        }
+
+        return labels;
     }
 
     private void btnJedalnyListokActionPerformed() {
