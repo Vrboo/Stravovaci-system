@@ -520,6 +520,7 @@ new FormModel {
 													"kHoverForeGround": sfield java.awt.Color white
 													"background": #Color20
 													"borderPainted": false
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObjednatRanajky2ActionPerformed", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 3
@@ -588,6 +589,7 @@ new FormModel {
 													"kHoverForeGround": sfield java.awt.Color white
 													"background": #Color20
 													"borderPainted": false
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObjednatRanajky3ActionPerformed", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 4
@@ -604,7 +606,7 @@ new FormModel {
 													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "labelObjednatRanajkyNazov14"
+													name: "labelObjednatRanajkyNazov4"
 													"text": "Volské oko s kečup a chlebom"
 													"font": #Font4
 													"horizontalAlignment": 0
@@ -656,6 +658,7 @@ new FormModel {
 													"kHoverForeGround": sfield java.awt.Color white
 													"background": #Color20
 													"borderPainted": false
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObjednatRanajky4ActionPerformed", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 5
@@ -724,6 +727,7 @@ new FormModel {
 													"kHoverForeGround": sfield java.awt.Color white
 													"background": #Color20
 													"borderPainted": false
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObjednatRanajky5ActionPerformed", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 6
@@ -743,7 +747,7 @@ new FormModel {
 										} )
 										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 											"$columnSpecs": "0"
-											"$rowSpecs": "0"
+											"$rowSpecs": "0, 26"
 											"$hGap": 5
 											"$vGap": 5
 										} ) {
@@ -878,6 +882,7 @@ new FormModel {
 													"kHoverForeGround": sfield java.awt.Color white
 													"background": #Color20
 													"borderPainted": false
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObjednatObed1ActionPerformed", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 2
@@ -946,6 +951,7 @@ new FormModel {
 													"kHoverForeGround": sfield java.awt.Color white
 													"background": #Color20
 													"borderPainted": false
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObjednatObed2ActionPerformed", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 3
@@ -1014,6 +1020,7 @@ new FormModel {
 													"kHoverForeGround": sfield java.awt.Color white
 													"background": #Color20
 													"borderPainted": false
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObjednatObed3ActionPerformed", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 4
@@ -1082,6 +1089,7 @@ new FormModel {
 													"kHoverForeGround": sfield java.awt.Color white
 													"background": #Color20
 													"borderPainted": false
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObjednatObed4ActionPerformed", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 5
@@ -1150,6 +1158,7 @@ new FormModel {
 													"kHoverForeGround": sfield java.awt.Color white
 													"background": #Color20
 													"borderPainted": false
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObjednatObed5ActionPerformed", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 6
@@ -1162,6 +1171,14 @@ new FormModel {
 													"gridY": 8
 												} )
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+											add( new FormComponent( "javax.swing.JLabel" ) {
+												name: "labelObjednatObedWarning"
+												"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
+												"foreground": sfield java.awt.Color red
+												"horizontalAlignment": 0
+											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+												"gridy": 1
+											} )
 										}, new FormLayoutConstraints( class java.lang.String ) {
 											"value": "obed"
 										} )

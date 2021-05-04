@@ -34,10 +34,12 @@ public class UserInterface extends JFrame {
     private final CardLayout cardLayoutObjednat;
     private final CardLayout cardLayoutBurza;
     private final CardLayout cardLayoutUcet;
+    private final MealDao mealDao;
 
     public UserInterface(EntityManager entityManager, User user) {
         this.entityManager = entityManager;
         this.user = user;
+        this.mealDao = new MealDao(entityManager);
 
         this.setPreferredSize(new Dimension(1000, 600));
         
@@ -149,7 +151,6 @@ public class UserInterface extends JFrame {
     }
 
     private void btnObjednatActionPerformed() {
-        MealDao mealDao = new MealDao(entityManager);
         List<Breakfast> breakfasts = mealDao.getAllBreakfast();
         List<Lunch> lunches = mealDao.getAllLunch();
         JLabel[][] labelsRanajky = getObjednatArray(panelTableRanajky.getComponents());
@@ -374,19 +375,84 @@ public class UserInterface extends JFrame {
     
 
     private void btnObjednatRanajky1ActionPerformed(ActionEvent e) {
-        MealDao mealDao = new MealDao(entityManager);
-        String nameOfMeal = labelObjednatRanajkyNazov1.getText();
-        Optional<Meal> meal = mealDao.getFromName(nameOfMeal);
-
-        try {
-            meal.ifPresent(this.user::makeOrder);
-            labelObjednatRanajkyWarning.setText("Objednane");
-        } catch (RuntimeException e1) {
-            labelObjednatRanajkyWarning.setText(e1.getMessage());
-        }
-        labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
+        objednatRanajky(labelObjednatRanajkyNazov1.getText());
     }
 
+    private void btnObjednatRanajky2ActionPerformed(ActionEvent e) {
+        objednatRanajky(labelObjednatRanajkyNazov2.getText());
+    }
+    
+    private void objednatRanajky(String nameOfMeal) {
+
+        try {
+            Optional<Meal> meal = mealDao.getFromName(nameOfMeal);
+            this.user.makeOrder(meal.get());
+            labelObjednatRanajkyWarning.setText("Objednané");
+            labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
+            disableButtons(panelTableRanajky.getComponents());
+        } catch (Exception e1) {
+            labelObjednatRanajkyWarning.setForeground(Color.red);
+            labelObjednatRanajkyWarning.setText(e1.getMessage());
+        }
+        
+    }
+
+    private void objednatObed(String nameOfMeal) {
+
+        try {
+            Optional<Meal> meal = mealDao.getFromName(nameOfMeal);
+            this.user.makeOrder(meal.get());
+            labelObjednatObedWarning.setForeground(new Color(73, 196, 174));
+            labelObjednatObedWarning.setText("Objednané");
+            labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
+            disableButtons(panelTableObed.getComponents());
+        } catch (Exception e1) {
+            labelObjednatObedWarning.setForeground(Color.red);
+            labelObjednatObedWarning.setText(e1.getMessage());
+        }
+
+    }
+    
+    private void disableButtons(Component[] components) {
+        for (Component c : components) {
+            if (c instanceof JButton) {
+                c.setEnabled(false);
+                c.setForeground(Color.LIGHT_GRAY);
+            }
+        }
+    }
+
+    private void btnObjednatRanajky3ActionPerformed(ActionEvent e) {
+        objednatRanajky(labelObjednatRanajkyNazov3.getText());
+    }
+
+    private void btnObjednatRanajky4ActionPerformed(ActionEvent e) {
+        objednatRanajky(labelObjednatRanajkyNazov4.getText());
+    }
+
+    private void btnObjednatRanajky5ActionPerformed(ActionEvent e) {
+        objednatRanajky(labelObjednatRanajkyNazov5.getText());
+    }
+
+    private void btnObjednatObed1ActionPerformed(ActionEvent e) {
+        objednatObed(labelObjednatObedNazov1.getText());
+    }
+
+    private void btnObjednatObed2ActionPerformed(ActionEvent e) {
+        objednatObed(labelObjednatObedNazov2.getText());
+    }
+
+    private void btnObjednatObed3ActionPerformed(ActionEvent e) {
+        objednatObed(labelObjednatObedNazov3.getText());
+    }
+
+    private void btnObjednatObed4ActionPerformed(ActionEvent e) {
+        objednatObed(labelObjednatObedNazov4.getText());
+    }
+
+    private void btnObjednatObed5ActionPerformed(ActionEvent e) {
+        objednatObed(labelObjednatObedNazov5.getText());
+    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -444,7 +510,7 @@ public class UserInterface extends JFrame {
         labelObjednatRanajkyCena3 = new JLabel();
         btnObjednatRanajky3 = new KButton();
         label34 = new JLabel();
-        labelObjednatRanajkyNazov14 = new JLabel();
+        labelObjednatRanajkyNazov4 = new JLabel();
         labelObjednatRanajkyNapoj4 = new JLabel();
         labelObjednatRanajkyKapacita4 = new JLabel();
         labelObjednatRanajkyCena4 = new JLabel();
@@ -495,6 +561,7 @@ public class UserInterface extends JFrame {
         labelObjednatObedCena5 = new JLabel();
         btnObjednatObed5 = new KButton();
         label70 = new JLabel();
+        labelObjednatObedWarning = new JLabel();
         panelMojeObjednavky = new KGradientPanel();
         panelTableMojeObjRanajky = new KGradientPanel();
         label71 = new JLabel();
@@ -662,14 +729,12 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-                new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion"
-                , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-                , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 )
-                , java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (
-                new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-                ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
-                ; }} );
+                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+                ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+                .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
+                . Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+                propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+                ;} } );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1182,6 +1247,7 @@ public class UserInterface extends JFrame {
                                             btnObjednatRanajky2.setkHoverForeGround(Color.white);
                                             btnObjednatRanajky2.setBackground(Color.white);
                                             btnObjednatRanajky2.setBorderPainted(false);
+                                            btnObjednatRanajky2.addActionListener(e -> btnObjednatRanajky2ActionPerformed(e));
                                             panelTableRanajky.add(btnObjednatRanajky2, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label33 ----
@@ -1231,6 +1297,7 @@ public class UserInterface extends JFrame {
                                             btnObjednatRanajky3.setkHoverForeGround(Color.white);
                                             btnObjednatRanajky3.setBackground(Color.white);
                                             btnObjednatRanajky3.setBorderPainted(false);
+                                            btnObjednatRanajky3.addActionListener(e -> btnObjednatRanajky3ActionPerformed(e));
                                             panelTableRanajky.add(btnObjednatRanajky3, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label34 ----
@@ -1240,12 +1307,12 @@ public class UserInterface extends JFrame {
                                             label34.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(label34, CC.xy(1, 5));
 
-                                            //---- labelObjednatRanajkyNazov14 ----
-                                            labelObjednatRanajkyNazov14.setText("Volsk\u00e9 oko s ke\u010dup a chlebom");
-                                            labelObjednatRanajkyNazov14.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                            labelObjednatRanajkyNazov14.setHorizontalAlignment(SwingConstants.CENTER);
-                                            labelObjednatRanajkyNazov14.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableRanajky.add(labelObjednatRanajkyNazov14, CC.xy(2, 5));
+                                            //---- labelObjednatRanajkyNazov4 ----
+                                            labelObjednatRanajkyNazov4.setText("Volsk\u00e9 oko s ke\u010dup a chlebom");
+                                            labelObjednatRanajkyNazov4.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            labelObjednatRanajkyNazov4.setHorizontalAlignment(SwingConstants.CENTER);
+                                            labelObjednatRanajkyNazov4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                            panelTableRanajky.add(labelObjednatRanajkyNazov4, CC.xy(2, 5));
 
                                             //---- labelObjednatRanajkyNapoj4 ----
                                             labelObjednatRanajkyNapoj4.setText("Miner\u00e1lna voda");
@@ -1280,6 +1347,7 @@ public class UserInterface extends JFrame {
                                             btnObjednatRanajky4.setkHoverForeGround(Color.white);
                                             btnObjednatRanajky4.setBackground(Color.white);
                                             btnObjednatRanajky4.setBorderPainted(false);
+                                            btnObjednatRanajky4.addActionListener(e -> btnObjednatRanajky4ActionPerformed(e));
                                             panelTableRanajky.add(btnObjednatRanajky4, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label35 ----
@@ -1329,6 +1397,7 @@ public class UserInterface extends JFrame {
                                             btnObjednatRanajky5.setkHoverForeGround(Color.white);
                                             btnObjednatRanajky5.setBackground(Color.white);
                                             btnObjednatRanajky5.setBorderPainted(false);
+                                            btnObjednatRanajky5.addActionListener(e -> btnObjednatRanajky5ActionPerformed(e));
                                             panelTableRanajky.add(btnObjednatRanajky5, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
                                         }
                                         panelRanajky.add(panelTableRanajky, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -1351,6 +1420,7 @@ public class UserInterface extends JFrame {
                                         panelObed.setkEndColor(Color.white);
                                         panelObed.setkStartColor(Color.white);
                                         panelObed.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panelObed.getLayout()).rowHeights = new int[] {0, 26};
 
                                         //======== panelTableObed ========
                                         {
@@ -1447,6 +1517,7 @@ public class UserInterface extends JFrame {
                                             btnObjednatObed1.setkHoverForeGround(Color.white);
                                             btnObjednatObed1.setBackground(Color.white);
                                             btnObjednatObed1.setBorderPainted(false);
+                                            btnObjednatObed1.addActionListener(e -> btnObjednatObed1ActionPerformed(e));
                                             panelTableObed.add(btnObjednatObed1, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label45 ----
@@ -1496,6 +1567,7 @@ public class UserInterface extends JFrame {
                                             btnObjednatObed2.setkHoverForeGround(Color.white);
                                             btnObjednatObed2.setBackground(Color.white);
                                             btnObjednatObed2.setBorderPainted(false);
+                                            btnObjednatObed2.addActionListener(e -> btnObjednatObed2ActionPerformed(e));
                                             panelTableObed.add(btnObjednatObed2, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label54 ----
@@ -1545,6 +1617,7 @@ public class UserInterface extends JFrame {
                                             btnObjednatObed3.setkHoverForeGround(Color.white);
                                             btnObjednatObed3.setBackground(Color.white);
                                             btnObjednatObed3.setBorderPainted(false);
+                                            btnObjednatObed3.addActionListener(e -> btnObjednatObed3ActionPerformed(e));
                                             panelTableObed.add(btnObjednatObed3, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label60 ----
@@ -1594,6 +1667,7 @@ public class UserInterface extends JFrame {
                                             btnObjednatObed4.setkHoverForeGround(Color.white);
                                             btnObjednatObed4.setBackground(Color.white);
                                             btnObjednatObed4.setBorderPainted(false);
+                                            btnObjednatObed4.addActionListener(e -> btnObjednatObed4ActionPerformed(e));
                                             panelTableObed.add(btnObjednatObed4, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label65 ----
@@ -1643,10 +1717,19 @@ public class UserInterface extends JFrame {
                                             btnObjednatObed5.setkHoverForeGround(Color.white);
                                             btnObjednatObed5.setBackground(Color.white);
                                             btnObjednatObed5.setBorderPainted(false);
+                                            btnObjednatObed5.addActionListener(e -> btnObjednatObed5ActionPerformed(e));
                                             panelTableObed.add(btnObjednatObed5, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
                                             panelTableObed.add(label70, CC.xy(1, 8));
                                         }
                                         panelObed.add(panelTableObed, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 5, 0), 0, 0));
+
+                                        //---- labelObjednatObedWarning ----
+                                        labelObjednatObedWarning.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                        labelObjednatObedWarning.setForeground(Color.red);
+                                        labelObjednatObedWarning.setHorizontalAlignment(SwingConstants.CENTER);
+                                        panelObed.add(labelObjednatObedWarning, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                                             new Insets(0, 0, 0, 0), 0, 0));
                                     }
@@ -3184,7 +3267,7 @@ public class UserInterface extends JFrame {
     private JLabel labelObjednatRanajkyCena3;
     private KButton btnObjednatRanajky3;
     private JLabel label34;
-    private JLabel labelObjednatRanajkyNazov14;
+    private JLabel labelObjednatRanajkyNazov4;
     private JLabel labelObjednatRanajkyNapoj4;
     private JLabel labelObjednatRanajkyKapacita4;
     private JLabel labelObjednatRanajkyCena4;
@@ -3235,6 +3318,7 @@ public class UserInterface extends JFrame {
     private JLabel labelObjednatObedCena5;
     private KButton btnObjednatObed5;
     private JLabel label70;
+    private JLabel labelObjednatObedWarning;
     private KGradientPanel panelMojeObjednavky;
     private KGradientPanel panelTableMojeObjRanajky;
     private JLabel label71;

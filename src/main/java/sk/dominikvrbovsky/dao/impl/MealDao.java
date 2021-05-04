@@ -50,7 +50,7 @@ public class MealDao implements Dao<Meal> {
         executeInsideTransaction(entityManager1 -> entityManager1.remove(entity));
     }
 
-    public Optional<Meal> getFromName(String nameOfMeal) {
+    public Optional<Meal> getFromName(String nameOfMeal) throws Exception {
         Optional<Meal> meal = Optional.empty();
         String hql = "FROM Meal WHERE NAME = :meal";
 
@@ -58,17 +58,11 @@ public class MealDao implements Dao<Meal> {
             entityManager.getTransaction().begin();
             Query query = entityManager.createQuery(hql, Meal.class);
             query.setParameter("meal", nameOfMeal);
-
-            try {
-                meal = Optional.ofNullable((Meal) query.getSingleResult());
-            } catch (NoResultException e) {
-                // nothing
-            }
-
+            meal = Optional.ofNullable((Meal) query.getSingleResult());
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
-            throw e;
+            throw new Exception("Objednávanie neprebehlo úspešne. Skúste to znovu.");
         }
 
         return meal;

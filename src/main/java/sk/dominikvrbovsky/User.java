@@ -104,12 +104,14 @@ public class User {
         this.lunchOrder = lunchOrder;
     }
 
-    public void makeOrder(Meal meal) throws Exception{
+    public void makeOrder(Meal meal) throws Exception {
         if (meal instanceof  Breakfast && this.breakfastOrder != null) {
+            System.out.println(breakfastOrder.getMeal().getName());
             throw new Exception("Už máte objednané raňajky");
         }
 
         if (meal instanceof  Lunch && this.lunchOrder != null) {
+            System.out.println(lunchOrder.getMeal().getName());
             throw new Exception("Už máte objednaný obed");
         }
 

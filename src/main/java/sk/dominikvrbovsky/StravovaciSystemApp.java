@@ -27,6 +27,9 @@ public class StravovaciSystemApp {
 //        entityManager.close();
 
         User user = new UserDao(entityManager).getFromUsername("vrboo").get();
+        System.out.println(user.getBreakfastOrder());
+        System.out.println(user.getLunchOrder());
+
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch(Exception ignored) {
