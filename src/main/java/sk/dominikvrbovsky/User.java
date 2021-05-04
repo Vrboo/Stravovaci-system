@@ -105,6 +105,23 @@ public class User {
     }
 
     public void makeOrder(Meal meal) {
+        this.setAccount(0);
+        if (meal.getPrice() > this.getAccount()) {
+            throw new RuntimeException("Nemáte dostatok peňazí na účte");
+        }
+
+        if (meal instanceof  Breakfast && this.breakfastOrder != null) {
+            throw new RuntimeException("Už máte objednané raňajky");
+        }
+
+        if (meal instanceof  Lunch && this.lunchOrder != null) {
+            throw new RuntimeException("Už máte objednaný obed");
+        }
+
+        if (meal.getCapacity() < 1) {
+            throw new RuntimeException("ˇŽiadne voľné porcie");
+        }
+
         if (meal instanceof Breakfast) this.breakfastOrder = new Order(this, meal);
         if (meal instanceof Lunch) this.lunchOrder = new Order(this, meal);
     }
@@ -127,6 +144,10 @@ public class User {
     public void withdrawMoneyFromAccount(double amount) {
         this.account -= amount;
         this.transactions.add(new Transaction(this, TransactionType.OUTPUT, amount));
+    }
+
+    public String getAccountString() {
+        return String.format("%.2f", this.getAccount());
     }
 
 

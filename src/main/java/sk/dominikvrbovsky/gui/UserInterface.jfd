@@ -5,12 +5,13 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 			"$horizontalGroup": "par l {comp splitPane1::l:::x}"
-			"$verticalGroup": "par l {comp splitPane1::l::550:x}"
+			"$verticalGroup": "par l {comp splitPane1::l:::x}"
 		} ) {
 			name: "this"
 			"undecorated": true
 			"$locationPolicy": 1
 			"resizable": false
+			"title": "Stravovací systém"
 			add( new FormContainer( "javax.swing.JSplitPane", new FormLayoutManager( class javax.swing.JSplitPane ) ) {
 				name: "splitPane1"
 				"dividerSize": 0
@@ -18,7 +19,7 @@ new FormModel {
 				"dividerLocation": 225
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {comp btnObjednat::l:::x, comp btnMojeObjed::l:::x, comp btnBurza::l:::x, comp btnUcet::l:::x, comp btnZmenitHeslo::l:::x, comp btnOdhlasitSa::l:::x, comp btnAdmin::t:p:225:p, seq {space :::p, par l {comp labelUsername::l:::x, comp labelAccount::l:::x, comp labelIcon::l:::x}, space :::p}}"
-					"$verticalGroup": "par l {seq l {space :p:17:p, comp labelIcon:::p::p, space :0:0:p, comp labelUsername:::p::p, space :::p, comp labelAccount:::p::p, space :p:34:p, comp btnObjednat:::p::p, space :0:0:p, comp btnMojeObjed:::p::p, space :0:0:p, comp btnBurza:::p::p, space :0:0:p, comp btnUcet:::p::p, space :0:0:p, comp btnZmenitHeslo:::p::p, space :0:0:p, comp btnOdhlasitSa:::p::p, space ::26:x, comp btnAdmin:::p::p, space :p:17:p}}"
+					"$verticalGroup": "par l {seq l {space :p:17:p, comp labelIcon:::p::p, space :0:0:p, comp labelUsername:::p::p, space :::p, comp labelAccount:::p::p, space :p:34:p, comp btnObjednat:::p::p, space :0:0:p, comp btnMojeObjed:::p::p, space :0:0:p, comp btnBurza:::p::p, space :0:0:p, comp btnUcet:::p::p, space :0:0:p, comp btnZmenitHeslo:::p::p, space :0:0:p, comp btnOdhlasitSa:::p::p, space ::126:x, comp btnAdmin:::p::p, space :p:17:p}}"
 				} ) {
 					name: "panelMenu"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -178,7 +179,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {comp splitPane2::l:::x}"
-					"$verticalGroup": "par l {comp splitPane2::l::550:x}"
+					"$verticalGroup": "par l {comp splitPane2::l:::x}"
 				} ) {
 					name: "panelRightSide"
 					"kEndColor": new java.awt.Color( 192, 248, 213, 255 )
@@ -191,8 +192,8 @@ new FormModel {
 						"dividerSize": 0
 						"dividerLocation": 155
 						add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-							"$horizontalGroup": "par l {seq l {space :p:32:p, par t {comp labelStravovaciSystem:::p:366:p, comp labelDatum:::p:352:p}, space :::p, par l {seq {space :0:292:x, comp labelX:::p:27:p}, seq l {comp label4:::p:234:p, space :0:85:x}}}}"
-							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space ::19:x, par b {comp labelStravovaciSystem::b:p::p, comp label4::b:p:29:p}, space u:::p, comp labelDatum:::p::p, space :p:32:p}}"
+							"$horizontalGroup": "par l {seq l {space :p:32:p, par t {comp labelStravovaciSystem:::p:366:p, comp labelDatum:::p:352:p}, space :::p, par l {seq {space :0:402:x, comp labelX:::p:27:p}, seq l {comp label4:::p:234:p, space :0:195:x}}}}"
+							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space ::21:x, par b {comp labelStravovaciSystem::b:p::p, comp label4::b:p:29:p}, space u:::p, comp labelDatum:::p::p, space :p:32:p}}"
 						} ) {
 							name: "panelStravovaciSystem"
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -237,7 +238,7 @@ new FormModel {
 							name: "panelContent"
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {comp splitPane3::l:::x}"
-								"$verticalGroup": "par l {comp splitPane3::l::395:x}"
+								"$verticalGroup": "par l {comp splitPane3::l::495:x}"
 							} ) {
 								name: "panelObjednat"
 								"kEndColor": sfield java.awt.Color white
@@ -311,7 +312,7 @@ new FormModel {
 										"background": new java.awt.Color( 55, 55, 55, 255 )
 										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 											"$columnSpecs": "0"
-											"$rowSpecs": "0"
+											"$rowSpecs": "0, 26"
 											"$hGap": 5
 											"$vGap": 5
 										} ) {
@@ -398,7 +399,7 @@ new FormModel {
 													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label11"
+													name: "labelObjednatRanajkyNazov1"
 													"text": "Parky s horčicou a chlebom"
 													"font": &Font4 new java.awt.Font( "Yu Gothic UI", 1, 17 )
 													"horizontalAlignment": 0
@@ -408,7 +409,7 @@ new FormModel {
 													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label51"
+													name: "labelObjednatRanajkyNapoj1"
 													"text": "Minerálna voda"
 													"font": &Font5 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
@@ -418,7 +419,7 @@ new FormModel {
 													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label25"
+													name: "labelObjednatRanajkyKapacita1"
 													"text": "78x"
 													"font": &Font6 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
@@ -428,7 +429,7 @@ new FormModel {
 													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label26"
+													name: "labelObjednatRanajkyCena1"
 													"text": "4.87€"
 													"font": #Font5
 													"horizontalAlignment": 0
@@ -438,7 +439,7 @@ new FormModel {
 													"gridY": 2
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
-													name: "kButton3"
+													name: "btnObjednatRanajky1"
 													"text": "Objednať"
 													"font": &Font7 new java.awt.Font( "Yu Gothic UI", 1, 16 )
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -450,6 +451,7 @@ new FormModel {
 													"kHoverForeGround": sfield java.awt.Color white
 													"background": #Color20
 													"borderPainted": false
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObjednatRanajky1ActionPerformed", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 6
 													"gridY": 2
@@ -466,7 +468,7 @@ new FormModel {
 													"gridY": 3
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label12"
+													name: "labelObjednatRanajkyNazov2"
 													"text": "Praženica s rožkom"
 													"font": #Font4
 													"horizontalAlignment": 0
@@ -476,7 +478,7 @@ new FormModel {
 													"gridY": 3
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label17"
+													name: "labelObjednatRanajkyNapoj2"
 													"text": "Cola"
 													"font": #Font5
 													"horizontalAlignment": 0
@@ -486,7 +488,7 @@ new FormModel {
 													"gridY": 3
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label31"
+													name: "labelObjednatRanajkyKapacita2"
 													"text": "45x"
 													"font": #Font6
 													"horizontalAlignment": 0
@@ -496,7 +498,7 @@ new FormModel {
 													"gridX": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label27"
+													name: "labelObjednatRanajkyCena2"
 													"text": "2.45€"
 													"font": #Font5
 													"horizontalAlignment": 0
@@ -506,7 +508,7 @@ new FormModel {
 													"gridY": 3
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
-													name: "kButton4"
+													name: "btnObjednatRanajky2"
 													"text": "Objednať"
 													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -534,7 +536,7 @@ new FormModel {
 													"gridY": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label13"
+													name: "labelObjednatRanajkyNazov3"
 													"text": "Lievance s lekvárom"
 													"font": #Font4
 													"horizontalAlignment": 0
@@ -544,7 +546,7 @@ new FormModel {
 													"gridY": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label18"
+													name: "labelObjednatRanajkyNapoj3"
 													"text": "Čaj"
 													"font": #Font5
 													"horizontalAlignment": 0
@@ -554,7 +556,7 @@ new FormModel {
 													"gridY": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label23"
+													name: "labelObjednatRanajkyKapacita3"
 													"text": "78x"
 													"font": #Font6
 													"horizontalAlignment": 0
@@ -564,7 +566,7 @@ new FormModel {
 													"gridY": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label28"
+													name: "labelObjednatRanajkyCena3"
 													"text": "3.72€"
 													"font": #Font5
 													"horizontalAlignment": 0
@@ -574,7 +576,7 @@ new FormModel {
 													"gridY": 4
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
-													name: "kButton5"
+													name: "btnObjednatRanajky3"
 													"text": "Objednať"
 													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -602,7 +604,7 @@ new FormModel {
 													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label15"
+													name: "labelObjednatRanajkyNazov14"
 													"text": "Volské oko s kečup a chlebom"
 													"font": #Font4
 													"horizontalAlignment": 0
@@ -612,7 +614,7 @@ new FormModel {
 													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label19"
+													name: "labelObjednatRanajkyNapoj4"
 													"text": "Minerálna voda"
 													"font": #Font5
 													"horizontalAlignment": 0
@@ -622,7 +624,7 @@ new FormModel {
 													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label22"
+													name: "labelObjednatRanajkyKapacita4"
 													"text": "123x"
 													"font": #Font6
 													"horizontalAlignment": 0
@@ -632,7 +634,7 @@ new FormModel {
 													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label29"
+													name: "labelObjednatRanajkyCena4"
 													"text": "7.00€"
 													"font": #Font5
 													"horizontalAlignment": 0
@@ -642,7 +644,7 @@ new FormModel {
 													"gridY": 5
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
-													name: "kButton6"
+													name: "btnObjednatRanajky4"
 													"text": "Objednať"
 													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -670,7 +672,7 @@ new FormModel {
 													"gridY": 6
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label14"
+													name: "labelObjednatRanajkyNazov5"
 													"text": "Šunková bageta"
 													"font": #Font4
 													"horizontalAlignment": 0
@@ -680,7 +682,7 @@ new FormModel {
 													"gridY": 6
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label20"
+													name: "labelObjednatRanajkyNapoj5"
 													"text": "Ďžús"
 													"font": #Font5
 													"horizontalAlignment": 0
@@ -690,7 +692,7 @@ new FormModel {
 													"gridY": 6
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label56"
+													name: "labelObjednatRanajkyKapacita5"
 													"text": "63x"
 													"font": #Font6
 													"horizontalAlignment": 0
@@ -700,7 +702,7 @@ new FormModel {
 													"gridY": 6
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label30"
+													name: "labelObjednatRanajkyCena5"
 													"text": "3.49€"
 													"font": #Font5
 													"horizontalAlignment": 0
@@ -710,7 +712,7 @@ new FormModel {
 													"gridY": 6
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
-													name: "kButton7"
+													name: "btnObjednatRanajky5"
 													"text": "Objednať"
 													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -727,13 +729,15 @@ new FormModel {
 													"gridY": 6
 													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
-												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label16"
-												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
-													"gridX": 1
-													"gridY": 8
-												} )
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+											add( new FormComponent( "javax.swing.JLabel" ) {
+												name: "labelObjednatRanajkyWarning"
+												"foreground": sfield java.awt.Color red
+												"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
+												"horizontalAlignment": 0
+											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+												"gridy": 1
+											} )
 										}, new FormLayoutConstraints( class java.lang.String ) {
 											"value": "ranajky"
 										} )
@@ -822,7 +826,7 @@ new FormModel {
 													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label42"
+													name: "labelObjednatObedNazov1"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -832,7 +836,7 @@ new FormModel {
 													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label52"
+													name: "labelObjednatObedTakeaway1"
 													"text": "Áno"
 													"font": &Font8 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
@@ -842,7 +846,7 @@ new FormModel {
 													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label43"
+													name: "labelObjednatObedKapacita1"
 													"text": "78x"
 													"font": #Font6
 													"horizontalAlignment": 0
@@ -852,7 +856,7 @@ new FormModel {
 													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label44"
+													name: "labelObjednatObedCena1"
 													"text": "3.87€"
 													"font": #Font8
 													"horizontalAlignment": 0
@@ -862,7 +866,7 @@ new FormModel {
 													"gridY": 2
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
-													name: "kButton8"
+													name: "btnObjednatObed1"
 													"text": "Objednať"
 													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -890,7 +894,7 @@ new FormModel {
 													"gridY": 3
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label48"
+													name: "labelObjednatObedNazov2"
 													"text": "Bryndzové halušky"
 													"font": #Font4
 													"horizontalAlignment": 0
@@ -900,7 +904,7 @@ new FormModel {
 													"gridY": 3
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label49"
+													name: "labelObjednatObedTakeaway2"
 													"text": "Nie"
 													"font": #Font8
 													"horizontalAlignment": 0
@@ -910,7 +914,7 @@ new FormModel {
 													"gridY": 3
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label50"
+													name: "labelObjednatObedKapacita2"
 													"text": "417x"
 													"font": #Font6
 													"horizontalAlignment": 0
@@ -920,7 +924,7 @@ new FormModel {
 													"gridX": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label53"
+													name: "labelObjednatObedCena2"
 													"text": "7.45€"
 													"font": #Font8
 													"horizontalAlignment": 0
@@ -930,7 +934,7 @@ new FormModel {
 													"gridY": 3
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
-													name: "kButton9"
+													name: "btnObjednatObed2"
 													"text": "Objednať"
 													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -958,7 +962,7 @@ new FormModel {
 													"gridY": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label55"
+													name: "labelObjednatObedNazov3"
 													"text": "Palacinky s lekvárom"
 													"font": #Font4
 													"horizontalAlignment": 0
@@ -968,7 +972,7 @@ new FormModel {
 													"gridY": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label57"
+													name: "labelObjednatObedTakeaway3"
 													"text": "Áno"
 													"font": #Font8
 													"horizontalAlignment": 0
@@ -978,7 +982,7 @@ new FormModel {
 													"gridY": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label58"
+													name: "labelObjednatObedKapacita3"
 													"text": "29x"
 													"font": #Font6
 													"horizontalAlignment": 0
@@ -988,7 +992,7 @@ new FormModel {
 													"gridY": 4
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label59"
+													name: "labelObjednatObedCena3"
 													"text": "2.21€"
 													"font": #Font8
 													"horizontalAlignment": 0
@@ -998,7 +1002,7 @@ new FormModel {
 													"gridY": 4
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
-													name: "kButton10"
+													name: "btnObjednatObed3"
 													"text": "Objednať"
 													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -1026,7 +1030,7 @@ new FormModel {
 													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label61"
+													name: "labelObjednatObedNazov4"
 													"text": "Pizza Hawai"
 													"font": #Font4
 													"horizontalAlignment": 0
@@ -1036,7 +1040,7 @@ new FormModel {
 													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label62"
+													name: "labelObjednatObedTakeaway4"
 													"text": "Áno"
 													"font": #Font8
 													"horizontalAlignment": 0
@@ -1046,7 +1050,7 @@ new FormModel {
 													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label63"
+													name: "labelObjednatObedKapacita4"
 													"text": "75x"
 													"font": #Font6
 													"horizontalAlignment": 0
@@ -1056,7 +1060,7 @@ new FormModel {
 													"gridY": 5
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label64"
+													name: "labelObjednatObedCena4"
 													"text": "4.25€"
 													"font": #Font8
 													"horizontalAlignment": 0
@@ -1066,7 +1070,7 @@ new FormModel {
 													"gridY": 5
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
-													name: "kButton11"
+													name: "btnObjednatObed4"
 													"text": "Objednať"
 													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -1094,7 +1098,7 @@ new FormModel {
 													"gridY": 6
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label66"
+													name: "labelObjednatObedNazov5"
 													"text": "Šunková bageta"
 													"font": #Font4
 													"horizontalAlignment": 0
@@ -1104,7 +1108,7 @@ new FormModel {
 													"gridY": 6
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label67"
+													name: "labelObjednatObedTakeaway5"
 													"text": "Nie"
 													"font": #Font8
 													"horizontalAlignment": 0
@@ -1114,7 +1118,7 @@ new FormModel {
 													"gridY": 6
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label68"
+													name: "labelObjednatObedKapacita5"
 													"text": "0x"
 													"font": #Font6
 													"horizontalAlignment": 0
@@ -1124,7 +1128,7 @@ new FormModel {
 													"gridY": 6
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label69"
+													name: "labelObjednatObedCena5"
 													"text": "1.50€"
 													"font": #Font8
 													"horizontalAlignment": 0
@@ -1134,7 +1138,7 @@ new FormModel {
 													"gridY": 6
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
-													name: "kButton12"
+													name: "btnObjednatObed5"
 													"text": "Objednať"
 													"font": #Font7
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -1414,7 +1418,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {comp splitPane4::l:::x}"
-								"$verticalGroup": "par l {comp splitPane4::l::395:x}"
+								"$verticalGroup": "par l {comp splitPane4::l::495:x}"
 							} ) {
 								name: "panelBurza"
 								"kEndColor": sfield java.awt.Color white
@@ -2348,7 +2352,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {comp splitPane5::l:::x}"
-								"$verticalGroup": "par l {comp splitPane5::l::395:x}"
+								"$verticalGroup": "par l {comp splitPane5::l::495:x}"
 							} ) {
 								name: "panelUcet"
 								"kEndColor": sfield java.awt.Color white
@@ -2559,9 +2563,6 @@ new FormModel {
 													"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
 													"text": "Suma "
 													"foreground": sfield java.awt.Color lightGray
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "textFieldUsernameFocusGained", true ) )
-													addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textFieldUsernameMouseMoved", false ) )
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "textFieldUsernameFocusLost", false ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 2
@@ -2594,8 +2595,8 @@ new FormModel {
 											"value": "vybratZUctu"
 										} )
 										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-											"$horizontalGroup": "par l {space :0:723:x}"
-											"$verticalGroup": "par l {space :0:355:x}"
+											"$horizontalGroup": "par l {space :0:833:x}"
+											"$verticalGroup": "par l {space :0:455:x}"
 										} ) {
 											name: "panelHistoriaTrans"
 											"kEndColor": #Color15
@@ -2905,8 +2906,8 @@ new FormModel {
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 950, 590 )
+			"location": new java.awt.Point( 15, 5 )
+			"size": new java.awt.Dimension( 1060, 690 )
 		} )
 	}
 }

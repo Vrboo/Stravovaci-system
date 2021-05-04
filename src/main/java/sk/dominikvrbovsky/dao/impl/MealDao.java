@@ -6,10 +6,7 @@ import sk.dominikvrbovsky.Meal;
 import sk.dominikvrbovsky.User;
 import sk.dominikvrbovsky.dao.Dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -53,6 +50,30 @@ public class MealDao implements Dao<Meal> {
         executeInsideTransaction(entityManager1 -> entityManager1.remove(entity));
     }
 
+    public Optional<Meal> getFromName(String nameOfMeal) {
+        Optional<Meal> meal = Optional.empty();
+        String hql = "FROM Meal WHERE NAME = :meal";
+
+        try {
+            entityManager.getTransaction().begin();
+            Query query = entityManager.createQuery(hql, Meal.class);
+            query.setParameter("meal", nameOfMeal);
+
+            try {
+                meal = Optional.ofNullable((Meal) query.getSingleResult());
+            } catch (NoResultException e) {
+                // nothing
+            }
+
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+
+        return meal;
+    }
+
     public void saveAll(List<Meal> entities) {
         try {
             entityManager.getTransaction().begin();
@@ -69,13 +90,6 @@ public class MealDao implements Dao<Meal> {
         return query.getResultList();
     }
 
-//    public static void main(String[] args) {
-//        EntityManagerFactory entityManagerFactory =
-//                Persistence.createEntityManagerFactory("sk.dominikvrbovsky.stravovaci-system");
-//        EntityManager entityManager = entityManagerFactory.createEntityManager();
-//        MealDao mealDao = new MealDao(entityManager);
-//        mealDao.getAll();
-//    }
 
     public List<Breakfast> getAllBreakfast() {
         Query query = entityManager.createQuery("FROM Breakfast", Breakfast.class);

@@ -22,6 +22,6 @@ public enum TransactionType {
             }
         }
 
-        throw new UnsupportedOperationException("Pre dany string neexistje ziadny enum TransactionType");
+        throw new UnsupportedOperationException("Zadali ste chybný názov transakcie");
     }
 }

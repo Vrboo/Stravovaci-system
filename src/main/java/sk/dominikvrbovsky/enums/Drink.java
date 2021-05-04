@@ -16,7 +16,7 @@ public enum Drink {
         return this.drink;
     }
 
-    public static Drink getEnumFromString(String string) throws UnsupportedOperationException {
+    public static Drink getEnumFromString(String string) {
         if (string.equals("Min. voda")) return MINERAL_WATER;
         for (Drink drink : Drink.values()) {
             if (string.equals(drink.getDrink())) {
