@@ -94,11 +94,11 @@ public class User {
     }
 
     public void makeOrder(Meal meal) throws Exception {
-        if (meal instanceof  Breakfast && this.orders.stream().anyMatch(order -> order.getMeal() instanceof Breakfast)) {
+        if (meal instanceof  Breakfast && hasBreakfastOrder()) {
             throw new Exception("Už máte objednané raňajky");
         }
 
-        if (meal instanceof  Lunch && this.orders.stream().anyMatch(order -> order.getMeal() instanceof Lunch)) {
+        if (meal instanceof  Lunch && hasLunchOrder()) {
             throw new Exception("Už máte objednaný obed");
         }
 
@@ -112,6 +112,22 @@ public class User {
 
         this.orders.add(new Order(this, meal));
         this.setAccount(getAccount() - meal.getPrice());
+    }
+
+    public boolean hasBreakfastOrder() {
+        return this.orders.stream().anyMatch(order -> order.getMeal() instanceof Breakfast);
+    }
+
+    public boolean hasLunchOrder() {
+        return this.orders.stream().anyMatch(order -> order.getMeal() instanceof Lunch);
+    }
+
+    public Order getBreakfastOrder() {
+        return this.orders.stream().filter(order -> order.getMeal() instanceof Breakfast).findFirst().get();
+    }
+
+    public Order getLunchOrder() {
+        return this.orders.stream().filter(order -> order.getMeal() instanceof Lunch).findFirst().get();
     }
 
     public void addMealToBurza(Order order) {
