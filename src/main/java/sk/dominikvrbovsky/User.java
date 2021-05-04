@@ -21,11 +21,9 @@ public class User {
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Transaction> transactions;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Order breakfastOrder;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Order lunchOrder;
 
     public User(String username, String fullName, String password, double account) {
         this.username = username;
@@ -33,8 +31,7 @@ public class User {
         this.password = password;
         this.account = account;
         this.transactions = new ArrayList<>();
-        this.breakfastOrder = null;
-        this.lunchOrder = null;
+        this.orders = new ArrayList<>();
     }
 
     public User() {
@@ -88,30 +85,20 @@ public class User {
         this.transactions = transactions;
     }
 
-    public Order getBreakfastOrder() {
-        return breakfastOrder;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setBreakfastOrder(Order breakfastOrder) {
-        this.breakfastOrder = breakfastOrder;
-    }
-
-    public Order getLunchOrder() {
-        return lunchOrder;
-    }
-
-    public void setLunchOrder(Order lunchOrder) {
-        this.lunchOrder = lunchOrder;
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     public void makeOrder(Meal meal) throws Exception {
-        if (meal instanceof  Breakfast && this.breakfastOrder != null) {
-            System.out.println(breakfastOrder.getMeal().getName());
+        if (meal instanceof  Breakfast && this.orders.stream().anyMatch(order -> order.getMeal() instanceof Breakfast)) {
             throw new Exception("Už máte objednané raňajky");
         }
 
-        if (meal instanceof  Lunch && this.lunchOrder != null) {
-            System.out.println(lunchOrder.getMeal().getName());
+        if (meal instanceof  Lunch && this.orders.stream().anyMatch(order -> order.getMeal() instanceof Lunch)) {
             throw new Exception("Už máte objednaný obed");
         }
 
@@ -123,8 +110,7 @@ public class User {
             throw new Exception("ˇŽiadne voľné porcie");
         }
 
-        if (meal instanceof Breakfast) this.breakfastOrder = new Order(this, meal);
-        if (meal instanceof Lunch) this.lunchOrder = new Order(this, meal);
+        this.orders.add(new Order(this, meal));
         this.setAccount(getAccount() - meal.getPrice());
     }
 
@@ -134,8 +120,8 @@ public class User {
 
     public void takeMealFromBurza(Order order) {
         order.orderFromBurza(this);
-        if (order.getMeal() instanceof Breakfast) this.breakfastOrder = order;
-        if (order.getMeal() instanceof Lunch) this.lunchOrder = order;
+//        if (order.getMeal() instanceof Breakfast) this.breakfastOrder = order;
+//        if (order.getMeal() instanceof Lunch) this.lunchOrder = order;
     }
 
     public void putMoneyOnAccount(double amount) {
