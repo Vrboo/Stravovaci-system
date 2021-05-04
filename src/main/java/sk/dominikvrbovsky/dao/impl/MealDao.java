@@ -86,19 +86,50 @@ public class MealDao implements Dao<Meal> {
     }
 
     public List<Meal> getAll() {
-        Query query = entityManager.createQuery("FROM Meal", Meal.class);
-        return query.getResultList();
+        List<Meal> meals = null;
+
+        try {
+            entityManager.getTransaction().begin();
+            Query query = entityManager.createQuery("FROM Meal", Meal.class);
+            meals = query.getResultList();
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+        return meals;
     }
 
 
     public List<Breakfast> getAllBreakfast() {
-        Query query = entityManager.createQuery("FROM Breakfast", Breakfast.class);
-        return query.getResultList();
+        List<Breakfast> breakfasts = null;
+
+        try {
+            entityManager.getTransaction().begin();
+            Query query = entityManager.createQuery("FROM Breakfast", Breakfast.class);
+            breakfasts = query.getResultList();
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+        return breakfasts;
+
     }
 
     public List<Lunch> getAllLunch() {
-        Query query = entityManager.createQuery("FROM Lunch", Lunch.class);
-        return query.getResultList();
+        List<Lunch> lunches = null;
+
+        try {
+            entityManager.getTransaction().begin();
+            Query query = entityManager.createQuery("FROM Lunch", Lunch.class);
+            lunches = query.getResultList();
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+        return lunches;
     }
 
     private void executeInsideTransaction(Consumer<EntityManager> consumer) {

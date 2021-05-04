@@ -104,26 +104,26 @@ public class User {
         this.lunchOrder = lunchOrder;
     }
 
-    public void makeOrder(Meal meal) {
-        this.setAccount(0);
-        if (meal.getPrice() > this.getAccount()) {
-            throw new RuntimeException("Nemáte dostatok peňazí na účte");
-        }
-
+    public void makeOrder(Meal meal) throws Exception{
         if (meal instanceof  Breakfast && this.breakfastOrder != null) {
-            throw new RuntimeException("Už máte objednané raňajky");
+            throw new Exception("Už máte objednané raňajky");
         }
 
         if (meal instanceof  Lunch && this.lunchOrder != null) {
-            throw new RuntimeException("Už máte objednaný obed");
+            throw new Exception("Už máte objednaný obed");
+        }
+
+        if (meal.getPrice() > this.getAccount()) {
+            throw new Exception("Nemáte dostatok peňazí na účte");
         }
 
         if (meal.getCapacity() < 1) {
-            throw new RuntimeException("ˇŽiadne voľné porcie");
+            throw new Exception("ˇŽiadne voľné porcie");
         }
 
         if (meal instanceof Breakfast) this.breakfastOrder = new Order(this, meal);
         if (meal instanceof Lunch) this.lunchOrder = new Order(this, meal);
+        this.setAccount(getAccount() - meal.getPrice());
     }
 
     public void addMealToBurza(Order order) {
