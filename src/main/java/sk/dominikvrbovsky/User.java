@@ -136,8 +136,6 @@ public class User {
 
     public void takeMealFromBurza(Order order) {
         order.orderFromBurza(this);
-//        if (order.getMeal() instanceof Breakfast) this.breakfastOrder = order;
-//        if (order.getMeal() instanceof Lunch) this.lunchOrder = order;
     }
 
     public void putMoneyOnAccount(double amount) {
