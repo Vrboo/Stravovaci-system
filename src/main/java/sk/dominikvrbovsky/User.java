@@ -94,6 +94,10 @@ public class User {
     }
 
     public void makeOrder(Meal meal) throws Exception {
+        if (meal == null) {
+            throw new Exception("Objednávanie neprebehlo úspešne. Skuste to znovu.");
+        }
+
         if (meal instanceof  Breakfast && hasBreakfastOrder()) {
             throw new Exception("Už máte objednané raňajky");
         }
@@ -107,7 +111,7 @@ public class User {
         }
 
         if (meal.getCapacity() < 1) {
-            throw new Exception("ˇŽiadne voľné porcie");
+            throw new Exception("Žiadne voľné porcie");
         }
 
         this.orders.add(new Order(this, meal));

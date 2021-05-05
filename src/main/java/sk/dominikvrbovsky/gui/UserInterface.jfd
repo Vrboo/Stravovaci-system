@@ -312,9 +312,9 @@ new FormModel {
 										"background": new java.awt.Color( 55, 55, 55, 255 )
 										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 											"$columnSpecs": "0"
-											"$rowSpecs": "0, 26"
+											"$rowSpecs": "0, 30"
 											"$hGap": 5
-											"$vGap": 5
+											"$vGap": 15
 										} ) {
 											name: "panelRanajky"
 											"kEndColor": &Color15 new java.awt.Color( 38, 184, 190, 24 )
@@ -326,7 +326,7 @@ new FormModel {
 											"kFillBackground": false
 											add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
 												"$columnSpecs": "27px, 280px, 126px, 92px, 72px, 107px"
-												"$rowSpecs": "fill:49px, fill:52px, fill:52px, fill:52px, fill:52px, fill:52px, linegap, 11dlu"
+												"$rowSpecs": "fill:49px, fill:52px, fill:52px, fill:52px, fill:52px, fill:52px"
 											} ) {
 												name: "panelTableRanajky"
 												"kEndColor": sfield java.awt.Color white
@@ -737,7 +737,7 @@ new FormModel {
 											add( new FormComponent( "javax.swing.JLabel" ) {
 												name: "labelObjednatRanajkyWarning"
 												"foreground": sfield java.awt.Color red
-												"font": new java.awt.Font( "Yu Gothic UI", 1, 18 )
+												"font": new java.awt.Font( "Yu Gothic UI", 1, 22 )
 												"horizontalAlignment": 0
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 												"gridy": 1
@@ -747,9 +747,9 @@ new FormModel {
 										} )
 										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 											"$columnSpecs": "0"
-											"$rowSpecs": "0, 26"
+											"$rowSpecs": "0, 30"
 											"$hGap": 5
-											"$vGap": 5
+											"$vGap": 15
 										} ) {
 											name: "panelObed"
 											"kBorderRadius": 0
@@ -757,7 +757,7 @@ new FormModel {
 											"kStartColor": sfield java.awt.Color white
 											add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
 												"$columnSpecs": "27px, 280px, 126px, 92px, 72px, 107px"
-												"$rowSpecs": "fill:49px, fill:52px, fill:52px, fill:52px, fill:52px, fill:52px, linegap, 11dlu"
+												"$rowSpecs": "fill:49px, fill:52px, fill:52px, fill:52px, fill:52px, fill:52px"
 											} ) {
 												name: "panelTableObed"
 												"kEndColor": sfield java.awt.Color white
@@ -1164,16 +1164,10 @@ new FormModel {
 													"gridY": 6
 													"insets": new java.awt.Insets( 7, 10, 10, 1 )
 												} )
-												add( new FormComponent( "javax.swing.JLabel" ) {
-													name: "label70"
-												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
-													"gridX": 1
-													"gridY": 8
-												} )
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 											add( new FormComponent( "javax.swing.JLabel" ) {
 												name: "labelObjednatObedWarning"
-												"font": new java.awt.Font( "Yu Gothic UI", 1, 18 )
+												"font": new java.awt.Font( "Yu Gothic UI", 1, 22 )
 												"foreground": sfield java.awt.Color red
 												"horizontalAlignment": 0
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
