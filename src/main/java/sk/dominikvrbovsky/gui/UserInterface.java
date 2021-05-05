@@ -44,8 +44,8 @@ public class UserInterface extends JFrame {
         this.entityManager = entityManager;
         this.user = user;
         this.mealDao = new MealDao(entityManager);
-        this.breakfasts = mealDao.getAllBreakfast();
-        this.lunches = mealDao.getAllLunch();
+        this.breakfasts = null;
+        this.lunches = null;
 
         this.setPreferredSize(new Dimension(1000, 600));
         
@@ -156,8 +156,15 @@ public class UserInterface extends JFrame {
     }
 
     private void btnObjednatActionPerformed() {
-        this.breakfasts = mealDao.getAllBreakfast();
-        this.lunches = mealDao.getAllLunch();
+        try {
+            this.breakfasts = mealDao.getAllBreakfast();
+            this.lunches = mealDao.getAllLunch();
+        } catch (Exception e) {
+            setLabelWariningError(labelObjednatRanajkyWarning, "Nepodarilo sa správne načítať menu");
+            setLabelWariningError(labelObjednatObedWarning, "Nepodarilo sa správne načítať menu");
+            return;
+        }
+
         JLabel[][] labelsRanajky = getObjednatArray54(panelTableRanajky.getComponents());
         JLabel[][] labelsObed = getObjednatArray54(panelTableObed.getComponents());
 
@@ -200,18 +207,6 @@ public class UserInterface extends JFrame {
         cardLayout.show(panelContent,"objednat");
     }
 
-    private void setLabelWariningError(JLabel label, String titul) {
-        label.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
-        label.setForeground(Color.red);
-        label.setText(titul);
-    }
-
-    private void setLabelWariningObjednane(JLabel label) {
-        label.setFont(new Font("Yu Gothic UI", Font.BOLD, 22));
-        label.setForeground(new Color(0, 202, 197));
-        label.setText("Objednané");
-    }
-
     private void objednatRanajky(String nameOfMeal) {
 
         try {
@@ -236,19 +231,6 @@ public class UserInterface extends JFrame {
             setLabelWariningError(labelObjednatObedWarning,e1.getMessage());
         }
 
-    }
-
-
-    private void disableAllButtons(Component[] components) {
-        for (Component c : components) {
-            if (c instanceof KButton) {
-                c.setEnabled(false);
-                ((KButton)c).setkStartColor(Color.LIGHT_GRAY);
-                ((KButton)c).setkEndColor(Color.LIGHT_GRAY);
-                ((KButton)c).setkHoverStartColor(Color.LIGHT_GRAY);
-                ((KButton)c).setkHoverEndColor(Color.LIGHT_GRAY);
-            }
-        }
     }
 
     private void highlightLine(JLabel[][] labels, String nameOfMeal) {
@@ -304,6 +286,30 @@ public class UserInterface extends JFrame {
                 ((KButton)c).setkHoverEndColor(new Color(73, 196, 174));
             }
         }
+    }
+
+    private void disableAllButtons(Component[] components) {
+        for (Component c : components) {
+            if (c instanceof KButton) {
+                c.setEnabled(false);
+                ((KButton)c).setkStartColor(Color.LIGHT_GRAY);
+                ((KButton)c).setkEndColor(Color.LIGHT_GRAY);
+                ((KButton)c).setkHoverStartColor(Color.LIGHT_GRAY);
+                ((KButton)c).setkHoverEndColor(Color.LIGHT_GRAY);
+            }
+        }
+    }
+
+    private void setLabelWariningError(JLabel label, String titul) {
+        label.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
+        label.setForeground(Color.red);
+        label.setText(titul);
+    }
+
+    private void setLabelWariningObjednane(JLabel label) {
+        label.setFont(new Font("Yu Gothic UI", Font.BOLD, 22));
+        label.setForeground(new Color(0, 202, 197));
+        label.setText("Objednané");
     }
 
     private void btnMojeObjedActionPerformed() {
