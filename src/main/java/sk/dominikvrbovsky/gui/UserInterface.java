@@ -40,6 +40,7 @@ public class UserInterface extends JFrame {
     private List<Breakfast> breakfasts;
     private List<Lunch> lunches;
 
+
     public UserInterface(EntityManager entityManager, User user) {
         this.entityManager = entityManager;
         this.user = user;
@@ -242,6 +243,33 @@ public class UserInterface extends JFrame {
             btnObjednatActionPerformed();
         } catch (Exception e1) {
             setLabelWariningError(labelObjednatRanajkyWarning,e1.getMessage());
+        }
+
+    }
+
+    private void objednatBurzaRanajky(String nameOfMeal) {
+
+        try {
+            Optional<Breakfast> meal = this.breakfasts.stream().filter(breakfast -> breakfast.getName().equals(nameOfMeal)).findFirst();
+            this.user.makeOrder(meal.orElse(null));
+            //this.user.takeMealFromBurza();
+            labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
+            btnObjednatActionPerformed();
+        } catch (Exception e1) {
+            setLabelWariningError(labelBurzaRanajkyWarning, e1.getMessage());
+        }
+
+    }
+
+    private void objednatBurzaObed(String nameOfMeal) {
+
+        try {
+            Optional<Lunch> meal = this.lunches.stream().filter(lunch -> lunch.getName().equals(nameOfMeal)).findFirst();
+            this.user.makeOrder(meal.orElse(null));
+            labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
+            btnObjednatActionPerformed();
+        } catch (Exception e1) {
+            setLabelWariningError(labelBurzaObedWarning,e1.getMessage());
         }
 
     }
@@ -699,6 +727,46 @@ public class UserInterface extends JFrame {
         }
     }
 
+    private void btnBurzaObjednatRanajky1ActionPerformed(ActionEvent e) {
+        objednatBurzaRanajky(labelBurzaRanajkyNazov1.getText());
+    }
+
+    private void btnBurzaObjednatRanajky2ActionPerformed(ActionEvent e) {
+        objednatBurzaRanajky(labelBurzaRanajkyNazov2.getText());
+    }
+
+    private void btnBurzaObjednatRanajky3ActionPerformed(ActionEvent e) {
+        objednatBurzaRanajky(labelBurzaRanajkyNazov3.getText());
+    }
+
+    private void btnBurzaObjednatRanajky4ActionPerformed(ActionEvent e) {
+        objednatBurzaRanajky(labelBurzaRanajkyNazov4.getText());
+    }
+
+    private void btnBurzaObjednatRanajky5ActionPerformed(ActionEvent e) {
+        objednatBurzaRanajky(labelBurzaRanajkyNazov5.getText());
+    }
+
+    private void btnBurzaObjednatObed1ActionPerformed(ActionEvent e) {
+        objednatBurzaObed(labelBurzaObedNazov1.getText());
+    }
+
+    private void btnBurzaObjednatObed2ActionPerformed(ActionEvent e) {
+        objednatBurzaObed(labelBurzaObedNazov2.getText());
+    }
+
+    private void btnBurzaObjednatObed3ActionPerformed(ActionEvent e) {
+        objednatBurzaObed(labelBurzaObedNazov3.getText());
+    }
+
+    private void btnBurzaObjednatObed4ActionPerformed(ActionEvent e) {
+        objednatBurzaObed(labelBurzaObedNazov4.getText());
+    }
+
+    private void btnBurzaObjednatObed5ActionPerformed(ActionEvent e) {
+        objednatBurzaObed(labelBurzaObedNazov5.getText());
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
@@ -873,7 +941,7 @@ public class UserInterface extends JFrame {
         labelBurzaRanajkyPocet5 = new JLabel();
         labelBurzaRanajkyCena5 = new JLabel();
         btnBurzaObjednatRanajky5 = new KButton();
-        label119 = new JLabel();
+        labelBurzaRanajkyWarning = new JLabel();
         panelBurzaObed = new KGradientPanel();
         panelTableBurzaObed = new KGradientPanel();
         label120 = new JLabel();
@@ -912,7 +980,7 @@ public class UserInterface extends JFrame {
         labelBurzaObedPocet5 = new JLabel();
         labelBurzaObedCena5 = new JLabel();
         btnBurzaObjednatObed5 = new KButton();
-        label151 = new JLabel();
+        labelBurzaObedWarning = new JLabel();
         panelUcet = new KGradientPanel();
         splitPane5 = new JSplitPane();
         panelUcetMenu = new KGradientPanel();
@@ -972,13 +1040,13 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-                javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax
-                . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-                .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-                . Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans.
-                PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .
-                equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
+                javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax
+                .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
+                .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
+                .Color.red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.
+                PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".
+                equals(e.getPropertyName()))throw new RuntimeException();}});
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2269,6 +2337,7 @@ public class UserInterface extends JFrame {
                                         panelBurzaRanajky.setBackground(Color.white);
                                         panelBurzaRanajky.setkFillBackground(false);
                                         panelBurzaRanajky.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panelBurzaRanajky.getLayout()).rowHeights = new int[] {0, 30};
 
                                         //======== panelTableBurzaRanajky ========
                                         {
@@ -2279,7 +2348,7 @@ public class UserInterface extends JFrame {
                                             panelTableBurzaRanajky.setBackground(new Color(255, 255, 255, 145));
                                             panelTableBurzaRanajky.setLayout(new FormLayout(
                                                 "27px, 280px, 126px, 92px, 72px, 107px",
-                                                "fill:49px, 5*(fill:52px), $lgap, 11dlu"));
+                                                "fill:49px, 5*(fill:52px)"));
 
                                             //---- label89 ----
                                             label89.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
@@ -2365,6 +2434,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatRanajky1.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatRanajky1.setBackground(Color.white);
                                             btnBurzaObjednatRanajky1.setBorderPainted(false);
+                                            btnBurzaObjednatRanajky1.addActionListener(e -> btnBurzaObjednatRanajky1ActionPerformed(e));
                                             panelTableBurzaRanajky.add(btnBurzaObjednatRanajky1, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label99 ----
@@ -2414,6 +2484,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatRanajky2.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatRanajky2.setBackground(Color.white);
                                             btnBurzaObjednatRanajky2.setBorderPainted(false);
+                                            btnBurzaObjednatRanajky2.addActionListener(e -> btnBurzaObjednatRanajky2ActionPerformed(e));
                                             panelTableBurzaRanajky.add(btnBurzaObjednatRanajky2, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label104 ----
@@ -2463,6 +2534,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatRanajky3.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatRanajky3.setBackground(Color.white);
                                             btnBurzaObjednatRanajky3.setBorderPainted(false);
+                                            btnBurzaObjednatRanajky3.addActionListener(e -> btnBurzaObjednatRanajky3ActionPerformed(e));
                                             panelTableBurzaRanajky.add(btnBurzaObjednatRanajky3, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label109 ----
@@ -2512,6 +2584,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatRanajky4.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatRanajky4.setBackground(Color.white);
                                             btnBurzaObjednatRanajky4.setBorderPainted(false);
+                                            btnBurzaObjednatRanajky4.addActionListener(e -> btnBurzaObjednatRanajky4ActionPerformed(e));
                                             panelTableBurzaRanajky.add(btnBurzaObjednatRanajky4, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label114 ----
@@ -2561,10 +2634,18 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatRanajky5.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatRanajky5.setBackground(Color.white);
                                             btnBurzaObjednatRanajky5.setBorderPainted(false);
+                                            btnBurzaObjednatRanajky5.addActionListener(e -> btnBurzaObjednatRanajky5ActionPerformed(e));
                                             panelTableBurzaRanajky.add(btnBurzaObjednatRanajky5, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
-                                            panelTableBurzaRanajky.add(label119, CC.xy(1, 8));
                                         }
                                         panelBurzaRanajky.add(panelTableBurzaRanajky, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 15, 0), 0, 0));
+
+                                        //---- labelBurzaRanajkyWarning ----
+                                        labelBurzaRanajkyWarning.setForeground(Color.red);
+                                        labelBurzaRanajkyWarning.setFont(new Font("Yu Gothic UI", Font.BOLD, 22));
+                                        labelBurzaRanajkyWarning.setHorizontalAlignment(SwingConstants.CENTER);
+                                        panelBurzaRanajky.add(labelBurzaRanajkyWarning, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                                             new Insets(0, 0, 0, 0), 0, 0));
                                     }
@@ -2576,6 +2657,7 @@ public class UserInterface extends JFrame {
                                         panelBurzaObed.setkEndColor(Color.white);
                                         panelBurzaObed.setkStartColor(Color.white);
                                         panelBurzaObed.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panelBurzaObed.getLayout()).rowHeights = new int[] {0, 30};
 
                                         //======== panelTableBurzaObed ========
                                         {
@@ -2586,7 +2668,7 @@ public class UserInterface extends JFrame {
                                             panelTableBurzaObed.setBackground(new Color(255, 255, 255, 145));
                                             panelTableBurzaObed.setLayout(new FormLayout(
                                                 "27px, 280px, 126px, 92px, 72px, 107px",
-                                                "fill:49px, 5*(fill:52px), $lgap, 11dlu"));
+                                                "fill:49px, 5*(fill:52px)"));
 
                                             //---- label120 ----
                                             label120.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
@@ -2672,6 +2754,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatObed1.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatObed1.setBackground(Color.white);
                                             btnBurzaObjednatObed1.setBorderPainted(false);
+                                            btnBurzaObjednatObed1.addActionListener(e -> btnBurzaObjednatObed1ActionPerformed(e));
                                             panelTableBurzaObed.add(btnBurzaObjednatObed1, new CellConstraints(6, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label131 ----
@@ -2721,6 +2804,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatObed2.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatObed2.setBackground(Color.white);
                                             btnBurzaObjednatObed2.setBorderPainted(false);
+                                            btnBurzaObjednatObed2.addActionListener(e -> btnBurzaObjednatObed2ActionPerformed(e));
                                             panelTableBurzaObed.add(btnBurzaObjednatObed2, new CellConstraints(6, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label136 ----
@@ -2770,6 +2854,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatObed3.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatObed3.setBackground(Color.white);
                                             btnBurzaObjednatObed3.setBorderPainted(false);
+                                            btnBurzaObjednatObed3.addActionListener(e -> btnBurzaObjednatObed3ActionPerformed(e));
                                             panelTableBurzaObed.add(btnBurzaObjednatObed3, new CellConstraints(6, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label141 ----
@@ -2819,6 +2904,7 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatObed4.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatObed4.setBackground(Color.white);
                                             btnBurzaObjednatObed4.setBorderPainted(false);
+                                            btnBurzaObjednatObed4.addActionListener(e -> btnBurzaObjednatObed4ActionPerformed(e));
                                             panelTableBurzaObed.add(btnBurzaObjednatObed4, new CellConstraints(6, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
 
                                             //---- label146 ----
@@ -2868,10 +2954,18 @@ public class UserInterface extends JFrame {
                                             btnBurzaObjednatObed5.setkHoverForeGround(Color.white);
                                             btnBurzaObjednatObed5.setBackground(Color.white);
                                             btnBurzaObjednatObed5.setBorderPainted(false);
+                                            btnBurzaObjednatObed5.addActionListener(e -> btnBurzaObjednatObed5ActionPerformed(e));
                                             panelTableBurzaObed.add(btnBurzaObjednatObed5, new CellConstraints(6, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 10, 10, 1)));
-                                            panelTableBurzaObed.add(label151, CC.xy(1, 8));
                                         }
                                         panelBurzaObed.add(panelTableBurzaObed, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 15, 0), 0, 0));
+
+                                        //---- labelBurzaObedWarning ----
+                                        labelBurzaObedWarning.setForeground(Color.red);
+                                        labelBurzaObedWarning.setFont(new Font("Yu Gothic UI", Font.BOLD, 22));
+                                        labelBurzaObedWarning.setHorizontalAlignment(SwingConstants.CENTER);
+                                        panelBurzaObed.add(labelBurzaObedWarning, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                                             new Insets(0, 0, 0, 0), 0, 0));
                                     }
@@ -3630,7 +3724,7 @@ public class UserInterface extends JFrame {
     private JLabel labelBurzaRanajkyPocet5;
     private JLabel labelBurzaRanajkyCena5;
     private KButton btnBurzaObjednatRanajky5;
-    private JLabel label119;
+    private JLabel labelBurzaRanajkyWarning;
     private KGradientPanel panelBurzaObed;
     private KGradientPanel panelTableBurzaObed;
     private JLabel label120;
@@ -3669,7 +3763,7 @@ public class UserInterface extends JFrame {
     private JLabel labelBurzaObedPocet5;
     private JLabel labelBurzaObedCena5;
     private KButton btnBurzaObjednatObed5;
-    private JLabel label151;
+    private JLabel labelBurzaObedWarning;
     private KGradientPanel panelUcet;
     private JSplitPane splitPane5;
     private KGradientPanel panelUcetMenu;

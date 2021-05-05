@@ -134,8 +134,29 @@ public class User {
         return this.orders.stream().filter(order -> order.getMeal() instanceof Lunch).findFirst().orElse(null);
     }
 
-    public void takeMealFromBurza(Order order) {
+    public void takeMealFromBurza(Order order) throws Exception {
+        if (order == null) {
+            throw new Exception("Objednávanie neprebehlo úspešne. Skuste to znovu.");
+        }
+
+        if (order.getMeal() instanceof  Breakfast && hasBreakfastOrder()) {
+            throw new Exception("Už máte objednané raňajky");
+        }
+
+        if (order.getMeal() instanceof  Lunch && hasLunchOrder()) {
+            throw new Exception("Už máte objednaný obed");
+        }
+
+        if (order.getMeal().getPrice() > this.getAccount()) {
+            throw new Exception("Nemáte dostatok peňazí na účte");
+        }
+
+        if (order.getMeal().getNumberInBurza() < 1) {
+            throw new Exception("Žiadne voľné porcie v burze");
+        }
+
         order.orderFromBurza(this);
+        this.setAccount(getAccount() - order.getMeal().getPrice());
     }
 
     public void putMoneyOnAccount(double amount) {

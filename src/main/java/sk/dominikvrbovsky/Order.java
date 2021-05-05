@@ -91,7 +91,6 @@ public class Order {
         this.setDateTime(LocalDateTime.now());
         this.setBurza(false);
         this.meal.setNumberInBurza(this.meal.getNumberInBurza() - 1);
-        this.meal.setNumberOfOrder(this.meal.getNumberOfOrder() + 1);
     }
 
     @Override
