@@ -20,15 +20,18 @@ public class Order {
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_order_meal_id"))
     private Meal meal;
 
-    private LocalDateTime dateTime;
+    private LocalDateTime dateTimeOrderCreation;
 
-    private boolean burza;
+    private boolean inBurza;
+    
+    private LocalDateTime dateTimeAdditionToBurza;
 
     public Order(User user, Meal meal) {
         this.user = user;
         this.meal = meal;
-        this.dateTime = LocalDateTime.now();
-        this.burza = false;
+        this.dateTimeOrderCreation = LocalDateTime.now();
+        this.inBurza = false;
+        this.dateTimeAdditionToBurza = null;
         this.meal.orderMeal();
     }
 
@@ -59,43 +62,54 @@ public class Order {
         this.meal = meal;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDateTime getDateTimeAdditionToBurza() {
+        return dateTimeAdditionToBurza;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDateTimeAdditionToBurza(LocalDateTime dateTimeAdditionToBurza) {
+        this.dateTimeAdditionToBurza = dateTimeAdditionToBurza;
     }
 
-    public boolean isBurza() {
-        return burza;
+    public LocalDateTime getDateTimeOrderCreation() {
+        return dateTimeOrderCreation;
     }
 
-    public void setBurza(boolean burza) {
-        this.burza = burza;
+    public void setDateTimeOrderCreation(LocalDateTime dateTimeOrderCreation) {
+        this.dateTimeOrderCreation = dateTimeOrderCreation;
+    }
+
+    public boolean isInBurza() {
+        return inBurza;
+    }
+
+    public void setInBurza(boolean inBurza) {
+        if (inBurza) this.dateTimeAdditionToBurza = LocalDateTime.now();
+        if (!inBurza) this.dateTimeAdditionToBurza = null;
+        this.inBurza = inBurza;
     }
 
     public void addToBurza() {
-        this.setBurza(true);
+        this.setInBurza(true);
         this.meal.setNumberInBurza(this.meal.getNumberInBurza() + 1);
     }
 
     public void removeFromBurza() {
-        this.setBurza(false);
+        this.setInBurza(false);
         this.meal.setNumberInBurza(this.meal.getNumberInBurza() - 1);
     }
 
     public void orderFromBurza(User newUser) {
         this.user.setAccount(this.user.getAccount() + this.meal.getPrice());
         this.setUser(newUser);
-        this.setDateTime(LocalDateTime.now());
-        this.setBurza(false);
+        newUser.getOrders().add(this);
+        this.setDateTimeOrderCreation(LocalDateTime.now());
+        this.setInBurza(false);
         this.meal.setNumberInBurza(this.meal.getNumberInBurza() - 1);
     }
 
     @Override
     public String toString() {
-        String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        return String.format("%s %tT \t %s", date, this.dateTime.toLocalTime(), this.getMeal().toStringOrder());
+        String date = this.dateTimeOrderCreation.toLocalDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return String.format("%s %tT \t %s", date, this.dateTimeOrderCreation.toLocalTime(), this.getMeal().toStringOrder());
     }
 }

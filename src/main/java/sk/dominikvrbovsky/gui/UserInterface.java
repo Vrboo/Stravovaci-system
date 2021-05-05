@@ -6,13 +6,14 @@ package sk.dominikvrbovsky.gui;
 
 import java.awt.event.*;
 import javax.swing.border.*;
-import javax.swing.event.*;
+
 import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
 
 import keeptoo.*;
 import sk.dominikvrbovsky.*;
 import sk.dominikvrbovsky.dao.impl.MealDao;
+import sk.dominikvrbovsky.dao.impl.OrderDao;
 import sk.dominikvrbovsky.dao.impl.UserDao;
 import sk.dominikvrbovsky.utilities.DateUtilities;
 
@@ -21,7 +22,6 @@ import javax.swing.*;
 import javax.swing.GroupLayout;
 import java.awt.*;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +37,7 @@ public class UserInterface extends JFrame {
     private final CardLayout cardLayoutUcet;
     private final MealDao mealDao;
     private final UserDao userDao;
+    private final OrderDao orderDao;
     private List<Breakfast> breakfasts;
     private List<Lunch> lunches;
 
@@ -46,6 +47,7 @@ public class UserInterface extends JFrame {
         this.user = user;
         this.mealDao = new MealDao(entityManager);
         this.userDao = new UserDao(entityManager);
+        this.orderDao = new OrderDao(entityManager);
         this.breakfasts = null;
         this.lunches = null;
 
@@ -157,14 +159,14 @@ public class UserInterface extends JFrame {
         btnRanajkyBurza.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (user.hasBreakfastOrder() && !user.getBreakfastOrder().isBurza()) {
+                if (user.hasBreakfastOrder() && !user.getBreakfastOrder().isInBurza()) {
                     btnRanajkyBurza.setkStartColor(new Color(73, 196, 174));
                     btnRanajkyBurza.setkEndColor(new Color(140, 219, 145));
                     btnRanajkyBurza.setkHoverStartColor(new Color(52, 188, 183));
                     btnRanajkyBurza.setkHoverEndColor(new Color(73, 196, 174));
                     btnRanajkyBurza.setText("Pridať do burzy");
                     btnRanajkyBurza.setVisible(true);
-                } else if (user.hasBreakfastOrder() && user.getBreakfastOrder().isBurza()) {
+                } else if (user.hasBreakfastOrder() && user.getBreakfastOrder().isInBurza()) {
                     btnRanajkyBurza.setkStartColor(new Color(255, 161, 117));
                     btnRanajkyBurza.setkEndColor(new Color(224, 31, 23));
                     btnRanajkyBurza.setkHoverStartColor(new Color(224, 31, 23));
@@ -198,7 +200,7 @@ public class UserInterface extends JFrame {
             labelsRanajky[index][0].setText(breakfast.getName());
             labelsRanajky[index][1].setText(breakfast.getDrink().getDrink());
             labelsRanajky[index][2].setText(breakfast.getCapacity() + "x");
-            labelsRanajky[index][3].setText(breakfast.getPrice()+ "€");
+            labelsRanajky[index][3].setText(breakfast.getAccountString()+ "€");
 
             index++;
         }
@@ -208,7 +210,7 @@ public class UserInterface extends JFrame {
             labelsObed[index][0].setText(lunch.getName());
             labelsObed[index][1].setText(lunch.isTakeaway() ? "Áno" : "Nie");
             labelsObed[index][2].setText(lunch.getCapacity() + "x");
-            labelsObed[index][3].setText(lunch.getPrice() + "€");
+            labelsObed[index][3].setText(lunch.getAccountString() + "€");
 
             index++;
         }
@@ -217,7 +219,7 @@ public class UserInterface extends JFrame {
             disableAllButtons(panelTableRanajky.getComponents());
             highlightLine(getObjednatArray55(panelTableRanajky.getComponents()), user.getBreakfastOrder().getMeal().getName());
             setLabelWariningObjednane(labelObjednatRanajkyWarning);
-            if (user.getBreakfastOrder().isBurza()) labelObjednatRanajkyWarning.setText("Objednané [Aktuálne v burze]");
+            if (user.getBreakfastOrder().isInBurza()) labelObjednatRanajkyWarning.setText("Objednané [Aktuálne v burze]");
         } else {
             activateAllButtons(panelTableRanajky.getComponents());
         }
@@ -226,7 +228,7 @@ public class UserInterface extends JFrame {
             disableAllButtons(panelTableObed.getComponents());
             highlightLine(getObjednatArray55(panelTableObed.getComponents()), user.getLunchOrder().getMeal().getName());
             setLabelWariningObjednane(labelObjednatObedWarning);
-            if (user.getLunchOrder().isBurza()) labelObjednatObedWarning.setText("Objednané [Aktuálne v burze]");
+            if (user.getLunchOrder().isInBurza()) labelObjednatObedWarning.setText("Objednané [Aktuálne v burze]");
         } else {
             activateAllButtons(panelTableObed.getComponents());
         }
@@ -250,13 +252,14 @@ public class UserInterface extends JFrame {
     private void objednatBurzaRanajky(String nameOfMeal) {
 
         try {
-            Optional<Breakfast> meal = this.breakfasts.stream().filter(breakfast -> breakfast.getName().equals(nameOfMeal)).findFirst();
-            this.user.makeOrder(meal.orElse(null));
-            //this.user.takeMealFromBurza();
+            long idOfMeal = this.breakfasts.stream().filter(breakfast -> breakfast.getName().equals(nameOfMeal)).findFirst().orElse(null).getId();
+            Order order = orderDao.getFirstOrderInBurzaByMealId(idOfMeal).get();
+            this.user.takeMealFromBurza(order);
             labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
             btnObjednatActionPerformed();
         } catch (Exception e1) {
             setLabelWariningError(labelBurzaRanajkyWarning, e1.getMessage());
+            e1.printStackTrace();
         }
 
     }
@@ -400,14 +403,14 @@ public class UserInterface extends JFrame {
         
         if (this.user.hasBreakfastOrder()) {
             Order orderBreakfast = this.user.getBreakfastOrder();
-            String breakfastDrink = " (" + ((Breakfast)orderBreakfast.getMeal()).getDrink().getDrink()  + ")";
+            String breakfastDrink = "(" + ((Breakfast)orderBreakfast.getMeal()).getDrink().getDrink()  + ")";
 
-            labelMojeObjednavkyRanajkyDatum.setText(orderBreakfast.getDateTime().toLocalDate().format(dateFormatter));
-            labelMojeObjednavkyRanajkyCas.setText(orderBreakfast.getDateTime().toLocalTime().format(timeFormatter));
+            labelMojeObjednavkyRanajkyDatum.setText(orderBreakfast.getDateTimeOrderCreation().toLocalDate().format(dateFormatter));
+            labelMojeObjednavkyRanajkyCas.setText(orderBreakfast.getDateTimeOrderCreation().toLocalTime().format(timeFormatter));
             labelMojeObjednavkyRanajkyNazov.setText(orderBreakfast.getMeal().getName() + breakfastDrink);
-            labelMojeObjednavkyRanajkyCena.setText(orderBreakfast.getMeal().getPrice() + "€");
+            labelMojeObjednavkyRanajkyCena.setText(orderBreakfast.getMeal().getAccountString() + "€");
 
-            if (!this.user.getBreakfastOrder().isBurza()) {
+            if (!this.user.getBreakfastOrder().isInBurza()) {
                 setButtonToPridatDoBurzy(btnRanajkyBurza);
             } else {
                 setButtonToOdstranitZBurzy(btnRanajkyBurza);
@@ -426,12 +429,12 @@ public class UserInterface extends JFrame {
             boolean isTakeaway = ((Lunch)orderLunch.getMeal()).isTakeaway();
             String orderTakeaway = (isTakeaway ? "(Takeaway)" : "");
 
-            labelMojeObjednavkyObedDatum.setText(orderLunch.getDateTime().toLocalDate().format(dateFormatter));
-            labelMojeObjednavkyObedCas.setText(orderLunch.getDateTime().toLocalTime().format(timeFormatter));
+            labelMojeObjednavkyObedDatum.setText(orderLunch.getDateTimeOrderCreation().toLocalDate().format(dateFormatter));
+            labelMojeObjednavkyObedCas.setText(orderLunch.getDateTimeOrderCreation().toLocalTime().format(timeFormatter));
             labelMojeObjednavkyObedNazov.setText(orderLunch.getMeal().getName() + orderTakeaway);
-            labelMojeObjednavkyObedCena.setText(orderLunch.getMeal().getPrice() + "€");
+            labelMojeObjednavkyObedCena.setText(orderLunch.getMeal().getAccountString() + "€");
 
-            if (!this.user.getLunchOrder().isBurza()) {
+            if (!this.user.getLunchOrder().isInBurza()) {
                 setButtonToPridatDoBurzy(btnObedBurza);
             } else {
                 setButtonToOdstranitZBurzy(btnObedBurza);
@@ -484,7 +487,7 @@ public class UserInterface extends JFrame {
             labelsRanajky[index][0].setText(breakfast.getName());
             labelsRanajky[index][1].setText(breakfast.getDrink().getDrink());
             labelsRanajky[index][2].setText(breakfast.getNumberInBurza() + "x");
-            labelsRanajky[index][3].setText(breakfast.getPrice()+ "€");
+            labelsRanajky[index][3].setText(breakfast.getAccountString()+ "€");
 
             index++;
         }
@@ -494,7 +497,7 @@ public class UserInterface extends JFrame {
             labelsObed[index][0].setText(lunch.getName());
             labelsObed[index][1].setText(lunch.isTakeaway() ? "Áno" : "Nie");
             labelsObed[index][2].setText(lunch.getNumberInBurza() + "x");
-            labelsObed[index][3].setText(lunch.getPrice() + "€");
+            labelsObed[index][3].setText(lunch.getAccountString() + "€");
 
             index++;
         }

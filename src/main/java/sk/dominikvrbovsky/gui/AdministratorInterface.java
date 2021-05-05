@@ -84,12 +84,6 @@ public class AdministratorInterface extends JFrame {
         });
     }
 
-    private void setIntFormatters(JFormattedTextField formatter) {
-        NumberFormat numFormat = new DecimalFormat("#0.00");
-        NumberFormatter  numFormatter  = new NumberFormatter(numFormat);
-        formatter = new JFormattedTextField(numFormatter);
-    }
-
     private void btnRanajkyActionPerformed() {
         cardLayoutObjednavky.show(panelContentObjednavky, "ranajky");
     }

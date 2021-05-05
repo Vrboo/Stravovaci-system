@@ -80,6 +80,9 @@ public abstract class Meal {
         this.setNumberOfOrder(this.getNumberOfOrder() + 1);
     }
 
+    public String getAccountString() {
+        return String.format("%.2f", this.getPrice());
+    }
     public abstract String toStringMealMenu();
 
     public abstract String toStringNumOfOrders();
