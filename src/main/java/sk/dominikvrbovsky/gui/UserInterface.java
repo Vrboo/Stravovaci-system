@@ -11,17 +11,16 @@ import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
 
 import keeptoo.*;
-import sk.dominikvrbovsky.Breakfast;
-import sk.dominikvrbovsky.Lunch;
-import sk.dominikvrbovsky.Meal;
-import sk.dominikvrbovsky.User;
+import sk.dominikvrbovsky.*;
 import sk.dominikvrbovsky.dao.impl.MealDao;
+import sk.dominikvrbovsky.dao.impl.UserDao;
 import sk.dominikvrbovsky.utilities.DateUtilities;
 
 import javax.persistence.EntityManager;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import java.awt.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +36,7 @@ public class UserInterface extends JFrame {
     private final CardLayout cardLayoutBurza;
     private final CardLayout cardLayoutUcet;
     private final MealDao mealDao;
+    private final UserDao userDao;
     private List<Breakfast> breakfasts;
     private List<Lunch> lunches;
 
@@ -44,6 +44,7 @@ public class UserInterface extends JFrame {
         this.entityManager = entityManager;
         this.user = user;
         this.mealDao = new MealDao(entityManager);
+        this.userDao = new UserDao(entityManager);
         this.breakfasts = null;
         this.lunches = null;
 
@@ -148,6 +149,29 @@ public class UserInterface extends JFrame {
                     btnMenuHistoriaTranskacii.setBorder(new MatteBorder(0, 0, 4, 0, new Color(52, 188, 183)));
                 } else {
                     btnMenuHistoriaTranskacii.setBorder(null);
+                }
+            }
+        });
+
+        btnRanajkyBurza.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (user.hasBreakfastOrder() && !user.getBreakfastOrder().isBurza()) {
+                    btnRanajkyBurza.setkStartColor(new Color(73, 196, 174));
+                    btnRanajkyBurza.setkEndColor(new Color(140, 219, 145));
+                    btnRanajkyBurza.setkHoverStartColor(new Color(52, 188, 183));
+                    btnRanajkyBurza.setkHoverEndColor(new Color(73, 196, 174));
+                    btnRanajkyBurza.setText("Pridať do burzy");
+                    btnRanajkyBurza.setVisible(true);
+                } else if (user.hasBreakfastOrder() && user.getBreakfastOrder().isBurza()) {
+                    btnRanajkyBurza.setkStartColor(new Color(255, 161, 117));
+                    btnRanajkyBurza.setkEndColor(new Color(224, 31, 23));
+                    btnRanajkyBurza.setkHoverStartColor(new Color(224, 31, 23));
+                    btnRanajkyBurza.setkHoverEndColor(new Color(255, 161, 117));
+                    btnRanajkyBurza.setText("Odstrániť z burzy");
+                    btnRanajkyBurza.setVisible(true);
+                } else if (!user.hasBreakfastOrder()) {
+                    btnRanajkyBurza.setVisible(false);
                 }
             }
         });
@@ -313,7 +337,76 @@ public class UserInterface extends JFrame {
     }
 
     private void btnMojeObjedActionPerformed() {
+        userDao.update(user);
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        
+        if (this.user.hasBreakfastOrder()) {
+            Order orderBreakfast = this.user.getBreakfastOrder();
+            String breakfastDrink = " (" + ((Breakfast)orderBreakfast.getMeal()).getDrink().getDrink()  + ")";
+
+            labelMojeObjednavkyRanajkyDatum.setText(orderBreakfast.getDateTime().toLocalDate().format(dateFormatter));
+            labelMojeObjednavkyRanajkyCas.setText(orderBreakfast.getDateTime().toLocalTime().format(timeFormatter));
+            labelMojeObjednavkyRanajkyNazov.setText(orderBreakfast.getMeal().getName() + breakfastDrink);
+            labelMojeObjednavkyRanajkyCena.setText(orderBreakfast.getMeal().getPrice() + "€");
+
+            if (!this.user.getBreakfastOrder().isBurza()) {
+                setButtonToPridatDoBurzy(btnRanajkyBurza);
+            } else {
+                setButtonToOdstranitZBurzy(btnRanajkyBurza);
+            }
+
+        } else {
+            labelMojeObjednavkyRanajkyDatum.setText("");
+            labelMojeObjednavkyRanajkyCas.setText("");
+            labelMojeObjednavkyRanajkyNazov.setText("Žiadna objednávka");
+            labelMojeObjednavkyRanajkyCena.setText("");
+            btnRanajkyBurza.setVisible(false);
+        }
+
+        if (this.user.hasLunchOrder()) {
+            Order orderLunch = this.user.getLunchOrder();
+            boolean isTakeaway = ((Lunch)orderLunch.getMeal()).isTakeaway();
+            String orderTakeaway = " (" + (isTakeaway ? "Takeaway" : "") + ")";
+
+            labelMojeObjednavkyObedDatum.setText(orderLunch.getDateTime().toLocalDate().format(dateFormatter));
+            labelMojeObjednavkyObedCas.setText(orderLunch.getDateTime().toLocalTime().format(timeFormatter));
+            labelMojeObjednavkyObedNazov.setText(orderLunch.getMeal().getName() + orderTakeaway);
+            labelMojeObjednavkyObedCena.setText(orderLunch.getMeal().getPrice() + "€");
+
+            if (!this.user.getLunchOrder().isBurza()) {
+                setButtonToPridatDoBurzy(btnObedBurza);
+            } else {
+                setButtonToOdstranitZBurzy(btnObedBurza);
+            }
+
+        } else {
+            labelMojeObjednavkyObedDatum.setText("");
+            labelMojeObjednavkyObedCas.setText("");
+            labelMojeObjednavkyObedNazov.setText("Žiadna objednávka");
+            labelMojeObjednavkyObedCena.setText("");
+            btnObedBurza.setVisible(false);
+        }
+        
         cardLayout.show(panelContent, "mojeObjednavky");
+    }
+
+    private void setButtonToPridatDoBurzy(KButton button) {
+        button.setkStartColor(new Color(73, 196, 174));
+        button.setkEndColor(new Color(140, 219, 145));
+        button.setkHoverStartColor(new Color(52, 188, 183));
+        button.setkHoverEndColor(new Color(73, 196, 174));
+        button.setText("Pridať do burzy");
+        button.setVisible(true);
+    }
+
+    private void setButtonToOdstranitZBurzy(KButton button) {
+        button.setkStartColor(new Color(255, 161, 117));
+        button.setkEndColor(new Color(224, 31, 23));
+        button.setkHoverStartColor(new Color(224, 31, 23));
+        button.setkHoverEndColor(new Color(255, 161, 117));
+        button.setText("Odstrániť z burzy");
+        button.setVisible(true);
     }
 
     private void btnBurzaActionPerformed() {
@@ -523,6 +616,26 @@ public class UserInterface extends JFrame {
         objednatObed(labelObjednatObedNazov5.getText());
     }
 
+    private void btnRanajkyBurzaActionPerformed(ActionEvent e) {
+        if (btnRanajkyBurza.getText().equals("Pridať do burzy")) {
+            this.user.getBreakfastOrder().addToBurza();
+            btnMojeObjedActionPerformed();
+        } else if (btnRanajkyBurza.getText().equals("Odstrániť z burzy")) {
+            this.user.getBreakfastOrder().removeFromBurza();
+            btnMojeObjedActionPerformed();
+        }
+    }
+
+    private void btnObedBurzaActionPerformed(ActionEvent e) {
+        if (btnObedBurza.getText().equals("Pridať do burzy")) {
+            this.user.getLunchOrder().addToBurza();
+            btnMojeObjedActionPerformed();
+        } else if (btnObedBurza.getText().equals("Odstrániť z burzy")) {
+            this.user.getLunchOrder().removeFromBurza();
+            btnMojeObjedActionPerformed();
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
@@ -637,23 +750,22 @@ public class UserInterface extends JFrame {
         label2 = new JLabel();
         label74 = new JLabel();
         label75 = new JLabel();
-        label76 = new JLabel();
-        label79 = new JLabel();
-        label77 = new JLabel();
-        label80 = new JLabel();
-        btnDoBurzyObed = new KButton();
+        labelMojeObjednavkyRanajkyDatum = new JLabel();
+        labelMojeObjednavkyRanajkyCas = new JLabel();
+        labelMojeObjednavkyRanajkyNazov = new JLabel();
+        labelMojeObjednavkyRanajkyCena = new JLabel();
+        btnRanajkyBurza = new KButton();
         panelTableMojeObjednavkyObed = new KGradientPanel();
         label72 = new JLabel();
         label78 = new JLabel();
         label81 = new JLabel();
         label82 = new JLabel();
         label83 = new JLabel();
-        label84 = new JLabel();
-        label85 = new JLabel();
-        label86 = new JLabel();
-        label87 = new JLabel();
-        btnDoBurzyRanajky = new KButton();
-        label88 = new JLabel();
+        labelMojeObjednavkyObedDatum = new JLabel();
+        labelMojeObjednavkyObedCas = new JLabel();
+        labelMojeObjednavkyObedNazov = new JLabel();
+        labelMojeObjednavkyObedCena = new JLabel();
+        btnObedBurza = new KButton();
         panelBurza = new KGradientPanel();
         splitPane4 = new JSplitPane();
         panelMenuBurza = new KGradientPanel();
@@ -797,13 +909,11 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-                javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax
-                .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-                .awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),java.awt
-                .Color.red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.
-                PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er".
-                equals(e.getPropertyName()))throw new RuntimeException();}});
+                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+                0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+                .BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),java.awt.Color.
+                red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+                beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException();}});
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1826,6 +1936,7 @@ public class UserInterface extends JFrame {
                             panelMojeObjednavky.setBorder(null);
                             panelMojeObjednavky.setkBorderRadius(0);
                             panelMojeObjednavky.setLayout(new GridBagLayout());
+                            ((GridBagLayout)panelMojeObjednavky.getLayout()).columnWidths = new int[] {700};
 
                             //======== panelTableMojeObjRanajky ========
                             {
@@ -1835,7 +1946,7 @@ public class UserInterface extends JFrame {
                                 panelTableMojeObjRanajky.setkBorderRadius(0);
                                 panelTableMojeObjRanajky.setBackground(new Color(255, 255, 255, 145));
                                 panelTableMojeObjRanajky.setLayout(new FormLayout(
-                                    "46dlu, 36dlu, 348px, 75px, 101px",
+                                    "46dlu, 36dlu, 348px, 75px, 147px",
                                     "fill:49px, fill:52px"));
 
                                 //---- label71 ----
@@ -1870,49 +1981,50 @@ public class UserInterface extends JFrame {
                                 label75.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 panelTableMojeObjRanajky.add(label75, CC.xy(5, 1));
 
-                                //---- label76 ----
-                                label76.setText("14.12.2021");
-                                label76.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                label76.setHorizontalAlignment(SwingConstants.CENTER);
-                                panelTableMojeObjRanajky.add(label76, CC.xy(1, 2));
+                                //---- labelMojeObjednavkyRanajkyDatum ----
+                                labelMojeObjednavkyRanajkyDatum.setText("14.12.2021");
+                                labelMojeObjednavkyRanajkyDatum.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                labelMojeObjednavkyRanajkyDatum.setHorizontalAlignment(SwingConstants.CENTER);
+                                panelTableMojeObjRanajky.add(labelMojeObjednavkyRanajkyDatum, CC.xy(1, 2));
 
-                                //---- label79 ----
-                                label79.setText("14:59");
-                                label79.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                label79.setHorizontalAlignment(SwingConstants.CENTER);
-                                panelTableMojeObjRanajky.add(label79, CC.xy(2, 2));
+                                //---- labelMojeObjednavkyRanajkyCas ----
+                                labelMojeObjednavkyRanajkyCas.setText("14:59");
+                                labelMojeObjednavkyRanajkyCas.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                labelMojeObjednavkyRanajkyCas.setHorizontalAlignment(SwingConstants.CENTER);
+                                panelTableMojeObjRanajky.add(labelMojeObjednavkyRanajkyCas, CC.xy(2, 2));
 
-                                //---- label77 ----
-                                label77.setText("Parky s hor\u010dicou a chlebom (Takeaway)");
-                                label77.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                label77.setHorizontalAlignment(SwingConstants.CENTER);
-                                label77.setBorder(null);
-                                panelTableMojeObjRanajky.add(label77, CC.xy(3, 2));
+                                //---- labelMojeObjednavkyRanajkyNazov ----
+                                labelMojeObjednavkyRanajkyNazov.setText("Parky s hor\u010dicou a chlebom (Takeaway)");
+                                labelMojeObjednavkyRanajkyNazov.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                labelMojeObjednavkyRanajkyNazov.setHorizontalAlignment(SwingConstants.CENTER);
+                                labelMojeObjednavkyRanajkyNazov.setBorder(null);
+                                panelTableMojeObjRanajky.add(labelMojeObjednavkyRanajkyNazov, CC.xy(3, 2));
 
-                                //---- label80 ----
-                                label80.setText("4.87\u20ac");
-                                label80.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                label80.setHorizontalAlignment(SwingConstants.CENTER);
-                                label80.setBorder(null);
-                                panelTableMojeObjRanajky.add(label80, CC.xy(4, 2));
+                                //---- labelMojeObjednavkyRanajkyCena ----
+                                labelMojeObjednavkyRanajkyCena.setText("4.87\u20ac");
+                                labelMojeObjednavkyRanajkyCena.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                labelMojeObjednavkyRanajkyCena.setHorizontalAlignment(SwingConstants.CENTER);
+                                labelMojeObjednavkyRanajkyCena.setBorder(null);
+                                panelTableMojeObjRanajky.add(labelMojeObjednavkyRanajkyCena, CC.xy(4, 2));
 
-                                //---- btnDoBurzyObed ----
-                                btnDoBurzyObed.setText("Do burzy");
-                                btnDoBurzyObed.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                btnDoBurzyObed.setBorder(null);
-                                btnDoBurzyObed.setkStartColor(new Color(73, 196, 174));
-                                btnDoBurzyObed.setkEndColor(new Color(140, 219, 145));
-                                btnDoBurzyObed.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                                btnDoBurzyObed.setkHoverEndColor(new Color(73, 196, 174));
-                                btnDoBurzyObed.setkHoverStartColor(new Color(52, 188, 183));
-                                btnDoBurzyObed.setkHoverForeGround(Color.white);
-                                btnDoBurzyObed.setBackground(Color.white);
-                                btnDoBurzyObed.setBorderPainted(false);
-                                panelTableMojeObjRanajky.add(btnDoBurzyObed, new CellConstraints(5, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 11, 1)));
+                                //---- btnRanajkyBurza ----
+                                btnRanajkyBurza.setText("Prida\u0165 do burzy");
+                                btnRanajkyBurza.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                btnRanajkyBurza.setBorder(null);
+                                btnRanajkyBurza.setkStartColor(new Color(73, 196, 174));
+                                btnRanajkyBurza.setkEndColor(new Color(140, 219, 145));
+                                btnRanajkyBurza.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                btnRanajkyBurza.setkHoverEndColor(new Color(73, 196, 174));
+                                btnRanajkyBurza.setkHoverStartColor(new Color(52, 188, 183));
+                                btnRanajkyBurza.setkHoverForeGround(Color.white);
+                                btnRanajkyBurza.setBackground(Color.white);
+                                btnRanajkyBurza.setBorderPainted(false);
+                                btnRanajkyBurza.addActionListener(e -> btnRanajkyBurzaActionPerformed(e));
+                                panelTableMojeObjRanajky.add(btnRanajkyBurza, new CellConstraints(5, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 11, 1)));
                             }
                             panelMojeObjednavky.add(panelTableMojeObjRanajky, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 70, 0), 0, 0));
+                                new Insets(0, 0, 80, 0), 0, 0));
 
                             //======== panelTableMojeObjednavkyObed ========
                             {
@@ -1922,8 +2034,8 @@ public class UserInterface extends JFrame {
                                 panelTableMojeObjednavkyObed.setkBorderRadius(0);
                                 panelTableMojeObjednavkyObed.setBackground(new Color(255, 255, 255, 145));
                                 panelTableMojeObjednavkyObed.setLayout(new FormLayout(
-                                    "46dlu, 36dlu, 348px, 75px, 101px",
-                                    "fill:49px, fill:52px, $lgap, 19dlu"));
+                                    "46dlu, 36dlu, 348px, 75px, 147px",
+                                    "fill:49px, fill:52px, $lgap, 18dlu"));
 
                                 //---- label72 ----
                                 label72.setText("D\u00e1tum");
@@ -1957,46 +2069,46 @@ public class UserInterface extends JFrame {
                                 label83.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 panelTableMojeObjednavkyObed.add(label83, CC.xy(5, 1));
 
-                                //---- label84 ----
-                                label84.setText("7.8.2021");
-                                label84.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                label84.setHorizontalAlignment(SwingConstants.CENTER);
-                                panelTableMojeObjednavkyObed.add(label84, CC.xy(1, 2));
+                                //---- labelMojeObjednavkyObedDatum ----
+                                labelMojeObjednavkyObedDatum.setText("7.8.2021");
+                                labelMojeObjednavkyObedDatum.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                labelMojeObjednavkyObedDatum.setHorizontalAlignment(SwingConstants.CENTER);
+                                panelTableMojeObjednavkyObed.add(labelMojeObjednavkyObedDatum, CC.xy(1, 2));
 
-                                //---- label85 ----
-                                label85.setText("7:02");
-                                label85.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                label85.setHorizontalAlignment(SwingConstants.CENTER);
-                                panelTableMojeObjednavkyObed.add(label85, CC.xy(2, 2));
+                                //---- labelMojeObjednavkyObedCas ----
+                                labelMojeObjednavkyObedCas.setText("7:02");
+                                labelMojeObjednavkyObedCas.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                labelMojeObjednavkyObedCas.setHorizontalAlignment(SwingConstants.CENTER);
+                                panelTableMojeObjednavkyObed.add(labelMojeObjednavkyObedCas, CC.xy(2, 2));
 
-                                //---- label86 ----
-                                label86.setText("Parky s hor\u010dicou a chlebom (Miner\u00e1lna voda)");
-                                label86.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                label86.setHorizontalAlignment(SwingConstants.CENTER);
-                                label86.setBorder(null);
-                                panelTableMojeObjednavkyObed.add(label86, CC.xy(3, 2));
+                                //---- labelMojeObjednavkyObedNazov ----
+                                labelMojeObjednavkyObedNazov.setText("Parky s hor\u010dicou a chlebom (Miner\u00e1lna voda)");
+                                labelMojeObjednavkyObedNazov.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                labelMojeObjednavkyObedNazov.setHorizontalAlignment(SwingConstants.CENTER);
+                                labelMojeObjednavkyObedNazov.setBorder(null);
+                                panelTableMojeObjednavkyObed.add(labelMojeObjednavkyObedNazov, CC.xy(3, 2));
 
-                                //---- label87 ----
-                                label87.setText("2.05\u20ac");
-                                label87.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                label87.setHorizontalAlignment(SwingConstants.CENTER);
-                                label87.setBorder(null);
-                                panelTableMojeObjednavkyObed.add(label87, CC.xy(4, 2));
+                                //---- labelMojeObjednavkyObedCena ----
+                                labelMojeObjednavkyObedCena.setText("2.05\u20ac");
+                                labelMojeObjednavkyObedCena.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                labelMojeObjednavkyObedCena.setHorizontalAlignment(SwingConstants.CENTER);
+                                labelMojeObjednavkyObedCena.setBorder(null);
+                                panelTableMojeObjednavkyObed.add(labelMojeObjednavkyObedCena, CC.xy(4, 2));
 
-                                //---- btnDoBurzyRanajky ----
-                                btnDoBurzyRanajky.setText("Do burzy");
-                                btnDoBurzyRanajky.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                                btnDoBurzyRanajky.setBorder(null);
-                                btnDoBurzyRanajky.setkStartColor(new Color(73, 196, 174));
-                                btnDoBurzyRanajky.setkEndColor(new Color(140, 219, 145));
-                                btnDoBurzyRanajky.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                                btnDoBurzyRanajky.setkHoverEndColor(new Color(73, 196, 174));
-                                btnDoBurzyRanajky.setkHoverStartColor(new Color(52, 188, 183));
-                                btnDoBurzyRanajky.setkHoverForeGround(Color.white);
-                                btnDoBurzyRanajky.setBackground(Color.white);
-                                btnDoBurzyRanajky.setBorderPainted(false);
-                                panelTableMojeObjednavkyObed.add(btnDoBurzyRanajky, new CellConstraints(5, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 11, 1)));
-                                panelTableMojeObjednavkyObed.add(label88, CC.xy(1, 4));
+                                //---- btnObedBurza ----
+                                btnObedBurza.setText("Prida\u0165 do burzy");
+                                btnObedBurza.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                btnObedBurza.setBorder(null);
+                                btnObedBurza.setkStartColor(new Color(73, 196, 174));
+                                btnObedBurza.setkEndColor(new Color(140, 219, 145));
+                                btnObedBurza.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                btnObedBurza.setkHoverEndColor(new Color(73, 196, 174));
+                                btnObedBurza.setkHoverStartColor(new Color(52, 188, 183));
+                                btnObedBurza.setkHoverForeGround(Color.white);
+                                btnObedBurza.setBackground(Color.white);
+                                btnObedBurza.setBorderPainted(false);
+                                btnObedBurza.addActionListener(e -> btnObedBurzaActionPerformed(e));
+                                panelTableMojeObjednavkyObed.add(btnObedBurza, new CellConstraints(5, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 11, 1)));
                             }
                             panelMojeObjednavky.add(panelTableMojeObjednavkyObed, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -3393,23 +3505,22 @@ public class UserInterface extends JFrame {
     private JLabel label2;
     private JLabel label74;
     private JLabel label75;
-    private JLabel label76;
-    private JLabel label79;
-    private JLabel label77;
-    private JLabel label80;
-    private KButton btnDoBurzyObed;
+    private JLabel labelMojeObjednavkyRanajkyDatum;
+    private JLabel labelMojeObjednavkyRanajkyCas;
+    private JLabel labelMojeObjednavkyRanajkyNazov;
+    private JLabel labelMojeObjednavkyRanajkyCena;
+    private KButton btnRanajkyBurza;
     private KGradientPanel panelTableMojeObjednavkyObed;
     private JLabel label72;
     private JLabel label78;
     private JLabel label81;
     private JLabel label82;
     private JLabel label83;
-    private JLabel label84;
-    private JLabel label85;
-    private JLabel label86;
-    private JLabel label87;
-    private KButton btnDoBurzyRanajky;
-    private JLabel label88;
+    private JLabel labelMojeObjednavkyObedDatum;
+    private JLabel labelMojeObjednavkyObedCas;
+    private JLabel labelMojeObjednavkyObedNazov;
+    private JLabel labelMojeObjednavkyObedCena;
+    private KButton btnObedBurza;
     private KGradientPanel panelBurza;
     private JSplitPane splitPane4;
     private KGradientPanel panelMenuBurza;

@@ -1184,10 +1184,10 @@ new FormModel {
 								"value": "objednat"
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-								"$columnSpecs": "0"
+								"$columnSpecs": "700"
 								"$rowSpecs": "0, 0"
 								"$hGap": 5
-								"$vGap": 70
+								"$vGap": 80
 							} ) {
 								name: "panelMojeObjednavky"
 								"kEndColor": sfield java.awt.Color white
@@ -1195,7 +1195,7 @@ new FormModel {
 								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 								"kBorderRadius": 0
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
-									"$columnSpecs": "46dlu, 36dlu, 348px, 75px, 101px"
+									"$columnSpecs": "46dlu, 36dlu, 348px, 75px, 147px"
 									"$rowSpecs": "fill:49px, fill:52px"
 								} ) {
 									name: "panelTableMojeObjRanajky"
@@ -1249,7 +1249,7 @@ new FormModel {
 										"gridY": 1
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label76"
+										name: "labelMojeObjednavkyRanajkyDatum"
 										"text": "14.12.2021"
 										"font": &Font11 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 										"horizontalAlignment": 0
@@ -1258,7 +1258,7 @@ new FormModel {
 										"gridY": 2
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label79"
+										name: "labelMojeObjednavkyRanajkyCas"
 										"text": "14:59"
 										"font": #Font11
 										"horizontalAlignment": 0
@@ -1267,7 +1267,7 @@ new FormModel {
 										"gridY": 2
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label77"
+										name: "labelMojeObjednavkyRanajkyNazov"
 										"text": "Parky s horčicou a chlebom (Takeaway)"
 										"font": &Font12 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 										"horizontalAlignment": 0
@@ -1277,7 +1277,7 @@ new FormModel {
 										"gridX": 3
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label80"
+										name: "labelMojeObjednavkyRanajkyCena"
 										"text": "4.87€"
 										"font": &Font13 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 										"horizontalAlignment": 0
@@ -1287,8 +1287,8 @@ new FormModel {
 										"gridY": 2
 									} )
 									add( new FormComponent( "keeptoo.KButton" ) {
-										name: "btnDoBurzyObed"
-										"text": "Do burzy"
+										name: "btnRanajkyBurza"
+										"text": "Pridať do burzy"
 										"font": #Font7
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 										"kStartColor": #Color21
@@ -1299,6 +1299,7 @@ new FormModel {
 										"kHoverForeGround": sfield java.awt.Color white
 										"background": #Color20
 										"borderPainted": false
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnRanajkyBurzaActionPerformed", true ) )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 5
 										"gridY": 2
@@ -1306,8 +1307,8 @@ new FormModel {
 									} )
 								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
-									"$columnSpecs": "46dlu, 36dlu, 348px, 75px, 101px"
-									"$rowSpecs": "fill:49px, fill:52px, linegap, 19dlu"
+									"$columnSpecs": "46dlu, 36dlu, 348px, 75px, 147px"
+									"$rowSpecs": "fill:49px, fill:52px, linegap, 18dlu"
 								} ) {
 									name: "panelTableMojeObjednavkyObed"
 									"kEndColor": sfield java.awt.Color white
@@ -1360,7 +1361,7 @@ new FormModel {
 										"gridY": 1
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label84"
+										name: "labelMojeObjednavkyObedDatum"
 										"text": "7.8.2021"
 										"font": #Font11
 										"horizontalAlignment": 0
@@ -1369,7 +1370,7 @@ new FormModel {
 										"gridY": 2
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label85"
+										name: "labelMojeObjednavkyObedCas"
 										"text": "7:02"
 										"font": #Font11
 										"horizontalAlignment": 0
@@ -1378,7 +1379,7 @@ new FormModel {
 										"gridY": 2
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label86"
+										name: "labelMojeObjednavkyObedNazov"
 										"text": "Parky s horčicou a chlebom (Minerálna voda)"
 										"font": #Font12
 										"horizontalAlignment": 0
@@ -1388,7 +1389,7 @@ new FormModel {
 										"gridX": 3
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label87"
+										name: "labelMojeObjednavkyObedCena"
 										"text": "2.05€"
 										"font": #Font13
 										"horizontalAlignment": 0
@@ -1398,8 +1399,8 @@ new FormModel {
 										"gridY": 2
 									} )
 									add( new FormComponent( "keeptoo.KButton" ) {
-										name: "btnDoBurzyRanajky"
-										"text": "Do burzy"
+										name: "btnObedBurza"
+										"text": "Pridať do burzy"
 										"font": #Font7
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 										"kStartColor": #Color21
@@ -1410,16 +1411,11 @@ new FormModel {
 										"kHoverForeGround": sfield java.awt.Color white
 										"background": #Color20
 										"borderPainted": false
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObedBurzaActionPerformed", true ) )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 5
 										"gridY": 2
 										"insets": new java.awt.Insets( 9, 10, 11, 1 )
-									} )
-									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "label88"
-									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
-										"gridX": 1
-										"gridY": 4
 									} )
 								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 									"gridy": 1

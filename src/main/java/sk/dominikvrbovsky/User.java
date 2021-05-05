@@ -127,15 +127,11 @@ public class User {
     }
 
     public Order getBreakfastOrder() {
-        return this.orders.stream().filter(order -> order.getMeal() instanceof Breakfast).findFirst().get();
+        return this.orders.stream().filter(order -> order.getMeal() instanceof Breakfast).findFirst().orElse(null);
     }
 
     public Order getLunchOrder() {
-        return this.orders.stream().filter(order -> order.getMeal() instanceof Lunch).findFirst().get();
-    }
-
-    public void addMealToBurza(Order order) {
-        order.addToBurza();
+        return this.orders.stream().filter(order -> order.getMeal() instanceof Lunch).findFirst().orElse(null);
     }
 
     public void takeMealFromBurza(Order order) {

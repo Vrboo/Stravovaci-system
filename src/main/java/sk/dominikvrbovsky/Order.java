@@ -78,7 +78,11 @@ public class Order {
     public void addToBurza() {
         this.setBurza(true);
         this.meal.setNumberInBurza(this.meal.getNumberInBurza() + 1);
-        this.meal.setNumberOfOrder(this.meal.getNumberOfOrder() - 1);
+    }
+
+    public void removeFromBurza() {
+        this.setBurza(false);
+        this.meal.setNumberInBurza(this.meal.getNumberInBurza() - 1);
     }
 
     public void orderFromBurza(User newUser) {
