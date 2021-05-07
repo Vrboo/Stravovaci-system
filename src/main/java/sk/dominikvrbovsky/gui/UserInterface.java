@@ -156,28 +156,28 @@ public class UserInterface extends JFrame {
             }
         });
 
-        btnRanajkyBurza.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (user.hasBreakfastOrder() && !user.getBreakfastOrder().isInBurza()) {
-                    btnRanajkyBurza.setkStartColor(new Color(73, 196, 174));
-                    btnRanajkyBurza.setkEndColor(new Color(140, 219, 145));
-                    btnRanajkyBurza.setkHoverStartColor(new Color(52, 188, 183));
-                    btnRanajkyBurza.setkHoverEndColor(new Color(73, 196, 174));
-                    btnRanajkyBurza.setText("Pridať do burzy");
-                    btnRanajkyBurza.setVisible(true);
-                } else if (user.hasBreakfastOrder() && user.getBreakfastOrder().isInBurza()) {
-                    btnRanajkyBurza.setkStartColor(new Color(255, 161, 117));
-                    btnRanajkyBurza.setkEndColor(new Color(224, 31, 23));
-                    btnRanajkyBurza.setkHoverStartColor(new Color(224, 31, 23));
-                    btnRanajkyBurza.setkHoverEndColor(new Color(255, 161, 117));
-                    btnRanajkyBurza.setText("Odstrániť z burzy");
-                    btnRanajkyBurza.setVisible(true);
-                } else if (!user.hasBreakfastOrder()) {
-                    btnRanajkyBurza.setVisible(false);
-                }
-            }
-        });
+//        btnRanajkyBurza.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                if (user.hasBreakfastOrder() && !user.getBreakfastOrder().isInBurza()) {
+//                    btnRanajkyBurza.setkStartColor(new Color(73, 196, 174));
+//                    btnRanajkyBurza.setkEndColor(new Color(140, 219, 145));
+//                    btnRanajkyBurza.setkHoverStartColor(new Color(52, 188, 183));
+//                    btnRanajkyBurza.setkHoverEndColor(new Color(73, 196, 174));
+//                    btnRanajkyBurza.setText("Pridať do burzy");
+//                    btnRanajkyBurza.setVisible(true);
+//                } else if (user.hasBreakfastOrder() && user.getBreakfastOrder().isInBurza()) {
+//                    btnRanajkyBurza.setkStartColor(new Color(255, 161, 117));
+//                    btnRanajkyBurza.setkEndColor(new Color(224, 31, 23));
+//                    btnRanajkyBurza.setkHoverStartColor(new Color(224, 31, 23));
+//                    btnRanajkyBurza.setkHoverEndColor(new Color(255, 161, 117));
+//                    btnRanajkyBurza.setText("Odstrániť z burzy");
+//                    btnRanajkyBurza.setVisible(true);
+//                } else if (!user.hasBreakfastOrder()) {
+//                    btnRanajkyBurza.setVisible(false);
+//                }
+//            }
+//        });
 
         btnObjednatActionPerformed();
     }
@@ -250,27 +250,32 @@ public class UserInterface extends JFrame {
     }
 
     private void objednatBurzaRanajky(String nameOfMeal) {
+        Optional<Breakfast> meal;
+        Optional<Order> order = Optional.empty();
 
         try {
-            long idOfMeal = this.breakfasts.stream().filter(breakfast -> breakfast.getName().equals(nameOfMeal)).findFirst().orElse(null).getId();
-            Order order = orderDao.getFirstOrderInBurzaByMealId(idOfMeal).get();
-            this.user.takeMealFromBurza(order);
+            meal  = this.breakfasts.stream().filter(breakfast -> breakfast.getName().equals(nameOfMeal)).findFirst();
+            if (meal.isPresent()) order = orderDao.getFirstOrderInBurzaByMealId(meal.get().getId());
+            this.user.takeMealFromBurza(order.orElse(null));
             labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
             btnObjednatActionPerformed();
+            btnRanajkyActionPerformed();
         } catch (Exception e1) {
             setLabelWariningError(labelBurzaRanajkyWarning, e1.getMessage());
-            e1.printStackTrace();
         }
-
     }
 
     private void objednatBurzaObed(String nameOfMeal) {
-
+        Optional<Lunch> meal;
+        Optional<Order> order = Optional.empty();
         try {
-            Optional<Lunch> meal = this.lunches.stream().filter(lunch -> lunch.getName().equals(nameOfMeal)).findFirst();
-            this.user.makeOrder(meal.orElse(null));
+            meal  = this.lunches.stream().filter(lunch -> lunch.getName().equals(nameOfMeal)).findFirst();
+            if (meal.isPresent()) order = orderDao.getFirstOrderInBurzaByMealId(meal.get().getId());
+            this.user.takeMealFromBurza(order.orElse(null));
             labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
             btnObjednatActionPerformed();
+            btnObedActionPerformed();
+            btnObjednat.setFocusable(true);
         } catch (Exception e1) {
             setLabelWariningError(labelBurzaObedWarning,e1.getMessage());
         }
@@ -397,8 +402,14 @@ public class UserInterface extends JFrame {
     }
 
     private void btnMojeObjedActionPerformed() {
-        userDao.update(user);
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm");
+        try {
+            userDao.update(user);
+        } catch (Exception e) {
+            labelMojeObjednavkyRanajkyNazov.setText("Nepodarilo sa správne načítať objednávky");
+            labelMojeObjednavkyObedNazov.setText("Nepodarilo sa správne načítať objednávky");
+            return;
+        }
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         
         if (this.user.hasBreakfastOrder()) {
@@ -516,6 +527,7 @@ public class UserInterface extends JFrame {
     }
 
     private void btnOdhlasitSaActionPerformed() {
+
         cardLayout.show(panelContent,"odhlasitSa");
     }
 
@@ -646,10 +658,6 @@ public class UserInterface extends JFrame {
         }
     }
 
-    private void btnVybratZUctuActionPerformed() {
-        cardLayoutUcet.show(panelContentUcet, "heslo");
-    }
-
     private void passwordHesloInsideFocusGained() {
         String pass = String.valueOf(passwordHesloInside.getPassword());
 
@@ -768,6 +776,132 @@ public class UserInterface extends JFrame {
 
     private void btnBurzaObjednatObed5ActionPerformed(ActionEvent e) {
         objednatBurzaObed(labelBurzaObedNazov5.getText());
+    }
+
+    private void btnOdhlasitSaInsideActionPerformed(ActionEvent e) {
+        Login login = new Login(entityManager);
+        login.setVisible(true);
+        this.dispose();
+    }
+
+    private void txtFieldDobitSumaFocusGained(FocusEvent e) {
+        if (txtFieldDobitSuma.getText().equals("Suma")) {
+            txtFieldDobitSuma.setText("");
+            txtFieldDobitSuma.setForeground(Color.BLACK);
+        }
+    }
+
+    private void txtFieldDobitSumaFocusLost(FocusEvent e) {
+        if (txtFieldDobitSuma.getText().equals("")) {
+            txtFieldDobitSuma.setForeground(new Color(192,192,192));
+            txtFieldDobitSuma.setText("Suma");
+        }
+
+        JTextField jtxtFiled = (JTextField)e.getComponent();
+
+        if (jtxtFiled.getText().endsWith(".")) jtxtFiled.setText(jtxtFiled.getText() + "00");
+    }
+
+    private void txtFieldVyberSumaFocusGained(FocusEvent e) {
+        if (txtFieldVyberSuma.getText().equals("Suma")) {
+            txtFieldVyberSuma.setText("");
+            txtFieldVyberSuma.setForeground(Color.BLACK);
+        }
+    }
+
+    private void txtFieldVyberSumaFocusLost(FocusEvent e) {
+        if (txtFieldVyberSuma.getText().equals("")) {
+            txtFieldVyberSuma.setForeground(new Color(192,192,192));
+            txtFieldVyberSuma.setText("Suma");
+        }
+
+        JTextField jtxtFiled = (JTextField)e.getComponent();
+        if (jtxtFiled.getText().endsWith(".")) jtxtFiled.setText(jtxtFiled.getText() + "00");
+    }
+
+    private void txtFieldDobitSumaKeyTyped(KeyEvent e) {
+        JTextField jtxtFiled = (JTextField)e.getComponent();
+
+        if (jtxtFiled.getText().contains(".") || jtxtFiled.getText().equals("")) {
+            if (!Character.isDigit(e.getKeyChar()) )
+                e.consume();
+        } else {
+            if (!Character.isDigit(e.getKeyChar()) && Character.valueOf(e.getKeyChar()) != Character.valueOf('.'))
+                e.consume();
+        }
+    }
+
+    private void passwordHesloInsideFocusGained(FocusEvent e) {
+        String pass = String.valueOf(passwordHesloInside.getPassword());
+
+        if (pass.equals("Heslo")) {
+            passwordHesloInside.setEchoChar((char)0x2022);
+            passwordHesloInside.setForeground(Color.BLACK);
+            passwordHesloInside.setText("");
+        }
+    }
+
+    private void passwordHesloInsideFocusLost(FocusEvent e) {
+        String pass = String.valueOf(passwordHesloInside.getPassword());
+
+        if (pass.equals("")) {
+            passwordHesloInside.setEchoChar((char)0);
+            passwordHesloInside.setForeground(new Color(192,192,192));
+            passwordHesloInside.setText("Heslo");
+        }
+    }
+
+    private void btnDobitUcetActionPerformed(ActionEvent e) {
+        if (txtFieldDobitSuma.getText().equals("Suma")) {
+            labelUctDobitWarning.setText("Zadajte sumu");
+            return;
+        }
+
+        try {
+            this.user.putMoneyOnAccount(Double.parseDouble(txtFieldDobitSuma.getText()));
+            try {
+                userDao.update(user);
+            } catch (Exception e1) {
+                throw new Exception("Vklad na účet zlyhal. Skúste to znovu.");
+            }
+            setLabelWarningUcetSuccess(labelUctDobitWarning);
+            labelUctDobitWarning.setText("Účet bol úspešne dobitý");
+            labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
+            txtFieldDobitSuma.setText("Suma");
+        } catch (Exception e1) {
+            setLabelWarningUcetError(labelUctDobitWarning);
+            labelUctDobitWarning.setText(e1.getMessage());
+        }
+
+    }
+
+    private void btnVybratZUctuActionPerformed() {
+        if (txtFieldDobitSuma.getText().equals("Suma")) {
+            labelUctDobitWarning.setText("Zadajte sumu");
+            return;
+        }
+
+        cardLayoutUcet.show(panelContentUcet, "heslo");
+    }
+
+    private void setLabelWarningUcetSuccess(JLabel label) {
+        label.setFont(new Font("Yu Gothic UI", Font.BOLD, 18));
+        label.setForeground(new Color(0, 202, 197));
+    }
+
+    private void setLabelWarningUcetError(JLabel label) {
+        label.setFont(new Font("Yu Gothic UI", Font.BOLD, 18));
+        label.setForeground(Color.red);
+    }
+
+    private void btnPotvrditHesloInsideActionPerformed(ActionEvent e) {
+        String pass = String.valueOf(passwordHesloInside.getPassword());
+
+        if (user.getPassword().equals(pass)) {
+
+        } else {
+
+        }
     }
 
     private void initComponents() {
@@ -996,11 +1130,13 @@ public class UserInterface extends JFrame {
         labelDobitieUctu = new JLabel();
         txtFieldDobitSuma = new JTextField();
         btnDobitUcet = new KButton();
+        labelUctDobitWarning = new JLabel();
         panelVybratZUctu = new KGradientPanel();
         panelVyberZUctuInside = new KGradientPanel();
         labelVyberZUctu = new JLabel();
         txtFieldVyberSuma = new JTextField();
         btnVybratZUctu = new KButton();
+        labelUctVyberWarning = new JLabel();
         panelHistoriaTrans = new KGradientPanel();
         panelHeslo = new KGradientPanel();
         panelHesloInside = new KGradientPanel();
@@ -1044,11 +1180,11 @@ public class UserInterface extends JFrame {
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
                 panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-                javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax
+                javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax
                 .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-                .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
+                .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
                 .Color.red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.
-                PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".
+                PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
                 equals(e.getPropertyName()))throw new RuntimeException();}});
 
                 //---- labelIcon ----
@@ -3105,6 +3241,7 @@ public class UserInterface extends JFrame {
                                         panelDobitUcet.setkFillBackground(false);
                                         panelDobitUcet.setLayout(new GridBagLayout());
                                         ((GridBagLayout)panelDobitUcet.getLayout()).columnWidths = new int[] {315};
+                                        ((GridBagLayout)panelDobitUcet.getLayout()).rowHeights = new int[] {0, 30};
 
                                         //======== panelDobitUcetInside ========
                                         {
@@ -3127,8 +3264,24 @@ public class UserInterface extends JFrame {
                                             txtFieldDobitSuma.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
                                             txtFieldDobitSuma.setHorizontalAlignment(SwingConstants.CENTER);
                                             txtFieldDobitSuma.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                            txtFieldDobitSuma.setText("Suma ");
+                                            txtFieldDobitSuma.setText("Suma");
                                             txtFieldDobitSuma.setForeground(Color.lightGray);
+                                            txtFieldDobitSuma.addFocusListener(new FocusAdapter() {
+                                                @Override
+                                                public void focusGained(FocusEvent e) {
+                                                    txtFieldDobitSumaFocusGained(e);
+                                                }
+                                                @Override
+                                                public void focusLost(FocusEvent e) {
+                                                    txtFieldDobitSumaFocusLost(e);
+                                                }
+                                            });
+                                            txtFieldDobitSuma.addKeyListener(new KeyAdapter() {
+                                                @Override
+                                                public void keyTyped(KeyEvent e) {
+                                                    txtFieldDobitSumaKeyTyped(e);
+                                                }
+                                            });
                                             panelDobitUcetInside.add(txtFieldDobitSuma, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 45, 15, 45)));
 
                                             //---- btnDobitUcet ----
@@ -3145,9 +3298,18 @@ public class UserInterface extends JFrame {
                                             btnDobitUcet.setBorderPainted(false);
                                             btnDobitUcet.setMaximumSize(new Dimension(97, 24));
                                             btnDobitUcet.setMinimumSize(new Dimension(97, 24));
+                                            btnDobitUcet.addActionListener(e -> btnDobitUcetActionPerformed(e));
                                             panelDobitUcetInside.add(btnDobitUcet, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 100, 15, 100)));
                                         }
                                         panelDobitUcet.add(panelDobitUcetInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 5, 0), 0, 0));
+
+                                        //---- labelUctDobitWarning ----
+                                        labelUctDobitWarning.setHorizontalAlignment(SwingConstants.CENTER);
+                                        labelUctDobitWarning.setFont(new Font("Yu Gothic UI", Font.BOLD, 18));
+                                        labelUctDobitWarning.setForeground(new Color(0, 202, 197));
+                                        panelDobitUcet.add(labelUctDobitWarning, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                                             new Insets(0, 0, 0, 0), 0, 0));
                                     }
@@ -3159,6 +3321,7 @@ public class UserInterface extends JFrame {
                                         panelVybratZUctu.setkEndColor(Color.white);
                                         panelVybratZUctu.setkStartColor(Color.white);
                                         panelVybratZUctu.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panelVybratZUctu.getLayout()).rowHeights = new int[] {0, 30};
 
                                         //======== panelVyberZUctuInside ========
                                         {
@@ -3181,8 +3344,25 @@ public class UserInterface extends JFrame {
                                             txtFieldVyberSuma.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
                                             txtFieldVyberSuma.setHorizontalAlignment(SwingConstants.CENTER);
                                             txtFieldVyberSuma.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-                                            txtFieldVyberSuma.setText("Suma ");
+                                            txtFieldVyberSuma.setText("Suma");
                                             txtFieldVyberSuma.setForeground(Color.lightGray);
+                                            txtFieldVyberSuma.addFocusListener(new FocusAdapter() {
+                                                @Override
+                                                public void focusGained(FocusEvent e) {
+                                                    txtFieldVyberSumaFocusGained(e);
+                                                }
+                                                @Override
+                                                public void focusLost(FocusEvent e) {
+                                                    txtFieldVyberSumaFocusLost(e);
+                                                    txtFieldVyberSumaFocusLost(e);
+                                                }
+                                            });
+                                            txtFieldVyberSuma.addKeyListener(new KeyAdapter() {
+                                                @Override
+                                                public void keyTyped(KeyEvent e) {
+                                                    txtFieldDobitSumaKeyTyped(e);
+                                                }
+                                            });
                                             panelVyberZUctuInside.add(txtFieldVyberSuma, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 45, 15, 45)));
 
                                             //---- btnVybratZUctu ----
@@ -3204,6 +3384,14 @@ public class UserInterface extends JFrame {
                                             panelVyberZUctuInside.add(btnVybratZUctu, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 95, 15, 95)));
                                         }
                                         panelVybratZUctu.add(panelVyberZUctuInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 5, 0), 0, 0));
+
+                                        //---- labelUctVyberWarning ----
+                                        labelUctVyberWarning.setHorizontalAlignment(SwingConstants.CENTER);
+                                        labelUctVyberWarning.setFont(new Font("Yu Gothic UI", Font.BOLD, 18));
+                                        labelUctVyberWarning.setForeground(new Color(0, 202, 197));
+                                        panelVybratZUctu.add(labelUctVyberWarning, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                                             new Insets(0, 0, 0, 0), 0, 0));
                                     }
@@ -3263,15 +3451,11 @@ public class UserInterface extends JFrame {
                                             passwordHesloInside.addFocusListener(new FocusAdapter() {
                                                 @Override
                                                 public void focusGained(FocusEvent e) {
-                                                    passwordStareHesloFocusGained();
-                                                    passwordAdminFocusGained();
-                                                    passwordHesloInsideFocusGained();
+                                                    passwordHesloInsideFocusGained(e);
                                                 }
                                                 @Override
                                                 public void focusLost(FocusEvent e) {
-                                                    passwordStareHesloFocusLost();
-                                                    passwordAdminFocusLost();
-                                                    passwordHesloInsideFocusLost();
+                                                    passwordHesloInsideFocusLost(e);
                                                 }
                                             });
                                             panelHesloInside.add(passwordHesloInside, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 35, 15, 35)));
@@ -3291,6 +3475,7 @@ public class UserInterface extends JFrame {
                                             btnPotvrditHesloInside.setMaximumSize(new Dimension(97, 24));
                                             btnPotvrditHesloInside.setMinimumSize(new Dimension(97, 24));
                                             btnPotvrditHesloInside.setHorizontalAlignment(SwingConstants.RIGHT);
+                                            btnPotvrditHesloInside.addActionListener(e -> btnPotvrditHesloInsideActionPerformed(e));
                                             panelHesloInside.add(btnPotvrditHesloInside, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(4, 110, 20, 110)));
                                         }
                                         panelHeslo.add(panelHesloInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -3449,6 +3634,7 @@ public class UserInterface extends JFrame {
                                 btnOdhlasitSaInside.setBorderPainted(false);
                                 btnOdhlasitSaInside.setMaximumSize(new Dimension(97, 24));
                                 btnOdhlasitSaInside.setMinimumSize(new Dimension(97, 24));
+                                btnOdhlasitSaInside.addActionListener(e -> btnOdhlasitSaInsideActionPerformed(e));
                                 panelOdhlasitSaInside.add(btnOdhlasitSaInside, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 127, 15, 127)));
                             }
                             panelOdhlasitSa.add(panelOdhlasitSaInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -3779,11 +3965,13 @@ public class UserInterface extends JFrame {
     private JLabel labelDobitieUctu;
     private JTextField txtFieldDobitSuma;
     private KButton btnDobitUcet;
+    private JLabel labelUctDobitWarning;
     private KGradientPanel panelVybratZUctu;
     private KGradientPanel panelVyberZUctuInside;
     private JLabel labelVyberZUctu;
     private JTextField txtFieldVyberSuma;
     private KButton btnVybratZUctu;
+    private JLabel labelUctVyberWarning;
     private KGradientPanel panelHistoriaTrans;
     private KGradientPanel panelHeslo;
     private KGradientPanel panelHesloInside;

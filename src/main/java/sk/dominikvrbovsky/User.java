@@ -3,6 +3,8 @@ package sk.dominikvrbovsky;
 import sk.dominikvrbovsky.enums.TransactionType;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -159,14 +161,44 @@ public class User {
         this.setAccount(getAccount() - order.getMeal().getPrice());
     }
 
-    public void putMoneyOnAccount(double amount) {
+    public void putMoneyOnAccount(double amount) throws Exception {
+        if (amount < 1) {
+            throw new Exception("Minimálny vklad na účet je 1 €");
+        }
+
+        amount = roundedAmountParameter(amount);
+
         this.account += amount;
         this.transactions.add(new Transaction(this, TransactionType.INPUT, amount));
     }
 
-    public void withdrawMoneyFromAccount(double amount) {
+    public void withdrawMoneyFromAccount(double amount) throws Exception {
+
+
+        amount = roundedAmountParameter(amount);
+
         this.account -= amount;
         this.transactions.add(new Transaction(this, TransactionType.OUTPUT, amount));
+    }
+
+    public boolean checkInputWithdrawMoney(double amount) throws Exception {
+        if (amount < 1) {
+            throw new Exception("");
+        }
+
+        if (amount > getAccount()) {
+            throw new Exception("");
+        }
+        return true;
+    }
+
+    private double roundedAmountParameter(double amount) {
+        if ((amount * 100) % 1 != 0 ) { // find out whether amount has more than two decimals or not
+            BigDecimal bd = BigDecimal.valueOf(amount);
+            bd = bd.setScale(2 , RoundingMode.HALF_UP);
+            amount = bd.doubleValue();
+        }
+        return amount;
     }
 
     public String getAccountString() {

@@ -2479,7 +2479,7 @@ new FormModel {
 										"kEndColor": sfield java.awt.Color white
 										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 											"$columnSpecs": "315"
-											"$rowSpecs": "0"
+											"$rowSpecs": "0, 30"
 											"$hGap": 5
 											"$vGap": 5
 										} ) {
@@ -2516,8 +2516,11 @@ new FormModel {
 													"cursor": &Cursor3 new java.awt.Cursor( 2 )
 													"horizontalAlignment": 0
 													"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
-													"text": "Suma "
+													"text": "Suma"
 													"foreground": sfield java.awt.Color lightGray
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "txtFieldDobitSumaFocusGained", true ) )
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "txtFieldDobitSumaFocusLost", true ) )
+													addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "txtFieldDobitSumaKeyTyped", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 2
@@ -2538,18 +2541,27 @@ new FormModel {
 													"borderPainted": false
 													"maximumSize": &Dimension0 new java.awt.Dimension( 97, 24 )
 													"minimumSize": &Dimension1 new java.awt.Dimension( 97, 24 )
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnDobitUcetActionPerformed", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 3
 													"insets": new java.awt.Insets( 7, 100, 15, 100 )
 												} )
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+											add( new FormComponent( "javax.swing.JLabel" ) {
+												name: "labelUctDobitWarning"
+												"horizontalAlignment": 0
+												"font": &Font22 new java.awt.Font( "Yu Gothic UI", 1, 18 )
+												"foreground": &Color25 new java.awt.Color( 0, 202, 197, 255 )
+											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+												"gridy": 1
+											} )
 										}, new FormLayoutConstraints( class java.lang.String ) {
 											"value": "dobitUcet"
 										} )
 										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 											"$columnSpecs": "0"
-											"$rowSpecs": "0"
+											"$rowSpecs": "0, 30"
 											"$hGap": 5
 											"$vGap": 5
 										} ) {
@@ -2582,8 +2594,12 @@ new FormModel {
 													"cursor": #Cursor3
 													"horizontalAlignment": 0
 													"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
-													"text": "Suma "
+													"text": "Suma"
 													"foreground": sfield java.awt.Color lightGray
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "txtFieldVyberSumaFocusGained", true ) )
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "txtFieldVyberSumaFocusLost", true ) )
+													addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "txtFieldDobitSumaKeyTyped", true ) )
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "txtFieldVyberSumaFocusLost", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 2
@@ -2612,6 +2628,14 @@ new FormModel {
 													"insets": new java.awt.Insets( 7, 95, 15, 95 )
 												} )
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+											add( new FormComponent( "javax.swing.JLabel" ) {
+												name: "labelUctVyberWarning"
+												"horizontalAlignment": 0
+												"font": #Font22
+												"foreground": #Color25
+											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+												"gridy": 1
+											} )
 										}, new FormLayoutConstraints( class java.lang.String ) {
 											"value": "vybratZUctu"
 										} )
@@ -2663,14 +2687,10 @@ new FormModel {
 													"horizontalAlignment": 0
 													"border": &MatteBorder6 new javax.swing.border.MatteBorder( 0, 0, 2, 0, sfield java.awt.Color black )
 													"text": "Heslo"
-													"foreground": &Color25 new java.awt.Color( 192, 192, 192, 255 )
-													"font": &Font22 new java.awt.Font( "Yu Gothic UI", 1, 20 )
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordStareHesloFocusGained", false ) )
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordStareHesloFocusLost", false ) )
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordAdminFocusGained", false ) )
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordAdminFocusLost", false ) )
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordHesloInsideFocusGained", false ) )
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordHesloInsideFocusLost", false ) )
+													"foreground": &Color26 new java.awt.Color( 192, 192, 192, 255 )
+													"font": &Font23 new java.awt.Font( "Yu Gothic UI", 1, 20 )
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordHesloInsideFocusGained", true ) )
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordHesloInsideFocusLost", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridY": 2
 													"insets": new java.awt.Insets( 2, 35, 15, 35 )
@@ -2691,6 +2711,7 @@ new FormModel {
 													"maximumSize": #Dimension0
 													"minimumSize": #Dimension1
 													"horizontalAlignment": 4
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnPotvrditHesloInsideActionPerformed", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 3
@@ -2738,7 +2759,7 @@ new FormModel {
 										"horizontalAlignment": 0
 										"border": &MatteBorder7 new javax.swing.border.MatteBorder( 0, 0, 2, 0, sfield java.awt.Color black )
 										"text": "Staré heslo"
-										"foreground": #Color25
+										"foreground": #Color26
 										"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordStareHesloFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordStareHesloFocusLost", false ) )
@@ -2752,7 +2773,7 @@ new FormModel {
 										"horizontalAlignment": 0
 										"border": #MatteBorder7
 										"text": "Nové heslo"
-										"foreground": #Color25
+										"foreground": #Color26
 										"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordNoveHesloFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordNoveHesloFocusLost", false ) )
@@ -2766,7 +2787,7 @@ new FormModel {
 										"horizontalAlignment": 0
 										"border": #MatteBorder7
 										"text": "Potvrdenie hesla"
-										"foreground": #Color25
+										"foreground": #Color26
 										"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordNovHesloPotvrdenieFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordNovHesloPotvrdenieFocusLost", false ) )
@@ -2841,6 +2862,7 @@ new FormModel {
 										"borderPainted": false
 										"maximumSize": #Dimension0
 										"minimumSize": #Dimension1
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnOdhlasitSaInsideActionPerformed", true ) )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
 										"gridY": 2
@@ -2883,8 +2905,8 @@ new FormModel {
 										"horizontalAlignment": 0
 										"border": #MatteBorder6
 										"text": "Prístupové heslo"
-										"foreground": #Color25
-										"font": #Font22
+										"foreground": #Color26
+										"font": #Font23
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordStareHesloFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordStareHesloFocusLost", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordAdminFocusGained", false ) )
