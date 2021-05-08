@@ -16,6 +16,7 @@ import sk.dominikvrbovsky.dao.impl.MealDao;
 import sk.dominikvrbovsky.dao.impl.OrderDao;
 import sk.dominikvrbovsky.dao.impl.UserDao;
 import sk.dominikvrbovsky.utilities.DateUtilities;
+import sk.dominikvrbovsky.utilities.PasswordUtilities;
 
 import javax.persistence.EntityManager;
 import javax.swing.*;
@@ -405,10 +406,18 @@ public class UserInterface extends JFrame {
         try {
             userDao.update(user);
         } catch (Exception e) {
+            labelMojeObjednavkyRanajkyNazov.setForeground(Color.red);
+            labelMojeObjednavkyObedNazov.setForeground(Color.RED);
             labelMojeObjednavkyRanajkyNazov.setText("Nepodarilo sa správne načítať objednávky");
             labelMojeObjednavkyObedNazov.setText("Nepodarilo sa správne načítať objednávky");
+            btnRanajkyBurza.setVisible(false);
+            btnObedBurza.setVisible(false);
+            cardLayout.show(panelContent, "mojeObjednavky");
             return;
         }
+
+        btnRanajkyBurza.setVisible(true);
+        btnObedBurza.setVisible(true);
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         
@@ -519,10 +528,18 @@ public class UserInterface extends JFrame {
     }
 
     private void btnUcetActionPerformed() {
+        labelUctDobitWarning.setText("");
         cardLayout.show(panelContent,"ucet");
     }
 
     private void btnZmenitCisloActionPerformed() {
+        passwordStareHeslo.setText("");
+        passwordNoveHeslo.setText("");
+        passwordNovHesloPotvrdenie.setText("");
+        passwordStareHesloFocusLost();
+        passwordNoveHesloFocusLost();
+        passwordNovHesloPotvrdenieFocusLost();
+        labelZmenitHesloWarning.setText("");
         cardLayout.show(panelContent,"zmenitHeslo");
     }
 
@@ -567,10 +584,12 @@ public class UserInterface extends JFrame {
     }
 
     private void btnMenuDobitUcetActionPerformed() {
+        labelUctDobitWarning.setText("");
         cardLayoutUcet.show(panelContentUcet, "dobitUcet");
     }
 
-    private void btnMenuVybratZUctuActionPerformed() {
+    private void btnMenuVybratZUctuActionPerformed(ActionEvent e) {
+        labelUctVyberWarning.setText("");
         cardLayoutUcet.show(panelContentUcet, "vybratZUctu");
     }
 
@@ -601,7 +620,7 @@ public class UserInterface extends JFrame {
     private void passwordNoveHesloFocusGained() {
         String pass = String.valueOf(passwordNoveHeslo.getPassword());
 
-        if (pass.equals("Nové heslo")) {
+        if (pass.equals("Nové heslo*")) {
             passwordNoveHeslo.setEchoChar((char)0x2022);
             passwordNoveHeslo.setForeground(Color.BLACK);
             passwordNoveHeslo.setText("");
@@ -614,7 +633,7 @@ public class UserInterface extends JFrame {
         if (pass.equals("")) {
             passwordNoveHeslo.setEchoChar((char)0);
             passwordNoveHeslo.setForeground(new Color(192,192,192));
-            passwordNoveHeslo.setText("Nové heslo");
+            passwordNoveHeslo.setText("Nové heslo*");
         }
     }
 
@@ -655,26 +674,6 @@ public class UserInterface extends JFrame {
             passwordAdmin.setEchoChar((char)0);
             passwordAdmin.setForeground(new Color(192,192,192));
             passwordAdmin.setText("Prístupové heslo");
-        }
-    }
-
-    private void passwordHesloInsideFocusGained() {
-        String pass = String.valueOf(passwordHesloInside.getPassword());
-
-        if (pass.equals("Heslo")) {
-            passwordHesloInside.setEchoChar((char)0x2022);
-            passwordHesloInside.setForeground(Color.BLACK);
-            passwordHesloInside.setText("");
-        }
-    }
-
-    private void passwordHesloInsideFocusLost() {
-        String pass = String.valueOf(passwordHesloInside.getPassword());
-
-        if (pass.equals("")) {
-            passwordHesloInside.setEchoChar((char)0);
-            passwordHesloInside.setForeground(new Color(192,192,192));
-            passwordHesloInside.setText("Heslo");
         }
     }
 
@@ -784,38 +783,38 @@ public class UserInterface extends JFrame {
         this.dispose();
     }
 
-    private void txtFieldDobitSumaFocusGained(FocusEvent e) {
+    private void txtFieldDobitSumaFocusGained() {
         if (txtFieldDobitSuma.getText().equals("Suma")) {
             txtFieldDobitSuma.setText("");
             txtFieldDobitSuma.setForeground(Color.BLACK);
         }
     }
 
-    private void txtFieldDobitSumaFocusLost(FocusEvent e) {
+    private void txtFieldDobitSumaFocusLost() {
         if (txtFieldDobitSuma.getText().equals("")) {
             txtFieldDobitSuma.setForeground(new Color(192,192,192));
             txtFieldDobitSuma.setText("Suma");
         }
 
-        JTextField jtxtFiled = (JTextField)e.getComponent();
+        JTextField jtxtFiled = txtFieldDobitSuma;
 
         if (jtxtFiled.getText().endsWith(".")) jtxtFiled.setText(jtxtFiled.getText() + "00");
     }
 
-    private void txtFieldVyberSumaFocusGained(FocusEvent e) {
+    private void txtFieldVyberSumaFocusGained() {
         if (txtFieldVyberSuma.getText().equals("Suma")) {
             txtFieldVyberSuma.setText("");
             txtFieldVyberSuma.setForeground(Color.BLACK);
         }
     }
 
-    private void txtFieldVyberSumaFocusLost(FocusEvent e) {
+    private void txtFieldVyberSumaFocusLost() {
         if (txtFieldVyberSuma.getText().equals("")) {
             txtFieldVyberSuma.setForeground(new Color(192,192,192));
             txtFieldVyberSuma.setText("Suma");
         }
 
-        JTextField jtxtFiled = (JTextField)e.getComponent();
+        JTextField jtxtFiled = txtFieldVyberSuma;
         if (jtxtFiled.getText().endsWith(".")) jtxtFiled.setText(jtxtFiled.getText() + "00");
     }
 
@@ -831,7 +830,7 @@ public class UserInterface extends JFrame {
         }
     }
 
-    private void passwordHesloInsideFocusGained(FocusEvent e) {
+    private void passwordHesloInsideFocusGained() {
         String pass = String.valueOf(passwordHesloInside.getPassword());
 
         if (pass.equals("Heslo")) {
@@ -841,7 +840,7 @@ public class UserInterface extends JFrame {
         }
     }
 
-    private void passwordHesloInsideFocusLost(FocusEvent e) {
+    private void passwordHesloInsideFocusLost() {
         String pass = String.valueOf(passwordHesloInside.getPassword());
 
         if (pass.equals("")) {
@@ -853,6 +852,7 @@ public class UserInterface extends JFrame {
 
     private void btnDobitUcetActionPerformed(ActionEvent e) {
         if (txtFieldDobitSuma.getText().equals("Suma")) {
+            setLabelWarningUcetError(labelUctDobitWarning);
             labelUctDobitWarning.setText("Zadajte sumu");
             return;
         }
@@ -867,7 +867,9 @@ public class UserInterface extends JFrame {
             setLabelWarningUcetSuccess(labelUctDobitWarning);
             labelUctDobitWarning.setText("Účet bol úspešne dobitý");
             labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
-            txtFieldDobitSuma.setText("Suma");
+            txtFieldDobitSuma.setText("");
+            txtFieldDobitSumaFocusLost();
+
         } catch (Exception e1) {
             setLabelWarningUcetError(labelUctDobitWarning);
             labelUctDobitWarning.setText(e1.getMessage());
@@ -876,12 +878,23 @@ public class UserInterface extends JFrame {
     }
 
     private void btnVybratZUctuActionPerformed() {
-        if (txtFieldDobitSuma.getText().equals("Suma")) {
-            labelUctDobitWarning.setText("Zadajte sumu");
+        if (txtFieldVyberSuma.getText().equals("Suma")) {
+            setLabelWarningUcetError(labelUctVyberWarning);
+            labelUctVyberWarning.setText("Zadajte sumu");
             return;
         }
 
-        cardLayoutUcet.show(panelContentUcet, "heslo");
+        try {
+            user.isAmountParameterValid(Double.parseDouble(txtFieldVyberSuma.getText()));
+            labelUctHesloInsideWarning.setText("");
+            passwordHesloInside.setText("");
+            passwordHesloInsideFocusLost();
+            cardLayoutUcet.show(panelContentUcet, "heslo");
+        } catch (Exception e) {
+            setLabelWarningUcetError(labelUctVyberWarning);
+            labelUctVyberWarning.setText(e.getMessage());
+        }
+
     }
 
     private void setLabelWarningUcetSuccess(JLabel label) {
@@ -898,10 +911,53 @@ public class UserInterface extends JFrame {
         String pass = String.valueOf(passwordHesloInside.getPassword());
 
         if (user.getPassword().equals(pass)) {
+            try {
+                user.withdrawMoneyFromAccount(Double.parseDouble(txtFieldVyberSuma.getText()));
 
+                try {
+                    userDao.update(user);
+                } catch (Exception e1) {
+                    throw new Exception("Výber z účtu zlyhal. Skúste to znovu.");
+                }
+                labelUctHesloInsideWarning.setText("");
+                setLabelWarningUcetSuccess(labelUctVyberWarning);
+                labelUctVyberWarning.setText("Výber z účtu prebehol úspešne");
+                labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
+                txtFieldVyberSuma.setText("");
+                txtFieldVyberSumaFocusLost();
+                cardLayoutUcet.show(panelContentUcet, "vybratZUctu");
+            } catch (Exception e1) {
+                setLabelWarningUcetError(labelUctVyberWarning);
+                labelUctVyberWarning.setText(e1.getMessage());
+                cardLayoutUcet.show(panelContentUcet, "vybratZUctu");
+            }
         } else {
-
+            setLabelWarningUcetError(labelUctHesloInsideWarning);
+            labelUctHesloInsideWarning.setText("Nesprávne heslo");
         }
+    }
+
+    private void btnZmenitHesloInsideActionPerformed(ActionEvent e) {
+        String stareHeslo = String.valueOf(passwordStareHeslo.getPassword());
+        String noveHeslo = String.valueOf(passwordNoveHeslo.getPassword());
+        String noveHesloPotvrdenie = String.valueOf(passwordNovHesloPotvrdenie.getPassword());
+
+        try {
+            user.changePassword(stareHeslo, noveHeslo, noveHesloPotvrdenie);
+            try {
+                userDao.update(user);
+            } catch (Exception e1) {
+                throw new Exception("Heslo sa nepodarilo zmeniť");
+            }
+            btnZmenitCisloActionPerformed();
+            setLabelWarningUcetSuccess(labelZmenitHesloWarning);
+            labelZmenitHesloWarning.setText("Heslo bolo zmenené");
+
+        } catch (Exception e1) {
+            setLabelWarningUcetError(labelZmenitHesloWarning);
+            labelZmenitHesloWarning.setText(e1.getMessage());
+        }
+
     }
 
     private void initComponents() {
@@ -1143,6 +1199,7 @@ public class UserInterface extends JFrame {
         labelLockIcon = new JLabel();
         passwordHesloInside = new JPasswordField();
         btnPotvrditHesloInside = new KButton();
+        labelUctHesloInsideWarning = new JLabel();
         panelZmenitHeslo = new KGradientPanel();
         PanelZmenitHesloInside = new KGradientPanel();
         labelZmenaHesla = new JLabel();
@@ -1150,6 +1207,8 @@ public class UserInterface extends JFrame {
         passwordNoveHeslo = new JPasswordField();
         passwordNovHesloPotvrdenie = new JPasswordField();
         btnZmenitHesloInside = new KButton();
+        labelZmenitHesloPoziadavky = new JLabel();
+        labelZmenitHesloWarning = new JLabel();
         panelOdhlasitSa = new KGradientPanel();
         panelOdhlasitSaInside = new KGradientPanel();
         labelNaozajSaChceteOdhlasit = new JLabel();
@@ -1179,13 +1238,13 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-                javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax
-                .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-                .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
-                .Color.red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.
-                PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
-                equals(e.getPropertyName()))throw new RuntimeException();}});
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+                . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder
+                . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .
+                awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder( )) )
+                ; panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+                ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+                ;
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2254,26 +2313,22 @@ public class UserInterface extends JFrame {
                                 panelTableMojeObjRanajky.add(label75, CC.xy(5, 1));
 
                                 //---- labelMojeObjednavkyRanajkyDatum ----
-                                labelMojeObjednavkyRanajkyDatum.setText("14.12.2021");
                                 labelMojeObjednavkyRanajkyDatum.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 labelMojeObjednavkyRanajkyDatum.setHorizontalAlignment(SwingConstants.CENTER);
                                 panelTableMojeObjRanajky.add(labelMojeObjednavkyRanajkyDatum, CC.xy(1, 2));
 
                                 //---- labelMojeObjednavkyRanajkyCas ----
-                                labelMojeObjednavkyRanajkyCas.setText("14:59");
                                 labelMojeObjednavkyRanajkyCas.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 labelMojeObjednavkyRanajkyCas.setHorizontalAlignment(SwingConstants.CENTER);
                                 panelTableMojeObjRanajky.add(labelMojeObjednavkyRanajkyCas, CC.xy(2, 2));
 
                                 //---- labelMojeObjednavkyRanajkyNazov ----
-                                labelMojeObjednavkyRanajkyNazov.setText("Parky s hor\u010dicou a chlebom (Takeaway)");
                                 labelMojeObjednavkyRanajkyNazov.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 labelMojeObjednavkyRanajkyNazov.setHorizontalAlignment(SwingConstants.CENTER);
                                 labelMojeObjednavkyRanajkyNazov.setBorder(null);
                                 panelTableMojeObjRanajky.add(labelMojeObjednavkyRanajkyNazov, CC.xy(3, 2));
 
                                 //---- labelMojeObjednavkyRanajkyCena ----
-                                labelMojeObjednavkyRanajkyCena.setText("4.87\u20ac");
                                 labelMojeObjednavkyRanajkyCena.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 labelMojeObjednavkyRanajkyCena.setHorizontalAlignment(SwingConstants.CENTER);
                                 labelMojeObjednavkyRanajkyCena.setBorder(null);
@@ -2342,26 +2397,22 @@ public class UserInterface extends JFrame {
                                 panelTableMojeObjednavkyObed.add(label83, CC.xy(5, 1));
 
                                 //---- labelMojeObjednavkyObedDatum ----
-                                labelMojeObjednavkyObedDatum.setText("7.8.2021");
                                 labelMojeObjednavkyObedDatum.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 labelMojeObjednavkyObedDatum.setHorizontalAlignment(SwingConstants.CENTER);
                                 panelTableMojeObjednavkyObed.add(labelMojeObjednavkyObedDatum, CC.xy(1, 2));
 
                                 //---- labelMojeObjednavkyObedCas ----
-                                labelMojeObjednavkyObedCas.setText("7:02");
                                 labelMojeObjednavkyObedCas.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 labelMojeObjednavkyObedCas.setHorizontalAlignment(SwingConstants.CENTER);
                                 panelTableMojeObjednavkyObed.add(labelMojeObjednavkyObedCas, CC.xy(2, 2));
 
                                 //---- labelMojeObjednavkyObedNazov ----
-                                labelMojeObjednavkyObedNazov.setText("Parky s hor\u010dicou a chlebom (Miner\u00e1lna voda)");
                                 labelMojeObjednavkyObedNazov.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 labelMojeObjednavkyObedNazov.setHorizontalAlignment(SwingConstants.CENTER);
                                 labelMojeObjednavkyObedNazov.setBorder(null);
                                 panelTableMojeObjednavkyObed.add(labelMojeObjednavkyObedNazov, CC.xy(3, 2));
 
                                 //---- labelMojeObjednavkyObedCena ----
-                                labelMojeObjednavkyObedCena.setText("2.05\u20ac");
                                 labelMojeObjednavkyObedCena.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 labelMojeObjednavkyObedCena.setHorizontalAlignment(SwingConstants.CENTER);
                                 labelMojeObjednavkyObedCena.setBorder(null);
@@ -3167,11 +3218,7 @@ public class UserInterface extends JFrame {
                                     btnMenuDobitUcet.setkHoverForeGround(Color.white);
                                     btnMenuDobitUcet.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                                     btnMenuDobitUcet.setVerticalAlignment(SwingConstants.TOP);
-                                    btnMenuDobitUcet.addActionListener(e -> {
-			btnRanajkyActionPerformed();
-			btnBurzaRanajkyActionPerformed();
-			btnMenuDobitUcetActionPerformed();
-		});
+                                    btnMenuDobitUcet.addActionListener(e -> btnMenuDobitUcetActionPerformed());
                                     panelUcetMenu.add(btnMenuDobitUcet, CC.xy(1, 1));
 
                                     //---- btnMenuVybratZUctu ----
@@ -3191,11 +3238,7 @@ public class UserInterface extends JFrame {
                                     btnMenuVybratZUctu.setkHoverForeGround(Color.white);
                                     btnMenuVybratZUctu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                                     btnMenuVybratZUctu.setVerticalAlignment(SwingConstants.TOP);
-                                    btnMenuVybratZUctu.addActionListener(e -> {
-			btnObedActionPerformed();
-			btnBurzaObedActionPerformed();
-			btnMenuVybratZUctuActionPerformed();
-		});
+                                    btnMenuVybratZUctu.addActionListener(e -> btnMenuVybratZUctuActionPerformed(e));
                                     panelUcetMenu.add(btnMenuVybratZUctu, CC.xy(3, 1));
 
                                     //---- btnMenuHistoriaTranskacii ----
@@ -3269,11 +3312,11 @@ public class UserInterface extends JFrame {
                                             txtFieldDobitSuma.addFocusListener(new FocusAdapter() {
                                                 @Override
                                                 public void focusGained(FocusEvent e) {
-                                                    txtFieldDobitSumaFocusGained(e);
+                                                    txtFieldDobitSumaFocusGained();
                                                 }
                                                 @Override
                                                 public void focusLost(FocusEvent e) {
-                                                    txtFieldDobitSumaFocusLost(e);
+                                                    txtFieldDobitSumaFocusLost();
                                                 }
                                             });
                                             txtFieldDobitSuma.addKeyListener(new KeyAdapter() {
@@ -3349,12 +3392,11 @@ public class UserInterface extends JFrame {
                                             txtFieldVyberSuma.addFocusListener(new FocusAdapter() {
                                                 @Override
                                                 public void focusGained(FocusEvent e) {
-                                                    txtFieldVyberSumaFocusGained(e);
+                                                    txtFieldVyberSumaFocusGained();
                                                 }
                                                 @Override
                                                 public void focusLost(FocusEvent e) {
-                                                    txtFieldVyberSumaFocusLost(e);
-                                                    txtFieldVyberSumaFocusLost(e);
+                                                    txtFieldVyberSumaFocusLost();
                                                 }
                                             });
                                             txtFieldVyberSuma.addKeyListener(new KeyAdapter() {
@@ -3425,6 +3467,7 @@ public class UserInterface extends JFrame {
                                         panelHeslo.setkEndColor(Color.white);
                                         panelHeslo.setkStartColor(Color.white);
                                         panelHeslo.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panelHeslo.getLayout()).rowHeights = new int[] {0, 30};
 
                                         //======== panelHesloInside ========
                                         {
@@ -3451,11 +3494,11 @@ public class UserInterface extends JFrame {
                                             passwordHesloInside.addFocusListener(new FocusAdapter() {
                                                 @Override
                                                 public void focusGained(FocusEvent e) {
-                                                    passwordHesloInsideFocusGained(e);
+                                                    passwordHesloInsideFocusGained();
                                                 }
                                                 @Override
                                                 public void focusLost(FocusEvent e) {
-                                                    passwordHesloInsideFocusLost(e);
+                                                    passwordHesloInsideFocusLost();
                                                 }
                                             });
                                             panelHesloInside.add(passwordHesloInside, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 35, 15, 35)));
@@ -3479,6 +3522,14 @@ public class UserInterface extends JFrame {
                                             panelHesloInside.add(btnPotvrditHesloInside, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(4, 110, 20, 110)));
                                         }
                                         panelHeslo.add(panelHesloInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 5, 0), 0, 0));
+
+                                        //---- labelUctHesloInsideWarning ----
+                                        labelUctHesloInsideWarning.setHorizontalAlignment(SwingConstants.CENTER);
+                                        labelUctHesloInsideWarning.setFont(new Font("Yu Gothic UI", Font.BOLD, 18));
+                                        labelUctHesloInsideWarning.setForeground(new Color(0, 202, 197));
+                                        panelHeslo.add(labelUctHesloInsideWarning, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                                             new Insets(0, 0, 0, 0), 0, 0));
                                     }
@@ -3505,6 +3556,7 @@ public class UserInterface extends JFrame {
                             panelZmenitHeslo.setkEndColor(Color.white);
                             panelZmenitHeslo.setkStartColor(Color.white);
                             panelZmenitHeslo.setLayout(new GridBagLayout());
+                            ((GridBagLayout)panelZmenitHeslo.getLayout()).rowHeights = new int[] {0, 25, 30};
 
                             //======== PanelZmenitHesloInside ========
                             {
@@ -3543,7 +3595,7 @@ public class UserInterface extends JFrame {
                                 //---- passwordNoveHeslo ----
                                 passwordNoveHeslo.setHorizontalAlignment(SwingConstants.CENTER);
                                 passwordNoveHeslo.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
-                                passwordNoveHeslo.setText("Nov\u00e9 heslo");
+                                passwordNoveHeslo.setText("Nov\u00e9 heslo*");
                                 passwordNoveHeslo.setForeground(Color.lightGray);
                                 passwordNoveHeslo.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                 passwordNoveHeslo.addFocusListener(new FocusAdapter() {
@@ -3590,9 +3642,26 @@ public class UserInterface extends JFrame {
                                 btnZmenitHesloInside.setBorderPainted(false);
                                 btnZmenitHesloInside.setMaximumSize(new Dimension(97, 24));
                                 btnZmenitHesloInside.setMinimumSize(new Dimension(97, 24));
+                                btnZmenitHesloInside.addActionListener(e -> btnZmenitHesloInsideActionPerformed(e));
                                 PanelZmenitHesloInside.add(btnZmenitHesloInside, new CellConstraints(1, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(10, 99, 17, 98)));
                             }
                             panelZmenitHeslo.add(PanelZmenitHesloInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 5, 0), 0, 0));
+
+                            //---- labelZmenitHesloPoziadavky ----
+                            labelZmenitHesloPoziadavky.setText("*min. 6 znakov, 1 \u010d\u00edslica, 1 ve\u013ek\u00e9 p\u00edsmeno");
+                            labelZmenitHesloPoziadavky.setHorizontalAlignment(SwingConstants.CENTER);
+                            labelZmenitHesloPoziadavky.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                            panelZmenitHeslo.add(labelZmenitHesloPoziadavky, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 5, 0), 0, 0));
+
+                            //---- labelZmenitHesloWarning ----
+                            labelZmenitHesloWarning.setHorizontalAlignment(SwingConstants.CENTER);
+                            labelZmenitHesloWarning.setFont(new Font("Yu Gothic UI", Font.BOLD, 18));
+                            labelZmenitHesloWarning.setForeground(Color.red);
+                            panelZmenitHeslo.add(labelZmenitHesloWarning, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                                 new Insets(0, 0, 0, 0), 0, 0));
                         }
@@ -3978,6 +4047,7 @@ public class UserInterface extends JFrame {
     private JLabel labelLockIcon;
     private JPasswordField passwordHesloInside;
     private KButton btnPotvrditHesloInside;
+    private JLabel labelUctHesloInsideWarning;
     private KGradientPanel panelZmenitHeslo;
     private KGradientPanel PanelZmenitHesloInside;
     private JLabel labelZmenaHesla;
@@ -3985,6 +4055,8 @@ public class UserInterface extends JFrame {
     private JPasswordField passwordNoveHeslo;
     private JPasswordField passwordNovHesloPotvrdenie;
     private KButton btnZmenitHesloInside;
+    private JLabel labelZmenitHesloPoziadavky;
+    private JLabel labelZmenitHesloWarning;
     private KGradientPanel panelOdhlasitSa;
     private KGradientPanel panelOdhlasitSaInside;
     private JLabel labelNaozajSaChceteOdhlasit;

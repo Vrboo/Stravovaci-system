@@ -79,7 +79,7 @@ public class UserDao implements Dao<User> {
     private void executeInsideTransaction(Consumer<EntityManager> consumer) {
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
-            //entityTransaction.begin();
+            entityTransaction.begin();
             consumer.accept(entityManager);
             entityTransaction.commit();
         } catch (Exception e) {

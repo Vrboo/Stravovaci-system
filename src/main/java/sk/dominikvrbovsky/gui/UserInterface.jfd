@@ -1250,7 +1250,6 @@ new FormModel {
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
 										name: "labelMojeObjednavkyRanajkyDatum"
-										"text": "14.12.2021"
 										"font": &Font12 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 										"horizontalAlignment": 0
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1259,7 +1258,6 @@ new FormModel {
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
 										name: "labelMojeObjednavkyRanajkyCas"
-										"text": "14:59"
 										"font": #Font12
 										"horizontalAlignment": 0
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1268,7 +1266,6 @@ new FormModel {
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
 										name: "labelMojeObjednavkyRanajkyNazov"
-										"text": "Parky s horčicou a chlebom (Takeaway)"
 										"font": &Font13 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 										"horizontalAlignment": 0
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -1278,7 +1275,6 @@ new FormModel {
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
 										name: "labelMojeObjednavkyRanajkyCena"
-										"text": "4.87€"
 										"font": &Font14 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 										"horizontalAlignment": 0
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -1362,7 +1358,6 @@ new FormModel {
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
 										name: "labelMojeObjednavkyObedDatum"
-										"text": "7.8.2021"
 										"font": #Font12
 										"horizontalAlignment": 0
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1371,7 +1366,6 @@ new FormModel {
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
 										name: "labelMojeObjednavkyObedCas"
-										"text": "7:02"
 										"font": #Font12
 										"horizontalAlignment": 0
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1380,7 +1374,6 @@ new FormModel {
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
 										name: "labelMojeObjednavkyObedNazov"
-										"text": "Parky s horčicou a chlebom (Minerálna voda)"
 										"font": #Font13
 										"horizontalAlignment": 0
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -1390,7 +1383,6 @@ new FormModel {
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
 										name: "labelMojeObjednavkyObedCena"
-										"text": "2.05€"
 										"font": #Font14
 										"horizontalAlignment": 0
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -2413,8 +2405,6 @@ new FormModel {
 											"kHoverForeGround": #Color14
 											"cursor": #Cursor1
 											"verticalAlignment": 1
-											addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnRanajkyActionPerformed", false ) )
-											addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnBurzaRanajkyActionPerformed", false ) )
 											addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnMenuDobitUcetActionPerformed", false ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 1
@@ -2438,9 +2428,7 @@ new FormModel {
 											"kHoverForeGround": sfield java.awt.Color white
 											"cursor": #Cursor1
 											"verticalAlignment": 1
-											addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnObedActionPerformed", false ) )
-											addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnBurzaObedActionPerformed", false ) )
-											addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnMenuVybratZUctuActionPerformed", false ) )
+											addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnMenuVybratZUctuActionPerformed", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 3
 											"gridY": 1
@@ -2518,8 +2506,8 @@ new FormModel {
 													"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
 													"text": "Suma"
 													"foreground": sfield java.awt.Color lightGray
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "txtFieldDobitSumaFocusGained", true ) )
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "txtFieldDobitSumaFocusLost", true ) )
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "txtFieldDobitSumaFocusGained", false ) )
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "txtFieldDobitSumaFocusLost", false ) )
 													addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "txtFieldDobitSumaKeyTyped", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
@@ -2596,10 +2584,9 @@ new FormModel {
 													"font": new java.awt.Font( "Yu Gothic UI", 1, 20 )
 													"text": "Suma"
 													"foreground": sfield java.awt.Color lightGray
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "txtFieldVyberSumaFocusGained", true ) )
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "txtFieldVyberSumaFocusLost", true ) )
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "txtFieldVyberSumaFocusGained", false ) )
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "txtFieldVyberSumaFocusLost", false ) )
 													addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "txtFieldDobitSumaKeyTyped", true ) )
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "txtFieldVyberSumaFocusLost", true ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 2
@@ -2656,7 +2643,7 @@ new FormModel {
 										} )
 										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 											"$columnSpecs": "0"
-											"$rowSpecs": "0"
+											"$rowSpecs": "0, 30"
 											"$hGap": 5
 											"$vGap": 5
 										} ) {
@@ -2689,8 +2676,8 @@ new FormModel {
 													"text": "Heslo"
 													"foreground": &Color26 new java.awt.Color( 192, 192, 192, 255 )
 													"font": &Font23 new java.awt.Font( "Yu Gothic UI", 1, 20 )
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordHesloInsideFocusGained", true ) )
-													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordHesloInsideFocusLost", true ) )
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordHesloInsideFocusGained", false ) )
+													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordHesloInsideFocusLost", false ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridY": 2
 													"insets": new java.awt.Insets( 2, 35, 15, 35 )
@@ -2718,6 +2705,14 @@ new FormModel {
 													"insets": &Insets1 new java.awt.Insets( 4, 110, 20, 110 )
 												} )
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+											add( new FormComponent( "javax.swing.JLabel" ) {
+												name: "labelUctHesloInsideWarning"
+												"horizontalAlignment": 0
+												"font": #Font22
+												"foreground": #Color25
+											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+												"gridy": 1
+											} )
 										}, new FormLayoutConstraints( class java.lang.String ) {
 											"value": "heslo"
 										} )
@@ -2730,7 +2725,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 								"$columnSpecs": "0"
-								"$rowSpecs": "0"
+								"$rowSpecs": "0, 20, 30"
 								"$hGap": 5
 								"$vGap": 5
 							} ) {
@@ -2772,7 +2767,7 @@ new FormModel {
 										name: "passwordNoveHeslo"
 										"horizontalAlignment": 0
 										"border": #MatteBorder7
-										"text": "Nové heslo"
+										"text": "Nové heslo*"
 										"foreground": #Color26
 										"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordNoveHesloFocusGained", false ) )
@@ -2811,12 +2806,29 @@ new FormModel {
 										"borderPainted": false
 										"maximumSize": #Dimension0
 										"minimumSize": #Dimension1
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnZmenitHesloInsideActionPerformed", true ) )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
 										"gridY": 5
 										"insets": new java.awt.Insets( 10, 99, 17, 98 )
 									} )
 								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "labelZmenitHesloPoziadavky"
+									"text": "*min. 6 znakov, 1 číslica, 1 veľké písmeno"
+									"horizontalAlignment": 0
+									"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+									"gridy": 1
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "labelZmenitHesloWarning"
+									"horizontalAlignment": 0
+									"font": #Font22
+									"foreground": sfield java.awt.Color red
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+									"gridy": 2
+								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "zmenitHeslo"
 							} )

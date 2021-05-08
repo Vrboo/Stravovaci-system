@@ -1,6 +1,7 @@
 package sk.dominikvrbovsky;
 
 import sk.dominikvrbovsky.enums.TransactionType;
+import sk.dominikvrbovsky.utilities.PasswordUtilities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -162,34 +163,35 @@ public class User {
     }
 
     public void putMoneyOnAccount(double amount) throws Exception {
+        amount = roundedAmountParameter(amount);
+
         if (amount < 1) {
             throw new Exception("Minimálny vklad na účet je 1 €");
         }
 
-        amount = roundedAmountParameter(amount);
 
         this.account += amount;
         this.transactions.add(new Transaction(this, TransactionType.INPUT, amount));
     }
 
     public void withdrawMoneyFromAccount(double amount) throws Exception {
-
-
         amount = roundedAmountParameter(amount);
+
+        isAmountParameterValid(amount);
+
 
         this.account -= amount;
         this.transactions.add(new Transaction(this, TransactionType.OUTPUT, amount));
     }
 
-    public boolean checkInputWithdrawMoney(double amount) throws Exception {
+    public void isAmountParameterValid(double amount) throws Exception {
         if (amount < 1) {
-            throw new Exception("");
+            throw new Exception("Minimálny výber z účtu je 1 €");
         }
 
         if (amount > getAccount()) {
-            throw new Exception("");
+            throw new Exception("Suma môže byť maximálne " + getAccountString());
         }
-        return true;
     }
 
     private double roundedAmountParameter(double amount) {
@@ -199,6 +201,22 @@ public class User {
             amount = bd.doubleValue();
         }
         return amount;
+    }
+
+    public void changePassword(String oldPassword, String newPassword, String newPasswordConfirmation) throws Exception {
+        if (getPassword().equals(oldPassword)) {
+            if (PasswordUtilities.checkPassword(newPassword)) {
+                if (newPassword.equals(newPasswordConfirmation)) {
+                    this.setPassword(newPassword);
+                } else {
+                    throw new Exception("Heslá sa nezhodujú");
+                }
+            } else {
+                throw new Exception("Nové heslo má nesprávny formát");
+            }
+        } else {
+            throw new Exception("Nesprávne staré heslo");
+        }
     }
 
     public String getAccountString() {
