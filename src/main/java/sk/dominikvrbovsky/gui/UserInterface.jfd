@@ -2886,7 +2886,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 								"$columnSpecs": "0"
-								"$rowSpecs": "0"
+								"$rowSpecs": "0, 30"
 								"$hGap": 5
 								"$vGap": 5
 							} ) {
@@ -2943,12 +2943,21 @@ new FormModel {
 										"maximumSize": #Dimension0
 										"minimumSize": #Dimension1
 										"horizontalAlignment": 4
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnPotvrditHesloAdminActionPerformed", true ) )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 1
 										"gridY": 3
 										"insets": #Insets1
 									} )
 								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "labelAdminWarning"
+									"horizontalAlignment": 0
+									"font": #Font22
+									"foreground": sfield java.awt.Color red
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+									"gridy": 1
+								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "admin"
 							} )

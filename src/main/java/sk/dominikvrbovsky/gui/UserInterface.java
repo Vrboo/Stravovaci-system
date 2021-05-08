@@ -549,6 +549,9 @@ public class UserInterface extends JFrame {
     }
 
     private void btnAdminActionPerformed() {
+        passwordAdmin.setText("");
+        passwordAdminFocusLost();
+        labelAdminWarning.setText("");
         cardLayout.show(panelContent,"admin");
     }
     
@@ -942,6 +945,13 @@ public class UserInterface extends JFrame {
         String noveHeslo = String.valueOf(passwordNoveHeslo.getPassword());
         String noveHesloPotvrdenie = String.valueOf(passwordNovHesloPotvrdenie.getPassword());
 
+        if (stareHeslo.equals("Staré heslo") || noveHeslo.equals("Nové heslo*") ||
+                noveHesloPotvrdenie.equals("Potvrdenie hesla")) {
+            setLabelWarningUcetError(labelZmenitHesloWarning);
+            labelZmenitHesloWarning.setText("Vyplňte všetky položky prosím");
+            return;
+        }
+
         try {
             user.changePassword(stareHeslo, noveHeslo, noveHesloPotvrdenie);
             try {
@@ -958,6 +968,18 @@ public class UserInterface extends JFrame {
             labelZmenitHesloWarning.setText(e1.getMessage());
         }
 
+    }
+
+    private void btnPotvrditHesloAdminActionPerformed(ActionEvent e) {
+        String password = String.valueOf(passwordAdmin.getPassword());
+
+        if (password.equals("12345678")) {
+            JFrame jframe = new AdministratorInterface(entityManager,user);
+            jframe.setVisible(true);
+            this.dispose();
+        } else {
+            labelAdminWarning.setText("Nesprávne Heslo");
+        }
     }
 
     private void initComponents() {
@@ -1218,6 +1240,7 @@ public class UserInterface extends JFrame {
         labelAdminIcon = new JLabel();
         passwordAdmin = new JPasswordField();
         btnPotvrditHesloAdmin = new KButton();
+        labelAdminWarning = new JLabel();
 
         //======== this ========
         setUndecorated(true);
@@ -1238,13 +1261,11 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-                . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder
-                . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .
-                awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder( )) )
-                ; panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-                ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-                ;
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+                , 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+                , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+                panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+                ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -3717,6 +3738,7 @@ public class UserInterface extends JFrame {
                             panelAdmin.setkEndColor(Color.white);
                             panelAdmin.setkStartColor(Color.white);
                             panelAdmin.setLayout(new GridBagLayout());
+                            ((GridBagLayout)panelAdmin.getLayout()).rowHeights = new int[] {0, 30};
 
                             //======== panelAdminInside ========
                             {
@@ -3769,9 +3791,18 @@ public class UserInterface extends JFrame {
                                 btnPotvrditHesloAdmin.setMaximumSize(new Dimension(97, 24));
                                 btnPotvrditHesloAdmin.setMinimumSize(new Dimension(97, 24));
                                 btnPotvrditHesloAdmin.setHorizontalAlignment(SwingConstants.RIGHT);
+                                btnPotvrditHesloAdmin.addActionListener(e -> btnPotvrditHesloAdminActionPerformed(e));
                                 panelAdminInside.add(btnPotvrditHesloAdmin, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(4, 110, 20, 110)));
                             }
                             panelAdmin.add(panelAdminInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 5, 0), 0, 0));
+
+                            //---- labelAdminWarning ----
+                            labelAdminWarning.setHorizontalAlignment(SwingConstants.CENTER);
+                            labelAdminWarning.setFont(new Font("Yu Gothic UI", Font.BOLD, 18));
+                            labelAdminWarning.setForeground(Color.red);
+                            panelAdmin.add(labelAdminWarning, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                                 new Insets(0, 0, 0, 0), 0, 0));
                         }
@@ -4066,5 +4097,6 @@ public class UserInterface extends JFrame {
     private JLabel labelAdminIcon;
     private JPasswordField passwordAdmin;
     private KButton btnPotvrditHesloAdmin;
+    private JLabel labelAdminWarning;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
