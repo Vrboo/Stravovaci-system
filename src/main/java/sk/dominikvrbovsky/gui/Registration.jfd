@@ -11,8 +11,8 @@ new FormModel {
 			"$locationPolicy": 1
 			"undecorated": true
 			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq {space :::x, comp labelX:::p::p}, seq {space ::243:x, par l {comp label1:::p:292:p, comp panelRegistration:::p::p}, space ::243:x}}"
-				"$verticalGroup": "par l {seq l {comp labelX:::p::p, space :::x, comp panelRegistration:::::p, space :::p, comp label1:::p::p, space ::14:x}}"
+				"$horizontalGroup": "par l {seq {space :::x, comp labelX:::p::p}, seq {space ::383:x, par l {comp label1:::p:292:p, comp panelRegistration:::p::p}, space ::383:x}}"
+				"$verticalGroup": "par l {seq l {comp labelX:::p::p, space :::x, comp panelRegistration:::::p, space :::p, comp label1:::p::p, space ::193:x}}"
 			} ) {
 				name: "panelBackRegistration"
 				"kStartColor": new java.awt.Color( 121, 241, 164, 255 )
@@ -82,6 +82,7 @@ new FormModel {
 						"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
 						"foreground": sfield java.awt.Color lightGray
 						"caretPosition": 5
+						"echoChar": '•'
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textField1MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "password1MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "password1MouseMoved", false ) )
@@ -98,6 +99,7 @@ new FormModel {
 						"foreground": sfield java.awt.Color lightGray
 						"preferredSize": new java.awt.Dimension( 49, 29 )
 						"caretPosition": 16
+						"echoChar": '•'
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textField1MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "password2MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "password2FocusGained", false ) )
@@ -134,7 +136,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 10 )
-			"size": new java.awt.Dimension( 780, 525 )
+			"size": new java.awt.Dimension( 1060, 735 )
 		} )
 	}
 }

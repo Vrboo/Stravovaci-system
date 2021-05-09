@@ -3,6 +3,7 @@ package sk.dominikvrbovsky;
 
 import sk.dominikvrbovsky.dao.impl.UserDao;
 import sk.dominikvrbovsky.gui.AdministratorInterface;
+import sk.dominikvrbovsky.gui.Login;
 import sk.dominikvrbovsky.gui.UserInterface;
 
 import javax.persistence.EntityManager;
@@ -37,7 +38,9 @@ public class StravovaciSystemApp {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JFrame jFrame = new UserInterface(entityManager, user);
+                JFrame jFrame = new Login(entityManager);
+                //JFrame jFrame = new UserInterface(entityManager, user);
+                //JFrame jFrame = new AdministratorInterface(entityManager, user);
                 jFrame.setVisible(true);
             }
         });

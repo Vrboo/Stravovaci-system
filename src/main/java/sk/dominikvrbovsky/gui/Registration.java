@@ -182,7 +182,7 @@ public class Registration extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
+        // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
         panelBackRegistration = new KGradientPanel();
         labelX = new JLabel();
         panelRegistration = new KGradientPanel();
@@ -205,13 +205,12 @@ public class Registration extends JFrame {
             panelBackRegistration.setBorder(null);
             panelBackRegistration.setBackground(new Color(0, 164, 210));
             panelBackRegistration.setkBorderRadius(0);
-            panelBackRegistration.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),panelBackRegistration. getBorder()));panelBackRegistration. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            panelBackRegistration.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) ,panelBackRegistration. getBorder( )) ); panelBackRegistration. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //---- labelX ----
             labelX.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_x_18px.png")));
@@ -305,6 +304,7 @@ public class Registration extends JFrame {
                 password1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                 password1.setForeground(Color.lightGray);
                 password1.setCaretPosition(5);
+                password1.setEchoChar('\u2022');
                 password1.addMouseMotionListener(new MouseMotionAdapter() {
                     @Override
                     public void mouseMoved(MouseEvent e) {
@@ -333,6 +333,7 @@ public class Registration extends JFrame {
                 password2.setForeground(Color.lightGray);
                 password2.setPreferredSize(new Dimension(49, 29));
                 password2.setCaretPosition(16);
+                password2.setEchoChar('\u2022');
                 password2.addMouseMotionListener(new MouseMotionAdapter() {
                     @Override
                     public void mouseMoved(MouseEvent e) {
@@ -422,11 +423,11 @@ public class Registration extends JFrame {
                         .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelX))
                     .addGroup(panelBackRegistrationLayout.createSequentialGroup()
-                        .addContainerGap(243, Short.MAX_VALUE)
+                        .addContainerGap(383, Short.MAX_VALUE)
                         .addGroup(panelBackRegistrationLayout.createParallelGroup()
                             .addComponent(label1, GroupLayout.PREFERRED_SIZE, 292, GroupLayout.PREFERRED_SIZE)
                             .addComponent(panelRegistration, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(243, Short.MAX_VALUE))
+                        .addContainerGap(383, Short.MAX_VALUE))
             );
             panelBackRegistrationLayout.setVerticalGroup(
                 panelBackRegistrationLayout.createParallelGroup()
@@ -436,7 +437,7 @@ public class Registration extends JFrame {
                         .addComponent(panelRegistration, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(label1)
-                        .addContainerGap(14, Short.MAX_VALUE))
+                        .addContainerGap(193, Short.MAX_VALUE))
             );
         }
 
@@ -456,7 +457,7 @@ public class Registration extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
+    // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
     private KGradientPanel panelBackRegistration;
     private JLabel labelX;
     private KGradientPanel panelRegistration;

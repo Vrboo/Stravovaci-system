@@ -11,6 +11,8 @@ import javax.swing.GroupLayout;
 import java.awt.*;
 import java.util.Optional;
 import javax.swing.border.*;
+import com.jgoodies.forms.factories.*;
+import com.jgoodies.forms.layout.*;
 
 import keeptoo.*;
 import sk.dominikvrbovsky.User;
@@ -27,6 +29,7 @@ public class Login extends JFrame {
         this.entityManager = entityManager;
         setPreferredSize(new Dimension(1000, 600));
         initComponents();
+        textPassword.setEchoChar((char)0);
     }
 
     private void textFieldUsernameFocusGained(FocusEvent e) {
@@ -46,7 +49,8 @@ public class Login extends JFrame {
 
     private void textPasswordFocusGained() {
         String password = String.valueOf(textPassword.getPassword());
-        if (password.equals("password")) {
+        if (password.equals("Heslo")) {
+            textPassword.setEchoChar((char)0x2022);
             textPassword.setText("");
             textPassword.setForeground(Color.BLACK);
         }
@@ -63,8 +67,9 @@ public class Login extends JFrame {
         String password = String.valueOf(textPassword.getPassword());
         
         if (password.equals("")) {
+            textPassword.setEchoChar((char)0);
             textPassword.setForeground(new Color(192,192,192));
-            textPassword.setText("password");
+            textPassword.setText("Heslo");
         }
     }
 
@@ -119,7 +124,7 @@ public class Login extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
+        // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
         myJPanelBackLogin = new KGradientPanel();
         panelPrihlasenie = new KGradientPanel();
         labeluserIcon = new JLabel();
@@ -136,17 +141,17 @@ public class Login extends JFrame {
 
         //======== myJPanelBackLogin ========
         {
-            myJPanelBackLogin.setkStartColor(new Color(121, 241, 164));
-            myJPanelBackLogin.setkEndColor(new Color(0, 164, 210));
+            myJPanelBackLogin.setkStartColor(new Color(38, 184, 190));
+            myJPanelBackLogin.setkEndColor(new Color(150, 223, 141));
             myJPanelBackLogin.setBorder(null);
             myJPanelBackLogin.setBackground(new Color(0, 164, 210));
             myJPanelBackLogin.setkBorderRadius(0);
-            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            myJPanelBackLogin.setkGradientFocus(750);
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+            0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+            . BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+            red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+            beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //======== panelPrihlasenie ========
             {
@@ -189,10 +194,11 @@ public class Login extends JFrame {
                 textPassword.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
                 textPassword.setHorizontalAlignment(SwingConstants.CENTER);
                 textPassword.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                textPassword.setText("password");
+                textPassword.setText("Heslo");
                 textPassword.setForeground(Color.lightGray);
-                textPassword.setCaretPosition(8);
+                textPassword.setCaretPosition(5);
                 textPassword.setFocusable(false);
+                textPassword.setEchoChar('\u2022');
                 textPassword.addMouseMotionListener(new MouseMotionAdapter() {
                     @Override
                     public void mouseMoved(MouseEvent e) {
@@ -314,20 +320,20 @@ public class Login extends JFrame {
             myJPanelBackLoginLayout.setHorizontalGroup(
                 myJPanelBackLoginLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
-                        .addGap(0, 730, Short.MAX_VALUE)
+                        .addGap(0, 1040, Short.MAX_VALUE)
                         .addComponent(labelX))
                     .addGroup(myJPanelBackLoginLayout.createSequentialGroup()
-                        .addContainerGap(229, Short.MAX_VALUE)
+                        .addContainerGap(384, Short.MAX_VALUE)
                         .addComponent(panelPrihlasenie, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(229, Short.MAX_VALUE))
+                        .addContainerGap(384, Short.MAX_VALUE))
             );
             myJPanelBackLoginLayout.setVerticalGroup(
                 myJPanelBackLoginLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
                         .addComponent(labelX)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                         .addComponent(panelPrihlasenie, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(52, Short.MAX_VALUE))
+                        .addContainerGap(164, Short.MAX_VALUE))
             );
         }
 
@@ -347,7 +353,7 @@ public class Login extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Dominik Vrbovsky
+    // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
     private KGradientPanel myJPanelBackLogin;
     private KGradientPanel panelPrihlasenie;
     private JLabel labeluserIcon;

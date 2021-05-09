@@ -2676,6 +2676,7 @@ new FormModel {
 													"text": "Heslo"
 													"foreground": &Color26 new java.awt.Color( 192, 192, 192, 255 )
 													"font": &Font23 new java.awt.Font( "Yu Gothic UI", 1, 20 )
+													"echoChar": '•'
 													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordHesloInsideFocusGained", false ) )
 													addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordHesloInsideFocusLost", false ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2756,6 +2757,7 @@ new FormModel {
 										"text": "Staré heslo"
 										"foreground": #Color26
 										"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
+										"echoChar": '•'
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordStareHesloFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordStareHesloFocusLost", false ) )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2770,6 +2772,7 @@ new FormModel {
 										"text": "Nové heslo*"
 										"foreground": #Color26
 										"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
+										"echoChar": '•'
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordNoveHesloFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordNoveHesloFocusLost", false ) )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2784,6 +2787,7 @@ new FormModel {
 										"text": "Potvrdenie hesla"
 										"foreground": #Color26
 										"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
+										"echoChar": '•'
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordNovHesloPotvrdenieFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordNovHesloPotvrdenieFocusLost", false ) )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -2919,6 +2923,7 @@ new FormModel {
 										"text": "Prístupové heslo"
 										"foreground": #Color26
 										"font": #Font23
+										"echoChar": '•'
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordStareHesloFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "passwordStareHesloFocusLost", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "passwordAdminFocusGained", false ) )
