@@ -27,7 +27,7 @@ public class Login extends JFrame {
 
     public Login(EntityManager entityManager) {
         this.entityManager = entityManager;
-        setPreferredSize(new Dimension(1000, 600));
+        setPreferredSize(new Dimension(850, 600));
         initComponents();
         textPassword.setEchoChar((char)0);
     }
@@ -122,6 +122,18 @@ public class Login extends JFrame {
         this.dispose();
     }
 
+    private void labelXMouseClicked() {
+        // TODO add your code here
+    }
+
+    private void labelXMouseEntered() {
+        // TODO add your code here
+    }
+
+    private void labelXMouseExited() {
+        // TODO add your code here
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
@@ -133,7 +145,11 @@ public class Login extends JFrame {
         buttonPrihlasit = new KButton();
         buttonRegistrovat = new KButton();
         labelWarning = new JLabel();
+        panelStravovaciSystem = new KGradientPanel();
+        labelStravovaciSystem = new JLabel();
+        labelDatum = new JLabel();
         labelX = new JLabel();
+        label4 = new JLabel();
 
         //======== this ========
         setUndecorated(true);
@@ -141,22 +157,24 @@ public class Login extends JFrame {
 
         //======== myJPanelBackLogin ========
         {
-            myJPanelBackLogin.setkStartColor(new Color(38, 184, 190));
-            myJPanelBackLogin.setkEndColor(new Color(150, 223, 141));
+            myJPanelBackLogin.setkStartColor(Color.white);
+            myJPanelBackLogin.setkEndColor(Color.white);
             myJPanelBackLogin.setBorder(null);
-            myJPanelBackLogin.setBackground(new Color(0, 164, 210));
+            myJPanelBackLogin.setBackground(Color.white);
             myJPanelBackLogin.setkBorderRadius(0);
             myJPanelBackLogin.setkGradientFocus(750);
-            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-            0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-            . BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-            red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-            beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            myJPanelBackLogin.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+            ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+            .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+            . Color .red ) ,myJPanelBackLogin. getBorder () ) ); myJPanelBackLogin. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+            propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+            ;} } );
+            myJPanelBackLogin.setLayout(new GridBagLayout());
 
             //======== panelPrihlasenie ========
             {
                 panelPrihlasenie.setBackground(Color.white);
-                panelPrihlasenie.setBorder(null);
+                panelPrihlasenie.setBorder(new MatteBorder(1, 1, 1, 1, Color.lightGray));
                 panelPrihlasenie.setkFillBackground(false);
                 panelPrihlasenie.setkEndColor(Color.white);
                 panelPrihlasenie.setkStartColor(Color.white);
@@ -292,48 +310,87 @@ public class Login extends JFrame {
                             .addComponent(buttonPrihlasit, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(buttonRegistrovat, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                             .addComponent(labelWarning, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
                 );
             }
+            myJPanelBackLogin.add(panelPrihlasenie, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+        }
+
+        //======== panelStravovaciSystem ========
+        {
+            panelStravovaciSystem.setBorder(null);
+            panelStravovaciSystem.setkBorderRadius(0);
+            panelStravovaciSystem.setkStartColor(new Color(38, 184, 190));
+            panelStravovaciSystem.setkEndColor(new Color(150, 223, 141));
+            panelStravovaciSystem.setkGradientFocus(600);
+            panelStravovaciSystem.setBackground(new Color(107, 209, 158));
+
+            //---- labelStravovaciSystem ----
+            labelStravovaciSystem.setText("Stravovac\u00ed syst\u00e9m");
+            labelStravovaciSystem.setFont(new Font("Yu Gothic UI", Font.BOLD, 45));
+            labelStravovaciSystem.setHorizontalAlignment(SwingConstants.LEFT);
+            labelStravovaciSystem.setForeground(new Color(70, 70, 70));
+
+            //---- labelDatum ----
+            labelDatum.setText("Utorok, 20. apr\u00edl 2021");
+            labelDatum.setFont(new Font("Yu Gothic UI", Font.BOLD, 23));
+            labelDatum.setForeground(new Color(70, 70, 70));
+            labelDatum.setHorizontalAlignment(SwingConstants.LEFT);
 
             //---- labelX ----
-            labelX.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_x_18px.png")));
+            labelX.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png"));
+            labelX.setHorizontalAlignment(SwingConstants.CENTER);
             labelX.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             labelX.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    label1MouseClicked();
+                    labelXMouseClicked();
                 }
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    label1MouseEntered();
+                    labelXMouseEntered();
                 }
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    label1MouseExited();
+                    labelXMouseExited();
                 }
             });
 
-            GroupLayout myJPanelBackLoginLayout = new GroupLayout(myJPanelBackLogin);
-            myJPanelBackLogin.setLayout(myJPanelBackLoginLayout);
-            myJPanelBackLoginLayout.setHorizontalGroup(
-                myJPanelBackLoginLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
-                        .addGap(0, 1040, Short.MAX_VALUE)
-                        .addComponent(labelX))
-                    .addGroup(myJPanelBackLoginLayout.createSequentialGroup()
-                        .addContainerGap(384, Short.MAX_VALUE)
-                        .addComponent(panelPrihlasenie, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(384, Short.MAX_VALUE))
+            //---- label4 ----
+            label4.setText("created by Dominik Vrbovsk\u00fd");
+            label4.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 17));
+            label4.setForeground(new Color(70, 70, 70));
+
+            GroupLayout panelStravovaciSystemLayout = new GroupLayout(panelStravovaciSystem);
+            panelStravovaciSystem.setLayout(panelStravovaciSystemLayout);
+            panelStravovaciSystemLayout.setHorizontalGroup(
+                panelStravovaciSystemLayout.createParallelGroup()
+                    .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(panelStravovaciSystemLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 352, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 254, Short.MAX_VALUE)
+                        .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
             );
-            myJPanelBackLoginLayout.setVerticalGroup(
-                myJPanelBackLoginLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, myJPanelBackLoginLayout.createSequentialGroup()
-                        .addComponent(labelX)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
-                        .addComponent(panelPrihlasenie, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(164, Short.MAX_VALUE))
+            panelStravovaciSystemLayout.setVerticalGroup(
+                panelStravovaciSystemLayout.createParallelGroup()
+                    .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
+                        .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(panelStravovaciSystemLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(label4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelStravovaciSystem))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelDatum)
+                        .addContainerGap(34, Short.MAX_VALUE))
             );
         }
 
@@ -341,11 +398,15 @@ public class Login extends JFrame {
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addComponent(myJPanelBackLogin, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelStravovaciSystem, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
-                .addComponent(myJPanelBackLogin, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                    .addComponent(panelStravovaciSystem, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, 0)
+                    .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(null);
@@ -362,7 +423,11 @@ public class Login extends JFrame {
     private KButton buttonPrihlasit;
     private KButton buttonRegistrovat;
     private JLabel labelWarning;
+    private KGradientPanel panelStravovaciSystem;
+    private JLabel labelStravovaciSystem;
+    private JLabel labelDatum;
     private JLabel labelX;
+    private JLabel label4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 }

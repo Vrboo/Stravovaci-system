@@ -4,30 +4,32 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {comp myJPanelBackLogin::t:::x}"
-			"$verticalGroup": "par l {comp myJPanelBackLogin::t:::x}"
+			"$horizontalGroup": "par l {comp panelStravovaciSystem::l:::x, comp myJPanelBackLogin::l::923:x}"
+			"$verticalGroup": "par l {seq t {comp panelStravovaciSystem:::p::p, space :0:0:p, comp myJPanelBackLogin::::529:x}}"
 		} ) {
 			name: "this"
 			"undecorated": true
 			"$locationPolicy": 1
-			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq t {space :0:1040:x, comp labelX:::p::p}, seq {space ::384:x, comp panelPrihlasenie:::p::p, space ::384:x}}"
-				"$verticalGroup": "par l {seq t {comp labelX:::p::p, space ::150:x, comp panelPrihlasenie:::p::p, space ::164:x}}"
+			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0"
+				"$rowSpecs": "0"
+				"$hGap": 5
+				"$vGap": 5
 			} ) {
 				name: "myJPanelBackLogin"
-				"kStartColor": new java.awt.Color( 38, 184, 190, 255 )
-				"kEndColor": new java.awt.Color( 150, 223, 141, 255 )
+				"kStartColor": new java.awt.Color( 255, 255, 255, 255 )
+				"kEndColor": new java.awt.Color( 255, 255, 255, 255 )
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-				"background": new java.awt.Color( 0, 164, 210, 255 )
+				"background": new java.awt.Color( 255, 255, 255, 255 )
 				"kBorderRadius": 0
 				"kGradientFocus": 750
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {seq {par l {seq {space :p:31:p, par l:::p {comp buttonRegistrovat::l::229:x, comp buttonPrihlasit::l::229:x, comp textPassword::l:::x, comp textFieldUsername::l::229:x}}, seq l {space :p:95:p, comp labeluserIcon:::p::p}}, space ::30:x}, comp labelWarning::t:::x}"
-					"$verticalGroup": "par l {seq l {space :p:18:p, comp labeluserIcon:::p::p, space u:::p, comp textFieldUsername:::p:41:p, space :p:12:p, comp textPassword:::p:40:p, space :p:24:p, comp buttonPrihlasit:::p:36:p, space :::p, comp buttonRegistrovat:::p:36:p, space :::x, comp labelWarning:::p:24:p}}"
+					"$verticalGroup": "par l {seq l {space :p:18:p, comp labeluserIcon:::p::p, space u:::p, comp textFieldUsername:::p:41:p, space :p:12:p, comp textPassword:::p:40:p, space :p:24:p, comp buttonPrihlasit:::p:36:p, space :::p, comp buttonRegistrovat:::p:36:p, space ::13:x, comp labelWarning:::p:24:p}}"
 				} ) {
 					name: "panelPrihlasenie"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
-					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"border": new javax.swing.border.MatteBorder( 1, 1, 1, 1, sfield java.awt.Color lightGray )
 					"kFillBackground": false
 					"kEndColor": sfield java.awt.Color white
 					"kStartColor": sfield java.awt.Color white
@@ -110,19 +112,52 @@ new FormModel {
 						"horizontalAlignment": 0
 						"verticalAlignment": 1
 					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+			} )
+			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :p:36:p, par t {comp labelDatum:::p:352:p, comp labelStravovaciSystem:::p:366:p}, space :::p, comp label4:::p:234:p, space ::254:x, comp labelX:::p:27:p}}"
+				"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq l {space :p:19:p, par b {comp label4::b:p:29:p, comp labelStravovaciSystem::b:p::p}, space u:::p, comp labelDatum:::p::p, space ::34:x}}"
+			} ) {
+				name: "panelStravovaciSystem"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"kBorderRadius": 0
+				"kStartColor": new java.awt.Color( 38, 184, 190, 255 )
+				"kEndColor": new java.awt.Color( 150, 223, 141, 255 )
+				"kGradientFocus": 600
+				"background": new java.awt.Color( 107, 209, 158, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelStravovaciSystem"
+					"text": "Stravovací systém"
+					"font": new java.awt.Font( "Yu Gothic UI", 1, 45 )
+					"horizontalAlignment": 2
+					"foreground": new java.awt.Color( 70, 70, 70, 255 )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelDatum"
+					"text": "Utorok, 20. apríl 2021"
+					"font": new java.awt.Font( "Yu Gothic UI", 1, 23 )
+					"foreground": new java.awt.Color( 70, 70, 70, 255 )
+					"horizontalAlignment": 2
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "labelX"
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/icons8_x_18px.png" )
+					"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png" )
+					"horizontalAlignment": 0
 					"cursor": new java.awt.Cursor( 12 )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "label1MouseClicked", false ) )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "label1MouseEntered", false ) )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "label1MouseExited", false ) )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "labelXMouseClicked", false ) )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "labelXMouseEntered", false ) )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "labelXMouseExited", false ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "created by Dominik Vrbovský"
+					"font": new java.awt.Font( "Yu Gothic UI", 3, 17 )
+					"foreground": new java.awt.Color( 70, 70, 70, 255 )
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 10 )
-			"size": new java.awt.Dimension( 1060, 725 )
+			"location": new java.awt.Point( 70, 10 )
+			"size": new java.awt.Dimension( 925, 725 )
 		} )
 	}
 }
