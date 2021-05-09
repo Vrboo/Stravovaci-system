@@ -270,7 +270,6 @@ new FormModel {
 											"border": &MatteBorder2 new javax.swing.border.MatteBorder( 0, 1, 1, 1, sfield java.awt.Color black )
 											"font": &Font3 new java.awt.Font( "Yu Gothic UI", 1, 16 )
 											"horizontalAlignment": 0
-											"text": "Hovno1"
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
 											"gridY": 2
@@ -299,7 +298,6 @@ new FormModel {
 											"font": #Font3
 											"horizontalAlignment": 0
 											"columns": 5
-											"text": "45"
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 4
@@ -310,7 +308,6 @@ new FormModel {
 											"border": &MatteBorder3 new javax.swing.border.MatteBorder( 0, 0, 1, 1, sfield java.awt.Color black )
 											"font": #Font3
 											"horizontalAlignment": 0
-											"text": "4.2"
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -332,7 +329,6 @@ new FormModel {
 											"border": #MatteBorder2
 											"font": #Font3
 											"horizontalAlignment": 0
-											"text": "Hovno2"
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
 											"gridY": 3
@@ -360,7 +356,6 @@ new FormModel {
 											"border": #MatteBorder2
 											"font": #Font3
 											"horizontalAlignment": 0
-											"text": "65"
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 4
@@ -371,7 +366,6 @@ new FormModel {
 											"border": #MatteBorder3
 											"font": #Font3
 											"horizontalAlignment": 0
-											"text": "2.1"
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -393,7 +387,6 @@ new FormModel {
 											"border": #MatteBorder2
 											"font": #Font3
 											"horizontalAlignment": 0
-											"text": "Hovno3"
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
 											"gridY": 4
@@ -415,7 +408,6 @@ new FormModel {
 											"border": #MatteBorder2
 											"font": #Font3
 											"horizontalAlignment": 0
-											"text": "0"
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 4
@@ -426,7 +418,6 @@ new FormModel {
 											"border": #MatteBorder3
 											"font": #Font3
 											"horizontalAlignment": 0
-											"text": "6.3"
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -448,7 +439,6 @@ new FormModel {
 											"border": #MatteBorder2
 											"font": #Font3
 											"horizontalAlignment": 0
-											"text": "Hovno4"
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
 											"gridY": 5
@@ -470,7 +460,6 @@ new FormModel {
 											"border": #MatteBorder2
 											"font": #Font3
 											"horizontalAlignment": 0
-											"text": "78"
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 4
@@ -481,7 +470,6 @@ new FormModel {
 											"border": #MatteBorder3
 											"font": #Font3
 											"horizontalAlignment": 0
-											"text": "1.2"
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -503,7 +491,6 @@ new FormModel {
 											"border": #MatteBorder2
 											"font": #Font3
 											"horizontalAlignment": 0
-											"text": "Hovno5"
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
 											"gridY": 6
@@ -525,7 +512,6 @@ new FormModel {
 											"border": #MatteBorder2
 											"font": #Font3
 											"horizontalAlignment": 0
-											"text": "21"
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 4
@@ -537,7 +523,6 @@ new FormModel {
 											"font": #Font3
 											"horizontalAlignment": 0
 											"cursor": new java.awt.Cursor( 2 )
-											"text": "5.00"
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {

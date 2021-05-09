@@ -445,13 +445,13 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
-                swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border
-                . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067"
-                , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panelMenu. getBorder
-                () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
-                . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException
-                ( ) ;} } );
+                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
+                javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax
+                .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
+                .awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),java.awt
+                .Color.red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.
+                PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er".
+                equals(e.getPropertyName()))throw new RuntimeException();}});
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -753,7 +753,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanajkyNazov1.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
                                     txtJedLisRanajkyNazov1.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanajkyNazov1.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanajkyNazov1.setText("Hovno1");
                                     panelJedalnyListokRanajkyInside.add(txtJedLisRanajkyNazov1, CC.xy(2, 2));
 
                                     //---- comBoxJedLisRanajkyNapoj1 ----
@@ -774,7 +773,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanakKapacita1.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanakKapacita1.setHorizontalAlignment(SwingConstants.CENTER);
                                     txtJedLisRanakKapacita1.setColumns(5);
-                                    txtJedLisRanakKapacita1.setText("45");
                                     txtJedLisRanakKapacita1.addKeyListener(new KeyAdapter() {
                                         @Override
                                         public void keyTyped(KeyEvent e) {
@@ -787,7 +785,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanakCena1.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
                                     txtJedLisRanakCena1.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanakCena1.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanakCena1.setText("4.2");
                                     txtJedLisRanakCena1.addKeyListener(new KeyAdapter() {
                                         @Override
                                         public void keyTyped(KeyEvent e) {
@@ -813,7 +810,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanajkyNazov2.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
                                     txtJedLisRanajkyNazov2.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanajkyNazov2.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanajkyNazov2.setText("Hovno2");
                                     panelJedalnyListokRanajkyInside.add(txtJedLisRanajkyNazov2, CC.xy(2, 3));
 
                                     //---- comBoxJedLisRanajkyNapoj2 ----
@@ -833,7 +829,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanakKapacita2.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
                                     txtJedLisRanakKapacita2.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanakKapacita2.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanakKapacita2.setText("65");
                                     txtJedLisRanakKapacita2.addKeyListener(new KeyAdapter() {
                                         @Override
                                         public void keyTyped(KeyEvent e) {
@@ -846,7 +841,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanakCena2.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
                                     txtJedLisRanakCena2.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanakCena2.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanakCena2.setText("2.1");
                                     txtJedLisRanakCena2.addKeyListener(new KeyAdapter() {
                                         @Override
                                         public void keyTyped(KeyEvent e) {
@@ -872,7 +866,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanajkyNazov3.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
                                     txtJedLisRanajkyNazov3.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanajkyNazov3.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanajkyNazov3.setText("Hovno3");
                                     panelJedalnyListokRanajkyInside.add(txtJedLisRanajkyNazov3, CC.xy(2, 4));
 
                                     //---- comBoxJedLisRanajkyNapoj3 ----
@@ -892,7 +885,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanakKapacita3.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
                                     txtJedLisRanakKapacita3.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanakKapacita3.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanakKapacita3.setText("0");
                                     txtJedLisRanakKapacita3.addKeyListener(new KeyAdapter() {
                                         @Override
                                         public void keyTyped(KeyEvent e) {
@@ -905,7 +897,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanakCena3.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
                                     txtJedLisRanakCena3.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanakCena3.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanakCena3.setText("6.3");
                                     txtJedLisRanakCena3.addKeyListener(new KeyAdapter() {
                                         @Override
                                         public void keyTyped(KeyEvent e) {
@@ -931,7 +922,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanajkyNazov4.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
                                     txtJedLisRanajkyNazov4.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanajkyNazov4.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanajkyNazov4.setText("Hovno4");
                                     panelJedalnyListokRanajkyInside.add(txtJedLisRanajkyNazov4, CC.xy(2, 5));
 
                                     //---- comBoxJedLisRanajkyNapoj4 ----
@@ -951,7 +941,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanakKapacita4.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
                                     txtJedLisRanakKapacita4.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanakKapacita4.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanakKapacita4.setText("78");
                                     txtJedLisRanakKapacita4.addKeyListener(new KeyAdapter() {
                                         @Override
                                         public void keyTyped(KeyEvent e) {
@@ -964,7 +953,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanakCena4.setBorder(new MatteBorder(0, 0, 1, 1, Color.black));
                                     txtJedLisRanakCena4.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanakCena4.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanakCena4.setText("1.2");
                                     txtJedLisRanakCena4.addKeyListener(new KeyAdapter() {
                                         @Override
                                         public void keyTyped(KeyEvent e) {
@@ -990,7 +978,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanajkyNazov5.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
                                     txtJedLisRanajkyNazov5.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanajkyNazov5.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanajkyNazov5.setText("Hovno5");
                                     panelJedalnyListokRanajkyInside.add(txtJedLisRanajkyNazov5, CC.xy(2, 6));
 
                                     //---- comBoxJedLisRanajkyNapoj5 ----
@@ -1010,7 +997,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanakKapacita5.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
                                     txtJedLisRanakKapacita5.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanakKapacita5.setHorizontalAlignment(SwingConstants.CENTER);
-                                    txtJedLisRanakKapacita5.setText("21");
                                     txtJedLisRanakKapacita5.addKeyListener(new KeyAdapter() {
                                         @Override
                                         public void keyTyped(KeyEvent e) {
@@ -1024,7 +1010,6 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanakCena5.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
                                     txtJedLisRanakCena5.setHorizontalAlignment(SwingConstants.CENTER);
                                     txtJedLisRanakCena5.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
-                                    txtJedLisRanakCena5.setText("5.00");
                                     txtJedLisRanakCena5.addKeyListener(new KeyAdapter() {
                                         @Override
                                         public void keyTyped(KeyEvent e) {
