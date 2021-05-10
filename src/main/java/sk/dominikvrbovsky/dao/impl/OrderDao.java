@@ -51,7 +51,7 @@ public class OrderDao implements Dao<Order> {
     public Optional<Order> getFirstOrderInBurzaByMealId(long id) {
         Optional<Order> order;
         String hql = "FROM Order WHERE MEAL_ID = :id ORDER BY DateTimeAdditionToBurza ASC";
-        System.out.println(id);
+
         try {
             entityManager.getTransaction().begin();
             Query query = entityManager.createQuery(hql, Order.class).setMaxResults(1);
