@@ -4,44 +4,44 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {comp panelBackRegistration::l:::x}"
-			"$verticalGroup": "par l {comp panelBackRegistration::l:::x}"
+			"$horizontalGroup": "par l {comp myJPanelBackLogin::l:::x, comp panelStravovaciSystem::l:::x}"
+			"$verticalGroup": "par l {seq t {comp panelStravovaciSystem:::p::p, space :0:0:p, comp myJPanelBackLogin:::::x}}"
 		} ) {
 			name: "this"
-			"$locationPolicy": 1
 			"undecorated": true
-			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq {space :::x, comp labelX:::p::p}, seq {space ::383:x, par l {comp label1:::p:292:p, comp panelRegistration:::p::p}, space ::383:x}}"
-				"$verticalGroup": "par l {seq l {comp labelX:::p::p, space :::x, comp panelRegistration:::::p, space :::p, comp label1:::p::p, space ::193:x}}"
+			"$locationPolicy": 1
+			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0"
+				"$rowSpecs": "0, 14, 24"
+				"$hGap": 5
+				"$vGap": 5
 			} ) {
-				name: "panelBackRegistration"
-				"kStartColor": new java.awt.Color( 121, 241, 164, 255 )
-				"kEndColor": new java.awt.Color( 0, 164, 210, 255 )
+				name: "myJPanelBackLogin"
+				"kStartColor": new java.awt.Color( 255, 255, 255, 255 )
+				"kEndColor": new java.awt.Color( 255, 255, 255, 255 )
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-				"background": new java.awt.Color( 0, 164, 210, 255 )
+				"background": new java.awt.Color( 255, 255, 255, 255 )
 				"kBorderRadius": 0
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "labelX"
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/icons8_x_18px.png" )
-					"cursor": new java.awt.Cursor( 12 )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "labelXMouseEntered", false ) )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "labelXMouseExited", false ) )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "labelXMouseClicked", false ) )
-				} )
-				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {par l {seq {space :p:23:p, par t {comp password2::t:p:249:p, comp password1::t:p:249:p, comp fieldPouzMeno::t:p:249:p, comp fielCeleMeno::t:p:249:p, comp buttonRegistrovat::t:p:249:p}}, seq l {space :p:95:p, comp labelIcon:::p::p}}, space ::20:x}}"
-					"$verticalGroup": "par l {seq {space :p:20:p, comp labelIcon:::p::p, space u:::p, comp fieldPouzMeno:::p:41:p, space s:::p, comp fielCeleMeno:::p:41:p, space ::20:x, comp password1:::p:41:p, space s:::p, comp password2:::p:41:p, space s:::p, comp buttonRegistrovat:::p:36:p, space :p:22:p}}"
+				"kGradientFocus": 750
+				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+					"$columnSpecs": "200dlu"
+					"$rowSpecs": "fill:79dlu, 4dlu, fill:30dlu, 4dlu, fill:30dlu, 4dlu, fill:30dlu, 4dlu, fill:30dlu, 10dlu, fill:30dlu, 0dlu, 30dlu, 0dlu, 9dlu"
 				} ) {
 					name: "panelRegistration"
 					"kEndColor": sfield java.awt.Color white
 					"kStartColor": sfield java.awt.Color white
-					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"border": new javax.swing.border.MatteBorder( 1, 1, 1, 1, sfield java.awt.Color lightGray )
 					"background": new java.awt.Color( 255, 255, 255, 255 )
 					"kBorderRadius": 0
 					"kFillBackground": false
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "labelIcon"
 						"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_add_user_male_100px.png" )
+						"horizontalAlignment": 0
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 1
+						"gridY": 1
+						"insets": new java.awt.Insets( 10, 0, 0, 0 )
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "fieldPouzMeno"
@@ -49,7 +49,7 @@ new FormModel {
 						"text": "Používateľské meno"
 						"focusable": false
 						"horizontalAlignment": 0
-						"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
+						"font": &Font0 new java.awt.Font( "Yu Gothic UI", 1, 19 )
 						"foreground": sfield java.awt.Color lightGray
 						"preferredSize": new java.awt.Dimension( 49, 29 )
 						"caretPosition": 15
@@ -57,6 +57,9 @@ new FormModel {
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "fieldPouzMenoFocusGained", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "fieldPouzMenoFocusLost", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "fieldPouzMenoFocusGained", false ) )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridY": 3
+						"insets": new java.awt.Insets( 0, 30, 0, 30 )
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "fielCeleMeno"
@@ -64,7 +67,7 @@ new FormModel {
 						"border": #MatteBorder0
 						"focusable": false
 						"horizontalAlignment": 0
-						"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
+						"font": #Font0
 						"foreground": sfield java.awt.Color lightGray
 						"preferredSize": new java.awt.Dimension( 49, 29 )
 						"caretPosition": 9
@@ -72,6 +75,10 @@ new FormModel {
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textField2MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "fielCeleMenoFocusGained", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "fielCeleMenoFocusLost", false ) )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 1
+						"gridY": 5
+						"insets": new java.awt.Insets( 0, 30, 0, 30 )
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
 						name: "password1"
@@ -79,7 +86,7 @@ new FormModel {
 						"text": "Heslo*"
 						"focusable": false
 						"horizontalAlignment": 0
-						"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
+						"font": #Font0
 						"foreground": sfield java.awt.Color lightGray
 						"caretPosition": 5
 						"echoChar": '•'
@@ -88,6 +95,10 @@ new FormModel {
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "password1MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "password1FocusGained", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "password1FocusLost", false ) )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 1
+						"gridY": 7
+						"insets": new java.awt.Insets( 0, 30, 0, 30 )
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
 						name: "password2"
@@ -95,7 +106,7 @@ new FormModel {
 						"text": "Potvrdenie hesla"
 						"focusable": false
 						"horizontalAlignment": 0
-						"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
+						"font": #Font0
 						"foreground": sfield java.awt.Color lightGray
 						"preferredSize": new java.awt.Dimension( 49, 29 )
 						"caretPosition": 16
@@ -104,39 +115,111 @@ new FormModel {
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "password2MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "password2FocusGained", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "password2FocusLost", false ) )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 1
+						"gridY": 9
+						"insets": new java.awt.Insets( 0, 30, 0, 30 )
 					} )
 					add( new FormComponent( "keeptoo.KButton" ) {
 						name: "buttonRegistrovat"
 						"text": "Registrovať"
-						"background": sfield java.awt.Color white
-						"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
-						"kBorderRadius": 30
-						"kAllowTab": true
-						"kStartColor": new java.awt.Color( 0, 164, 210, 255 )
-						"kEndColor": new java.awt.Color( 121, 241, 164, 255 )
-						"kPressedColor": sfield java.awt.Color orange
+						"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"kIndicatorThickness": 0
-						"kHoverStartColor": new java.awt.Color( 121, 241, 164, 255 )
-						"kHoverEndColor": new java.awt.Color( 0, 164, 210, 255 )
-						"kHoverForeGround": sfield java.awt.Color black
-						"cursor": new java.awt.Cursor( 12 )
-						"kSelectedColor": new java.awt.Color( 0, 164, 210, 255 )
-						"kForeGround": sfield java.awt.Color black
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonPrihlasitActionPerformed", false ) )
+						"kStartColor": new java.awt.Color( 73, 196, 174, 255 )
+						"kEndColor": new java.awt.Color( 140, 219, 145, 255 )
+						"cursor": &Cursor0 new java.awt.Cursor( 12 )
+						"kHoverEndColor": new java.awt.Color( 73, 196, 174, 255 )
+						"kHoverStartColor": new java.awt.Color( 140, 219, 145, 255 )
+						"kHoverForeGround": sfield java.awt.Color white
+						"background": &Color0 new java.awt.Color( 255, 255, 255, 255 )
+						"borderPainted": false
+						"maximumSize": &Dimension0 new java.awt.Dimension( 97, 24 )
+						"minimumSize": &Dimension1 new java.awt.Dimension( 97, 24 )
+						"kBorderRadius": 20
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonRegistrovatActionPerformed", false ) )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridY": 11
+						"insets": new java.awt.Insets( 5, 30, 5, 30 )
 					} )
-				} )
+					add( new FormComponent( "keeptoo.KButton" ) {
+						name: "buttonPrihlasit"
+						"text": "Prihlásiť"
+						"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"kStartColor": new java.awt.Color( 255, 161, 117, 255 )
+						"kEndColor": new java.awt.Color( 255, 58, 58, 255 )
+						"cursor": #Cursor0
+						"kHoverStartColor": new java.awt.Color( 255, 84, 84, 255 )
+						"kHoverForeGround": sfield java.awt.Color white
+						"background": #Color0
+						"borderPainted": false
+						"maximumSize": #Dimension0
+						"minimumSize": #Dimension1
+						"kBorderRadius": 20
+						"kHoverEndColor": new java.awt.Color( 255, 161, 117, 255 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonPrihlasitActionPerformed", false ) )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridY": 13
+						"insets": new java.awt.Insets( 5, 30, 5, 30 )
+					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
 					"text": "*min. 6 znakov, 1 číslica, 1 veľké písmeno"
 					"horizontalAlignment": 0
-					"font": new java.awt.Font( "Yu Gothic UI", 1, 14 )
-					"foreground": sfield java.awt.Color white
+					"font": new java.awt.Font( "Yu Gothic UI", 1, 15 )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelWarning"
+					"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
+					"foreground": sfield java.awt.Color red
+					"horizontalAlignment": 0
+					"verticalAlignment": 1
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 2
+				} )
+			} )
+			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {space ::251:x, par l {comp label4:::p:418:p, seq {comp labelStravovaciSystem:::p:418:p, space ::227:x, comp labelX:::p:27:p}}}}"
+				"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:122:x}, seq l {space ::17:x, comp labelStravovaciSystem:::p::p, space :::x, comp label4:::p:29:p, space ::31:x}}"
+			} ) {
+				name: "panelStravovaciSystem"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"kBorderRadius": 0
+				"kStartColor": new java.awt.Color( 38, 184, 190, 255 )
+				"kEndColor": new java.awt.Color( 150, 223, 141, 255 )
+				"kGradientFocus": 600
+				"background": new java.awt.Color( 107, 209, 158, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelStravovaciSystem"
+					"text": "Stravovací systém"
+					"font": new java.awt.Font( "Yu Gothic UI", 1, 50 )
+					"horizontalAlignment": 0
+					"foreground": new java.awt.Color( 70, 70, 70, 255 )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelX"
+					"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png" )
+					"horizontalAlignment": 0
+					"cursor": new java.awt.Cursor( 12 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "labelXMouseClicked", false ) )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "labelXMouseEntered", false ) )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "labelXMouseExited", false ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "created by Dominik Vrbovský"
+					"font": new java.awt.Font( "Yu Gothic UI", 3, 20 )
+					"foreground": new java.awt.Color( 70, 70, 70, 255 )
+					"horizontalAlignment": 0
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 10 )
-			"size": new java.awt.Dimension( 1060, 735 )
+			"size": new java.awt.Dimension( 925, 725 )
+			"location": new java.awt.Point( 30, 0 )
 		} )
 	}
 }
+

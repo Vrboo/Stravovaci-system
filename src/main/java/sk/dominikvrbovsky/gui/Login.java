@@ -121,7 +121,7 @@ public class Login extends JFrame {
     }
 
     private void btnRegistrovatActionPerformed() {
-        Registration1 registration = new Registration1(entityManager);
+        Registration registration = new Registration(entityManager);
         registration.setVisible(true);
         this.dispose();
     }
