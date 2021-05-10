@@ -162,13 +162,12 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBackground(Color.white);
             myJPanelBackLogin.setkBorderRadius(0);
             myJPanelBackLogin.setkGradientFocus(750);
-            myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-            .border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder
-            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.
-            awt.Font.BOLD,12),java.awt.Color.red),myJPanelBackLogin. getBorder()))
-            ;myJPanelBackLogin. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}})
-            ;
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             myJPanelBackLogin.setLayout(new GridBagLayout());
 
             //======== panelPrihlasenie ========
@@ -330,8 +329,8 @@ public class Login extends JFrame {
 
             //---- labelStravovaciSystem ----
             labelStravovaciSystem.setText("Stravovac\u00ed syst\u00e9m");
-            labelStravovaciSystem.setFont(new Font("Yu Gothic UI", Font.BOLD, 45));
-            labelStravovaciSystem.setHorizontalAlignment(SwingConstants.LEFT);
+            labelStravovaciSystem.setFont(new Font("Yu Gothic UI", Font.BOLD, 50));
+            labelStravovaciSystem.setHorizontalAlignment(SwingConstants.CENTER);
             labelStravovaciSystem.setForeground(new Color(70, 70, 70));
 
             //---- labelX ----
@@ -355,7 +354,7 @@ public class Login extends JFrame {
 
             //---- label4 ----
             label4.setText("created by Dominik Vrbovsk\u00fd");
-            label4.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 17));
+            label4.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 20));
             label4.setForeground(new Color(70, 70, 70));
             label4.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -364,25 +363,25 @@ public class Login extends JFrame {
             panelStravovaciSystemLayout.setHorizontalGroup(
                 panelStravovaciSystemLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, panelStravovaciSystemLayout.createSequentialGroup()
-                        .addContainerGap(280, Short.MAX_VALUE)
+                        .addContainerGap(251, Short.MAX_VALUE)
                         .addGroup(panelStravovaciSystemLayout.createParallelGroup()
-                            .addComponent(label4, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label4, GroupLayout.PREFERRED_SIZE, 418, GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
-                                .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
+                                .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 418, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
                                 .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))))
             );
             panelStravovaciSystemLayout.setVerticalGroup(
                 panelStravovaciSystemLayout.createParallelGroup()
                     .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
                         .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 122, Short.MAX_VALUE))
                     .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
-                        .addContainerGap(22, Short.MAX_VALUE)
+                        .addContainerGap(17, Short.MAX_VALUE)
                         .addComponent(labelStravovaciSystem)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(label4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(17, Short.MAX_VALUE))
+                        .addContainerGap(31, Short.MAX_VALUE))
             );
         }
 
@@ -398,7 +397,7 @@ public class Login extends JFrame {
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                     .addComponent(panelStravovaciSystem, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, 0)
-                    .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE))
+                    .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(null);

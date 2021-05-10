@@ -5,7 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 			"$horizontalGroup": "par l {comp myJPanelBackLogin::l::923:x, comp panelStravovaciSystem::l:::x}"
-			"$verticalGroup": "par l {seq t {comp panelStravovaciSystem:::p::p, space :0:0:p, comp myJPanelBackLogin::::550:x}}"
+			"$verticalGroup": "par l {seq t {comp panelStravovaciSystem:::p::p, space :0:0:p, comp myJPanelBackLogin::::535:x}}"
 		} ) {
 			name: "this"
 			"undecorated": true
@@ -115,8 +115,8 @@ new FormModel {
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 			} )
 			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq t {space ::280:x, par l {comp label4:::p:366:p, seq {comp labelStravovaciSystem:::p:366:p, space ::250:x, comp labelX:::p:27:p}}}}"
-				"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq l {space ::22:x, comp labelStravovaciSystem:::p::p, space :::x, comp label4:::p:29:p, space ::17:x}}"
+				"$horizontalGroup": "par l {seq t {space ::251:x, par l {comp label4:::p:418:p, seq {comp labelStravovaciSystem:::p:418:p, space ::227:x, comp labelX:::p:27:p}}}}"
+				"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:122:x}, seq l {space ::17:x, comp labelStravovaciSystem:::p::p, space :::x, comp label4:::p:29:p, space ::31:x}}"
 			} ) {
 				name: "panelStravovaciSystem"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -128,8 +128,8 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "labelStravovaciSystem"
 					"text": "Stravovací systém"
-					"font": new java.awt.Font( "Yu Gothic UI", 1, 45 )
-					"horizontalAlignment": 2
+					"font": new java.awt.Font( "Yu Gothic UI", 1, 50 )
+					"horizontalAlignment": 0
 					"foreground": new java.awt.Color( 70, 70, 70, 255 )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
@@ -144,7 +144,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label4"
 					"text": "created by Dominik Vrbovský"
-					"font": new java.awt.Font( "Yu Gothic UI", 3, 17 )
+					"font": new java.awt.Font( "Yu Gothic UI", 3, 20 )
 					"foreground": new java.awt.Color( 70, 70, 70, 255 )
 					"horizontalAlignment": 0
 				} )
