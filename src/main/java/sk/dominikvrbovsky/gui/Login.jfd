@@ -11,7 +11,7 @@ new FormModel {
 			"undecorated": true
 			"$locationPolicy": 1
 			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-				"$columnSpecs": "0"
+				"$columnSpecs": "286"
 				"$rowSpecs": "0, 24"
 				"$hGap": 5
 				"$vGap": 5
@@ -24,7 +24,7 @@ new FormModel {
 				"kBorderRadius": 0
 				"kGradientFocus": 750
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
-					"$columnSpecs": "201dlu"
+					"$columnSpecs": "192dlu"
 					"$rowSpecs": "fill:79dlu, linegap, fill:30dlu, linegap, fill:30dlu, 10dlu, fill:30dlu, 0dlu, fill:30dlu, 0dlu, 9dlu"
 				} ) {
 					name: "panelPrihlasenie"
