@@ -27,7 +27,7 @@ public class Login extends JFrame {
 
     public Login(EntityManager entityManager) {
         this.entityManager = entityManager;
-        setPreferredSize(new Dimension(850, 600));
+        setPreferredSize(new Dimension(1000, 600));
         initComponents();
         textPassword.setEchoChar((char)0);
     }
@@ -147,7 +147,6 @@ public class Login extends JFrame {
         labelWarning = new JLabel();
         panelStravovaciSystem = new KGradientPanel();
         labelStravovaciSystem = new JLabel();
-        labelDatum = new JLabel();
         labelX = new JLabel();
         label4 = new JLabel();
 
@@ -163,12 +162,13 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBackground(Color.white);
             myJPanelBackLogin.setkBorderRadius(0);
             myJPanelBackLogin.setkGradientFocus(750);
-            myJPanelBackLogin.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
-            ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
-            .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) ,myJPanelBackLogin. getBorder () ) ); myJPanelBackLogin. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
-            propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-            ;} } );
+            myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
+            .border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder
+            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.
+            awt.Font.BOLD,12),java.awt.Color.red),myJPanelBackLogin. getBorder()))
+            ;myJPanelBackLogin. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}})
+            ;
             myJPanelBackLogin.setLayout(new GridBagLayout());
 
             //======== panelPrihlasenie ========
@@ -334,12 +334,6 @@ public class Login extends JFrame {
             labelStravovaciSystem.setHorizontalAlignment(SwingConstants.LEFT);
             labelStravovaciSystem.setForeground(new Color(70, 70, 70));
 
-            //---- labelDatum ----
-            labelDatum.setText("Utorok, 20. apr\u00edl 2021");
-            labelDatum.setFont(new Font("Yu Gothic UI", Font.BOLD, 23));
-            labelDatum.setForeground(new Color(70, 70, 70));
-            labelDatum.setHorizontalAlignment(SwingConstants.LEFT);
-
             //---- labelX ----
             labelX.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png"));
             labelX.setHorizontalAlignment(SwingConstants.CENTER);
@@ -363,20 +357,20 @@ public class Login extends JFrame {
             label4.setText("created by Dominik Vrbovsk\u00fd");
             label4.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 17));
             label4.setForeground(new Color(70, 70, 70));
+            label4.setHorizontalAlignment(SwingConstants.CENTER);
 
             GroupLayout panelStravovaciSystemLayout = new GroupLayout(panelStravovaciSystem);
             panelStravovaciSystem.setLayout(panelStravovaciSystemLayout);
             panelStravovaciSystemLayout.setHorizontalGroup(
                 panelStravovaciSystemLayout.createParallelGroup()
-                    .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(panelStravovaciSystemLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelDatum, GroupLayout.PREFERRED_SIZE, 352, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 254, Short.MAX_VALUE)
-                        .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+                    .addGroup(GroupLayout.Alignment.TRAILING, panelStravovaciSystemLayout.createSequentialGroup()
+                        .addContainerGap(280, Short.MAX_VALUE)
+                        .addGroup(panelStravovaciSystemLayout.createParallelGroup()
+                            .addComponent(label4, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
+                                .addComponent(labelStravovaciSystem, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
+                                .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))))
             );
             panelStravovaciSystemLayout.setVerticalGroup(
                 panelStravovaciSystemLayout.createParallelGroup()
@@ -384,13 +378,11 @@ public class Login extends JFrame {
                         .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelStravovaciSystemLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(label4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelStravovaciSystem))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelDatum)
-                        .addContainerGap(34, Short.MAX_VALUE))
+                        .addContainerGap(22, Short.MAX_VALUE)
+                        .addComponent(labelStravovaciSystem)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(17, Short.MAX_VALUE))
             );
         }
 
@@ -398,15 +390,15 @@ public class Login extends JFrame {
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addComponent(panelStravovaciSystem, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE)
+                .addComponent(panelStravovaciSystem, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                     .addComponent(panelStravovaciSystem, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, 0)
-                    .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE))
+                    .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(null);
@@ -425,7 +417,6 @@ public class Login extends JFrame {
     private JLabel labelWarning;
     private KGradientPanel panelStravovaciSystem;
     private JLabel labelStravovaciSystem;
-    private JLabel labelDatum;
     private JLabel labelX;
     private JLabel label4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
