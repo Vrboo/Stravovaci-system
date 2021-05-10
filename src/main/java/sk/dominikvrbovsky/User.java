@@ -212,7 +212,7 @@ public class User {
                     throw new Exception("Heslá sa nezhodujú");
                 }
             } else {
-                throw new Exception("Nové heslo má nesprávny formát");
+                throw new Exception("Heslo má nesprávny formát");
             }
         } else {
             throw new Exception("Nesprávne staré heslo");
