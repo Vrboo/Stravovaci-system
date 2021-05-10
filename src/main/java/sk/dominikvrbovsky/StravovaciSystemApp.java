@@ -27,7 +27,7 @@ public class StravovaciSystemApp {
 //        entityManager.getTransaction().commit();
 //        entityManager.close();
 
-        User user = new UserDao(entityManager).getFromUsername("vrboo").get();
+        //User user = new UserDao(entityManager).getFromUsername("vrboo").get();
 
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");

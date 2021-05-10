@@ -24,10 +24,12 @@ import sk.dominikvrbovsky.dao.impl.UserDao;
 public class Login extends JFrame {
 
     private final EntityManager entityManager;
+    private final UserDao userDao;
 
     public Login(EntityManager entityManager) {
         this.entityManager = entityManager;
-        setPreferredSize(new Dimension(1000, 600));
+        this.userDao = new UserDao(this.entityManager);
+        setPreferredSize(new Dimension(1000, 650));
         initComponents();
         textPassword.setEchoChar((char)0);
     }
@@ -73,50 +75,34 @@ public class Login extends JFrame {
         }
     }
 
-    private void label1MouseClicked() {
-
-    }
-
-    private void label1MouseEntered() {
-
-
-    }
-
-    private void label1MouseExited() {
-
-    }
-
     private void buttonPrihlasitActionPerformed() {
         String password = String.valueOf(textPassword.getPassword());
 
-        if (textFieldUsername.getText().equals("Používateľské meno") && password.equals("password")) {
-            labelWarning.setText("Zadajte meno a heslo.");
-        } else if (textFieldUsername.getText().equals("Používateľské meno") && !password.equals("password")) {
-            labelWarning.setText("Zadajte používateľské meno.");
-        } else if (!textFieldUsername.getText().equals("Používateľské meno") && password.equals("password")) {
-            labelWarning.setText("Zadajte heslo.");
-        } else if (!textFieldUsername.getText().equals("Používateľské meno") && !password.equals("password")) {
-
-            UserDao userDao = new UserDao(this.entityManager);
-            Optional<User> user = userDao.getFromUsername(textFieldUsername.getText());
+        if (textFieldUsername.getText().equals("Používateľské meno") && password.equals("Heslo")) {
+            labelWarning.setText("Zadajte meno a heslo");
+        } else if (textFieldUsername.getText().equals("Používateľské meno") && !password.equals("Heslo")) {
+            labelWarning.setText("Zadajte používateľské meno");
+        } else if (!textFieldUsername.getText().equals("Používateľské meno") && password.equals("Heslo")) {
+            labelWarning.setText("Zadajte heslo");
+        } else if (!textFieldUsername.getText().equals("Používateľské meno") && !password.equals("Heslo")) {
+            Optional<User> user;
+            try {
+                user = userDao.getFromUsername(textFieldUsername.getText());
+            } catch (Exception e) {
+                labelWarning.setText("Prihlasovenie zlyhalo");
+                return;
+            }
 
             if (user.isPresent() && user.get().getPassword().equals(password)) {
                 UserInterface userInterface = new UserInterface(entityManager, user.get());
                 userInterface.setVisible(true);
                 this.dispose();
             } else {
-                labelWarning.setText("Zadali ste nesprávne meno alebo heslo.");
+                labelWarning.setText("Nesprávne meno alebo heslo");
             }
-
         }
 
         buttonPrihlasit.setSelected(false);
-    }
-
-    private void buttonRegistrovatActionPerformed() {
-        Registration registration = new Registration(entityManager);
-        registration.setVisible(true);
-        this.dispose();
     }
 
     private void labelXMouseClicked() {
@@ -132,6 +118,12 @@ public class Login extends JFrame {
     private void labelXMouseExited() {
         labelX.setIcon(new ImageIcon(
                 "src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px.png"));
+    }
+
+    private void btnRegistrovatActionPerformed() {
+        Registration registration = new Registration(entityManager);
+        registration.setVisible(true);
+        this.dispose();
     }
 
     private void initComponents() {
@@ -162,13 +154,14 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBackground(Color.white);
             myJPanelBackLogin.setkBorderRadius(0);
             myJPanelBackLogin.setkGradientFocus(750);
-            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
             myJPanelBackLogin.setLayout(new GridBagLayout());
+            ((GridBagLayout)myJPanelBackLogin.getLayout()).rowHeights = new int[] {0, 24};
 
             //======== panelPrihlasenie ========
             {
@@ -178,15 +171,20 @@ public class Login extends JFrame {
                 panelPrihlasenie.setkEndColor(Color.white);
                 panelPrihlasenie.setkStartColor(Color.white);
                 panelPrihlasenie.setkBorderRadius(0);
+                panelPrihlasenie.setLayout(new FormLayout(
+                    "201dlu",
+                    "fill:79dlu, 2*($lgap, fill:30dlu), 10dlu, 2*(fill:30dlu, 0dlu), 9dlu"));
 
                 //---- labeluserIcon ----
                 labeluserIcon.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_male_user_100px_1.png")));
+                labeluserIcon.setHorizontalAlignment(SwingConstants.CENTER);
+                panelPrihlasenie.add(labeluserIcon, new CellConstraints(1, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(10, 0, 0, 0)));
 
                 //---- textFieldUsername ----
                 textFieldUsername.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
                 textFieldUsername.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
                 textFieldUsername.setHorizontalAlignment(SwingConstants.CENTER);
-                textFieldUsername.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                textFieldUsername.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                 textFieldUsername.setText("Pou\u017e\u00edvate\u013esk\u00e9 meno");
                 textFieldUsername.setForeground(Color.lightGray);
                 textFieldUsername.setFocusable(false);
@@ -206,11 +204,12 @@ public class Login extends JFrame {
                         textFieldUsernameMouseMoved();
                     }
                 });
+                panelPrihlasenie.add(textFieldUsername, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(0, 30, 0, 30)));
 
                 //---- textPassword ----
                 textPassword.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
                 textPassword.setHorizontalAlignment(SwingConstants.CENTER);
-                textPassword.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                textPassword.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                 textPassword.setText("Heslo");
                 textPassword.setForeground(Color.lightGray);
                 textPassword.setCaretPosition(5);
@@ -232,88 +231,54 @@ public class Login extends JFrame {
                         textPasswordFocusLost();
                     }
                 });
+                panelPrihlasenie.add(textPassword, new CellConstraints(1, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(0, 30, 0, 30)));
 
                 //---- buttonPrihlasit ----
                 buttonPrihlasit.setText("Prihl\u00e1si\u0165");
-                buttonPrihlasit.setBackground(Color.white);
-                buttonPrihlasit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                buttonPrihlasit.setkBorderRadius(30);
-                buttonPrihlasit.setkAllowTab(true);
-                buttonPrihlasit.setkStartColor(new Color(0, 164, 210));
-                buttonPrihlasit.setkEndColor(new Color(121, 241, 164));
-                buttonPrihlasit.setkPressedColor(Color.orange);
+                buttonPrihlasit.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                 buttonPrihlasit.setBorder(null);
-                buttonPrihlasit.setkIndicatorThickness(0);
-                buttonPrihlasit.setkHoverStartColor(new Color(121, 241, 164));
-                buttonPrihlasit.setkHoverEndColor(new Color(0, 164, 210));
-                buttonPrihlasit.setkHoverForeGround(Color.white);
+                buttonPrihlasit.setkStartColor(new Color(73, 196, 174));
+                buttonPrihlasit.setkEndColor(new Color(140, 219, 145));
                 buttonPrihlasit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                buttonPrihlasit.setkSelectedColor(new Color(0, 164, 210));
+                buttonPrihlasit.setkHoverEndColor(new Color(73, 196, 174));
+                buttonPrihlasit.setkHoverStartColor(new Color(140, 219, 145));
+                buttonPrihlasit.setkHoverForeGround(Color.white);
+                buttonPrihlasit.setBackground(Color.white);
+                buttonPrihlasit.setBorderPainted(false);
+                buttonPrihlasit.setMaximumSize(new Dimension(97, 24));
+                buttonPrihlasit.setMinimumSize(new Dimension(97, 24));
+                buttonPrihlasit.setkBorderRadius(20);
                 buttonPrihlasit.addActionListener(e -> buttonPrihlasitActionPerformed());
+                panelPrihlasenie.add(buttonPrihlasit, new CellConstraints(1, 7, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 30, 5, 30)));
 
                 //---- buttonRegistrovat ----
                 buttonRegistrovat.setText("Registrova\u0165");
-                buttonRegistrovat.setBackground(Color.white);
-                buttonRegistrovat.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-                buttonRegistrovat.setkBorderRadius(30);
-                buttonRegistrovat.setkStartColor(Color.gray);
-                buttonRegistrovat.setkEndColor(Color.lightGray);
-                buttonRegistrovat.setkPressedColor(Color.white);
+                buttonRegistrovat.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                 buttonRegistrovat.setBorder(null);
-                buttonRegistrovat.setkIndicatorThickness(0);
+                buttonRegistrovat.setkStartColor(new Color(255, 161, 117));
+                buttonRegistrovat.setkEndColor(new Color(255, 58, 58));
                 buttonRegistrovat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                buttonRegistrovat.setkAllowTab(true);
-                buttonRegistrovat.setkBackGroundColor(Color.lightGray);
-                buttonRegistrovat.setkHoverEndColor(Color.gray);
-                buttonRegistrovat.setkHoverStartColor(Color.lightGray);
-                buttonRegistrovat.setkHoverForeGround(Color.black);
-                buttonRegistrovat.setkForeGround(Color.black);
-                buttonRegistrovat.setkSelectedColor(Color.darkGray);
-                buttonRegistrovat.addActionListener(e -> buttonRegistrovatActionPerformed());
-
-                //---- labelWarning ----
-                labelWarning.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
-                labelWarning.setForeground(Color.red);
-                labelWarning.setHorizontalAlignment(SwingConstants.CENTER);
-                labelWarning.setVerticalAlignment(SwingConstants.TOP);
-
-                GroupLayout panelPrihlasenieLayout = new GroupLayout(panelPrihlasenie);
-                panelPrihlasenie.setLayout(panelPrihlasenieLayout);
-                panelPrihlasenieLayout.setHorizontalGroup(
-                    panelPrihlasenieLayout.createParallelGroup()
-                        .addGroup(panelPrihlasenieLayout.createSequentialGroup()
-                            .addGroup(panelPrihlasenieLayout.createParallelGroup()
-                                .addGroup(panelPrihlasenieLayout.createSequentialGroup()
-                                    .addGap(31, 31, 31)
-                                    .addGroup(panelPrihlasenieLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(buttonRegistrovat, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                        .addComponent(buttonPrihlasit, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                        .addComponent(textPassword)
-                                        .addComponent(textFieldUsername, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))
-                                .addGroup(panelPrihlasenieLayout.createSequentialGroup()
-                                    .addGap(95, 95, 95)
-                                    .addComponent(labeluserIcon)))
-                            .addContainerGap(30, Short.MAX_VALUE))
-                        .addComponent(labelWarning, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                );
-                panelPrihlasenieLayout.setVerticalGroup(
-                    panelPrihlasenieLayout.createParallelGroup()
-                        .addGroup(panelPrihlasenieLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(labeluserIcon)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(textFieldUsername, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
-                            .addComponent(textPassword, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                            .addGap(24, 24, 24)
-                            .addComponent(buttonPrihlasit, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(buttonRegistrovat, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                            .addComponent(labelWarning, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-                );
+                buttonRegistrovat.setkHoverStartColor(new Color(255, 84, 84));
+                buttonRegistrovat.setkHoverForeGround(Color.white);
+                buttonRegistrovat.setBackground(Color.white);
+                buttonRegistrovat.setBorderPainted(false);
+                buttonRegistrovat.setMaximumSize(new Dimension(97, 24));
+                buttonRegistrovat.setMinimumSize(new Dimension(97, 24));
+                buttonRegistrovat.setkBorderRadius(20);
+                buttonRegistrovat.setkHoverEndColor(new Color(255, 161, 117));
+                buttonRegistrovat.addActionListener(e -> btnRegistrovatActionPerformed());
+                panelPrihlasenie.add(buttonRegistrovat, new CellConstraints(1, 9, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(5, 30, 5, 30)));
             }
             myJPanelBackLogin.add(panelPrihlasenie, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
+
+            //---- labelWarning ----
+            labelWarning.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+            labelWarning.setForeground(Color.red);
+            labelWarning.setHorizontalAlignment(SwingConstants.CENTER);
+            labelWarning.setVerticalAlignment(SwingConstants.TOP);
+            myJPanelBackLogin.add(labelWarning, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 0), 0, 0));
         }
@@ -389,7 +354,7 @@ public class Login extends JFrame {
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE)
+                .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelStravovaciSystem, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
@@ -397,7 +362,7 @@ public class Login extends JFrame {
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                     .addComponent(panelStravovaciSystem, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, 0)
-                    .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
+                    .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(null);
