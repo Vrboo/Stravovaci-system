@@ -74,19 +74,16 @@ public class Login extends JFrame {
     }
 
     private void label1MouseClicked() {
-        entityManager.close();
-        System.exit(0);
+
     }
 
     private void label1MouseEntered() {
-        labelX.setIcon(new ImageIcon(
-                "src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px_6.png"));
+
 
     }
 
     private void label1MouseExited() {
-        labelX.setIcon(new ImageIcon(
-                "src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px.png"));
+
     }
 
     private void buttonPrihlasitActionPerformed() {
@@ -123,15 +120,18 @@ public class Login extends JFrame {
     }
 
     private void labelXMouseClicked() {
-        // TODO add your code here
+        entityManager.close();
+        System.exit(0);
     }
 
     private void labelXMouseEntered() {
-        // TODO add your code here
+        labelX.setIcon(new ImageIcon(
+                "src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px_6.png"));
     }
 
     private void labelXMouseExited() {
-        // TODO add your code here
+        labelX.setIcon(new ImageIcon(
+                "src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px.png"));
     }
 
     private void initComponents() {
