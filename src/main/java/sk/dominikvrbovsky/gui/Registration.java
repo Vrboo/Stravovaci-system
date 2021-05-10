@@ -168,7 +168,7 @@ public class Registration extends JFrame {
             return;
         }
 
-        User user = new User(fieldPouzMeno.getText(),fielCeleMeno.getText(),password1string, 0.0);
+        User user = new User(fieldPouzMeno.getText(),fielCeleMeno.getText(),password1string);
         userDao.save(user);
 
         UserInterface userInterface = new UserInterface(entityManager, user);

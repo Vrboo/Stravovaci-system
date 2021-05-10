@@ -141,36 +141,41 @@ public class Registration1 extends JFrame {
                 password1string.equals("Heslo*") ||
                 password2string.equals("Potvrdenie hesla")) {
 
-            labelWarning.setForeground(Color.RED);
             labelWarning.setText("Vyplňte všetky položky, prosím");
-            buttonRegistrovat.setSelected(false);
             return;
         }
 
-        Optional<User> loginUser = userDao.getFromUsername(fieldPouzMeno.getText());
+        Optional<User> loginUser;
+        try {
+            loginUser = userDao.getFromUsername(fieldPouzMeno.getText());
+        } catch (Exception e) {
+            labelWarning.setText("Registrácia zlyhala");
+            return;
+        }
+
+
         if (loginUser.isPresent()) {
-            labelWarning.setForeground(Color.RED);
             labelWarning.setText("Meno " + fieldPouzMeno.getText() + " už je obsadené");
-            buttonRegistrovat.setSelected(false);
             return;
         }
 
         if (!password1string.equals(password2string)) {
-            labelWarning.setForeground(Color.RED);
             labelWarning.setText("Heslá sa nezhodujú");
-            buttonRegistrovat.setSelected(false);
             return;
         }
 
         if (!PasswordUtilities.checkPassword(password1string)) {
-            labelWarning.setForeground(Color.RED);
             labelWarning.setText("Heslo má nesprávny formát");
-            buttonRegistrovat.setSelected(false);
             return;
         }
 
-        User user = new User(fieldPouzMeno.getText(),fielCeleMeno.getText(),password1string, 0.0);
-        userDao.save(user);
+        User user = new User(fieldPouzMeno.getText(),fielCeleMeno.getText(),password1string);
+        try {
+            userDao.save(user);
+        } catch (Exception e) {
+            labelWarning.setText("Registrácia zlyhala");
+            return;
+        }
 
         UserInterface userInterface = new UserInterface(entityManager, user);
         userInterface.setVisible(true);
@@ -216,11 +221,13 @@ public class Registration1 extends JFrame {
             myJPanelBackLogin.setBackground(Color.white);
             myJPanelBackLogin.setkBorderRadius(0);
             myJPanelBackLogin.setkGradientFocus(750);
-            myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0
-            ,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
-            ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red),
-            myJPanelBackLogin. getBorder()));myJPanelBackLogin. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
+            myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
+            swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border
+            .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog"
+            ,java.awt.Font.BOLD,12),java.awt.Color.red),myJPanelBackLogin. getBorder
+            ()));myJPanelBackLogin. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
+            .beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException
+            ();}});
             myJPanelBackLogin.setLayout(new GridBagLayout());
             ((GridBagLayout)myJPanelBackLogin.getLayout()).rowHeights = new int[] {0, 19, 24};
 

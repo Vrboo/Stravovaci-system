@@ -28,11 +28,11 @@ public class User {
     private List<Order> orders;
 
 
-    public User(String username, String fullName, String password, double account) {
+    public User(String username, String fullName, String password) {
         this.username = username;
         this.fullName = fullName;
         this.password = password;
-        this.account = account;
+        this.account = 0.0;
         this.transactions = new ArrayList<>();
         this.orders = new ArrayList<>();
     }
