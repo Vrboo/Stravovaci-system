@@ -256,7 +256,7 @@ public class UserInterface extends JFrame {
             labels[i][0].setText(transactionsOfUser.get(counterForTransaction).getTransactionType().getTransactionType());
             labels[i][1].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalDate().format(dateFormatter));
             labels[i][2].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalTime().format(timeFormatter));
-            labels[i][3].setText(transactionsOfUser.get(counterForTransaction).getAmountString());
+            labels[i][3].setText(transactionsOfUser.get(counterForTransaction).getAmountString() + "€");
             for (int j = 0; j < 4; j++) labels[i][j].setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
 
             counterForTransaction++;
@@ -284,7 +284,7 @@ public class UserInterface extends JFrame {
             labels[i][0].setText(transactionsOfUser.get(counterForTransaction).getTransactionType().getTransactionType());
             labels[i][1].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalDate().format(dateFormatter));
             labels[i][2].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalTime().format(timeFormatter));
-            labels[i][3].setText(transactionsOfUser.get(counterForTransaction).getAmountString());
+            labels[i][3].setText(transactionsOfUser.get(counterForTransaction).getAmountString() + "€");
             for (int j = 0; j < 4; j++) labels[i][j].setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
 
             counterForTransaction++;
