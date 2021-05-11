@@ -86,5 +86,9 @@ public class Transaction {
         return this.user.getFullName() + ":\t" + this.toStringUser();
     }
 
+    public String getAmountString() {
+        return String.format("%.2f", this.getAmount());
+    }
+
 
 }

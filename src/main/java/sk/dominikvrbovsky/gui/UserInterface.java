@@ -11,6 +11,7 @@ import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
 
 import keeptoo.*;
+import net.miginfocom.swing.*;
 import sk.dominikvrbovsky.*;
 import sk.dominikvrbovsky.dao.impl.MealDao;
 import sk.dominikvrbovsky.dao.impl.OrderDao;
@@ -43,6 +44,10 @@ public class UserInterface extends JFrame {
     private final TransactionDao transactionDao;
     private List<Breakfast> breakfasts;
     private List<Lunch> lunches;
+    private List<Transaction> transactionsOfUser;
+    private int counterForTransaction;
+    private final DateTimeFormatter timeFormatter;
+    private final DateTimeFormatter dateFormatter;
 
 
     public UserInterface(EntityManager entityManager, User user) {
@@ -54,6 +59,10 @@ public class UserInterface extends JFrame {
         this.transactionDao = new TransactionDao(entityManager);
         this.breakfasts = null;
         this.lunches = null;
+        this.transactionsOfUser = null;
+        this.counterForTransaction = 0;
+        timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
         this.setPreferredSize(new Dimension(1000, 600));
         
@@ -160,29 +169,6 @@ public class UserInterface extends JFrame {
             }
         });
 
-//        btnRanajkyBurza.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (user.hasBreakfastOrder() && !user.getBreakfastOrder().isInBurza()) {
-//                    btnRanajkyBurza.setkStartColor(new Color(73, 196, 174));
-//                    btnRanajkyBurza.setkEndColor(new Color(140, 219, 145));
-//                    btnRanajkyBurza.setkHoverStartColor(new Color(52, 188, 183));
-//                    btnRanajkyBurza.setkHoverEndColor(new Color(73, 196, 174));
-//                    btnRanajkyBurza.setText("Pridať do burzy");
-//                    btnRanajkyBurza.setVisible(true);
-//                } else if (user.hasBreakfastOrder() && user.getBreakfastOrder().isInBurza()) {
-//                    btnRanajkyBurza.setkStartColor(new Color(255, 161, 117));
-//                    btnRanajkyBurza.setkEndColor(new Color(224, 31, 23));
-//                    btnRanajkyBurza.setkHoverStartColor(new Color(224, 31, 23));
-//                    btnRanajkyBurza.setkHoverEndColor(new Color(255, 161, 117));
-//                    btnRanajkyBurza.setText("Odstrániť z burzy");
-//                    btnRanajkyBurza.setVisible(true);
-//                } else if (!user.hasBreakfastOrder()) {
-//                    btnRanajkyBurza.setVisible(false);
-//                }
-//            }
-//        });
-
         btnObjednatActionPerformed();
     }
 
@@ -247,7 +233,66 @@ public class UserInterface extends JFrame {
     }
 
     private void comboBoxZobrazitActionPerformed() {
+        boolean descending = true; // usporiadanie transakcii od najnovsich po najstarsie; defaultna hodnota v comboBoxe
+        if (comboBoxZoradit.getSelectedIndex() == 1) descending = false; // usporiadanie transakcii od najstarsich po najnovsie
 
+        if (comboBoxZobrazit.getSelectedIndex() == 0) {
+            transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending);
+        } else if (comboBoxZobrazit.getSelectedIndex() == 1) {
+            transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending, "Vklad");
+        } else {
+            transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending, "Vyber");
+        }
+        this.counterForTransaction = 0;
+        btnDalsieTransakcieActionPerformed();
+    }
+
+    private void btnDalsieTransakcieActionPerformed() {
+        JLabel[][] labels = getTransakcieArray54(panelTableTrans.getComponents());
+        int x = counterForTransaction + 5;
+        int i = 0;
+
+        while ((counterForTransaction < x) && (counterForTransaction != transactionsOfUser.size())) {
+            labels[i][0].setText(transactionsOfUser.get(counterForTransaction).getTransactionType().getTransactionType());
+            labels[i][1].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalDate().format(dateFormatter));
+            labels[i][2].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalTime().format(timeFormatter));
+            labels[i][3].setText(transactionsOfUser.get(counterForTransaction).getAmountString());
+            for (int j = 0; j < 4; j++) labels[i][j].setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+
+            counterForTransaction++;
+            i++;
+        }
+
+        btnDalsieTransakcie.setVisible(counterForTransaction != transactionsOfUser.size());
+        btnSpatTransakcie.setVisible(counterForTransaction > 5);
+
+    }
+
+    private void btnSpatTransakcieActionPerformed() {
+        JLabel[][] labels = getTransakcieArray54(panelTableTrans.getComponents());
+
+        if (counterForTransaction % 5 != 0) {
+            this.counterForTransaction = counterForTransaction - (5 + (counterForTransaction % 5));
+        } else {
+            this.counterForTransaction -= 10;
+        }
+
+        int x = counterForTransaction + 5;
+        int i = 0;
+
+        while (counterForTransaction < x) {
+            labels[i][0].setText(transactionsOfUser.get(counterForTransaction).getTransactionType().getTransactionType());
+            labels[i][1].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalDate().format(dateFormatter));
+            labels[i][2].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalTime().format(timeFormatter));
+            labels[i][3].setText(transactionsOfUser.get(counterForTransaction).getAmountString());
+            for (int j = 0; j < 4; j++) labels[i][j].setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+
+            counterForTransaction++;
+            i++;
+        }
+
+        btnDalsieTransakcie.setVisible(counterForTransaction != transactionsOfUser.size());
+        btnSpatTransakcie.setVisible(counterForTransaction > 5);
     }
 
 
@@ -360,6 +405,9 @@ public class UserInterface extends JFrame {
         for (int i = 0; i < labels.length; i++) {
             for (int j = 0 ; j < labels[i].length; j++) {
                 labels[i][j] = (JLabel) labelsParam[index];
+                labels[i][j].setBorder(null);
+                labels[i][j].setText("");
+                index++;
             }
         }
         return labels;
@@ -444,8 +492,7 @@ public class UserInterface extends JFrame {
 
         btnRanajkyBurza.setVisible(true);
         btnObedBurza.setVisible(true);
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
         
         if (this.user.hasBreakfastOrder()) {
             Order orderBreakfast = this.user.getBreakfastOrder();
@@ -1004,7 +1051,6 @@ public class UserInterface extends JFrame {
         }
     }
 
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
@@ -1239,7 +1285,7 @@ public class UserInterface extends JFrame {
         btnVybratZUctu = new KButton();
         labelUctVyberWarning = new JLabel();
         panelHistoriaTrans = new KGradientPanel();
-        kGradientPanel1 = new KGradientPanel();
+        panelForCombosInTrans = new KGradientPanel();
         labelZobrazit = new JLabel();
         comboBoxZobrazit = new JComboBox<>();
         labelZoradit = new JLabel();
@@ -1269,6 +1315,9 @@ public class UserInterface extends JFrame {
         transakciaDatum5 = new JLabel();
         transakciaCas5 = new JLabel();
         transakciaSuma5 = new JLabel();
+        kGradientPanel2 = new KGradientPanel();
+        btnSpatTransakcie = new KButton();
+        btnDalsieTransakcie = new KButton();
         panelHeslo = new KGradientPanel();
         panelHesloInside = new KGradientPanel();
         labelLockIcon = new JLabel();
@@ -1314,13 +1363,12 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-                . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
-                . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-                Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-                ) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-                public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
-                ) )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+                EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing
+                . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+                java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+                { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () ))
+                throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -3521,13 +3569,13 @@ public class UserInterface extends JFrame {
                                         panelHistoriaTrans.setBackground(Color.white);
                                         panelHistoriaTrans.setkFillBackground(false);
                                         panelHistoriaTrans.setLayout(new GridBagLayout());
-                                        ((GridBagLayout)panelHistoriaTrans.getLayout()).rowHeights = new int[] {56, 0, 32};
+                                        ((GridBagLayout)panelHistoriaTrans.getLayout()).rowHeights = new int[] {61, 0, 32};
 
-                                        //======== kGradientPanel1 ========
+                                        //======== panelForCombosInTrans ========
                                         {
-                                            kGradientPanel1.setkEndColor(Color.white);
-                                            kGradientPanel1.setkStartColor(Color.white);
-                                            kGradientPanel1.setLayout(new FormLayout(
+                                            panelForCombosInTrans.setkEndColor(Color.white);
+                                            panelForCombosInTrans.setkStartColor(Color.white);
+                                            panelForCombosInTrans.setLayout(new FormLayout(
                                                 "100px, 5dlu, 100px, 9dlu, 100px, 5dlu, 150px, $lcgap, 100px",
                                                 "30dlu"));
 
@@ -3535,7 +3583,7 @@ public class UserInterface extends JFrame {
                                             labelZobrazit.setText("Zobrazi\u0165:");
                                             labelZobrazit.setHorizontalAlignment(SwingConstants.CENTER);
                                             labelZobrazit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                            kGradientPanel1.add(labelZobrazit, CC.xy(1, 1));
+                                            panelForCombosInTrans.add(labelZobrazit, CC.xy(1, 1));
 
                                             //---- comboBoxZobrazit ----
                                             comboBoxZobrazit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
@@ -3545,13 +3593,13 @@ public class UserInterface extends JFrame {
                                                 "V\u00fdbery"
                                             }));
                                             comboBoxZobrazit.addActionListener(e -> comboBoxZobrazitActionPerformed());
-                                            kGradientPanel1.add(comboBoxZobrazit, CC.xy(3, 1));
+                                            panelForCombosInTrans.add(comboBoxZobrazit, CC.xy(3, 1));
 
                                             //---- labelZoradit ----
                                             labelZoradit.setText("Zoradi\u0165:");
                                             labelZoradit.setHorizontalAlignment(SwingConstants.CENTER);
                                             labelZoradit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                            kGradientPanel1.add(labelZoradit, CC.xy(5, 1));
+                                            panelForCombosInTrans.add(labelZoradit, CC.xy(5, 1));
 
                                             //---- comboBoxZoradit ----
                                             comboBoxZoradit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
@@ -3560,11 +3608,11 @@ public class UserInterface extends JFrame {
                                                 "Od najstar\u0161\u00edch"
                                             }));
                                             comboBoxZoradit.addActionListener(e -> comboBoxZobrazitActionPerformed());
-                                            kGradientPanel1.add(comboBoxZoradit, CC.xy(7, 1));
+                                            panelForCombosInTrans.add(comboBoxZoradit, CC.xy(7, 1));
                                         }
-                                        panelHistoriaTrans.add(kGradientPanel1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                        panelHistoriaTrans.add(panelForCombosInTrans, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                            new Insets(0, 0, 10, 0), 0, 0));
+                                            new Insets(0, 0, 15, 0), 0, 0));
 
                                         //======== panelTableTrans ========
                                         {
@@ -3748,7 +3796,51 @@ public class UserInterface extends JFrame {
                                         }
                                         panelHistoriaTrans.add(panelTableTrans, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                            new Insets(0, 0, 10, 0), 0, 0));
+                                            new Insets(0, 0, 15, 0), 0, 0));
+
+                                        //======== kGradientPanel2 ========
+                                        {
+                                            kGradientPanel2.setkEndColor(Color.white);
+                                            kGradientPanel2.setkStartColor(Color.white);
+                                            kGradientPanel2.setLayout(new FormLayout(
+                                                "71dlu, 262dlu, 71dlu",
+                                                "21dlu"));
+
+                                            //---- btnSpatTransakcie ----
+                                            btnSpatTransakcie.setText("Sp\u00e4\u0165");
+                                            btnSpatTransakcie.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                            btnSpatTransakcie.setBorder(null);
+                                            btnSpatTransakcie.setkStartColor(new Color(255, 161, 117));
+                                            btnSpatTransakcie.setkEndColor(new Color(224, 31, 23));
+                                            btnSpatTransakcie.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnSpatTransakcie.setkHoverEndColor(Color.white);
+                                            btnSpatTransakcie.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnSpatTransakcie.setkHoverForeGround(Color.gray);
+                                            btnSpatTransakcie.setBackground(Color.white);
+                                            btnSpatTransakcie.setBorderPainted(false);
+                                            btnSpatTransakcie.addActionListener(e -> btnSpatTransakcieActionPerformed());
+                                            kGradientPanel2.add(btnSpatTransakcie, CC.xy(1, 1, CC.LEFT, CC.DEFAULT));
+
+                                            //---- btnDalsieTransakcie ----
+                                            btnDalsieTransakcie.setText("\u010eal\u0161ie");
+                                            btnDalsieTransakcie.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            btnDalsieTransakcie.setBorder(null);
+                                            btnDalsieTransakcie.setkStartColor(new Color(73, 196, 174));
+                                            btnDalsieTransakcie.setkEndColor(new Color(140, 219, 145));
+                                            btnDalsieTransakcie.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnDalsieTransakcie.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnDalsieTransakcie.setkHoverStartColor(new Color(52, 188, 183));
+                                            btnDalsieTransakcie.setkHoverForeGround(Color.white);
+                                            btnDalsieTransakcie.setBackground(Color.white);
+                                            btnDalsieTransakcie.setBorderPainted(false);
+                                            btnDalsieTransakcie.setMaximumSize(new Dimension(97, 24));
+                                            btnDalsieTransakcie.setMinimumSize(new Dimension(97, 24));
+                                            btnDalsieTransakcie.addActionListener(e -> btnDalsieTransakcieActionPerformed());
+                                            kGradientPanel2.add(btnDalsieTransakcie, CC.xy(3, 1));
+                                        }
+                                        panelHistoriaTrans.add(kGradientPanel2, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 0, 0), 0, 0));
                                     }
                                     panelContentUcet.add(panelHistoriaTrans, "historiaTrans");
 
@@ -4347,7 +4439,7 @@ public class UserInterface extends JFrame {
     private KButton btnVybratZUctu;
     private JLabel labelUctVyberWarning;
     private KGradientPanel panelHistoriaTrans;
-    private KGradientPanel kGradientPanel1;
+    private KGradientPanel panelForCombosInTrans;
     private JLabel labelZobrazit;
     private JComboBox<String> comboBoxZobrazit;
     private JLabel labelZoradit;
@@ -4377,6 +4469,9 @@ public class UserInterface extends JFrame {
     private JLabel transakciaDatum5;
     private JLabel transakciaCas5;
     private JLabel transakciaSuma5;
+    private KGradientPanel kGradientPanel2;
+    private KButton btnSpatTransakcie;
+    private KButton btnDalsieTransakcie;
     private KGradientPanel panelHeslo;
     private KGradientPanel panelHesloInside;
     private JLabel labelLockIcon;

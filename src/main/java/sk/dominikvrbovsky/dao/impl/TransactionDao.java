@@ -9,9 +9,12 @@ import sk.dominikvrbovsky.dao.Dao;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class TransactionDao implements Dao<Transaction> {
 
@@ -52,15 +55,38 @@ public class TransactionDao implements Dao<Transaction> {
         executeInsideTransaction(entityManager1 -> entityManager1.remove(entity));
     }
 
-    public List<Transaction> getTransactionsOfUserByParameters(long id, String ascOrDesc) {
+    public List<Transaction> getTransactionsOfUserByParameters(long id, boolean descending) {
         List<Transaction> transactions;
-        String hql = "FROM Transaction WHERE USER_ID = :id ORDER BY Date :ascOrDesc";
+        String hql = "FROM Transaction WHERE USER_ID = :id ORDER BY DateTime";
 
         try {
             entityManager.getTransaction().begin();
             Query query = entityManager.createQuery(hql, Transaction.class);
             query.setParameter("id", id);
-            query.setParameter("ascOrDesc", ascOrDesc);
+            transactions = query.getResultList();
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+        if (descending) {
+            transactions.sort(Comparator.comparing(Transaction::getDateTime).reversed());
+        } else {
+            transactions.sort(Comparator.comparing(Transaction::getDateTime));
+        }
+
+        return transactions;
+    }
+
+    public List<Transaction> getTransactionsOfUserByParameters( long id , boolean descending, String transactionType) {
+        List<Transaction> transactions;
+        String hql = "FROM Transaction WHERE USER_ID = :id AND TransactionType = :type ORDER BY DateTime";
+
+        try {
+            entityManager.getTransaction().begin();
+            Query query = entityManager.createQuery(hql, Transaction.class);
+            query.setParameter("id", id);
+            query.setParameter("type", transactionType);
             transactions = query.getResultList();
             entityManager.getTransaction().commit();
         } catch (Exception e) {
@@ -68,24 +94,10 @@ public class TransactionDao implements Dao<Transaction> {
             throw e;
         }
 
-        return transactions;
-    }
-
-    public List<Transaction> getTransactionsOfUserByParameters( long id , String ascOrDesc, String transactionType) {
-        List<Transaction> transactions;
-        String hql = "FROM Transaction WHERE USER_ID = :id AND TransactionType = :type ORDER BY Date :ascOrDesc";
-
-        try {
-            entityManager.getTransaction().begin();
-            Query query = entityManager.createQuery(hql, Transaction.class);
-            query.setParameter("id", id);
-            query.setParameter("ascOrDesc", ascOrDesc);
-            query.setParameter("type", transactionType);
-            transactions = query.getResultList();
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            entityManager.getTransaction().rollback();
-            throw e;
+        if (descending) {
+            transactions.sort(Comparator.comparing(Transaction::getDateTime).reversed());
+        } else {
+            transactions.sort(Comparator.comparing(Transaction::getDateTime));
         }
 
         return transactions;
