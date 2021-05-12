@@ -456,6 +456,8 @@ public class AdministratorInterface extends JFrame {
         label70 = new JLabel();
         panelTransakcie = new KGradientPanel();
         panelForCombosInTrans = new KGradientPanel();
+        labelZobrazit2 = new JLabel();
+        fielCeleMeno = new JTextField();
         labelZobrazit = new JLabel();
         comboBoxZobrazit = new JComboBox<>();
         labelZoradit = new JLabel();
@@ -512,13 +514,12 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
-                swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border
-                . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog"
-                , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panelMenu. getBorder
-                () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
-                . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException
-                ( ) ;} } );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+                ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+                . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+                . Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+                propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+                ; }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2037,15 +2038,61 @@ public class AdministratorInterface extends JFrame {
                             {
                                 panelForCombosInTrans.setkEndColor(Color.white);
                                 panelForCombosInTrans.setkStartColor(Color.white);
-                                panelForCombosInTrans.setLayout(new FormLayout(
-                                    "30dlu, 100px, 5dlu, 100px, 9dlu, 100px, 5dlu, 150px",
-                                    "20dlu, $lgap, 20dlu"));
+                                panelForCombosInTrans.setBorder(new MatteBorder(1, 1, 1, 1, Color.lightGray));
+                                panelForCombosInTrans.setLayout(new MigLayout(
+                                    "insets 0,hidemode 3",
+                                    // columns
+                                    "[67,fill]0" +
+                                    "[100,fill]0" +
+                                    "[10,fill]0" +
+                                    "[100,fill]0" +
+                                    "[17,fill]0" +
+                                    "[100,fill]0" +
+                                    "[10,fill]0" +
+                                    "[150,fill]",
+                                    // rows
+                                    "10[35,fill]15" +
+                                    "[20,center]10"));
+
+                                //---- labelZobrazit2 ----
+                                labelZobrazit2.setText("Pou\u017e\u00edvate\u013e:");
+                                labelZobrazit2.setHorizontalAlignment(SwingConstants.CENTER);
+                                labelZobrazit2.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                panelForCombosInTrans.add(labelZobrazit2, "cell 1 0 2 1");
+
+                                //---- fielCeleMeno ----
+                                fielCeleMeno.setText("Potvr\u010f enterom");
+                                fielCeleMeno.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
+                                fielCeleMeno.setFocusable(false);
+                                fielCeleMeno.setHorizontalAlignment(SwingConstants.CENTER);
+                                fielCeleMeno.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
+                                fielCeleMeno.setForeground(Color.lightGray);
+                                fielCeleMeno.setPreferredSize(new Dimension(49, 29));
+                                fielCeleMeno.setCaretPosition(9);
+                                fielCeleMeno.addMouseMotionListener(new MouseMotionAdapter() {
+                                    @Override
+                                    public void mouseMoved(MouseEvent e) {
+                                        textField1MouseMoved();
+                                        textField2MouseMoved();
+                                    }
+                                });
+                                fielCeleMeno.addFocusListener(new FocusAdapter() {
+                                    @Override
+                                    public void focusGained(FocusEvent e) {
+                                        fielCeleMenoFocusGained();
+                                    }
+                                    @Override
+                                    public void focusLost(FocusEvent e) {
+                                        fielCeleMenoFocusLost();
+                                    }
+                                });
+                                panelForCombosInTrans.add(fielCeleMeno, "cell 3 0 4 1,gapx 0 0");
 
                                 //---- labelZobrazit ----
                                 labelZobrazit.setText("Zobrazi\u0165:");
                                 labelZobrazit.setHorizontalAlignment(SwingConstants.CENTER);
                                 labelZobrazit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                panelForCombosInTrans.add(labelZobrazit, CC.xy(2, 1));
+                                panelForCombosInTrans.add(labelZobrazit, "cell 1 1");
 
                                 //---- comboBoxZobrazit ----
                                 comboBoxZobrazit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
@@ -2055,13 +2102,13 @@ public class AdministratorInterface extends JFrame {
                                     "V\u00fdbery"
                                 }));
                                 comboBoxZobrazit.addActionListener(e -> comboBoxZobrazitActionPerformed());
-                                panelForCombosInTrans.add(comboBoxZobrazit, CC.xy(4, 1));
+                                panelForCombosInTrans.add(comboBoxZobrazit, "cell 3 1");
 
                                 //---- labelZoradit ----
                                 labelZoradit.setText("Zoradi\u0165:");
                                 labelZoradit.setHorizontalAlignment(SwingConstants.CENTER);
                                 labelZoradit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                panelForCombosInTrans.add(labelZoradit, CC.xy(6, 1));
+                                panelForCombosInTrans.add(labelZoradit, "cell 5 1");
 
                                 //---- comboBoxZoradit ----
                                 comboBoxZoradit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
@@ -2070,7 +2117,7 @@ public class AdministratorInterface extends JFrame {
                                     "Od najstar\u0161\u00edch"
                                 }));
                                 comboBoxZoradit.addActionListener(e -> comboBoxZobrazitActionPerformed());
-                                panelForCombosInTrans.add(comboBoxZoradit, CC.xy(8, 1));
+                                panelForCombosInTrans.add(comboBoxZoradit, "cell 7 1");
                             }
                             panelTransakcie.add(panelForCombosInTrans, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -2307,7 +2354,7 @@ public class AdministratorInterface extends JFrame {
                                 kGradientPanel2.setkEndColor(Color.white);
                                 kGradientPanel2.setkStartColor(Color.white);
                                 kGradientPanel2.setLayout(new FormLayout(
-                                    "71dlu, 262dlu, 71dlu",
+                                    "71dlu, 290dlu, 71dlu",
                                     "21dlu"));
 
                                 //---- btnSpatTransakcie ----
@@ -2542,6 +2589,8 @@ public class AdministratorInterface extends JFrame {
     private JLabel label70;
     private KGradientPanel panelTransakcie;
     private KGradientPanel panelForCombosInTrans;
+    private JLabel labelZobrazit2;
+    private JTextField fielCeleMeno;
     private JLabel labelZobrazit;
     private JComboBox<String> comboBoxZobrazit;
     private JLabel labelZoradit;

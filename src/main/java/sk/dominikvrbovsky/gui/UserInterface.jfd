@@ -2644,6 +2644,7 @@ new FormModel {
 												name: "panelForCombosInTrans"
 												"kEndColor": sfield java.awt.Color white
 												"kStartColor": sfield java.awt.Color white
+												"border": new javax.swing.border.MatteBorder( 1, 1, 1, 1, sfield java.awt.Color lightGray )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelZobrazit"
 													"text": "Zobraziť:"
