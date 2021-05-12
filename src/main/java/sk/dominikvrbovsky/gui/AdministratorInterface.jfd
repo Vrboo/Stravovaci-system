@@ -129,7 +129,7 @@ new FormModel {
 						"dividerLocation": 155
 						add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 							"$horizontalGroup": "par l {seq l {space :p:32:p, par t {comp labelStravovaciSystem:::p:366:p, comp labelDatum:::p:352:p}, space :::p, par l {seq {space :0:362:x, comp labelX:::p:27:p}, seq l {comp label4:::p:234:p, space :0:155:x}}}}"
-							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space ::21:x, par b {comp labelStravovaciSystem::b:p::p, comp label4::b:p:29:p}, space u:::p, comp labelDatum:::p::p, space :p:32:p}}"
+							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space ::20:x, par b {comp labelStravovaciSystem::b:p::p, comp label4::b:p:29:p}, space u:::p, comp labelDatum:::p::p, space :p:32:p}}"
 						} ) {
 							name: "panelStravovaciSystem"
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -1641,13 +1641,420 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 								"$columnSpecs": "0"
-								"$rowSpecs": "0"
+								"$rowSpecs": "46, 0, 32"
 								"$hGap": 5
-								"$vGap": 5
+								"$vGap": 15
 							} ) {
 								name: "panelTransakcie"
-								"kEndColor": sfield java.awt.Color white
-								"kStartColor": sfield java.awt.Color white
+								"kEndColor": new java.awt.Color( 38, 184, 190, 24 )
+								"kStartColor": new java.awt.Color( 38, 184, 190, 24 )
+								"kBorderRadius": 0
+								"kGradientFocus": 600
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"background": new java.awt.Color( 255, 255, 255, 255 )
+								"kFillBackground": false
+								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+									"$columnSpecs": "30dlu, 100px, 5dlu, 100px, 9dlu, 100px, 5dlu, 150px"
+									"$rowSpecs": "20dlu, linegap, 20dlu"
+								} ) {
+									name: "panelForCombosInTrans"
+									"kEndColor": sfield java.awt.Color white
+									"kStartColor": sfield java.awt.Color white
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "labelZobrazit"
+										"text": "Zobraziť:"
+										"horizontalAlignment": 0
+										"font": &Font15 new java.awt.Font( "Yu Gothic UI", 1, 17 )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 2
+										"gridY": 1
+									} )
+									add( new FormComponent( "javax.swing.JComboBox" ) {
+										name: "comboBoxZobrazit"
+										"font": #Font15
+										"model": new javax.swing.DefaultComboBoxModel {
+											selectedItem: "Všetky"
+											addElement( "Všetky" )
+											addElement( "Vklady" )
+											addElement( "Výbery" )
+										}
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "comboBoxZobrazitActionPerformed", false ) )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 4
+										"gridY": 1
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "labelZoradit"
+										"text": "Zoradiť:"
+										"horizontalAlignment": 0
+										"font": #Font15
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 6
+									} )
+									add( new FormComponent( "javax.swing.JComboBox" ) {
+										name: "comboBoxZoradit"
+										"font": #Font15
+										"model": new javax.swing.DefaultComboBoxModel {
+											selectedItem: "Od najnovších"
+											addElement( "Od najnovších" )
+											addElement( "Od najstarších" )
+										}
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "comboBoxZobrazitActionPerformed", false ) )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 8
+									} )
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+									"$columnSpecs": "200px, 110px, 110px, 110px, 110px"
+									"$rowSpecs": "fill:40px, fill:40px, fill:40px, fill:40px, fill:40px, fill:40px"
+								} ) {
+									name: "panelTableTrans"
+									"kEndColor": sfield java.awt.Color white
+									"kStartColor": new java.awt.Color( 255, 255, 255, 255 )
+									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+									"kBorderRadius": 0
+									"background": new java.awt.Color( 255, 255, 255, 145 )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label13"
+										"text": "Používateľ"
+										"font": &Font16 new java.awt.Font( "Yu Gothic UI", 1, 22 )
+										"horizontalAlignment": 0
+										"border": &MatteBorder7 new javax.swing.border.MatteBorder( 0, 0, 1, 0, new java.awt.Color( 55, 55, 55, 255 ) )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label6"
+										"text": "Typ"
+										"font": #Font16
+										"horizontalAlignment": 0
+										"border": #MatteBorder7
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 2
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label5"
+										"text": "Dátum"
+										"font": #Font16
+										"horizontalAlignment": 0
+										"border": #MatteBorder7
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 3
+										"gridY": 1
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label11"
+										"text": "Čas"
+										"font": #Font16
+										"horizontalAlignment": 0
+										"border": #MatteBorder7
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 4
+										"gridY": 1
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "label12"
+										"text": "Suma"
+										"font": #Font16
+										"horizontalAlignment": 0
+										"border": #MatteBorder7
+										"background": &Color27 new java.awt.Color( 255, 255, 255, 255 )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 5
+										"gridY": 1
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaDatum6"
+										"font": &Font17 new java.awt.Font( "Yu Gothic UI", 0, 17 )
+										"horizontalAlignment": 0
+										"border": &MatteBorder8 new javax.swing.border.MatteBorder( 0, 0, 1, 0, new java.awt.Color( 55, 55, 55, 255 ) )
+										"text": "Dominik Vrbovský"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 2
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaTyp1"
+										"horizontalAlignment": 0
+										"font": &Font18 new java.awt.Font( "Yu Gothic UI", 1, 17 )
+										"border": #MatteBorder8
+										"text": "Vklad"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 2
+										"gridX": 2
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaDatum1"
+										"font": #Font17
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "12.5.2021"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 3
+										"gridY": 2
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaCas1"
+										"font": &Font19 new java.awt.Font( "Yu Gothic UI", 0, 17 )
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "5:35"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 4
+										"gridY": 2
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaSuma1"
+										"font": &Font20 new java.awt.Font( "Yu Gothic UI", 0, 17 )
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "7.00€"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 5
+										"gridY": 2
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaDatum7"
+										"font": #Font17
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "Pavla Horňáková"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 3
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaTyp2"
+										"horizontalAlignment": 0
+										"font": #Font18
+										"border": #MatteBorder8
+										"text": "Výber"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 3
+										"gridX": 2
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaDatum2"
+										"font": #Font17
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "3.4.2021"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 3
+										"gridY": 3
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaCas2"
+										"font": #Font19
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "18:08"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 4
+										"gridY": 3
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaSuma2"
+										"font": #Font20
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "20.50€"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 3
+										"gridX": 5
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaDatum8"
+										"font": #Font17
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "Alexandra Podmanická"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 4
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaTyp3"
+										"horizontalAlignment": 0
+										"font": #Font18
+										"border": #MatteBorder8
+										"text": "Výber"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 2
+										"gridY": 4
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaDatum3"
+										"font": #Font17
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "5.10.2021"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 3
+										"gridY": 4
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaCas3"
+										"font": #Font19
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "23:48"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 4
+										"gridY": 4
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaSuma3"
+										"font": #Font20
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "15.00€"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 5
+										"gridY": 4
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaDatum9"
+										"font": #Font17
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "Ján Múdry"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 5
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaTyp4"
+										"horizontalAlignment": 0
+										"font": #Font18
+										"border": #MatteBorder8
+										"text": "Vklad"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 2
+										"gridY": 5
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaDatum4"
+										"font": #Font17
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "28.8.2021"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 3
+										"gridY": 5
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaCas4"
+										"font": &Font21 new java.awt.Font( "Yu Gothic UI", 0, 17 )
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "7:10"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 4
+										"gridY": 5
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaSuma4"
+										"font": #Font21
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "1.50€"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 5
+										"gridY": 5
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaDatum10"
+										"font": #Font17
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "Eva Segečová"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridY": 6
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaTyp5"
+										"horizontalAlignment": 0
+										"font": #Font18
+										"border": #MatteBorder8
+										"text": "Vklad"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 2
+										"gridY": 6
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaDatum5"
+										"font": #Font17
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "14.9.2021"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 3
+										"gridY": 6
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaCas5"
+										"font": #Font19
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "14:52"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 4
+										"gridY": 6
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "transakciaSuma5"
+										"font": #Font20
+										"horizontalAlignment": 0
+										"border": #MatteBorder8
+										"text": "10.00€"
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 5
+										"gridY": 6
+									} )
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+									"gridy": 1
+								} )
+								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+									"$columnSpecs": "71dlu, 262dlu, 71dlu"
+									"$rowSpecs": "21dlu"
+								} ) {
+									name: "kGradientPanel2"
+									"kEndColor": sfield java.awt.Color white
+									"kStartColor": sfield java.awt.Color white
+									add( new FormComponent( "keeptoo.KButton" ) {
+										name: "btnSpatTransakcie"
+										"text": "Späť"
+										"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
+										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+										"kStartColor": new java.awt.Color( 255, 161, 117, 255 )
+										"kEndColor": new java.awt.Color( 224, 31, 23, 255 )
+										"cursor": new java.awt.Cursor( 12 )
+										"kHoverEndColor": new java.awt.Color( 255, 255, 255, 255 )
+										"kHoverStartColor": new java.awt.Color( 52, 188, 183, 255 )
+										"kHoverForeGround": sfield java.awt.Color gray
+										"background": new java.awt.Color( 255, 255, 255, 255 )
+										"borderPainted": false
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnSpatTransakcieActionPerformed", false ) )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"hAlign": sfield com.jgoodies.forms.layout.CellConstraints LEFT
+									} )
+									add( new FormComponent( "keeptoo.KButton" ) {
+										name: "btnDalsieTransakcie"
+										"text": "Ďalšie"
+										"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
+										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+										"kStartColor": new java.awt.Color( 73, 196, 174, 255 )
+										"kEndColor": new java.awt.Color( 140, 219, 145, 255 )
+										"cursor": new java.awt.Cursor( 12 )
+										"kHoverEndColor": new java.awt.Color( 73, 196, 174, 255 )
+										"kHoverStartColor": new java.awt.Color( 52, 188, 183, 255 )
+										"kHoverForeGround": sfield java.awt.Color white
+										"background": #Color27
+										"borderPainted": false
+										"maximumSize": new java.awt.Dimension( 97, 24 )
+										"minimumSize": new java.awt.Dimension( 97, 24 )
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnDalsieTransakcieActionPerformed", false ) )
+									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+										"gridX": 3
+									} )
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+									"gridy": 2
+								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "transakcie"
 							} )
