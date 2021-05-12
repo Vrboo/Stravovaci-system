@@ -56,7 +56,6 @@ new FormModel {
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textField1MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "fieldPouzMenoFocusGained", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "fieldPouzMenoFocusLost", false ) )
-						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "fieldPouzMenoFocusGained", false ) )
 					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 						"gridY": 3
 						"insets": new java.awt.Insets( 0, 30, 0, 30 )
@@ -71,7 +70,6 @@ new FormModel {
 						"foreground": sfield java.awt.Color lightGray
 						"preferredSize": new java.awt.Dimension( 49, 29 )
 						"caretPosition": 9
-						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textField1MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textField2MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "fielCeleMenoFocusGained", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "fielCeleMenoFocusLost", false ) )
@@ -90,8 +88,6 @@ new FormModel {
 						"foreground": sfield java.awt.Color lightGray
 						"caretPosition": 5
 						"echoChar": '•'
-						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textField1MouseMoved", false ) )
-						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "password1MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "password1MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "password1FocusGained", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "password1FocusLost", false ) )
@@ -111,7 +107,6 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 49, 29 )
 						"caretPosition": 16
 						"echoChar": '•'
-						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textField1MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "password2MouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "password2FocusGained", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "password2FocusLost", false ) )
@@ -222,4 +217,3 @@ new FormModel {
 		} )
 	}
 }
-

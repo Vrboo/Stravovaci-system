@@ -1655,7 +1655,7 @@ new FormModel {
 								"kFillBackground": false
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 									"$layoutConstraints": "insets 0,hidemode 3"
-									"$columnConstraints": "[67,fill]0[100,fill]0[10,fill]0[100,fill]0[17,fill]0[100,fill]0[10,fill]0[150,fill]"
+									"$columnConstraints": "[67,fill]0[100,fill]0[10,fill]0[100,fill]0[17,fill]0[100,fill]0[10,fill]0[158,fill]"
 									"$rowConstraints": "10[35,fill]15[20,center]10"
 								} ) {
 									name: "panelForCombosInTrans"
@@ -1672,20 +1672,26 @@ new FormModel {
 									} )
 									add( new FormComponent( "javax.swing.JTextField" ) {
 										name: "fielCeleMeno"
-										"text": "Potvrď enterom"
+										"text": "Celé meno užívateľa"
 										"border": new javax.swing.border.MatteBorder( 0, 0, 2, 0, sfield java.awt.Color black )
-										"focusable": false
 										"horizontalAlignment": 0
 										"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 										"foreground": sfield java.awt.Color lightGray
 										"preferredSize": new java.awt.Dimension( 49, 29 )
 										"caretPosition": 9
-										addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textField1MouseMoved", false ) )
-										addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textField2MouseMoved", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "fielCeleMenoFocusGained", false ) )
 										addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "fielCeleMenoFocusLost", false ) )
+										addEvent( new FormEvent( "java.awt.event.KeyListener", "keyReleased", "fielCeleMenoKeyReleased", false ) )
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 3 0 4 1,gapx 0 0"
+									} )
+									add( new FormComponent( "javax.swing.JLabel" ) {
+										name: "labelZiadneTransakcie"
+										"horizontalAlignment": 0
+										"foreground": sfield java.awt.Color red
+										"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
+									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+										"value": "cell 7 0"
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
 										name: "labelZobrazit"
@@ -1787,7 +1793,7 @@ new FormModel {
 										"gridY": 1
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "transakciaDatum6"
+										name: "transakciaPouzivatel1"
 										"font": &Font17 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 										"horizontalAlignment": 0
 										"border": &MatteBorder8 new javax.swing.border.MatteBorder( 0, 0, 1, 0, new java.awt.Color( 55, 55, 55, 255 ) )
@@ -1836,7 +1842,7 @@ new FormModel {
 										"gridY": 2
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "transakciaDatum7"
+										name: "transakciaPouzivatel2"
 										"font": #Font17
 										"horizontalAlignment": 0
 										"border": #MatteBorder8
@@ -1885,7 +1891,7 @@ new FormModel {
 										"gridX": 5
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "transakciaDatum8"
+										name: "transakciaPouzivatel3"
 										"font": #Font17
 										"horizontalAlignment": 0
 										"border": #MatteBorder8
@@ -1934,7 +1940,7 @@ new FormModel {
 										"gridY": 4
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "transakciaDatum9"
+										name: "transakciaPouzivatel4"
 										"font": #Font17
 										"horizontalAlignment": 0
 										"border": #MatteBorder8
@@ -1983,7 +1989,7 @@ new FormModel {
 										"gridY": 5
 									} )
 									add( new FormComponent( "javax.swing.JLabel" ) {
-										name: "transakciaDatum10"
+										name: "transakciaPouzivatel5"
 										"font": #Font17
 										"horizontalAlignment": 0
 										"border": #MatteBorder8

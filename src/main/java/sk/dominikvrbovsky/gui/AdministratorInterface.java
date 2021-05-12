@@ -8,8 +8,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -20,11 +22,9 @@ import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
 import keeptoo.*;
 import net.miginfocom.swing.*;
-import sk.dominikvrbovsky.Breakfast;
-import sk.dominikvrbovsky.Lunch;
-import sk.dominikvrbovsky.Meal;
-import sk.dominikvrbovsky.User;
+import sk.dominikvrbovsky.*;
 import sk.dominikvrbovsky.dao.impl.MealDao;
+import sk.dominikvrbovsky.dao.impl.TransactionDao;
 import sk.dominikvrbovsky.enums.Drink;
 import sk.dominikvrbovsky.utilities.DateUtilities;
 
@@ -39,17 +39,30 @@ public class AdministratorInterface extends JFrame {
     private final CardLayout cardLayoutJedalnyListok;
     private String[][] breakfastMenu;
     private String[][] lunchMenu;
-    
-    
+    private int counterForTransaction;
+    private List<Transaction> transactions;
+    private List<Transaction> transactionsForPrint;
+    private final TransactionDao transactionDao;
+    private final DateTimeFormatter timeFormatter;
+    private final DateTimeFormatter dateFormatter;
+    private JLabel[][] labelsInTransactionTable;
+
     public AdministratorInterface(EntityManager entityManager, User user) {
         this.entityManager = entityManager;
         this.user = user;
         this.breakfastMenu = null;
         this.lunchMenu = null;
+        this.counterForTransaction = 0;
+        this.transactions = null;
+        this.transactionsForPrint = null;
+        this.transactionDao = new TransactionDao(entityManager);
+        timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
         this.setPreferredSize(new Dimension(1000, 600));
-        
+
         initComponents();
+        labelsInTransactionTable = getTransakcieArray55(panelTableTrans.getComponents());
 
         this.cardLayout = (CardLayout)(panelContent.getLayout());
         this.cardLayoutObjednavky = (CardLayout)(panelContentObjednavky.getLayout());
@@ -152,10 +165,6 @@ public class AdministratorInterface extends JFrame {
     private void labelXMouseExited() {
         labelX.setIcon(new
                 ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png"));
-    }
-
-    private void btnTransakcieActionPerformed() {
-        cardLayout.show(panelContent,"transakcie");
     }
 
     private void kButton4ActionPerformed() {
@@ -269,8 +278,90 @@ public class AdministratorInterface extends JFrame {
         this.dispose();
     }
 
+    private void btnTransakcieActionPerformed() {
+        comboBoxZobrazitActionPerformed();
+        cardLayout.show(panelContent,"transakcie");
+    }
+
     private void comboBoxZobrazitActionPerformed() {
-        // TODO add your code here
+        boolean descending = true; // usporiadanie transakcii od najnovsich po najstarsie; defaultna hodnota v comboBoxe
+        if (comboBoxZoradit.getSelectedIndex() == 1) descending = false; // usporiadanie transakcii od najstarsich po najnovsie
+
+        if (comboBoxZobrazit.getSelectedIndex() == 0) {
+            transactions = transactionDao.getAllTransactionsByParameters(descending);
+        } else if (comboBoxZobrazit.getSelectedIndex() == 1) {
+            transactions = transactionDao.getAllTransactionsByParameters(descending, "Vklad");
+        } else {
+            transactions = transactionDao.getAllTransactionsByParameters(descending, "Výber");
+        }
+        this.counterForTransaction = 0;
+
+        if (fielCeleMeno.getText().equals("Celé meno užívateľa")) {
+            transactionsForPrint = transactions;
+            btnDalsieTransakcieActionPerformed();
+        } else {
+            fielCeleMenoKeyReleased();
+        }
+    }
+
+    private void fielCeleMenoKeyReleased() {
+        transactionsForPrint = transactions.stream()
+                .filter(transaction1 -> transaction1.getUser().getFullName().contains(fielCeleMeno.getText()))
+                .collect(Collectors.toList());
+
+        this.counterForTransaction = 0;
+        btnDalsieTransakcieActionPerformed();
+    }
+
+    private void btnDalsieTransakcieActionPerformed() {
+        this.labelsInTransactionTable = getTransakcieArray55(panelTableTrans.getComponents());
+        int x = counterForTransaction + 5;
+        int i = 0;
+
+        if (transactionsForPrint.size() == 0) {
+            labelZiadneTransakcie.setText("Žiadne transakcie");
+        } else {
+            labelZiadneTransakcie.setText("");
+        }
+
+        while ((counterForTransaction < x) && (counterForTransaction != transactionsForPrint.size())) {
+            labelsInTransactionTable[i][0].setText(transactionsForPrint.get(counterForTransaction).getUser().getFullName());
+            labelsInTransactionTable[i][1].setText(transactionsForPrint.get(counterForTransaction).getTransactionType().getTransactionType());
+            labelsInTransactionTable[i][2].setText(transactionsForPrint.get(counterForTransaction).getDateTime().toLocalDate().format(dateFormatter));
+            labelsInTransactionTable[i][3].setText(transactionsForPrint.get(counterForTransaction).getDateTime().toLocalTime().format(timeFormatter));
+            labelsInTransactionTable[i][4].setText(transactionsForPrint.get(counterForTransaction).getAmountString() + "€");
+            for (int j = 0; j < 5; j++) labelsInTransactionTable[i][j].setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+            counterForTransaction++;
+            i++;
+        }
+
+        btnDalsieTransakcie.setVisible(counterForTransaction != transactionsForPrint.size());
+        btnSpatTransakcie.setVisible(counterForTransaction > 5);
+    }
+
+    private void btnSpatTransakcieActionPerformed() {
+        if (counterForTransaction % 5 != 0) {
+            this.counterForTransaction = counterForTransaction - (5 + (counterForTransaction % 5));
+        } else {
+            this.counterForTransaction -= 10;
+        }
+
+       btnDalsieTransakcieActionPerformed();
+    }
+
+    private JLabel[][] getTransakcieArray55(Component[] labelsParam) {
+        JLabel[][] labels = new JLabel[5][5];
+        int index = 5;
+
+        for (int i = 0; i < labels.length; i++) {
+            for (int j = 0 ; j < labels[i].length; j++) {
+                labels[i][j] = (JLabel) labelsParam[index];
+                labels[i][j].setBorder(null);
+                labels[i][j].setText("");
+                index++;
+            }
+        }
+        return labels;
     }
 
     private void textField1MouseMoved() {
@@ -282,19 +373,17 @@ public class AdministratorInterface extends JFrame {
     }
 
     private void fielCeleMenoFocusGained() {
-        // TODO add your code here
+        if (fielCeleMeno.getText().equals("Celé meno užívateľa")) {
+            fielCeleMeno.setForeground(Color.BLACK);
+            fielCeleMeno.setText("");
+        }
     }
 
     private void fielCeleMenoFocusLost() {
-        // TODO add your code here
-    }
-
-    private void btnDalsieTransakcieActionPerformed() {
-        // TODO add your code here
-    }
-
-    private void btnSpatTransakcieActionPerformed() {
-        // TODO add your code here
+        if (fielCeleMeno.getText().equals("")) {
+            fielCeleMeno.setForeground(new Color(192,192,192));
+            fielCeleMeno.setText("Celé meno užívateľa");
+        }
     }
 
     private void initComponents() {
@@ -458,6 +547,7 @@ public class AdministratorInterface extends JFrame {
         panelForCombosInTrans = new KGradientPanel();
         labelZobrazit2 = new JLabel();
         fielCeleMeno = new JTextField();
+        labelZiadneTransakcie = new JLabel();
         labelZobrazit = new JLabel();
         comboBoxZobrazit = new JComboBox<>();
         labelZoradit = new JLabel();
@@ -468,27 +558,27 @@ public class AdministratorInterface extends JFrame {
         label5 = new JLabel();
         label11 = new JLabel();
         label12 = new JLabel();
-        transakciaDatum6 = new JLabel();
+        transakciaPouzivatel1 = new JLabel();
         transakciaTyp1 = new JLabel();
         transakciaDatum1 = new JLabel();
         transakciaCas1 = new JLabel();
         transakciaSuma1 = new JLabel();
-        transakciaDatum7 = new JLabel();
+        transakciaPouzivatel2 = new JLabel();
         transakciaTyp2 = new JLabel();
         transakciaDatum2 = new JLabel();
         transakciaCas2 = new JLabel();
         transakciaSuma2 = new JLabel();
-        transakciaDatum8 = new JLabel();
+        transakciaPouzivatel3 = new JLabel();
         transakciaTyp3 = new JLabel();
         transakciaDatum3 = new JLabel();
         transakciaCas3 = new JLabel();
         transakciaSuma3 = new JLabel();
-        transakciaDatum9 = new JLabel();
+        transakciaPouzivatel4 = new JLabel();
         transakciaTyp4 = new JLabel();
         transakciaDatum4 = new JLabel();
         transakciaCas4 = new JLabel();
         transakciaSuma4 = new JLabel();
-        transakciaDatum10 = new JLabel();
+        transakciaPouzivatel5 = new JLabel();
         transakciaTyp5 = new JLabel();
         transakciaDatum5 = new JLabel();
         transakciaCas5 = new JLabel();
@@ -514,12 +604,12 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-                ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-                . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-                . Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-                propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-                ; }} );
+                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+                ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+                .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+                . Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+                propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+                ;} } );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2049,7 +2139,7 @@ public class AdministratorInterface extends JFrame {
                                     "[17,fill]0" +
                                     "[100,fill]0" +
                                     "[10,fill]0" +
-                                    "[150,fill]",
+                                    "[158,fill]",
                                     // rows
                                     "10[35,fill]15" +
                                     "[20,center]10"));
@@ -2061,21 +2151,13 @@ public class AdministratorInterface extends JFrame {
                                 panelForCombosInTrans.add(labelZobrazit2, "cell 1 0 2 1");
 
                                 //---- fielCeleMeno ----
-                                fielCeleMeno.setText("Potvr\u010f enterom");
+                                fielCeleMeno.setText("Cel\u00e9 meno u\u017e\u00edvate\u013ea");
                                 fielCeleMeno.setBorder(new MatteBorder(0, 0, 2, 0, Color.black));
-                                fielCeleMeno.setFocusable(false);
                                 fielCeleMeno.setHorizontalAlignment(SwingConstants.CENTER);
                                 fielCeleMeno.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                 fielCeleMeno.setForeground(Color.lightGray);
                                 fielCeleMeno.setPreferredSize(new Dimension(49, 29));
                                 fielCeleMeno.setCaretPosition(9);
-                                fielCeleMeno.addMouseMotionListener(new MouseMotionAdapter() {
-                                    @Override
-                                    public void mouseMoved(MouseEvent e) {
-                                        textField1MouseMoved();
-                                        textField2MouseMoved();
-                                    }
-                                });
                                 fielCeleMeno.addFocusListener(new FocusAdapter() {
                                     @Override
                                     public void focusGained(FocusEvent e) {
@@ -2086,7 +2168,19 @@ public class AdministratorInterface extends JFrame {
                                         fielCeleMenoFocusLost();
                                     }
                                 });
+                                fielCeleMeno.addKeyListener(new KeyAdapter() {
+                                    @Override
+                                    public void keyReleased(KeyEvent e) {
+                                        fielCeleMenoKeyReleased();
+                                    }
+                                });
                                 panelForCombosInTrans.add(fielCeleMeno, "cell 3 0 4 1,gapx 0 0");
+
+                                //---- labelZiadneTransakcie ----
+                                labelZiadneTransakcie.setHorizontalAlignment(SwingConstants.CENTER);
+                                labelZiadneTransakcie.setForeground(Color.red);
+                                labelZiadneTransakcie.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                panelForCombosInTrans.add(labelZiadneTransakcie, "cell 7 0");
 
                                 //---- labelZobrazit ----
                                 labelZobrazit.setText("Zobrazi\u0165:");
@@ -2170,12 +2264,12 @@ public class AdministratorInterface extends JFrame {
                                 label12.setBackground(Color.white);
                                 panelTableTrans.add(label12, CC.xy(5, 1));
 
-                                //---- transakciaDatum6 ----
-                                transakciaDatum6.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                transakciaDatum6.setHorizontalAlignment(SwingConstants.CENTER);
-                                transakciaDatum6.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaDatum6.setText("Dominik Vrbovsk\u00fd");
-                                panelTableTrans.add(transakciaDatum6, CC.xy(1, 2));
+                                //---- transakciaPouzivatel1 ----
+                                transakciaPouzivatel1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                transakciaPouzivatel1.setHorizontalAlignment(SwingConstants.CENTER);
+                                transakciaPouzivatel1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                transakciaPouzivatel1.setText("Dominik Vrbovsk\u00fd");
+                                panelTableTrans.add(transakciaPouzivatel1, CC.xy(1, 2));
 
                                 //---- transakciaTyp1 ----
                                 transakciaTyp1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2205,12 +2299,12 @@ public class AdministratorInterface extends JFrame {
                                 transakciaSuma1.setText("7.00\u20ac");
                                 panelTableTrans.add(transakciaSuma1, CC.xy(5, 2));
 
-                                //---- transakciaDatum7 ----
-                                transakciaDatum7.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                transakciaDatum7.setHorizontalAlignment(SwingConstants.CENTER);
-                                transakciaDatum7.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaDatum7.setText("Pavla Hor\u0148\u00e1kov\u00e1");
-                                panelTableTrans.add(transakciaDatum7, CC.xy(1, 3));
+                                //---- transakciaPouzivatel2 ----
+                                transakciaPouzivatel2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                transakciaPouzivatel2.setHorizontalAlignment(SwingConstants.CENTER);
+                                transakciaPouzivatel2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                transakciaPouzivatel2.setText("Pavla Hor\u0148\u00e1kov\u00e1");
+                                panelTableTrans.add(transakciaPouzivatel2, CC.xy(1, 3));
 
                                 //---- transakciaTyp2 ----
                                 transakciaTyp2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2240,12 +2334,12 @@ public class AdministratorInterface extends JFrame {
                                 transakciaSuma2.setText("20.50\u20ac");
                                 panelTableTrans.add(transakciaSuma2, CC.xy(5, 3));
 
-                                //---- transakciaDatum8 ----
-                                transakciaDatum8.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                transakciaDatum8.setHorizontalAlignment(SwingConstants.CENTER);
-                                transakciaDatum8.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaDatum8.setText("Alexandra Podmanick\u00e1");
-                                panelTableTrans.add(transakciaDatum8, CC.xy(1, 4));
+                                //---- transakciaPouzivatel3 ----
+                                transakciaPouzivatel3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                transakciaPouzivatel3.setHorizontalAlignment(SwingConstants.CENTER);
+                                transakciaPouzivatel3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                transakciaPouzivatel3.setText("Alexandra Podmanick\u00e1");
+                                panelTableTrans.add(transakciaPouzivatel3, CC.xy(1, 4));
 
                                 //---- transakciaTyp3 ----
                                 transakciaTyp3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2275,12 +2369,12 @@ public class AdministratorInterface extends JFrame {
                                 transakciaSuma3.setText("15.00\u20ac");
                                 panelTableTrans.add(transakciaSuma3, CC.xy(5, 4));
 
-                                //---- transakciaDatum9 ----
-                                transakciaDatum9.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                transakciaDatum9.setHorizontalAlignment(SwingConstants.CENTER);
-                                transakciaDatum9.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaDatum9.setText("J\u00e1n M\u00fadry");
-                                panelTableTrans.add(transakciaDatum9, CC.xy(1, 5));
+                                //---- transakciaPouzivatel4 ----
+                                transakciaPouzivatel4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                transakciaPouzivatel4.setHorizontalAlignment(SwingConstants.CENTER);
+                                transakciaPouzivatel4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                transakciaPouzivatel4.setText("J\u00e1n M\u00fadry");
+                                panelTableTrans.add(transakciaPouzivatel4, CC.xy(1, 5));
 
                                 //---- transakciaTyp4 ----
                                 transakciaTyp4.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2310,12 +2404,12 @@ public class AdministratorInterface extends JFrame {
                                 transakciaSuma4.setText("1.50\u20ac");
                                 panelTableTrans.add(transakciaSuma4, CC.xy(5, 5));
 
-                                //---- transakciaDatum10 ----
-                                transakciaDatum10.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                transakciaDatum10.setHorizontalAlignment(SwingConstants.CENTER);
-                                transakciaDatum10.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaDatum10.setText("Eva Sege\u010dov\u00e1");
-                                panelTableTrans.add(transakciaDatum10, CC.xy(1, 6));
+                                //---- transakciaPouzivatel5 ----
+                                transakciaPouzivatel5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                transakciaPouzivatel5.setHorizontalAlignment(SwingConstants.CENTER);
+                                transakciaPouzivatel5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                transakciaPouzivatel5.setText("Eva Sege\u010dov\u00e1");
+                                panelTableTrans.add(transakciaPouzivatel5, CC.xy(1, 6));
 
                                 //---- transakciaTyp5 ----
                                 transakciaTyp5.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2591,6 +2685,7 @@ public class AdministratorInterface extends JFrame {
     private KGradientPanel panelForCombosInTrans;
     private JLabel labelZobrazit2;
     private JTextField fielCeleMeno;
+    private JLabel labelZiadneTransakcie;
     private JLabel labelZobrazit;
     private JComboBox<String> comboBoxZobrazit;
     private JLabel labelZoradit;
@@ -2601,27 +2696,27 @@ public class AdministratorInterface extends JFrame {
     private JLabel label5;
     private JLabel label11;
     private JLabel label12;
-    private JLabel transakciaDatum6;
+    private JLabel transakciaPouzivatel1;
     private JLabel transakciaTyp1;
     private JLabel transakciaDatum1;
     private JLabel transakciaCas1;
     private JLabel transakciaSuma1;
-    private JLabel transakciaDatum7;
+    private JLabel transakciaPouzivatel2;
     private JLabel transakciaTyp2;
     private JLabel transakciaDatum2;
     private JLabel transakciaCas2;
     private JLabel transakciaSuma2;
-    private JLabel transakciaDatum8;
+    private JLabel transakciaPouzivatel3;
     private JLabel transakciaTyp3;
     private JLabel transakciaDatum3;
     private JLabel transakciaCas3;
     private JLabel transakciaSuma3;
-    private JLabel transakciaDatum9;
+    private JLabel transakciaPouzivatel4;
     private JLabel transakciaTyp4;
     private JLabel transakciaDatum4;
     private JLabel transakciaCas4;
     private JLabel transakciaSuma4;
-    private JLabel transakciaDatum10;
+    private JLabel transakciaPouzivatel5;
     private JLabel transakciaTyp5;
     private JLabel transakciaDatum5;
     private JLabel transakciaCas5;

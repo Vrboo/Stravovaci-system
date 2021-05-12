@@ -273,34 +273,13 @@ public class UserInterface extends JFrame {
     }
 
     private void btnSpatTransakcieActionPerformed() {
-        JLabel[][] labels = getTransakcieArray54(panelTableTrans.getComponents());
-
         if (counterForTransaction % 5 != 0) {
             this.counterForTransaction = counterForTransaction - (5 + (counterForTransaction % 5));
         } else {
             this.counterForTransaction -= 10;
         }
 
-        int x = counterForTransaction + 5;
-        int i = 0;
-
-        while (counterForTransaction < x) {
-            labels[i][0].setText(transactionsOfUser.get(counterForTransaction).getTransactionType().getTransactionType());
-            labels[i][1].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalDate().format(dateFormatter));
-            labels[i][2].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalTime().format(timeFormatter));
-            labels[i][3].setText(transactionsOfUser.get(counterForTransaction).getAmountString() + "€");
-            for (int j = 0; j < 4; j++) labels[i][j].setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-//            if (labels[i][0].getText().equals("Vklad")) {
-//                labels[i][0].setForeground(new Color(69, 191, 85));
-//            } else if (labels[i][0].getText().equals("Výber")){
-//                labels[i][0].setForeground(Color.red);
-//            }
-            counterForTransaction++;
-            i++;
-        }
-
-        btnDalsieTransakcie.setVisible(counterForTransaction != transactionsOfUser.size());
-        btnSpatTransakcie.setVisible(counterForTransaction > 5);
+        btnDalsieTransakcieActionPerformed();
     }
 
 

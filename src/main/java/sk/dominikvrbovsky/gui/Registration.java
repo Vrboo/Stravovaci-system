@@ -221,12 +221,13 @@ public class Registration extends JFrame {
             myJPanelBackLogin.setBackground(Color.white);
             myJPanelBackLogin.setkBorderRadius(0);
             myJPanelBackLogin.setkGradientFocus(750);
-            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            myJPanelBackLogin.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
+            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax
+            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
+            . awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+            . Color .red ) ,myJPanelBackLogin. getBorder () ) ); myJPanelBackLogin. addPropertyChangeListener( new java. beans .
+            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .
+            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             myJPanelBackLogin.setLayout(new GridBagLayout());
             ((GridBagLayout)myJPanelBackLogin.getLayout()).rowHeights = new int[] {0, 19, 24};
 
@@ -266,7 +267,6 @@ public class Registration extends JFrame {
                     @Override
                     public void focusGained(FocusEvent e) {
                         fieldPouzMenoFocusGained();
-                        fieldPouzMenoFocusGained();
                     }
                     @Override
                     public void focusLost(FocusEvent e) {
@@ -287,7 +287,6 @@ public class Registration extends JFrame {
                 fielCeleMeno.addMouseMotionListener(new MouseMotionAdapter() {
                     @Override
                     public void mouseMoved(MouseEvent e) {
-                        textField1MouseMoved();
                         textField2MouseMoved();
                     }
                 });
@@ -315,8 +314,6 @@ public class Registration extends JFrame {
                 password1.addMouseMotionListener(new MouseMotionAdapter() {
                     @Override
                     public void mouseMoved(MouseEvent e) {
-                        textField1MouseMoved();
-                        password1MouseMoved();
                         password1MouseMoved();
                     }
                 });
@@ -345,7 +342,6 @@ public class Registration extends JFrame {
                 password2.addMouseMotionListener(new MouseMotionAdapter() {
                     @Override
                     public void mouseMoved(MouseEvent e) {
-                        textField1MouseMoved();
                         password2MouseMoved();
                     }
                 });

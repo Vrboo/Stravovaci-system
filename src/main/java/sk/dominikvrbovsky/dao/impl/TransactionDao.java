@@ -103,6 +103,52 @@ public class TransactionDao implements Dao<Transaction> {
         return transactions;
     }
 
+    public List<Transaction> getAllTransactionsByParameters(boolean descending) {
+        List<Transaction> transactions;
+        String hql = "FROM Transaction ORDER BY DateTime";
+
+        try {
+            entityManager.getTransaction().begin();
+            Query query = entityManager.createQuery(hql, Transaction.class);
+            transactions = query.getResultList();
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+        if (descending) {
+            transactions.sort(Comparator.comparing(Transaction::getDateTime).reversed());
+        } else {
+            transactions.sort(Comparator.comparing(Transaction::getDateTime));
+        }
+
+        return transactions;
+    }
+
+    public List<Transaction> getAllTransactionsByParameters(boolean descending, String transactionType) {
+        List<Transaction> transactions;
+        String hql = "FROM Transaction WHERE TransactionType = :type ORDER BY DateTime";
+
+        try {
+            entityManager.getTransaction().begin();
+            Query query = entityManager.createQuery(hql, Transaction.class);
+            query.setParameter("type", transactionType);
+            transactions = query.getResultList();
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+
+        if (descending) {
+            transactions.sort(Comparator.comparing(Transaction::getDateTime).reversed());
+        } else {
+            transactions.sort(Comparator.comparing(Transaction::getDateTime));
+        }
+
+        return transactions;
+    }
+
     private void executeInsideTransaction(Consumer<EntityManager> consumer) {
         try {
             entityManager.getTransaction().begin();
