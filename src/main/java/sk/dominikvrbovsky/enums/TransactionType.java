@@ -3,7 +3,7 @@ package sk.dominikvrbovsky.enums;
 public enum TransactionType {
 
     INPUT("Vklad"),
-    OUTPUT("Vyber");
+    OUTPUT("Výber");
 
     private final String transactionType;
 

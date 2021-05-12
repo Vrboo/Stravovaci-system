@@ -241,7 +241,7 @@ public class UserInterface extends JFrame {
         } else if (comboBoxZobrazit.getSelectedIndex() == 1) {
             transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending, "Vklad");
         } else {
-            transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending, "Vyber");
+            transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending, "Výber");
         }
         this.counterForTransaction = 0;
         btnDalsieTransakcieActionPerformed();
@@ -258,7 +258,11 @@ public class UserInterface extends JFrame {
             labels[i][2].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalTime().format(timeFormatter));
             labels[i][3].setText(transactionsOfUser.get(counterForTransaction).getAmountString() + "€");
             for (int j = 0; j < 4; j++) labels[i][j].setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-
+//            if (labels[i][0].getText().equals("Vklad")) {
+//                labels[i][0].setForeground(new Color(69, 191, 85));
+//            } else if (labels[i][0].getText().equals("Výber")){
+//                labels[i][0].setForeground(Color.red);
+//            }
             counterForTransaction++;
             i++;
         }
@@ -286,7 +290,11 @@ public class UserInterface extends JFrame {
             labels[i][2].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalTime().format(timeFormatter));
             labels[i][3].setText(transactionsOfUser.get(counterForTransaction).getAmountString() + "€");
             for (int j = 0; j < 4; j++) labels[i][j].setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-
+//            if (labels[i][0].getText().equals("Vklad")) {
+//                labels[i][0].setForeground(new Color(69, 191, 85));
+//            } else if (labels[i][0].getText().equals("Výber")){
+//                labels[i][0].setForeground(Color.red);
+//            }
             counterForTransaction++;
             i++;
         }
@@ -1363,12 +1371,13 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-                EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing
-                . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-                java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-                { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () ))
-                throw new RuntimeException( ); }} );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+                swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border
+                . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
+                ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder
+                ( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+                .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
+                ( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -3576,14 +3585,14 @@ public class UserInterface extends JFrame {
                                             panelForCombosInTrans.setkEndColor(Color.white);
                                             panelForCombosInTrans.setkStartColor(Color.white);
                                             panelForCombosInTrans.setLayout(new FormLayout(
-                                                "100px, 5dlu, 100px, 9dlu, 100px, 5dlu, 150px, $lcgap, 100px",
+                                                "30dlu, 100px, 5dlu, 100px, 9dlu, 100px, 5dlu, 150px",
                                                 "30dlu"));
 
                                             //---- labelZobrazit ----
                                             labelZobrazit.setText("Zobrazi\u0165:");
                                             labelZobrazit.setHorizontalAlignment(SwingConstants.CENTER);
                                             labelZobrazit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                            panelForCombosInTrans.add(labelZobrazit, CC.xy(1, 1));
+                                            panelForCombosInTrans.add(labelZobrazit, CC.xy(2, 1));
 
                                             //---- comboBoxZobrazit ----
                                             comboBoxZobrazit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
@@ -3593,13 +3602,13 @@ public class UserInterface extends JFrame {
                                                 "V\u00fdbery"
                                             }));
                                             comboBoxZobrazit.addActionListener(e -> comboBoxZobrazitActionPerformed());
-                                            panelForCombosInTrans.add(comboBoxZobrazit, CC.xy(3, 1));
+                                            panelForCombosInTrans.add(comboBoxZobrazit, CC.xy(4, 1));
 
                                             //---- labelZoradit ----
                                             labelZoradit.setText("Zoradi\u0165:");
                                             labelZoradit.setHorizontalAlignment(SwingConstants.CENTER);
                                             labelZoradit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-                                            panelForCombosInTrans.add(labelZoradit, CC.xy(5, 1));
+                                            panelForCombosInTrans.add(labelZoradit, CC.xy(6, 1));
 
                                             //---- comboBoxZoradit ----
                                             comboBoxZoradit.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
@@ -3608,7 +3617,7 @@ public class UserInterface extends JFrame {
                                                 "Od najstar\u0161\u00edch"
                                             }));
                                             comboBoxZoradit.addActionListener(e -> comboBoxZobrazitActionPerformed());
-                                            panelForCombosInTrans.add(comboBoxZoradit, CC.xy(7, 1));
+                                            panelForCombosInTrans.add(comboBoxZoradit, CC.xy(8, 1));
                                         }
                                         panelHistoriaTrans.add(panelForCombosInTrans, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -3656,7 +3665,7 @@ public class UserInterface extends JFrame {
 
                                             //---- transakciaTyp1 ----
                                             transakciaTyp1.setHorizontalAlignment(SwingConstants.CENTER);
-                                            transakciaTyp1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            transakciaTyp1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             transakciaTyp1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             transakciaTyp1.setText("Vklad");
                                             panelTableTrans.add(transakciaTyp1, CC.xy(1, 2));
@@ -3684,7 +3693,7 @@ public class UserInterface extends JFrame {
 
                                             //---- transakciaTyp2 ----
                                             transakciaTyp2.setHorizontalAlignment(SwingConstants.CENTER);
-                                            transakciaTyp2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            transakciaTyp2.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             transakciaTyp2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             transakciaTyp2.setText("V\u00fdber");
                                             panelTableTrans.add(transakciaTyp2, CC.xy(1, 3));
@@ -3712,7 +3721,7 @@ public class UserInterface extends JFrame {
 
                                             //---- transakciaTyp3 ----
                                             transakciaTyp3.setHorizontalAlignment(SwingConstants.CENTER);
-                                            transakciaTyp3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            transakciaTyp3.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             transakciaTyp3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             transakciaTyp3.setText("V\u00fdber");
                                             panelTableTrans.add(transakciaTyp3, CC.xy(1, 4));
@@ -3740,7 +3749,7 @@ public class UserInterface extends JFrame {
 
                                             //---- transakciaTyp4 ----
                                             transakciaTyp4.setHorizontalAlignment(SwingConstants.CENTER);
-                                            transakciaTyp4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            transakciaTyp4.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             transakciaTyp4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             transakciaTyp4.setText("Vklad");
                                             panelTableTrans.add(transakciaTyp4, CC.xy(1, 5));
@@ -3768,7 +3777,7 @@ public class UserInterface extends JFrame {
 
                                             //---- transakciaTyp5 ----
                                             transakciaTyp5.setHorizontalAlignment(SwingConstants.CENTER);
-                                            transakciaTyp5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+                                            transakciaTyp5.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             transakciaTyp5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             transakciaTyp5.setText("Vklad");
                                             panelTableTrans.add(transakciaTyp5, CC.xy(1, 6));
