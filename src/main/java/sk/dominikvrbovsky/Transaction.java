@@ -86,6 +86,14 @@ public class Transaction {
         return this.user.getFullName() + ":\t" + this.toStringUser();
     }
 
+    public String toStringForAdministrator() {
+        String time = this.dateTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+        String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+
+        return String.format("%s   :   %s   -   %s   -   %s   -   %s€", user.getFullName(), this.transactionType.getTransactionType(),
+                date, time, getAmountString());
+    }
+
     public String getAmountString() {
         return String.format("%.2f", this.getAmount());
     }

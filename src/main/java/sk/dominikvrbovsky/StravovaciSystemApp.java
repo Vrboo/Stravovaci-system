@@ -39,7 +39,7 @@ public class StravovaciSystemApp {
             @Override
             public void run() {
                 //JFrame jFrame = new Registration(entityManager);
-                //JFrame jFrame = new UserInterface(entityManager, user);
+//                JFrame jFrame = new UserInterface(entityManager, user);
                 JFrame jFrame = new AdministratorInterface(entityManager, user);
                 jFrame.setVisible(true);
             }

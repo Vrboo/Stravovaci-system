@@ -211,6 +211,7 @@ public class Registration extends JFrame {
 
         //======== this ========
         setUndecorated(true);
+        setTitle("Stravovac\u00ed syst\u00e9m");
         var contentPane = getContentPane();
 
         //======== myJPanelBackLogin ========
@@ -221,13 +222,12 @@ public class Registration extends JFrame {
             myJPanelBackLogin.setBackground(Color.white);
             myJPanelBackLogin.setkBorderRadius(0);
             myJPanelBackLogin.setkGradientFocus(750);
-            myJPanelBackLogin.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
-            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax
-            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
-            . awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) ,myJPanelBackLogin. getBorder () ) ); myJPanelBackLogin. addPropertyChangeListener( new java. beans .
-            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .
-            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             myJPanelBackLogin.setLayout(new GridBagLayout());
             ((GridBagLayout)myJPanelBackLogin.getLayout()).rowHeights = new int[] {0, 19, 24};
 
@@ -494,7 +494,7 @@ public class Registration extends JFrame {
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                     .addComponent(panelStravovaciSystem, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, 0)
-                    .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(myJPanelBackLogin, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(null);

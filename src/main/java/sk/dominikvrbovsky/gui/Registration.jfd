@@ -5,11 +5,12 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 			"$horizontalGroup": "par l {comp myJPanelBackLogin::l:::x, comp panelStravovaciSystem::l:::x}"
-			"$verticalGroup": "par l {seq t {comp panelStravovaciSystem:::p::p, space :0:0:p, comp myJPanelBackLogin:::::x}}"
+			"$verticalGroup": "par l {seq t {comp panelStravovaciSystem:::p::p, space :0:0:p, comp myJPanelBackLogin::::535:x}}"
 		} ) {
 			name: "this"
 			"undecorated": true
 			"$locationPolicy": 1
+			"title": "Stravovací systém"
 			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 				"$columnSpecs": "0"
 				"$rowSpecs": "0, 14, 24"

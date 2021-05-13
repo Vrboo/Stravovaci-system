@@ -16,6 +16,8 @@ import javax.persistence.EntityManager;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 import javax.swing.text.NumberFormatter;
 
 import com.jgoodies.forms.factories.*;
@@ -27,6 +29,7 @@ import sk.dominikvrbovsky.dao.impl.MealDao;
 import sk.dominikvrbovsky.dao.impl.TransactionDao;
 import sk.dominikvrbovsky.enums.Drink;
 import sk.dominikvrbovsky.utilities.DateUtilities;
+import sk.dominikvrbovsky.utilities.FileUtilities;
 
 /**
  * @author Dominik Vrbovsky
@@ -107,8 +110,19 @@ public class AdministratorInterface extends JFrame {
 
     private void btnObjednavkyActionPerformed() {
         MealDao mealDao = new MealDao(entityManager);
-        List<Breakfast> breakfasts = mealDao.getAllBreakfast();
-        List<Lunch> lunches = mealDao.getAllLunch();
+        List<Breakfast> breakfasts;
+        List<Lunch> lunches;
+
+        try {
+            breakfasts = mealDao.getAllBreakfast();
+            lunches = mealDao.getAllLunch();
+        } catch (Exception e) {
+            labelWarningPocetObjednavkyRanajky.setText("Nepodarilo sa správne načítať objednávky");
+            labelWarningPocetObjednavkyObed.setText("Nepodarilo sa správne načítať objednávky");
+            cardLayout.show(panelContent, "objednavky");
+            return;
+        }
+
         JLabel[][] labelsRanajky = getObjednavkyArray(panelTableRanajky.getComponents());
         JLabel[][] labelsObed = getObjednavkyArray(panelTableObed.getComponents());
 
@@ -184,8 +198,9 @@ public class AdministratorInterface extends JFrame {
 
         for (int i = 0; i < breakfastMenu.length; i++) {
             for (int j = 0; j < breakfastMenu[i].length; j++ ) {
-                if (c[index] instanceof JComboBox) {
-                    breakfastMenu[i][j] = (String)((JComboBox<String>)c[index]).getSelectedItem();
+                if (c[index] instanceof JPanel) {
+
+                    breakfastMenu[i][j] = (String)((JComboBox<String>)((JPanel)c[index]).getComponent(0)).getSelectedItem();
                 } else {
                     breakfastMenu[i][j] = ((JTextField)c[index]).getText();
                 }
@@ -287,12 +302,22 @@ public class AdministratorInterface extends JFrame {
         boolean descending = true; // usporiadanie transakcii od najnovsich po najstarsie; defaultna hodnota v comboBoxe
         if (comboBoxZoradit.getSelectedIndex() == 1) descending = false; // usporiadanie transakcii od najstarsich po najnovsie
 
-        if (comboBoxZobrazit.getSelectedIndex() == 0) {
-            transactions = transactionDao.getAllTransactionsByParameters(descending);
-        } else if (comboBoxZobrazit.getSelectedIndex() == 1) {
-            transactions = transactionDao.getAllTransactionsByParameters(descending, "Vklad");
-        } else {
-            transactions = transactionDao.getAllTransactionsByParameters(descending, "Výber");
+        try {
+            if (comboBoxZobrazit.getSelectedIndex() == 0) {
+                transactions = transactionDao.getAllTransactionsByParameters(descending);
+            } else if (comboBoxZobrazit.getSelectedIndex() == 1) {
+                transactions = transactionDao.getAllTransactionsByParameters(descending, "Vklad");
+            } else {
+                transactions = transactionDao.getAllTransactionsByParameters(descending, "Výber");
+            }
+        } catch (Exception e) {
+            transactions = null;
+            getTransakcieArray55(panelTableTrans.getComponents());
+            transakciaTyp1.setText("Transakcie sa nepodarilo načítať");
+            btnExportovat.setVisible(false);
+            btnDalsieTransakcie.setVisible(false);
+            btnSpatTransakcie.setVisible(false);
+            return;
         }
         this.counterForTransaction = 0;
 
@@ -305,6 +330,7 @@ public class AdministratorInterface extends JFrame {
     }
 
     private void fielCeleMenoKeyReleased() {
+        if (transactions == null) return;
         transactionsForPrint = transactions.stream()
                 .filter(transaction1 -> transaction1.getUser().getFullName().contains(fielCeleMeno.getText()))
                 .collect(Collectors.toList());
@@ -315,13 +341,15 @@ public class AdministratorInterface extends JFrame {
 
     private void btnDalsieTransakcieActionPerformed() {
         this.labelsInTransactionTable = getTransakcieArray55(panelTableTrans.getComponents());
+        labelZiadneTransakcie.setText("");
         int x = counterForTransaction + 5;
         int i = 0;
 
         if (transactionsForPrint.size() == 0) {
-            labelZiadneTransakcie.setText("Žiadne transakcie");
+            transakciaTyp1.setText("Nenašli sa žiadne transakcie");
+            btnExportovat.setVisible(false);
         } else {
-            labelZiadneTransakcie.setText("");
+            btnExportovat.setVisible(true);
         }
 
         while ((counterForTransaction < x) && (counterForTransaction != transactionsForPrint.size())) {
@@ -364,14 +392,6 @@ public class AdministratorInterface extends JFrame {
         return labels;
     }
 
-    private void textField1MouseMoved() {
-        // TODO add your code here
-    }
-
-    private void textField2MouseMoved() {
-        // TODO add your code here
-    }
-
     private void fielCeleMenoFocusGained() {
         if (fielCeleMeno.getText().equals("Celé meno užívateľa")) {
             fielCeleMeno.setForeground(Color.BLACK);
@@ -383,6 +403,27 @@ public class AdministratorInterface extends JFrame {
         if (fielCeleMeno.getText().equals("")) {
             fielCeleMeno.setForeground(new Color(192,192,192));
             fielCeleMeno.setText("Celé meno užívateľa");
+        }
+    }
+
+    private void btnDalsieTransakcie2ActionPerformed() {
+        JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        fileChooser.setDialogTitle("Vyberte textový súbor (.txt)");
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter restrict = new FileNameExtensionFilter(".txt súbor", "txt");
+        fileChooser.addChoosableFileFilter(restrict);
+
+        int r = fileChooser.showSaveDialog(null);
+
+        if (r == JFileChooser.APPROVE_OPTION) {
+            try {
+                FileUtilities.saveTransactionsInFile(fileChooser.getSelectedFile(), transactionsForPrint);
+                labelZiadneTransakcie.setForeground(new Color(0, 202, 197));
+                labelZiadneTransakcie.setText("Export úspešný");
+            } catch (Exception e) {
+                labelZiadneTransakcie.setForeground(Color.red);
+                labelZiadneTransakcie.setText("Export zlyhal ");
+            }
         }
     }
 
@@ -416,26 +457,31 @@ public class AdministratorInterface extends JFrame {
         label30 = new JLabel();
         label59 = new JLabel();
         txtJedLisRanajkyNazov1 = new JTextField();
+        panel5 = new JPanel();
         comBoxJedLisRanajkyNapoj1 = new JComboBox<>();
         txtJedLisRanakKapacita1 = new JTextField();
         txtJedLisRanakCena1 = new JTextField();
         label44 = new JLabel();
         txtJedLisRanajkyNazov2 = new JTextField();
+        panel4 = new JPanel();
         comBoxJedLisRanajkyNapoj2 = new JComboBox<>();
         txtJedLisRanakKapacita2 = new JTextField();
         txtJedLisRanakCena2 = new JTextField();
         label73 = new JLabel();
         txtJedLisRanajkyNazov3 = new JTextField();
+        panel3 = new JPanel();
         comBoxJedLisRanajkyNapoj3 = new JComboBox<>();
         txtJedLisRanakKapacita3 = new JTextField();
         txtJedLisRanakCena3 = new JTextField();
         label78 = new JLabel();
         txtJedLisRanajkyNazov4 = new JTextField();
+        panel2 = new JPanel();
         comBoxJedLisRanajkyNapoj4 = new JComboBox<>();
         txtJedLisRanakKapacita4 = new JTextField();
         txtJedLisRanakCena4 = new JTextField();
         label83 = new JLabel();
         txtJedLisRanajkyNazov5 = new JTextField();
+        panel1 = new JPanel();
         comBoxJedLisRanajkyNapoj5 = new JComboBox<>();
         txtJedLisRanakKapacita5 = new JTextField();
         txtJedLisRanakCena5 = new JTextField();
@@ -451,26 +497,31 @@ public class AdministratorInterface extends JFrame {
         label77 = new JLabel();
         label80 = new JLabel();
         textField8 = new JTextField();
+        panel6 = new JPanel();
         comboBox12 = new JComboBox<>();
         textField45 = new JTextField();
         textField46 = new JTextField();
         label81 = new JLabel();
         textField47 = new JTextField();
+        panel7 = new JPanel();
         comboBox13 = new JComboBox<>();
         textField48 = new JTextField();
         textField49 = new JTextField();
         label82 = new JLabel();
         textField50 = new JTextField();
+        panel8 = new JPanel();
         comboBox14 = new JComboBox<>();
         textField51 = new JTextField();
         textField52 = new JTextField();
         label85 = new JLabel();
         textField53 = new JTextField();
+        panel9 = new JPanel();
         comboBox15 = new JComboBox<>();
         textField54 = new JTextField();
         textField55 = new JTextField();
         label86 = new JLabel();
         textField56 = new JTextField();
+        panel10 = new JPanel();
         comboBox16 = new JComboBox<>();
         textField57 = new JTextField();
         textField58 = new JTextField();
@@ -515,7 +566,7 @@ public class AdministratorInterface extends JFrame {
         labelObjednavkyRanajkyNazov5 = new JLabel();
         labelObjednavkyRanajkyNapoj5 = new JLabel();
         labelObjednavkyRanajkyPocet5 = new JLabel();
-        label16 = new JLabel();
+        labelWarningPocetObjednavkyRanajky = new JLabel();
         panelObjednavkyObed = new KGradientPanel();
         panelTableObed = new KGradientPanel();
         label38 = new JLabel();
@@ -542,7 +593,7 @@ public class AdministratorInterface extends JFrame {
         labelObjednavkyObedNazov5 = new JLabel();
         labelObjednavkyObedTakeway5 = new JLabel();
         labelObjednavkyObedPocet5 = new JLabel();
-        label70 = new JLabel();
+        labelWarningPocetObjednavkyObed = new JLabel();
         panelTransakcie = new KGradientPanel();
         panelForCombosInTrans = new KGradientPanel();
         labelZobrazit2 = new JLabel();
@@ -585,10 +636,12 @@ public class AdministratorInterface extends JFrame {
         transakciaSuma5 = new JLabel();
         kGradientPanel2 = new KGradientPanel();
         btnSpatTransakcie = new KButton();
+        btnExportovat = new KButton();
         btnDalsieTransakcie = new KButton();
 
         //======== this ========
         setUndecorated(true);
+        setTitle("Stravovac\u00ed syst\u00e9m");
         var contentPane = getContentPane();
 
         //======== splitPane1 ========
@@ -604,12 +657,11 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
-                ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
-                .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
-                . Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
-                propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-                ;} } );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+                0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+                . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+                red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+                beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -683,7 +735,7 @@ public class AdministratorInterface extends JFrame {
                 btnPouzivatel.setkHoverStartColor(new Color(55, 55, 55));
                 btnPouzivatel.setkForeGround(Color.lightGray);
                 btnPouzivatel.setkIndicatorThickness(5);
-                btnPouzivatel.setkHoverForeGround(Color.red);
+                btnPouzivatel.setkHoverForeGround(new Color(0, 202, 197));
                 btnPouzivatel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 btnPouzivatel.setkSelectedColor(new Color(67, 67, 67));
                 btnPouzivatel.setkAllowTab(true);
@@ -810,7 +862,7 @@ public class AdministratorInterface extends JFrame {
                                     .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
-                                    .addContainerGap(20, Short.MAX_VALUE)
+                                    .addContainerGap(11, Short.MAX_VALUE)
                                     .addGroup(panelStravovaciSystemLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(labelStravovaciSystem)
                                         .addComponent(label4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
@@ -846,7 +898,7 @@ public class AdministratorInterface extends JFrame {
                                     // rows
                                     "[33:n,fill]" +
                                     "[fill]" +
-                                    "[36:n,fill]"));
+                                    "[32,fill]"));
 
                                 //---- label2 ----
                                 label2.setText("Vytvorte ranajkov\u00e9 menu");
@@ -904,7 +956,7 @@ public class AdministratorInterface extends JFrame {
                                     label59.setText("1.");
                                     label59.setHorizontalAlignment(SwingConstants.CENTER);
                                     label59.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label59.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label59.setBorder(new MatteBorder(0, 1, 1, 0, new Color(55, 55, 55)));
                                     panelJedalnyListokRanajkyInside.add(label59, CC.xy(1, 2));
 
                                     //---- txtJedLisRanajkyNazov1 ----
@@ -913,18 +965,28 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanajkyNazov1.setHorizontalAlignment(SwingConstants.CENTER);
                                     panelJedalnyListokRanajkyInside.add(txtJedLisRanajkyNazov1, CC.xy(2, 2));
 
-                                    //---- comBoxJedLisRanajkyNapoj1 ----
-                                    comBoxJedLisRanajkyNapoj1.setBorder(null);
-                                    comBoxJedLisRanajkyNapoj1.setBackground(Color.lightGray);
-                                    comBoxJedLisRanajkyNapoj1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comBoxJedLisRanajkyNapoj1.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "Cola",
-                                        "Min. voda",
-                                        "\u010caj",
-                                        "\u010e\u017e\u00fas"
-                                    }));
-                                    comBoxJedLisRanajkyNapoj1.setSelectedIndex(-1);
-                                    panelJedalnyListokRanajkyInside.add(comBoxJedLisRanajkyNapoj1, new CellConstraints(3, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+                                    //======== panel5 ========
+                                    {
+                                        panel5.setBackground(Color.white);
+                                        panel5.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+                                        panel5.setLayout(new GridBagLayout());
+
+                                        //---- comBoxJedLisRanajkyNapoj1 ----
+                                        comBoxJedLisRanajkyNapoj1.setBorder(null);
+                                        comBoxJedLisRanajkyNapoj1.setBackground(Color.lightGray);
+                                        comBoxJedLisRanajkyNapoj1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                        comBoxJedLisRanajkyNapoj1.setModel(new DefaultComboBoxModel<>(new String[] {
+                                            "Cola",
+                                            "Min. voda",
+                                            "\u010caj",
+                                            "\u010e\u017e\u00fas"
+                                        }));
+                                        comBoxJedLisRanajkyNapoj1.setSelectedIndex(-1);
+                                        panel5.add(comBoxJedLisRanajkyNapoj1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(9, 10, 9, 10), 0, 0));
+                                    }
+                                    panelJedalnyListokRanajkyInside.add(panel5, CC.xy(3, 2));
 
                                     //---- txtJedLisRanakKapacita1 ----
                                     txtJedLisRanakKapacita1.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
@@ -961,7 +1023,7 @@ public class AdministratorInterface extends JFrame {
                                     label44.setText("2.");
                                     label44.setHorizontalAlignment(SwingConstants.CENTER);
                                     label44.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label44.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label44.setBorder(new MatteBorder(0, 1, 1, 0, new Color(55, 55, 55)));
                                     panelJedalnyListokRanajkyInside.add(label44, CC.xy(1, 3));
 
                                     //---- txtJedLisRanajkyNazov2 ----
@@ -970,18 +1032,28 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanajkyNazov2.setHorizontalAlignment(SwingConstants.CENTER);
                                     panelJedalnyListokRanajkyInside.add(txtJedLisRanajkyNazov2, CC.xy(2, 3));
 
-                                    //---- comBoxJedLisRanajkyNapoj2 ----
-                                    comBoxJedLisRanajkyNapoj2.setBorder(null);
-                                    comBoxJedLisRanajkyNapoj2.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "Cola",
-                                        "Min. voda",
-                                        "\u010caj",
-                                        "D\u017e\u00fas"
-                                    }));
-                                    comBoxJedLisRanajkyNapoj2.setBackground(Color.lightGray);
-                                    comBoxJedLisRanajkyNapoj2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comBoxJedLisRanajkyNapoj2.setSelectedIndex(-1);
-                                    panelJedalnyListokRanajkyInside.add(comBoxJedLisRanajkyNapoj2, new CellConstraints(3, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+                                    //======== panel4 ========
+                                    {
+                                        panel4.setBackground(Color.white);
+                                        panel4.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+                                        panel4.setLayout(new GridBagLayout());
+
+                                        //---- comBoxJedLisRanajkyNapoj2 ----
+                                        comBoxJedLisRanajkyNapoj2.setBorder(null);
+                                        comBoxJedLisRanajkyNapoj2.setModel(new DefaultComboBoxModel<>(new String[] {
+                                            "Cola",
+                                            "Min. voda",
+                                            "\u010caj",
+                                            "D\u017e\u00fas"
+                                        }));
+                                        comBoxJedLisRanajkyNapoj2.setBackground(Color.lightGray);
+                                        comBoxJedLisRanajkyNapoj2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                        comBoxJedLisRanajkyNapoj2.setSelectedIndex(-1);
+                                        panel4.add(comBoxJedLisRanajkyNapoj2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(9, 10, 9, 10), 0, 0));
+                                    }
+                                    panelJedalnyListokRanajkyInside.add(panel4, CC.xy(3, 3));
 
                                     //---- txtJedLisRanakKapacita2 ----
                                     txtJedLisRanakKapacita2.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
@@ -1017,7 +1089,7 @@ public class AdministratorInterface extends JFrame {
                                     label73.setText("3.");
                                     label73.setHorizontalAlignment(SwingConstants.CENTER);
                                     label73.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label73.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label73.setBorder(new MatteBorder(0, 1, 1, 0, new Color(55, 55, 55)));
                                     panelJedalnyListokRanajkyInside.add(label73, CC.xy(1, 4));
 
                                     //---- txtJedLisRanajkyNazov3 ----
@@ -1026,18 +1098,28 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanajkyNazov3.setHorizontalAlignment(SwingConstants.CENTER);
                                     panelJedalnyListokRanajkyInside.add(txtJedLisRanajkyNazov3, CC.xy(2, 4));
 
-                                    //---- comBoxJedLisRanajkyNapoj3 ----
-                                    comBoxJedLisRanajkyNapoj3.setBorder(null);
-                                    comBoxJedLisRanajkyNapoj3.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "Cola",
-                                        "Min. voda",
-                                        "\u010caj",
-                                        "D\u017e\u00fas"
-                                    }));
-                                    comBoxJedLisRanajkyNapoj3.setBackground(Color.lightGray);
-                                    comBoxJedLisRanajkyNapoj3.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comBoxJedLisRanajkyNapoj3.setSelectedIndex(-1);
-                                    panelJedalnyListokRanajkyInside.add(comBoxJedLisRanajkyNapoj3, new CellConstraints(3, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+                                    //======== panel3 ========
+                                    {
+                                        panel3.setBackground(Color.white);
+                                        panel3.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+                                        panel3.setLayout(new GridBagLayout());
+
+                                        //---- comBoxJedLisRanajkyNapoj3 ----
+                                        comBoxJedLisRanajkyNapoj3.setBorder(null);
+                                        comBoxJedLisRanajkyNapoj3.setModel(new DefaultComboBoxModel<>(new String[] {
+                                            "Cola",
+                                            "Min. voda",
+                                            "\u010caj",
+                                            "D\u017e\u00fas"
+                                        }));
+                                        comBoxJedLisRanajkyNapoj3.setBackground(Color.lightGray);
+                                        comBoxJedLisRanajkyNapoj3.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                        comBoxJedLisRanajkyNapoj3.setSelectedIndex(-1);
+                                        panel3.add(comBoxJedLisRanajkyNapoj3, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(9, 10, 9, 10), 0, 0));
+                                    }
+                                    panelJedalnyListokRanajkyInside.add(panel3, CC.xy(3, 4));
 
                                     //---- txtJedLisRanakKapacita3 ----
                                     txtJedLisRanakKapacita3.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
@@ -1073,7 +1155,7 @@ public class AdministratorInterface extends JFrame {
                                     label78.setText("4.");
                                     label78.setHorizontalAlignment(SwingConstants.CENTER);
                                     label78.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label78.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label78.setBorder(new MatteBorder(0, 1, 1, 0, new Color(55, 55, 55)));
                                     panelJedalnyListokRanajkyInside.add(label78, CC.xy(1, 5));
 
                                     //---- txtJedLisRanajkyNazov4 ----
@@ -1082,18 +1164,28 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanajkyNazov4.setHorizontalAlignment(SwingConstants.CENTER);
                                     panelJedalnyListokRanajkyInside.add(txtJedLisRanajkyNazov4, CC.xy(2, 5));
 
-                                    //---- comBoxJedLisRanajkyNapoj4 ----
-                                    comBoxJedLisRanajkyNapoj4.setBorder(null);
-                                    comBoxJedLisRanajkyNapoj4.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "Cola",
-                                        "Min. voda",
-                                        "\u010caj",
-                                        "D\u017e\u00fas"
-                                    }));
-                                    comBoxJedLisRanajkyNapoj4.setBackground(Color.lightGray);
-                                    comBoxJedLisRanajkyNapoj4.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comBoxJedLisRanajkyNapoj4.setSelectedIndex(-1);
-                                    panelJedalnyListokRanajkyInside.add(comBoxJedLisRanajkyNapoj4, new CellConstraints(3, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+                                    //======== panel2 ========
+                                    {
+                                        panel2.setBackground(Color.white);
+                                        panel2.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+                                        panel2.setLayout(new GridBagLayout());
+
+                                        //---- comBoxJedLisRanajkyNapoj4 ----
+                                        comBoxJedLisRanajkyNapoj4.setBorder(null);
+                                        comBoxJedLisRanajkyNapoj4.setModel(new DefaultComboBoxModel<>(new String[] {
+                                            "Cola",
+                                            "Min. voda",
+                                            "\u010caj",
+                                            "D\u017e\u00fas"
+                                        }));
+                                        comBoxJedLisRanajkyNapoj4.setBackground(Color.lightGray);
+                                        comBoxJedLisRanajkyNapoj4.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                        comBoxJedLisRanajkyNapoj4.setSelectedIndex(-1);
+                                        panel2.add(comBoxJedLisRanajkyNapoj4, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(9, 10, 9, 10), 0, 0));
+                                    }
+                                    panelJedalnyListokRanajkyInside.add(panel2, CC.xy(3, 5));
 
                                     //---- txtJedLisRanakKapacita4 ----
                                     txtJedLisRanakKapacita4.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
@@ -1129,7 +1221,7 @@ public class AdministratorInterface extends JFrame {
                                     label83.setText("5.");
                                     label83.setHorizontalAlignment(SwingConstants.CENTER);
                                     label83.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label83.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label83.setBorder(new MatteBorder(0, 1, 1, 0, new Color(55, 55, 55)));
                                     panelJedalnyListokRanajkyInside.add(label83, CC.xy(1, 6));
 
                                     //---- txtJedLisRanajkyNazov5 ----
@@ -1138,18 +1230,28 @@ public class AdministratorInterface extends JFrame {
                                     txtJedLisRanajkyNazov5.setHorizontalAlignment(SwingConstants.CENTER);
                                     panelJedalnyListokRanajkyInside.add(txtJedLisRanajkyNazov5, CC.xy(2, 6));
 
-                                    //---- comBoxJedLisRanajkyNapoj5 ----
-                                    comBoxJedLisRanajkyNapoj5.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-                                    comBoxJedLisRanajkyNapoj5.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "Cola",
-                                        "Min. voda",
-                                        "\u010caj",
-                                        "D\u017e\u00fas"
-                                    }));
-                                    comBoxJedLisRanajkyNapoj5.setBackground(Color.lightGray);
-                                    comBoxJedLisRanajkyNapoj5.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comBoxJedLisRanajkyNapoj5.setSelectedIndex(-1);
-                                    panelJedalnyListokRanajkyInside.add(comBoxJedLisRanajkyNapoj5, new CellConstraints(3, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+                                    //======== panel1 ========
+                                    {
+                                        panel1.setBackground(Color.white);
+                                        panel1.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+                                        panel1.setLayout(new GridBagLayout());
+
+                                        //---- comBoxJedLisRanajkyNapoj5 ----
+                                        comBoxJedLisRanajkyNapoj5.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+                                        comBoxJedLisRanajkyNapoj5.setModel(new DefaultComboBoxModel<>(new String[] {
+                                            "Cola",
+                                            "Min. voda",
+                                            "\u010caj",
+                                            "D\u017e\u00fas"
+                                        }));
+                                        comBoxJedLisRanajkyNapoj5.setBackground(Color.lightGray);
+                                        comBoxJedLisRanajkyNapoj5.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                        comBoxJedLisRanajkyNapoj5.setSelectedIndex(-1);
+                                        panel1.add(comBoxJedLisRanajkyNapoj5, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(9, 10, 9, 10), 0, 0));
+                                    }
+                                    panelJedalnyListokRanajkyInside.add(panel1, CC.xy(3, 6));
 
                                     //---- txtJedLisRanakKapacita5 ----
                                     txtJedLisRanakKapacita5.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
@@ -1192,7 +1294,7 @@ public class AdministratorInterface extends JFrame {
 
                                 //---- btnJedLisRanjakyPokracovat ----
                                 btnJedLisRanjakyPokracovat.setText("Pokra\u010dova\u0165");
-                                btnJedLisRanjakyPokracovat.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                btnJedLisRanjakyPokracovat.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                 btnJedLisRanjakyPokracovat.setBorder(null);
                                 btnJedLisRanjakyPokracovat.setkStartColor(new Color(73, 196, 174));
                                 btnJedLisRanjakyPokracovat.setkEndColor(new Color(140, 219, 145));
@@ -1203,7 +1305,7 @@ public class AdministratorInterface extends JFrame {
                                 btnJedLisRanjakyPokracovat.setBackground(Color.white);
                                 btnJedLisRanjakyPokracovat.setBorderPainted(false);
                                 btnJedLisRanjakyPokracovat.addActionListener(e -> kButton4ActionPerformed());
-                                panelJedalnyListokRanajky.add(btnJedLisRanjakyPokracovat, "cell 0 2,alignx right,growx 0,width 110,hmax 30,gapx null 0");
+                                panelJedalnyListokRanajky.add(btnJedLisRanjakyPokracovat, "cell 0 2,alignx right,growx 0,width 120,hmax 36,gapx null 0");
                             }
                             panelJedalnyListok.add(panelJedalnyListokRanajky, "ranajky");
 
@@ -1223,7 +1325,7 @@ public class AdministratorInterface extends JFrame {
                                     // rows
                                     "[33:n,fill]" +
                                     "[fill]" +
-                                    "[36:n,fill]"));
+                                    "[32,fill]"));
 
                                 //---- label7 ----
                                 label7.setText("Vytvorte obedov\u00e9 menu");
@@ -1289,16 +1391,27 @@ public class AdministratorInterface extends JFrame {
                                     textField8.setHorizontalAlignment(SwingConstants.CENTER);
                                     panelJedalnyListokObedInside.add(textField8, CC.xy(2, 2));
 
-                                    //---- comboBox12 ----
-                                    comboBox12.setBorder(null);
-                                    comboBox12.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "\u00c1no",
-                                        "Nie"
-                                    }));
-                                    comboBox12.setBackground(Color.lightGray);
-                                    comboBox12.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox12.setSelectedIndex(-1);
-                                    panelJedalnyListokObedInside.add(comboBox12, new CellConstraints(3, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+                                    //======== panel6 ========
+                                    {
+                                        panel6.setBackground(Color.white);
+                                        panel6.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+                                        panel6.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panel6.getLayout()).columnWidths = new int[] {70};
+
+                                        //---- comboBox12 ----
+                                        comboBox12.setBorder(null);
+                                        comboBox12.setModel(new DefaultComboBoxModel<>(new String[] {
+                                            "\u00c1no",
+                                            "Nie"
+                                        }));
+                                        comboBox12.setBackground(Color.lightGray);
+                                        comboBox12.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                        comboBox12.setSelectedIndex(-1);
+                                        panel6.add(comboBox12, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 0, 0), 0, 0));
+                                    }
+                                    panelJedalnyListokObedInside.add(panel6, CC.xy(3, 2));
 
                                     //---- textField45 ----
                                     textField45.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
@@ -1343,16 +1456,27 @@ public class AdministratorInterface extends JFrame {
                                     textField47.setHorizontalAlignment(SwingConstants.CENTER);
                                     panelJedalnyListokObedInside.add(textField47, CC.xy(2, 3));
 
-                                    //---- comboBox13 ----
-                                    comboBox13.setBorder(null);
-                                    comboBox13.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "\u00c1no",
-                                        "Nie"
-                                    }));
-                                    comboBox13.setBackground(Color.lightGray);
-                                    comboBox13.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox13.setSelectedIndex(-1);
-                                    panelJedalnyListokObedInside.add(comboBox13, new CellConstraints(3, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+                                    //======== panel7 ========
+                                    {
+                                        panel7.setBackground(Color.white);
+                                        panel7.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+                                        panel7.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panel7.getLayout()).columnWidths = new int[] {70};
+
+                                        //---- comboBox13 ----
+                                        comboBox13.setBorder(null);
+                                        comboBox13.setModel(new DefaultComboBoxModel<>(new String[] {
+                                            "\u00c1no",
+                                            "Nie"
+                                        }));
+                                        comboBox13.setBackground(Color.lightGray);
+                                        comboBox13.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                        comboBox13.setSelectedIndex(-1);
+                                        panel7.add(comboBox13, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 0, 0), 0, 0));
+                                    }
+                                    panelJedalnyListokObedInside.add(panel7, CC.xy(3, 3));
 
                                     //---- textField48 ----
                                     textField48.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
@@ -1397,16 +1521,27 @@ public class AdministratorInterface extends JFrame {
                                     textField50.setHorizontalAlignment(SwingConstants.CENTER);
                                     panelJedalnyListokObedInside.add(textField50, CC.xy(2, 4));
 
-                                    //---- comboBox14 ----
-                                    comboBox14.setBorder(null);
-                                    comboBox14.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "\u00c1no",
-                                        "Nie"
-                                    }));
-                                    comboBox14.setBackground(Color.lightGray);
-                                    comboBox14.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox14.setSelectedIndex(-1);
-                                    panelJedalnyListokObedInside.add(comboBox14, new CellConstraints(3, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+                                    //======== panel8 ========
+                                    {
+                                        panel8.setBackground(Color.white);
+                                        panel8.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+                                        panel8.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panel8.getLayout()).columnWidths = new int[] {70};
+
+                                        //---- comboBox14 ----
+                                        comboBox14.setBorder(null);
+                                        comboBox14.setModel(new DefaultComboBoxModel<>(new String[] {
+                                            "\u00c1no",
+                                            "Nie"
+                                        }));
+                                        comboBox14.setBackground(Color.lightGray);
+                                        comboBox14.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                        comboBox14.setSelectedIndex(-1);
+                                        panel8.add(comboBox14, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 0, 0), 0, 0));
+                                    }
+                                    panelJedalnyListokObedInside.add(panel8, CC.xy(3, 4));
 
                                     //---- textField51 ----
                                     textField51.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
@@ -1451,16 +1586,27 @@ public class AdministratorInterface extends JFrame {
                                     textField53.setHorizontalAlignment(SwingConstants.CENTER);
                                     panelJedalnyListokObedInside.add(textField53, CC.xy(2, 5));
 
-                                    //---- comboBox15 ----
-                                    comboBox15.setBorder(null);
-                                    comboBox15.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "\u00c1no",
-                                        "Nie"
-                                    }));
-                                    comboBox15.setBackground(Color.lightGray);
-                                    comboBox15.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox15.setSelectedIndex(-1);
-                                    panelJedalnyListokObedInside.add(comboBox15, new CellConstraints(3, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+                                    //======== panel9 ========
+                                    {
+                                        panel9.setBackground(Color.white);
+                                        panel9.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+                                        panel9.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panel9.getLayout()).columnWidths = new int[] {70};
+
+                                        //---- comboBox15 ----
+                                        comboBox15.setBorder(null);
+                                        comboBox15.setModel(new DefaultComboBoxModel<>(new String[] {
+                                            "\u00c1no",
+                                            "Nie"
+                                        }));
+                                        comboBox15.setBackground(Color.lightGray);
+                                        comboBox15.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                        comboBox15.setSelectedIndex(-1);
+                                        panel9.add(comboBox15, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 0, 0), 0, 0));
+                                    }
+                                    panelJedalnyListokObedInside.add(panel9, CC.xy(3, 5));
 
                                     //---- textField54 ----
                                     textField54.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
@@ -1505,16 +1651,27 @@ public class AdministratorInterface extends JFrame {
                                     textField56.setHorizontalAlignment(SwingConstants.CENTER);
                                     panelJedalnyListokObedInside.add(textField56, CC.xy(2, 6));
 
-                                    //---- comboBox16 ----
-                                    comboBox16.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
-                                    comboBox16.setModel(new DefaultComboBoxModel<>(new String[] {
-                                        "\u00c1no",
-                                        "Nie"
-                                    }));
-                                    comboBox16.setBackground(Color.lightGray);
-                                    comboBox16.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-                                    comboBox16.setSelectedIndex(-1);
-                                    panelJedalnyListokObedInside.add(comboBox16, new CellConstraints(3, 6, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 10, 9, 10)));
+                                    //======== panel10 ========
+                                    {
+                                        panel10.setBackground(Color.white);
+                                        panel10.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+                                        panel10.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panel10.getLayout()).columnWidths = new int[] {70};
+
+                                        //---- comboBox16 ----
+                                        comboBox16.setBorder(new MatteBorder(0, 0, 0, 0, Color.black));
+                                        comboBox16.setModel(new DefaultComboBoxModel<>(new String[] {
+                                            "\u00c1no",
+                                            "Nie"
+                                        }));
+                                        comboBox16.setBackground(Color.lightGray);
+                                        comboBox16.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+                                        comboBox16.setSelectedIndex(-1);
+                                        panel10.add(comboBox16, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 0, 0), 0, 0));
+                                    }
+                                    panelJedalnyListokObedInside.add(panel10, CC.xy(3, 6));
 
                                     //---- textField57 ----
                                     textField57.setBorder(new MatteBorder(0, 1, 1, 1, Color.black));
@@ -1550,7 +1707,7 @@ public class AdministratorInterface extends JFrame {
 
                                 //---- btnJedalnyListokSpatObed ----
                                 btnJedalnyListokSpatObed.setText("Sp\u00e4\u0165");
-                                btnJedalnyListokSpatObed.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                btnJedalnyListokSpatObed.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                 btnJedalnyListokSpatObed.setBorder(null);
                                 btnJedalnyListokSpatObed.setkStartColor(new Color(255, 161, 117));
                                 btnJedalnyListokSpatObed.setkEndColor(new Color(224, 31, 23));
@@ -1571,7 +1728,7 @@ public class AdministratorInterface extends JFrame {
 
                                 //---- btnJedLisObedPokracovat ----
                                 btnJedLisObedPokracovat.setText("Pokra\u010dova\u0165");
-                                btnJedLisObedPokracovat.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                btnJedLisObedPokracovat.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                 btnJedLisObedPokracovat.setBorder(null);
                                 btnJedLisObedPokracovat.setkStartColor(new Color(73, 196, 174));
                                 btnJedLisObedPokracovat.setkEndColor(new Color(140, 219, 145));
@@ -1582,7 +1739,7 @@ public class AdministratorInterface extends JFrame {
                                 btnJedLisObedPokracovat.setBackground(Color.white);
                                 btnJedLisObedPokracovat.setBorderPainted(false);
                                 btnJedLisObedPokracovat.addActionListener(e -> btnJedalnyListokPokracovatObedActionPerformed());
-                                panelJedalnyListokObed.add(btnJedLisObedPokracovat, "cell 0 2,alignx right,growx 0,width 110,hmax 30,gapx null 0");
+                                panelJedalnyListokObed.add(btnJedLisObedPokracovat, "cell 0 2,alignx right,growx 0,width 120,hmax 30,gapx null 0");
                             }
                             panelJedalnyListok.add(panelJedalnyListokObed, "obed");
 
@@ -1629,7 +1786,7 @@ public class AdministratorInterface extends JFrame {
                                     btnJedalnyListokVytvoritInside.setMaximumSize(new Dimension(97, 24));
                                     btnJedalnyListokVytvoritInside.setMinimumSize(new Dimension(97, 24));
                                     btnJedalnyListokVytvoritInside.addActionListener(e -> btnJedalnyListokVytvoritInsideActionPerformed());
-                                    panelJedalnyListokInside.add(btnJedalnyListokVytvoritInside, "cell 0 1,wmax 100,hmax 30,gapx 125");
+                                    panelJedalnyListokInside.add(btnJedalnyListokVytvoritInside, "cell 0 1,wmax 100,hmax 32,gapx 125");
 
                                     //---- btnJedalnyListokVytvoritInside2 ----
                                     btnJedalnyListokVytvoritInside2.setText("Vytvori\u0165");
@@ -1646,7 +1803,7 @@ public class AdministratorInterface extends JFrame {
                                     btnJedalnyListokVytvoritInside2.setMaximumSize(new Dimension(97, 24));
                                     btnJedalnyListokVytvoritInside2.setMinimumSize(new Dimension(97, 24));
                                     btnJedalnyListokVytvoritInside2.addActionListener(e -> btnJedalnyListokVytvoritInside2ActionPerformed(e));
-                                    panelJedalnyListokInside.add(btnJedalnyListokVytvoritInside2, "pad 0,cell 0 1,aligny center,growy 0,wmax 100,hmax 30,gapx null 125");
+                                    panelJedalnyListokInside.add(btnJedalnyListokVytvoritInside2, "pad 0,cell 0 1,aligny center,growy 0,wmax 100,hmax 32,gapx null 125");
                                 }
                                 panelJedalnyListokVytvorit.add(panelJedalnyListokInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                                     GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
@@ -1750,6 +1907,7 @@ public class AdministratorInterface extends JFrame {
                                         panelObjednavkyRanajky.setBackground(Color.white);
                                         panelObjednavkyRanajky.setkFillBackground(false);
                                         panelObjednavkyRanajky.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panelObjednavkyRanajky.getLayout()).rowHeights = new int[] {0, 22};
 
                                         //======== panelTableRanajky ========
                                         {
@@ -1760,7 +1918,7 @@ public class AdministratorInterface extends JFrame {
                                             panelTableRanajky.setBackground(new Color(255, 255, 255, 145));
                                             panelTableRanajky.setLayout(new FormLayout(
                                                 "27px, 306px, 134px, 200px",
-                                                "fill:49px, 5*(fill:52px), $lgap, 11dlu"));
+                                                "fill:49px, 5*(fill:52px)"));
 
                                             //---- label36 ----
                                             label36.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
@@ -1796,7 +1954,7 @@ public class AdministratorInterface extends JFrame {
                                             panelTableRanajky.add(label46, CC.xy(1, 2));
 
                                             //---- labelObjednavkyRanajkyNazov1 ----
-                                            labelObjednavkyRanajkyNazov1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            labelObjednavkyRanajkyNazov1.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                                             labelObjednavkyRanajkyNazov1.setHorizontalAlignment(SwingConstants.CENTER);
                                             labelObjednavkyRanajkyNazov1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(labelObjednavkyRanajkyNazov1, CC.xy(2, 2));
@@ -1912,9 +2070,16 @@ public class AdministratorInterface extends JFrame {
                                             labelObjednavkyRanajkyPocet5.setHorizontalAlignment(SwingConstants.CENTER);
                                             labelObjednavkyRanajkyPocet5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableRanajky.add(labelObjednavkyRanajkyPocet5, CC.xy(4, 6));
-                                            panelTableRanajky.add(label16, CC.xy(1, 8));
                                         }
                                         panelObjednavkyRanajky.add(panelTableRanajky, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 5, 0), 0, 0));
+
+                                        //---- labelWarningPocetObjednavkyRanajky ----
+                                        labelWarningPocetObjednavkyRanajky.setFont(new Font("Yu Gothic UI", Font.BOLD, 18));
+                                        labelWarningPocetObjednavkyRanajky.setForeground(Color.red);
+                                        labelWarningPocetObjednavkyRanajky.setHorizontalAlignment(SwingConstants.CENTER);
+                                        panelObjednavkyRanajky.add(labelWarningPocetObjednavkyRanajky, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                                             new Insets(0, 0, 0, 0), 0, 0));
                                     }
@@ -1926,6 +2091,7 @@ public class AdministratorInterface extends JFrame {
                                         panelObjednavkyObed.setkEndColor(Color.white);
                                         panelObjednavkyObed.setkStartColor(Color.white);
                                         panelObjednavkyObed.setLayout(new GridBagLayout());
+                                        ((GridBagLayout)panelObjednavkyObed.getLayout()).rowHeights = new int[] {0, 22};
 
                                         //======== panelTableObed ========
                                         {
@@ -1936,7 +2102,7 @@ public class AdministratorInterface extends JFrame {
                                             panelTableObed.setBackground(new Color(255, 255, 255, 145));
                                             panelTableObed.setLayout(new FormLayout(
                                                 "27px, 306px, 134px, 200px",
-                                                "fill:49px, 5*(fill:52px), $lgap, 11dlu"));
+                                                "fill:49px, 5*(fill:52px)"));
 
                                             //---- label38 ----
                                             label38.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
@@ -2088,9 +2254,16 @@ public class AdministratorInterface extends JFrame {
                                             labelObjednavkyObedPocet5.setHorizontalAlignment(SwingConstants.CENTER);
                                             labelObjednavkyObedPocet5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableObed.add(labelObjednavkyObedPocet5, CC.xy(4, 6));
-                                            panelTableObed.add(label70, CC.xy(1, 8));
                                         }
                                         panelObjednavkyObed.add(panelTableObed, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                            new Insets(0, 0, 5, 0), 0, 0));
+
+                                        //---- labelWarningPocetObjednavkyObed ----
+                                        labelWarningPocetObjednavkyObed.setFont(new Font("Yu Gothic UI", Font.BOLD, 18));
+                                        labelWarningPocetObjednavkyObed.setForeground(Color.red);
+                                        labelWarningPocetObjednavkyObed.setHorizontalAlignment(SwingConstants.CENTER);
+                                        panelObjednavkyObed.add(labelWarningPocetObjednavkyObed, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                                             new Insets(0, 0, 0, 0), 0, 0));
                                     }
@@ -2107,7 +2280,7 @@ public class AdministratorInterface extends JFrame {
                             );
                             panelObjednavkyLayout.setVerticalGroup(
                                 panelObjednavkyLayout.createParallelGroup()
-                                    .addComponent(splitPane3, GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
+                                    .addComponent(splitPane3, GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
                             );
                         }
                         panelContent.add(panelObjednavky, "objednavky");
@@ -2122,7 +2295,7 @@ public class AdministratorInterface extends JFrame {
                             panelTransakcie.setBackground(Color.white);
                             panelTransakcie.setkFillBackground(false);
                             panelTransakcie.setLayout(new GridBagLayout());
-                            ((GridBagLayout)panelTransakcie.getLayout()).rowHeights = new int[] {61, 0, 32};
+                            ((GridBagLayout)panelTransakcie.getLayout()).rowHeights = new int[] {120, 0, 32};
 
                             //======== panelForCombosInTrans ========
                             {
@@ -2139,7 +2312,7 @@ public class AdministratorInterface extends JFrame {
                                     "[17,fill]0" +
                                     "[100,fill]0" +
                                     "[10,fill]0" +
-                                    "[158,fill]",
+                                    "[170,fill]",
                                     // rows
                                     "10[35,fill]15" +
                                     "[20,center]10"));
@@ -2224,37 +2397,49 @@ public class AdministratorInterface extends JFrame {
                                 panelTableTrans.setBorder(null);
                                 panelTableTrans.setkBorderRadius(0);
                                 panelTableTrans.setBackground(new Color(255, 255, 255, 145));
-                                panelTableTrans.setLayout(new FormLayout(
-                                    "200px, 4*(110px)",
-                                    "6*(fill:40px)"));
+                                panelTableTrans.setLayout(new MigLayout(
+                                    "insets 0,hidemode 3,gap 0 0",
+                                    // columns
+                                    "[200:n,fill]" +
+                                    "[110:n,sizegroup 1,fill]" +
+                                    "[110:n,sizegroup 1,fill]" +
+                                    "[110:n,fill]" +
+                                    "[110:n,sizegroup 0,fill]",
+                                    // rows
+                                    "[40:n,fill]" +
+                                    "[40:n,fill]" +
+                                    "[40:n,fill]" +
+                                    "[40:n,fill]" +
+                                    "[40:n,fill]" +
+                                    "[40:n,fill]"));
 
                                 //---- label13 ----
                                 label13.setText("Pou\u017e\u00edvate\u013e");
                                 label13.setFont(new Font("Yu Gothic UI", Font.BOLD, 22));
                                 label13.setHorizontalAlignment(SwingConstants.CENTER);
                                 label13.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                panelTableTrans.add(label13, CC.xy(1, 1));
+                                panelTableTrans.add(label13, "cell 0 0");
 
                                 //---- label6 ----
                                 label6.setText("Typ");
                                 label6.setFont(new Font("Yu Gothic UI", Font.BOLD, 22));
                                 label6.setHorizontalAlignment(SwingConstants.CENTER);
                                 label6.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                panelTableTrans.add(label6, CC.xy(2, 1));
+                                panelTableTrans.add(label6, "cell 1 0");
 
                                 //---- label5 ----
                                 label5.setText("D\u00e1tum");
                                 label5.setFont(new Font("Yu Gothic UI", Font.BOLD, 22));
                                 label5.setHorizontalAlignment(SwingConstants.CENTER);
                                 label5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                panelTableTrans.add(label5, CC.xy(3, 1));
+                                panelTableTrans.add(label5, "cell 2 0");
 
                                 //---- label11 ----
                                 label11.setText("\u010cas");
                                 label11.setFont(new Font("Yu Gothic UI", Font.BOLD, 22));
                                 label11.setHorizontalAlignment(SwingConstants.CENTER);
                                 label11.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                panelTableTrans.add(label11, CC.xy(4, 1));
+                                panelTableTrans.add(label11, "cell 3 0");
 
                                 //---- label12 ----
                                 label12.setText("Suma");
@@ -2262,182 +2447,182 @@ public class AdministratorInterface extends JFrame {
                                 label12.setHorizontalAlignment(SwingConstants.CENTER);
                                 label12.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 label12.setBackground(Color.white);
-                                panelTableTrans.add(label12, CC.xy(5, 1));
+                                panelTableTrans.add(label12, "cell 4 0");
 
                                 //---- transakciaPouzivatel1 ----
                                 transakciaPouzivatel1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaPouzivatel1.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaPouzivatel1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaPouzivatel1.setText("Dominik Vrbovsk\u00fd");
-                                panelTableTrans.add(transakciaPouzivatel1, CC.xy(1, 2));
+                                panelTableTrans.add(transakciaPouzivatel1, "cell 0 1");
 
                                 //---- transakciaTyp1 ----
-                                transakciaTyp1.setHorizontalAlignment(SwingConstants.CENTER);
-                                transakciaTyp1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                transakciaTyp1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaTyp1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaTyp1.setText("Vklad");
-                                panelTableTrans.add(transakciaTyp1, CC.xy(2, 2));
+                                transakciaTyp1.setHorizontalAlignment(SwingConstants.CENTER);
+                                panelTableTrans.add(transakciaTyp1, "cell 1 1");
 
                                 //---- transakciaDatum1 ----
                                 transakciaDatum1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaDatum1.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaDatum1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaDatum1.setText("12.5.2021");
-                                panelTableTrans.add(transakciaDatum1, CC.xy(3, 2));
+                                panelTableTrans.add(transakciaDatum1, "cell 2 1");
 
                                 //---- transakciaCas1 ----
                                 transakciaCas1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaCas1.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaCas1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaCas1.setText("5:35");
-                                panelTableTrans.add(transakciaCas1, CC.xy(4, 2));
+                                panelTableTrans.add(transakciaCas1, "cell 3 1");
 
                                 //---- transakciaSuma1 ----
                                 transakciaSuma1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaSuma1.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaSuma1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaSuma1.setText("7.00\u20ac");
-                                panelTableTrans.add(transakciaSuma1, CC.xy(5, 2));
+                                panelTableTrans.add(transakciaSuma1, "cell 4 1");
 
                                 //---- transakciaPouzivatel2 ----
                                 transakciaPouzivatel2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaPouzivatel2.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaPouzivatel2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaPouzivatel2.setText("Pavla Hor\u0148\u00e1kov\u00e1");
-                                panelTableTrans.add(transakciaPouzivatel2, CC.xy(1, 3));
+                                panelTableTrans.add(transakciaPouzivatel2, "cell 0 2");
 
                                 //---- transakciaTyp2 ----
                                 transakciaTyp2.setHorizontalAlignment(SwingConstants.CENTER);
-                                transakciaTyp2.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                transakciaTyp2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaTyp2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaTyp2.setText("V\u00fdber");
-                                panelTableTrans.add(transakciaTyp2, CC.xy(2, 3));
+                                panelTableTrans.add(transakciaTyp2, "cell 1 2");
 
                                 //---- transakciaDatum2 ----
                                 transakciaDatum2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaDatum2.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaDatum2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaDatum2.setText("3.4.2021");
-                                panelTableTrans.add(transakciaDatum2, CC.xy(3, 3));
+                                panelTableTrans.add(transakciaDatum2, "cell 2 2");
 
                                 //---- transakciaCas2 ----
                                 transakciaCas2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaCas2.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaCas2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaCas2.setText("18:08");
-                                panelTableTrans.add(transakciaCas2, CC.xy(4, 3));
+                                panelTableTrans.add(transakciaCas2, "cell 3 2");
 
                                 //---- transakciaSuma2 ----
                                 transakciaSuma2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaSuma2.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaSuma2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaSuma2.setText("20.50\u20ac");
-                                panelTableTrans.add(transakciaSuma2, CC.xy(5, 3));
+                                panelTableTrans.add(transakciaSuma2, "cell 4 2");
 
                                 //---- transakciaPouzivatel3 ----
                                 transakciaPouzivatel3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaPouzivatel3.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaPouzivatel3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaPouzivatel3.setText("Alexandra Podmanick\u00e1");
-                                panelTableTrans.add(transakciaPouzivatel3, CC.xy(1, 4));
+                                panelTableTrans.add(transakciaPouzivatel3, "cell 0 3");
 
                                 //---- transakciaTyp3 ----
                                 transakciaTyp3.setHorizontalAlignment(SwingConstants.CENTER);
-                                transakciaTyp3.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                transakciaTyp3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaTyp3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaTyp3.setText("V\u00fdber");
-                                panelTableTrans.add(transakciaTyp3, CC.xy(2, 4));
+                                panelTableTrans.add(transakciaTyp3, "cell 1 3");
 
                                 //---- transakciaDatum3 ----
                                 transakciaDatum3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaDatum3.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaDatum3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaDatum3.setText("5.10.2021");
-                                panelTableTrans.add(transakciaDatum3, CC.xy(3, 4));
+                                panelTableTrans.add(transakciaDatum3, "cell 2 3");
 
                                 //---- transakciaCas3 ----
                                 transakciaCas3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaCas3.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaCas3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaCas3.setText("23:48");
-                                panelTableTrans.add(transakciaCas3, CC.xy(4, 4));
+                                panelTableTrans.add(transakciaCas3, "cell 3 3");
 
                                 //---- transakciaSuma3 ----
                                 transakciaSuma3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaSuma3.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaSuma3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaSuma3.setText("15.00\u20ac");
-                                panelTableTrans.add(transakciaSuma3, CC.xy(5, 4));
+                                panelTableTrans.add(transakciaSuma3, "cell 4 3");
 
                                 //---- transakciaPouzivatel4 ----
                                 transakciaPouzivatel4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaPouzivatel4.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaPouzivatel4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaPouzivatel4.setText("J\u00e1n M\u00fadry");
-                                panelTableTrans.add(transakciaPouzivatel4, CC.xy(1, 5));
+                                panelTableTrans.add(transakciaPouzivatel4, "cell 0 4");
 
                                 //---- transakciaTyp4 ----
                                 transakciaTyp4.setHorizontalAlignment(SwingConstants.CENTER);
-                                transakciaTyp4.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                transakciaTyp4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaTyp4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaTyp4.setText("Vklad");
-                                panelTableTrans.add(transakciaTyp4, CC.xy(2, 5));
+                                panelTableTrans.add(transakciaTyp4, "cell 1 4");
 
                                 //---- transakciaDatum4 ----
                                 transakciaDatum4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaDatum4.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaDatum4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaDatum4.setText("28.8.2021");
-                                panelTableTrans.add(transakciaDatum4, CC.xy(3, 5));
+                                panelTableTrans.add(transakciaDatum4, "cell 2 4");
 
                                 //---- transakciaCas4 ----
                                 transakciaCas4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaCas4.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaCas4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaCas4.setText("7:10");
-                                panelTableTrans.add(transakciaCas4, CC.xy(4, 5));
+                                panelTableTrans.add(transakciaCas4, "cell 3 4");
 
                                 //---- transakciaSuma4 ----
                                 transakciaSuma4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaSuma4.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaSuma4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaSuma4.setText("1.50\u20ac");
-                                panelTableTrans.add(transakciaSuma4, CC.xy(5, 5));
+                                panelTableTrans.add(transakciaSuma4, "cell 4 4");
 
                                 //---- transakciaPouzivatel5 ----
                                 transakciaPouzivatel5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaPouzivatel5.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaPouzivatel5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaPouzivatel5.setText("Eva Sege\u010dov\u00e1");
-                                panelTableTrans.add(transakciaPouzivatel5, CC.xy(1, 6));
+                                panelTableTrans.add(transakciaPouzivatel5, "cell 0 5");
 
                                 //---- transakciaTyp5 ----
                                 transakciaTyp5.setHorizontalAlignment(SwingConstants.CENTER);
-                                transakciaTyp5.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                transakciaTyp5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaTyp5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaTyp5.setText("Vklad");
-                                panelTableTrans.add(transakciaTyp5, CC.xy(2, 6));
+                                panelTableTrans.add(transakciaTyp5, "cell 1 5");
 
                                 //---- transakciaDatum5 ----
                                 transakciaDatum5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaDatum5.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaDatum5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaDatum5.setText("14.9.2021");
-                                panelTableTrans.add(transakciaDatum5, CC.xy(3, 6));
+                                panelTableTrans.add(transakciaDatum5, "cell 2 5");
 
                                 //---- transakciaCas5 ----
                                 transakciaCas5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaCas5.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaCas5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaCas5.setText("14:52");
-                                panelTableTrans.add(transakciaCas5, CC.xy(4, 6));
+                                panelTableTrans.add(transakciaCas5, "cell 3 5");
 
                                 //---- transakciaSuma5 ----
                                 transakciaSuma5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaSuma5.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaSuma5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                 transakciaSuma5.setText("10.00\u20ac");
-                                panelTableTrans.add(transakciaSuma5, CC.xy(5, 6));
+                                panelTableTrans.add(transakciaSuma5, "cell 4 5");
                             }
                             panelTransakcie.add(panelTableTrans, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -2447,24 +2632,43 @@ public class AdministratorInterface extends JFrame {
                             {
                                 kGradientPanel2.setkEndColor(Color.white);
                                 kGradientPanel2.setkStartColor(Color.white);
+                                kGradientPanel2.setBackground(Color.white);
+                                kGradientPanel2.setkBorderRadius(0);
                                 kGradientPanel2.setLayout(new FormLayout(
                                     "71dlu, 290dlu, 71dlu",
                                     "21dlu"));
 
                                 //---- btnSpatTransakcie ----
                                 btnSpatTransakcie.setText("Sp\u00e4\u0165");
-                                btnSpatTransakcie.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
+                                btnSpatTransakcie.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                 btnSpatTransakcie.setBorder(null);
-                                btnSpatTransakcie.setkStartColor(new Color(255, 161, 117));
-                                btnSpatTransakcie.setkEndColor(new Color(224, 31, 23));
+                                btnSpatTransakcie.setkStartColor(new Color(73, 196, 174));
+                                btnSpatTransakcie.setkEndColor(new Color(140, 219, 145));
                                 btnSpatTransakcie.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                                btnSpatTransakcie.setkHoverEndColor(Color.white);
+                                btnSpatTransakcie.setkHoverEndColor(new Color(73, 196, 174));
                                 btnSpatTransakcie.setkHoverStartColor(new Color(52, 188, 183));
-                                btnSpatTransakcie.setkHoverForeGround(Color.gray);
+                                btnSpatTransakcie.setkHoverForeGround(Color.white);
                                 btnSpatTransakcie.setBackground(Color.white);
                                 btnSpatTransakcie.setBorderPainted(false);
                                 btnSpatTransakcie.addActionListener(e -> btnSpatTransakcieActionPerformed());
                                 kGradientPanel2.add(btnSpatTransakcie, CC.xy(1, 1, CC.LEFT, CC.DEFAULT));
+
+                                //---- btnExportovat ----
+                                btnExportovat.setText("Exportova\u0165 do s\u00faboru");
+                                btnExportovat.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                btnExportovat.setBorder(null);
+                                btnExportovat.setkStartColor(new Color(255, 161, 117));
+                                btnExportovat.setkEndColor(new Color(239, 102, 96));
+                                btnExportovat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                btnExportovat.setkHoverEndColor(new Color(255, 161, 117));
+                                btnExportovat.setkHoverStartColor(new Color(239, 102, 96));
+                                btnExportovat.setkHoverForeGround(Color.white);
+                                btnExportovat.setBackground(Color.white);
+                                btnExportovat.setBorderPainted(false);
+                                btnExportovat.setMaximumSize(new Dimension(97, 24));
+                                btnExportovat.setMinimumSize(new Dimension(97, 24));
+                                btnExportovat.addActionListener(e -> btnDalsieTransakcie2ActionPerformed());
+                                kGradientPanel2.add(btnExportovat, new CellConstraints(2, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(0, 120, 0, 120)));
 
                                 //---- btnDalsieTransakcie ----
                                 btnDalsieTransakcie.setText("\u010eal\u0161ie");
@@ -2554,26 +2758,31 @@ public class AdministratorInterface extends JFrame {
     private JLabel label30;
     private JLabel label59;
     private JTextField txtJedLisRanajkyNazov1;
+    private JPanel panel5;
     private JComboBox<String> comBoxJedLisRanajkyNapoj1;
     private JTextField txtJedLisRanakKapacita1;
     private JTextField txtJedLisRanakCena1;
     private JLabel label44;
     private JTextField txtJedLisRanajkyNazov2;
+    private JPanel panel4;
     private JComboBox<String> comBoxJedLisRanajkyNapoj2;
     private JTextField txtJedLisRanakKapacita2;
     private JTextField txtJedLisRanakCena2;
     private JLabel label73;
     private JTextField txtJedLisRanajkyNazov3;
+    private JPanel panel3;
     private JComboBox<String> comBoxJedLisRanajkyNapoj3;
     private JTextField txtJedLisRanakKapacita3;
     private JTextField txtJedLisRanakCena3;
     private JLabel label78;
     private JTextField txtJedLisRanajkyNazov4;
+    private JPanel panel2;
     private JComboBox<String> comBoxJedLisRanajkyNapoj4;
     private JTextField txtJedLisRanakKapacita4;
     private JTextField txtJedLisRanakCena4;
     private JLabel label83;
     private JTextField txtJedLisRanajkyNazov5;
+    private JPanel panel1;
     private JComboBox<String> comBoxJedLisRanajkyNapoj5;
     private JTextField txtJedLisRanakKapacita5;
     private JTextField txtJedLisRanakCena5;
@@ -2589,26 +2798,31 @@ public class AdministratorInterface extends JFrame {
     private JLabel label77;
     private JLabel label80;
     private JTextField textField8;
+    private JPanel panel6;
     private JComboBox<String> comboBox12;
     private JTextField textField45;
     private JTextField textField46;
     private JLabel label81;
     private JTextField textField47;
+    private JPanel panel7;
     private JComboBox<String> comboBox13;
     private JTextField textField48;
     private JTextField textField49;
     private JLabel label82;
     private JTextField textField50;
+    private JPanel panel8;
     private JComboBox<String> comboBox14;
     private JTextField textField51;
     private JTextField textField52;
     private JLabel label85;
     private JTextField textField53;
+    private JPanel panel9;
     private JComboBox<String> comboBox15;
     private JTextField textField54;
     private JTextField textField55;
     private JLabel label86;
     private JTextField textField56;
+    private JPanel panel10;
     private JComboBox<String> comboBox16;
     private JTextField textField57;
     private JTextField textField58;
@@ -2653,7 +2867,7 @@ public class AdministratorInterface extends JFrame {
     private JLabel labelObjednavkyRanajkyNazov5;
     private JLabel labelObjednavkyRanajkyNapoj5;
     private JLabel labelObjednavkyRanajkyPocet5;
-    private JLabel label16;
+    private JLabel labelWarningPocetObjednavkyRanajky;
     private KGradientPanel panelObjednavkyObed;
     private KGradientPanel panelTableObed;
     private JLabel label38;
@@ -2680,7 +2894,7 @@ public class AdministratorInterface extends JFrame {
     private JLabel labelObjednavkyObedNazov5;
     private JLabel labelObjednavkyObedTakeway5;
     private JLabel labelObjednavkyObedPocet5;
-    private JLabel label70;
+    private JLabel labelWarningPocetObjednavkyObed;
     private KGradientPanel panelTransakcie;
     private KGradientPanel panelForCombosInTrans;
     private JLabel labelZobrazit2;
@@ -2723,6 +2937,7 @@ public class AdministratorInterface extends JFrame {
     private JLabel transakciaSuma5;
     private KGradientPanel kGradientPanel2;
     private KButton btnSpatTransakcie;
+    private KButton btnExportovat;
     private KButton btnDalsieTransakcie;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

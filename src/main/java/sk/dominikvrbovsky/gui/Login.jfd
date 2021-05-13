@@ -10,6 +10,7 @@ new FormModel {
 			name: "this"
 			"undecorated": true
 			"$locationPolicy": 1
+			"title": "Stravovací systém"
 			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 				"$columnSpecs": "286"
 				"$rowSpecs": "0, 24"
