@@ -400,7 +400,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyNazov1"
-													"text": "Parky s horčicou a chlebom"
 													"font": &Font4 new java.awt.Font( "Yu Gothic UI", 1, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -410,7 +409,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyNapoj1"
-													"text": "Minerálna voda"
 													"font": &Font5 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -420,7 +418,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyKapacita1"
-													"text": "78x"
 													"font": &Font6 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -430,7 +427,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyCena1"
-													"text": "4.87€"
 													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -469,7 +465,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyNazov2"
-													"text": "Praženica s rožkom"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -479,7 +474,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyNapoj2"
-													"text": "Cola"
 													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -489,7 +483,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyKapacita2"
-													"text": "45x"
 													"font": #Font6
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -499,7 +492,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyCena2"
-													"text": "2.45€"
 													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -538,7 +530,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyNazov3"
-													"text": "Lievance s lekvárom"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -548,7 +539,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyNapoj3"
-													"text": "Čaj"
 													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -558,7 +548,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyKapacita3"
-													"text": "78x"
 													"font": #Font6
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -568,7 +557,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyCena3"
-													"text": "3.72€"
 													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -607,7 +595,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyNazov4"
-													"text": "Volské oko s kečup a chlebom"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -617,7 +604,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyNapoj4"
-													"text": "Minerálna voda"
 													"font": &Font8 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -627,7 +613,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyKapacita4"
-													"text": "123x"
 													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -637,7 +622,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyCena4"
-													"text": "7.00€"
 													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -676,7 +660,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyNazov5"
-													"text": "Šunková bageta"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -686,7 +669,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyNapoj5"
-													"text": "Ďžús"
 													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -696,7 +678,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyKapacita5"
-													"text": "63x"
 													"font": #Font6
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -706,7 +687,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatRanajkyCena5"
-													"text": "3.49€"
 													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -834,14 +814,12 @@ new FormModel {
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "Kurací rezeň + zemiaková kaša"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 2
 													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedTakeaway1"
-													"text": "Áno"
 													"font": &Font10 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -851,7 +829,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedKapacita1"
-													"text": "78x"
 													"font": #Font6
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -861,7 +838,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedCena1"
-													"text": "3.87€"
 													"font": #Font10
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -900,7 +876,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedNazov2"
-													"text": "Bryndzové halušky"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -910,7 +885,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedTakeaway2"
-													"text": "Nie"
 													"font": #Font10
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -920,7 +894,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedKapacita2"
-													"text": "417x"
 													"font": #Font6
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -930,7 +903,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedCena2"
-													"text": "7.45€"
 													"font": #Font10
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -969,7 +941,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedNazov3"
-													"text": "Palacinky s lekvárom"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -979,7 +950,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedTakeaway3"
-													"text": "Áno"
 													"font": #Font10
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -989,7 +959,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedKapacita3"
-													"text": "29x"
 													"font": #Font6
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -999,7 +968,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedCena3"
-													"text": "2.21€"
 													"font": #Font10
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1038,7 +1006,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedNazov4"
-													"text": "Pizza Hawai"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1048,7 +1015,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedTakeaway4"
-													"text": "Áno"
 													"font": #Font10
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1058,7 +1024,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedKapacita4"
-													"text": "75x"
 													"font": #Font6
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1068,7 +1033,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedCena4"
-													"text": "4.25€"
 													"font": #Font10
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1107,7 +1071,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedNazov5"
-													"text": "Šunková bageta"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1117,7 +1080,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedTakeaway5"
-													"text": "Nie"
 													"font": #Font10
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1127,7 +1089,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedKapacita5"
-													"text": "0x"
 													"font": #Font6
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1137,7 +1098,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelObjednatObedCena5"
-													"text": "1.50€"
 													"font": #Font10
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1285,7 +1245,7 @@ new FormModel {
 									add( new FormComponent( "keeptoo.KButton" ) {
 										name: "btnRanajkyBurza"
 										"text": "Pridať do burzy"
-										"font": #Font7
+										"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 										"kStartColor": #Color21
 										"kEndColor": #Color22
@@ -1393,7 +1353,7 @@ new FormModel {
 									add( new FormComponent( "keeptoo.KButton" ) {
 										name: "btnObedBurza"
 										"text": "Pridať do burzy"
-										"font": #Font7
+										"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
 										"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 										"kStartColor": #Color21
 										"kEndColor": #Color22
@@ -1580,7 +1540,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyNazov1"
-													"text": "Parky s horčicou a chlebom"
 													"font": &Font15 new java.awt.Font( "Yu Gothic UI", 1, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1590,7 +1549,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyNapoj1"
-													"text": "Minerálna voda"
 													"font": &Font16 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1600,7 +1558,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyPocet1"
-													"text": "0x"
 													"font": &Font17 new java.awt.Font( "Yu Gothic UI", 1, 19 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1610,7 +1567,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyCena1"
-													"text": "4.87€"
 													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1649,7 +1605,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyNazov2"
-													"text": "Praženica s rožkom"
 													"font": #Font15
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1659,7 +1614,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyNapoj2"
-													"text": "Cola"
 													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1669,7 +1623,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyPocet2"
-													"text": "5x"
 													"font": #Font17
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1679,7 +1632,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyCena2"
-													"text": "2.45€"
 													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1718,7 +1670,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyNazov3"
-													"text": "Lievance s lekvárom"
 													"font": #Font15
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1728,7 +1679,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyNapoj3"
-													"text": "Čaj"
 													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1738,7 +1688,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyPocet3"
-													"text": "12x"
 													"font": #Font17
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1748,7 +1697,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyCena3"
-													"text": "3.72€"
 													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1787,7 +1735,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyNazov4"
-													"text": "Volské oko s kečup a chlebom"
 													"font": #Font15
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1797,7 +1744,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyNapoj4"
-													"text": "Minerálna voda"
 													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1807,7 +1753,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyPocet4"
-													"text": "0x"
 													"font": #Font17
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1817,7 +1762,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyCena4"
-													"text": "7.00€"
 													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1856,7 +1800,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyNazov5"
-													"text": "Šunková bageta"
 													"font": #Font15
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1866,7 +1809,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyNapoj5"
-													"text": "Ďžús"
 													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1876,7 +1818,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyPocet5"
-													"text": "28x"
 													"font": #Font17
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -1886,7 +1827,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaRanajkyCena5"
-													"text": "3.49€"
 													"font": #Font16
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2014,14 +1954,12 @@ new FormModel {
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "Kurací rezeň + zemiaková kaša"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 2
 													"gridY": 2
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedTakeaway1"
-													"text": "Áno"
 													"font": &Font18 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2031,7 +1969,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedPocet1"
-													"text": "78x"
 													"font": &Font19 new java.awt.Font( "Yu Gothic UI", 1, 19 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2041,7 +1978,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedCena1"
-													"text": "3.87€"
 													"font": #Font18
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2080,7 +2016,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedNazov2"
-													"text": "Bryndzové halušky"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2090,7 +2025,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedTakeaway2"
-													"text": "Nie"
 													"font": #Font18
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2100,7 +2034,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedPocet2"
-													"text": "417x"
 													"font": #Font19
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2110,7 +2043,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedCena2"
-													"text": "7.45€"
 													"font": #Font18
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2149,7 +2081,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedNazov3"
-													"text": "Palacinky s lekvárom"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2159,7 +2090,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedTakeaway3"
-													"text": "Áno"
 													"font": #Font18
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2169,7 +2099,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedPocet3"
-													"text": "29x"
 													"font": #Font19
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2179,7 +2108,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedCena3"
-													"text": "2.21€"
 													"font": #Font18
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2218,7 +2146,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedNazov4"
-													"text": "Pizza Hawai"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2228,7 +2155,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedTakeaway4"
-													"text": "Áno"
 													"font": #Font18
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2238,7 +2164,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedPocet4"
-													"text": "75x"
 													"font": #Font19
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2248,7 +2173,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedCena4"
-													"text": "4.25€"
 													"font": #Font18
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2287,7 +2211,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedNazov5"
-													"text": "Šunková bageta"
 													"font": #Font4
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2297,7 +2220,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedTakeaway5"
-													"text": "Nie"
 													"font": #Font18
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2307,7 +2229,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedPocet5"
-													"text": "0x"
 													"font": #Font19
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2317,7 +2238,6 @@ new FormModel {
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelBurzaObedCena5"
-													"text": "1.50€"
 													"font": #Font18
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
@@ -2742,7 +2662,6 @@ new FormModel {
 													"horizontalAlignment": 0
 													"font": &Font25 new java.awt.Font( "Yu Gothic UI", 1, 17 )
 													"border": #MatteBorder2
-													"text": "Vklad"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridY": 2
 												} )
@@ -2751,7 +2670,6 @@ new FormModel {
 													"font": &Font26 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "12.5.2021"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 2
 													"gridY": 2
@@ -2761,7 +2679,6 @@ new FormModel {
 													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "5:35"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 3
 													"gridY": 2
@@ -2771,7 +2688,6 @@ new FormModel {
 													"font": #Font6
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "7.00€"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 4
 													"gridY": 2
@@ -2781,7 +2697,6 @@ new FormModel {
 													"horizontalAlignment": 0
 													"font": #Font25
 													"border": #MatteBorder2
-													"text": "Výber"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridY": 3
 												} )
@@ -2790,7 +2705,6 @@ new FormModel {
 													"font": #Font26
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "3.4.2021"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 2
 													"gridY": 3
@@ -2800,7 +2714,6 @@ new FormModel {
 													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "18:08"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 3
 													"gridY": 3
@@ -2810,7 +2723,6 @@ new FormModel {
 													"font": #Font6
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "20.50€"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridY": 3
 													"gridX": 4
@@ -2820,7 +2732,6 @@ new FormModel {
 													"horizontalAlignment": 0
 													"font": #Font25
 													"border": #MatteBorder2
-													"text": "Výber"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 4
@@ -2830,7 +2741,6 @@ new FormModel {
 													"font": #Font26
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "5.10.2021"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 2
 													"gridY": 4
@@ -2840,7 +2750,6 @@ new FormModel {
 													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "23:48"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 3
 													"gridY": 4
@@ -2850,7 +2759,6 @@ new FormModel {
 													"font": #Font6
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "15.00€"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 4
 													"gridY": 4
@@ -2860,7 +2768,6 @@ new FormModel {
 													"horizontalAlignment": 0
 													"font": #Font25
 													"border": #MatteBorder2
-													"text": "Vklad"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 5
@@ -2870,7 +2777,6 @@ new FormModel {
 													"font": #Font26
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "28.8.2021"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 2
 													"gridY": 5
@@ -2880,7 +2786,6 @@ new FormModel {
 													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "7:10"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 3
 													"gridY": 5
@@ -2890,7 +2795,6 @@ new FormModel {
 													"font": #Font8
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "1.50€"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 4
 													"gridY": 5
@@ -2900,7 +2804,6 @@ new FormModel {
 													"horizontalAlignment": 0
 													"font": #Font25
 													"border": #MatteBorder2
-													"text": "Vklad"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 1
 													"gridY": 6
@@ -2910,7 +2813,6 @@ new FormModel {
 													"font": #Font26
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "14.9.2021"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 2
 													"gridY": 6
@@ -2920,7 +2822,6 @@ new FormModel {
 													"font": #Font5
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "14:52"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 3
 													"gridY": 6
@@ -2930,7 +2831,6 @@ new FormModel {
 													"font": #Font6
 													"horizontalAlignment": 0
 													"border": #MatteBorder2
-													"text": "10.00€"
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 4
 													"gridY": 6
@@ -2948,14 +2848,14 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnSpatTransakcie"
 													"text": "Späť"
-													"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
+													"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": new java.awt.Color( 255, 161, 117, 255 )
 													"kEndColor": new java.awt.Color( 224, 31, 23, 255 )
 													"cursor": new java.awt.Cursor( 12 )
-													"kHoverEndColor": new java.awt.Color( 255, 255, 255, 255 )
-													"kHoverStartColor": new java.awt.Color( 52, 188, 183, 255 )
-													"kHoverForeGround": sfield java.awt.Color gray
+													"kHoverEndColor": new java.awt.Color( 255, 161, 117, 255 )
+													"kHoverStartColor": new java.awt.Color( 244, 115, 84, 255 )
+													"kHoverForeGround": sfield java.awt.Color white
 													"background": new java.awt.Color( 255, 255, 255, 255 )
 													"borderPainted": false
 													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnSpatTransakcieActionPerformed", false ) )
@@ -2965,7 +2865,7 @@ new FormModel {
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnDalsieTransakcie"
 													"text": "Ďalšie"
-													"font": #Font21
+													"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 													"kStartColor": #Color21
 													"kEndColor": #Color22

@@ -657,13 +657,13 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-                . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing
-                .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-                Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-                ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-                public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName (
-                ) ) )throw new RuntimeException( ) ;} } );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+                swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border
+                . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
+                ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder
+                ( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+                .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
+                ( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1714,9 +1714,9 @@ public class AdministratorInterface extends JFrame {
                                 btnJedalnyListokSpatObed.setkStartColor(new Color(255, 161, 117));
                                 btnJedalnyListokSpatObed.setkEndColor(new Color(224, 31, 23));
                                 btnJedalnyListokSpatObed.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                                btnJedalnyListokSpatObed.setkHoverEndColor(Color.white);
-                                btnJedalnyListokSpatObed.setkHoverStartColor(new Color(52, 188, 183));
-                                btnJedalnyListokSpatObed.setkHoverForeGround(Color.gray);
+                                btnJedalnyListokSpatObed.setkHoverEndColor(new Color(255, 161, 117));
+                                btnJedalnyListokSpatObed.setkHoverStartColor(new Color(244, 115, 84));
+                                btnJedalnyListokSpatObed.setkHoverForeGround(Color.white);
                                 btnJedalnyListokSpatObed.setBackground(Color.white);
                                 btnJedalnyListokSpatObed.setBorderPainted(false);
                                 btnJedalnyListokSpatObed.addActionListener(e -> btnJedalnyListokSpatObedActionPerformed());
@@ -1780,8 +1780,8 @@ public class AdministratorInterface extends JFrame {
                                     btnJedalnyListokVytvoritInside.setkStartColor(new Color(255, 161, 117));
                                     btnJedalnyListokVytvoritInside.setkEndColor(new Color(224, 31, 23));
                                     btnJedalnyListokVytvoritInside.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                                    btnJedalnyListokVytvoritInside.setkHoverEndColor(new Color(73, 196, 174));
-                                    btnJedalnyListokVytvoritInside.setkHoverStartColor(new Color(52, 188, 183));
+                                    btnJedalnyListokVytvoritInside.setkHoverEndColor(new Color(255, 161, 117));
+                                    btnJedalnyListokVytvoritInside.setkHoverStartColor(new Color(244, 115, 84));
                                     btnJedalnyListokVytvoritInside.setkHoverForeGround(Color.white);
                                     btnJedalnyListokVytvoritInside.setBackground(Color.white);
                                     btnJedalnyListokVytvoritInside.setBorderPainted(false);
@@ -2455,13 +2455,11 @@ public class AdministratorInterface extends JFrame {
                                 transakciaPouzivatel1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaPouzivatel1.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaPouzivatel1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaPouzivatel1.setText("Dominik Vrbovsk\u00fd");
                                 panelTableTrans.add(transakciaPouzivatel1, "cell 0 1");
 
                                 //---- transakciaTyp1 ----
                                 transakciaTyp1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaTyp1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaTyp1.setText("Vklad");
                                 transakciaTyp1.setHorizontalAlignment(SwingConstants.CENTER);
                                 panelTableTrans.add(transakciaTyp1, "cell 1 1");
 
@@ -2469,161 +2467,138 @@ public class AdministratorInterface extends JFrame {
                                 transakciaDatum1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaDatum1.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaDatum1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaDatum1.setText("12.5.2021");
                                 panelTableTrans.add(transakciaDatum1, "cell 2 1");
 
                                 //---- transakciaCas1 ----
                                 transakciaCas1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaCas1.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaCas1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaCas1.setText("5:35");
                                 panelTableTrans.add(transakciaCas1, "cell 3 1");
 
                                 //---- transakciaSuma1 ----
                                 transakciaSuma1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaSuma1.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaSuma1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaSuma1.setText("7.00\u20ac");
                                 panelTableTrans.add(transakciaSuma1, "cell 4 1");
 
                                 //---- transakciaPouzivatel2 ----
                                 transakciaPouzivatel2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaPouzivatel2.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaPouzivatel2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaPouzivatel2.setText("Pavla Hor\u0148\u00e1kov\u00e1");
                                 panelTableTrans.add(transakciaPouzivatel2, "cell 0 2");
 
                                 //---- transakciaTyp2 ----
                                 transakciaTyp2.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaTyp2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaTyp2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaTyp2.setText("V\u00fdber");
                                 panelTableTrans.add(transakciaTyp2, "cell 1 2");
 
                                 //---- transakciaDatum2 ----
                                 transakciaDatum2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaDatum2.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaDatum2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaDatum2.setText("3.4.2021");
                                 panelTableTrans.add(transakciaDatum2, "cell 2 2");
 
                                 //---- transakciaCas2 ----
                                 transakciaCas2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaCas2.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaCas2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaCas2.setText("18:08");
                                 panelTableTrans.add(transakciaCas2, "cell 3 2");
 
                                 //---- transakciaSuma2 ----
                                 transakciaSuma2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaSuma2.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaSuma2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaSuma2.setText("20.50\u20ac");
                                 panelTableTrans.add(transakciaSuma2, "cell 4 2");
 
                                 //---- transakciaPouzivatel3 ----
                                 transakciaPouzivatel3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaPouzivatel3.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaPouzivatel3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaPouzivatel3.setText("Alexandra Podmanick\u00e1");
                                 panelTableTrans.add(transakciaPouzivatel3, "cell 0 3");
 
                                 //---- transakciaTyp3 ----
                                 transakciaTyp3.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaTyp3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaTyp3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaTyp3.setText("V\u00fdber");
                                 panelTableTrans.add(transakciaTyp3, "cell 1 3");
 
                                 //---- transakciaDatum3 ----
                                 transakciaDatum3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaDatum3.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaDatum3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaDatum3.setText("5.10.2021");
                                 panelTableTrans.add(transakciaDatum3, "cell 2 3");
 
                                 //---- transakciaCas3 ----
                                 transakciaCas3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaCas3.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaCas3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaCas3.setText("23:48");
                                 panelTableTrans.add(transakciaCas3, "cell 3 3");
 
                                 //---- transakciaSuma3 ----
                                 transakciaSuma3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaSuma3.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaSuma3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaSuma3.setText("15.00\u20ac");
                                 panelTableTrans.add(transakciaSuma3, "cell 4 3");
 
                                 //---- transakciaPouzivatel4 ----
                                 transakciaPouzivatel4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaPouzivatel4.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaPouzivatel4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaPouzivatel4.setText("J\u00e1n M\u00fadry");
                                 panelTableTrans.add(transakciaPouzivatel4, "cell 0 4");
 
                                 //---- transakciaTyp4 ----
                                 transakciaTyp4.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaTyp4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaTyp4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaTyp4.setText("Vklad");
                                 panelTableTrans.add(transakciaTyp4, "cell 1 4");
 
                                 //---- transakciaDatum4 ----
                                 transakciaDatum4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaDatum4.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaDatum4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaDatum4.setText("28.8.2021");
                                 panelTableTrans.add(transakciaDatum4, "cell 2 4");
 
                                 //---- transakciaCas4 ----
                                 transakciaCas4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaCas4.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaCas4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaCas4.setText("7:10");
                                 panelTableTrans.add(transakciaCas4, "cell 3 4");
 
                                 //---- transakciaSuma4 ----
                                 transakciaSuma4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaSuma4.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaSuma4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaSuma4.setText("1.50\u20ac");
                                 panelTableTrans.add(transakciaSuma4, "cell 4 4");
 
                                 //---- transakciaPouzivatel5 ----
                                 transakciaPouzivatel5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaPouzivatel5.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaPouzivatel5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaPouzivatel5.setText("Eva Sege\u010dov\u00e1");
                                 panelTableTrans.add(transakciaPouzivatel5, "cell 0 5");
 
                                 //---- transakciaTyp5 ----
                                 transakciaTyp5.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaTyp5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaTyp5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaTyp5.setText("Vklad");
                                 panelTableTrans.add(transakciaTyp5, "cell 1 5");
 
                                 //---- transakciaDatum5 ----
                                 transakciaDatum5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaDatum5.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaDatum5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaDatum5.setText("14.9.2021");
                                 panelTableTrans.add(transakciaDatum5, "cell 2 5");
 
                                 //---- transakciaCas5 ----
                                 transakciaCas5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaCas5.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaCas5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaCas5.setText("14:52");
                                 panelTableTrans.add(transakciaCas5, "cell 3 5");
 
                                 //---- transakciaSuma5 ----
                                 transakciaSuma5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                 transakciaSuma5.setHorizontalAlignment(SwingConstants.CENTER);
                                 transakciaSuma5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                transakciaSuma5.setText("10.00\u20ac");
                                 panelTableTrans.add(transakciaSuma5, "cell 4 5");
                             }
                             panelTransakcie.add(panelTableTrans, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,

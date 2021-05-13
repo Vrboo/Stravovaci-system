@@ -1021,9 +1021,9 @@ new FormModel {
 										"kStartColor": new java.awt.Color( 255, 161, 117, 255 )
 										"kEndColor": new java.awt.Color( 224, 31, 23, 255 )
 										"cursor": #Cursor1
-										"kHoverEndColor": new java.awt.Color( 255, 255, 255, 255 )
-										"kHoverStartColor": #Color16
-										"kHoverForeGround": sfield java.awt.Color gray
+										"kHoverEndColor": new java.awt.Color( 255, 161, 117, 255 )
+										"kHoverStartColor": new java.awt.Color( 244, 115, 84, 255 )
+										"kHoverForeGround": sfield java.awt.Color white
 										"background": #Color17
 										"borderPainted": false
 										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnJedalnyListokSpatObedActionPerformed", false ) )
@@ -1093,10 +1093,10 @@ new FormModel {
 											"kStartColor": new java.awt.Color( 255, 161, 117, 255 )
 											"kEndColor": new java.awt.Color( 224, 31, 23, 255 )
 											"cursor": &Cursor2 new java.awt.Cursor( 12 )
-											"kHoverEndColor": &Color19 new java.awt.Color( 73, 196, 174, 255 )
-											"kHoverStartColor": &Color20 new java.awt.Color( 52, 188, 183, 255 )
+											"kHoverEndColor": new java.awt.Color( 255, 161, 117, 255 )
+											"kHoverStartColor": new java.awt.Color( 244, 115, 84, 255 )
 											"kHoverForeGround": sfield java.awt.Color white
-											"background": &Color21 new java.awt.Color( 255, 255, 255, 255 )
+											"background": &Color19 new java.awt.Color( 255, 255, 255, 255 )
 											"borderPainted": false
 											"maximumSize": &Dimension0 new java.awt.Dimension( 97, 24 )
 											"minimumSize": &Dimension1 new java.awt.Dimension( 97, 24 )
@@ -1112,10 +1112,10 @@ new FormModel {
 											"kStartColor": new java.awt.Color( 73, 196, 174, 255 )
 											"kEndColor": new java.awt.Color( 140, 219, 145, 255 )
 											"cursor": #Cursor2
-											"kHoverEndColor": #Color19
-											"kHoverStartColor": #Color20
+											"kHoverEndColor": new java.awt.Color( 73, 196, 174, 255 )
+											"kHoverStartColor": new java.awt.Color( 52, 188, 183, 255 )
 											"kHoverForeGround": sfield java.awt.Color white
-											"background": #Color21
+											"background": #Color19
 											"borderPainted": false
 											"maximumSize": #Dimension0
 											"minimumSize": #Dimension1
@@ -1175,12 +1175,12 @@ new FormModel {
 											"kEndColor": sfield java.awt.Color darkGray
 											"kBorderRadius": 0
 											"kAllowTab": true
-											"kHoverEndColor": &Color22 new java.awt.Color( 70, 70, 70, 255 )
-											"kHoverStartColor": &Color23 new java.awt.Color( 70, 70, 70, 255 )
-											"kIndicatorColor": &Color24 new java.awt.Color( 38, 184, 190, 255 )
+											"kHoverEndColor": &Color20 new java.awt.Color( 70, 70, 70, 255 )
+											"kHoverStartColor": &Color21 new java.awt.Color( 70, 70, 70, 255 )
+											"kIndicatorColor": &Color22 new java.awt.Color( 38, 184, 190, 255 )
 											"kIndicatorThickness": 0
 											"kBackGroundColor": sfield java.awt.Color white
-											"kSelectedColor": &Color25 new java.awt.Color( 67, 67, 67, 255 )
+											"kSelectedColor": &Color23 new java.awt.Color( 67, 67, 67, 255 )
 											"kHoverForeGround": new java.awt.Color( 255, 255, 255, 255 )
 											"cursor": &Cursor3 new java.awt.Cursor( 12 )
 											"verticalAlignment": 1
@@ -1196,12 +1196,12 @@ new FormModel {
 											"kEndColor": sfield java.awt.Color darkGray
 											"kBorderRadius": 0
 											"kAllowTab": true
-											"kHoverEndColor": #Color22
-											"kHoverStartColor": #Color23
-											"kIndicatorColor": #Color24
+											"kHoverEndColor": #Color20
+											"kHoverStartColor": #Color21
+											"kIndicatorColor": #Color22
 											"kIndicatorThickness": 0
 											"kBackGroundColor": sfield java.awt.Color white
-											"kSelectedColor": #Color25
+											"kSelectedColor": #Color23
 											"kHoverForeGround": sfield java.awt.Color white
 											"cursor": #Cursor3
 											"verticalAlignment": 1
@@ -1235,10 +1235,10 @@ new FormModel {
 											} ) {
 												name: "panelTableRanajky"
 												"kEndColor": sfield java.awt.Color white
-												"kStartColor": &Color26 new java.awt.Color( 255, 255, 255, 255 )
+												"kStartColor": &Color24 new java.awt.Color( 255, 255, 255, 255 )
 												"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 												"kBorderRadius": 0
-												"background": &Color27 new java.awt.Color( 255, 255, 255, 145 )
+												"background": &Color25 new java.awt.Color( 255, 255, 255, 145 )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label36"
 													"border": &MatteBorder9 new javax.swing.border.MatteBorder( 0, 0, 1, 0, new java.awt.Color( 55, 55, 55, 255 ) )
@@ -1272,7 +1272,7 @@ new FormModel {
 													"font": #Font7
 													"horizontalAlignment": 0
 													"border": #MatteBorder9
-													"background": &Color28 new java.awt.Color( 255, 255, 255, 255 )
+													"background": &Color26 new java.awt.Color( 255, 255, 255, 255 )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 4
 													"gridY": 1
@@ -1489,10 +1489,10 @@ new FormModel {
 											} ) {
 												name: "panelTableObed"
 												"kEndColor": sfield java.awt.Color white
-												"kStartColor": #Color26
+												"kStartColor": #Color24
 												"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 												"kBorderRadius": 0
-												"background": #Color27
+												"background": #Color25
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "label38"
 													"border": #MatteBorder9
@@ -1526,7 +1526,7 @@ new FormModel {
 													"font": #Font7
 													"horizontalAlignment": 0
 													"border": #MatteBorder9
-													"background": #Color28
+													"background": #Color26
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 4
 													"gridY": 1
@@ -1883,7 +1883,7 @@ new FormModel {
 										"font": #Font15
 										"horizontalAlignment": 0
 										"border": #MatteBorder11
-										"background": &Color29 new java.awt.Color( 255, 255, 255, 255 )
+										"background": &Color27 new java.awt.Color( 255, 255, 255, 255 )
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 4 0"
 									} )
@@ -1892,7 +1892,6 @@ new FormModel {
 										"font": &Font16 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 										"horizontalAlignment": 0
 										"border": &MatteBorder12 new javax.swing.border.MatteBorder( 0, 0, 1, 0, new java.awt.Color( 55, 55, 55, 255 ) )
-										"text": "Dominik Vrbovský"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 0 1"
 									} )
@@ -1900,7 +1899,6 @@ new FormModel {
 										name: "transakciaTyp1"
 										"font": &Font17 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 										"border": #MatteBorder12
-										"text": "Vklad"
 										"horizontalAlignment": 0
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 1 1"
@@ -1910,7 +1908,6 @@ new FormModel {
 										"font": #Font16
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "12.5.2021"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 2 1"
 									} )
@@ -1919,7 +1916,6 @@ new FormModel {
 										"font": &Font18 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "5:35"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 3 1"
 									} )
@@ -1928,7 +1924,6 @@ new FormModel {
 										"font": &Font19 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "7.00€"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 4 1"
 									} )
@@ -1937,7 +1932,6 @@ new FormModel {
 										"font": #Font16
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "Pavla Horňáková"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 0 2"
 									} )
@@ -1946,7 +1940,6 @@ new FormModel {
 										"horizontalAlignment": 0
 										"font": #Font17
 										"border": #MatteBorder12
-										"text": "Výber"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 1 2"
 									} )
@@ -1955,7 +1948,6 @@ new FormModel {
 										"font": #Font16
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "3.4.2021"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 2 2"
 									} )
@@ -1964,7 +1956,6 @@ new FormModel {
 										"font": #Font18
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "18:08"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 3 2"
 									} )
@@ -1973,7 +1964,6 @@ new FormModel {
 										"font": #Font19
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "20.50€"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 4 2"
 									} )
@@ -1982,7 +1972,6 @@ new FormModel {
 										"font": #Font16
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "Alexandra Podmanická"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 0 3"
 									} )
@@ -1991,7 +1980,6 @@ new FormModel {
 										"horizontalAlignment": 0
 										"font": #Font17
 										"border": #MatteBorder12
-										"text": "Výber"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 1 3"
 									} )
@@ -2000,7 +1988,6 @@ new FormModel {
 										"font": #Font16
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "5.10.2021"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 2 3"
 									} )
@@ -2009,7 +1996,6 @@ new FormModel {
 										"font": #Font18
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "23:48"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 3 3"
 									} )
@@ -2018,7 +2004,6 @@ new FormModel {
 										"font": #Font19
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "15.00€"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 4 3"
 									} )
@@ -2027,7 +2012,6 @@ new FormModel {
 										"font": #Font16
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "Ján Múdry"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 0 4"
 									} )
@@ -2036,7 +2020,6 @@ new FormModel {
 										"horizontalAlignment": 0
 										"font": #Font17
 										"border": #MatteBorder12
-										"text": "Vklad"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 1 4"
 									} )
@@ -2045,7 +2028,6 @@ new FormModel {
 										"font": #Font16
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "28.8.2021"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 2 4"
 									} )
@@ -2054,7 +2036,6 @@ new FormModel {
 										"font": &Font20 new java.awt.Font( "Yu Gothic UI", 0, 17 )
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "7:10"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 3 4"
 									} )
@@ -2063,7 +2044,6 @@ new FormModel {
 										"font": #Font20
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "1.50€"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 4 4"
 									} )
@@ -2072,7 +2052,6 @@ new FormModel {
 										"font": #Font16
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "Eva Segečová"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 0 5"
 									} )
@@ -2081,7 +2060,6 @@ new FormModel {
 										"horizontalAlignment": 0
 										"font": #Font17
 										"border": #MatteBorder12
-										"text": "Vklad"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 1 5"
 									} )
@@ -2090,7 +2068,6 @@ new FormModel {
 										"font": #Font16
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "14.9.2021"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 2 5"
 									} )
@@ -2099,7 +2076,6 @@ new FormModel {
 										"font": #Font18
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "14:52"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 3 5"
 									} )
@@ -2108,7 +2084,6 @@ new FormModel {
 										"font": #Font19
 										"horizontalAlignment": 0
 										"border": #MatteBorder12
-										"text": "10.00€"
 									}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 										"value": "cell 4 5"
 									} )
@@ -2152,7 +2127,7 @@ new FormModel {
 										"kHoverEndColor": new java.awt.Color( 255, 161, 117, 255 )
 										"kHoverStartColor": new java.awt.Color( 239, 102, 96, 255 )
 										"kHoverForeGround": sfield java.awt.Color white
-										"background": #Color29
+										"background": #Color27
 										"borderPainted": false
 										"maximumSize": &Dimension2 new java.awt.Dimension( 97, 24 )
 										"minimumSize": &Dimension3 new java.awt.Dimension( 97, 24 )
@@ -2172,7 +2147,7 @@ new FormModel {
 										"kHoverEndColor": new java.awt.Color( 73, 196, 174, 255 )
 										"kHoverStartColor": new java.awt.Color( 52, 188, 183, 255 )
 										"kHoverForeGround": sfield java.awt.Color white
-										"background": #Color29
+										"background": #Color27
 										"borderPainted": false
 										"maximumSize": #Dimension2
 										"minimumSize": #Dimension3
