@@ -222,12 +222,13 @@ public class Registration extends JFrame {
             myJPanelBackLogin.setBackground(Color.white);
             myJPanelBackLogin.setkBorderRadius(0);
             myJPanelBackLogin.setkGradientFocus(750);
-            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+            . border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder
+            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
+            awt .Font .BOLD ,12 ), java. awt. Color. red) ,myJPanelBackLogin. getBorder( )) )
+            ; myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+            ;
             myJPanelBackLogin.setLayout(new GridBagLayout());
             ((GridBagLayout)myJPanelBackLogin.getLayout()).rowHeights = new int[] {0, 19, 24};
 
@@ -244,7 +245,7 @@ public class Registration extends JFrame {
                     "fill:79dlu, 4*(4dlu, fill:30dlu), 10dlu, fill:30dlu, 0dlu, 30dlu, 0dlu, 9dlu"));
 
                 //---- labelIcon ----
-                labelIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_add_user_male_100px.png"));
+                labelIcon.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_add_user_male_100px.png")));
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
                 panelRegistration.add(labelIcon, new CellConstraints(1, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(10, 0, 0, 0)));
 
@@ -431,7 +432,7 @@ public class Registration extends JFrame {
             labelStravovaciSystem.setForeground(new Color(70, 70, 70));
 
             //---- labelX ----
-            labelX.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png"));
+            labelX.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_x_18px.png")));
             labelX.setHorizontalAlignment(SwingConstants.CENTER);
             labelX.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             labelX.addMouseListener(new MouseAdapter() {

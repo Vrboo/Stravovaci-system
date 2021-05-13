@@ -37,7 +37,7 @@ new FormModel {
 					"kFillBackground": false
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "labelIcon"
-						"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_add_user_male_100px.png" )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/icons8_add_user_male_100px.png" )
 						"horizontalAlignment": 0
 					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 						"gridX": 1
@@ -197,7 +197,7 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "labelX"
-					"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png" )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/icons8_x_18px.png" )
 					"horizontalAlignment": 0
 					"cursor": new java.awt.Cursor( 12 )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "labelXMouseClicked", false ) )

@@ -617,12 +617,12 @@ public class UserInterface extends JFrame {
     
     private void labelXObjednatMouseEntered() {
         labelX.setIcon(
-                new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px_6.png"));
+                new ImageIcon("src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px_6.png"));
     }
 
     private void labelXObjednatMouseExited() {
         labelX.setIcon(new 
-                ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png"));
+                ImageIcon("src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px.png"));
     }
 
     private void labelXObjednatMouseClicked() {
@@ -1350,17 +1350,17 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-                javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax
-                .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-                .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-                .Color.red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.
-                PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".
-                equals(e.getPropertyName()))throw new RuntimeException();}});
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+                swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border
+                . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog"
+                ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder
+                ( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+                .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException
+                ( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
-                labelIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_checked_user_male_85px_1.png"));
+                labelIcon.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_checked_user_male_85px_1.png")));
 
                 //---- labelUsername ----
                 labelUsername.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1577,7 +1577,7 @@ public class UserInterface extends JFrame {
                         labelDatum.setHorizontalAlignment(SwingConstants.LEFT);
 
                         //---- labelX ----
-                        labelX.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_x_18px.png"));
+                        labelX.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_x_18px.png")));
                         labelX.setHorizontalAlignment(SwingConstants.CENTER);
                         labelX.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                         labelX.addMouseListener(new MouseAdapter() {
@@ -3853,7 +3853,7 @@ public class UserInterface extends JFrame {
                                             //---- labelLockIcon ----
                                             labelLockIcon.setHorizontalAlignment(SwingConstants.CENTER);
                                             labelLockIcon.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
-                                            labelLockIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_lock_80px_2.png"));
+                                            labelLockIcon.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_lock_80px_2.png")));
                                             panelHesloInside.add(labelLockIcon, new CellConstraints(1, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 0, 0, 0)));
 
                                             //---- passwordHesloInside ----
@@ -4107,7 +4107,7 @@ public class UserInterface extends JFrame {
                                 //---- labelAdminIcon ----
                                 labelAdminIcon.setHorizontalAlignment(SwingConstants.CENTER);
                                 labelAdminIcon.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
-                                labelAdminIcon.setIcon(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_user_shield_85px_1.png"));
+                                labelAdminIcon.setIcon(new ImageIcon(getClass().getResource("/icons/icons8_user_shield_85px_1.png")));
                                 panelAdminInside.add(labelAdminIcon, new CellConstraints(1, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(9, 0, 0, 0)));
 
                                 //---- passwordAdmin ----
