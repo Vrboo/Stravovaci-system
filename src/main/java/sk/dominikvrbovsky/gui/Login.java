@@ -155,13 +155,11 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBackground(Color.white);
             myJPanelBackLogin.setkBorderRadius(0);
             myJPanelBackLogin.setkGradientFocus(750);
-            myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-            swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border
-            .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog"
-            ,java.awt.Font.BOLD,12),java.awt.Color.red),myJPanelBackLogin. getBorder
-            ()));myJPanelBackLogin. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-            .beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException
-            ();}});
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+            0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+            . BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+            red) ,myJPanelBackLogin. getBorder( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+            beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             myJPanelBackLogin.setLayout(new GridBagLayout());
             ((GridBagLayout)myJPanelBackLogin.getLayout()).columnWidths = new int[] {286};
             ((GridBagLayout)myJPanelBackLogin.getLayout()).rowHeights = new int[] {0, 24};
@@ -259,9 +257,9 @@ public class Login extends JFrame {
                 buttonRegistrovat.setFont(new Font("Yu Gothic UI", Font.BOLD, 19));
                 buttonRegistrovat.setBorder(null);
                 buttonRegistrovat.setkStartColor(new Color(255, 161, 117));
-                buttonRegistrovat.setkEndColor(new Color(255, 58, 58));
+                buttonRegistrovat.setkEndColor(new Color(239, 102, 96));
                 buttonRegistrovat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                buttonRegistrovat.setkHoverStartColor(new Color(255, 84, 84));
+                buttonRegistrovat.setkHoverStartColor(new Color(239, 102, 96));
                 buttonRegistrovat.setkHoverForeGround(Color.white);
                 buttonRegistrovat.setBackground(Color.white);
                 buttonRegistrovat.setBorderPainted(false);

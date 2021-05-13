@@ -143,9 +143,9 @@ new FormModel {
 						"font": new java.awt.Font( "Yu Gothic UI", 1, 19 )
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"kStartColor": new java.awt.Color( 255, 161, 117, 255 )
-						"kEndColor": new java.awt.Color( 255, 58, 58, 255 )
+						"kEndColor": new java.awt.Color( 239, 102, 96, 255 )
 						"cursor": #Cursor0
-						"kHoverStartColor": new java.awt.Color( 255, 84, 84, 255 )
+						"kHoverStartColor": new java.awt.Color( 239, 102, 96, 255 )
 						"kHoverForeGround": sfield java.awt.Color white
 						"background": #Color0
 						"borderPainted": false
