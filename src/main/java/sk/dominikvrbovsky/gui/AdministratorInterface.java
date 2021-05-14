@@ -406,7 +406,7 @@ public class AdministratorInterface extends JFrame {
         }
     }
 
-    private void btnDalsieTransakcie2ActionPerformed() {
+    private void btnExportovatActionPerformed() {
         JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         fileChooser.setDialogTitle("Vyberte textový súbor (.txt)");
         fileChooser.setAcceptAllFileFilterUsed(false);
@@ -417,7 +417,7 @@ public class AdministratorInterface extends JFrame {
 
         if (r == JFileChooser.APPROVE_OPTION) {
             try {
-                FileUtilities.saveTransactionsInFile(fileChooser.getSelectedFile(), transactionsForPrint);
+                FileUtilities.saveTransactionsInFileForAdmin(fileChooser.getSelectedFile(), transactionsForPrint);
                 labelZiadneTransakcie.setForeground(new Color(0, 202, 197));
                 labelZiadneTransakcie.setText("Export úspešný");
             } catch (Exception e) {
@@ -657,13 +657,12 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-                swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border
-                . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
-                ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder
-                ( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-                .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-                ( ); }} );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+                . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax
+                . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,
+                12 ), java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans
+                . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .
+                getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2644,7 +2643,7 @@ public class AdministratorInterface extends JFrame {
                                 btnExportovat.setBorderPainted(false);
                                 btnExportovat.setMaximumSize(new Dimension(97, 24));
                                 btnExportovat.setMinimumSize(new Dimension(97, 24));
-                                btnExportovat.addActionListener(e -> btnDalsieTransakcie2ActionPerformed());
+                                btnExportovat.addActionListener(e -> btnExportovatActionPerformed());
                                 kGradientPanel2.add(btnExportovat, new CellConstraints(2, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(0, 120, 0, 120)));
 
                                 //---- btnDalsieTransakcie ----

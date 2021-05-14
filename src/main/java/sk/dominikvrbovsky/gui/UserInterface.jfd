@@ -2543,11 +2543,10 @@ new FormModel {
 										}, new FormLayoutConstraints( class java.lang.String ) {
 											"value": "vybratZUctu"
 										} )
-										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-											"$columnSpecs": "0"
-											"$rowSpecs": "46, 0, 32"
-											"$hGap": 5
-											"$vGap": 15
+										add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+											"$layoutConstraints": "insets 0,hidemode 3,align center center,gap 5 15"
+											"$columnConstraints": "[fill]"
+											"$rowConstraints": "[24:n,fill]3[46:n,fill][fill][32:n,fill]10[::0]"
 										} ) {
 											name: "panelHistoriaTrans"
 											"kEndColor": #Color15
@@ -2557,6 +2556,14 @@ new FormModel {
 											"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 											"background": #Color17
 											"kFillBackground": false
+											add( new FormComponent( "javax.swing.JLabel" ) {
+												name: "labelZiadneTransakcie"
+												"horizontalAlignment": 0
+												"foreground": sfield java.awt.Color red
+												"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
+											}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+												"value": "cell 0 0"
+											} )
 											add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
 												"$columnSpecs": "30dlu, 100px, 5dlu, 100px, 9dlu, 100px, 5dlu, 150px"
 												"$rowSpecs": "30dlu"
@@ -2572,7 +2579,6 @@ new FormModel {
 													"font": &Font23 new java.awt.Font( "Yu Gothic UI", 1, 17 )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 2
-													"gridY": 1
 												} )
 												add( new FormComponent( "javax.swing.JComboBox" ) {
 													name: "comboBoxZobrazit"
@@ -2586,7 +2592,6 @@ new FormModel {
 													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "comboBoxZobrazitActionPerformed", false ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 4
-													"gridY": 1
 												} )
 												add( new FormComponent( "javax.swing.JLabel" ) {
 													name: "labelZoradit"
@@ -2608,7 +2613,9 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 8
 												} )
-											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+											}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+												"value": "cell 0 1"
+											} )
 											add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
 												"$columnSpecs": "150px, 150px, 150px, 150px"
 												"$rowSpecs": "fill:40px, fill:40px, fill:40px, fill:40px, fill:40px, fill:40px"
@@ -2835,8 +2842,8 @@ new FormModel {
 													"gridX": 4
 													"gridY": 6
 												} )
-											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-												"gridy": 1
+											}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+												"value": "cell 0 2"
 											} )
 											add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
 												"$columnSpecs": "71dlu, 262dlu, 71dlu"
@@ -2850,17 +2857,37 @@ new FormModel {
 													"text": "Späť"
 													"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
 													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-													"kStartColor": new java.awt.Color( 255, 161, 117, 255 )
-													"kEndColor": new java.awt.Color( 224, 31, 23, 255 )
+													"kStartColor": new java.awt.Color( 73, 196, 174, 255 )
+													"kEndColor": new java.awt.Color( 140, 219, 145, 255 )
 													"cursor": new java.awt.Cursor( 12 )
-													"kHoverEndColor": new java.awt.Color( 255, 161, 117, 255 )
-													"kHoverStartColor": new java.awt.Color( 244, 115, 84, 255 )
+													"kHoverEndColor": new java.awt.Color( 73, 196, 174, 255 )
+													"kHoverStartColor": new java.awt.Color( 52, 188, 183, 255 )
 													"kHoverForeGround": sfield java.awt.Color white
 													"background": new java.awt.Color( 255, 255, 255, 255 )
 													"borderPainted": false
 													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnSpatTransakcieActionPerformed", false ) )
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"hAlign": sfield com.jgoodies.forms.layout.CellConstraints LEFT
+												} )
+												add( new FormComponent( "keeptoo.KButton" ) {
+													name: "btnExportovat"
+													"text": "Exportovať do súboru"
+													"font": new java.awt.Font( "Yu Gothic UI", 1, 17 )
+													"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+													"kStartColor": new java.awt.Color( 255, 161, 117, 255 )
+													"kEndColor": new java.awt.Color( 239, 102, 96, 255 )
+													"cursor": new java.awt.Cursor( 12 )
+													"kHoverEndColor": new java.awt.Color( 255, 161, 117, 255 )
+													"kHoverStartColor": new java.awt.Color( 239, 102, 96, 255 )
+													"kHoverForeGround": sfield java.awt.Color white
+													"background": new java.awt.Color( 255, 255, 255, 255 )
+													"borderPainted": false
+													"maximumSize": new java.awt.Dimension( 97, 24 )
+													"minimumSize": new java.awt.Dimension( 97, 24 )
+													addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnExportovatActionPerformed", false ) )
+												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+													"gridX": 2
+													"insets": new java.awt.Insets( 0, 100, 0, 100 )
 												} )
 												add( new FormComponent( "keeptoo.KButton" ) {
 													name: "btnDalsieTransakcie"
@@ -2881,8 +2908,8 @@ new FormModel {
 												}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 													"gridX": 3
 												} )
-											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-												"gridy": 2
+											}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+												"value": "cell 0 3"
 											} )
 										}, new FormLayoutConstraints( class java.lang.String ) {
 											"value": "historiaTrans"

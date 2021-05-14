@@ -18,11 +18,14 @@ import sk.dominikvrbovsky.dao.impl.OrderDao;
 import sk.dominikvrbovsky.dao.impl.TransactionDao;
 import sk.dominikvrbovsky.dao.impl.UserDao;
 import sk.dominikvrbovsky.utilities.DateUtilities;
+import sk.dominikvrbovsky.utilities.FileUtilities;
 import sk.dominikvrbovsky.utilities.PasswordUtilities;
 
 import javax.persistence.EntityManager;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -233,6 +236,7 @@ public class UserInterface extends JFrame {
     }
 
     private void comboBoxZobrazitActionPerformed() {
+        labelZiadneTransakcie.setText("");
         boolean descending = true; // usporiadanie transakcii od najnovsich po najstarsie; defaultna hodnota v comboBoxe
         if (comboBoxZoradit.getSelectedIndex() == 1) descending = false; // usporiadanie transakcii od najstarsich po najnovsie
 
@@ -1038,6 +1042,27 @@ public class UserInterface extends JFrame {
         }
     }
 
+    private void btnExportovatActionPerformed() {
+        JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        fileChooser.setDialogTitle("Vyberte textový súbor (.txt)");
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter restrict = new FileNameExtensionFilter(".txt súbor", "txt");
+        fileChooser.addChoosableFileFilter(restrict);
+
+        int r = fileChooser.showSaveDialog(null);
+
+        if (r == JFileChooser.APPROVE_OPTION) {
+            try {
+                FileUtilities.saveTransactionsInFileForUser(fileChooser.getSelectedFile(), transactionsOfUser);
+                labelZiadneTransakcie.setForeground(new Color(0, 202, 197));
+                labelZiadneTransakcie.setText("Export úspešný");
+            } catch (Exception e) {
+                labelZiadneTransakcie.setForeground(Color.red);
+                labelZiadneTransakcie.setText("Export zlyhal ");
+            }
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Dominik Vrbovský
@@ -1272,6 +1297,7 @@ public class UserInterface extends JFrame {
         btnVybratZUctu = new KButton();
         labelUctVyberWarning = new JLabel();
         panelHistoriaTrans = new KGradientPanel();
+        labelZiadneTransakcie = new JLabel();
         panelForCombosInTrans = new KGradientPanel();
         labelZobrazit = new JLabel();
         comboBoxZobrazit = new JComboBox<>();
@@ -1304,6 +1330,7 @@ public class UserInterface extends JFrame {
         transakciaSuma5 = new JLabel();
         kGradientPanel2 = new KGradientPanel();
         btnSpatTransakcie = new KButton();
+        btnExportovat = new KButton();
         btnDalsieTransakcie = new KButton();
         panelHeslo = new KGradientPanel();
         panelHesloInside = new KGradientPanel();
@@ -1350,13 +1377,12 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-                javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax
-                . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-                .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-                . Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans.
-                PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
-                equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+                border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
+                , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
+                .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (
+                new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
+                .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -3476,8 +3502,22 @@ public class UserInterface extends JFrame {
                                         panelHistoriaTrans.setBorder(null);
                                         panelHistoriaTrans.setBackground(Color.white);
                                         panelHistoriaTrans.setkFillBackground(false);
-                                        panelHistoriaTrans.setLayout(new GridBagLayout());
-                                        ((GridBagLayout)panelHistoriaTrans.getLayout()).rowHeights = new int[] {61, 0, 32};
+                                        panelHistoriaTrans.setLayout(new MigLayout(
+                                            "insets 0,hidemode 3,align center center,gap 5 15",
+                                            // columns
+                                            "[fill]",
+                                            // rows
+                                            "[24:n,fill]3" +
+                                            "[46:n,fill]" +
+                                            "[fill]" +
+                                            "[32:n,fill]10" +
+                                            "[::0]"));
+
+                                        //---- labelZiadneTransakcie ----
+                                        labelZiadneTransakcie.setHorizontalAlignment(SwingConstants.CENTER);
+                                        labelZiadneTransakcie.setForeground(Color.red);
+                                        labelZiadneTransakcie.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                        panelHistoriaTrans.add(labelZiadneTransakcie, "cell 0 0");
 
                                         //======== panelForCombosInTrans ========
                                         {
@@ -3519,9 +3559,7 @@ public class UserInterface extends JFrame {
                                             comboBoxZoradit.addActionListener(e -> comboBoxZobrazitActionPerformed());
                                             panelForCombosInTrans.add(comboBoxZoradit, CC.xy(8, 1));
                                         }
-                                        panelHistoriaTrans.add(panelForCombosInTrans, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                            new Insets(0, 0, 15, 0), 0, 0));
+                                        panelHistoriaTrans.add(panelForCombosInTrans, "cell 0 1");
 
                                         //======== panelTableTrans ========
                                         {
@@ -3683,9 +3721,7 @@ public class UserInterface extends JFrame {
                                             transakciaSuma5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             panelTableTrans.add(transakciaSuma5, CC.xy(4, 6));
                                         }
-                                        panelHistoriaTrans.add(panelTableTrans, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
-                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                            new Insets(0, 0, 15, 0), 0, 0));
+                                        panelHistoriaTrans.add(panelTableTrans, "cell 0 2");
 
                                         //======== kGradientPanel2 ========
                                         {
@@ -3699,16 +3735,33 @@ public class UserInterface extends JFrame {
                                             btnSpatTransakcie.setText("Sp\u00e4\u0165");
                                             btnSpatTransakcie.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             btnSpatTransakcie.setBorder(null);
-                                            btnSpatTransakcie.setkStartColor(new Color(255, 161, 117));
-                                            btnSpatTransakcie.setkEndColor(new Color(224, 31, 23));
+                                            btnSpatTransakcie.setkStartColor(new Color(73, 196, 174));
+                                            btnSpatTransakcie.setkEndColor(new Color(140, 219, 145));
                                             btnSpatTransakcie.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                                            btnSpatTransakcie.setkHoverEndColor(new Color(255, 161, 117));
-                                            btnSpatTransakcie.setkHoverStartColor(new Color(244, 115, 84));
+                                            btnSpatTransakcie.setkHoverEndColor(new Color(73, 196, 174));
+                                            btnSpatTransakcie.setkHoverStartColor(new Color(52, 188, 183));
                                             btnSpatTransakcie.setkHoverForeGround(Color.white);
                                             btnSpatTransakcie.setBackground(Color.white);
                                             btnSpatTransakcie.setBorderPainted(false);
                                             btnSpatTransakcie.addActionListener(e -> btnSpatTransakcieActionPerformed());
                                             kGradientPanel2.add(btnSpatTransakcie, CC.xy(1, 1, CC.LEFT, CC.DEFAULT));
+
+                                            //---- btnExportovat ----
+                                            btnExportovat.setText("Exportova\u0165 do s\u00faboru");
+                                            btnExportovat.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+                                            btnExportovat.setBorder(null);
+                                            btnExportovat.setkStartColor(new Color(255, 161, 117));
+                                            btnExportovat.setkEndColor(new Color(239, 102, 96));
+                                            btnExportovat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                            btnExportovat.setkHoverEndColor(new Color(255, 161, 117));
+                                            btnExportovat.setkHoverStartColor(new Color(239, 102, 96));
+                                            btnExportovat.setkHoverForeGround(Color.white);
+                                            btnExportovat.setBackground(Color.white);
+                                            btnExportovat.setBorderPainted(false);
+                                            btnExportovat.setMaximumSize(new Dimension(97, 24));
+                                            btnExportovat.setMinimumSize(new Dimension(97, 24));
+                                            btnExportovat.addActionListener(e -> btnExportovatActionPerformed());
+                                            kGradientPanel2.add(btnExportovat, new CellConstraints(2, 1, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(0, 100, 0, 100)));
 
                                             //---- btnDalsieTransakcie ----
                                             btnDalsieTransakcie.setText("\u010eal\u0161ie");
@@ -3727,9 +3780,7 @@ public class UserInterface extends JFrame {
                                             btnDalsieTransakcie.addActionListener(e -> btnDalsieTransakcieActionPerformed());
                                             kGradientPanel2.add(btnDalsieTransakcie, CC.xy(3, 1));
                                         }
-                                        panelHistoriaTrans.add(kGradientPanel2, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
-                                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                            new Insets(0, 0, 0, 0), 0, 0));
+                                        panelHistoriaTrans.add(kGradientPanel2, "cell 0 3");
                                     }
                                     panelContentUcet.add(panelHistoriaTrans, "historiaTrans");
 
@@ -4328,6 +4379,7 @@ public class UserInterface extends JFrame {
     private KButton btnVybratZUctu;
     private JLabel labelUctVyberWarning;
     private KGradientPanel panelHistoriaTrans;
+    private JLabel labelZiadneTransakcie;
     private KGradientPanel panelForCombosInTrans;
     private JLabel labelZobrazit;
     private JComboBox<String> comboBoxZobrazit;
@@ -4360,6 +4412,7 @@ public class UserInterface extends JFrame {
     private JLabel transakciaSuma5;
     private KGradientPanel kGradientPanel2;
     private KButton btnSpatTransakcie;
+    private KButton btnExportovat;
     private KButton btnDalsieTransakcie;
     private KGradientPanel panelHeslo;
     private KGradientPanel panelHesloInside;

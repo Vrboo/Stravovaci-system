@@ -76,21 +76,19 @@ public class Transaction {
         this.dateTime = dateTime;
     }
 
-    public String toStringUser() {
-        String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        return String.format("%s %tT - %s: %.2f€", date, this.dateTime.toLocalTime(),
-                this.transactionType.toString().toUpperCase(), this.amount );
-    }
-
-    public String toStringAdmin() {
-        return this.user.getFullName() + ":\t" + this.toStringUser();
-    }
-
     public String toStringForAdministrator() {
         String time = this.dateTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
         String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 
         return String.format("%s   :   %s   -   %s   -   %s   -   %s€", user.getFullName(), this.transactionType.getTransactionType(),
+                date, time, getAmountString());
+    }
+
+    public String toStringForUser() {
+        String time = this.dateTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+        String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+
+        return String.format("%s   -   %s   -   %s   -   %s€",  this.transactionType.getTransactionType(),
                 date, time, getAmountString());
     }
 

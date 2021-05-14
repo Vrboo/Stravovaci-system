@@ -2131,7 +2131,7 @@ new FormModel {
 										"borderPainted": false
 										"maximumSize": &Dimension2 new java.awt.Dimension( 97, 24 )
 										"minimumSize": &Dimension3 new java.awt.Dimension( 97, 24 )
-										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnDalsieTransakcie2ActionPerformed", false ) )
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnExportovatActionPerformed", false ) )
 									}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 										"gridX": 2
 										"insets": new java.awt.Insets( 0, 120, 0, 120 )
