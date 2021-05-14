@@ -3,6 +3,7 @@ package sk.dominikvrbovsky;
 
 import sk.dominikvrbovsky.dao.impl.UserDao;
 import sk.dominikvrbovsky.gui.AdministratorInterface;
+import sk.dominikvrbovsky.gui.Login;
 import sk.dominikvrbovsky.gui.Registration;
 import sk.dominikvrbovsky.gui.UserInterface;
 
@@ -27,7 +28,7 @@ public class StravovaciSystemApp {
 //        entityManager.getTransaction().commit();
 //        entityManager.close();
 
-        User user = new UserDao(entityManager).getFromUsername("sangala").get();
+        User user = new UserDao(entityManager).getFromUsername("erw").get();
 
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -39,8 +40,9 @@ public class StravovaciSystemApp {
             @Override
             public void run() {
                 //JFrame jFrame = new Registration(entityManager);
-//                JFrame jFrame = new UserInterface(entityManager, user);
-                JFrame jFrame = new AdministratorInterface(entityManager, user);
+                JFrame jFrame = new UserInterface(entityManager, user);
+                //JFrame jFrame = new AdministratorInterface(entityManager, user);
+//                JFrame jFrame = new Login(entityManager);
                 jFrame.setVisible(true);
             }
         });

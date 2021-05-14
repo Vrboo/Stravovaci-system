@@ -11,6 +11,7 @@ new FormModel {
 			"undecorated": true
 			"$locationPolicy": 1
 			"title": "Stravovací systém"
+			"iconImage": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_food_32px_1.png" )
 			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 				"$columnSpecs": "286"
 				"$rowSpecs": "0, 24"
@@ -54,6 +55,7 @@ new FormModel {
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "textFieldUsernameFocusGained", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textFieldUsernameMouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "textFieldUsernameFocusLost", false ) )
+						addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "textFieldsKeyPressed", true ) )
 					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 						"gridX": 1
 						"gridY": 3
@@ -72,6 +74,7 @@ new FormModel {
 						addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseMoved", "textPasswordMouseMoved", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "textPasswordFocusGained", false ) )
 						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "textPasswordFocusLost", false ) )
+						addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "textFieldsKeyPressed", true ) )
 					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 						"gridX": 1
 						"gridY": 5

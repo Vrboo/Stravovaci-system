@@ -239,14 +239,32 @@ public class UserInterface extends JFrame {
         labelZiadneTransakcie.setText("");
         boolean descending = true; // usporiadanie transakcii od najnovsich po najstarsie; defaultna hodnota v comboBoxe
         if (comboBoxZoradit.getSelectedIndex() == 1) descending = false; // usporiadanie transakcii od najstarsich po najnovsie
-
-        if (comboBoxZobrazit.getSelectedIndex() == 0) {
-            transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending);
-        } else if (comboBoxZobrazit.getSelectedIndex() == 1) {
-            transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending, "Vklad");
-        } else {
-            transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending, "Výber");
+        try {
+            if (comboBoxZobrazit.getSelectedIndex() == 0) {
+                transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending);
+            } else if (comboBoxZobrazit.getSelectedIndex() == 1) {
+                transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending, "Vklad");
+            } else {
+                transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending, "Výber");
+            }
+        } catch (Exception e) {
+            transactionsOfUser = null;
+            getTransakcieArray54(panelTableTrans.getComponents());
+            transakciaDatum1.setText("Transakcie sa nepodarilo načítať");
+            btnExportovat.setVisible(false);
+            btnDalsieTransakcie.setVisible(false);
+            btnSpatTransakcie.setVisible(false);
+            return;
         }
+        if (transactionsOfUser.size() == 0) {
+            getTransakcieArray54(panelTableTrans.getComponents());
+            transakciaDatum1.setText("Nenašli sa žiadne transakcie");
+            btnDalsieTransakcie.setVisible(false);
+            btnExportovat.setVisible(false);
+            btnSpatTransakcie.setVisible(false);
+            return;
+        }
+
         this.counterForTransaction = 0;
         btnDalsieTransakcieActionPerformed();
     }
@@ -255,6 +273,7 @@ public class UserInterface extends JFrame {
         JLabel[][] labels = getTransakcieArray54(panelTableTrans.getComponents());
         int x = counterForTransaction + 5;
         int i = 0;
+        btnExportovat.setVisible(true);
 
         while ((counterForTransaction < x) && (counterForTransaction != transactionsOfUser.size())) {
             labels[i][0].setText(transactionsOfUser.get(counterForTransaction).getTransactionType().getTransactionType());
@@ -262,11 +281,6 @@ public class UserInterface extends JFrame {
             labels[i][2].setText(transactionsOfUser.get(counterForTransaction).getDateTime().toLocalTime().format(timeFormatter));
             labels[i][3].setText(transactionsOfUser.get(counterForTransaction).getAmountString() + "€");
             for (int j = 0; j < 4; j++) labels[i][j].setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-//            if (labels[i][0].getText().equals("Vklad")) {
-//                labels[i][0].setForeground(new Color(69, 191, 85));
-//            } else if (labels[i][0].getText().equals("Výber")){
-//                labels[i][0].setForeground(Color.red);
-//            }
             counterForTransaction++;
             i++;
         }
@@ -284,6 +298,27 @@ public class UserInterface extends JFrame {
         }
 
         btnDalsieTransakcieActionPerformed();
+    }
+
+    private void btnExportovatActionPerformed() {
+        JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        fileChooser.setDialogTitle("Vyberte textový súbor (.txt)");
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter restrict = new FileNameExtensionFilter(".txt súbor", "txt");
+        fileChooser.addChoosableFileFilter(restrict);
+
+        int r = fileChooser.showSaveDialog(null);
+
+        if (r == JFileChooser.APPROVE_OPTION) {
+            try {
+                FileUtilities.saveTransactionsInFileForUser(fileChooser.getSelectedFile(), transactionsOfUser);
+                labelZiadneTransakcie.setForeground(new Color(0, 202, 197));
+                labelZiadneTransakcie.setText("Export úspešný");
+            } catch (Exception e) {
+                labelZiadneTransakcie.setForeground(Color.red);
+                labelZiadneTransakcie.setText("Export zlyhal ");
+            }
+        }
     }
 
 
@@ -913,7 +948,7 @@ public class UserInterface extends JFrame {
         }
     }
 
-    private void btnDobitUcetActionPerformed(ActionEvent e) {
+    private void btnDobitUcetActionPerformed() {
         if (txtFieldDobitSuma.getText().equals("Suma")) {
             setLabelWarningUcetError(labelUctDobitWarning);
             labelUctDobitWarning.setText("Zadajte sumu");
@@ -932,6 +967,7 @@ public class UserInterface extends JFrame {
             labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
             txtFieldDobitSuma.setText("");
             txtFieldDobitSumaFocusLost();
+            txtFieldDobitSuma.setFocusable(false);
 
         } catch (Exception e1) {
             setLabelWarningUcetError(labelUctDobitWarning);
@@ -970,7 +1006,7 @@ public class UserInterface extends JFrame {
         label.setForeground(Color.red);
     }
 
-    private void btnPotvrditHesloInsideActionPerformed(ActionEvent e) {
+    private void btnPotvrditHesloInsideActionPerformed() {
         String pass = String.valueOf(passwordHesloInside.getPassword());
 
         if (user.getPassword().equals(pass)) {
@@ -1000,7 +1036,7 @@ public class UserInterface extends JFrame {
         }
     }
 
-    private void btnZmenitHesloInsideActionPerformed(ActionEvent e) {
+    private void btnZmenitHesloInsideActionPerformed() {
         String stareHeslo = String.valueOf(passwordStareHeslo.getPassword());
         String noveHeslo = String.valueOf(passwordNoveHeslo.getPassword());
         String noveHesloPotvrdenie = String.valueOf(passwordNovHesloPotvrdenie.getPassword());
@@ -1022,6 +1058,9 @@ public class UserInterface extends JFrame {
             btnZmenitCisloActionPerformed();
             setLabelWarningUcetSuccess(labelZmenitHesloWarning);
             labelZmenitHesloWarning.setText("Heslo bolo zmenené");
+            passwordNovHesloPotvrdenie.setFocusable(false);
+            passwordNoveHeslo.setFocusable(false);
+            passwordStareHeslo.setFocusable(false);
 
         } catch (Exception e1) {
             setLabelWarningUcetError(labelZmenitHesloWarning);
@@ -1030,7 +1069,7 @@ public class UserInterface extends JFrame {
 
     }
 
-    private void btnPotvrditHesloAdminActionPerformed(ActionEvent e) {
+    private void btnPotvrditHesloAdminActionPerformed() {
         String password = String.valueOf(passwordAdmin.getPassword());
 
         if (password.equals("12345678")) {
@@ -1038,29 +1077,48 @@ public class UserInterface extends JFrame {
             jframe.setVisible(true);
             this.dispose();
         } else {
-            labelAdminWarning.setText("Nesprávne Heslo");
+            labelAdminWarning.setText("Nesprávne heslo");
         }
     }
 
-    private void btnExportovatActionPerformed() {
-        JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-        fileChooser.setDialogTitle("Vyberte textový súbor (.txt)");
-        fileChooser.setAcceptAllFileFilterUsed(false);
-        FileNameExtensionFilter restrict = new FileNameExtensionFilter(".txt súbor", "txt");
-        fileChooser.addChoosableFileFilter(restrict);
-
-        int r = fileChooser.showSaveDialog(null);
-
-        if (r == JFileChooser.APPROVE_OPTION) {
-            try {
-                FileUtilities.saveTransactionsInFileForUser(fileChooser.getSelectedFile(), transactionsOfUser);
-                labelZiadneTransakcie.setForeground(new Color(0, 202, 197));
-                labelZiadneTransakcie.setText("Export úspešný");
-            } catch (Exception e) {
-                labelZiadneTransakcie.setForeground(Color.red);
-                labelZiadneTransakcie.setText("Export zlyhal ");
-            }
+    private void txtFieldDobitSumaKeyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnDobitUcetActionPerformed();
         }
+    }
+
+    private void txtFieldVyberSumaKeyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) btnVybratZUctuActionPerformed();
+    }
+
+    private void passwordHesloInsideKeyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) btnPotvrditHesloInsideActionPerformed();
+    }
+
+    private void changePasswordFieldsKeyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnZmenitHesloInsideActionPerformed();
+        }
+    }
+
+    private void passwordAdminKeyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) btnPotvrditHesloAdminActionPerformed();
+    }
+
+    private void txtFieldDobitSumaMouseMoved(MouseEvent e) {
+        txtFieldDobitSuma.setFocusable(true);
+    }
+
+    private void passwordNovHesloPotvrdenieMouseMoved(MouseEvent e) {
+        passwordNovHesloPotvrdenie.setFocusable(true);
+    }
+
+    private void passwordStareHesloMouseMoved(MouseEvent e) {
+        passwordStareHeslo.setFocusable(true);
+    }
+
+    private void passwordNoveHesloMouseMoved(MouseEvent e) {
+        passwordNoveHeslo.setFocusable(true);
     }
 
     private void initComponents() {
@@ -1362,6 +1420,7 @@ public class UserInterface extends JFrame {
         setUndecorated(true);
         setResizable(false);
         setTitle("Stravovac\u00ed syst\u00e9m");
+        setIconImage(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_food_32px_1.png").getImage());
         var contentPane = getContentPane();
 
         //======== splitPane1 ========
@@ -1377,12 +1436,13 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-                border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
-                , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-                .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (
-                new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
-                .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+                . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
+                . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+                Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+                ) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+                public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
+                ) )) throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -3375,8 +3435,18 @@ public class UserInterface extends JFrame {
                                             });
                                             txtFieldDobitSuma.addKeyListener(new KeyAdapter() {
                                                 @Override
+                                                public void keyPressed(KeyEvent e) {
+                                                    txtFieldDobitSumaKeyPressed(e);
+                                                }
+                                                @Override
                                                 public void keyTyped(KeyEvent e) {
                                                     txtFieldDobitSumaKeyTyped(e);
+                                                }
+                                            });
+                                            txtFieldDobitSuma.addMouseMotionListener(new MouseMotionAdapter() {
+                                                @Override
+                                                public void mouseMoved(MouseEvent e) {
+                                                    txtFieldDobitSumaMouseMoved(e);
                                                 }
                                             });
                                             panelDobitUcetInside.add(txtFieldDobitSuma, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 45, 15, 45)));
@@ -3395,7 +3465,7 @@ public class UserInterface extends JFrame {
                                             btnDobitUcet.setBorderPainted(false);
                                             btnDobitUcet.setMaximumSize(new Dimension(97, 24));
                                             btnDobitUcet.setMinimumSize(new Dimension(97, 24));
-                                            btnDobitUcet.addActionListener(e -> btnDobitUcetActionPerformed(e));
+                                            btnDobitUcet.addActionListener(e -> btnDobitUcetActionPerformed());
                                             panelDobitUcetInside.add(btnDobitUcet, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(7, 100, 15, 100)));
                                         }
                                         panelDobitUcet.add(panelDobitUcetInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -3455,6 +3525,10 @@ public class UserInterface extends JFrame {
                                             });
                                             txtFieldVyberSuma.addKeyListener(new KeyAdapter() {
                                                 @Override
+                                                public void keyPressed(KeyEvent e) {
+                                                    txtFieldVyberSumaKeyPressed(e);
+                                                }
+                                                @Override
                                                 public void keyTyped(KeyEvent e) {
                                                     txtFieldDobitSumaKeyTyped(e);
                                                 }
@@ -3505,7 +3579,7 @@ public class UserInterface extends JFrame {
                                         panelHistoriaTrans.setLayout(new MigLayout(
                                             "insets 0,hidemode 3,align center center,gap 5 15",
                                             // columns
-                                            "[fill]",
+                                            "[0:n:600,fill]",
                                             // rows
                                             "[24:n,fill]3" +
                                             "[46:n,fill]" +
@@ -3568,30 +3642,41 @@ public class UserInterface extends JFrame {
                                             panelTableTrans.setBorder(null);
                                             panelTableTrans.setkBorderRadius(0);
                                             panelTableTrans.setBackground(new Color(255, 255, 255, 145));
-                                            panelTableTrans.setLayout(new FormLayout(
-                                                "4*(150px)",
-                                                "6*(fill:40px)"));
+                                            panelTableTrans.setLayout(new MigLayout(
+                                                "insets 0,hidemode 3,gap 0 0",
+                                                // columns
+                                                "[150:n,fill]" +
+                                                "[150:n,sizegroup 1,fill]" +
+                                                "[150:n,sizegroup 1,fill]" +
+                                                "[150:n,sizegroup 0,fill]",
+                                                // rows
+                                                "[40,fill]" +
+                                                "[40,fill]" +
+                                                "[40,fill]" +
+                                                "[40,fill]" +
+                                                "[40,fill]" +
+                                                "[40,fill]"));
 
                                             //---- label6 ----
                                             label6.setText("Typ");
                                             label6.setFont(new Font("Yu Gothic UI", Font.BOLD, 22));
                                             label6.setHorizontalAlignment(SwingConstants.CENTER);
                                             label6.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(label6, CC.xy(1, 1));
+                                            panelTableTrans.add(label6, "cell 0 0");
 
                                             //---- label5 ----
                                             label5.setText("D\u00e1tum");
                                             label5.setFont(new Font("Yu Gothic UI", Font.BOLD, 22));
                                             label5.setHorizontalAlignment(SwingConstants.CENTER);
                                             label5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(label5, CC.xy(2, 1));
+                                            panelTableTrans.add(label5, "cell 1 0");
 
                                             //---- label11 ----
                                             label11.setText("\u010cas");
                                             label11.setFont(new Font("Yu Gothic UI", Font.BOLD, 22));
                                             label11.setHorizontalAlignment(SwingConstants.CENTER);
                                             label11.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(label11, CC.xy(3, 1));
+                                            panelTableTrans.add(label11, "cell 2 0");
 
                                             //---- label12 ----
                                             label12.setText("Suma");
@@ -3599,127 +3684,127 @@ public class UserInterface extends JFrame {
                                             label12.setHorizontalAlignment(SwingConstants.CENTER);
                                             label12.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
                                             label12.setBackground(Color.white);
-                                            panelTableTrans.add(label12, CC.xy(4, 1));
+                                            panelTableTrans.add(label12, "cell 3 0");
 
                                             //---- transakciaTyp1 ----
                                             transakciaTyp1.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaTyp1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             transakciaTyp1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaTyp1, CC.xy(1, 2));
+                                            panelTableTrans.add(transakciaTyp1, "cell 0 1");
 
                                             //---- transakciaDatum1 ----
                                             transakciaDatum1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaDatum1.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaDatum1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaDatum1, CC.xy(2, 2));
+                                            panelTableTrans.add(transakciaDatum1, "cell 1 1");
 
                                             //---- transakciaCas1 ----
                                             transakciaCas1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaCas1.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaCas1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaCas1, CC.xy(3, 2));
+                                            panelTableTrans.add(transakciaCas1, "cell 2 1");
 
                                             //---- transakciaSuma1 ----
                                             transakciaSuma1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaSuma1.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaSuma1.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaSuma1, CC.xy(4, 2));
+                                            panelTableTrans.add(transakciaSuma1, "cell 3 1");
 
                                             //---- transakciaTyp2 ----
                                             transakciaTyp2.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaTyp2.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             transakciaTyp2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaTyp2, CC.xy(1, 3));
+                                            panelTableTrans.add(transakciaTyp2, "cell 0 2");
 
                                             //---- transakciaDatum2 ----
                                             transakciaDatum2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaDatum2.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaDatum2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaDatum2, CC.xy(2, 3));
+                                            panelTableTrans.add(transakciaDatum2, "cell 1 2");
 
                                             //---- transakciaCas2 ----
                                             transakciaCas2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaCas2.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaCas2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaCas2, CC.xy(3, 3));
+                                            panelTableTrans.add(transakciaCas2, "cell 2 2");
 
                                             //---- transakciaSuma2 ----
                                             transakciaSuma2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaSuma2.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaSuma2.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaSuma2, CC.xy(4, 3));
+                                            panelTableTrans.add(transakciaSuma2, "cell 3 2");
 
                                             //---- transakciaTyp3 ----
                                             transakciaTyp3.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaTyp3.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             transakciaTyp3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaTyp3, CC.xy(1, 4));
+                                            panelTableTrans.add(transakciaTyp3, "cell 0 3");
 
                                             //---- transakciaDatum3 ----
                                             transakciaDatum3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaDatum3.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaDatum3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaDatum3, CC.xy(2, 4));
+                                            panelTableTrans.add(transakciaDatum3, "cell 1 3");
 
                                             //---- transakciaCas3 ----
                                             transakciaCas3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaCas3.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaCas3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaCas3, CC.xy(3, 4));
+                                            panelTableTrans.add(transakciaCas3, "cell 2 3");
 
                                             //---- transakciaSuma3 ----
                                             transakciaSuma3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaSuma3.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaSuma3.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaSuma3, CC.xy(4, 4));
+                                            panelTableTrans.add(transakciaSuma3, "cell 3 3");
 
                                             //---- transakciaTyp4 ----
                                             transakciaTyp4.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaTyp4.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             transakciaTyp4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaTyp4, CC.xy(1, 5));
+                                            panelTableTrans.add(transakciaTyp4, "cell 0 4");
 
                                             //---- transakciaDatum4 ----
                                             transakciaDatum4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaDatum4.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaDatum4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaDatum4, CC.xy(2, 5));
+                                            panelTableTrans.add(transakciaDatum4, "cell 1 4");
 
                                             //---- transakciaCas4 ----
                                             transakciaCas4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaCas4.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaCas4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaCas4, CC.xy(3, 5));
+                                            panelTableTrans.add(transakciaCas4, "cell 2 4");
 
                                             //---- transakciaSuma4 ----
                                             transakciaSuma4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaSuma4.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaSuma4.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaSuma4, CC.xy(4, 5));
+                                            panelTableTrans.add(transakciaSuma4, "cell 3 4");
 
                                             //---- transakciaTyp5 ----
                                             transakciaTyp5.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaTyp5.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
                                             transakciaTyp5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaTyp5, CC.xy(1, 6));
+                                            panelTableTrans.add(transakciaTyp5, "cell 0 5");
 
                                             //---- transakciaDatum5 ----
                                             transakciaDatum5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaDatum5.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaDatum5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaDatum5, CC.xy(2, 6));
+                                            panelTableTrans.add(transakciaDatum5, "cell 1 5");
 
                                             //---- transakciaCas5 ----
                                             transakciaCas5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaCas5.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaCas5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaCas5, CC.xy(3, 6));
+                                            panelTableTrans.add(transakciaCas5, "cell 2 5");
 
                                             //---- transakciaSuma5 ----
                                             transakciaSuma5.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
                                             transakciaSuma5.setHorizontalAlignment(SwingConstants.CENTER);
                                             transakciaSuma5.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
-                                            panelTableTrans.add(transakciaSuma5, CC.xy(4, 6));
+                                            panelTableTrans.add(transakciaSuma5, "cell 3 5");
                                         }
                                         panelHistoriaTrans.add(panelTableTrans, "cell 0 2");
 
@@ -3824,6 +3909,12 @@ public class UserInterface extends JFrame {
                                                     passwordHesloInsideFocusLost();
                                                 }
                                             });
+                                            passwordHesloInside.addKeyListener(new KeyAdapter() {
+                                                @Override
+                                                public void keyPressed(KeyEvent e) {
+                                                    passwordHesloInsideKeyPressed(e);
+                                                }
+                                            });
                                             panelHesloInside.add(passwordHesloInside, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 35, 15, 35)));
 
                                             //---- btnPotvrditHesloInside ----
@@ -3841,7 +3932,7 @@ public class UserInterface extends JFrame {
                                             btnPotvrditHesloInside.setMaximumSize(new Dimension(97, 24));
                                             btnPotvrditHesloInside.setMinimumSize(new Dimension(97, 24));
                                             btnPotvrditHesloInside.setHorizontalAlignment(SwingConstants.RIGHT);
-                                            btnPotvrditHesloInside.addActionListener(e -> btnPotvrditHesloInsideActionPerformed(e));
+                                            btnPotvrditHesloInside.addActionListener(e -> btnPotvrditHesloInsideActionPerformed());
                                             panelHesloInside.add(btnPotvrditHesloInside, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(4, 110, 20, 110)));
                                         }
                                         panelHeslo.add(panelHesloInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -3914,6 +4005,18 @@ public class UserInterface extends JFrame {
                                         passwordStareHesloFocusLost();
                                     }
                                 });
+                                passwordStareHeslo.addKeyListener(new KeyAdapter() {
+                                    @Override
+                                    public void keyPressed(KeyEvent e) {
+                                        changePasswordFieldsKeyPressed(e);
+                                    }
+                                });
+                                passwordStareHeslo.addMouseMotionListener(new MouseMotionAdapter() {
+                                    @Override
+                                    public void mouseMoved(MouseEvent e) {
+                                        passwordStareHesloMouseMoved(e);
+                                    }
+                                });
                                 PanelZmenitHesloInside.add(passwordStareHeslo, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(6, 35, 10, 35)));
 
                                 //---- passwordNoveHeslo ----
@@ -3931,6 +4034,18 @@ public class UserInterface extends JFrame {
                                     @Override
                                     public void focusLost(FocusEvent e) {
                                         passwordNoveHesloFocusLost();
+                                    }
+                                });
+                                passwordNoveHeslo.addKeyListener(new KeyAdapter() {
+                                    @Override
+                                    public void keyPressed(KeyEvent e) {
+                                        changePasswordFieldsKeyPressed(e);
+                                    }
+                                });
+                                passwordNoveHeslo.addMouseMotionListener(new MouseMotionAdapter() {
+                                    @Override
+                                    public void mouseMoved(MouseEvent e) {
+                                        passwordNoveHesloMouseMoved(e);
                                     }
                                 });
                                 PanelZmenitHesloInside.add(passwordNoveHeslo, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(6, 35, 10, 35)));
@@ -3952,6 +4067,18 @@ public class UserInterface extends JFrame {
                                         passwordNovHesloPotvrdenieFocusLost();
                                     }
                                 });
+                                passwordNovHesloPotvrdenie.addKeyListener(new KeyAdapter() {
+                                    @Override
+                                    public void keyPressed(KeyEvent e) {
+                                        changePasswordFieldsKeyPressed(e);
+                                    }
+                                });
+                                passwordNovHesloPotvrdenie.addMouseMotionListener(new MouseMotionAdapter() {
+                                    @Override
+                                    public void mouseMoved(MouseEvent e) {
+                                        passwordNovHesloPotvrdenieMouseMoved(e);
+                                    }
+                                });
                                 PanelZmenitHesloInside.add(passwordNovHesloPotvrdenie, new CellConstraints(1, 4, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(6, 35, 10, 35)));
 
                                 //---- btnZmenitHesloInside ----
@@ -3968,7 +4095,7 @@ public class UserInterface extends JFrame {
                                 btnZmenitHesloInside.setBorderPainted(false);
                                 btnZmenitHesloInside.setMaximumSize(new Dimension(97, 24));
                                 btnZmenitHesloInside.setMinimumSize(new Dimension(97, 24));
-                                btnZmenitHesloInside.addActionListener(e -> btnZmenitHesloInsideActionPerformed(e));
+                                btnZmenitHesloInside.addActionListener(e -> btnZmenitHesloInsideActionPerformed());
                                 PanelZmenitHesloInside.add(btnZmenitHesloInside, new CellConstraints(1, 5, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(10, 99, 17, 98)));
                             }
                             panelZmenitHeslo.add(PanelZmenitHesloInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -4071,13 +4198,17 @@ public class UserInterface extends JFrame {
                                 passwordAdmin.addFocusListener(new FocusAdapter() {
                                     @Override
                                     public void focusGained(FocusEvent e) {
-                                        passwordStareHesloFocusGained();
                                         passwordAdminFocusGained();
                                     }
                                     @Override
                                     public void focusLost(FocusEvent e) {
-                                        passwordStareHesloFocusLost();
                                         passwordAdminFocusLost();
+                                    }
+                                });
+                                passwordAdmin.addKeyListener(new KeyAdapter() {
+                                    @Override
+                                    public void keyPressed(KeyEvent e) {
+                                        passwordAdminKeyPressed(e);
                                     }
                                 });
                                 panelAdminInside.add(passwordAdmin, new CellConstraints(1, 2, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(2, 35, 15, 35)));
@@ -4097,7 +4228,7 @@ public class UserInterface extends JFrame {
                                 btnPotvrditHesloAdmin.setMaximumSize(new Dimension(97, 24));
                                 btnPotvrditHesloAdmin.setMinimumSize(new Dimension(97, 24));
                                 btnPotvrditHesloAdmin.setHorizontalAlignment(SwingConstants.RIGHT);
-                                btnPotvrditHesloAdmin.addActionListener(e -> btnPotvrditHesloAdminActionPerformed(e));
+                                btnPotvrditHesloAdmin.addActionListener(e -> btnPotvrditHesloAdminActionPerformed());
                                 panelAdminInside.add(btnPotvrditHesloAdmin, new CellConstraints(1, 3, 1, 1, CC.DEFAULT, CC.DEFAULT, new Insets(4, 110, 20, 110)));
                             }
                             panelAdmin.add(panelAdminInside, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,

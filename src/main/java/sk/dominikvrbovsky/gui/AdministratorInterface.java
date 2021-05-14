@@ -642,6 +642,7 @@ public class AdministratorInterface extends JFrame {
         //======== this ========
         setUndecorated(true);
         setTitle("Stravovac\u00ed syst\u00e9m");
+        setIconImage(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_food_32px_1.png").getImage());
         var contentPane = getContentPane();
 
         //======== splitPane1 ========
@@ -657,12 +658,12 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-                . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax
-                . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,
-                12 ), java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans
-                . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .
-                getPropertyName () )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+                EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing
+                . border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ),
+                java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+                { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () ))
+                throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -863,7 +864,7 @@ public class AdministratorInterface extends JFrame {
                                     .addComponent(labelX, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addGroup(panelStravovaciSystemLayout.createSequentialGroup()
-                                    .addContainerGap(11, Short.MAX_VALUE)
+                                    .addContainerGap(20, Short.MAX_VALUE)
                                     .addGroup(panelStravovaciSystemLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(labelStravovaciSystem)
                                         .addComponent(label4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
@@ -2281,7 +2282,7 @@ public class AdministratorInterface extends JFrame {
                             );
                             panelObjednavkyLayout.setVerticalGroup(
                                 panelObjednavkyLayout.createParallelGroup()
-                                    .addComponent(splitPane3, GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                                    .addComponent(splitPane3, GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
                             );
                         }
                         panelContent.add(panelObjednavky, "objednavky");

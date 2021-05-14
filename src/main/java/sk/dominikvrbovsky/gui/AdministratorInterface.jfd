@@ -11,6 +11,7 @@ new FormModel {
 			"$locationPolicy": 1
 			"undecorated": true
 			"title": "Stravovací systém"
+			"iconImage": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_food_32px_1.png" )
 			add( new FormContainer( "javax.swing.JSplitPane", new FormLayoutManager( class javax.swing.JSplitPane ) ) {
 				name: "splitPane1"
 				"dividerSize": 0
@@ -130,7 +131,7 @@ new FormModel {
 						"dividerLocation": 155
 						add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 							"$horizontalGroup": "par l {seq l {space :p:32:p, par t {comp labelStravovaciSystem:::p:366:p, comp labelDatum:::p:352:p}, space :::p, par l {seq {space :0:362:x, comp labelX:::p:27:p}, seq l {comp label4:::p:234:p, space :0:155:x}}}}"
-							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space ::11:x, par b {comp labelStravovaciSystem::b:p::p, comp label4::b:p:29:p}, space u:::p, comp labelDatum:::p::p, space :p:32:p}}"
+							"$verticalGroup": "par l {seq l {comp labelX:::p:28:p, space :0:0:x}, seq {space ::20:x, par b {comp labelStravovaciSystem::b:p::p, comp label4::b:p:29:p}, space u:::p, comp labelDatum:::p::p, space :p:32:p}}"
 						} ) {
 							name: "panelStravovaciSystem"
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -1142,7 +1143,7 @@ new FormModel {
 							} )
 							add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {comp splitPane3::l:::x}"
-								"$verticalGroup": "par l {comp splitPane3::l::454:x}"
+								"$verticalGroup": "par l {comp splitPane3::l::445:x}"
 							} ) {
 								name: "panelObjednavky"
 								"kEndColor": sfield java.awt.Color white
@@ -2170,7 +2171,7 @@ new FormModel {
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 35 )
+			"location": new java.awt.Point( 20, 35 )
 			"size": new java.awt.Dimension( 1020, 640 )
 		} )
 	}

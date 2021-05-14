@@ -21,10 +21,10 @@ public class User {
     private String password;
     private double account;
 
-    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Transaction> transactions;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Order> orders;
 
 
