@@ -2,7 +2,6 @@ package sk.dominikvrbovsky;
 
 import sk.dominikvrbovsky.enums.TransactionType;
 import sk.dominikvrbovsky.utilities.PasswordUtilities;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;

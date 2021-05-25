@@ -6,10 +6,8 @@ package sk.dominikvrbovsky.gui;
 
 import java.awt.event.*;
 import javax.swing.border.*;
-
 import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
-
 import keeptoo.*;
 import net.miginfocom.swing.*;
 import sk.dominikvrbovsky.*;
@@ -19,8 +17,6 @@ import sk.dominikvrbovsky.dao.impl.TransactionDao;
 import sk.dominikvrbovsky.dao.impl.UserDao;
 import sk.dominikvrbovsky.utilities.DateUtilities;
 import sk.dominikvrbovsky.utilities.FileUtilities;
-import sk.dominikvrbovsky.utilities.PasswordUtilities;
-
 import javax.persistence.EntityManager;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -65,7 +61,7 @@ public class UserInterface extends JFrame {
         this.transactionsOfUser = null;
         this.counterForTransaction = 0;
         timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-        dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        dateFormatter = DateTimeFormatter.ofPattern("dd.M.yyyy");
 
         this.setPreferredSize(new Dimension(1000, 600));
         
@@ -1436,13 +1432,13 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-                . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
-                . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-                Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-                ) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-                public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
-                ) )) throw new RuntimeException( ); }} );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+                . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder
+                . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .
+                awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder( )) )
+                ; panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+                ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+                ;
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2435,7 +2431,7 @@ public class UserInterface extends JFrame {
                                 panelTableMojeObjRanajky.setkBorderRadius(0);
                                 panelTableMojeObjRanajky.setBackground(new Color(255, 255, 255, 145));
                                 panelTableMojeObjRanajky.setLayout(new FormLayout(
-                                    "46dlu, 36dlu, 348px, 75px, 147px",
+                                    "57dlu, 32dlu, 348px, 70px, 147px",
                                     "fill:49px, fill:52px"));
 
                                 //---- label71 ----
@@ -2519,7 +2515,7 @@ public class UserInterface extends JFrame {
                                 panelTableMojeObjednavkyObed.setkBorderRadius(0);
                                 panelTableMojeObjednavkyObed.setBackground(new Color(255, 255, 255, 145));
                                 panelTableMojeObjednavkyObed.setLayout(new FormLayout(
-                                    "46dlu, 36dlu, 348px, 75px, 147px",
+                                    "57dlu, 32dlu, 348px, 70px, 147px",
                                     "fill:49px, fill:52px, $lgap, 18dlu"));
 
                                 //---- label72 ----

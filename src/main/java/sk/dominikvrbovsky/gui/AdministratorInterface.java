@@ -6,8 +6,6 @@ package sk.dominikvrbovsky.gui;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +16,6 @@ import javax.swing.GroupLayout;
 import javax.swing.border.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
-import javax.swing.text.NumberFormatter;
-
 import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
 import keeptoo.*;
@@ -27,7 +23,6 @@ import net.miginfocom.swing.*;
 import sk.dominikvrbovsky.*;
 import sk.dominikvrbovsky.dao.impl.MealDao;
 import sk.dominikvrbovsky.dao.impl.TransactionDao;
-import sk.dominikvrbovsky.enums.Drink;
 import sk.dominikvrbovsky.utilities.DateUtilities;
 import sk.dominikvrbovsky.utilities.FileUtilities;
 
@@ -60,7 +55,7 @@ public class AdministratorInterface extends JFrame {
         this.transactionsForPrint = null;
         this.transactionDao = new TransactionDao(entityManager);
         timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-        dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        dateFormatter = DateTimeFormatter.ofPattern("dd.M.yyyy");
 
         this.setPreferredSize(new Dimension(1000, 600));
 

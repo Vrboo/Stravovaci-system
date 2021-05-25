@@ -1156,7 +1156,7 @@ new FormModel {
 								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 								"kBorderRadius": 0
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
-									"$columnSpecs": "46dlu, 36dlu, 348px, 75px, 147px"
+									"$columnSpecs": "57dlu, 32dlu, 348px, 70px, 147px"
 									"$rowSpecs": "fill:49px, fill:52px"
 								} ) {
 									name: "panelTableMojeObjRanajky"
@@ -1264,7 +1264,7 @@ new FormModel {
 									} )
 								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 								add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
-									"$columnSpecs": "46dlu, 36dlu, 348px, 75px, 147px"
+									"$columnSpecs": "57dlu, 32dlu, 348px, 70px, 147px"
 									"$rowSpecs": "fill:49px, fill:52px, linegap, 18dlu"
 								} ) {
 									name: "panelTableMojeObjednavkyObed"
