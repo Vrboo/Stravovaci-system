@@ -1,6 +1,8 @@
 package sk.dominikvrbovsky;
 
 
+import sk.dominikvrbovsky.dao.impl.MealDao;
+import sk.dominikvrbovsky.dao.impl.OrderDao;
 import sk.dominikvrbovsky.dao.impl.UserDao;
 import sk.dominikvrbovsky.gui.AdministratorInterface;
 import sk.dominikvrbovsky.gui.Login;
@@ -20,6 +22,16 @@ public class StravovaciSystemApp {
                 Persistence.createEntityManagerFactory("sk.dominikvrbovsky.stravovaci-system");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
+//        OrderDao orderDao = new OrderDao(entityManager);
+//        MealDao mealDao = new MealDao(entityManager);
+//        try {
+//            orderDao.deleteAll();
+//            mealDao.deleteAll();
+//
+//        } catch (Exception e1) {
+//            e1.printStackTrace();
+//        }
+
 //        entityManager.getTransaction().begin();
 //
 //        entityManager.find(User.class, 24L);
@@ -28,7 +40,7 @@ public class StravovaciSystemApp {
 //        entityManager.getTransaction().commit();
 //        entityManager.close();
 
-        User user = new UserDao(entityManager).getFromUsername("erw").get();
+        User user = new UserDao(entityManager).getFromUsername("vrboo").get();
 
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -40,14 +52,12 @@ public class StravovaciSystemApp {
             @Override
             public void run() {
                 //JFrame jFrame = new Registration(entityManager);
-                JFrame jFrame = new UserInterface(entityManager, user);
+                //JFrame jFrame = new UserInterface(entityManager, user);
                 //JFrame jFrame = new AdministratorInterface(entityManager, user);
-//                JFrame jFrame = new Login(entityManager);
+               JFrame jFrame = new Login(entityManager);
                 jFrame.setVisible(true);
             }
         });
-
-
 
 
 

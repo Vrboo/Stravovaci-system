@@ -1,20 +1,14 @@
 package sk.dominikvrbovsky.dao.impl;
 
-import sk.dominikvrbovsky.Meal;
-import sk.dominikvrbovsky.Order;
-import sk.dominikvrbovsky.Transaction;
-import sk.dominikvrbovsky.User;
-import sk.dominikvrbovsky.dao.Dao;
 
+import sk.dominikvrbovsky.Transaction;
+import sk.dominikvrbovsky.dao.Dao;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.Query;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public class TransactionDao implements Dao<Transaction> {
 

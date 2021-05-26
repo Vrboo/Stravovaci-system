@@ -2,12 +2,10 @@ package sk.dominikvrbovsky.dao.impl;
 
 import sk.dominikvrbovsky.User;
 import sk.dominikvrbovsky.dao.Dao;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -74,6 +72,21 @@ public class UserDao implements Dao<User> {
 
         return user;
 
+    }
+
+    public List<User> getAll() {
+        List<User> users;
+        try {
+            entityManager.getTransaction().begin();
+            Query query = entityManager.createQuery("FROM User", User.class);
+            users = query.getResultList();
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+
+        return users;
     }
 
     private void executeInsideTransaction(Consumer<EntityManager> consumer) {

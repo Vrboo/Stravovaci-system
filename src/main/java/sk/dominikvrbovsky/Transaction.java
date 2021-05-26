@@ -2,9 +2,7 @@ package sk.dominikvrbovsky;
 
 import sk.dominikvrbovsky.converters.TransactionTypeConverter;
 import sk.dominikvrbovsky.enums.TransactionType;
-
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -78,7 +76,7 @@ public class Transaction {
 
     public String toStringForAdministrator() {
         String time = this.dateTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-        String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd.M.yyyy"));
 
         return String.format("%s   :   %s   -   %s   -   %s   -   %s€", user.getFullName(), this.transactionType.getTransactionType(),
                 date, time, getAmountString());
@@ -86,7 +84,7 @@ public class Transaction {
 
     public String toStringForUser() {
         String time = this.dateTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-        String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        String date = this.dateTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd.M.yyyy"));
 
         return String.format("%s   -   %s   -   %s   -   %s€",  this.transactionType.getTransactionType(),
                 date, time, getAmountString());

@@ -173,7 +173,9 @@ public class UserInterface extends JFrame {
 
     private void btnObjednatActionPerformed() {
         try {
+            System.out.println("2 SQL");
             this.breakfasts = mealDao.getAllBreakfast();
+            System.out.println("3 SQL");
             this.lunches = mealDao.getAllLunch();
         } catch (Exception e) {
             setLabelWariningError(labelObjednatRanajkyWarning, "Nepodarilo sa správne načítať menu");
@@ -210,7 +212,8 @@ public class UserInterface extends JFrame {
             setLabelWariningObjednane(labelObjednatRanajkyWarning);
             if (user.getBreakfastOrder().isInBurza()) labelObjednatRanajkyWarning.setText("Objednané [Aktuálne v burze]");
         } else {
-            activateAllButtons(panelTableRanajky.getComponents());
+            labelObjednatRanajkyWarning.setText("");
+            setButtons(panelTableRanajky.getComponents());
         }
 
         if (user.hasLunchOrder()) {
@@ -219,8 +222,11 @@ public class UserInterface extends JFrame {
             setLabelWariningObjednane(labelObjednatObedWarning);
             if (user.getLunchOrder().isInBurza()) labelObjednatObedWarning.setText("Objednané [Aktuálne v burze]");
         } else {
-            activateAllButtons(panelTableObed.getComponents());
+            labelObjednatObedWarning.setText("");
+            setButtons(panelTableObed.getComponents());
         }
+
+
 
         cardLayout.show(panelContent,"objednat");
     }
@@ -340,8 +346,8 @@ public class UserInterface extends JFrame {
             if (meal.isPresent()) order = orderDao.getFirstOrderInBurzaByMealId(meal.get().getId());
             this.user.takeMealFromBurza(order.orElse(null));
             labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
-            btnObjednatActionPerformed();
-            btnRanajkyActionPerformed();
+            btnBurzaActionPerformed();
+            setLabelWariningObjednane(labelBurzaRanajkyWarning);
         } catch (Exception e1) {
             setLabelWariningError(labelBurzaRanajkyWarning, e1.getMessage());
         }
@@ -355,9 +361,8 @@ public class UserInterface extends JFrame {
             if (meal.isPresent()) order = orderDao.getFirstOrderInBurzaByMealId(meal.get().getId());
             this.user.takeMealFromBurza(order.orElse(null));
             labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
-            btnObjednatActionPerformed();
-            btnObedActionPerformed();
-            btnObjednat.setFocusable(true);
+            btnBurzaActionPerformed();
+            setLabelWariningObjednane(labelBurzaObedWarning);
         } catch (Exception e1) {
             setLabelWariningError(labelBurzaObedWarning,e1.getMessage());
         }
@@ -462,17 +467,17 @@ public class UserInterface extends JFrame {
 
     }
 
-    private void activateAllButtons(Component[] components) {
-        for (Component c : components) {
-            if (c instanceof KButton) {
-                c.setEnabled(true);
-                ((KButton)c).setkStartColor(new Color(73, 196, 174));
-                ((KButton)c).setkEndColor(new Color(140, 219, 145));
-                ((KButton)c).setkHoverStartColor(new Color(52, 188, 183));
-                ((KButton)c).setkHoverEndColor(new Color(73, 196, 174));
-            }
-        }
-    }
+//    private void activateAllButtons(Component[] components) {
+//        for (Component c : components) {
+//            if (c instanceof KButton) {
+//                c.setEnabled(true);
+//                ((KButton)c).setkStartColor(new Color(73, 196, 174));
+//                ((KButton)c).setkEndColor(new Color(140, 219, 145));
+//                ((KButton)c).setkHoverStartColor(new Color(52, 188, 183));
+//                ((KButton)c).setkHoverEndColor(new Color(73, 196, 174));
+//            }
+//        }
+//    }
 
     private void disableAllButtons(Component[] components) {
         for (Component c : components) {
@@ -509,6 +514,7 @@ public class UserInterface extends JFrame {
             btnRanajkyBurza.setVisible(false);
             btnObedBurza.setVisible(false);
             cardLayout.show(panelContent, "mojeObjednavky");
+            e.printStackTrace();
             return;
         }
 
@@ -596,6 +602,8 @@ public class UserInterface extends JFrame {
 
         JLabel[][] labelsRanajky = getObjednatArray54(panelTableBurzaRanajky.getComponents());
         JLabel[][] labelsObed = getObjednatArray54(panelTableBurzaObed.getComponents());
+        labelBurzaObedWarning.setText("");
+        labelBurzaRanajkyWarning.setText("");
 
         int index = 0;
         for (Breakfast breakfast : breakfasts) {

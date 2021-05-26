@@ -1,11 +1,7 @@
 package sk.dominikvrbovsky.dao.impl;
 
-import sk.dominikvrbovsky.Breakfast;
-import sk.dominikvrbovsky.Lunch;
-import sk.dominikvrbovsky.Meal;
-import sk.dominikvrbovsky.User;
+import sk.dominikvrbovsky.*;
 import sk.dominikvrbovsky.dao.Dao;
-
 import javax.persistence.*;
 import java.util.List;
 import java.util.Optional;
@@ -124,6 +120,22 @@ public class MealDao implements Dao<Meal> {
             throw e;
         }
         return lunches;
+    }
+
+    public void deleteAllMealAndOrder() {
+        String hql1 = "DELETE FROM Meal";
+        String hql2 = "DELETE FROM Order";
+
+        try {
+            entityManager.getTransaction().begin();
+            //entityManager.createQuery(hql2).executeUpdate();
+            entityManager.createQuery(hql1).executeUpdate();
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+
     }
 
     private void executeInsideTransaction(Consumer<EntityManager> consumer) {

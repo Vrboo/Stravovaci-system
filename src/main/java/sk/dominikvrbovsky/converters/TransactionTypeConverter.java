@@ -1,7 +1,6 @@
 package sk.dominikvrbovsky.converters;
 
 import sk.dominikvrbovsky.enums.TransactionType;
-
 import javax.persistence.AttributeConverter;
 
 public class TransactionTypeConverter implements AttributeConverter<TransactionType, String> {

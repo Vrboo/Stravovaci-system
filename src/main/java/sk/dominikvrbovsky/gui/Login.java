@@ -86,6 +86,7 @@ public class Login extends JFrame {
         } else if (!textFieldUsername.getText().equals("Používateľské meno") && !password.equals("Heslo")) {
             Optional<User> user;
             try {
+                System.out.println("SQL 1");
                 user = userDao.getFromUsername(textFieldUsername.getText());
             } catch (Exception e) {
                 labelWarning.setText("Prihlasovenie zlyhalo");

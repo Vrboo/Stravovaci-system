@@ -22,7 +22,9 @@ import keeptoo.*;
 import net.miginfocom.swing.*;
 import sk.dominikvrbovsky.*;
 import sk.dominikvrbovsky.dao.impl.MealDao;
+import sk.dominikvrbovsky.dao.impl.OrderDao;
 import sk.dominikvrbovsky.dao.impl.TransactionDao;
+import sk.dominikvrbovsky.dao.impl.UserDao;
 import sk.dominikvrbovsky.utilities.DateUtilities;
 import sk.dominikvrbovsky.utilities.FileUtilities;
 
@@ -158,7 +160,9 @@ public class AdministratorInterface extends JFrame {
     }
 
     private void btnJedalnyListokActionPerformed() {
+
         cardLayout.show(panelContent, "jedalnyListok");
+        cardLayoutJedalnyListok.show(panelJedalnyListok, "ranajky");
     }
 
     private void labelXMouseClicked() {
@@ -253,6 +257,21 @@ public class AdministratorInterface extends JFrame {
 
     private void btnJedalnyListokVytvoritInside2ActionPerformed(ActionEvent e) {
         MealDao mealDao = new MealDao(entityManager);
+        UserDao userDao = new UserDao(entityManager);
+
+        for (User user: userDao.getAll()) {
+            user.getOrders().clear();
+            userDao.update(user);
+        }
+
+        try {
+            mealDao.deleteAllMealAndOrder();
+        } catch (Exception e1) {
+            labelWarningJedLisVytvorit.setText("Nepodarilo sa vytvoriť nový jedálny lístok. Skúste to znovu.");
+            return;
+        }
+
+
         List<Meal> meals = new ArrayList<>();
 
         for (int i = 0; i < this.breakfastMenu.length ; i++) {
@@ -276,6 +295,7 @@ public class AdministratorInterface extends JFrame {
             labelWarningJedLisVytvorit.setForeground(new Color(73, 196, 174));
             labelWarningJedLisVytvorit.setText("Nový jedálny lístok bol úspešne vytvorený.");
         } catch (Exception ee) {
+            ee.printStackTrace();
             labelWarningJedLisVytvorit.setForeground(Color.RED);
             labelWarningJedLisVytvorit.setText("Nepodarilo sa vytvoriť nový jedálny lístok. Skúste to znovu.");
         }

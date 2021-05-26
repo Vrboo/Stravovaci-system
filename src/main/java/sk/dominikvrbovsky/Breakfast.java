@@ -2,11 +2,8 @@ package sk.dominikvrbovsky;
 
 import sk.dominikvrbovsky.converters.DrinkConverter;
 import sk.dominikvrbovsky.enums.Drink;
-
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 
 @Entity
 public class Breakfast extends Meal {

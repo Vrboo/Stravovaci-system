@@ -121,6 +121,7 @@ public class User {
     }
 
     public boolean hasBreakfastOrder() {
+        System.out.println("4 SQL");
         return this.orders.stream().anyMatch(order -> order.getMeal() instanceof Breakfast);
     }
 
