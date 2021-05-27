@@ -22,7 +22,6 @@ import keeptoo.*;
 import net.miginfocom.swing.*;
 import sk.dominikvrbovsky.*;
 import sk.dominikvrbovsky.dao.impl.MealDao;
-import sk.dominikvrbovsky.dao.impl.OrderDao;
 import sk.dominikvrbovsky.dao.impl.TransactionDao;
 import sk.dominikvrbovsky.dao.impl.UserDao;
 import sk.dominikvrbovsky.utilities.DateUtilities;
@@ -159,8 +158,27 @@ public class AdministratorInterface extends JFrame {
         return labels;
     }
 
-    private void btnJedalnyListokActionPerformed() {
+    private void clearTxtFields(Component[] txtFieldsParam) {
+        int index = 6;
 
+        while (index < txtFieldsParam.length) {
+            if (txtFieldsParam[index] instanceof JPanel) {
+                ((JComboBox<String>)((JPanel)txtFieldsParam[index]).getComponent(0)).setSelectedIndex(-1);
+            } else {
+                ((JTextField) txtFieldsParam[index]).setText("");
+            }
+            index++;
+            if (index % 5 == 0) index++;
+        }
+
+    }
+
+    private void btnJedalnyListokActionPerformed() {
+        labelWarningJedLisVytvorit.setText("");
+        labelWarningJedLisRanajky.setText("");
+        labelWarningJedLisObed.setText("");
+        clearTxtFields(panelJedalnyListokRanajkyInside.getComponents());
+        clearTxtFields(panelJedalnyListokObedInside.getComponents());
         cardLayout.show(panelContent, "jedalnyListok");
         cardLayoutJedalnyListok.show(panelJedalnyListok, "ranajky");
     }
@@ -255,6 +273,9 @@ public class AdministratorInterface extends JFrame {
         if (jtxtFiled.getText().endsWith(".")) jtxtFiled.setText(jtxtFiled.getText() + "00");
     }
 
+    /**
+     * Not ideal solution - I am going to fix it in the future.
+     */
     private void btnJedalnyListokVytvoritInside2ActionPerformed(ActionEvent e) {
         MealDao mealDao = new MealDao(entityManager);
         UserDao userDao = new UserDao(entityManager);
@@ -314,8 +335,8 @@ public class AdministratorInterface extends JFrame {
     }
 
     private void comboBoxZobrazitActionPerformed() {
-        boolean descending = true; // usporiadanie transakcii od najnovsich po najstarsie; defaultna hodnota v comboBoxe
-        if (comboBoxZoradit.getSelectedIndex() == 1) descending = false; // usporiadanie transakcii od najstarsich po najnovsie
+        boolean descending = true; // ordering of transactions from latest oldest; default value in comboBox
+        if (comboBoxZoradit.getSelectedIndex() == 1) descending = false; // ordering of transacation from oldest to latest
 
         try {
             if (comboBoxZobrazit.getSelectedIndex() == 0) {
@@ -657,7 +678,7 @@ public class AdministratorInterface extends JFrame {
         //======== this ========
         setUndecorated(true);
         setTitle("Stravovac\u00ed syst\u00e9m");
-        setIconImage(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_food_32px_1.png").getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/icons/icons8_food_32px_1.png")).getImage());
         var contentPane = getContentPane();
 
         //======== splitPane1 ========
@@ -673,12 +694,11 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-                EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing
-                . border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ),
-                java. awt. Color. red) ,panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-                { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () ))
-                throw new RuntimeException( ); }} );
+                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+                0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+                .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
+                red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+                beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -996,7 +1016,7 @@ public class AdministratorInterface extends JFrame {
                                             "Cola",
                                             "Min. voda",
                                             "\u010caj",
-                                            "\u010e\u017e\u00fas"
+                                            "D\u017e\u00fas"
                                         }));
                                         comBoxJedLisRanajkyNapoj1.setSelectedIndex(-1);
                                         panel5.add(comBoxJedLisRanajkyNapoj1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -1399,7 +1419,7 @@ public class AdministratorInterface extends JFrame {
                                     label80.setText("1.");
                                     label80.setHorizontalAlignment(SwingConstants.CENTER);
                                     label80.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label80.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label80.setBorder(new MatteBorder(0, 1, 1, 0, new Color(55, 55, 55)));
                                     panelJedalnyListokObedInside.add(label80, CC.xy(1, 2));
 
                                     //---- textField8 ----
@@ -1464,7 +1484,7 @@ public class AdministratorInterface extends JFrame {
                                     label81.setText("2.");
                                     label81.setHorizontalAlignment(SwingConstants.CENTER);
                                     label81.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label81.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label81.setBorder(new MatteBorder(0, 1, 1, 0, new Color(55, 55, 55)));
                                     panelJedalnyListokObedInside.add(label81, CC.xy(1, 3));
 
                                     //---- textField47 ----
@@ -1529,7 +1549,7 @@ public class AdministratorInterface extends JFrame {
                                     label82.setText("3.");
                                     label82.setHorizontalAlignment(SwingConstants.CENTER);
                                     label82.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label82.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label82.setBorder(new MatteBorder(0, 1, 1, 0, new Color(55, 55, 55)));
                                     panelJedalnyListokObedInside.add(label82, CC.xy(1, 4));
 
                                     //---- textField50 ----
@@ -1594,7 +1614,7 @@ public class AdministratorInterface extends JFrame {
                                     label85.setText("4.");
                                     label85.setHorizontalAlignment(SwingConstants.CENTER);
                                     label85.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label85.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label85.setBorder(new MatteBorder(0, 1, 1, 0, new Color(55, 55, 55)));
                                     panelJedalnyListokObedInside.add(label85, CC.xy(1, 5));
 
                                     //---- textField53 ----
@@ -1659,7 +1679,7 @@ public class AdministratorInterface extends JFrame {
                                     label86.setText("5.");
                                     label86.setHorizontalAlignment(SwingConstants.CENTER);
                                     label86.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
-                                    label86.setBorder(new MatteBorder(0, 0, 1, 0, new Color(55, 55, 55)));
+                                    label86.setBorder(new MatteBorder(0, 1, 1, 0, new Color(55, 55, 55)));
                                     panelJedalnyListokObedInside.add(label86, CC.xy(1, 6));
 
                                     //---- textField56 ----

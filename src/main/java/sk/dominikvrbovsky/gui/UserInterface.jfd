@@ -12,7 +12,7 @@ new FormModel {
 			"$locationPolicy": 1
 			"resizable": false
 			"title": "Stravovací systém"
-			"iconImage": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_food_32px_1.png" )
+			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/icons/icons8_food_32px_1.png" )
 			add( new FormContainer( "javax.swing.JSplitPane", new FormLayoutManager( class javax.swing.JSplitPane ) ) {
 				name: "splitPane1"
 				"dividerSize": 0
@@ -180,7 +180,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {comp splitPane2::l:::x}"
-					"$verticalGroup": "par l {comp splitPane2::l:::x}"
+					"$verticalGroup": "par l {comp splitPane2::l::650:x}"
 				} ) {
 					name: "panelRightSide"
 					"kEndColor": new java.awt.Color( 192, 248, 213, 255 )

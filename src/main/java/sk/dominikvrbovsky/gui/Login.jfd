@@ -11,7 +11,7 @@ new FormModel {
 			"undecorated": true
 			"$locationPolicy": 1
 			"title": "Stravovací systém"
-			"iconImage": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_food_32px_1.png" )
+			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/icons/icons8_food_32px_1.png" )
 			add( new FormContainer( "keeptoo.KGradientPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 				"$columnSpecs": "286"
 				"$rowSpecs": "0, 24"

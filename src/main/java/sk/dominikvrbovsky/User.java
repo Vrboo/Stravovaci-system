@@ -16,8 +16,11 @@ public class User {
     private Long id;
 
     private String username;
+
     private String fullName;
+
     private String password;
+
     private double account;
 
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

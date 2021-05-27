@@ -11,7 +11,7 @@ new FormModel {
 			"$locationPolicy": 1
 			"undecorated": true
 			"title": "Stravovací systém"
-			"iconImage": new com.jformdesigner.model.SwingIcon( 1, "C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_food_32px_1.png" )
+			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/icons/icons8_food_32px_1.png" )
 			add( new FormContainer( "javax.swing.JSplitPane", new FormLayoutManager( class javax.swing.JSplitPane ) ) {
 				name: "splitPane1"
 				"dividerSize": 0
@@ -293,7 +293,7 @@ new FormModel {
 													addElement( "Cola" )
 													addElement( "Min. voda" )
 													addElement( "Čaj" )
-													addElement( "Ďžús" )
+													addElement( "Džús" )
 												}
 												"selectedIndex": -1
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
@@ -692,7 +692,7 @@ new FormModel {
 											"text": "1."
 											"horizontalAlignment": 0
 											"font": #Font2
-											"border": &MatteBorder6 new javax.swing.border.MatteBorder( 0, 0, 1, 0, #Color12 )
+											"border": &MatteBorder6 new javax.swing.border.MatteBorder( 0, 1, 1, 0, #Color12 )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridY": 2
 										} )

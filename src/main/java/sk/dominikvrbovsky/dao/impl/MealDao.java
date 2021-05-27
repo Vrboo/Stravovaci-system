@@ -90,7 +90,6 @@ public class MealDao implements Dao<Meal> {
         return meals;
     }
 
-
     public List<Breakfast> getAllBreakfast() {
         List<Breakfast> breakfasts = null;
 

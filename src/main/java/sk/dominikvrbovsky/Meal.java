@@ -11,9 +11,13 @@ public abstract class Meal {
     private Long id;
 
     private String name;
+
     private double price;
+
     private int capacity;
+
     private int numberOfOrder;
+
     private int numberInBurza;
 
     public Meal(String name, double price, int capacity) {
@@ -83,6 +87,7 @@ public abstract class Meal {
     public String getAccountString() {
         return String.format("%.2f", this.getPrice());
     }
+
     public abstract String toStringMealMenu();
 
     public abstract String toStringNumOfOrders();

@@ -226,21 +226,19 @@ public class UserInterface extends JFrame {
             setButtons(panelTableObed.getComponents());
         }
 
-
-
         cardLayout.show(panelContent,"objednat");
     }
 
     private void btnHistoriaTranskaciiActionPerformed() {
         comboBoxZobrazitActionPerformed();
-
         cardLayoutUcet.show(panelContentUcet, "historiaTrans");
     }
 
     private void comboBoxZobrazitActionPerformed() {
         labelZiadneTransakcie.setText("");
-        boolean descending = true; // usporiadanie transakcii od najnovsich po najstarsie; defaultna hodnota v comboBoxe
-        if (comboBoxZoradit.getSelectedIndex() == 1) descending = false; // usporiadanie transakcii od najstarsich po najnovsie
+        boolean descending = true; // ordering of transactions from latest to oldest; default value in comboBox
+        if (comboBoxZoradit.getSelectedIndex() == 1) descending = false; // ordering of transactions from oldest to latest
+
         try {
             if (comboBoxZobrazit.getSelectedIndex() == 0) {
                 transactionsOfUser = transactionDao.getTransactionsOfUserByParameters(user.getId(), descending);
@@ -258,6 +256,7 @@ public class UserInterface extends JFrame {
             btnSpatTransakcie.setVisible(false);
             return;
         }
+
         if (transactionsOfUser.size() == 0) {
             getTransakcieArray54(panelTableTrans.getComponents());
             transakciaDatum1.setText("Nenašli sa žiadne transakcie");
@@ -322,7 +321,6 @@ public class UserInterface extends JFrame {
             }
         }
     }
-
 
     private void objednatRanajky(String nameOfMeal) {
 
@@ -467,18 +465,6 @@ public class UserInterface extends JFrame {
 
     }
 
-//    private void activateAllButtons(Component[] components) {
-//        for (Component c : components) {
-//            if (c instanceof KButton) {
-//                c.setEnabled(true);
-//                ((KButton)c).setkStartColor(new Color(73, 196, 174));
-//                ((KButton)c).setkEndColor(new Color(140, 219, 145));
-//                ((KButton)c).setkHoverStartColor(new Color(52, 188, 183));
-//                ((KButton)c).setkHoverEndColor(new Color(73, 196, 174));
-//            }
-//        }
-//    }
-
     private void disableAllButtons(Component[] components) {
         for (Component c : components) {
             if (c instanceof KButton) {
@@ -504,24 +490,23 @@ public class UserInterface extends JFrame {
     }
 
     private void btnMojeObjedActionPerformed() {
-        try {
-            userDao.update(user);
-        } catch (Exception e) {
-            labelMojeObjednavkyRanajkyNazov.setForeground(Color.red);
-            labelMojeObjednavkyObedNazov.setForeground(Color.RED);
-            labelMojeObjednavkyRanajkyNazov.setText("Nepodarilo sa správne načítať objednávky");
-            labelMojeObjednavkyObedNazov.setText("Nepodarilo sa správne načítať objednávky");
-            btnRanajkyBurza.setVisible(false);
-            btnObedBurza.setVisible(false);
-            cardLayout.show(panelContent, "mojeObjednavky");
-            e.printStackTrace();
-            return;
-        }
+//        try {
+//            userDao.update(user);
+//        } catch (Exception e) {
+//            labelMojeObjednavkyRanajkyNazov.setForeground(Color.red);
+//            labelMojeObjednavkyObedNazov.setForeground(Color.RED);
+//            labelMojeObjednavkyRanajkyNazov.setText("Nepodarilo sa správne načítať objednávky");
+//            labelMojeObjednavkyObedNazov.setText("Nepodarilo sa správne načítať objednávky");
+//            btnRanajkyBurza.setVisible(false);
+//            btnObedBurza.setVisible(false);
+//            cardLayout.show(panelContent, "mojeObjednavky");
+//            e.printStackTrace();
+//            return;
+//        }
 
         btnRanajkyBurza.setVisible(true);
         btnObedBurza.setVisible(true);
 
-        
         if (this.user.hasBreakfastOrder()) {
             Order orderBreakfast = this.user.getBreakfastOrder();
             String breakfastDrink = "(" + ((Breakfast)orderBreakfast.getMeal()).getDrink().getDrink()  + ")";
@@ -647,7 +632,6 @@ public class UserInterface extends JFrame {
     }
 
     private void btnOdhlasitSaActionPerformed() {
-
         cardLayout.show(panelContent,"odhlasitSa");
     }
 
@@ -1424,7 +1408,7 @@ public class UserInterface extends JFrame {
         setUndecorated(true);
         setResizable(false);
         setTitle("Stravovac\u00ed syst\u00e9m");
-        setIconImage(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_food_32px_1.png").getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/icons/icons8_food_32px_1.png")).getImage());
         var contentPane = getContentPane();
 
         //======== splitPane1 ========
@@ -1440,13 +1424,12 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-                . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder
-                . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .
-                awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelMenu. getBorder( )) )
-                ; panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-                ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-                ;
+                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+                EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+                . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,
+                java . awt. Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+                { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )
+                throw new RuntimeException( ) ;} } );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -4260,7 +4243,7 @@ public class UserInterface extends JFrame {
                 );
                 panelRightSideLayout.setVerticalGroup(
                     panelRightSideLayout.createParallelGroup()
-                        .addComponent(splitPane2)
+                        .addComponent(splitPane2, GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                 );
             }
             splitPane1.setRightComponent(panelRightSide);

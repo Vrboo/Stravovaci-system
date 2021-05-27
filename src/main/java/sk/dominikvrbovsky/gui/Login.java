@@ -150,7 +150,7 @@ public class Login extends JFrame {
         //======== this ========
         setUndecorated(true);
         setTitle("Stravovac\u00ed syst\u00e9m");
-        setIconImage(new ImageIcon("C:\\Learn2Code\\MyApps\\stravovaci-system-2\\src\\main\\resources\\icons\\icons8_food_32px_1.png").getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/icons/icons8_food_32px_1.png")).getImage());
         var contentPane = getContentPane();
 
         //======== myJPanelBackLogin ========
@@ -161,13 +161,13 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBackground(Color.white);
             myJPanelBackLogin.setkBorderRadius(0);
             myJPanelBackLogin.setkGradientFocus(750);
-            myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),myJPanelBackLogin. getBorder()));myJPanelBackLogin. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border
+            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog"
+            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,myJPanelBackLogin. getBorder
+            ( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+            .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException
+            ( ); }} );
             myJPanelBackLogin.setLayout(new GridBagLayout());
             ((GridBagLayout)myJPanelBackLogin.getLayout()).columnWidths = new int[] {286};
             ((GridBagLayout)myJPanelBackLogin.getLayout()).rowHeights = new int[] {0, 24};

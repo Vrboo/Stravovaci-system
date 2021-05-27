@@ -1,6 +1,5 @@
 package sk.dominikvrbovsky.dao.impl;
 
-
 import sk.dominikvrbovsky.Order;
 import sk.dominikvrbovsky.dao.Dao;
 import javax.persistence.EntityManager;
@@ -64,19 +63,6 @@ public class OrderDao implements Dao<Order> {
 
         return order;
     }
-
-//    public void deleteAll() {
-//        String hql = "DELETE FROM Order";
-//
-//        try {
-//            entityManager.getTransaction().begin();
-//            entityManager.createQuery(hql).executeUpdate();
-//            entityManager.getTransaction().commit();
-//        } catch (Exception e) {
-//            entityManager.getTransaction().rollback();
-//            throw e;
-//        }
-//    }
 
     private void executeInsideTransaction(Consumer<EntityManager> consumer) {
         try {

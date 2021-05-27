@@ -1,8 +1,6 @@
 package sk.dominikvrbovsky.utilities;
 
 import java.time.LocalDate;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class DateUtilities {
 
@@ -18,7 +16,6 @@ public class DateUtilities {
     }
 
     private static String getDayInSlovak(String dayInEnglish) {
-
         return switch (dayInEnglish) {
             case "monday" -> "Pondelok";
             case "tuesday" -> "Utorok";
@@ -32,7 +29,6 @@ public class DateUtilities {
     }
 
     private static String getMonthInSlovak(String monthInEnglish) {
-
         return switch (monthInEnglish) {
             case "january" -> "január";
             case "february" -> "február";

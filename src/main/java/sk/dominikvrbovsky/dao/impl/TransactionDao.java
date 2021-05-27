@@ -1,6 +1,5 @@
 package sk.dominikvrbovsky.dao.impl;
 
-
 import sk.dominikvrbovsky.Transaction;
 import sk.dominikvrbovsky.dao.Dao;
 import javax.persistence.EntityManager;
