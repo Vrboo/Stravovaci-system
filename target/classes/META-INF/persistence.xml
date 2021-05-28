@@ -1,0 +1,29 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+    <persistence-unit name="sk.dominikvrbovsky.stravovaci-system" transaction-type="RESOURCE_LOCAL">
+
+        <class>sk.dominikvrbovsky.Meal</class>
+        <class>sk.dominikvrbovsky.Breakfast</class>
+        <class>sk.dominikvrbovsky.Lunch</class>
+        <class>sk.dominikvrbovsky.Transaction</class>
+        <class>sk.dominikvrbovsky.Order</class>
+        <class>sk.dominikvrbovsky.User</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:55555/stravovaci-system-db"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
