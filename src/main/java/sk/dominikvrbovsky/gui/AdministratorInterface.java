@@ -188,16 +188,6 @@ public class AdministratorInterface extends JFrame {
         System.exit(0);
     }
 
-    private void labelXMouseEntered() {
-        labelX.setIcon(
-                new ImageIcon("src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px_6.png"));
-    }
-
-    private void labelXMouseExited() {
-        labelX.setIcon(new
-                ImageIcon("src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px.png"));
-    }
-
     private void kButton4ActionPerformed() {
 
         this.breakfastMenu = createMenuArray(panelJedalnyListokRanajkyInside.getComponents());
@@ -316,7 +306,6 @@ public class AdministratorInterface extends JFrame {
             labelWarningJedLisVytvorit.setForeground(new Color(73, 196, 174));
             labelWarningJedLisVytvorit.setText("Nový jedálny lístok bol úspešne vytvorený.");
         } catch (Exception ee) {
-            ee.printStackTrace();
             labelWarningJedLisVytvorit.setForeground(Color.RED);
             labelWarningJedLisVytvorit.setText("Nepodarilo sa vytvoriť nový jedálny lístok. Skúste to znovu.");
         }
@@ -694,11 +683,13 @@ public class AdministratorInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-                0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-                .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
-                red),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-                beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
+                panelMenu.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
+                .swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing
+                .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
+                Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
+                ),panelMenu. getBorder()));panelMenu. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
+                public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName(
+                )))throw new RuntimeException();}});
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -859,14 +850,6 @@ public class AdministratorInterface extends JFrame {
                             @Override
                             public void mouseClicked(MouseEvent e) {
                                 labelXMouseClicked();
-                            }
-                            @Override
-                            public void mouseEntered(MouseEvent e) {
-                                labelXMouseEntered();
-                            }
-                            @Override
-                            public void mouseExited(MouseEvent e) {
-                                labelXMouseExited();
                             }
                         });
 

@@ -206,8 +206,6 @@ new FormModel {
 					"horizontalAlignment": 0
 					"cursor": new java.awt.Cursor( 12 )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "labelXMouseClicked", false ) )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "labelXMouseEntered", false ) )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "labelXMouseExited", false ) )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label4"

@@ -173,9 +173,7 @@ public class UserInterface extends JFrame {
 
     private void btnObjednatActionPerformed() {
         try {
-            System.out.println("2 SQL");
             this.breakfasts = mealDao.getAllBreakfast();
-            System.out.println("3 SQL");
             this.lunches = mealDao.getAllLunch();
         } catch (Exception e) {
             setLabelWariningError(labelObjednatRanajkyWarning, "Nepodarilo sa správne načítať menu");
@@ -490,19 +488,6 @@ public class UserInterface extends JFrame {
     }
 
     private void btnMojeObjedActionPerformed() {
-//        try {
-//            userDao.update(user);
-//        } catch (Exception e) {
-//            labelMojeObjednavkyRanajkyNazov.setForeground(Color.red);
-//            labelMojeObjednavkyObedNazov.setForeground(Color.RED);
-//            labelMojeObjednavkyRanajkyNazov.setText("Nepodarilo sa správne načítať objednávky");
-//            labelMojeObjednavkyObedNazov.setText("Nepodarilo sa správne načítať objednávky");
-//            btnRanajkyBurza.setVisible(false);
-//            btnObedBurza.setVisible(false);
-//            cardLayout.show(panelContent, "mojeObjednavky");
-//            e.printStackTrace();
-//            return;
-//        }
 
         btnRanajkyBurza.setVisible(true);
         btnObedBurza.setVisible(true);
@@ -640,16 +625,6 @@ public class UserInterface extends JFrame {
         passwordAdminFocusLost();
         labelAdminWarning.setText("");
         cardLayout.show(panelContent,"admin");
-    }
-    
-    private void labelXObjednatMouseEntered() {
-        labelX.setIcon(
-                new ImageIcon("src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px_6.png"));
-    }
-
-    private void labelXObjednatMouseExited() {
-        labelX.setIcon(new 
-                ImageIcon("src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px.png"));
     }
 
     private void labelXObjednatMouseClicked() {
@@ -1424,12 +1399,11 @@ public class UserInterface extends JFrame {
                 panelMenu.setkStartColor(new Color(55, 55, 55));
                 panelMenu.setkEndColor(new Color(55, 55, 55));
                 panelMenu.setBackground(new Color(55, 55, 55));
-                panelMenu.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
-                EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
-                . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,
-                java . awt. Color .red ) ,panelMenu. getBorder () ) ); panelMenu. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
-                { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )
-                throw new RuntimeException( ) ;} } );
+                panelMenu.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+                , 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+                , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+                panelMenu. getBorder( )) ); panelMenu. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+                ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- labelIcon ----
                 labelIcon.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1657,14 +1631,6 @@ public class UserInterface extends JFrame {
                             @Override
                             public void mouseClicked(MouseEvent e) {
                                 labelXObjednatMouseClicked();
-                            }
-                            @Override
-                            public void mouseEntered(MouseEvent e) {
-                                labelXObjednatMouseEntered();
-                            }
-                            @Override
-                            public void mouseExited(MouseEvent e) {
-                                labelXObjednatMouseExited();
                             }
                         });
 

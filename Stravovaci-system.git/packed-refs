@@ -1,0 +1,26 @@
+# pack-refs with: peeled fully-peeled sorted 
+53956a186f437158333ecde6d1e58abc105eb68d refs/heads/Breakfast-class
+bf9a8067698e110dfb07f1785be5193d37af3e7d refs/heads/Dao-UserDao
+70fd49095206777efe745eb2af7e49d70aaf566f refs/heads/Lunch-class
+e65cdfd16542e96c40d55cd05c7844bf07c61a91 refs/heads/burza-class
+f6d9c5575cfb5e15ddac3f9e57be90db90cc84ac refs/heads/gui
+4d0a9d41ccd47ec52a0c2844fae7d9cb3a700fb4 refs/heads/gui-admistratorInterface
+85de88f87aa5368940f26c3ba0728fee75ebabb3 refs/heads/gui-login
+c80db73ca3d2cc74fcbe563d3f585bcfd7282d65 refs/heads/gui-login-db
+9abc9c388069333a43ba2025ada961e6ccdfbebe refs/heads/gui-registration
+5f040b8ee8ff499ae16f5149387519c26cb4d719 refs/heads/gui-registration-db
+1f3406a7371ac2e41635b62a6735fdebc7b401fa refs/heads/gui-userinterface
+c9e62a699183cf1caf3a644b0036f348d26a71e7 refs/heads/gui-vytvorenie-jed-listok-byGui
+602e3bc38d06592695a3e26f8b66ad8a692a3dd4 refs/heads/master
+26db2ca53ae3e7b8c136ea165f8fdeb8313edf72 refs/heads/meal-class
+def9398745a309439a48d8bfd71fc0a8e7f54117 refs/heads/meal-db-connect
+1a2be9898a5b569a12e5327eca9897540c92f31f refs/heads/order-class
+b12e52c58111749cd0a0e79f992acf9e11d4c3b5 refs/heads/order-db-connect
+77f46edfe50b2ba0c4ebd7d7da5464218aea17d3 refs/heads/order-user-relationship-db
+9c42fc68b4b505679a5384927ca24a66fcd11506 refs/heads/pridavanie-metod
+380a962a97f63a547884b54be9a9508989fd279c refs/heads/transaction-class
+59ef6982741c45bb5265c81cbdc215f24f98d614 refs/heads/transaction-db-connect
+4f0d6ff7a6547cbeaec2ad0eb7ce12e704810424 refs/heads/transaction-user-relationship-db
+d3ea5abc49a8eed2b7bdee62e07c721caa432a4a refs/heads/trying-atr-breakfastOrder-lunchOrder
+115526b9940b863be36aeb001cd8f25eb08dbe8c refs/heads/user-class
+db20873b71a2f1418fd7a66c767ec82232c22515 refs/heads/user-db-connect

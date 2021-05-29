@@ -86,7 +86,6 @@ public class Login extends JFrame {
         } else if (!textFieldUsername.getText().equals("Používateľské meno") && !password.equals("Heslo")) {
             Optional<User> user;
             try {
-                System.out.println("SQL 1");
                 user = userDao.getFromUsername(textFieldUsername.getText());
             } catch (Exception e) {
                 labelWarning.setText("Prihlasovenie zlyhalo");
@@ -110,16 +109,6 @@ public class Login extends JFrame {
         System.exit(0);
     }
 
-    private void labelXMouseEntered() {
-        labelX.setIcon(new ImageIcon(
-                "src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px_6.png"));
-    }
-
-    private void labelXMouseExited() {
-        labelX.setIcon(new ImageIcon(
-                "src\\\\main\\\\resources\\\\icons\\\\icons8_x_18px.png"));
-    }
-
     private void btnRegistrovatActionPerformed() {
         Registration registration = new Registration(entityManager);
         registration.setVisible(true);
@@ -129,7 +118,6 @@ public class Login extends JFrame {
     private void textFieldsKeyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) buttonPrihlasitActionPerformed();
     }
-
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -161,13 +149,12 @@ public class Login extends JFrame {
             myJPanelBackLogin.setBackground(Color.white);
             myJPanelBackLogin.setkBorderRadius(0);
             myJPanelBackLogin.setkGradientFocus(750);
-            myJPanelBackLogin.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,myJPanelBackLogin. getBorder
-            ( )) ); myJPanelBackLogin. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+            myJPanelBackLogin.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
+            .EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax
+            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
+            12),java.awt.Color.red),myJPanelBackLogin. getBorder()));myJPanelBackLogin. addPropertyChangeListener(new java.beans
+            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.
+            getPropertyName()))throw new RuntimeException();}});
             myJPanelBackLogin.setLayout(new GridBagLayout());
             ((GridBagLayout)myJPanelBackLogin.getLayout()).columnWidths = new int[] {286};
             ((GridBagLayout)myJPanelBackLogin.getLayout()).rowHeights = new int[] {0, 24};
@@ -327,14 +314,6 @@ public class Login extends JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     labelXMouseClicked();
-                }
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    labelXMouseEntered();
-                }
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    labelXMouseExited();
                 }
             });
 
