@@ -2,9 +2,15 @@ package sk.dominikvrbovsky;
 
 import javax.persistence.Entity;
 
+/**
+ * This class represents lunch in menu
+ */
 @Entity
 public class Lunch extends Meal{
 
+    /**
+     * Meal that can be taken somewhere else to be eaten
+     */
     private boolean takeaway;
 
     public Lunch(String name, double price, int capacity, boolean takeaway) {

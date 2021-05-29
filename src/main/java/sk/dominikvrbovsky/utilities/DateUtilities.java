@@ -2,9 +2,15 @@ package sk.dominikvrbovsky.utilities;
 
 import java.time.LocalDate;
 
+/**
+ * Class containing methods for building text string of date in Slovak
+ */
 public class DateUtilities {
 
-    public static String buildSlovakTimeString() {
+    /**
+     * Method that creates text string informating about date in Slovak
+     */
+    public static String createSlovakDateString() {
         StringBuilder stringBuilder = new StringBuilder();
         LocalDate localDate = LocalDate.now();
         stringBuilder.append(getDayInSlovak(localDate.getDayOfWeek().name().toLowerCase()));
@@ -15,6 +21,10 @@ public class DateUtilities {
         return stringBuilder.toString();
     }
 
+    /**
+     * Method that from English name of day returns Slovak name of day
+     * @param dayInEnglish Slovak name of day
+     */
     private static String getDayInSlovak(String dayInEnglish) {
         return switch (dayInEnglish) {
             case "monday" -> "Pondelok";
@@ -28,6 +38,10 @@ public class DateUtilities {
         };
     }
 
+    /**
+     * Method that from English name of month returns Slovak name of month
+     * @param monthInEnglish English name of month
+     */
     private static String getMonthInSlovak(String monthInEnglish) {
         return switch (monthInEnglish) {
             case "january" -> "január";

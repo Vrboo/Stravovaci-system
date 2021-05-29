@@ -74,7 +74,7 @@ public class UserInterface extends JFrame {
         
         labelUsername.setText(user.getFullName());
         labelAccount.setText("Stav účtu: " + user.getAccountString() + "€");
-        this.labelDatum.setText(DateUtilities.buildSlovakTimeString());
+        this.labelDatum.setText(DateUtilities.createSlovakDateString());
 
 
         passwordStareHeslo.setEchoChar((char)0);
@@ -189,7 +189,7 @@ public class UserInterface extends JFrame {
             labelsRanajky[index][0].setText(breakfast.getName());
             labelsRanajky[index][1].setText(breakfast.getDrink().getDrink());
             labelsRanajky[index][2].setText(breakfast.getCapacity() + "x");
-            labelsRanajky[index][3].setText(breakfast.getAccountString()+ "€");
+            labelsRanajky[index][3].setText(breakfast.getPriceString()+ "€");
 
             index++;
         }
@@ -199,7 +199,7 @@ public class UserInterface extends JFrame {
             labelsObed[index][0].setText(lunch.getName());
             labelsObed[index][1].setText(lunch.isTakeaway() ? "Áno" : "Nie");
             labelsObed[index][2].setText(lunch.getCapacity() + "x");
-            labelsObed[index][3].setText(lunch.getAccountString() + "€");
+            labelsObed[index][3].setText(lunch.getPriceString() + "€");
 
             index++;
         }
@@ -499,7 +499,7 @@ public class UserInterface extends JFrame {
             labelMojeObjednavkyRanajkyDatum.setText(orderBreakfast.getDateTimeOrderCreation().toLocalDate().format(dateFormatter));
             labelMojeObjednavkyRanajkyCas.setText(orderBreakfast.getDateTimeOrderCreation().toLocalTime().format(timeFormatter));
             labelMojeObjednavkyRanajkyNazov.setText(orderBreakfast.getMeal().getName() + breakfastDrink);
-            labelMojeObjednavkyRanajkyCena.setText(orderBreakfast.getMeal().getAccountString() + "€");
+            labelMojeObjednavkyRanajkyCena.setText(orderBreakfast.getMeal().getPriceString() + "€");
 
             if (!this.user.getBreakfastOrder().isInBurza()) {
                 setButtonToPridatDoBurzy(btnRanajkyBurza);
@@ -523,7 +523,7 @@ public class UserInterface extends JFrame {
             labelMojeObjednavkyObedDatum.setText(orderLunch.getDateTimeOrderCreation().toLocalDate().format(dateFormatter));
             labelMojeObjednavkyObedCas.setText(orderLunch.getDateTimeOrderCreation().toLocalTime().format(timeFormatter));
             labelMojeObjednavkyObedNazov.setText(orderLunch.getMeal().getName() + orderTakeaway);
-            labelMojeObjednavkyObedCena.setText(orderLunch.getMeal().getAccountString() + "€");
+            labelMojeObjednavkyObedCena.setText(orderLunch.getMeal().getPriceString() + "€");
 
             if (!this.user.getLunchOrder().isInBurza()) {
                 setButtonToPridatDoBurzy(btnObedBurza);
@@ -580,7 +580,7 @@ public class UserInterface extends JFrame {
             labelsRanajky[index][0].setText(breakfast.getName());
             labelsRanajky[index][1].setText(breakfast.getDrink().getDrink());
             labelsRanajky[index][2].setText(breakfast.getNumberInBurza() + "x");
-            labelsRanajky[index][3].setText(breakfast.getAccountString()+ "€");
+            labelsRanajky[index][3].setText(breakfast.getPriceString()+ "€");
 
             index++;
         }
@@ -590,7 +590,7 @@ public class UserInterface extends JFrame {
             labelsObed[index][0].setText(lunch.getName());
             labelsObed[index][1].setText(lunch.isTakeaway() ? "Áno" : "Nie");
             labelsObed[index][2].setText(lunch.getNumberInBurza() + "x");
-            labelsObed[index][3].setText(lunch.getAccountString() + "€");
+            labelsObed[index][3].setText(lunch.getPriceString() + "€");
 
             index++;
         }

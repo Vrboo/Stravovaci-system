@@ -5,9 +5,15 @@ import sk.dominikvrbovsky.enums.Drink;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 
+/**
+ * This class represents breakfast in menu
+ */
 @Entity
 public class Breakfast extends Meal {
 
+    /**
+     * Drink
+     */
     @Convert(converter = DrinkConverter.class)
     private Drink drink;
 

@@ -2,22 +2,43 @@ package sk.dominikvrbovsky;
 
 import javax.persistence.*;
 
+/**
+ * This class represents meal in menu
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Meal {
 
+    /**
+     * ID - identifier in database
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Name of meal
+     */
     private String name;
 
+    /**
+     * Price of meal
+     */
     private double price;
 
+    /**
+     *  Max. number of orders for this meal
+     */
     private int capacity;
 
+    /**
+     * Number of orders for this meal
+     */
     private int numberOfOrder;
 
+    /**
+     * Number of orders that are in burza
+     */
     private int numberInBurza;
 
     public Meal(String name, double price, int capacity) {
@@ -79,12 +100,19 @@ public abstract class Meal {
         this.numberInBurza = numberInBurza;
     }
 
+    /**
+     * Ordering meal - decrease capacity of meal and increase number of order for this meal
+     */
     public void orderMeal() {
         this.setCapacity(this.getCapacity() - 1);
         this.setNumberOfOrder(this.getNumberOfOrder() + 1);
     }
 
-    public String getAccountString() {
+    /**
+     * Method which converts price to string and rounds it to two decimal
+     * @return price of meal in string and rounded to two decimals
+     */
+    public String getPriceString() {
         return String.format("%.2f", this.getPrice());
     }
 

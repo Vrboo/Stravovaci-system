@@ -67,7 +67,7 @@ public class AdministratorInterface extends JFrame {
         this.cardLayoutObjednavky = (CardLayout)(panelContentObjednavky.getLayout());
         this.cardLayoutJedalnyListok = (CardLayout)(panelJedalnyListok.getLayout());
 
-        this.labelDatum.setText(DateUtilities.buildSlovakTimeString());
+        this.labelDatum.setText(DateUtilities.createSlovakDateString());
 
         btnJedalnyListok.setSelected(true);
         btnJedalnyListok.setBorder(new MatteBorder(0,5,0,0, new Color(50, 187, 186)));

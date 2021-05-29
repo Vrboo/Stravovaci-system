@@ -8,8 +8,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+/**
+ * Class containing methods for writing to file
+ */
 public class FileUtilities {
 
+    /**
+     * Writing to file informations about transactions for admin of application
+     */
     public static void saveTransactionsInFileForAdmin(File file, List<Transaction> transactions) throws Exception {
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(file))) {
             for (Transaction transaction : transactions) {
@@ -20,6 +26,9 @@ public class FileUtilities {
         }
     }
 
+    /**
+     * Writing to file informations about transactions of user
+     */
     public static void saveTransactionsInFileForUser(File file, List<Transaction> transactions) throws Exception {
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(file))) {
             for (Transaction transaction : transactions) {
