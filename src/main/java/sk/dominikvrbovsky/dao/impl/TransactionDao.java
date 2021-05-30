@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+/**
+ * DAO (Data Access Object) class for Transaction entity (class for working with database)
+ */
 public class TransactionDao implements Dao<Transaction> {
 
     private final EntityManager entityManager;
@@ -17,6 +20,10 @@ public class TransactionDao implements Dao<Transaction> {
         this.entityManager = entityManager;
     }
 
+    /**
+     * Getting transaction with specified id from database
+     * @return Optional of Transaction
+     */
     @Override
     public Optional<Transaction> get(Long id) {
         Optional<Transaction> transaction;
@@ -33,29 +40,43 @@ public class TransactionDao implements Dao<Transaction> {
         return transaction;
     }
 
+    /**
+     * Saving transaction to database
+     */
     @Override
     public void save(Transaction entity) {
         executeInsideTransaction(entityManager1 -> entityManager1.persist(entity));
     }
 
+    /**
+     * Updating transaction in database
+     */
     @Override
     public void update(Transaction entity) {
         executeInsideTransaction(entityManager1 -> entityManager1.merge(entity));
     }
 
+    /**
+     * Deleting transaction from database
+     */
     @Override
     public void delete(Transaction entity) {
         executeInsideTransaction(entityManager1 -> entityManager1.remove(entity));
     }
 
-    public List<Transaction> getTransactionsOfUserByParameters(long id, boolean descending) {
+    /**
+     * Getting all transactions (in database) with specified user id.
+     * Resulting List of transactions is in descending or ascending order.
+     * @param descending true - ordering from latest transactions; false - ordering from oldest transactions
+     */
+    public List<Transaction> getTransactionsOfUserByParameters(long idOfUser, boolean descending) {
         List<Transaction> transactions;
-        String hql = "FROM Transaction WHERE USER_ID = :id ORDER BY DateTime";
+        String hql = "FROM Transaction WHERE USER_ID = :idOfUser ORDER BY DateTime";
 
         try {
             entityManager.getTransaction().begin();
             Query query = entityManager.createQuery(hql, Transaction.class);
-            query.setParameter("id", id);
+            query.setParameter("idOfUser", idOfUser);
             transactions = query.getResultList();
             entityManager.getTransaction().commit();
         } catch (Exception e) {
@@ -71,14 +92,20 @@ public class TransactionDao implements Dao<Transaction> {
         return transactions;
     }
 
-    public List<Transaction> getTransactionsOfUserByParameters( long id , boolean descending, String transactionType) {
+    /**
+     * Getting all transactions (in database) with specified user id and type of transaction.
+     * Resulting List of transactions is in descending or ascending order.
+     * @param descending true - ordering from latest transactions; false - ordering from oldest transactions
+     * @param transactionType type of transaction - INPUT or OUTPUT (vklad alebo výber)
+     */
+    public List<Transaction> getTransactionsOfUserByParameters(long idOfUser , boolean descending, String transactionType) {
         List<Transaction> transactions;
         String hql = "FROM Transaction WHERE USER_ID = :id AND TransactionType = :type ORDER BY DateTime";
 
         try {
             entityManager.getTransaction().begin();
             Query query = entityManager.createQuery(hql, Transaction.class);
-            query.setParameter("id", id);
+            query.setParameter("id", idOfUser);
             query.setParameter("type", transactionType);
             transactions = query.getResultList();
             entityManager.getTransaction().commit();
@@ -96,6 +123,11 @@ public class TransactionDao implements Dao<Transaction> {
         return transactions;
     }
 
+    /**
+     * Getting all transactions in database.
+     * Resulting List of transactions is in descending or ascending order.
+     * @param descending true - ordering from latest transactions; false - ordering from oldest transactions
+     */
     public List<Transaction> getAllTransactionsByParameters(boolean descending) {
         List<Transaction> transactions;
         String hql = "FROM Transaction ORDER BY DateTime";
@@ -118,6 +150,12 @@ public class TransactionDao implements Dao<Transaction> {
         return transactions;
     }
 
+    /**
+     * Getting all transactions (in database) with specified type.
+     * Resulting List of transactions is in descending or ascending order.
+     * @param descending true - ordering from latest transactions; false - ordering from oldest transactions
+     * @param transactionType type of transaction - INPUT or OUTPUT (vklad alebo výber)
+     */
     public List<Transaction> getAllTransactionsByParameters(boolean descending, String transactionType) {
         List<Transaction> transactions;
         String hql = "FROM Transaction WHERE TransactionType = :type ORDER BY DateTime";
@@ -142,6 +180,9 @@ public class TransactionDao implements Dao<Transaction> {
         return transactions;
     }
 
+    /**
+     * Wrapper for exception handling
+     */
     private void executeInsideTransaction(Consumer<EntityManager> consumer) {
         try {
             entityManager.getTransaction().begin();

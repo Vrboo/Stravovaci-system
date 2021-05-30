@@ -28,7 +28,7 @@ import sk.dominikvrbovsky.utilities.DateUtilities;
 import sk.dominikvrbovsky.utilities.FileUtilities;
 
 /**
- * @author Dominik Vrbovsky
+ * JFrame - User interface for administrators (Administration mode)
  */
 public class AdministratorInterface extends JFrame {
     private final EntityManager entityManager;

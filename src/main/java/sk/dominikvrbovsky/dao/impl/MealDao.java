@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+/**
+ * DAO (Data Access Object) class for Meal entity (class for working with database)
+ */
 public class MealDao implements Dao<Meal> {
 
     private final EntityManager entityManager;
@@ -15,6 +18,10 @@ public class MealDao implements Dao<Meal> {
         this.entityManager = entityManager;
     }
 
+    /**
+     * Getting meal with specified id from database
+     * @return Optional of meal
+     */
     @Override
     public Optional<Meal> get(Long id) {
         Optional<Meal> meal;
@@ -31,21 +38,35 @@ public class MealDao implements Dao<Meal> {
         return meal;
     }
 
+    /**
+     * Saving meal to database
+     */
     @Override
     public void save(Meal entity) {
         executeInsideTransaction(entityManager1 -> entityManager1.persist(entity));
     }
 
+    /**
+     * Updating meal in database
+     */
     @Override
     public void update(Meal entity) {
         executeInsideTransaction(entityManager1 -> entityManager1.merge(entity));
     }
 
+    /**
+     * Deleting meal from datbase
+     */
     @Override
     public void delete(Meal entity) {
         executeInsideTransaction(entityManager1 -> entityManager1.remove(entity));
     }
 
+    /**
+     * Getting meal with specified name from database
+     * @param nameOfMeal name of meal
+     * @return Optional of meal
+     */
     public Optional<Meal> getFromName(String nameOfMeal) throws Exception {
         Optional<Meal> meal = Optional.empty();
         String hql = "FROM Meal WHERE NAME = :meal";
@@ -64,6 +85,10 @@ public class MealDao implements Dao<Meal> {
         return meal;
     }
 
+    /**
+     * Saving all meal in specified List
+     * @param entities meals I want to save to database
+     */
     public void saveAll(List<Meal> entities) {
         try {
             entityManager.getTransaction().begin();
@@ -75,6 +100,10 @@ public class MealDao implements Dao<Meal> {
         }
     }
 
+    /**
+     * Getting all meals in database
+     * @return List of all meals in database
+     */
     public List<Meal> getAll() {
         List<Meal> meals = null;
 
@@ -90,6 +119,10 @@ public class MealDao implements Dao<Meal> {
         return meals;
     }
 
+    /**
+     * Getting all breakfasts in database
+     * @return List of all breakfasts in database
+     */
     public List<Breakfast> getAllBreakfast() {
         List<Breakfast> breakfasts = null;
 
@@ -106,6 +139,10 @@ public class MealDao implements Dao<Meal> {
 
     }
 
+    /**
+     * Getting all lunches in database
+     * @return List of all lunches in database
+     */
     public List<Lunch> getAllLunch() {
         List<Lunch> lunches = null;
 
@@ -121,13 +158,14 @@ public class MealDao implements Dao<Meal> {
         return lunches;
     }
 
+    /**
+     * Deleting all meals and orders in database
+     */
     public void deleteAllMealAndOrder() {
         String hql1 = "DELETE FROM Meal";
-        String hql2 = "DELETE FROM Order";
 
         try {
             entityManager.getTransaction().begin();
-            //entityManager.createQuery(hql2).executeUpdate();
             entityManager.createQuery(hql1).executeUpdate();
             entityManager.getTransaction().commit();
         } catch (Exception e) {
@@ -137,6 +175,9 @@ public class MealDao implements Dao<Meal> {
 
     }
 
+    /**
+     * Wrapper for exception handling
+     */
     private void executeInsideTransaction(Consumer<EntityManager> consumer) {
         try {
             entityManager.getTransaction().begin();

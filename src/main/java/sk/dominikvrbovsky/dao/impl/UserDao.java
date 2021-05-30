@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+/**
+ * DAO (Data Access Object) class for User entity (class for working with database)
+ */
 public class UserDao implements Dao<User> {
 
     private final EntityManager entityManager;
@@ -18,6 +21,10 @@ public class UserDao implements Dao<User> {
         this.entityManager = entityManager;
     }
 
+    /**
+     * Getting user with specified id from database
+     * @return Optional of User
+     */
     @Override
     public Optional<User> get(Long id) {
         Optional<User> user;
@@ -34,21 +41,34 @@ public class UserDao implements Dao<User> {
         return user;
     }
 
+    /**
+     * Saving user to database
+     */
     @Override
     public void save(User entity) {
         executeInsideTransaction(entityManager -> entityManager.persist(entity));
     }
 
+    /**
+     * Updating user in database
+     */
     @Override
     public void update(User entity) {
         executeInsideTransaction(entityManager -> entityManager.merge(entity));
     }
 
+    /**
+     * Deleting user from database
+     */
     @Override
     public void delete(User entity) {
         executeInsideTransaction(entityManager -> entityManager.remove(entity));
     }
 
+    /**
+     * Getting user with specified username
+     * @param username username of user that I want to get
+     */
     public Optional<User> getFromUsername(String username) {
         Optional<User> user = Optional.empty();
         String hql = "FROM User WHERE USERNAME = :usr";
@@ -74,6 +94,10 @@ public class UserDao implements Dao<User> {
 
     }
 
+    /**
+     * Getting all users in database
+     * @return List of all users in database
+     */
     public List<User> getAll() {
         List<User> users;
         try {
@@ -89,6 +113,9 @@ public class UserDao implements Dao<User> {
         return users;
     }
 
+    /**
+     * Wrapper for exception handling
+     */
     private void executeInsideTransaction(Consumer<EntityManager> consumer) {
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try {

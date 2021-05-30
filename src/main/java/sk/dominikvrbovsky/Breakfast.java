@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 public class Breakfast extends Meal {
 
     /**
-     * Drink
+     * The drink for breakfast (Breakfast drink)
      */
     @Convert(converter = DrinkConverter.class)
     private Drink drink;
