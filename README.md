@@ -12,6 +12,11 @@ Jedálny lístok a objednávky sú aktuálne pokiaľ administrátor aplikácie n
 Pre používateľa sú k dispozícií nástroje ako objednávanie jedál, burza, elektronické dobíjanie účtu a mnoho ďalších. 
 Viac o tejto aplikácií vám poskytnú nižšie uvedené informácie.
  
+## Spustenie aplikácie
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vzhľadom k tomu, že aplikácia využíva MySQL databázu, je pomerne zložité túto aplikáciu spustiť na inom zariadení. Aby však nebola potrebná inštalácia MySQL serveru na vašom zariadení, aplikácia využíva **portable (prenosnú) MySQL databázu**. Ide o .zip súbor, ktorý stačí jednoducho rozbaliť a nie je potrebná žiadna inštálacia. Napriek tomu je však potrebné databázu nakonfigurovať a pred spustením aplikácie vždy zapnút MySQL server, čo môže byť pomerné zložitý proces, no v nasledujúcich riadkoch sa pokusím zrozumiteľne vysvetliť, ako na to. 
+
+   
+
 
 ## Technológie
 - Programovací jazyk: Java
