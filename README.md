@@ -15,7 +15,35 @@ Viac o tejto aplikácií vám poskytnú nižšie uvedené informácie.
 ## Spustenie aplikácie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vzhľadom k tomu, že aplikácia využíva MySQL databázu, je pomerne zložité túto aplikáciu spustiť na inom zariadení. Aby však nebola potrebná inštalácia MySQL serveru na vašom zariadení, aplikácia využíva **portable (prenosnú) MySQL databázu**. Ide o .zip súbor, ktorý stačí jednoducho rozbaliť a nie je potrebná žiadna inštálacia. Napriek tomu je však potrebné databázu nakonfigurovať a pred spustením aplikácie vždy zapnút MySQL server, čo môže byť pomerné zložitý proces, no v nasledujúcich riadkoch sa pokusím zrozumiteľne vysvetliť, ako na to. 
 
-   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vzhľadom k tomu, že pri konfigúrácii a spúšťaní databázy bude potrebné uvádzať často absolútne cesty k niektorým súborom, odporúčam si uložiť tento projekt do **C:\Stravovaci-system-Vrboo**, aby ste absolútne cesty mohli iba jednoducho skopírovať z tohto návodu. 
+
+Pozn.: Nakoľko je .zip súbor MySQL databázy väčší ako 100MB, musel byť rozdelený do dvoch súborov **mysql.part01** a **mysql.part02**. 
+
+**Návod:**
+- Stiahnite si tento projekt 
+- Označte obidva súbory **mysql.part01** a **mysql.part02**, kliknite pravým tlačidlom myši a zvoľte **Rozbaliť sem/Extrahovať sem**
+  - Následne môžete tieto dva súbory **mysql.part01** a **mysql.part02** odstrániť
+  - Po správnom rozbalení týchto súborov sa vám vytvorí nový priečinok s názvom **mysql**
+- Vstúpte do priečinku **mysql** a otvorte súbor **config.ini**
+- V súbore **config.ini** nastavte týmto trom atribútom hodnoty: (konfigurácia databázy)
+  - basedir = "C:\\Stravovaci-system-Vrboo\\mysql\\mysql-8.0.25-winx64" (Absolútna cesta priečinku **mysql-8.0.25-winx64**, ktorý sa nachádza v priečinku **mysql*)
+  - datadir = "C:\\Stravovaci-system-Vrboo\\mysql\\mydb" (Absolútna cesta priečinku **mydb**, ktorý sa nachádza v priečinku **mysql*)
+  - log-error = "C:\\Stravovaci-system-Vrboo\\mysql\\logs\\error_log.err" (Absolútna cesta súboru **logs\\error_log.err**, ktorý sa nachádza v priečinku **mysql**)
+- Uložený súbor **config.ini** bude vyzerať takto:
+- Následne otvorte príkazový riadok a vložte tento príkaz: (inicializácia databázy)
+  - "C:\Stravovaci-system-Vrboo\mysql\mysql-8.0.25-winx64\bin\mysqld.exe" --defaults-file="C:\\Stravovaci-system-Vrboo\\mysql\\config.ini" --initialize-insecure --console
+- Databáza je teraz nakonfigurovaná aj inicializovaná, už stačí iba zapnúť MySQL server, aby sme mohli spustiť aplikáciu
+- Do príkazového riadku vložte tento príkaz: (zapnutie MySQL serveru)
+  - start "" "C:\Stravovaci-system-Vrboo\mysql\mysql-8.0.25-winx64\bin\mysqld.exe" --defaults-file="C:\\Stravovaci-system-Vrboo\\mysql\\config.ini"
+  - Ak bol server úspešne zapnutý, otvorí sa nové okno Príkazového riadku, čo značí, že server je zapnutý
+  - Server vypnete zatvorením Príkazového riadku 
+- Následne môžete spustiť aplikáciu otvorením súboru out/artifacts/Stravovaci-system_jar/**run-app.bat**
+  - Spúšťanie aplikácie môže chvíľu trvať 
+- Odteraz stačí pred spustením aplikácie zapnúť MySQL server <br>
+
+- Podrobnejší návod: https://stackoverflow.com/a/42088890
+- V prípade otázok ma prosím kontaktujte na e-mail: dominikvrbo@gmail.com
+
 
 
 ## Technológie
