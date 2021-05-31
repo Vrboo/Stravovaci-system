@@ -20,7 +20,7 @@ Viac o tejto aplikácií vám poskytnú nižšie uvedené informácie.
 <sub>Pozn.: Nakoľko je .zip súbor MySQL databázy väčší ako 100MB, musel byť rozdelený do dvoch súborov **mysql.part01** a **mysql.part02**.</sub>
 
 **Návod:**
-- Stiahnite si tento projekt (Ja ho mám uložený v **C:\Stravovaci-system-Vrboo**)
+- Stiahnite si tento projekt (uložený v **C:\Stravovaci-system-Vrboo**)
 - Označte obidva súbory **mysql.part01** a **mysql.part02**, kliknite pravým tlačidlom myši a zvoľte **Rozbaliť sem/Extrahovať sem**
   - Následne môžete tieto dva súbory **mysql.part01** a **mysql.part02** odstrániť
   - Po správnom rozbalení týchto súborov sa vám vytvorí nový priečinok s názvom **mysql**
@@ -48,10 +48,10 @@ user = "root"
 port = "55555"
 ```
 
-- Následne otvorte príkazový riadok a vložte tento príkaz: (inicializácia databázy)
+- Následne otvorte Príkazový riadok a zadajte tento príkaz: (inicializácia databázy)
    - `"C:\Stravovaci-system-Vrboo\mysql\mysql-8.0.25-winx64\bin\mysqld.exe" --defaults-file="C:\\Stravovaci-system-Vrboo\\mysql\\config.ini" --initialize-insecure --console`
 - Databáza je teraz nakonfigurovaná aj inicializovaná, už stačí iba zapnúť MySQL server, aby sme mohli spustiť aplikáciu
-- Do príkazového riadku vložte tento príkaz: (zapnutie MySQL serveru)
+- Do Príkazového riadku zadajte tento príkaz: (zapnutie MySQL serveru)
   - `start "" "C:\Stravovaci-system-Vrboo\mysql\mysql-8.0.25-winx64\bin\mysqld.exe" --defaults-file="C:\\Stravovaci-system-Vrboo\\mysql\\config.ini"`
   - Ak bol server úspešne zapnutý, otvorí sa nové okno Príkazového riadku, čo značí, že server je zapnutý
   - Server vypnete zatvorením Príkazového riadku 
@@ -67,13 +67,13 @@ port = "55555"
 
 
 ## Technológie
-- Programovací jazyk: Java
-- Databáza: MySQL (portable)
-- Framework, ORM tool: Hibernate
-- VCS: Git
-- GUI toolkit: Java Swing 
-- GUI designer: JFromDesigner (IDE plugin) 
-- Externá knižnica: KControls - https://github.com/k33ptoo/KControls
+- Programovací jazyk: **Java**
+- Databáza: **MySQL (portable)**
+- Framework, ORM tool: **Hibernate**
+- VCS: **Git**
+- GUI toolkit: **Java Swing**
+- GUI designer: **JFromDesigner** (IDE plugin) 
+- Externá knižnica: **KControls** - https://github.com/k33ptoo/KControls
 
 
 ## Sprievodca aplikáciou
@@ -107,7 +107,7 @@ port = "55555"
   - V prípade, že použivateľ chce svoju objednávku pridať alebo odobrať z burzy, môže to urobiť práve tu
 
 #### Burza
-- Burza jedál umožňuje ponúknuť objednané jedlo inému používateľovi
+- Burza jedál umožňuje ponúknuť objednané jedlo iným používateľom 
 - Pokiaľ si niekto toto jedlo z burzy objedná, používateľovi sa vrátia peniaze za danú objednávku
 
 #### Účet
