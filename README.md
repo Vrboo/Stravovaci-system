@@ -6,7 +6,7 @@
 <sub>&nbsp;&nbsp;&nbsp;&nbsp;Pozn.: V databáze sú defaultne nasetované dáta šiestich používateľov (pre ukážku funkcionalít aplikácie)</sub> <br>
 <sub>&nbsp;&nbsp;&nbsp;&nbsp;Pozn.: Vzhľadom k tomu, že táto aplikácia nemá reálny charakter využiteľnosti a nie je denne aktualizovaná o nové jedálne lístky, je 
 naprogramovaná iba pre jednorázové objednávanie. V skratke používateľ si môže objednať jedlo z jedálného lístka, no nie je určený dátum jeho výdaja.
-Jedálny lístok a objednávky sú aktuálne pokiaľ administrátor aplikácie nevytvorí nový jedálny lístok.</sub>
+Jedálny lístok a objednávky používateľov sú aktuálne pokiaľ administrátor aplikácie nevytvorí nový jedálny lístok.</sub>
 
 ## Úvod  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aplikácia podobná bežnému stravovaciemu systému, ktorý sa využíva v školstve, zdravotníctve, firmách a pod. 
