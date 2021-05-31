@@ -11,7 +11,16 @@ Jedálny lístok a objednávky sú aktuálne pokiaľ administrátor aplikácie n
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aplikácia podobná bežnému stravovaciemu systému, ktorý sa využíva v školstve, zdravotníctve, firmách a pod. 
 Pre používateľa sú k dispozícií nástroje ako objednávanie jedál, burza, elektronické dobíjanie účtu a mnoho ďalších. 
 Viac o tejto aplikácií vám poskytnú nižšie uvedené informácie.
- 
+
+## Technológie
+- Programovací jazyk: **Java**
+- Databáza: **MySQL (portable)**
+- Framework, ORM tool: **Hibernate**
+- VCS: **Git**
+- GUI toolkit: **Java Swing**
+- GUI designer: **JFromDesigner** (IDE plugin) 
+- Externá knižnica: **KControls** - https://github.com/k33ptoo/KControls
+
 ## Spustenie aplikácie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vzhľadom k tomu, že aplikácia využíva MySQL databázu, je pomerne zložité túto aplikáciu spustiť na inom zariadení. Aby však nebola potrebná inštalácia MySQL serveru na vašom zariadení, aplikácia využíva **portable (prenosnú) MySQL databázu**. Ide o .zip súbor, ktorý stačí jednoducho rozbaliť a nie je potrebná žiadna inštálacia. Napriek tomu je však potrebné databázu nakonfigurovať a pred spustením aplikácie vždy zapnút MySQL server, čo môže byť pomerné zložitý proces, no v nasledujúcich riadkoch sa pokusím zrozumiteľne vysvetliť, ako na to. 
 
@@ -63,17 +72,6 @@ port = "55555"
 
 - Podrobnejší návod: https://stackoverflow.com/a/42088890
 - V prípade otázok ma prosím kontaktujte na e-mail: dominikvrbo@gmail.com
-
-
-
-## Technológie
-- Programovací jazyk: **Java**
-- Databáza: **MySQL (portable)**
-- Framework, ORM tool: **Hibernate**
-- VCS: **Git**
-- GUI toolkit: **Java Swing**
-- GUI designer: **JFromDesigner** (IDE plugin) 
-- Externá knižnica: **KControls** - https://github.com/k33ptoo/KControls
 
 
 ## Sprievodca aplikáciou
