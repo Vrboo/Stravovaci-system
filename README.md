@@ -1,9 +1,10 @@
 # Stravovací systém
 ### Desktopová aplikácia s pokročilejším GUI (grafickým rozhraním) napojená na MySQL databázu
 
-<sub>&nbsp;&nbsp;&nbsp;&nbsp;Pozn.: Spustiteľný súbor aplikácie - run-app.bat</sub> <br>
-<sub>&nbsp;&nbsp;&nbsp;&nbsp;Pozn.: Prístupové heslo pre administrátora: 12345678</sub> <br>
-<sub>&nbsp;&nbsp;&nbsp;&nbsp;Pozn.: Vzhľadom k tomu, že táto aplikácia nemá reálny charakter využiteľnosti a nie je denne aktualizovaná a nové jedálne lístky, je 
+<sub>&nbsp;&nbsp;&nbsp;&nbsp;Pozn.: Spustiteľný súbor aplikácie - out/artifacts/Stravovaci-system_jar/**run-app.bat**</sub> <br>
+<sub>&nbsp;&nbsp;&nbsp;&nbsp;Pozn.: Prístupové heslo pre administrátora: **12345678**</sub> <br>
+<sub>&nbsp;&nbsp;&nbsp;&nbsp;Pozn.: V databáze sú defaultne nasetované dáta šiestich používateľov (pre ukážku funkcionalít aplikácie)</sub> <br>
+<sub>&nbsp;&nbsp;&nbsp;&nbsp;Pozn.: Vzhľadom k tomu, že táto aplikácia nemá reálny charakter využiteľnosti a nie je denne aktualizovaná o nové jedálne lístky, je 
 naprogramovaná iba pre jednorázové objednávanie. V skratke používateľ si môže objednať jedlo z jedálného lístka, no nie je určený dátum jeho výdaja.
 Jedálny lístok a objednávky sú aktuálne pokiaľ administrátor aplikácie nevytvorí nový jedálny lístok.</sub>
 
@@ -114,6 +115,7 @@ port = "55555"
    - Používateľ môže prehliadať svoju **históriu vykonaných transakcií**
        - Hístóriu je možné zoradiť od najstarších alebo od najnovších
        - Históriu je možné filtrovať podľa typu transakcií (vklady, výbery)
+       - Históriu je možné exportovať do textového súboru
 
 #### Zmeniť heslo
 - Používateľ si môže zmeniť heslo 
@@ -139,5 +141,12 @@ port = "55555"
   - Transakcie je možné zoradiť od najstarších alebo od najnovších
   - Transakcie je možné vyhľadať na základe celého mena používateľa, ktorý transakciu vykonal
   - Transakcie je možné filtrovať na základe typu (vklady, výbery)
+  - Transakcie je možné exportovať do textového súboru
+
+## Screenshoty 
+![image](https://user-images.githubusercontent.com/75013354/120190137-7998e900-c218-11eb-87be-4ee6e7e5603a.png)
+![image](https://user-images.githubusercontent.com/75013354/120190270-a5b46a00-c218-11eb-81c5-c2b3fd9ef6f8.png)
+![image](https://user-images.githubusercontent.com/75013354/120190323-bcf35780-c218-11eb-9da9-27ced52b33ac.png)
+
 
 
