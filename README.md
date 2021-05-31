@@ -24,20 +24,20 @@ Viac o tejto aplikácií vám poskytnú nižšie uvedené informácie.
 ## Spustenie aplikácie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vzhľadom k tomu, že aplikácia využíva MySQL databázu, je pomerne zložité túto aplikáciu spustiť na inom zariadení. Aby však nebola potrebná inštalácia MySQL serveru na vašom zariadení, aplikácia využíva **portable (prenosnú) MySQL databázu**. Ide o .zip súbor, ktorý stačí jednoducho rozbaliť a nie je potrebná žiadna inštálacia. Napriek tomu je však potrebné databázu nakonfigurovať a pred spustením aplikácie vždy zapnút MySQL server, čo môže byť pomerné zložitý proces, no v nasledujúcich riadkoch sa pokusím zrozumiteľne vysvetliť, ako na to. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vzhľadom k tomu, že pri konfigúrácii a spúšťaní databázy bude potrebné uvádzať často absolútne cesty k niektorým súborom, odporúčam si uložiť tento projekt do **C:\Stravovaci-system-Vrboo**, aby ste absolútne cesty mohli iba jednoducho skopírovať z tohto návodu. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vzhľadom k tomu, že pri konfigúrácii a spúšťaní databázy bude potrebné uvádzať často absolútne cesty k niektorým súborom, odporúčam si uložiť tento projekt do **C:\Stravovaci-system-main**, aby ste absolútne cesty mohli iba jednoducho skopírovať z tohto návodu. 
 
 <sub>Pozn.: Nakoľko je .zip súbor MySQL databázy väčší ako 100MB, musel byť rozdelený do dvoch súborov **mysql.part01** a **mysql.part02**.</sub>
 
 **Návod:**
-- Stiahnite si tento projekt (uložený v **C:\Stravovaci-system-Vrboo**)
+- Stiahnite si tento projekt (uložený v **C:\Stravovaci-system-main**)
 - Označte obidva súbory **mysql.part01** a **mysql.part02**, kliknite pravým tlačidlom myši a zvoľte **Rozbaliť sem/Extrahovať sem**
   - Následne môžete tieto dva súbory **mysql.part01** a **mysql.part02** odstrániť
   - Po správnom rozbalení týchto súborov sa vám vytvorí nový priečinok s názvom **mysql**
 - Vstúpte do priečinku **mysql** a otvorte súbor **config.ini**
 - V súbore **config.ini** nastavte týmto trom atribútom hodnoty: (konfigurácia databázy)
-  - basedir = "C:\\Stravovaci-system-Vrboo\\mysql\\mysql-8.0.25-winx64" (Absolútna cesta priečinku **mysql-8.0.25-winx64**, ktorý sa nachádza v priečinku **mysql**)
-  - datadir = "C:\\Stravovaci-system-Vrboo\\mysql\\mydb" (Absolútna cesta priečinku **mydb**, ktorý sa nachádza v priečinku **mysql**)
-  - log-error = "C:\\Stravovaci-system-Vrboo\\mysql\\logs\\error_log.err" (Absolútna cesta súboru **logs\\error_log.err**, ktorý sa nachádza v priečinku **mysql**)
+  - basedir = "C:\\Stravovaci-system-main\\mysql\\mysql-8.0.25-winx64" (Absolútna cesta priečinku **mysql-8.0.25-winx64**, ktorý sa nachádza v priečinku **mysql**)
+  - datadir = "C:\\Stravovaci-system-main\\mysql\\mydb" (Absolútna cesta priečinku **mydb**, ktorý sa nachádza v priečinku **mysql**)
+  - log-error = "C:\\Stravovaci-system-main\\mysql\\logs\\error_log.err" (Absolútna cesta súboru **logs\\error_log.err**, ktorý sa nachádza v priečinku **mysql**)
 - Uložený súbor **config.ini** bude vyzerať takto:
 ```
 [mysqld]
@@ -47,10 +47,10 @@ join_buffer_size = 128M
 sort_buffer_size = 2M
 read_rnd_buffer_size = 2M 
 sql_mode = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
-basedir = "C:\\Stravovaci-system-Vrboo\\mysql\\mysql-8.0.25-winx64"
-datadir = "C:\\Stravovaci-system-Vrboo\\mysql\\mydb"
+basedir = "C:\\Stravovaci-system-main\\mysql\\mysql-8.0.25-winx64"
+datadir = "C:\\Stravovaci-system-main\\mysql\\mydb"
 port = "55555"
-log-error = "C:\\Stravovaci-system-Vrboo\\mysql\\logs\\error_log.err"
+log-error = "C:\\Stravovaci-system-main\\mysql\\logs\\error_log.err"
 
 [mysqladmin]
 user = "root"
@@ -58,10 +58,10 @@ port = "55555"
 ```
 
 - Následne otvorte Príkazový riadok a zadajte tento príkaz: (inicializácia databázy)
-   - `"C:\Stravovaci-system-Vrboo\mysql\mysql-8.0.25-winx64\bin\mysqld.exe" --defaults-file="C:\\Stravovaci-system-Vrboo\\mysql\\config.ini" --initialize-insecure --console`
+   - `"C:\Stravovaci-system-main\mysql\mysql-8.0.25-winx64\bin\mysqld.exe" --defaults-file="C:\\Stravovaci-system-main\\mysql\\config.ini" --initialize-insecure --console`
 - Databáza je teraz nakonfigurovaná aj inicializovaná, už stačí iba zapnúť MySQL server, aby sme mohli spustiť aplikáciu
 - Do Príkazového riadku zadajte tento príkaz: (zapnutie MySQL serveru)
-  - `start "" "C:\Stravovaci-system-Vrboo\mysql\mysql-8.0.25-winx64\bin\mysqld.exe" --defaults-file="C:\\Stravovaci-system-Vrboo\\mysql\\config.ini"`
+  - `start "" "C:\Stravovaci-system-main\mysql\mysql-8.0.25-winx64\bin\mysqld.exe" --defaults-file="C:\\Stravovaci-system-main\\mysql\\config.ini"`
   - Ak bol server úspešne zapnutý, otvorí sa nové okno Príkazového riadku, čo značí, že server je zapnutý
   - Server vypnete zatvorením Príkazového riadku 
 - Následne môžete spustiť aplikáciu otvorením súboru out/artifacts/Stravovaci-system_jar/**run-app.bat**
