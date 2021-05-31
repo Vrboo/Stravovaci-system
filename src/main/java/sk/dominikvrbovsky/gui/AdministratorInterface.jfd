@@ -268,7 +268,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanajkyNazov1"
 											"border": &MatteBorder2 new javax.swing.border.MatteBorder( 0, 1, 1, 1, sfield java.awt.Color black )
-											"font": &Font3 new java.awt.Font( "Yu Gothic UI", 1, 16 )
+											"font": new java.awt.Font( "Yu Gothic UI", 1, 16 )
 											"horizontalAlignment": 0
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
@@ -285,7 +285,7 @@ new FormModel {
 												name: "comBoxJedLisRanajkyNapoj1"
 												"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 												"background": sfield java.awt.Color lightGray
-												"font": &Font4 new java.awt.Font( "Yu Gothic UI", 1, 15 )
+												"font": &Font3 new java.awt.Font( "Yu Gothic UI", 1, 15 )
 												"model": new javax.swing.DefaultComboBoxModel {
 													selectedItem: "Cola"
 													addElement( "Cola" )
@@ -304,7 +304,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanakKapacita1"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": &Font4 new java.awt.Font( "Yu Gothic UI", 1, 16 )
 											"horizontalAlignment": 0
 											"columns": 5
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
@@ -315,7 +315,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanakCena1"
 											"border": &MatteBorder4 new javax.swing.border.MatteBorder( 0, 0, 1, 1, sfield java.awt.Color black )
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
@@ -336,7 +336,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanajkyNazov2"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
@@ -360,7 +360,7 @@ new FormModel {
 													addElement( "Džús" )
 												}
 												"background": sfield java.awt.Color lightGray
-												"font": #Font4
+												"font": #Font3
 												"selectedIndex": -1
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 												"insets": #Insets0
@@ -372,7 +372,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanakKapacita2"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -382,7 +382,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanakCena2"
 											"border": #MatteBorder4
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
@@ -403,7 +403,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanajkyNazov3"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
@@ -421,7 +421,7 @@ new FormModel {
 												"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 												"model": #DefaultComboBoxModel0
 												"background": sfield java.awt.Color lightGray
-												"font": #Font4
+												"font": #Font3
 												"selectedIndex": -1
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 												"insets": #Insets0
@@ -433,7 +433,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanakKapacita3"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -443,7 +443,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanakCena3"
 											"border": #MatteBorder4
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
@@ -464,7 +464,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanajkyNazov4"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
@@ -482,7 +482,7 @@ new FormModel {
 												"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 												"model": #DefaultComboBoxModel0
 												"background": sfield java.awt.Color lightGray
-												"font": #Font4
+												"font": #Font3
 												"selectedIndex": -1
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 												"insets": #Insets0
@@ -494,7 +494,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanakKapacita4"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -504,7 +504,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanakCena4"
 											"border": #MatteBorder4
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
@@ -525,7 +525,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanajkyNazov5"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
@@ -543,7 +543,7 @@ new FormModel {
 												"border": &MatteBorder5 new javax.swing.border.MatteBorder( 0, 0, 0, 0, sfield java.awt.Color black )
 												"model": #DefaultComboBoxModel0
 												"background": sfield java.awt.Color lightGray
-												"font": #Font4
+												"font": #Font3
 												"selectedIndex": -1
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 												"insets": #Insets0
@@ -555,7 +555,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanakKapacita5"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -565,7 +565,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "txtJedLisRanakCena5"
 											"border": #MatteBorder4
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											"cursor": new java.awt.Cursor( 2 )
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
@@ -697,7 +697,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField8"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
@@ -721,7 +721,7 @@ new FormModel {
 													addElement( "Nie" )
 												}
 												"background": sfield java.awt.Color lightGray
-												"font": #Font4
+												"font": #Font3
 												"selectedIndex": -1
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -731,7 +731,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField45"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -741,7 +741,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField46"
 											"border": &MatteBorder8 new javax.swing.border.MatteBorder( 0, 0, 1, 1, sfield java.awt.Color black )
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
@@ -762,7 +762,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField47"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
@@ -786,7 +786,7 @@ new FormModel {
 													addElement( "Nie" )
 												}
 												"background": sfield java.awt.Color lightGray
-												"font": #Font4
+												"font": #Font3
 												"selectedIndex": -1
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -796,7 +796,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField48"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -806,7 +806,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField49"
 											"border": #MatteBorder8
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
@@ -827,7 +827,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField50"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
@@ -851,7 +851,7 @@ new FormModel {
 													addElement( "Nie" )
 												}
 												"background": sfield java.awt.Color lightGray
-												"font": #Font4
+												"font": #Font3
 												"selectedIndex": -1
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -861,7 +861,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField51"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -871,7 +871,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField52"
 											"border": #MatteBorder8
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
@@ -892,7 +892,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField53"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
@@ -916,7 +916,7 @@ new FormModel {
 													addElement( "Nie" )
 												}
 												"background": sfield java.awt.Color lightGray
-												"font": #Font4
+												"font": #Font3
 												"selectedIndex": -1
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -926,7 +926,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField54"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -936,7 +936,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField55"
 											"border": #MatteBorder8
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )
@@ -957,7 +957,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField56"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 											"gridX": 2
@@ -981,7 +981,7 @@ new FormModel {
 													addElement( "Nie" )
 												}
 												"background": sfield java.awt.Color lightGray
-												"font": #Font4
+												"font": #Font3
 												"selectedIndex": -1
 											}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -991,7 +991,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField57"
 											"border": #MatteBorder2
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakKapacita1KeyTyped", true ) )
 										}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
@@ -1001,7 +1001,7 @@ new FormModel {
 										add( new FormComponent( "javax.swing.JTextField" ) {
 											name: "textField58"
 											"border": #MatteBorder8
-											"font": #Font3
+											"font": #Font4
 											"horizontalAlignment": 0
 											addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "frmterJedLisRanakCena1KeyTyped", true ) )
 											addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "frmterJedLisRanakCena1FocusLost", true ) )

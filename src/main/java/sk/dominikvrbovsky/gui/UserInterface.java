@@ -494,7 +494,7 @@ public class UserInterface extends JFrame {
 
         if (this.user.hasBreakfastOrder()) {
             Order orderBreakfast = this.user.getBreakfastOrder();
-            String breakfastDrink = "(" + ((Breakfast)orderBreakfast.getMeal()).getDrink().getDrink()  + ")";
+            String breakfastDrink = " (" + ((Breakfast)orderBreakfast.getMeal()).getDrink().getDrink()  + ")";
 
             labelMojeObjednavkyRanajkyDatum.setText(orderBreakfast.getDateTimeOrderCreation().toLocalDate().format(dateFormatter));
             labelMojeObjednavkyRanajkyCas.setText(orderBreakfast.getDateTimeOrderCreation().toLocalTime().format(timeFormatter));
