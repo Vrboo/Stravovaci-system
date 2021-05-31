@@ -35,7 +35,7 @@ Viac o tejto aplikácií vám poskytnú nižšie uvedené informácie.
   - Po správnom rozbalení týchto súborov sa vám vytvorí nový priečinok s názvom **mysql**
 - Vstúpte do priečinku **mysql** a otvorte súbor **config.ini**
 - V súbore **config.ini** nastavte týmto trom atribútom hodnoty: (konfigurácia databázy)
-  - basedir = "C:\\Stravovaci-system-Vrboo\\mysql\\mysql-8.0.25-winx64" (Absolútna cesta priečinku **mysql-8.0.25-winx64**, ktorý sa nachádza v priečinku **mysql*)
+  - basedir = "C:\\Stravovaci-system-Vrboo\\mysql\\mysql-8.0.25-winx64" (Absolútna cesta priečinku **mysql-8.0.25-winx64**, ktorý sa nachádza v priečinku **mysql**)
   - datadir = "C:\\Stravovaci-system-Vrboo\\mysql\\mydb" (Absolútna cesta priečinku **mydb**, ktorý sa nachádza v priečinku **mysql**)
   - log-error = "C:\\Stravovaci-system-Vrboo\\mysql\\logs\\error_log.err" (Absolútna cesta súboru **logs\\error_log.err**, ktorý sa nachádza v priečinku **mysql**)
 - Uložený súbor **config.ini** bude vyzerať takto:
